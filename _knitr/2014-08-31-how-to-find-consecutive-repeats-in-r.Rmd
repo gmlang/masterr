@@ -1,0 +1,61 @@
+---
+layout: post
+title: "How to Find Consecutive Repeats in R"
+date: 2014-08-31 12:49:59 -0400
+comments: true
+categories: R
+keywords: "R, consecutive repeats in R"
+published: true
+share: true
+
+---
+
+**Q**: Given a sequence of random numbers, find the start and end positions of runs of five or more consecutive numbers that are greater than zero.
+
+**A**: Use the `rle()` function.
+
+For example, let's apply `rle()` to the following sequence of numbers. 
+```{r}
+seq3 = c(2,2,2,2,2,5,3,7,7,7,2,2,5,5,5,3,3,3)
+( rle.seq3 = rle(seq3) )
+```
+
+We see that `rle()` returns a list of two elements: lengths and values, where the latter gives the unique number of each run, and the former gives the run length, i.e. the number of consecutive repeats within each run. For example, the first run is the number 2 repeated 5 times, and the second run is the number 5 repeated once. 
+
+Let's solve the original question. First, we set the seed, generate a sequence of normal random numbers greater than zero and apply `rle()` to it. 
+```{r}
+set.seed(201)
+rnums = rnorm(100)
+runs = rle(rnums > 0)
+```
+
+Next, we find indices of the runs with length of at least 5.
+```{r}
+myruns = which(runs$values == TRUE & runs$lengths >= 5)
+# check if myruns has any value in it 
+any(myruns) 
+```
+
+Next, we can do a cumulative sum of the run lengths and extract the end positions of the runs with length of at least 5 using the above found indices. 
+```{r}
+runs.lengths.cumsum = cumsum(runs$lengths)
+ends = runs.lengths.cumsum[myruns]
+```
+
+Next, we find the start positions of these runs.
+```{r}
+newindex = ifelse(myruns>1, myruns-1, 0)
+starts = runs.lengths.cumsum[newindex] + 1
+if (0 %in% newindex) starts = c(1,starts)
+```
+
+Lastly, we print out the start and end positions of these runs and use them to extract the runs themselves.
+```{r}
+print(starts)
+print(ends)
+print(rnums[starts[1]:ends[1]])
+print(rnums[starts[2]:ends[2]])
+print(rnums[starts[3]:ends[3]])
+```
+
+To see more examples of how to use `rle()`, read Winston Chang's [post](http://www.cookbook-r.com/Manipulating_data/Finding_sequences_of_identical_values/).

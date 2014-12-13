@@ -1,0 +1,46 @@
+---
+layout: post
+title: "The stringr Package"
+date: 2014-08-29 12:42:38 -0400
+comments: true
+categories: R
+keywords: "R, stringr, text parsing in R"
+published: true
+share: true
+
+---
+When doing data cleaning, we often have to clean up strings of text. Doing this in R used to be a pain until the birth of the [stringr](http://cran.r-project.org/web/packages/stringr/index.html) package. For example, it contains a function called `str_trim()` that allows you to easily remove any leading and trailing whitespace of a string. It also contains a function called `str_sub()` that allows you to easily extract substrings from any string. Run the following code to see these two functions work.
+
+```{r}
+library(stringr)
+gmlang = "\t Guangming Lang \n"
+
+# trim whitespace on both sides
+str_trim(gmlang)
+
+# trim whitespace on the left side
+str_trim(gmlang, side="left")
+
+# trim whitespace on the right side
+str_trim(gmlang, side="right")
+
+# re-assign trimmed value to gmlang
+gmlang = str_trim(gmlang)
+
+# extract first name
+str_sub(gmlang, start=1, end=9)
+str_sub(gmlang, end=9)
+
+# extract last name
+str_sub(gmlang, start=11, end=14)
+str_sub(gmlang, start=11)
+
+# extact first and last name at the same time
+str_sub(gmlang, start=c(1, 11), end=c(9, 14))
+
+# something fun :)
+str_sub(gmlang, start = seq_len(str_length(gmlang)))
+str_sub(gmlang, end = seq_len(str_length(gmlang)))
+```
+
+You can learn other handy functions in the stringr package [here](http://cran.r-project.org/web/packages/stringr/stringr.pdf)

@@ -1,0 +1,439 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>An Example of the Bootstrap Method &#8211; Become Great at R</title>
+<meta name="description" content="When calculating the bias and precision of a sample estimate to the popluation parameter, because we often don’t know the true value of the population parameter and we often only have one sample, we use a procedure called bootstrap. The idea is simple:
+
+">
+<meta name="keywords" content="">
+
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="An Example of the Bootstrap Method">
+<meta name="twitter:description" content="When calculating the bias and precision of a sample estimate to the popluation parameter, because we often don’t know the true value of the population parameter and we often only have one sample, we use a procedure called bootstrap. The idea is simple:
+
+">
+<meta name="twitter:site" content="@gmlang">
+<meta name="twitter:creator" content="@gmlang">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://gmlang.com/images/site-logo.png">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="An Example of the Bootstrap Method">
+<meta property="og:description" content="When calculating the bias and precision of a sample estimate to the popluation parameter, because we often don’t know the true value of the population parameter and we often only have one sample, we use a procedure called bootstrap. The idea is simple:
+
+">
+<meta property="og:url" content="http://gmlang.com/r/an-example-of-the-bootstrap-method/">
+<meta property="og:site_name" content="Become Great at R">
+
+
+
+
+
+<link rel="canonical" href="http://gmlang.com/r/an-example-of-the-bootstrap-method/">
+<link href="http://gmlang.com/feed.xml" type="application/atom+xml" rel="alternate" title="Become Great at R Feed">
+<link rel="author" href="http://plus.google.com/+GuangmingLang?rel=author">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://gmlang.com/assets/css/main.css">
+<!-- Webfonts -->
+<script src="//use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+  <script src="http://gmlang.com/assets/js/vendor/html5shiv.min.js"></script>
+  <script src="http://gmlang.com/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="http://gmlang.com/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://gmlang.com/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://gmlang.com/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://gmlang.com/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://gmlang.com/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://gmlang.com/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://gmlang.com/images/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+
+<body id="post">
+
+<div class="navigation-wrapper">
+	<nav role="navigation" id="site-nav" class="animated drop">
+	    <ul>
+      
+		    
+		        
+		    
+		    <li><a href="http://gmlang.com/about/" >About</a></li>
+		  
+		    
+		        
+		    
+		    <li><a href="http://gmlang.com/da/" >Data Analysis</a></li>
+		  
+		    
+		        
+		    
+		    <li><a href="http://gmlang.com/r/" >R</a></li>
+		  
+		    
+		        
+		    
+		    <li><a href="http://gmlang.com/cartoon/" >Cartoon</a></li>
+		  
+        <li class="dosearch"><span><i class="fa fa-search"></i> Search</span></li>
+	    </ul>
+	</nav>
+</div><!-- /.navigation-wrapper -->
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+<div class="search-wrapper">
+  <div class="search-form">
+    <input type="text" class="search-field" placeholder="Search...">
+    <button class="close-btn"><i class="fa fa-times-circle fa-2x"></i></button>
+    <ul class="search-results post-list"></ul><!-- /.search-results -->
+  </div><!-- /.search-form -->
+</div><!-- ./search-wrapper -->
+
+<header class="masthead">
+	<div class="wrap">
+        
+    		<a href="http://gmlang.com" class="site-logo" rel="home" title="Become Great at R"><img src="http://gmlang.com/images/site-logo.png" width="200" height="200" alt="Become Great at R logo" class="animated fadeInUp"></a>
+        
+        <h1 class="site-title animated fadeIn"><a href="http://gmlang.com">Become Great at R</a></h1>
+		<h2 class="site-description animated fadeIn" itemprop="description"></h2>
+	</div>
+</header><!-- /.masthead -->
+
+<div class="js-menu-screen menu-screen"></div>
+
+<div id="main" role="main">
+  <article class="hentry">
+    
+    <div class="entry-wrapper">
+      <header class="entry-header">
+        <span class="entry-tags"></span>
+        
+          <h1 class="entry-title">An Example of the Bootstrap Method</h1>
+        
+      </header>
+      <footer class="entry-meta">
+        
+        
+        
+          <img src="http://gmlang.com/images/gmlang1.jpg" class="bio-photo" alt="Guangming Lang bio photo"></a>
+        
+        <span class="author vcard">By <span class="fn">Guangming Lang</span></span>
+        <span class="entry-date date published"><time datetime="2014-10-29T19:28:49-04:00"><i class="fa fa-calendar-o"></i> October 29, 2014</time></span>
+        
+        <span class="entry-comments"><i class="fa fa-comment-o"></i> <a href="#disqus_thread">Comment</a></span>
+        <span class="social-share-twitter">
+  <a href="https://twitter.com/intent/tweet?hashtags=&amp;text=An%20Example%20of%20the%20Bootstrap%20Method&amp;url=http://gmlang.com/r/an-example-of-the-bootstrap-method/&amp;via=gmlang" title="Share on Twitter" itemprop="Twitter"><i class="fa fa-twitter-square"></i> Tweet</a>
+</span>
+<span class="social-share-facebook">
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http://gmlang.com/r/an-example-of-the-bootstrap-method/" title="Share on Facebook" itemprop="Facebook"><i class="fa fa-facebook-square"></i> Like</a>
+</span>
+<span class="social-share-googleplus">
+  <a href="https://plus.google.com/share?url=http://gmlang.com/r/an-example-of-the-bootstrap-method/" title="Share on Google Plus" itemprop="GooglePlus"><i class="fa fa-google-plus-square"></i> +1</a>
+</span>
+<!-- /.social-share -->
+        
+      </footer>
+      <div class="entry-content">
+        <p>When calculating the <a href="http://gmlang.com/da/bias-and-precision/">bias and precision</a> of a sample estimate to the popluation parameter, because we often don’t know the true value of the population parameter and we often only have one sample, we use a procedure called <em>bootstrap</em>. The idea is simple:</p>
+
+<ol>
+  <li>treat the sample as the population</li>
+  <li>understand the sampling scheme, i.e., how the sample was taken from the population</li>
+  <li>sample the same number of observations with replacement from the sample according to the same sampling scheme</li>
+  <li>for each of the new samples, calculate its sample statistic. For example, if you’re interested in the mean of the population, you just calculate the sample average. If you’re interested in the sd of the population, you just calculate the sample sd. </li>
+  <li>these sample statistics form a distribution. Take its average and use it as a proxy to the true value of the population parameter. Plug it and the sample statistic of your original sample into <a href="http://gmlang.com/da/bias-and-precision/">the formulas of bias and precision</a>.</li>
+</ol>
+
+<p>The following is a concrete example implementing the above bootstrap procedure using R and some stock price data.</p>
+
+<h3 id="download-the-monthly-adjusted-closing-price-data-of-vtsmxhttpswwwgooglecomsearchclientsafarirlsenqvtsmxieutf-8oeutf-8-since-sept-2005-from-yahoo-change-the-class-of-the-time-index-to-yearmon-and-calculate-continuously-compounded-returns">1. Download the monthly adjusted closing price data of <a href="https://www.google.com/search?client=safari&amp;rls=en&amp;q=VTSMX&amp;ie=UTF-8&amp;oe=UTF-8">VTSMX</a> since Sept 2005 from Yahoo!. Change the class of the time index to yearmon. And calculate continuously compounded returns.</h3>
+
+<div class="highlight"><pre><code class="language-r" data-lang="r"><span class="kn">library</span><span class="p">(</span>zoo<span class="p">)</span>
+<span class="kn">library</span><span class="p">(</span>tseries<span class="p">)</span>
+
+VTSMX <span class="o">=</span> get.hist.quote<span class="p">(</span>instrument<span class="o">=</span><span class="s">&quot;VTSMX&quot;</span><span class="p">,</span> start<span class="o">=</span><span class="s">&quot;2005-09-30&quot;</span><span class="p">,</span> 
+                       end<span class="o">=</span><span class="s">&quot;2014-09-30&quot;</span><span class="p">,</span> origin<span class="o">=</span><span class="s">&quot;1970-01-01&quot;</span><span class="p">,</span>
+                       quote<span class="o">=</span><span class="s">&quot;AdjClose&quot;</span><span class="p">,</span> provider<span class="o">=</span><span class="s">&quot;yahoo&quot;</span><span class="p">,</span>
+                       compression<span class="o">=</span><span class="s">&quot;m&quot;</span><span class="p">,</span> retclass<span class="o">=</span><span class="s">&quot;zoo&quot;</span><span class="p">)</span></code></pre></div>
+
+<div class="highlight"><pre><code class="language-text" data-lang="text">## time series ends   2014-09-02</code></pre></div>
+
+<div class="highlight"><pre><code class="language-r" data-lang="r">index<span class="p">(</span>VTSMX<span class="p">)</span> <span class="o">=</span> as.yearmon<span class="p">(</span>index<span class="p">(</span>VTSMX<span class="p">))</span>
+<span class="kp">colnames</span><span class="p">(</span>VTSMX<span class="p">)</span> <span class="o">=</span> <span class="s">&quot;VTSMX&quot;</span>
+ret.cc <span class="o">=</span> <span class="kp">diff</span><span class="p">(</span><span class="kp">log</span><span class="p">(</span>VTSMX<span class="p">))</span>
+<span class="kp">head</span><span class="p">(</span>ret.cc<span class="p">,</span> <span class="m">4</span><span class="p">)</span></code></pre></div>
+
+<div class="highlight"><pre><code class="language-text" data-lang="text">##                 VTSMX
+## Oct 2005 -0.018616483
+## Nov 2005  0.038859285
+## Dec 2005  0.001570475
+## Jan 2006  0.034319929</code></pre></div>
+
+<h3 id="calculate-the-sample-average-cc-returns">2. Calculate the sample average c.c. returns</h3>
+
+<div class="highlight"><pre><code class="language-r" data-lang="r">muhat.VTSMX <span class="o">=</span> <span class="kp">mean</span><span class="p">(</span>ret.cc<span class="p">)</span>
+<span class="kp">cat</span><span class="p">(</span><span class="kp">paste0</span><span class="p">(</span><span class="kp">round</span><span class="p">(</span>muhat.VTSMX<span class="o">*</span><span class="m">100</span><span class="p">,</span> <span class="m">2</span><span class="p">),</span> <span class="s">&quot;%&quot;</span><span class="p">))</span></code></pre></div>
+
+<div class="highlight"><pre><code class="language-text" data-lang="text">## 0.63%</code></pre></div>
+
+<h3 id="calculate-bias-and-precision-of-the-mean-using-bootstrap">3. Calculate bias and precision of the mean using bootstrap</h3>
+
+<div class="highlight"><pre><code class="language-r" data-lang="r">VTSMX <span class="o">=</span> coredata<span class="p">(</span>ret.cc<span class="p">)</span>
+n.samples <span class="o">=</span> <span class="m">999</span>
+muhat.boot <span class="o">=</span> <span class="kp">rep</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> n.samples<span class="p">)</span>
+nobs <span class="o">=</span> <span class="kp">length</span><span class="p">(</span>ret.cc<span class="p">)</span>
+<span class="kr">for</span> <span class="p">(</span>i <span class="kr">in</span> <span class="m">1</span><span class="o">:</span>n.samples<span class="p">)</span> <span class="p">{</span>
+        boot.data <span class="o">=</span> <span class="kp">sample</span><span class="p">(</span>VTSMX<span class="p">,</span> nobs<span class="p">,</span> replace<span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
+        muhat.boot<span class="p">[</span>i<span class="p">]</span> <span class="o">=</span> <span class="kp">mean</span><span class="p">(</span>boot.data<span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c1"># bootstrap bias</span>
+bias <span class="o">=</span> <span class="kp">mean</span><span class="p">(</span>muhat.boot<span class="p">)</span> <span class="o">-</span> muhat.VTSMX
+<span class="kp">cat</span><span class="p">(</span><span class="kp">paste0</span><span class="p">(</span><span class="kp">round</span><span class="p">(</span>bias<span class="o">*</span><span class="m">100</span><span class="p">,</span> <span class="m">2</span><span class="p">),</span> <span class="s">&quot;%&quot;</span><span class="p">))</span></code></pre></div>
+
+<div class="highlight"><pre><code class="language-text" data-lang="text">## -0.01%</code></pre></div>
+
+<div class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># bootstrap SE</span>
+precision <span class="o">=</span> sd<span class="p">(</span>muhat.boot<span class="p">)</span>
+<span class="kp">cat</span><span class="p">(</span><span class="kp">paste0</span><span class="p">(</span><span class="kp">round</span><span class="p">(</span>precision<span class="o">*</span><span class="m">100</span><span class="p">,</span> <span class="m">2</span><span class="p">),</span> <span class="s">&quot;%&quot;</span><span class="p">))</span></code></pre></div>
+
+<div class="highlight"><pre><code class="language-text" data-lang="text">## 0.45%</code></pre></div>
+
+<h3 id="instead-of-doing-the-bootstrap-procedure-ourselves-we-can-use-the-boot-function-in-the-boot-library-for-example-we-can-use-the-following-code-to-calculate-the-bootstrap-bias-and-precision-for-the-volatility-standard-deviation">4. Instead of doing the bootstrap procedure ourselves, we can use the <code>boot()</code> function in the <code>boot</code> library. For example, we can use the following code to calculate the bootstrap bias and precision for the volatility (standard deviation).</h3>
+
+<div class="highlight"><pre><code class="language-r" data-lang="r"><span class="kn">library</span><span class="p">(</span>boot<span class="p">)</span>
+
+<span class="c1"># define a function to be passed in the boot() function</span>
+sd.boot <span class="o">=</span> <span class="kr">function</span><span class="p">(</span>x<span class="p">,</span> idx<span class="p">)</span> <span class="p">{</span>
+        <span class="c1"># x: data to be resampled</span>
+        <span class="c1"># idx: vector of scrambled indices created by boot() function</span>
+        <span class="c1">#</span>
+        <span class="c1"># returns: sd value computed using resampled data</span>
+        sd<span class="p">(</span>x<span class="p">[</span>idx<span class="p">])</span>
+<span class="p">}</span>
+
+<span class="c1"># pass sd.boot to the boot() function to calculate the bootstrap sd&#39;s</span>
+VTSMX.sd.boot <span class="o">=</span> boot<span class="p">(</span>VTSMX<span class="p">,</span> statistic<span class="o">=</span>sd.boot<span class="p">,</span> R<span class="o">=</span><span class="m">999</span><span class="p">)</span>
+<span class="kp">class</span><span class="p">(</span>VTSMX.sd.boot<span class="p">)</span></code></pre></div>
+
+<div class="highlight"><pre><code class="language-text" data-lang="text">## [1] &quot;boot&quot;</code></pre></div>
+
+<div class="highlight"><pre><code class="language-r" data-lang="r">VTSMX.sd.boot</code></pre></div>
+
+<div class="highlight"><pre><code class="language-text" data-lang="text">## 
+## ORDINARY NONPARAMETRIC BOOTSTRAP
+## 
+## 
+## Call:
+## boot(data = VTSMX, statistic = sd.boot, R = 999)
+## 
+## 
+## Bootstrap Statistics :
+##       original        bias    std. error
+## t1* 0.04646405 -0.0003577972 0.004818161</code></pre></div>
+
+<div class="highlight"><pre><code class="language-r" data-lang="r">plot<span class="p">(</span>VTSMX.sd.boot<span class="p">)</span></code></pre></div>
+
+<p><img src="/../figs/2014-10-29-an-example-of-the-bootstrap-method/unnamed-chunk-4-1.png" alt="center" /> </p>
+
+<h3 id="we-can-also-calculate-the-bootstrap-95-confidence-intervals-of-the-volatility">5. We can also calculate the bootstrap 95% confidence intervals of the volatility</h3>
+
+<div class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># bootstrap confidence interval</span>
+boot.ci<span class="p">(</span>VTSMX.sd.boot<span class="p">,</span> conf<span class="o">=</span><span class="m">0.95</span><span class="p">,</span> type<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="s">&quot;norm&quot;</span><span class="p">,</span> <span class="s">&quot;perc&quot;</span><span class="p">))</span></code></pre></div>
+
+<div class="highlight"><pre><code class="language-text" data-lang="text">## BOOTSTRAP CONFIDENCE INTERVAL CALCULATIONS
+## Based on 999 bootstrap replicates
+## 
+## CALL : 
+## boot.ci(boot.out = VTSMX.sd.boot, conf = 0.95, type = c(&quot;norm&quot;, 
+##     &quot;perc&quot;))
+## 
+## Intervals : 
+## Level      Normal             Percentile     
+## 95%   ( 0.0374,  0.0563 )   ( 0.0371,  0.0553 )  
+## Calculations and Intervals on Original Scale</code></pre></div>
+
+<h3 id="a-common-measure-in-risk-management-is-value-at-risk-var-we-can-find-the-bootstrap-95-confidence-intervals-of-the-var-assuming-the-initial-investment-is-100000">6. A common measure in risk management is Value at Risk (VaR). We can find the bootstrap 95% confidence intervals of the VaR assuming the initial investment is $100,000</h3>
+
+<div class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># define a function to calculate VaR</span>
+VaR.boot <span class="o">=</span> <span class="kr">function</span><span class="p">(</span>x<span class="p">,</span> idx<span class="p">,</span> p<span class="o">=</span><span class="m">0.05</span><span class="p">,</span> w<span class="o">=</span><span class="m">100000</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1"># w: initial investment</span>
+        q <span class="o">=</span> <span class="kp">mean</span><span class="p">(</span>x<span class="p">[</span>idx<span class="p">])</span> <span class="o">+</span> sd<span class="p">(</span>x<span class="p">[</span>idx<span class="p">])</span> <span class="o">*</span> qnorm<span class="p">(</span>p<span class="p">)</span>
+        w <span class="o">*</span> <span class="p">(</span><span class="kp">exp</span><span class="p">(</span><span class="kp">q</span><span class="p">)</span> <span class="o">-</span> <span class="m">1</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c1"># pass VaR.boot to the boot() function to calculate the bootstrap VaRs</span>
+VTSMX.VaR.boot <span class="o">=</span> boot<span class="p">(</span>VTSMX<span class="p">,</span> statistic<span class="o">=</span>VaR.boot<span class="p">,</span> R<span class="o">=</span><span class="m">999</span><span class="p">)</span>
+boot.ci<span class="p">(</span>VTSMX.VaR.boot<span class="p">,</span> conf<span class="o">=</span><span class="m">0.95</span><span class="p">,</span> type<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="s">&quot;norm&quot;</span><span class="p">,</span> <span class="s">&quot;perc&quot;</span><span class="p">))</span></code></pre></div>
+
+<div class="highlight"><pre><code class="language-text" data-lang="text">## BOOTSTRAP CONFIDENCE INTERVAL CALCULATIONS
+## Based on 999 bootstrap replicates
+## 
+## CALL : 
+## boot.ci(boot.out = VTSMX.VaR.boot, conf = 0.95, type = c(&quot;norm&quot;, 
+##     &quot;perc&quot;))
+## 
+## Intervals : 
+## Level      Normal             Percentile     
+## 95%   (-8803, -4916 )   (-8712, -4769 )  
+## Calculations and Intervals on Original Scale</code></pre></div>
+
+
+        <div id="disqus_thread"></div><!-- /#disqus_thread -->
+      </div><!-- /.entry-content -->
+    </div><!-- /.entry-wrapper -->
+    <nav class="pagination" role="navigation">
+      
+        <a href="http://gmlang.com/r/handy-r-functions-for-summary-statistics/" class="btn" title="Handy R Functions for Summary Statistics">Previous</a>
+      
+      
+        <a href="http://gmlang.com/r/analyze-stock-price-data-using-r-part3/" class="btn" title="Analyze Stock Price Data Using R, Part3">Next</a>
+      
+    </nav><!-- /.pagination -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo" class="entry-wrapper">
+    
+
+<span>&copy; 2014 Guangming Lang. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://mademistakes.com/so-simple/" rel="nofollow">So Simple Theme</a>.</span>
+<div class="social-icons">
+	<a href="http://twitter.com/gmlang" title="Guangming Lang on Twitter" target="_blank"><i class="fa fa-twitter-square fa-2x"></i></a>
+	
+	<a href="http://plus.google.com/+GuangmingLang" title="Guangming Lang on Google+" target="_blank"><i class="fa fa-google-plus-square fa-2x"></i></a>
+	<a href="http://linkedin.com/in/gmlang" title="Guangming Lang on LinkedIn" target="_blank"><i class="fa fa-linkedin-square fa-2x"></i></a>
+	
+	
+	
+	<a href="http://github.com/gmlang" title="Guangming Lang on Github" target="_blank"><i class="fa fa-github-square fa-2x"></i></a>
+	
+  <a href="http://gmlang.com/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss-square fa-2x"></i></a>
+</div><!-- /.social-icons -->
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://gmlang.com/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://gmlang.com/assets/js/scripts.min.js"></script>
+
+<!-- Jekyll Simple Search option -->
+<script>
+  $(document).ready(function() {
+      $('.search-field').jekyllSearch({
+          jsonFile: 'http://gmlang.com/search.json',
+          searchResults: '.search-results',
+          template: '<li><article><a href="{url}">{title} <span class="entry-date"><time datetime="{date}">{shortdate}</time></span></a></article></li>',
+          fuzzy: true,
+          noResults: '<p>Nothing found.</p>'
+        });
+  });
+
+  (function( $, window, undefined ) {
+    
+     var bs = {
+          close: $(".close-btn"),
+          searchform: $(".search-form"),
+          canvas: $(".js-menu-screen"),
+          dothis: $('.dosearch')
+      };
+    
+    bs.dothis.on('click', function() {
+      $('.search-wrapper').css({ display: "block" });
+      $('body').toggleClass('no-scroll');
+      bs.searchform.toggleClass('active');
+      bs.searchform.find('input').focus();
+      bs.canvas.toggleClass('is-visible');
+    });
+    
+      bs.close.on('click', function() {
+        $('.search-wrapper').removeAttr( 'style' );
+        $('body').toggleClass('no-scroll');
+        bs.searchform.toggleClass('active');
+        bs.canvas.removeClass('is-visible');
+    });
+  })( jQuery, window );
+</script>
+
+
+<!-- Asynchronous Google Analytics snippet -->
+<script>
+  var _gaq = _gaq || [];
+  var pluginUrl = 
+ '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+  _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+  _gaq.push(['_setAccount', 'UA-52975110-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+  
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'cabaceo'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+<!-- Mathjax -->
+<script type="text/javascript"
+    src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>	        
+
+</body>
+</html>

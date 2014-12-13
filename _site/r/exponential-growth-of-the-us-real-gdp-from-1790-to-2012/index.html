@@ -1,0 +1,375 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Exponential Growth of the US Real GDP from 1790 to 2012 &#8211; Become Great at R</title>
+<meta name="description" content="Exponential model is one of the most powerful mathematical models because it allows us to understand some important worldly phenomenons. The word “exponential” means “amplified.” There’re two kinds of exponential models: exponential decay and exponential growth. In this article, I’m going to show you what exponential growth is and how to use it to model the US real GDP.1
+
+
+  
+    
+      this post is inspired by Charlie Munger’s remark on log paper and compound interest from page 227 of Poor Charlie’s Almanack: The Wit and Wisdom of Charles T. Munger. &#8617;
+    
+  
+
+">
+<meta name="keywords" content="">
+
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Exponential Growth of the US Real GDP from 1790 to 2012">
+<meta name="twitter:description" content="Exponential model is one of the most powerful mathematical models because it allows us to understand some important worldly phenomenons. The word “exponential” means “amplified.” There’re two kinds of exponential models: exponential decay and exponential growth. In this article, I’m going to show you what exponential growth is and how to use it to model the US real GDP.1
+
+
+  
+    
+      this post is inspired by Charlie Munger’s remark on log paper and compound interest from page 227 of Poor Charlie’s Almanack: The Wit and Wisdom of Charles T. Munger. &#8617;
+    
+  
+
+">
+<meta name="twitter:site" content="@gmlang">
+<meta name="twitter:creator" content="@gmlang">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://gmlang.com/images/site-logo.png">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Exponential Growth of the US Real GDP from 1790 to 2012">
+<meta property="og:description" content="Exponential model is one of the most powerful mathematical models because it allows us to understand some important worldly phenomenons. The word “exponential” means “amplified.” There’re two kinds of exponential models: exponential decay and exponential growth. In this article, I’m going to show you what exponential growth is and how to use it to model the US real GDP.1
+
+
+  
+    
+      this post is inspired by Charlie Munger’s remark on log paper and compound interest from page 227 of Poor Charlie’s Almanack: The Wit and Wisdom of Charles T. Munger. &#8617;
+    
+  
+
+">
+<meta property="og:url" content="http://gmlang.com/r/exponential-growth-of-the-us-real-gdp-from-1790-to-2012/">
+<meta property="og:site_name" content="Become Great at R">
+
+
+
+
+
+<link rel="canonical" href="http://gmlang.com/r/exponential-growth-of-the-us-real-gdp-from-1790-to-2012/">
+<link href="http://gmlang.com/feed.xml" type="application/atom+xml" rel="alternate" title="Become Great at R Feed">
+<link rel="author" href="http://plus.google.com/+GuangmingLang?rel=author">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://gmlang.com/assets/css/main.css">
+<!-- Webfonts -->
+<script src="//use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+  <script src="http://gmlang.com/assets/js/vendor/html5shiv.min.js"></script>
+  <script src="http://gmlang.com/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="http://gmlang.com/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://gmlang.com/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://gmlang.com/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://gmlang.com/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://gmlang.com/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://gmlang.com/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://gmlang.com/images/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+
+<body id="post">
+
+<div class="navigation-wrapper">
+	<nav role="navigation" id="site-nav" class="animated drop">
+	    <ul>
+      
+		    
+		        
+		    
+		    <li><a href="http://gmlang.com/about/" >About</a></li>
+		  
+		    
+		        
+		    
+		    <li><a href="http://gmlang.com/da/" >Data Analysis</a></li>
+		  
+		    
+		        
+		    
+		    <li><a href="http://gmlang.com/r/" >R</a></li>
+		  
+		    
+		        
+		    
+		    <li><a href="http://gmlang.com/cartoon/" >Cartoon</a></li>
+		  
+        <li class="dosearch"><span><i class="fa fa-search"></i> Search</span></li>
+	    </ul>
+	</nav>
+</div><!-- /.navigation-wrapper -->
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+<div class="search-wrapper">
+  <div class="search-form">
+    <input type="text" class="search-field" placeholder="Search...">
+    <button class="close-btn"><i class="fa fa-times-circle fa-2x"></i></button>
+    <ul class="search-results post-list"></ul><!-- /.search-results -->
+  </div><!-- /.search-form -->
+</div><!-- ./search-wrapper -->
+
+<header class="masthead">
+	<div class="wrap">
+        
+    		<a href="http://gmlang.com" class="site-logo" rel="home" title="Become Great at R"><img src="http://gmlang.com/images/site-logo.png" width="200" height="200" alt="Become Great at R logo" class="animated fadeInUp"></a>
+        
+        <h1 class="site-title animated fadeIn"><a href="http://gmlang.com">Become Great at R</a></h1>
+		<h2 class="site-description animated fadeIn" itemprop="description"></h2>
+	</div>
+</header><!-- /.masthead -->
+
+<div class="js-menu-screen menu-screen"></div>
+
+<div id="main" role="main">
+  <article class="hentry">
+    
+    <div class="entry-wrapper">
+      <header class="entry-header">
+        <span class="entry-tags"></span>
+        
+          <h1 class="entry-title">Exponential Growth of the US Real GDP from 1790 to 2012</h1>
+        
+      </header>
+      <footer class="entry-meta">
+        
+        
+        
+          <img src="http://gmlang.com/images/gmlang1.jpg" class="bio-photo" alt="Guangming Lang bio photo"></a>
+        
+        <span class="author vcard">By <span class="fn">Guangming Lang</span></span>
+        <span class="entry-date date published"><time datetime="2014-08-13T11:21:53-04:00"><i class="fa fa-calendar-o"></i> August 13, 2014</time></span>
+        
+        <span class="entry-comments"><i class="fa fa-comment-o"></i> <a href="#disqus_thread">Comment</a></span>
+        <span class="social-share-twitter">
+  <a href="https://twitter.com/intent/tweet?hashtags=&amp;text=Exponential%20Growth%20of%20the%20US%20Real%20GDP%20from%201790%20to%202012&amp;url=http://gmlang.com/r/exponential-growth-of-the-us-real-gdp-from-1790-to-2012/&amp;via=gmlang" title="Share on Twitter" itemprop="Twitter"><i class="fa fa-twitter-square"></i> Tweet</a>
+</span>
+<span class="social-share-facebook">
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http://gmlang.com/r/exponential-growth-of-the-us-real-gdp-from-1790-to-2012/" title="Share on Facebook" itemprop="Facebook"><i class="fa fa-facebook-square"></i> Like</a>
+</span>
+<span class="social-share-googleplus">
+  <a href="https://plus.google.com/share?url=http://gmlang.com/r/exponential-growth-of-the-us-real-gdp-from-1790-to-2012/" title="Share on Google Plus" itemprop="GooglePlus"><i class="fa fa-google-plus-square"></i> +1</a>
+</span>
+<!-- /.social-share -->
+        
+      </footer>
+      <div class="entry-content">
+        <p>Exponential model is one of the most powerful mathematical models because it allows us to understand some important worldly phenomenons. The word “exponential” means “amplified.” There’re two kinds of exponential models: exponential decay and exponential growth. In this article, I’m going to show you what exponential growth is and how to use it to model the US real GDP.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></p>
+
+<p>First of all, let’s download the US real GDP data (1790 - 2012) from <a href="http://www.quandl.com/MWORTH-MeasuringWorth/0_1-United-States-Real-GDP">quandl</a>, and plot it over time. The plot shows what exponential growth looks like. </p>
+
+<p><img src="/images/USGDP.png" alt="" /></p>
+
+<p>To better understand the growth of US real GDP in the past 222 years, let’s model it using the exponential growth model. Let <script type="math/tex">r</script> be the average annual rate of growth, and <script type="math/tex">A_0</script> be the real GDP in 1790. We can model real GDP at any time <script type="math/tex">t</script> (measured in whole years) as <script type="math/tex">A(t)=A_0 e^{rt}</script>.</p>
+
+<p>What’s extraordinary about exponential growth is that it has no ceiling. You can take a pessimistic view and argue US real GDP will stop growing like this in the future. Or, you can be optimistic and believe there’s always going to be technological innovation and future generations will be, by and large, more productive, and hence believe the growth pattern will continue. But regardless of what the future will look like, we can use the model to easily quantify the average annual growth rate in the past 222 years. And let’s do that. By taking the natural log on both sides of the equation, we get <script type="math/tex">logA(t) = logA_{0} + rt</script>, which is linear in <script type="math/tex">t</script> with <script type="math/tex">r</script> as its slope. The log linear model inspires us to plot US real GDP in log scale against time, and indeed, we see a very nice linear trend.</p>
+
+<p><img src="/images/USGDP_logscale.png" alt="" /></p>
+
+<p>We can now use linear regression to fit a line to the data with log transformed GDP values. I did that and found the fitted line has a slope of 3.68%, which says in order for real GDP to grow from $4 billion to 15.5 trillion, it only needs to grow by 3.68% every year. The magic lies in time, and 222 years is a long time. We can further calculate, by the rule of 72, that the US real GDP doubles itself every 20 years (72 / 3.68 = 19.56).</p>
+
+<p><img src="/images/USrealGDP_log.png" alt="" /></p>
+
+<p>Here’s the R code for downloading the data and generating the plots:</p>
+
+<div class="highlight"><pre><code class="language-r" data-lang="r"><span class="kn">library</span><span class="p">(</span>Quandl<span class="p">)</span>
+<span class="kn">library</span><span class="p">(</span>ggplot2<span class="p">)</span>
+<span class="kn">library</span><span class="p">(</span>scales<span class="p">)</span>
+
+<span class="c1"># Download US Real GDP (millions of 2005 dollars) data from 1790-12-31 to 2012-12-31</span>
+<span class="c1"># from quandl (http://www.quandl.com/MWORTH-MeasuringWorth/0_1-United-States-Real-GDP)</span>
+Quandl.auth<span class="p">(</span><span class="s">&quot;your authentication key&quot;</span><span class="p">)</span>
+data <span class="o">=</span> Quandl<span class="p">(</span><span class="s">&#39;MWORTH/0_1&#39;</span><span class="p">)</span> 
+str<span class="p">(</span>data<span class="p">)</span>
+
+<span class="c1"># x-axis ticks</span>
+x <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="kp">seq</span><span class="p">(</span><span class="kp">as.Date</span><span class="p">(</span><span class="s">&#39;1790&#39;</span><span class="p">,</span> <span class="s">&#39;%Y&#39;</span><span class="p">),</span> <span class="kp">as.Date</span><span class="p">(</span><span class="s">&#39;2000&#39;</span><span class="p">,</span> <span class="s">&#39;%Y&#39;</span><span class="p">),</span> by <span class="o">=</span> <span class="s">&#39;25 year&#39;</span><span class="p">),</span> <span class="kp">as.Date</span><span class="p">(</span><span class="s">&#39;2012&#39;</span><span class="p">,</span> <span class="s">&#39;%Y&#39;</span><span class="p">))</span>
+
+<span class="c1"># regular scaled y-axis</span>
+p <span class="o">=</span> qplot<span class="p">(</span>Year<span class="p">,</span> Value<span class="p">,</span> data<span class="o">=</span>data<span class="p">,</span>
+xlab<span class="o">=</span><span class="s">&quot;Year&quot;</span><span class="p">,</span> ylab<span class="o">=</span><span class="s">&quot;US Real GDP (millions of 2005 dollars)&quot;</span><span class="p">)</span>
+number_ticks <span class="o">=</span> <span class="kr">function</span><span class="p">(</span>n<span class="p">)</span> <span class="p">{</span><span class="kr">function</span><span class="p">(</span>limits<span class="p">)</span> <span class="kp">pretty</span><span class="p">(</span>limits<span class="p">,</span> n<span class="p">)}</span>
+p <span class="o">+</span> scale_y_continuous<span class="p">(</span>labels<span class="o">=</span>comma<span class="p">,</span> breaks<span class="o">=</span>number_ticks<span class="p">(</span><span class="m">10</span><span class="p">))</span> <span class="o">+</span> scale_x_date<span class="p">(</span>breaks<span class="o">=</span>x<span class="p">,</span> labels <span class="o">=</span> date_format<span class="p">(</span><span class="s">&quot;%Y&quot;</span><span class="p">))</span>
+
+<span class="c1"># log scaled y-axis</span>
+y <span class="o">=</span> <span class="m">10</span> <span class="o">^</span> <span class="kp">seq</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">7</span><span class="p">)</span>
+p_log <span class="o">=</span> qplot<span class="p">(</span>Year<span class="p">,</span> Value<span class="p">,</span> data<span class="o">=</span>data<span class="p">,</span>
+xlab<span class="o">=</span><span class="s">&quot;Year&quot;</span><span class="p">,</span> ylab<span class="o">=</span><span class="s">&quot;US Real GDP (millions of 2005 dollars)&quot;</span><span class="p">)</span>
+p_log <span class="o">=</span> p_log <span class="o">+</span> scale_y_continuous<span class="p">(</span>labels<span class="o">=</span>comma<span class="p">,</span> trans<span class="o">=</span><span class="s">&#39;log&#39;</span><span class="p">,</span> breaks<span class="o">=</span>y<span class="p">)</span> <span class="o">+</span> scale_x_date<span class="p">(</span>breaks<span class="o">=</span>x<span class="p">,</span> labels <span class="o">=</span> date_format<span class="p">(</span><span class="s">&quot;%Y&quot;</span><span class="p">))</span>
+
+<span class="c1"># fit a line to log(gdp value) ~ time, and find its slope</span>
+timeIndex <span class="o">=</span> <span class="kp">order</span><span class="p">(</span><span class="o">-</span><span class="kp">row</span><span class="p">(</span>data<span class="p">)[,</span><span class="m">1</span><span class="p">])</span> <span class="o">-</span> <span class="m">1</span>
+gdp <span class="o">=</span> <span class="kp">cbind</span><span class="p">(</span>data<span class="p">,</span> timeIndex<span class="p">)</span>
+lmfit <span class="o">=</span> lm<span class="p">(</span><span class="kp">log</span><span class="p">(</span>Value<span class="p">)</span> <span class="o">~</span> timeIndex<span class="p">,</span> data<span class="o">=</span>gdp<span class="p">)</span>
+<span class="p">(</span>b <span class="o">=</span> coef<span class="p">(</span>lmfit<span class="p">)[</span><span class="m">1</span><span class="p">])</span>
+<span class="p">(</span>m <span class="o">=</span> coef<span class="p">(</span>lmfit<span class="p">)[</span><span class="m">2</span><span class="p">])</span>
+p_log <span class="o">+</span> geom_smooth<span class="p">(</span>intercept<span class="o">=</span>b<span class="p">,</span> slope<span class="o">=</span>m<span class="p">,</span> method<span class="o">=</span><span class="s">&#39;lm&#39;</span><span class="p">,</span> col<span class="o">=</span><span class="s">&#39;red&#39;</span><span class="p">,</span> size<span class="o">=</span><span class="m">0.8</span><span class="p">)</span> <span class="o">+</span>
+annotate<span class="p">(</span><span class="s">&quot;text&quot;</span><span class="p">,</span> x <span class="o">=</span> <span class="kp">as.Date</span><span class="p">(</span><span class="s">&#39;1860&#39;</span><span class="p">,</span> <span class="s">&#39;%Y&#39;</span><span class="p">),</span> y <span class="o">=</span> <span class="m">4500000</span><span class="p">,</span> col<span class="o">=</span><span class="s">&#39;blue&#39;</span><span class="p">,</span> label <span class="o">=</span> <span class="s">&quot;slope = growth rate = 3.68%&quot;</span><span class="p">)</span></code></pre></div>
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>this post is inspired by Charlie Munger’s remark on log paper and compound interest from page 227 of <a href="http://www.amazon.com/gp/product/1578645018/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=1578645018&amp;linkCode=as2&amp;tag=cabaceo-20&amp;linkId=B2EXNELEYTXW2E2S">Poor Charlie’s Almanack: The Wit and Wisdom of Charles T. Munger</a><img src="http://ir-na.amazon-adsystem.com/e/ir?t=cabaceo-20&amp;l=as2&amp;o=1&amp;a=1578645018" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+
+        <div id="disqus_thread"></div><!-- /#disqus_thread -->
+      </div><!-- /.entry-content -->
+    </div><!-- /.entry-wrapper -->
+    <nav class="pagination" role="navigation">
+      
+        <a href="http://gmlang.com/da/relative-frequency-or-probability/" class="btn" title="Relative Frequency or Probability">Previous</a>
+      
+      
+        <a href="http://gmlang.com/r/how-to-install-quantstrat/" class="btn" title="How to Install Quantstrat">Next</a>
+      
+    </nav><!-- /.pagination -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo" class="entry-wrapper">
+    
+
+<span>&copy; 2014 Guangming Lang. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://mademistakes.com/so-simple/" rel="nofollow">So Simple Theme</a>.</span>
+<div class="social-icons">
+	<a href="http://twitter.com/gmlang" title="Guangming Lang on Twitter" target="_blank"><i class="fa fa-twitter-square fa-2x"></i></a>
+	
+	<a href="http://plus.google.com/+GuangmingLang" title="Guangming Lang on Google+" target="_blank"><i class="fa fa-google-plus-square fa-2x"></i></a>
+	<a href="http://linkedin.com/in/gmlang" title="Guangming Lang on LinkedIn" target="_blank"><i class="fa fa-linkedin-square fa-2x"></i></a>
+	
+	
+	
+	<a href="http://github.com/gmlang" title="Guangming Lang on Github" target="_blank"><i class="fa fa-github-square fa-2x"></i></a>
+	
+  <a href="http://gmlang.com/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss-square fa-2x"></i></a>
+</div><!-- /.social-icons -->
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://gmlang.com/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://gmlang.com/assets/js/scripts.min.js"></script>
+
+<!-- Jekyll Simple Search option -->
+<script>
+  $(document).ready(function() {
+      $('.search-field').jekyllSearch({
+          jsonFile: 'http://gmlang.com/search.json',
+          searchResults: '.search-results',
+          template: '<li><article><a href="{url}">{title} <span class="entry-date"><time datetime="{date}">{shortdate}</time></span></a></article></li>',
+          fuzzy: true,
+          noResults: '<p>Nothing found.</p>'
+        });
+  });
+
+  (function( $, window, undefined ) {
+    
+     var bs = {
+          close: $(".close-btn"),
+          searchform: $(".search-form"),
+          canvas: $(".js-menu-screen"),
+          dothis: $('.dosearch')
+      };
+    
+    bs.dothis.on('click', function() {
+      $('.search-wrapper').css({ display: "block" });
+      $('body').toggleClass('no-scroll');
+      bs.searchform.toggleClass('active');
+      bs.searchform.find('input').focus();
+      bs.canvas.toggleClass('is-visible');
+    });
+    
+      bs.close.on('click', function() {
+        $('.search-wrapper').removeAttr( 'style' );
+        $('body').toggleClass('no-scroll');
+        bs.searchform.toggleClass('active');
+        bs.canvas.removeClass('is-visible');
+    });
+  })( jQuery, window );
+</script>
+
+
+<!-- Asynchronous Google Analytics snippet -->
+<script>
+  var _gaq = _gaq || [];
+  var pluginUrl = 
+ '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+  _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+  _gaq.push(['_setAccount', 'UA-52975110-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+  
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'cabaceo'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+<!-- Mathjax -->
+<script type="text/javascript"
+    src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>	        
+
+</body>
+</html>

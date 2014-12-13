@@ -1,0 +1,443 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Analyze Stock Price Data Using R, Part1 &#8211; Become Great at R</title>
+<meta name="description" content="Crude oil has been hammered. Yesterday, it hit the lowest price in 2 years. Being a contrarian, I smell the opportunity to buy. My interest is a vanguard energy fund (VGENX), which has 95% of its assets invested in oil or oil related sectors. Let’s first take a look at its prices and returns histories since Sept 2005.
+
+">
+<meta name="keywords" content="">
+
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Analyze Stock Price Data Using R, Part1">
+<meta name="twitter:description" content="Crude oil has been hammered. Yesterday, it hit the lowest price in 2 years. Being a contrarian, I smell the opportunity to buy. My interest is a vanguard energy fund (VGENX), which has 95% of its assets invested in oil or oil related sectors. Let’s first take a look at its prices and returns histories since Sept 2005.
+
+">
+<meta name="twitter:site" content="@gmlang">
+<meta name="twitter:creator" content="@gmlang">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://gmlang.com/images/site-logo.png">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Analyze Stock Price Data Using R, Part1">
+<meta property="og:description" content="Crude oil has been hammered. Yesterday, it hit the lowest price in 2 years. Being a contrarian, I smell the opportunity to buy. My interest is a vanguard energy fund (VGENX), which has 95% of its assets invested in oil or oil related sectors. Let’s first take a look at its prices and returns histories since Sept 2005.
+
+">
+<meta property="og:url" content="http://gmlang.com/r/analyze-stock-price-data-using-r-part1/">
+<meta property="og:site_name" content="Become Great at R">
+
+
+
+
+
+<link rel="canonical" href="http://gmlang.com/r/analyze-stock-price-data-using-r-part1/">
+<link href="http://gmlang.com/feed.xml" type="application/atom+xml" rel="alternate" title="Become Great at R Feed">
+<link rel="author" href="http://plus.google.com/+GuangmingLang?rel=author">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://gmlang.com/assets/css/main.css">
+<!-- Webfonts -->
+<script src="//use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+  <script src="http://gmlang.com/assets/js/vendor/html5shiv.min.js"></script>
+  <script src="http://gmlang.com/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="http://gmlang.com/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://gmlang.com/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://gmlang.com/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://gmlang.com/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://gmlang.com/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://gmlang.com/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://gmlang.com/images/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+
+<body id="post">
+
+<div class="navigation-wrapper">
+	<nav role="navigation" id="site-nav" class="animated drop">
+	    <ul>
+      
+		    
+		        
+		    
+		    <li><a href="http://gmlang.com/about/" >About</a></li>
+		  
+		    
+		        
+		    
+		    <li><a href="http://gmlang.com/da/" >Data Analysis</a></li>
+		  
+		    
+		        
+		    
+		    <li><a href="http://gmlang.com/r/" >R</a></li>
+		  
+		    
+		        
+		    
+		    <li><a href="http://gmlang.com/cartoon/" >Cartoon</a></li>
+		  
+        <li class="dosearch"><span><i class="fa fa-search"></i> Search</span></li>
+	    </ul>
+	</nav>
+</div><!-- /.navigation-wrapper -->
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+<div class="search-wrapper">
+  <div class="search-form">
+    <input type="text" class="search-field" placeholder="Search...">
+    <button class="close-btn"><i class="fa fa-times-circle fa-2x"></i></button>
+    <ul class="search-results post-list"></ul><!-- /.search-results -->
+  </div><!-- /.search-form -->
+</div><!-- ./search-wrapper -->
+
+<header class="masthead">
+	<div class="wrap">
+        
+    		<a href="http://gmlang.com" class="site-logo" rel="home" title="Become Great at R"><img src="http://gmlang.com/images/site-logo.png" width="200" height="200" alt="Become Great at R logo" class="animated fadeInUp"></a>
+        
+        <h1 class="site-title animated fadeIn"><a href="http://gmlang.com">Become Great at R</a></h1>
+		<h2 class="site-description animated fadeIn" itemprop="description"></h2>
+	</div>
+</header><!-- /.masthead -->
+
+<div class="js-menu-screen menu-screen"></div>
+
+<div id="main" role="main">
+  <article class="hentry">
+    
+    <div class="entry-wrapper">
+      <header class="entry-header">
+        <span class="entry-tags"></span>
+        
+          <h1 class="entry-title">Analyze Stock Price Data Using R, Part1</h1>
+        
+      </header>
+      <footer class="entry-meta">
+        
+        
+        
+          <img src="http://gmlang.com/images/gmlang1.jpg" class="bio-photo" alt="Guangming Lang bio photo"></a>
+        
+        <span class="author vcard">By <span class="fn">Guangming Lang</span></span>
+        <span class="entry-date date published"><time datetime="2014-10-17T13:48:49-04:00"><i class="fa fa-calendar-o"></i> October 17, 2014</time></span>
+        
+        <span class="entry-comments"><i class="fa fa-comment-o"></i> <a href="#disqus_thread">Comment</a></span>
+        <span class="social-share-twitter">
+  <a href="https://twitter.com/intent/tweet?hashtags=&amp;text=Analyze%20Stock%20Price%20Data%20Using%20R,%20Part1&amp;url=http://gmlang.com/r/analyze-stock-price-data-using-r-part1/&amp;via=gmlang" title="Share on Twitter" itemprop="Twitter"><i class="fa fa-twitter-square"></i> Tweet</a>
+</span>
+<span class="social-share-facebook">
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http://gmlang.com/r/analyze-stock-price-data-using-r-part1/" title="Share on Facebook" itemprop="Facebook"><i class="fa fa-facebook-square"></i> Like</a>
+</span>
+<span class="social-share-googleplus">
+  <a href="https://plus.google.com/share?url=http://gmlang.com/r/analyze-stock-price-data-using-r-part1/" title="Share on Google Plus" itemprop="GooglePlus"><i class="fa fa-google-plus-square"></i> +1</a>
+</span>
+<!-- /.social-share -->
+        
+      </footer>
+      <div class="entry-content">
+        <p>Crude oil has been hammered. Yesterday, it hit the lowest price in 2 years. Being a contrarian, I smell the opportunity to buy. My interest is a vanguard energy fund (<a href="https://personal.vanguard.com/us/funds/snapshot?FundId=0051&amp;FundIntExt=INT">VGENX</a>), which has 95% of its assets invested in oil or oil related sectors. Let’s first take a look at its prices and returns histories since Sept 2005.</p>
+
+<h3 id="load-libraries-and-helper-functions">1. Load libraries and helper functions</h3>
+
+<div class="highlight"><pre><code class="language-r" data-lang="r"><span class="kn">library</span><span class="p">(</span>PerformanceAnalytics<span class="p">)</span>
+<span class="kn">library</span><span class="p">(</span>zoo<span class="p">)</span>
+<span class="kn">library</span><span class="p">(</span>tseries<span class="p">)</span>
+
+plt_dist <span class="o">=</span> <span class="kr">function</span><span class="p">(</span>dat<span class="p">,</span> varname<span class="p">)</span> <span class="p">{</span>
+        <span class="c1"># Creates a figure of 4 plots: histogram, boxplot, </span>
+        <span class="c1">#                              density curve, qqplot</span>
+        <span class="c1">#</span>
+        <span class="c1"># Args:</span>
+        <span class="c1">#       dat     : a data frame or matrix with colnames</span>
+        <span class="c1">#       varname : a string specifying the numerical variable </span>
+        <span class="c1">#                 in dat to be drawn</span>
+        <span class="c1">#</span>
+        <span class="c1"># Returns:</span>
+        <span class="c1">#       draws 4 plots (histogram, boxplot, density curve, </span>
+        <span class="c1">#       qqplot) on one canvas</span>
+        par<span class="p">(</span>mfrow <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="m">2</span><span class="p">))</span>
+        hist<span class="p">(</span>dat<span class="p">[,</span> varname<span class="p">],</span> main<span class="o">=</span><span class="s">&quot;histogram&quot;</span><span class="p">,</span> xlab<span class="o">=</span>varname<span class="p">,</span> 
+             probability<span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span> col<span class="o">=</span>hcl<span class="p">(</span>h<span class="o">=</span><span class="m">195</span><span class="p">,</span>l<span class="o">=</span><span class="m">65</span><span class="p">,</span><span class="kt">c</span><span class="o">=</span><span class="m">100</span><span class="p">))</span>
+        boxplot<span class="p">(</span>dat<span class="p">[,</span>varname<span class="p">],</span> outchar<span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span> main<span class="o">=</span><span class="s">&quot;boxplot&quot;</span><span class="p">,</span> cex<span class="o">=</span><span class="m">0.7</span><span class="p">,</span> 
+                xlab<span class="o">=</span>varname<span class="p">,</span> col<span class="o">=</span>hcl<span class="p">(</span>h<span class="o">=</span><span class="m">195</span><span class="p">,</span>l<span class="o">=</span><span class="m">65</span><span class="p">,</span><span class="kt">c</span><span class="o">=</span><span class="m">100</span><span class="p">))</span>
+        plot<span class="p">(</span>density<span class="p">(</span>dat<span class="p">[,</span>varname<span class="p">]),</span> type<span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">,</span> 
+             main<span class="o">=</span><span class="s">&quot;Smoothed density&quot;</span><span class="p">,</span> lwd<span class="o">=</span><span class="m">2</span><span class="p">,</span>
+             xlab<span class="o">=</span>varname<span class="p">,</span> ylab<span class="o">=</span><span class="s">&quot;density estimate&quot;</span><span class="p">,</span> 
+             col<span class="o">=</span>hcl<span class="p">(</span>h<span class="o">=</span><span class="m">195</span><span class="p">,</span>l<span class="o">=</span><span class="m">65</span><span class="p">,</span><span class="kt">c</span><span class="o">=</span><span class="m">100</span><span class="p">))</span>
+        qqnorm<span class="p">(</span>dat<span class="p">[,</span>varname<span class="p">],</span> col<span class="o">=</span>hcl<span class="p">(</span>h<span class="o">=</span><span class="m">195</span><span class="p">,</span>l<span class="o">=</span><span class="m">65</span><span class="p">,</span><span class="kt">c</span><span class="o">=</span><span class="m">100</span><span class="p">),</span> cex<span class="o">=</span><span class="m">0.7</span><span class="p">)</span>
+        qqline<span class="p">(</span>dat<span class="p">[,</span>varname<span class="p">])</span>
+        par<span class="p">(</span>mfrow<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">))</span>
+<span class="p">}</span></code></pre></div>
+
+<h3 id="download-the-monthly-adjusted-closing-price-data-on-vgenx-since-sept-2005-from-yahoo">2. Download the monthly adjusted closing price data on VGENX since Sept 2005 from Yahoo!.</h3>
+
+<div class="highlight"><pre><code class="language-r" data-lang="r">VGENX <span class="o">=</span> get.hist.quote<span class="p">(</span>instrument<span class="o">=</span><span class="s">&quot;VGENX&quot;</span><span class="p">,</span> start<span class="o">=</span><span class="s">&quot;2005-09-30&quot;</span><span class="p">,</span> 
+                       end<span class="o">=</span><span class="s">&quot;2014-09-30&quot;</span><span class="p">,</span> origin<span class="o">=</span><span class="s">&quot;1970-01-01&quot;</span><span class="p">,</span>
+                       quote<span class="o">=</span><span class="s">&quot;AdjClose&quot;</span><span class="p">,</span> provider<span class="o">=</span><span class="s">&quot;yahoo&quot;</span><span class="p">,</span> 
+                       compression<span class="o">=</span><span class="s">&quot;m&quot;</span><span class="p">,</span> retclass<span class="o">=</span><span class="s">&quot;zoo&quot;</span><span class="p">)</span></code></pre></div>
+
+<div class="highlight"><pre><code class="language-text" data-lang="text">## time series ends   2014-09-02</code></pre></div>
+
+<h3 id="change-the-class-of-the-time-index-to-yearmon">3. Change the class of the time index to yearmon.</h3>
+
+<div class="highlight"><pre><code class="language-r" data-lang="r">index<span class="p">(</span>VGENX<span class="p">)</span> <span class="o">=</span> as.yearmon<span class="p">(</span>index<span class="p">(</span>VGENX<span class="p">))</span>
+<span class="kp">colnames</span><span class="p">(</span>VGENX<span class="p">)</span> <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="s">&quot;VGENX&quot;</span><span class="p">)</span></code></pre></div>
+
+<h3 id="calculate-continuously-compounded-returns">4. Calculate continuously compounded returns.</h3>
+
+<div class="highlight"><pre><code class="language-r" data-lang="r">ret.cc <span class="o">=</span> <span class="kp">diff</span><span class="p">(</span><span class="kp">log</span><span class="p">(</span>VGENX<span class="p">))</span>
+<span class="kp">head</span><span class="p">(</span>ret.cc<span class="p">,</span> <span class="m">3</span><span class="p">)</span></code></pre></div>
+
+<div class="highlight"><pre><code class="language-text" data-lang="text">##                VGENX
+## Oct 2005 -0.08831978
+## Nov 2005  0.02154139
+## Dec 2005  0.03159695</code></pre></div>
+
+<h3 id="plot-prices">5. Plot prices.</h3>
+
+<div class="highlight"><pre><code class="language-r" data-lang="r">chart.TimeSeries<span class="p">(</span>VGENX<span class="p">,</span> legend.loc<span class="o">=</span><span class="s">&quot;bottomright&quot;</span><span class="p">,</span> main<span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">,</span> 
+                 ylab<span class="o">=</span><span class="s">&quot;monthly adj. closing prices&quot;</span><span class="p">)</span></code></pre></div>
+
+<p><img src="/../figs/2014-10-17-analyze-stock-price-data-using-r-part1/unnamed-chunk-5-1.png" alt="center" /> </p>
+
+<h3 id="plot-cumulative-returns">6. Plot cumulative returns.</h3>
+
+<div class="highlight"><pre><code class="language-r" data-lang="r">ret.simple <span class="o">=</span> <span class="kp">diff</span><span class="p">(</span>VGENX<span class="p">)</span> <span class="o">/</span> lag<span class="p">(</span>VGENX<span class="p">,</span> k<span class="o">=</span><span class="m">-1</span><span class="p">)</span>
+chart.CumReturns<span class="p">(</span>ret.simple<span class="p">,</span> legend.loc<span class="o">=</span><span class="s">&quot;topleft&quot;</span><span class="p">,</span> wealth.index<span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span> 
+                 ylab<span class="o">=</span><span class="s">&quot;$&quot;</span><span class="p">,</span> main<span class="o">=</span><span class="s">&quot;Future Value of $1 invested&quot;</span><span class="p">)</span></code></pre></div>
+
+<p><img src="/../figs/2014-10-17-analyze-stock-price-data-using-r-part1/unnamed-chunk-6-1.png" alt="center" /> </p>
+
+<h3 id="plot-the-distribution-of-cc-returns">7. Plot the distribution of cc returns.</h3>
+
+<div class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># Create matrix with returns</span>
+return_matrix <span class="o">=</span> coredata<span class="p">(</span>ret.cc<span class="p">)</span>
+
+<span class="c1"># Plot the distribution of cc returns</span>
+plt_dist<span class="p">(</span>return_matrix<span class="p">,</span> <span class="s">&quot;VGENX&quot;</span><span class="p">)</span></code></pre></div>
+
+<p><img src="/../figs/2014-10-17-analyze-stock-price-data-using-r-part1/unnamed-chunk-7-1.png" alt="center" /> 
+The histogram, boxplot and the smoothed density curve show the cc returns are slightly left skewed. The qqplot shows their distribution has fatter tails.</p>
+
+<h3 id="compute-all-of-the-relevant-descriptive-statistics">8. Compute all of the relevant descriptive statistics</h3>
+
+<div class="highlight"><pre><code class="language-r" data-lang="r">table.Stats<span class="p">(</span>ret.cc<span class="p">)</span></code></pre></div>
+
+<div class="highlight"><pre><code class="language-text" data-lang="text">##                    VGENX
+## Observations    108.0000
+## NAs               0.0000
+## Minimum          -0.2471
+## Quartile 1       -0.0333
+## Median            0.0155
+## Arithmetic Mean   0.0051
+## Geometric Mean    0.0027
+## Quartile 3        0.0513
+## Maximum           0.1710
+## SE Mean           0.0066
+## LCL Mean (0.95)  -0.0080
+## UCL Mean (0.95)   0.0182
+## Variance          0.0047
+## Stdev             0.0685
+## Skewness         -0.7319
+## Kurtosis          1.5455</code></pre></div>
+
+<p>Indeed, we see the cc returns have a negative skewness and an excess kurtosis of 1.55 compared to the normal distribution.</p>
+
+<h3 id="run-the-jarque-bera-test-to-see-if-the-cc-returns-are-normal">9. Run the Jarque Bera test to see if the cc returns are normal</h3>
+
+<div class="highlight"><pre><code class="language-r" data-lang="r">jarque.bera.test<span class="p">(</span>ret.cc<span class="p">)</span></code></pre></div>
+
+<div class="highlight"><pre><code class="language-text" data-lang="text">## 
+## 	Jarque Bera Test
+## 
+## data:  ret.cc
+## X-squared = 20.39, df = 2, p-value = 3.736e-05</code></pre></div>
+
+<p>Because the p-value is extremely small, we have strong evidence to reject the null hypothesis that the continously compounded monthly returns for VGENX are normally distributed.</p>
+
+<h3 id="plot-autocorrelations-over-time-lags">10. Plot autocorrelations over time lags</h3>
+
+<div class="highlight"><pre><code class="language-r" data-lang="r">acf<span class="p">(</span>ret.cc<span class="o">$</span>VGENX<span class="p">)</span></code></pre></div>
+
+<p><img src="/../figs/2014-10-17-analyze-stock-price-data-using-r-part1/unnamed-chunk-10-1.png" alt="center" /> 
+The monthly cc returns doesn’t appear to be correlated over time.</p>
+
+<h3 id="compute-the-annualized-continuously-compounded-mean-return-and-volatility">11. Compute the annualized continuously compounded mean return and volatility</h3>
+
+<div class="highlight"><pre><code class="language-r" data-lang="r">ret.cc.annual <span class="o">=</span> <span class="kp">apply</span><span class="p">(</span>return_matrix<span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="kp">mean</span><span class="p">)</span> <span class="o">*</span> <span class="m">12</span> 
+<span class="kp">print</span><span class="p">(</span>ret.cc.annual<span class="p">)</span></code></pre></div>
+
+<div class="highlight"><pre><code class="language-text" data-lang="text">##      VGENX 
+## 0.06133925</code></pre></div>
+
+<div class="highlight"><pre><code class="language-r" data-lang="r">vol.cc.annual <span class="o">=</span> <span class="kp">apply</span><span class="p">(</span>return_matrix<span class="p">,</span> <span class="m">2</span><span class="p">,</span> sd<span class="p">)</span> <span class="o">*</span> <span class="kp">sqrt</span><span class="p">(</span><span class="m">12</span><span class="p">)</span>
+<span class="kp">print</span><span class="p">(</span>vol.cc.annual<span class="p">)</span></code></pre></div>
+
+<div class="highlight"><pre><code class="language-text" data-lang="text">##     VGENX 
+## 0.2372476</code></pre></div>
+
+<h3 id="compute-the-annualized-simple-mean-return">12. Compute the annualized simple mean return</h3>
+
+<div class="highlight"><pre><code class="language-r" data-lang="r"><span class="kp">exp</span><span class="p">(</span>ret.cc.annual<span class="p">)</span> <span class="o">-</span> <span class="m">1</span></code></pre></div>
+
+<div class="highlight"><pre><code class="language-text" data-lang="text">##      VGENX 
+## 0.06325957</code></pre></div>
+
+
+        <div id="disqus_thread"></div><!-- /#disqus_thread -->
+      </div><!-- /.entry-content -->
+    </div><!-- /.entry-wrapper -->
+    <nav class="pagination" role="navigation">
+      
+        <a href="http://gmlang.com/r/download-stock-price-data-using-r/" class="btn" title="Download Stock Price Data Using R">Previous</a>
+      
+      
+        <a href="http://gmlang.com/r/analyze-stock-price-data-using-r-part2/" class="btn" title="Analyze Stock Price Data Using R, Part2">Next</a>
+      
+    </nav><!-- /.pagination -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo" class="entry-wrapper">
+    
+
+<span>&copy; 2014 Guangming Lang. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://mademistakes.com/so-simple/" rel="nofollow">So Simple Theme</a>.</span>
+<div class="social-icons">
+	<a href="http://twitter.com/gmlang" title="Guangming Lang on Twitter" target="_blank"><i class="fa fa-twitter-square fa-2x"></i></a>
+	
+	<a href="http://plus.google.com/+GuangmingLang" title="Guangming Lang on Google+" target="_blank"><i class="fa fa-google-plus-square fa-2x"></i></a>
+	<a href="http://linkedin.com/in/gmlang" title="Guangming Lang on LinkedIn" target="_blank"><i class="fa fa-linkedin-square fa-2x"></i></a>
+	
+	
+	
+	<a href="http://github.com/gmlang" title="Guangming Lang on Github" target="_blank"><i class="fa fa-github-square fa-2x"></i></a>
+	
+  <a href="http://gmlang.com/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss-square fa-2x"></i></a>
+</div><!-- /.social-icons -->
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://gmlang.com/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://gmlang.com/assets/js/scripts.min.js"></script>
+
+<!-- Jekyll Simple Search option -->
+<script>
+  $(document).ready(function() {
+      $('.search-field').jekyllSearch({
+          jsonFile: 'http://gmlang.com/search.json',
+          searchResults: '.search-results',
+          template: '<li><article><a href="{url}">{title} <span class="entry-date"><time datetime="{date}">{shortdate}</time></span></a></article></li>',
+          fuzzy: true,
+          noResults: '<p>Nothing found.</p>'
+        });
+  });
+
+  (function( $, window, undefined ) {
+    
+     var bs = {
+          close: $(".close-btn"),
+          searchform: $(".search-form"),
+          canvas: $(".js-menu-screen"),
+          dothis: $('.dosearch')
+      };
+    
+    bs.dothis.on('click', function() {
+      $('.search-wrapper').css({ display: "block" });
+      $('body').toggleClass('no-scroll');
+      bs.searchform.toggleClass('active');
+      bs.searchform.find('input').focus();
+      bs.canvas.toggleClass('is-visible');
+    });
+    
+      bs.close.on('click', function() {
+        $('.search-wrapper').removeAttr( 'style' );
+        $('body').toggleClass('no-scroll');
+        bs.searchform.toggleClass('active');
+        bs.canvas.removeClass('is-visible');
+    });
+  })( jQuery, window );
+</script>
+
+
+<!-- Asynchronous Google Analytics snippet -->
+<script>
+  var _gaq = _gaq || [];
+  var pluginUrl = 
+ '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+  _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+  _gaq.push(['_setAccount', 'UA-52975110-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+  
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'cabaceo'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+<!-- Mathjax -->
+<script type="text/javascript"
+    src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>	        
+
+</body>
+</html>

@@ -1,0 +1,130 @@
+---
+layout: post
+title: "How to Calculate Sknewness and Kurtosis in R"
+date: 2014-10-14 11:51:49 -0400
+comments: true
+categories: R
+keywords: "R, sknewness, kurtosis, sp500, novagold"
+published: true
+share: true
+
+---
+
+Previously, I wrote about the [intuitions behind skewness and kurtosis](http://gmlang.com/da/skewness-and-kurtosis/). Today I'm going to do some calculations using the daily adjusted close prices of the S&P500 and NovaGold between January 4, 2007 and October 10, 2014. You can download the data from yahoo and follow along. First of all, I defined some helper functions, which can also be used in other contexts to improve code organization and efficiency. 
+
+
+{% highlight r %}
+## helper functions
+as_date = function(x, ...) { 
+        # Converts numeric or character vectors to dates
+        # 
+        # Args:
+        #       x   : a numeric or character vector
+        #       ... : other arguments like format = "%Y%m%d"
+        # Returns:
+        #       a vector of dates
+        dts.char = unique(x)
+        if (is.numeric(dts.char)) dts = as.Date(as.character(dts.char), ...)
+        else dts = as.Date(dts.char, ...)
+        
+        # match returns a vector of positions of first matches of elts of x in 
+        # dts.char, and because dts.char is unique, match here really finds, 
+        # for any element in x, the index of the element in dts.char that 
+        # matches it.
+        dts[match(x, dts.char)] 
+}
+
+calc_cc_ret = function(df) {
+        library(dplyr)
+        a = mutate(df, Date = as_date(Date, format = "%m/%d/%y")) 
+        a = arrange(a, Date)
+        a = mutate(a, Pt = Adj.Close, Pt.minus1 = lag(Adj.Close))
+        a = a[-1, ]
+        mutate(a, rt = 100*log(Pt / Pt.minus1))
+}
+
+calc_shape_char = function(x) {
+        library(PerformanceAnalytics)
+        c(mean=mean(x), sd=sd(x), skewness=skewness(x), 
+          excess.kurtosis=kurtosis(x))        
+}
+
+plt_density = function(df) {
+        library(ggplot2)
+        ggplot(df, aes(x=ret, color=label)) + geom_density() + theme_bw() + 
+                labs(x = "daily continuously compounded return (%)")
+}
+{% endhighlight %}
+
+Next, I loaded the data into R and calculated the daily continuously compounded returns for each stock.
+
+
+{% highlight r %}
+proj_path = file.path(Sys.getenv("HOME"), "gmlang.com/_knitr/data")
+ng_path = file.path(proj_path, "ng.csv")
+sp500_path = file.path(proj_path, "sp500.csv")
+ng = read.csv(ng_path, header=T, stringsAsFactors=F)
+sp500 = read.csv(sp500_path, header=T, stringsAsFactors=F)
+
+# calculate continuously compounded returns
+ng = calc_cc_ret(ng)
+sp500 = calc_cc_ret(sp500)
+{% endhighlight %}
+
+Next, I calculated the 4 shape characteristics of these daily returns for each stock.
+
+
+{% highlight r %}
+# calcuate shape characteristics
+(ng.shape = calc_shape_char(ng$rt))
+{% endhighlight %}
+
+
+
+{% highlight text %}
+##            mean              sd        skewness excess.kurtosis 
+##     -0.09003839      5.81212763     -3.73626258     85.80061898
+{% endhighlight %}
+
+
+
+{% highlight r %}
+(sp500.shape = calc_shape_char(sp500$rt))
+{% endhighlight %}
+
+
+
+{% highlight text %}
+##            mean              sd        skewness excess.kurtosis 
+##      0.01516686      1.41858330     -0.31423801      9.22125158
+{% endhighlight %}
+Note the S&P500 had a mild negative skewness while NovaGold had a big negative skewness. Remember the normal distribution has a skewness of 0. In addition, both stocks had excess kurtosis comparing to the normal distribution. In particular, NovaGold had an excess kurtosis of 85.8, which made it much more likely to experience wild price swings than both the S&P500 and a normal distribution would.
+
+Next, I simulated normal data using the corresponding mean and sd of the daily returns of each stock respectively. I then plot the densities of each stock along side with their normal counterparts.
+
+
+{% highlight r %}
+set.seed(1020)
+norm.ng = rnorm(nrow(ng), mean=ng.shape["mean"], sd=ng.shape["sd"])
+norm.sp500 = rnorm(nrow(sp500), mean=sp500.shape["mean"], sd=sp500.shape["sd"])
+
+library(tidyr)
+ret.ng = data.frame(ng = ng$rt, normal = norm.ng)
+ret.ng = ret.ng %>% gather(label, ret, ng:normal)
+
+ret.sp500 = data.frame(sp500 = sp500$rt, normal = norm.sp500)
+ret.sp500 = ret.sp500 %>% gather(label, ret, sp500:normal)
+
+# plot
+plt_density(ret.ng)
+{% endhighlight %}
+
+![center](/../figs/2014-10-14-sknewness-and-kurtosis-examples/unnamed-chunk-4-1.png) 
+
+{% highlight r %}
+plt_density(ret.sp500)
+{% endhighlight %}
+
+![center](/../figs/2014-10-14-sknewness-and-kurtosis-examples/unnamed-chunk-4-2.png) 
+
+Note, both NovaGold and the S&P500 have longer and fatter tails than the normal curve. 

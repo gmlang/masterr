@@ -1,0 +1,333 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Sknewness and Kurtosis &#8211; Become Great at R</title>
+<meta name="description" content="When analyzing a continuous variable, you often want to look at its distribution using a histogram or density plot and compare it against a benchmark distribution (a common choice is the normal distribution). In addition, you also want to quantify its shape characteristics:
+
+">
+<meta name="keywords" content="">
+
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Sknewness and Kurtosis">
+<meta name="twitter:description" content="When analyzing a continuous variable, you often want to look at its distribution using a histogram or density plot and compare it against a benchmark distribution (a common choice is the normal distribution). In addition, you also want to quantify its shape characteristics:
+
+">
+<meta name="twitter:site" content="@gmlang">
+<meta name="twitter:creator" content="@gmlang">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://gmlang.com/images/site-logo.png">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Sknewness and Kurtosis">
+<meta property="og:description" content="When analyzing a continuous variable, you often want to look at its distribution using a histogram or density plot and compare it against a benchmark distribution (a common choice is the normal distribution). In addition, you also want to quantify its shape characteristics:
+
+">
+<meta property="og:url" content="http://gmlang.com/da/skewness-and-kurtosis/">
+<meta property="og:site_name" content="Become Great at R">
+
+
+
+
+
+<link rel="canonical" href="http://gmlang.com/da/skewness-and-kurtosis/">
+<link href="http://gmlang.com/feed.xml" type="application/atom+xml" rel="alternate" title="Become Great at R Feed">
+<link rel="author" href="http://plus.google.com/+GuangmingLang?rel=author">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://gmlang.com/assets/css/main.css">
+<!-- Webfonts -->
+<script src="//use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+  <script src="http://gmlang.com/assets/js/vendor/html5shiv.min.js"></script>
+  <script src="http://gmlang.com/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="http://gmlang.com/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://gmlang.com/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://gmlang.com/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://gmlang.com/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://gmlang.com/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://gmlang.com/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://gmlang.com/images/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+
+<body id="post">
+
+<div class="navigation-wrapper">
+	<nav role="navigation" id="site-nav" class="animated drop">
+	    <ul>
+      
+		    
+		        
+		    
+		    <li><a href="http://gmlang.com/about/" >About</a></li>
+		  
+		    
+		        
+		    
+		    <li><a href="http://gmlang.com/da/" >Data Analysis</a></li>
+		  
+		    
+		        
+		    
+		    <li><a href="http://gmlang.com/r/" >R</a></li>
+		  
+		    
+		        
+		    
+		    <li><a href="http://gmlang.com/cartoon/" >Cartoon</a></li>
+		  
+        <li class="dosearch"><span><i class="fa fa-search"></i> Search</span></li>
+	    </ul>
+	</nav>
+</div><!-- /.navigation-wrapper -->
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+<div class="search-wrapper">
+  <div class="search-form">
+    <input type="text" class="search-field" placeholder="Search...">
+    <button class="close-btn"><i class="fa fa-times-circle fa-2x"></i></button>
+    <ul class="search-results post-list"></ul><!-- /.search-results -->
+  </div><!-- /.search-form -->
+</div><!-- ./search-wrapper -->
+
+<header class="masthead">
+	<div class="wrap">
+        
+    		<a href="http://gmlang.com" class="site-logo" rel="home" title="Become Great at R"><img src="http://gmlang.com/images/site-logo.png" width="200" height="200" alt="Become Great at R logo" class="animated fadeInUp"></a>
+        
+        <h1 class="site-title animated fadeIn"><a href="http://gmlang.com">Become Great at R</a></h1>
+		<h2 class="site-description animated fadeIn" itemprop="description"></h2>
+	</div>
+</header><!-- /.masthead -->
+
+<div class="js-menu-screen menu-screen"></div>
+
+<div id="main" role="main">
+  <article class="hentry">
+    
+    <div class="entry-wrapper">
+      <header class="entry-header">
+        <span class="entry-tags"></span>
+        
+          <h1 class="entry-title">Sknewness and Kurtosis</h1>
+        
+      </header>
+      <footer class="entry-meta">
+        
+        
+        
+          <img src="http://gmlang.com/images/gmlang1.jpg" class="bio-photo" alt="Guangming Lang bio photo"></a>
+        
+        <span class="author vcard">By <span class="fn">Guangming Lang</span></span>
+        <span class="entry-date date published"><time datetime="2014-10-13T12:39:49-04:00"><i class="fa fa-calendar-o"></i> October 13, 2014</time></span>
+        
+        <span class="entry-comments"><i class="fa fa-comment-o"></i> <a href="#disqus_thread">Comment</a></span>
+        <span class="social-share-twitter">
+  <a href="https://twitter.com/intent/tweet?hashtags=&amp;text=Sknewness%20and%20Kurtosis&amp;url=http://gmlang.com/da/skewness-and-kurtosis/&amp;via=gmlang" title="Share on Twitter" itemprop="Twitter"><i class="fa fa-twitter-square"></i> Tweet</a>
+</span>
+<span class="social-share-facebook">
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http://gmlang.com/da/skewness-and-kurtosis/" title="Share on Facebook" itemprop="Facebook"><i class="fa fa-facebook-square"></i> Like</a>
+</span>
+<span class="social-share-googleplus">
+  <a href="https://plus.google.com/share?url=http://gmlang.com/da/skewness-and-kurtosis/" title="Share on Google Plus" itemprop="GooglePlus"><i class="fa fa-google-plus-square"></i> +1</a>
+</span>
+<!-- /.social-share -->
+        
+      </footer>
+      <div class="entry-content">
+        <p>When analyzing a continuous variable, you often want to look at its distribution using a histogram or density plot and compare it against a benchmark distribution (a common choice is the normal distribution). In addition, you also want to quantify its shape characteristics:</p>
+
+<ol>
+  <li>where is the distribution centered at?</li>
+  <li>what is the spread about the center?</li>
+  <li>how symmetric/sknewed is the distribution?</li>
+  <li>how likely an extreme value can happen under the distribution?</li>
+</ol>
+
+<p>People often use <strong>mean</strong> and <strong>standard deviation</strong> to answer the first two questions. To answer the last two questions, you need something called <strong>skewness</strong> and <strong>kurtosis</strong>.</p>
+
+<h2 id="given-a-continuous-variable-of-size-n-how-can-we-calculate-its-skewness-and-kurtosis">Given a continuous variable of size <script type="math/tex">n</script>, how can we calculate its skewness and kurtosis?</h2>
+
+<ol>
+  <li>center and scale the variable by first subtracting its mean from every value and then dividing by its standard deviation. Call the resulting variable <script type="math/tex">y</script>.</li>
+  <li>skewness is defined as the mean <sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup> of <script type="math/tex">y^3</script>.</li>
+  <li>kurtosis is defined as the mean <sup id="fnref:1:1"><a href="#fn:1" class="footnote">1</a></sup> of <script type="math/tex">y^4</script>.</li>
+</ol>
+
+<h2 id="intuition-behind-skewness">Intuition behind Skewness</h2>
+<p>If the variable has more values that are much larger than the mean than smaller than the mean, its centered-and-scaled version will have more positive values than negative ones, cube them and take their mean will produce a number bigger than 0. In this case, we say the distribution is right skewed, and its density plot will show a long right tail.</p>
+
+<p>On the other hand, if the variable has more values that are much smaller than the mean than larger than the mean, its centered-and-scaled version will have more negative values than positive ones, cube them and take their mean will produce a number smaller than 0. In this case, we say the distribution is left skewed, and its density plot will show a long left tail.</p>
+
+<p>Finally, when a distribution is neither right or left skewed, we say it’s symmetric, and its skewness would be 0. For example, the normal distribution has a skewness of 0.</p>
+
+<h2 id="intuition-behind-kurtosis">Intuition behind Kurtosis</h2>
+<p>If the variable has some extremely large or small values, its centered-and-scaled version will have some extremely big positive or negative values, raise them to the 4th power will amplify the magnitude, and all these amplified bigness contribute to the final average, which will result in some very large number. Conversely, a big kurtosis implies higher chance of getting extreme values. However, how big is big? Once again, we compare to the normal distribution, which has a kurtosis of 3. If your interested variable has a kurtosis &gt; 3, then your variable follows a distribution under which extremely values are more likely to happen than under the normal distribution. And its density curve will have fatter tails than the normal curve.</p>
+
+<p>Click <a href="http://gmlang.com/r/sknewness-and-kurtosis-examples/">here</a> for some example calculations using stock market data.</p>
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>divide by (n-1) instead of n <a href="#fnref:1" class="reversefootnote">&#8617;</a> <a href="#fnref:1:1" class="reversefootnote">&#8617;<sup>2</sup></a></p>
+    </li>
+  </ol>
+</div>
+
+        <div id="disqus_thread"></div><!-- /#disqus_thread -->
+      </div><!-- /.entry-content -->
+    </div><!-- /.entry-wrapper -->
+    <nav class="pagination" role="navigation">
+      
+        <a href="http://gmlang.com/r/which-r-base-generic-has-the-most-number-of-methods/" class="btn" title="Which R Base Generic Has the Most Number of Methods">Previous</a>
+      
+      
+        <a href="http://gmlang.com/r/sknewness-and-kurtosis-examples/" class="btn" title="How to Calculate Sknewness and Kurtosis in R">Next</a>
+      
+    </nav><!-- /.pagination -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo" class="entry-wrapper">
+    
+
+<span>&copy; 2014 Guangming Lang. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://mademistakes.com/so-simple/" rel="nofollow">So Simple Theme</a>.</span>
+<div class="social-icons">
+	<a href="http://twitter.com/gmlang" title="Guangming Lang on Twitter" target="_blank"><i class="fa fa-twitter-square fa-2x"></i></a>
+	
+	<a href="http://plus.google.com/+GuangmingLang" title="Guangming Lang on Google+" target="_blank"><i class="fa fa-google-plus-square fa-2x"></i></a>
+	<a href="http://linkedin.com/in/gmlang" title="Guangming Lang on LinkedIn" target="_blank"><i class="fa fa-linkedin-square fa-2x"></i></a>
+	
+	
+	
+	<a href="http://github.com/gmlang" title="Guangming Lang on Github" target="_blank"><i class="fa fa-github-square fa-2x"></i></a>
+	
+  <a href="http://gmlang.com/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss-square fa-2x"></i></a>
+</div><!-- /.social-icons -->
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://gmlang.com/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://gmlang.com/assets/js/scripts.min.js"></script>
+
+<!-- Jekyll Simple Search option -->
+<script>
+  $(document).ready(function() {
+      $('.search-field').jekyllSearch({
+          jsonFile: 'http://gmlang.com/search.json',
+          searchResults: '.search-results',
+          template: '<li><article><a href="{url}">{title} <span class="entry-date"><time datetime="{date}">{shortdate}</time></span></a></article></li>',
+          fuzzy: true,
+          noResults: '<p>Nothing found.</p>'
+        });
+  });
+
+  (function( $, window, undefined ) {
+    
+     var bs = {
+          close: $(".close-btn"),
+          searchform: $(".search-form"),
+          canvas: $(".js-menu-screen"),
+          dothis: $('.dosearch')
+      };
+    
+    bs.dothis.on('click', function() {
+      $('.search-wrapper').css({ display: "block" });
+      $('body').toggleClass('no-scroll');
+      bs.searchform.toggleClass('active');
+      bs.searchform.find('input').focus();
+      bs.canvas.toggleClass('is-visible');
+    });
+    
+      bs.close.on('click', function() {
+        $('.search-wrapper').removeAttr( 'style' );
+        $('body').toggleClass('no-scroll');
+        bs.searchform.toggleClass('active');
+        bs.canvas.removeClass('is-visible');
+    });
+  })( jQuery, window );
+</script>
+
+
+<!-- Asynchronous Google Analytics snippet -->
+<script>
+  var _gaq = _gaq || [];
+  var pluginUrl = 
+ '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+  _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+  _gaq.push(['_setAccount', 'UA-52975110-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+  
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'cabaceo'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+<!-- Mathjax -->
+<script type="text/javascript"
+    src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>	        
+
+</body>
+</html>

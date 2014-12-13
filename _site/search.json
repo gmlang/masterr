@@ -1,0 +1,498 @@
+[
+	
+		{
+		  "title"      : "The Switch Operator in R",
+		  "category"   : "",
+      "tags"       : "",
+		  "url"        : "http://gmlang.com/r/the-switch-operator-in-r/",
+		  "date"       : "2014-11-21 10:48:49 -0500",
+		  "shortdate"  : "November 21, 2014"
+		} ,
+	
+		{
+		  "title"      : "Calculate Tangency Portfolios Using R",
+		  "category"   : "",
+      "tags"       : "",
+		  "url"        : "http://gmlang.com/r/calculate-tangency-portfolios-using-r/",
+		  "date"       : "2014-11-20 13:48:49 -0500",
+		  "shortdate"  : "November 20, 2014"
+		} ,
+	
+		{
+		  "title"      : "Calculate Efficient Portfolios Using R",
+		  "category"   : "",
+      "tags"       : "",
+		  "url"        : "http://gmlang.com/r/calculate-efficient-portfolios-using-r/",
+		  "date"       : "2014-11-19 13:48:49 -0500",
+		  "shortdate"  : "November 19, 2014"
+		} ,
+	
+		{
+		  "title"      : "Calculate Global Minimum Variance Portfolio Using R",
+		  "category"   : "",
+      "tags"       : "",
+		  "url"        : "http://gmlang.com/r/calculate-global-minimum-variance-portfolio-using-r/",
+		  "date"       : "2014-11-06 13:48:49 -0500",
+		  "shortdate"  : "November 06, 2014"
+		} ,
+	
+		{
+		  "title"      : "Analyze Stock Price Data Using R, Part3",
+		  "category"   : "",
+      "tags"       : "",
+		  "url"        : "http://gmlang.com/r/analyze-stock-price-data-using-r-part3/",
+		  "date"       : "2014-10-30 21:18:49 -0400",
+		  "shortdate"  : "October 30, 2014"
+		} ,
+	
+		{
+		  "title"      : "An Example of the Bootstrap Method",
+		  "category"   : "",
+      "tags"       : "",
+		  "url"        : "http://gmlang.com/r/an-example-of-the-bootstrap-method/",
+		  "date"       : "2014-10-29 19:28:49 -0400",
+		  "shortdate"  : "October 29, 2014"
+		} ,
+	
+		{
+		  "title"      : "Handy R Functions for Summary Statistics",
+		  "category"   : "",
+      "tags"       : "",
+		  "url"        : "http://gmlang.com/r/handy-r-functions-for-summary-statistics/",
+		  "date"       : "2014-10-22 13:38:49 -0400",
+		  "shortdate"  : "October 22, 2014"
+		} ,
+	
+		{
+		  "title"      : "Bias and Precision",
+		  "category"   : "",
+      "tags"       : "",
+		  "url"        : "http://gmlang.com/da/bias-and-precision/",
+		  "date"       : "2014-10-20 11:30:49 -0400",
+		  "shortdate"  : "October 20, 2014"
+		} ,
+	
+		{
+		  "title"      : "Analyze Stock Price Data Using R, Part2",
+		  "category"   : "",
+      "tags"       : "",
+		  "url"        : "http://gmlang.com/r/analyze-stock-price-data-using-r-part2/",
+		  "date"       : "2014-10-19 12:48:49 -0400",
+		  "shortdate"  : "October 19, 2014"
+		} ,
+	
+		{
+		  "title"      : "Analyze Stock Price Data Using R, Part1",
+		  "category"   : "",
+      "tags"       : "",
+		  "url"        : "http://gmlang.com/r/analyze-stock-price-data-using-r-part1/",
+		  "date"       : "2014-10-17 13:48:49 -0400",
+		  "shortdate"  : "October 17, 2014"
+		} ,
+	
+		{
+		  "title"      : "Download Stock Price Data Using R",
+		  "category"   : "",
+      "tags"       : "",
+		  "url"        : "http://gmlang.com/r/download-stock-price-data-using-r/",
+		  "date"       : "2014-10-16 13:48:49 -0400",
+		  "shortdate"  : "October 16, 2014"
+		} ,
+	
+		{
+		  "title"      : "Replacement Functions in R",
+		  "category"   : "",
+      "tags"       : "",
+		  "url"        : "http://gmlang.com/r/replacement-functions-in-r/",
+		  "date"       : "2014-10-15 15:12:49 -0400",
+		  "shortdate"  : "October 15, 2014"
+		} ,
+	
+		{
+		  "title"      : "How to Calculate Sknewness and Kurtosis in R",
+		  "category"   : "",
+      "tags"       : "",
+		  "url"        : "http://gmlang.com/r/sknewness-and-kurtosis-examples/",
+		  "date"       : "2014-10-14 11:51:49 -0400",
+		  "shortdate"  : "October 14, 2014"
+		} ,
+	
+		{
+		  "title"      : "Sknewness and Kurtosis",
+		  "category"   : "",
+      "tags"       : "",
+		  "url"        : "http://gmlang.com/da/skewness-and-kurtosis/",
+		  "date"       : "2014-10-13 12:39:49 -0400",
+		  "shortdate"  : "October 13, 2014"
+		} ,
+	
+		{
+		  "title"      : "Which R Base Generic Has the Most Number of Methods",
+		  "category"   : "",
+      "tags"       : "",
+		  "url"        : "http://gmlang.com/r/which-r-base-generic-has-the-most-number-of-methods/",
+		  "date"       : "2014-10-12 10:11:49 -0400",
+		  "shortdate"  : "October 12, 2014"
+		} ,
+	
+		{
+		  "title"      : "How to View Source Code in R",
+		  "category"   : "",
+      "tags"       : "",
+		  "url"        : "http://gmlang.com/r/how-to-view-source-code-in-r/",
+		  "date"       : "2014-10-09 12:29:49 -0400",
+		  "shortdate"  : "October 09, 2014"
+		} ,
+	
+		{
+		  "title"      : "Functions That Return Functions Part 2",
+		  "category"   : "",
+      "tags"       : "",
+		  "url"        : "http://gmlang.com/r/functions-that-return-functions-part-2/",
+		  "date"       : "2014-10-07 18:10:37 -0400",
+		  "shortdate"  : "October 07, 2014"
+		} ,
+	
+		{
+		  "title"      : "When Does A Flexible Model Beat An Inflexible One and Vice Versa",
+		  "category"   : "",
+      "tags"       : "",
+		  "url"        : "http://gmlang.com/da/when-does-a-flexible-model-beat-an-inflexible-one-and-vice-versa/",
+		  "date"       : "2014-10-06 10:13:17 -0400",
+		  "shortdate"  : "October 06, 2014"
+		} ,
+	
+		{
+		  "title"      : "The Magic of Substitute and Deparse",
+		  "category"   : "",
+      "tags"       : "",
+		  "url"        : "http://gmlang.com/r/the-magic-of-substitute-and-deparse/",
+		  "date"       : "2014-10-05 12:04:44 -0400",
+		  "shortdate"  : "October 05, 2014"
+		} ,
+	
+		{
+		  "title"      : "The setwd Function in R",
+		  "category"   : "",
+      "tags"       : "",
+		  "url"        : "http://gmlang.com/r/the-setwd-function-in-r/",
+		  "date"       : "2014-10-03 17:40:12 -0400",
+		  "shortdate"  : "October 03, 2014"
+		} ,
+	
+		{
+		  "title"      : "How to Quickly Subset List Elements in R",
+		  "category"   : "",
+      "tags"       : "",
+		  "url"        : "http://gmlang.com/r/how-to-quickly-subset-list-elements-in-r/",
+		  "date"       : "2014-10-02 11:56:00 -0400",
+		  "shortdate"  : "October 02, 2014"
+		} ,
+	
+		{
+		  "title"      : "Interpretability vs. Flexibility of Different Models",
+		  "category"   : "",
+      "tags"       : "",
+		  "url"        : "http://gmlang.com/cartoon/interpretability-vs-flexibility-of-different-models/",
+		  "date"       : "2014-10-01 14:19:36 -0400",
+		  "shortdate"  : "October 01, 2014"
+		} ,
+	
+		{
+		  "title"      : "Correlation Only Measures Linear Relationship",
+		  "category"   : "",
+      "tags"       : "",
+		  "url"        : "http://gmlang.com/cartoon/correlation-only-measures-linear-relationship/",
+		  "date"       : "2014-09-30 15:22:18 -0400",
+		  "shortdate"  : "September 30, 2014"
+		} ,
+	
+		{
+		  "title"      : "Simple Random Sampling vs. Systematic Sampling",
+		  "category"   : "",
+      "tags"       : "",
+		  "url"        : "http://gmlang.com/da/simple-random-sampling-vs-systematic-sampling/",
+		  "date"       : "2014-09-29 13:17:33 -0400",
+		  "shortdate"  : "September 29, 2014"
+		} ,
+	
+		{
+		  "title"      : "The Unknown Unknowns",
+		  "category"   : "",
+      "tags"       : "",
+		  "url"        : "http://gmlang.com/cartoon/the-unknown-unknowns/",
+		  "date"       : "2014-09-28 15:59:11 -0400",
+		  "shortdate"  : "September 28, 2014"
+		} ,
+	
+		{
+		  "title"      : "The Quest for Exponential Growth",
+		  "category"   : "",
+      "tags"       : "",
+		  "url"        : "http://gmlang.com/cartoon/the-quest-for-exponential-growth/",
+		  "date"       : "2014-09-26 12:37:18 -0400",
+		  "shortdate"  : "September 26, 2014"
+		} ,
+	
+		{
+		  "title"      : "How to Read Excel Files into R",
+		  "category"   : "",
+      "tags"       : "",
+		  "url"        : "http://gmlang.com/r/how-to-read-excel-files-into-r/",
+		  "date"       : "2014-09-25 18:01:32 -0400",
+		  "shortdate"  : "September 25, 2014"
+		} ,
+	
+		{
+		  "title"      : "On R Code Style",
+		  "category"   : "",
+      "tags"       : "",
+		  "url"        : "http://gmlang.com/r/on-r-code-style/",
+		  "date"       : "2014-09-24 11:17:36 -0400",
+		  "shortdate"  : "September 24, 2014"
+		} ,
+	
+		{
+		  "title"      : "When Does Data Analysis Become Worthless",
+		  "category"   : "",
+      "tags"       : "",
+		  "url"        : "http://gmlang.com/da/when-does-data-analysis-become-worthless/",
+		  "date"       : "2014-09-22 13:36:45 -0400",
+		  "shortdate"  : "September 22, 2014"
+		} ,
+	
+		{
+		  "title"      : "How to Unsort in R",
+		  "category"   : "",
+      "tags"       : "",
+		  "url"        : "http://gmlang.com/r/how-to-unsort-in-r/",
+		  "date"       : "2014-09-21 16:02:33 -0400",
+		  "shortdate"  : "September 21, 2014"
+		} ,
+	
+		{
+		  "title"      : "Honest Arrogance or Hypocritical Humility",
+		  "category"   : "",
+      "tags"       : "",
+		  "url"        : "http://gmlang.com/cartoon/honest-arrogance-or-hypocritical-humility/",
+		  "date"       : "2014-09-19 13:45:02 -0400",
+		  "shortdate"  : "September 19, 2014"
+		} ,
+	
+		{
+		  "title"      : "How to Correctly Load a R Package",
+		  "category"   : "",
+      "tags"       : "",
+		  "url"        : "http://gmlang.com/r/how-to-correctly-load-a-r-package/",
+		  "date"       : "2014-09-10 10:37:44 -0400",
+		  "shortdate"  : "September 10, 2014"
+		} ,
+	
+		{
+		  "title"      : "How to Make Faceted Ordered Bar Charts in R",
+		  "category"   : "",
+      "tags"       : "",
+		  "url"        : "http://gmlang.com/r/how-to-make-faceted-ordered-bar-charts-in-r/",
+		  "date"       : "2014-09-09 12:59:59 -0400",
+		  "shortdate"  : "September 09, 2014"
+		} ,
+	
+		{
+		  "title"      : "Correlation",
+		  "category"   : "",
+      "tags"       : "",
+		  "url"        : "http://gmlang.com/da/correlation/",
+		  "date"       : "2014-09-08 13:01:53 -0400",
+		  "shortdate"  : "September 08, 2014"
+		} ,
+	
+		{
+		  "title"      : "How to Write Infix Functions in R",
+		  "category"   : "",
+      "tags"       : "",
+		  "url"        : "http://gmlang.com/r/how-to-write-infix-functions-in-r/",
+		  "date"       : "2014-09-05 15:18:35 -0400",
+		  "shortdate"  : "September 05, 2014"
+		} ,
+	
+		{
+		  "title"      : "How to Work with Factors in R",
+		  "category"   : "",
+      "tags"       : "",
+		  "url"        : "http://gmlang.com/r/how-to-work-with-factors-in-r/",
+		  "date"       : "2014-09-03 15:18:44 -0400",
+		  "shortdate"  : "September 03, 2014"
+		} ,
+	
+		{
+		  "title"      : "How to Convert Millisecond to Date in R",
+		  "category"   : "",
+      "tags"       : "",
+		  "url"        : "http://gmlang.com/r/how-to-convert-millisecond-to-date-in-r/",
+		  "date"       : "2014-09-02 11:03:39 -0400",
+		  "shortdate"  : "September 02, 2014"
+		} ,
+	
+		{
+		  "title"      : "How to Find Consecutive Repeats in R",
+		  "category"   : "",
+      "tags"       : "",
+		  "url"        : "http://gmlang.com/r/how-to-find-consecutive-repeats-in-r/",
+		  "date"       : "2014-08-31 12:49:59 -0400",
+		  "shortdate"  : "August 31, 2014"
+		} ,
+	
+		{
+		  "title"      : "The stringr Package",
+		  "category"   : "",
+      "tags"       : "",
+		  "url"        : "http://gmlang.com/r/the-stringr-package/",
+		  "date"       : "2014-08-29 12:42:38 -0400",
+		  "shortdate"  : "August 29, 2014"
+		} ,
+	
+		{
+		  "title"      : "How to Cache a Matrix Inversion in R",
+		  "category"   : "",
+      "tags"       : "",
+		  "url"        : "http://gmlang.com/r/how-to-cache-a-matrix-inversion-in-r/",
+		  "date"       : "2014-08-28 12:15:04 -0400",
+		  "shortdate"  : "August 28, 2014"
+		} ,
+	
+		{
+		  "title"      : "How to Work with Files in R and Improve Reproducibility",
+		  "category"   : "",
+      "tags"       : "",
+		  "url"        : "http://gmlang.com/r/how-to-work-with-files-in-r-and-improve-reproducibility/",
+		  "date"       : "2014-08-27 13:09:29 -0400",
+		  "shortdate"  : "August 27, 2014"
+		} ,
+	
+		{
+		  "title"      : "How to Handle Large Datasets in R - Part 2",
+		  "category"   : "",
+      "tags"       : "",
+		  "url"        : "http://gmlang.com/r/how-to-handle-large-datasets-in-r-part-2/",
+		  "date"       : "2014-08-26 15:40:03 -0400",
+		  "shortdate"  : "August 26, 2014"
+		} ,
+	
+		{
+		  "title"      : "Functions that Return Functions",
+		  "category"   : "",
+      "tags"       : "",
+		  "url"        : "http://gmlang.com/r/functions-that-return-functions/",
+		  "date"       : "2014-08-24 10:58:50 -0400",
+		  "shortdate"  : "August 24, 2014"
+		} ,
+	
+		{
+		  "title"      : "How to Easily Sort A Data Frame",
+		  "category"   : "",
+      "tags"       : "",
+		  "url"        : "http://gmlang.com/r/how-to-easily-sort-a-data-frame/",
+		  "date"       : "2014-08-22 13:22:23 -0400",
+		  "shortdate"  : "August 22, 2014"
+		} ,
+	
+		{
+		  "title"      : "How to Convert Strings to Dates in R",
+		  "category"   : "",
+      "tags"       : "",
+		  "url"        : "http://gmlang.com/r/how-to-convert-strings-to-dates-in-r/",
+		  "date"       : "2014-08-21 11:32:09 -0400",
+		  "shortdate"  : "August 21, 2014"
+		} ,
+	
+		{
+		  "title"      : "How to Handle Large Datasets in R - Part 1",
+		  "category"   : "",
+      "tags"       : "",
+		  "url"        : "http://gmlang.com/r/how-to-handle-large-datasets-in-r-part-1/",
+		  "date"       : "2014-08-20 12:10:56 -0400",
+		  "shortdate"  : "August 20, 2014"
+		} ,
+	
+		{
+		  "title"      : "How to Use the Paste and Outer Functions in R",
+		  "category"   : "",
+      "tags"       : "",
+		  "url"        : "http://gmlang.com/r/how-to-use-the-paste-and-outer-functions-in-r/",
+		  "date"       : "2014-08-19 14:14:47 -0400",
+		  "shortdate"  : "August 19, 2014"
+		} ,
+	
+		{
+		  "title"      : "7 Things You Should Know About Data Cleaning",
+		  "category"   : "",
+      "tags"       : "",
+		  "url"        : "http://gmlang.com/da/7-things-you-should-know-about-data-cleaning/",
+		  "date"       : "2014-08-18 15:04:03 -0400",
+		  "shortdate"  : "August 18, 2014"
+		} ,
+	
+		{
+		  "title"      : "How to Plot Pretty Histograms using R Base Graphing System",
+		  "category"   : "",
+      "tags"       : "",
+		  "url"        : "http://gmlang.com/r/how-to-plot-pretty-histograms-using-r-base-graphing-system/",
+		  "date"       : "2014-08-17 13:23:10 -0400",
+		  "shortdate"  : "August 17, 2014"
+		} ,
+	
+		{
+		  "title"      : "How to Install Quantstrat",
+		  "category"   : "",
+      "tags"       : "",
+		  "url"        : "http://gmlang.com/r/how-to-install-quantstrat/",
+		  "date"       : "2014-08-15 10:52:08 -0400",
+		  "shortdate"  : "August 15, 2014"
+		} ,
+	
+		{
+		  "title"      : "Exponential Growth of the US Real GDP from 1790 to 2012",
+		  "category"   : "",
+      "tags"       : "",
+		  "url"        : "http://gmlang.com/r/exponential-growth-of-the-us-real-gdp-from-1790-to-2012/",
+		  "date"       : "2014-08-13 11:21:53 -0400",
+		  "shortdate"  : "August 13, 2014"
+		} ,
+	
+		{
+		  "title"      : "Relative Frequency or Probability",
+		  "category"   : "",
+      "tags"       : "",
+		  "url"        : "http://gmlang.com/da/relative-frequency-or-probability/",
+		  "date"       : "2014-08-11 08:38:32 -0400",
+		  "shortdate"  : "August 11, 2014"
+		} ,
+	
+		{
+		  "title"      : "Reservoir Sampling and Algorithm R",
+		  "category"   : "",
+      "tags"       : "",
+		  "url"        : "http://gmlang.com/da/reservoir-sampling-and-algorithm-r/",
+		  "date"       : "2014-08-04 06:24:33 -0400",
+		  "shortdate"  : "August 04, 2014"
+		} ,
+	
+		{
+		  "title"      : "Sampling",
+		  "category"   : "",
+      "tags"       : "",
+		  "url"        : "http://gmlang.com/da/sampling/",
+		  "date"       : "2014-07-28 00:24:33 -0400",
+		  "shortdate"  : "July 28, 2014"
+		} ,
+	
+		{
+		  "title"      : "What is Data Analysis?",
+		  "category"   : "",
+      "tags"       : "",
+		  "url"        : "http://gmlang.com/da/what-is-data-analysis/",
+		  "date"       : "2014-07-21 15:25:52 -0400",
+		  "shortdate"  : "July 21, 2014"
+		} 
+	
+]

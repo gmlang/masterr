@@ -1,0 +1,105 @@
+---
+layout: post
+title: "How to Handle Large Datasets in R - Part 2"
+date: 2014-08-26 15:40:03 -0400
+comments: true
+categories: R
+keywords: "R, read large dataset in R, big data and R, size"
+published: true
+share: true
+
+---
+R is my favorite tool for data analysis except when it comes to dealing with large datasets. If the data file is larger than the size of your RAM, R will fail at reading it in. So when you have a large dataset, you should first check if you have enough memory. I showed [a method of doing that](http://gmlang.com/r/how-to-handle-large-datasets-in-r-part-1/) when all you know is the number of rows and columns in the data file. 
+
+Let's say you find out the data file is too large for R to handle, what would you do? You can take a random sample from the data file, read and analyze the sample using R. The following `readbig()` function does that. It reads the input data file in chunks, takes a sample of user specified size, and returns the read-in data as a data frame.
+
+
+{% highlight r %}
+readbig = function (file, samplesz, chunksz, sep=',', header=TRUE, nrec=0, ...) {
+        ## this function reads in a random sample of a big input data file
+        
+        ## @file: input file path
+        ## @samplesz: sample size
+        ## @chunksz: size of chunks to read in at each iteration
+        ## @header: logical value indicating if the input file has a header
+        ## @nrec: number of rows in input file. If @nrec is <= 0, this function
+        ##        will use operating system command to find out its value.
+        ##        Default value is 0. 
+        
+        # a pretty efficient way to find the number of lines in file
+        # comment out the following appropriate codeblocks (line16-28) 
+        # depending on your operating system.
+        
+#         # Windows: 
+#         # shell('type "comma.txt" | find /c ","', intern=TRUE)
+#         if(nrec <= 0) 
+#                 nrec = as.numeric(
+#                         shell( paste0('type ',file,' | find /c ','"',sep,'"'), 
+#                                intern=TRUE ) )
+        
+        # Mac or Linux:
+        # system('cat comma.txt | wc -l', intern=TRUE)
+        if(nrec <= 0) 
+                nrec = as.numeric(
+                        system( paste0('cat ',file,' | wc -l'), 
+                                intern=TRUE ) )
+        
+        # create a file connection
+        f = file(file, 'r')
+        on.exit(close(f))
+        
+        # take a sample (of size samplesz) of the row indices and sort them
+        use = sort(sample(1:nrec, samplesz))
+        
+        # read the 1st line
+        line1 = readLines(f,1) 
+        
+        # calculate the number of cols of the file
+        line1 = unlist(strsplit(line1,sep)[[1]])
+        k = length(line1)
+        
+        # re-position the file to its origin
+        seek(f,0) 
+        
+        # make a zero-matrix with samplesz rows and k cols
+        result = data.frame(matrix(NA, samplesz, k))
+        
+        # initialize some values
+        read = 0
+        got = 1
+        left = nrec
+        skip_row = 0
+        
+        # skip the header if there's one
+        if (header) {
+                left = nrec - 1 
+                skip_row = 1
+                names(result) = line1
+        }
+        
+        while(left > 0){
+                # read the next chunk (each chuck has size chunksz) from f
+                now = read.table(f, nrows=chunksz, skip=skip_row, sep=sep, ...) 
+                
+                # don't skip the 1st row when reading in the 2nd, 3rd, ... block
+                skip_row = 0   
+                begin = read + 1
+                end = read + chunksz
+                
+                # extract row indices in both the chunk and the sample 
+                want = (begin:end)[begin:end %in% use] - read 
+                
+                # get sampled data
+                if (length(want) > 0) {
+                        nowdat = now[want,]
+                        newgot = got + length(want) - 1
+                        result[got:newgot,] = nowdat
+                        got = newgot + 1
+                }
+                read = read + chunksz
+                left = left - chunksz
+        }
+        
+        return(result)
+}
+{% endhighlight %}

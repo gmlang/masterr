@@ -1,0 +1,92 @@
+---
+layout: post
+title: "How to Work with Factors in R"
+date: 2014-09-03 15:18:44 -0400
+comments: true
+categories: R
+keywords: "R, factor, factors in R, ordered bars, barchart, barplot, rank, order"
+published: true
+share: true
+
+---
+If you want to deal with categorical variables in R, you need to use a data structure called factor. A factor is just a numeric vector with a special attribute called levels. You can think of the levels as labels for the values. Given a character vector, you can turn it into a factor using the factor() function, for example,
+```{r} 
+(x = factor(letters))
+```
+
+We can subset a factor, and depending on how you want it, you can get a sub-factor that either preserves the original levels or has simplified levels that only appear in the sub-factor. Continue with the example, say we want to subset the first 4 letters. 
+```{r}
+# subset while preserving the levels
+x[1:4]
+
+# subset and dropping levels that don't appear in the subset
+(z = x[1:4, drop=TRUE])
+```
+
+We can re-order the values of a factor. For example, we can reverse the order of the values in z.
+```{r}
+str(rev(z))
+str(z)
+rev(z)[1]
+z[1]
+```
+Note the values are reversed to “4 3 2 1” from the original “1 2 3 4”, while the labels remain the same order.
+
+We can also re-order the levels of a factor. For example, we can reverse the order of the levels in z.
+```{r}
+# before
+str(z)
+z[1]
+
+# reverse the levels
+levels(z) = rev(levels(z))
+
+# after
+str(z)
+z[1]
+```
+Note the labels are reversed to “d, c, b, a” from the original “a, b, c, d”, while the values remain the same order. 
+
+Now let's make some fake numeric data for the levels of z and make a ggplot2 bar chart. 
+```{r}
+suppressMessages({ library(ggplot2) })
+
+# make fake data
+df = data.frame(cat=z, val=c(50,45,70,30))
+
+# make barplot
+ggplot(df, aes(x=cat, y=val)) +
+        geom_bar(aes(fill=cat), stat="identity") +
+        geom_text(aes(label=val, y=val+1), size=3)
+```
+
+It'd be nice if we order the bars from tallest to shortest. To do that, we can make a factor specifying its levels to be the categories corresponding to the descending order of val. 
+```{r}
+# sort by val in descending order
+df = df[order(-df$val),]
+
+# notice that we need to pass the cat sorted by val into the factor function
+df$cat = factor(df$cat, levels=df$cat)
+
+# make bar chart
+ggplot(df, aes(x=cat, y=val)) +
+        geom_bar(aes(fill=cat), stat="identity") +
+        geom_text(aes(label=val, y=val+1), size=3)
+
+```
+
+Alternatively, we can use `reorder()` and `rank()` to merely reorder the levels of cat by the descending order of val.
+```{r}
+# make fake data
+df = data.frame(cat=z, val=c(50,45,70,30))
+
+# reorder the levels of cat by decreasing order of val
+df = transform(df, cat = reorder(cat, rank(-val)))
+
+# make barplot
+ggplot(df, aes(x=cat, y=val)) +
+        geom_bar(aes(fill=cat), stat="identity") +
+        geom_text(aes(label=val, y=val+1), size=3)
+```
+
+Notice that `rank()` returns the ranking order of each value in its input vector, whereas `order()` returns the indices that would put its input vector in order.

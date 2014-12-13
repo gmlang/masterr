@@ -1,0 +1,39 @@
+---
+layout: post
+title: "Which R Base Generic Has the Most Number of Methods"
+date: 2014-10-12 10:11:49 -0400
+comments: true
+categories: R
+keywords: "R, base package, generic, generic function, methods"
+published: true
+share: true
+
+---
+
+A generic (short for generic function) is a special type of function in R. R's S3 system uses generics to decide which method to call. In other words, when it comes to the S3 system, "object oriented programming" specifically means "generic oriented programming" because S3 methods belong to generic functions instead of classes or objects. 
+
+Can you guess which generic in the base package has the most number of methods? It turns out the winner is `|` with 2596 methods. Didn't expect it, right? I certainly did not. Well, here's the R script I wrote to get the answer, run it youself and let me know what you find. 
+
+```{r, warning=FALSE, message=FALSE}
+library(methods)
+library(pryr)
+
+# get a list of functions in the base package
+objs = mget(ls("package:base"), inherits = TRUE)
+funs = Filter(is.function, objs)
+fun_types = lapply(funs, ftype) # ftype lives in the package pryr
+
+# extract the generic functions
+is_S3_generic = function(x) length(x) == 2 && x[2] == "generic"
+generics = Filter(is_S3_generic, fun_types)
+
+# get a list of the methods for each generic
+gen_methods = lapply(names(generics), methods)
+
+# count the number of methods for each generic
+gen_methods_cnt = sapply(gen_methods, length)
+
+# find the generic with the most methods
+generics[which.max(gen_methods_cnt)]
+max(gen_methods_cnt)
+```

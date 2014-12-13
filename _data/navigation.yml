@@ -1,0 +1,22 @@
+# Site navigation links
+
+- title: About
+  url: /about/
+  
+- title: Data Analysis
+  url: /da/
+
+- title: R
+  url: /r/
+  
+- title: Cartoon
+  url: /cartoon/
+    
+#- title: Articles
+#  url: /articles/
+
+#- title: Blog
+#  url: /blog/
+
+#- title: Made Mistakes
+#  url: http://mademistakes.com

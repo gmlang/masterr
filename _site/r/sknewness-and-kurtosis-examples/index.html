@@ -1,0 +1,388 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>How to Calculate Sknewness and Kurtosis in R &#8211; Become Great at R</title>
+<meta name="description" content="Previously, I wrote about the intuitions behind skewness and kurtosis. Today I’m going to do some calculations using the daily adjusted close prices of the S&amp;P500 and NovaGold between January 4, 2007 and October 10, 2014. You can download the data from yahoo and follow along. First of all, I defined some helper functions, which can also be used in other contexts to improve code organization and efficiency. 
+
+">
+<meta name="keywords" content="">
+
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="How to Calculate Sknewness and Kurtosis in R">
+<meta name="twitter:description" content="Previously, I wrote about the intuitions behind skewness and kurtosis. Today I’m going to do some calculations using the daily adjusted close prices of the S&amp;P500 and NovaGold between January 4, 2007 and October 10, 2014. You can download the data from yahoo and follow along. First of all, I defined some helper functions, which can also be used in other contexts to improve code organization and efficiency. 
+
+">
+<meta name="twitter:site" content="@gmlang">
+<meta name="twitter:creator" content="@gmlang">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://gmlang.com/images/site-logo.png">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to Calculate Sknewness and Kurtosis in R">
+<meta property="og:description" content="Previously, I wrote about the intuitions behind skewness and kurtosis. Today I’m going to do some calculations using the daily adjusted close prices of the S&amp;P500 and NovaGold between January 4, 2007 and October 10, 2014. You can download the data from yahoo and follow along. First of all, I defined some helper functions, which can also be used in other contexts to improve code organization and efficiency. 
+
+">
+<meta property="og:url" content="http://gmlang.com/r/sknewness-and-kurtosis-examples/">
+<meta property="og:site_name" content="Become Great at R">
+
+
+
+
+
+<link rel="canonical" href="http://gmlang.com/r/sknewness-and-kurtosis-examples/">
+<link href="http://gmlang.com/feed.xml" type="application/atom+xml" rel="alternate" title="Become Great at R Feed">
+<link rel="author" href="http://plus.google.com/+GuangmingLang?rel=author">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://gmlang.com/assets/css/main.css">
+<!-- Webfonts -->
+<script src="//use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+  <script src="http://gmlang.com/assets/js/vendor/html5shiv.min.js"></script>
+  <script src="http://gmlang.com/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="http://gmlang.com/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://gmlang.com/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://gmlang.com/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://gmlang.com/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://gmlang.com/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://gmlang.com/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://gmlang.com/images/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+
+<body id="post">
+
+<div class="navigation-wrapper">
+	<nav role="navigation" id="site-nav" class="animated drop">
+	    <ul>
+      
+		    
+		        
+		    
+		    <li><a href="http://gmlang.com/about/" >About</a></li>
+		  
+		    
+		        
+		    
+		    <li><a href="http://gmlang.com/da/" >Data Analysis</a></li>
+		  
+		    
+		        
+		    
+		    <li><a href="http://gmlang.com/r/" >R</a></li>
+		  
+		    
+		        
+		    
+		    <li><a href="http://gmlang.com/cartoon/" >Cartoon</a></li>
+		  
+        <li class="dosearch"><span><i class="fa fa-search"></i> Search</span></li>
+	    </ul>
+	</nav>
+</div><!-- /.navigation-wrapper -->
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+<div class="search-wrapper">
+  <div class="search-form">
+    <input type="text" class="search-field" placeholder="Search...">
+    <button class="close-btn"><i class="fa fa-times-circle fa-2x"></i></button>
+    <ul class="search-results post-list"></ul><!-- /.search-results -->
+  </div><!-- /.search-form -->
+</div><!-- ./search-wrapper -->
+
+<header class="masthead">
+	<div class="wrap">
+        
+    		<a href="http://gmlang.com" class="site-logo" rel="home" title="Become Great at R"><img src="http://gmlang.com/images/site-logo.png" width="200" height="200" alt="Become Great at R logo" class="animated fadeInUp"></a>
+        
+        <h1 class="site-title animated fadeIn"><a href="http://gmlang.com">Become Great at R</a></h1>
+		<h2 class="site-description animated fadeIn" itemprop="description"></h2>
+	</div>
+</header><!-- /.masthead -->
+
+<div class="js-menu-screen menu-screen"></div>
+
+<div id="main" role="main">
+  <article class="hentry">
+    
+    <div class="entry-wrapper">
+      <header class="entry-header">
+        <span class="entry-tags"></span>
+        
+          <h1 class="entry-title">How to Calculate Sknewness and Kurtosis in R</h1>
+        
+      </header>
+      <footer class="entry-meta">
+        
+        
+        
+          <img src="http://gmlang.com/images/gmlang1.jpg" class="bio-photo" alt="Guangming Lang bio photo"></a>
+        
+        <span class="author vcard">By <span class="fn">Guangming Lang</span></span>
+        <span class="entry-date date published"><time datetime="2014-10-14T11:51:49-04:00"><i class="fa fa-calendar-o"></i> October 14, 2014</time></span>
+        
+        <span class="entry-comments"><i class="fa fa-comment-o"></i> <a href="#disqus_thread">Comment</a></span>
+        <span class="social-share-twitter">
+  <a href="https://twitter.com/intent/tweet?hashtags=&amp;text=How%20to%20Calculate%20Sknewness%20and%20Kurtosis%20in%20R&amp;url=http://gmlang.com/r/sknewness-and-kurtosis-examples/&amp;via=gmlang" title="Share on Twitter" itemprop="Twitter"><i class="fa fa-twitter-square"></i> Tweet</a>
+</span>
+<span class="social-share-facebook">
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http://gmlang.com/r/sknewness-and-kurtosis-examples/" title="Share on Facebook" itemprop="Facebook"><i class="fa fa-facebook-square"></i> Like</a>
+</span>
+<span class="social-share-googleplus">
+  <a href="https://plus.google.com/share?url=http://gmlang.com/r/sknewness-and-kurtosis-examples/" title="Share on Google Plus" itemprop="GooglePlus"><i class="fa fa-google-plus-square"></i> +1</a>
+</span>
+<!-- /.social-share -->
+        
+      </footer>
+      <div class="entry-content">
+        <p>Previously, I wrote about the <a href="http://gmlang.com/da/skewness-and-kurtosis/">intuitions behind skewness and kurtosis</a>. Today I’m going to do some calculations using the daily adjusted close prices of the S&amp;P500 and NovaGold between January 4, 2007 and October 10, 2014. You can download the data from yahoo and follow along. First of all, I defined some helper functions, which can also be used in other contexts to improve code organization and efficiency. </p>
+
+<div class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1">## helper functions</span>
+as_date <span class="o">=</span> <span class="kr">function</span><span class="p">(</span>x<span class="p">,</span> <span class="kc">...</span><span class="p">)</span> <span class="p">{</span> 
+        <span class="c1"># Converts numeric or character vectors to dates</span>
+        <span class="c1"># </span>
+        <span class="c1"># Args:</span>
+        <span class="c1">#       x   : a numeric or character vector</span>
+        <span class="c1">#       ... : other arguments like format = &quot;%Y%m%d&quot;</span>
+        <span class="c1"># Returns:</span>
+        <span class="c1">#       a vector of dates</span>
+        dts.char <span class="o">=</span> <span class="kp">unique</span><span class="p">(</span>x<span class="p">)</span>
+        <span class="kr">if</span> <span class="p">(</span><span class="kp">is.numeric</span><span class="p">(</span>dts.char<span class="p">))</span> dts <span class="o">=</span> <span class="kp">as.Date</span><span class="p">(</span><span class="kp">as.character</span><span class="p">(</span>dts.char<span class="p">),</span> <span class="kc">...</span><span class="p">)</span>
+        <span class="kr">else</span> dts <span class="o">=</span> <span class="kp">as.Date</span><span class="p">(</span>dts.char<span class="p">,</span> <span class="kc">...</span><span class="p">)</span>
+        
+        <span class="c1"># match returns a vector of positions of first matches of elts of x in </span>
+        <span class="c1"># dts.char, and because dts.char is unique, match here really finds, </span>
+        <span class="c1"># for any element in x, the index of the element in dts.char that </span>
+        <span class="c1"># matches it.</span>
+        dts<span class="p">[</span><span class="kp">match</span><span class="p">(</span>x<span class="p">,</span> dts.char<span class="p">)]</span> 
+<span class="p">}</span>
+
+calc_cc_ret <span class="o">=</span> <span class="kr">function</span><span class="p">(</span>df<span class="p">)</span> <span class="p">{</span>
+        <span class="kn">library</span><span class="p">(</span>dplyr<span class="p">)</span>
+        a <span class="o">=</span> mutate<span class="p">(</span>df<span class="p">,</span> Date <span class="o">=</span> as_date<span class="p">(</span>Date<span class="p">,</span> format <span class="o">=</span> <span class="s">&quot;%m/%d/%y&quot;</span><span class="p">))</span> 
+        a <span class="o">=</span> arrange<span class="p">(</span>a<span class="p">,</span> Date<span class="p">)</span>
+        a <span class="o">=</span> mutate<span class="p">(</span>a<span class="p">,</span> Pt <span class="o">=</span> Adj.Close<span class="p">,</span> Pt.minus1 <span class="o">=</span> lag<span class="p">(</span>Adj.Close<span class="p">))</span>
+        a <span class="o">=</span> a<span class="p">[</span><span class="m">-1</span><span class="p">,</span> <span class="p">]</span>
+        mutate<span class="p">(</span>a<span class="p">,</span> rt <span class="o">=</span> <span class="m">100</span><span class="o">*</span><span class="kp">log</span><span class="p">(</span>Pt <span class="o">/</span> Pt.minus1<span class="p">))</span>
+<span class="p">}</span>
+
+calc_shape_char <span class="o">=</span> <span class="kr">function</span><span class="p">(</span>x<span class="p">)</span> <span class="p">{</span>
+        <span class="kn">library</span><span class="p">(</span>PerformanceAnalytics<span class="p">)</span>
+        <span class="kt">c</span><span class="p">(</span>mean<span class="o">=</span><span class="kp">mean</span><span class="p">(</span>x<span class="p">),</span> sd<span class="o">=</span>sd<span class="p">(</span>x<span class="p">),</span> skewness<span class="o">=</span>skewness<span class="p">(</span>x<span class="p">),</span> 
+          excess.kurtosis<span class="o">=</span>kurtosis<span class="p">(</span>x<span class="p">))</span>        
+<span class="p">}</span>
+
+plt_density <span class="o">=</span> <span class="kr">function</span><span class="p">(</span>df<span class="p">)</span> <span class="p">{</span>
+        <span class="kn">library</span><span class="p">(</span>ggplot2<span class="p">)</span>
+        ggplot<span class="p">(</span>df<span class="p">,</span> aes<span class="p">(</span>x<span class="o">=</span>ret<span class="p">,</span> color<span class="o">=</span>label<span class="p">))</span> <span class="o">+</span> geom_density<span class="p">()</span> <span class="o">+</span> theme_bw<span class="p">()</span> <span class="o">+</span> 
+                labs<span class="p">(</span>x <span class="o">=</span> <span class="s">&quot;daily continuously compounded return (%)&quot;</span><span class="p">)</span>
+<span class="p">}</span></code></pre></div>
+
+<p>Next, I loaded the data into R and calculated the daily continuously compounded returns for each stock.</p>
+
+<div class="highlight"><pre><code class="language-r" data-lang="r">proj_path <span class="o">=</span> <span class="kp">file.path</span><span class="p">(</span><span class="kp">Sys.getenv</span><span class="p">(</span><span class="s">&quot;HOME&quot;</span><span class="p">),</span> <span class="s">&quot;gmlang.com/_knitr/data&quot;</span><span class="p">)</span>
+ng_path <span class="o">=</span> <span class="kp">file.path</span><span class="p">(</span>proj_path<span class="p">,</span> <span class="s">&quot;ng.csv&quot;</span><span class="p">)</span>
+sp500_path <span class="o">=</span> <span class="kp">file.path</span><span class="p">(</span>proj_path<span class="p">,</span> <span class="s">&quot;sp500.csv&quot;</span><span class="p">)</span>
+ng <span class="o">=</span> read.csv<span class="p">(</span>ng_path<span class="p">,</span> header<span class="o">=</span><span class="bp">T</span><span class="p">,</span> stringsAsFactors<span class="o">=</span><span class="bp">F</span><span class="p">)</span>
+sp500 <span class="o">=</span> read.csv<span class="p">(</span>sp500_path<span class="p">,</span> header<span class="o">=</span><span class="bp">T</span><span class="p">,</span> stringsAsFactors<span class="o">=</span><span class="bp">F</span><span class="p">)</span>
+
+<span class="c1"># calculate continuously compounded returns</span>
+ng <span class="o">=</span> calc_cc_ret<span class="p">(</span>ng<span class="p">)</span>
+sp500 <span class="o">=</span> calc_cc_ret<span class="p">(</span>sp500<span class="p">)</span></code></pre></div>
+
+<p>Next, I calculated the 4 shape characteristics of these daily returns for each stock.</p>
+
+<div class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># calcuate shape characteristics</span>
+<span class="p">(</span>ng.shape <span class="o">=</span> calc_shape_char<span class="p">(</span>ng<span class="o">$</span>rt<span class="p">))</span></code></pre></div>
+
+<div class="highlight"><pre><code class="language-text" data-lang="text">##            mean              sd        skewness excess.kurtosis 
+##     -0.09003839      5.81212763     -3.73626258     85.80061898</code></pre></div>
+
+<div class="highlight"><pre><code class="language-r" data-lang="r"><span class="p">(</span>sp500.shape <span class="o">=</span> calc_shape_char<span class="p">(</span>sp500<span class="o">$</span>rt<span class="p">))</span></code></pre></div>
+
+<div class="highlight"><pre><code class="language-text" data-lang="text">##            mean              sd        skewness excess.kurtosis 
+##      0.01516686      1.41858330     -0.31423801      9.22125158</code></pre></div>
+
+<p>Note the S&amp;P500 had a mild negative skewness while NovaGold had a big negative skewness. Remember the normal distribution has a skewness of 0. In addition, both stocks had excess kurtosis comparing to the normal distribution. In particular, NovaGold had an excess kurtosis of 85.8, which made it much more likely to experience wild price swings than both the S&amp;P500 and a normal distribution would.</p>
+
+<p>Next, I simulated normal data using the corresponding mean and sd of the daily returns of each stock respectively. I then plot the densities of each stock along side with their normal counterparts.</p>
+
+<div class="highlight"><pre><code class="language-r" data-lang="r"><span class="kp">set.seed</span><span class="p">(</span><span class="m">1020</span><span class="p">)</span>
+norm.ng <span class="o">=</span> rnorm<span class="p">(</span><span class="kp">nrow</span><span class="p">(</span>ng<span class="p">),</span> mean<span class="o">=</span>ng.shape<span class="p">[</span><span class="s">&quot;mean&quot;</span><span class="p">],</span> sd<span class="o">=</span>ng.shape<span class="p">[</span><span class="s">&quot;sd&quot;</span><span class="p">])</span>
+norm.sp500 <span class="o">=</span> rnorm<span class="p">(</span><span class="kp">nrow</span><span class="p">(</span>sp500<span class="p">),</span> mean<span class="o">=</span>sp500.shape<span class="p">[</span><span class="s">&quot;mean&quot;</span><span class="p">],</span> sd<span class="o">=</span>sp500.shape<span class="p">[</span><span class="s">&quot;sd&quot;</span><span class="p">])</span>
+
+<span class="kn">library</span><span class="p">(</span>tidyr<span class="p">)</span>
+ret.ng <span class="o">=</span> <span class="kt">data.frame</span><span class="p">(</span>ng <span class="o">=</span> ng<span class="o">$</span>rt<span class="p">,</span> normal <span class="o">=</span> norm.ng<span class="p">)</span>
+ret.ng <span class="o">=</span> ret.ng <span class="o">%&gt;%</span> gather<span class="p">(</span>label<span class="p">,</span> ret<span class="p">,</span> ng<span class="o">:</span>normal<span class="p">)</span>
+
+ret.sp500 <span class="o">=</span> <span class="kt">data.frame</span><span class="p">(</span>sp500 <span class="o">=</span> sp500<span class="o">$</span>rt<span class="p">,</span> normal <span class="o">=</span> norm.sp500<span class="p">)</span>
+ret.sp500 <span class="o">=</span> ret.sp500 <span class="o">%&gt;%</span> gather<span class="p">(</span>label<span class="p">,</span> ret<span class="p">,</span> sp500<span class="o">:</span>normal<span class="p">)</span>
+
+<span class="c1"># plot</span>
+plt_density<span class="p">(</span>ret.ng<span class="p">)</span></code></pre></div>
+
+<p><img src="/../figs/2014-10-14-sknewness-and-kurtosis-examples/unnamed-chunk-4-1.png" alt="center" /> </p>
+
+<div class="highlight"><pre><code class="language-r" data-lang="r">plt_density<span class="p">(</span>ret.sp500<span class="p">)</span></code></pre></div>
+
+<p><img src="/../figs/2014-10-14-sknewness-and-kurtosis-examples/unnamed-chunk-4-2.png" alt="center" /> </p>
+
+<p>Note, both NovaGold and the S&amp;P500 have longer and fatter tails than the normal curve. </p>
+
+        <div id="disqus_thread"></div><!-- /#disqus_thread -->
+      </div><!-- /.entry-content -->
+    </div><!-- /.entry-wrapper -->
+    <nav class="pagination" role="navigation">
+      
+        <a href="http://gmlang.com/da/skewness-and-kurtosis/" class="btn" title="Sknewness and Kurtosis">Previous</a>
+      
+      
+        <a href="http://gmlang.com/r/replacement-functions-in-r/" class="btn" title="Replacement Functions in R">Next</a>
+      
+    </nav><!-- /.pagination -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo" class="entry-wrapper">
+    
+
+<span>&copy; 2014 Guangming Lang. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://mademistakes.com/so-simple/" rel="nofollow">So Simple Theme</a>.</span>
+<div class="social-icons">
+	<a href="http://twitter.com/gmlang" title="Guangming Lang on Twitter" target="_blank"><i class="fa fa-twitter-square fa-2x"></i></a>
+	
+	<a href="http://plus.google.com/+GuangmingLang" title="Guangming Lang on Google+" target="_blank"><i class="fa fa-google-plus-square fa-2x"></i></a>
+	<a href="http://linkedin.com/in/gmlang" title="Guangming Lang on LinkedIn" target="_blank"><i class="fa fa-linkedin-square fa-2x"></i></a>
+	
+	
+	
+	<a href="http://github.com/gmlang" title="Guangming Lang on Github" target="_blank"><i class="fa fa-github-square fa-2x"></i></a>
+	
+  <a href="http://gmlang.com/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss-square fa-2x"></i></a>
+</div><!-- /.social-icons -->
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://gmlang.com/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://gmlang.com/assets/js/scripts.min.js"></script>
+
+<!-- Jekyll Simple Search option -->
+<script>
+  $(document).ready(function() {
+      $('.search-field').jekyllSearch({
+          jsonFile: 'http://gmlang.com/search.json',
+          searchResults: '.search-results',
+          template: '<li><article><a href="{url}">{title} <span class="entry-date"><time datetime="{date}">{shortdate}</time></span></a></article></li>',
+          fuzzy: true,
+          noResults: '<p>Nothing found.</p>'
+        });
+  });
+
+  (function( $, window, undefined ) {
+    
+     var bs = {
+          close: $(".close-btn"),
+          searchform: $(".search-form"),
+          canvas: $(".js-menu-screen"),
+          dothis: $('.dosearch')
+      };
+    
+    bs.dothis.on('click', function() {
+      $('.search-wrapper').css({ display: "block" });
+      $('body').toggleClass('no-scroll');
+      bs.searchform.toggleClass('active');
+      bs.searchform.find('input').focus();
+      bs.canvas.toggleClass('is-visible');
+    });
+    
+      bs.close.on('click', function() {
+        $('.search-wrapper').removeAttr( 'style' );
+        $('body').toggleClass('no-scroll');
+        bs.searchform.toggleClass('active');
+        bs.canvas.removeClass('is-visible');
+    });
+  })( jQuery, window );
+</script>
+
+
+<!-- Asynchronous Google Analytics snippet -->
+<script>
+  var _gaq = _gaq || [];
+  var pluginUrl = 
+ '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+  _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+  _gaq.push(['_setAccount', 'UA-52975110-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+  
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'cabaceo'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+<!-- Mathjax -->
+<script type="text/javascript"
+    src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>	        
+
+</body>
+</html>

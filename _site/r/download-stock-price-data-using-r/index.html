@@ -1,0 +1,377 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Download Stock Price Data Using R &#8211; Become Great at R</title>
+<meta name="description" content="Downloading and charting stock prices data become easy when using the tseries and PerformanceAnalytics R packages. 
+
+">
+<meta name="keywords" content="">
+
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Download Stock Price Data Using R">
+<meta name="twitter:description" content="Downloading and charting stock prices data become easy when using the tseries and PerformanceAnalytics R packages. 
+
+">
+<meta name="twitter:site" content="@gmlang">
+<meta name="twitter:creator" content="@gmlang">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://gmlang.com/images/site-logo.png">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Download Stock Price Data Using R">
+<meta property="og:description" content="Downloading and charting stock prices data become easy when using the tseries and PerformanceAnalytics R packages. 
+
+">
+<meta property="og:url" content="http://gmlang.com/r/download-stock-price-data-using-r/">
+<meta property="og:site_name" content="Become Great at R">
+
+
+
+
+
+<link rel="canonical" href="http://gmlang.com/r/download-stock-price-data-using-r/">
+<link href="http://gmlang.com/feed.xml" type="application/atom+xml" rel="alternate" title="Become Great at R Feed">
+<link rel="author" href="http://plus.google.com/+GuangmingLang?rel=author">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://gmlang.com/assets/css/main.css">
+<!-- Webfonts -->
+<script src="//use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+  <script src="http://gmlang.com/assets/js/vendor/html5shiv.min.js"></script>
+  <script src="http://gmlang.com/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="http://gmlang.com/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://gmlang.com/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://gmlang.com/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://gmlang.com/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://gmlang.com/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://gmlang.com/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://gmlang.com/images/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+
+<body id="post">
+
+<div class="navigation-wrapper">
+	<nav role="navigation" id="site-nav" class="animated drop">
+	    <ul>
+      
+		    
+		        
+		    
+		    <li><a href="http://gmlang.com/about/" >About</a></li>
+		  
+		    
+		        
+		    
+		    <li><a href="http://gmlang.com/da/" >Data Analysis</a></li>
+		  
+		    
+		        
+		    
+		    <li><a href="http://gmlang.com/r/" >R</a></li>
+		  
+		    
+		        
+		    
+		    <li><a href="http://gmlang.com/cartoon/" >Cartoon</a></li>
+		  
+        <li class="dosearch"><span><i class="fa fa-search"></i> Search</span></li>
+	    </ul>
+	</nav>
+</div><!-- /.navigation-wrapper -->
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+<div class="search-wrapper">
+  <div class="search-form">
+    <input type="text" class="search-field" placeholder="Search...">
+    <button class="close-btn"><i class="fa fa-times-circle fa-2x"></i></button>
+    <ul class="search-results post-list"></ul><!-- /.search-results -->
+  </div><!-- /.search-form -->
+</div><!-- ./search-wrapper -->
+
+<header class="masthead">
+	<div class="wrap">
+        
+    		<a href="http://gmlang.com" class="site-logo" rel="home" title="Become Great at R"><img src="http://gmlang.com/images/site-logo.png" width="200" height="200" alt="Become Great at R logo" class="animated fadeInUp"></a>
+        
+        <h1 class="site-title animated fadeIn"><a href="http://gmlang.com">Become Great at R</a></h1>
+		<h2 class="site-description animated fadeIn" itemprop="description"></h2>
+	</div>
+</header><!-- /.masthead -->
+
+<div class="js-menu-screen menu-screen"></div>
+
+<div id="main" role="main">
+  <article class="hentry">
+    
+    <div class="entry-wrapper">
+      <header class="entry-header">
+        <span class="entry-tags"></span>
+        
+          <h1 class="entry-title">Download Stock Price Data Using R</h1>
+        
+      </header>
+      <footer class="entry-meta">
+        
+        
+        
+          <img src="http://gmlang.com/images/gmlang1.jpg" class="bio-photo" alt="Guangming Lang bio photo"></a>
+        
+        <span class="author vcard">By <span class="fn">Guangming Lang</span></span>
+        <span class="entry-date date published"><time datetime="2014-10-16T13:48:49-04:00"><i class="fa fa-calendar-o"></i> October 16, 2014</time></span>
+        
+        <span class="entry-comments"><i class="fa fa-comment-o"></i> <a href="#disqus_thread">Comment</a></span>
+        <span class="social-share-twitter">
+  <a href="https://twitter.com/intent/tweet?hashtags=&amp;text=Download%20Stock%20Price%20Data%20Using%20R&amp;url=http://gmlang.com/r/download-stock-price-data-using-r/&amp;via=gmlang" title="Share on Twitter" itemprop="Twitter"><i class="fa fa-twitter-square"></i> Tweet</a>
+</span>
+<span class="social-share-facebook">
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http://gmlang.com/r/download-stock-price-data-using-r/" title="Share on Facebook" itemprop="Facebook"><i class="fa fa-facebook-square"></i> Like</a>
+</span>
+<span class="social-share-googleplus">
+  <a href="https://plus.google.com/share?url=http://gmlang.com/r/download-stock-price-data-using-r/" title="Share on Google Plus" itemprop="GooglePlus"><i class="fa fa-google-plus-square"></i> +1</a>
+</span>
+<!-- /.social-share -->
+        
+      </footer>
+      <div class="entry-content">
+        <p>Downloading and charting stock prices data become easy when using the <code>tseries</code> and <code>PerformanceAnalytics</code> R packages. </p>
+
+<h3 id="load-these-libraries">1. Load these libraries.</h3>
+
+<div class="highlight"><pre><code class="language-r" data-lang="r"><span class="kn">library</span><span class="p">(</span>PerformanceAnalytics<span class="p">)</span>
+<span class="kn">library</span><span class="p">(</span>zoo<span class="p">)</span>
+<span class="kn">library</span><span class="p">(</span>tseries<span class="p">)</span></code></pre></div>
+
+<h3 id="download-the-monthly-adjusted-closing-price-data-on-sp500-gspc-and-novagold-ng-between-jan-2004-and-sept-2014-from-yahoo-using-the-function-gethistquote-from-the-tseries-package">2. Download the monthly adjusted closing price data on S&amp;P500 (^GSPC) and NovaGold (NG) between Jan 2004 and Sept 2014 from Yahoo! using the function <code>get.hist.quote()</code> from the <code>tseries</code> package.</h3>
+
+<div class="highlight"><pre><code class="language-r" data-lang="r">sp500 <span class="o">=</span> get.hist.quote<span class="p">(</span>instrument<span class="o">=</span><span class="s">&quot;^GSPC&quot;</span><span class="p">,</span> start<span class="o">=</span><span class="s">&quot;2004-01-01&quot;</span><span class="p">,</span> 
+                       end<span class="o">=</span><span class="s">&quot;2014-09-30&quot;</span><span class="p">,</span> origin<span class="o">=</span><span class="s">&quot;1970-01-01&quot;</span><span class="p">,</span>
+                       quote<span class="o">=</span><span class="s">&quot;AdjClose&quot;</span><span class="p">,</span> provider<span class="o">=</span><span class="s">&quot;yahoo&quot;</span><span class="p">,</span> 
+                       compression<span class="o">=</span><span class="s">&quot;m&quot;</span><span class="p">,</span> retclass<span class="o">=</span><span class="s">&quot;zoo&quot;</span><span class="p">)</span></code></pre></div>
+
+<div class="highlight"><pre><code class="language-text" data-lang="text">## time series starts 2004-01-02
+## time series ends   2014-09-02</code></pre></div>
+
+<div class="highlight"><pre><code class="language-r" data-lang="r">ng <span class="o">=</span> get.hist.quote<span class="p">(</span>instrument<span class="o">=</span><span class="s">&quot;NG&quot;</span><span class="p">,</span> start<span class="o">=</span><span class="s">&quot;2004-01-01&quot;</span><span class="p">,</span> 
+                    end<span class="o">=</span><span class="s">&quot;2014-09-30&quot;</span><span class="p">,</span> origin<span class="o">=</span><span class="s">&quot;1970-01-01&quot;</span><span class="p">,</span>
+                    quote<span class="o">=</span><span class="s">&quot;AdjClose&quot;</span><span class="p">,</span> provider<span class="o">=</span><span class="s">&quot;yahoo&quot;</span><span class="p">,</span> 
+                    compression<span class="o">=</span><span class="s">&quot;m&quot;</span><span class="p">,</span> retclass<span class="o">=</span><span class="s">&quot;zoo&quot;</span><span class="p">)</span></code></pre></div>
+
+<div class="highlight"><pre><code class="language-text" data-lang="text">## time series starts 2004-01-02
+## time series ends   2014-09-02</code></pre></div>
+
+<h3 id="change-the-class-of-the-time-index-to-yearmon-which-is-appropriate-for-monthly-data-using-asyearmon-in-the-zoo-package">3. Change the class of the time index to yearmon which is appropriate for monthly data using <code>as.yearmon()</code> in the <code>zoo</code> package.</h3>
+
+<div class="highlight"><pre><code class="language-r" data-lang="r">index<span class="p">(</span>sp500<span class="p">)</span> <span class="o">=</span> as.yearmon<span class="p">(</span>index<span class="p">(</span>sp500<span class="p">))</span>
+index<span class="p">(</span>ng<span class="p">)</span> <span class="o">=</span> as.yearmon<span class="p">(</span>index<span class="p">(</span>ng<span class="p">))</span>
+
+<span class="c1"># inspect the price data</span>
+<span class="kp">cat</span><span class="p">(</span><span class="s">&quot;Start: &quot;</span><span class="p">,</span> <span class="kp">as.character</span><span class="p">(</span>start<span class="p">(</span>sp500<span class="p">)),</span> <span class="s">&quot;  End: &quot;</span><span class="p">,</span> <span class="kp">as.character</span><span class="p">(</span>end<span class="p">(</span>sp500<span class="p">)))</span></code></pre></div>
+
+<div class="highlight"><pre><code class="language-text" data-lang="text">## Start:  Jan 2004   End:  Sep 2014</code></pre></div>
+
+<div class="highlight"><pre><code class="language-r" data-lang="r"><span class="kp">cat</span><span class="p">(</span><span class="s">&quot;Start: &quot;</span><span class="p">,</span> <span class="kp">as.character</span><span class="p">(</span>start<span class="p">(</span>ng<span class="p">)),</span> <span class="s">&quot;  End: &quot;</span><span class="p">,</span> <span class="kp">as.character</span><span class="p">(</span>end<span class="p">(</span>ng<span class="p">)))</span></code></pre></div>
+
+<div class="highlight"><pre><code class="language-text" data-lang="text">## Start:  Jan 2004   End:  Sep 2014</code></pre></div>
+
+<h3 id="put-both-sp500-and-ng-price-data-in-one-data-frame-to-make-it-easier-for-analysis">4. Put both SP500 and NG price data in one data frame to make it easier for analysis.</h3>
+
+<div class="highlight"><pre><code class="language-r" data-lang="r">prices <span class="o">=</span> <span class="kp">merge</span><span class="p">(</span>sp500<span class="p">,</span> ng<span class="p">)</span>
+<span class="kp">colnames</span><span class="p">(</span>prices<span class="p">)</span> <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="s">&quot;SP500&quot;</span><span class="p">,</span> <span class="s">&quot;NG&quot;</span><span class="p">)</span></code></pre></div>
+
+<h3 id="calculate-continuously-compounded-returns-as-difference-in-log-prices">5. Calculate continuously compounded returns as difference in log prices.</h3>
+
+<div class="highlight"><pre><code class="language-r" data-lang="r">ret.cc <span class="o">=</span> <span class="kp">diff</span><span class="p">(</span><span class="kp">log</span><span class="p">(</span>prices<span class="p">))</span>
+
+<span class="c1"># inspect the return data</span>
+<span class="kp">cat</span><span class="p">(</span><span class="s">&quot;Start: &quot;</span><span class="p">,</span> <span class="kp">as.character</span><span class="p">(</span>start<span class="p">(</span>ret.cc<span class="p">)),</span> <span class="s">&quot;  End: &quot;</span><span class="p">,</span> <span class="kp">as.character</span><span class="p">(</span>end<span class="p">(</span>ret.cc<span class="p">)))</span></code></pre></div>
+
+<div class="highlight"><pre><code class="language-text" data-lang="text">## Start:  Feb 2004   End:  Sep 2014</code></pre></div>
+
+<div class="highlight"><pre><code class="language-r" data-lang="r"><span class="kp">head</span><span class="p">(</span>ret.cc<span class="p">,</span> <span class="m">3</span><span class="p">)</span></code></pre></div>
+
+<div class="highlight"><pre><code class="language-text" data-lang="text">##                SP500          NG
+## Feb 2004  0.01213510 -0.03889948
+## Mar 2004 -0.01649422  0.04689952
+## Apr 2004 -0.01693339 -0.27842887</code></pre></div>
+
+<h3 id="plot-returns-using-charttimeseries-and-chartbar-in-the-performanceanalytics-package">6. Plot returns using <code>chart.TimeSeries()</code> and <code>chart.Bar()</code> in the <code>PerformanceAnalytics</code> package.</h3>
+
+<div class="highlight"><pre><code class="language-r" data-lang="r">chart.TimeSeries<span class="p">(</span>ret.cc<span class="p">,</span> legend.loc<span class="o">=</span><span class="s">&quot;bottomright&quot;</span><span class="p">,</span> main<span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">,</span> 
+                 ylab<span class="o">=</span><span class="s">&quot;monthly cc return&quot;</span><span class="p">)</span></code></pre></div>
+
+<p><img src="/../figs/2014-10-16-download-stock-price-data-using-r/unnamed-chunk-6-1.png" alt="center" /> </p>
+
+<div class="highlight"><pre><code class="language-r" data-lang="r">chart.Bar<span class="p">(</span>ret.cc<span class="p">,</span> legend.loc<span class="o">=</span><span class="s">&quot;bottomright&quot;</span><span class="p">,</span> main<span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">,</span> 
+          ylab<span class="o">=</span><span class="s">&quot;monthly cc return&quot;</span><span class="p">)</span></code></pre></div>
+
+<p><img src="/../figs/2014-10-16-download-stock-price-data-using-r/unnamed-chunk-6-2.png" alt="center" /> </p>
+
+<h3 id="plot-cumulative-returns-using-chartcumreturns-in-the-performanceanalytics-package">7. Plot cumulative returns using <code>chart.CumReturns()</code> in the <code>PerformanceAnalytics</code> package.</h3>
+<p>Note we need to use simple returns instead of continuously compounded returns for this, so we first calcualte the simple returns using <code>diff()</code> and <code>lag()</code> on the price data.</p>
+
+<div class="highlight"><pre><code class="language-r" data-lang="r">ret.simple <span class="o">=</span> <span class="kp">diff</span><span class="p">(</span>prices<span class="p">)</span> <span class="o">/</span> lag<span class="p">(</span>prices<span class="p">,</span> k<span class="o">=</span><span class="m">-1</span><span class="p">)</span>
+chart.CumReturns<span class="p">(</span>ret.simple<span class="p">,</span> legend.loc<span class="o">=</span><span class="s">&quot;topleft&quot;</span><span class="p">,</span> wealth.index<span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span> 
+                 ylab<span class="o">=</span><span class="s">&quot;$&quot;</span><span class="p">,</span> main<span class="o">=</span><span class="s">&quot;Future Value of $1 invested&quot;</span><span class="p">)</span></code></pre></div>
+
+<p><img src="/../figs/2014-10-16-download-stock-price-data-using-r/unnamed-chunk-7-1.png" alt="center" /> </p>
+
+
+        <div id="disqus_thread"></div><!-- /#disqus_thread -->
+      </div><!-- /.entry-content -->
+    </div><!-- /.entry-wrapper -->
+    <nav class="pagination" role="navigation">
+      
+        <a href="http://gmlang.com/r/replacement-functions-in-r/" class="btn" title="Replacement Functions in R">Previous</a>
+      
+      
+        <a href="http://gmlang.com/r/analyze-stock-price-data-using-r-part1/" class="btn" title="Analyze Stock Price Data Using R, Part1">Next</a>
+      
+    </nav><!-- /.pagination -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo" class="entry-wrapper">
+    
+
+<span>&copy; 2014 Guangming Lang. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://mademistakes.com/so-simple/" rel="nofollow">So Simple Theme</a>.</span>
+<div class="social-icons">
+	<a href="http://twitter.com/gmlang" title="Guangming Lang on Twitter" target="_blank"><i class="fa fa-twitter-square fa-2x"></i></a>
+	
+	<a href="http://plus.google.com/+GuangmingLang" title="Guangming Lang on Google+" target="_blank"><i class="fa fa-google-plus-square fa-2x"></i></a>
+	<a href="http://linkedin.com/in/gmlang" title="Guangming Lang on LinkedIn" target="_blank"><i class="fa fa-linkedin-square fa-2x"></i></a>
+	
+	
+	
+	<a href="http://github.com/gmlang" title="Guangming Lang on Github" target="_blank"><i class="fa fa-github-square fa-2x"></i></a>
+	
+  <a href="http://gmlang.com/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss-square fa-2x"></i></a>
+</div><!-- /.social-icons -->
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://gmlang.com/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://gmlang.com/assets/js/scripts.min.js"></script>
+
+<!-- Jekyll Simple Search option -->
+<script>
+  $(document).ready(function() {
+      $('.search-field').jekyllSearch({
+          jsonFile: 'http://gmlang.com/search.json',
+          searchResults: '.search-results',
+          template: '<li><article><a href="{url}">{title} <span class="entry-date"><time datetime="{date}">{shortdate}</time></span></a></article></li>',
+          fuzzy: true,
+          noResults: '<p>Nothing found.</p>'
+        });
+  });
+
+  (function( $, window, undefined ) {
+    
+     var bs = {
+          close: $(".close-btn"),
+          searchform: $(".search-form"),
+          canvas: $(".js-menu-screen"),
+          dothis: $('.dosearch')
+      };
+    
+    bs.dothis.on('click', function() {
+      $('.search-wrapper').css({ display: "block" });
+      $('body').toggleClass('no-scroll');
+      bs.searchform.toggleClass('active');
+      bs.searchform.find('input').focus();
+      bs.canvas.toggleClass('is-visible');
+    });
+    
+      bs.close.on('click', function() {
+        $('.search-wrapper').removeAttr( 'style' );
+        $('body').toggleClass('no-scroll');
+        bs.searchform.toggleClass('active');
+        bs.canvas.removeClass('is-visible');
+    });
+  })( jQuery, window );
+</script>
+
+
+<!-- Asynchronous Google Analytics snippet -->
+<script>
+  var _gaq = _gaq || [];
+  var pluginUrl = 
+ '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+  _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+  _gaq.push(['_setAccount', 'UA-52975110-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+  
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'cabaceo'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+<!-- Mathjax -->
+<script type="text/javascript"
+    src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>	        
+
+</body>
+</html>

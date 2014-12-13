@@ -1,0 +1,312 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Become Great at R</title>
+<meta name="description" content="An archive of R tips sorted by date.">
+
+
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Become Great at R">
+<meta name="twitter:description" content="An archive of R tips sorted by date.">
+<meta name="twitter:site" content="@gmlang">
+<meta name="twitter:creator" content="@gmlang">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://gmlang.com/images/site-logo.png">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Become Great at R">
+<meta property="og:description" content="An archive of R tips sorted by date.">
+<meta property="og:url" content="http://gmlang.com/r/">
+<meta property="og:site_name" content="Become Great at R">
+
+
+
+
+
+<link rel="canonical" href="http://gmlang.com/r/">
+<link href="http://gmlang.com/feed.xml" type="application/atom+xml" rel="alternate" title="Become Great at R Feed">
+<link rel="author" href="http://plus.google.com/+GuangmingLang?rel=author">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://gmlang.com/assets/css/main.css">
+<!-- Webfonts -->
+<script src="//use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+  <script src="http://gmlang.com/assets/js/vendor/html5shiv.min.js"></script>
+  <script src="http://gmlang.com/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="http://gmlang.com/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://gmlang.com/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://gmlang.com/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://gmlang.com/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://gmlang.com/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://gmlang.com/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://gmlang.com/images/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+
+<body id="page">
+
+<div class="navigation-wrapper">
+	<nav role="navigation" id="site-nav" class="animated drop">
+	    <ul>
+      
+		    
+		        
+		    
+		    <li><a href="http://gmlang.com/about/" >About</a></li>
+		  
+		    
+		        
+		    
+		    <li><a href="http://gmlang.com/da/" >Data Analysis</a></li>
+		  
+		    
+		        
+		    
+		    <li><a href="http://gmlang.com/r/" >R</a></li>
+		  
+		    
+		        
+		    
+		    <li><a href="http://gmlang.com/cartoon/" >Cartoon</a></li>
+		  
+        <li class="dosearch"><span><i class="fa fa-search"></i> Search</span></li>
+	    </ul>
+	</nav>
+</div><!-- /.navigation-wrapper -->
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+<div class="search-wrapper">
+  <div class="search-form">
+    <input type="text" class="search-field" placeholder="Search...">
+    <button class="close-btn"><i class="fa fa-times-circle fa-2x"></i></button>
+    <ul class="search-results post-list"></ul><!-- /.search-results -->
+  </div><!-- /.search-form -->
+</div><!-- ./search-wrapper -->
+
+<header class="masthead">
+	<div class="wrap">
+        
+    		<a href="http://gmlang.com" class="site-logo" rel="home" title="Become Great at R"><img src="http://gmlang.com/images/site-logo.png" width="200" height="200" alt="Become Great at R logo" class="animated fadeInUp"></a>
+        
+        <h1 class="site-title animated fadeIn"><a href="http://gmlang.com">Become Great at R</a></h1>
+		<h2 class="site-description animated fadeIn" itemprop="description"></h2>
+	</div>
+</header><!-- /.masthead -->
+
+<div class="js-menu-screen menu-screen"></div>
+
+<div id="main" role="main">
+  <article class="entry">
+    
+    <div class="entry-wrapper">
+      <header class="entry-header">
+        <h1 class="entry-title"></h1>
+      </header>
+      <div class="entry-content">
+        <ul class="post-list">
+ 
+  <li><article><a href="http://gmlang.com/r/the-switch-operator-in-r/">The Switch Operator in R <span class="entry-date"><time datetime="2014-11-21T10:48:49-05:00">November 21, 2014</time></span></a></article></li>
+ 
+  <li><article><a href="http://gmlang.com/r/calculate-tangency-portfolios-using-r/">Calculate Tangency Portfolios Using R <span class="entry-date"><time datetime="2014-11-20T13:48:49-05:00">November 20, 2014</time></span></a></article></li>
+ 
+  <li><article><a href="http://gmlang.com/r/calculate-efficient-portfolios-using-r/">Calculate Efficient Portfolios Using R <span class="entry-date"><time datetime="2014-11-19T13:48:49-05:00">November 19, 2014</time></span></a></article></li>
+ 
+  <li><article><a href="http://gmlang.com/r/calculate-global-minimum-variance-portfolio-using-r/">Calculate Global Minimum Variance Portfolio Using R <span class="entry-date"><time datetime="2014-11-06T13:48:49-05:00">November 06, 2014</time></span></a></article></li>
+ 
+  <li><article><a href="http://gmlang.com/r/analyze-stock-price-data-using-r-part3/">Analyze Stock Price Data Using R, Part3 <span class="entry-date"><time datetime="2014-10-30T21:18:49-04:00">October 30, 2014</time></span></a></article></li>
+ 
+  <li><article><a href="http://gmlang.com/r/an-example-of-the-bootstrap-method/">An Example of the Bootstrap Method <span class="entry-date"><time datetime="2014-10-29T19:28:49-04:00">October 29, 2014</time></span></a></article></li>
+ 
+  <li><article><a href="http://gmlang.com/r/handy-r-functions-for-summary-statistics/">Handy R Functions for Summary Statistics <span class="entry-date"><time datetime="2014-10-22T13:38:49-04:00">October 22, 2014</time></span></a></article></li>
+ 
+  <li><article><a href="http://gmlang.com/r/analyze-stock-price-data-using-r-part2/">Analyze Stock Price Data Using R, Part2 <span class="entry-date"><time datetime="2014-10-19T12:48:49-04:00">October 19, 2014</time></span></a></article></li>
+ 
+  <li><article><a href="http://gmlang.com/r/analyze-stock-price-data-using-r-part1/">Analyze Stock Price Data Using R, Part1 <span class="entry-date"><time datetime="2014-10-17T13:48:49-04:00">October 17, 2014</time></span></a></article></li>
+ 
+  <li><article><a href="http://gmlang.com/r/download-stock-price-data-using-r/">Download Stock Price Data Using R <span class="entry-date"><time datetime="2014-10-16T13:48:49-04:00">October 16, 2014</time></span></a></article></li>
+ 
+  <li><article><a href="http://gmlang.com/r/replacement-functions-in-r/">Replacement Functions in R <span class="entry-date"><time datetime="2014-10-15T15:12:49-04:00">October 15, 2014</time></span></a></article></li>
+ 
+  <li><article><a href="http://gmlang.com/r/sknewness-and-kurtosis-examples/">How to Calculate Sknewness and Kurtosis in R <span class="entry-date"><time datetime="2014-10-14T11:51:49-04:00">October 14, 2014</time></span></a></article></li>
+ 
+  <li><article><a href="http://gmlang.com/r/which-r-base-generic-has-the-most-number-of-methods/">Which R Base Generic Has the Most Number of Methods <span class="entry-date"><time datetime="2014-10-12T10:11:49-04:00">October 12, 2014</time></span></a></article></li>
+ 
+  <li><article><a href="http://gmlang.com/r/how-to-view-source-code-in-r/">How to View Source Code in R <span class="entry-date"><time datetime="2014-10-09T12:29:49-04:00">October 09, 2014</time></span></a></article></li>
+ 
+  <li><article><a href="http://gmlang.com/r/functions-that-return-functions-part-2/">Functions That Return Functions Part 2 <span class="entry-date"><time datetime="2014-10-07T18:10:37-04:00">October 07, 2014</time></span></a></article></li>
+ 
+  <li><article><a href="http://gmlang.com/r/the-magic-of-substitute-and-deparse/">The Magic of Substitute and Deparse <span class="entry-date"><time datetime="2014-10-05T12:04:44-04:00">October 05, 2014</time></span></a></article></li>
+ 
+  <li><article><a href="http://gmlang.com/r/the-setwd-function-in-r/">The setwd Function in R <span class="entry-date"><time datetime="2014-10-03T17:40:12-04:00">October 03, 2014</time></span></a></article></li>
+ 
+  <li><article><a href="http://gmlang.com/r/how-to-quickly-subset-list-elements-in-r/">How to Quickly Subset List Elements in R <span class="entry-date"><time datetime="2014-10-02T11:56:00-04:00">October 02, 2014</time></span></a></article></li>
+ 
+  <li><article><a href="http://gmlang.com/r/how-to-read-excel-files-into-r/">How to Read Excel Files into R <span class="entry-date"><time datetime="2014-09-25T18:01:32-04:00">September 25, 2014</time></span></a></article></li>
+ 
+  <li><article><a href="http://gmlang.com/r/on-r-code-style/">On R Code Style <span class="entry-date"><time datetime="2014-09-24T11:17:36-04:00">September 24, 2014</time></span></a></article></li>
+ 
+  <li><article><a href="http://gmlang.com/r/how-to-unsort-in-r/">How to Unsort in R <span class="entry-date"><time datetime="2014-09-21T16:02:33-04:00">September 21, 2014</time></span></a></article></li>
+ 
+  <li><article><a href="http://gmlang.com/r/how-to-correctly-load-a-r-package/">How to Correctly Load a R Package <span class="entry-date"><time datetime="2014-09-10T10:37:44-04:00">September 10, 2014</time></span></a></article></li>
+ 
+  <li><article><a href="http://gmlang.com/r/how-to-make-faceted-ordered-bar-charts-in-r/">How to Make Faceted Ordered Bar Charts in R <span class="entry-date"><time datetime="2014-09-09T12:59:59-04:00">September 09, 2014</time></span></a></article></li>
+ 
+  <li><article><a href="http://gmlang.com/r/how-to-write-infix-functions-in-r/">How to Write Infix Functions in R <span class="entry-date"><time datetime="2014-09-05T15:18:35-04:00">September 05, 2014</time></span></a></article></li>
+ 
+  <li><article><a href="http://gmlang.com/r/how-to-work-with-factors-in-r/">How to Work with Factors in R <span class="entry-date"><time datetime="2014-09-03T15:18:44-04:00">September 03, 2014</time></span></a></article></li>
+ 
+  <li><article><a href="http://gmlang.com/r/how-to-convert-millisecond-to-date-in-r/">How to Convert Millisecond to Date in R <span class="entry-date"><time datetime="2014-09-02T11:03:39-04:00">September 02, 2014</time></span></a></article></li>
+ 
+  <li><article><a href="http://gmlang.com/r/how-to-find-consecutive-repeats-in-r/">How to Find Consecutive Repeats in R <span class="entry-date"><time datetime="2014-08-31T12:49:59-04:00">August 31, 2014</time></span></a></article></li>
+ 
+  <li><article><a href="http://gmlang.com/r/the-stringr-package/">The stringr Package <span class="entry-date"><time datetime="2014-08-29T12:42:38-04:00">August 29, 2014</time></span></a></article></li>
+ 
+  <li><article><a href="http://gmlang.com/r/how-to-cache-a-matrix-inversion-in-r/">How to Cache a Matrix Inversion in R <span class="entry-date"><time datetime="2014-08-28T12:15:04-04:00">August 28, 2014</time></span></a></article></li>
+ 
+  <li><article><a href="http://gmlang.com/r/how-to-work-with-files-in-r-and-improve-reproducibility/">How to Work with Files in R and Improve Reproducibility <span class="entry-date"><time datetime="2014-08-27T13:09:29-04:00">August 27, 2014</time></span></a></article></li>
+ 
+  <li><article><a href="http://gmlang.com/r/how-to-handle-large-datasets-in-r-part-2/">How to Handle Large Datasets in R - Part 2 <span class="entry-date"><time datetime="2014-08-26T15:40:03-04:00">August 26, 2014</time></span></a></article></li>
+ 
+  <li><article><a href="http://gmlang.com/r/functions-that-return-functions/">Functions that Return Functions <span class="entry-date"><time datetime="2014-08-24T10:58:50-04:00">August 24, 2014</time></span></a></article></li>
+ 
+  <li><article><a href="http://gmlang.com/r/how-to-easily-sort-a-data-frame/">How to Easily Sort A Data Frame <span class="entry-date"><time datetime="2014-08-22T13:22:23-04:00">August 22, 2014</time></span></a></article></li>
+ 
+  <li><article><a href="http://gmlang.com/r/how-to-convert-strings-to-dates-in-r/">How to Convert Strings to Dates in R <span class="entry-date"><time datetime="2014-08-21T11:32:09-04:00">August 21, 2014</time></span></a></article></li>
+ 
+  <li><article><a href="http://gmlang.com/r/how-to-handle-large-datasets-in-r-part-1/">How to Handle Large Datasets in R - Part 1 <span class="entry-date"><time datetime="2014-08-20T12:10:56-04:00">August 20, 2014</time></span></a></article></li>
+ 
+  <li><article><a href="http://gmlang.com/r/how-to-use-the-paste-and-outer-functions-in-r/">How to Use the Paste and Outer Functions in R <span class="entry-date"><time datetime="2014-08-19T14:14:47-04:00">August 19, 2014</time></span></a></article></li>
+ 
+  <li><article><a href="http://gmlang.com/r/how-to-plot-pretty-histograms-using-r-base-graphing-system/">How to Plot Pretty Histograms using R Base Graphing System <span class="entry-date"><time datetime="2014-08-17T13:23:10-04:00">August 17, 2014</time></span></a></article></li>
+ 
+  <li><article><a href="http://gmlang.com/r/how-to-install-quantstrat/">How to Install Quantstrat <span class="entry-date"><time datetime="2014-08-15T10:52:08-04:00">August 15, 2014</time></span></a></article></li>
+ 
+  <li><article><a href="http://gmlang.com/r/exponential-growth-of-the-us-real-gdp-from-1790-to-2012/">Exponential Growth of the US Real GDP from 1790 to 2012 <span class="entry-date"><time datetime="2014-08-13T11:21:53-04:00">August 13, 2014</time></span></a></article></li>
+
+</ul>
+
+      </div><!-- /.entry-content -->
+    </div><!-- /.entry-wrapper -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo" class="entry-wrapper">
+    
+
+<span>&copy; 2014 Guangming Lang. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://mademistakes.com/so-simple/" rel="nofollow">So Simple Theme</a>.</span>
+<div class="social-icons">
+	<a href="http://twitter.com/gmlang" title="Guangming Lang on Twitter" target="_blank"><i class="fa fa-twitter-square fa-2x"></i></a>
+	
+	<a href="http://plus.google.com/+GuangmingLang" title="Guangming Lang on Google+" target="_blank"><i class="fa fa-google-plus-square fa-2x"></i></a>
+	<a href="http://linkedin.com/in/gmlang" title="Guangming Lang on LinkedIn" target="_blank"><i class="fa fa-linkedin-square fa-2x"></i></a>
+	
+	
+	
+	<a href="http://github.com/gmlang" title="Guangming Lang on Github" target="_blank"><i class="fa fa-github-square fa-2x"></i></a>
+	
+  <a href="http://gmlang.com/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss-square fa-2x"></i></a>
+</div><!-- /.social-icons -->
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://gmlang.com/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://gmlang.com/assets/js/scripts.min.js"></script>
+
+<!-- Jekyll Simple Search option -->
+<script>
+  $(document).ready(function() {
+      $('.search-field').jekyllSearch({
+          jsonFile: 'http://gmlang.com/search.json',
+          searchResults: '.search-results',
+          template: '<li><article><a href="{url}">{title} <span class="entry-date"><time datetime="{date}">{shortdate}</time></span></a></article></li>',
+          fuzzy: true,
+          noResults: '<p>Nothing found.</p>'
+        });
+  });
+
+  (function( $, window, undefined ) {
+    
+     var bs = {
+          close: $(".close-btn"),
+          searchform: $(".search-form"),
+          canvas: $(".js-menu-screen"),
+          dothis: $('.dosearch')
+      };
+    
+    bs.dothis.on('click', function() {
+      $('.search-wrapper').css({ display: "block" });
+      $('body').toggleClass('no-scroll');
+      bs.searchform.toggleClass('active');
+      bs.searchform.find('input').focus();
+      bs.canvas.toggleClass('is-visible');
+    });
+    
+      bs.close.on('click', function() {
+        $('.search-wrapper').removeAttr( 'style' );
+        $('body').toggleClass('no-scroll');
+        bs.searchform.toggleClass('active');
+        bs.canvas.removeClass('is-visible');
+    });
+  })( jQuery, window );
+</script>
+
+
+<!-- Asynchronous Google Analytics snippet -->
+<script>
+  var _gaq = _gaq || [];
+  var pluginUrl = 
+ '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+  _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+  _gaq.push(['_setAccount', 'UA-52975110-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+
+<!-- Mathjax -->
+<script type="text/javascript"
+    src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>          
+
+</body>
+</html>

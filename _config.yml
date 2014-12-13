@@ -1,0 +1,53 @@
+# Site wide configuration
+
+title: Become Great at R
+locale: en_US
+description: 
+logo: site-logo.png
+search: true
+url: http://gmlang.com
+
+
+# Jekyll configuration
+
+permalink:   /:categories/:title/
+markdown:    kramdown
+highlighter: pygments
+sass:
+  sass_dir: _sass
+  style: compressed
+gems:
+  - jekyll-sitemap
+
+kramdown:
+  auto_ids: true
+  footnote_nr: 1
+  entity_output: as_char
+  toc_levels: 1..2
+  use_coderay: false
+
+include: [".htaccess"]
+exclude: ["lib", "config.rb", "Capfile", "config", "log", "Rakefile", "Rakefile.rb", "tmp", "less", "*.sublime-project", "*.sublime-workspace", "test", "spec", "Gruntfile.js", "package.json", "node_modules", "Gemfile", "Gemfile.lock", "LICENSE", "README.md", "vendor"]
+
+
+# Site owner
+owner:
+  name: Guangming Lang
+  avatar: gmlang1.jpg
+  email: gmlang@cabaceo.com
+  disqus-shortname: cabaceo
+  twitter: gmlang
+  facebook: #username
+  github: gmlang
+  stackexchange: #http://stackoverflow.com/users/123456/username
+  linkedin: gmlang
+  instagram: #username
+  flickr: #username
+  tumblr: #username
+  google:
+    plus: GuangmingLang
+    analytics: UA-52975110-1
+    verify:
+    ad-client:
+    ad-slot: 
+  bing-verify:

@@ -1,0 +1,39 @@
+---
+layout: post
+title: "Replacement Functions in R"
+date: 2014-10-15 15:12:49 -0400
+comments: true
+categories: R
+keywords: "R, replacement functions"
+published: true
+share: true
+
+---
+
+Replacement functions have names in the form of `xxx<-` and they modify their arguments in place. Here's an example:
+
+```{r, message=FALSE, warning=FALSE}
+`replace_1st<-` = function(x, value) {
+  x[1] = value
+  x
+}
+
+x = rep(2, 5)
+replace_1st(x) = 0L
+print(x)
+```
+
+The following code finds all replacement functions that are also primitive functions in the R base package.
+
+```{r, message=FALSE, warning=FALSE}
+# get a list of functions in the base package
+objs = mget(ls("package:base"), inherits = TRUE)
+funs = Filter(is.function, objs)
+
+# get a list of replacement functions in the base package
+replacement.funs = funs[grep("[a-zA-Z]+<-$", names(funs))]
+str(replacement.funs)     
+
+# which ones are primitive functions
+names(replacement.funs)[sapply(replacement.funs, is.primitive)]
+```
