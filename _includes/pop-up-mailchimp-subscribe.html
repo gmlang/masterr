@@ -1,4 +1,4 @@
-<html>
+gml<html>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script type="text/javascript" src="{{ site.url }}/assets/js/jquery.leanModal.min.js"></script>
 <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" />
@@ -10,64 +10,149 @@
 	text-align: center
 }
 #optin input {
-		background: #fff;
-		border: 1px solid #ccc;
-		font-size: 15px;
-		margin-bottom: 10px;
-		padding: 8px 10px;
-		border-radius: 3px;
-		-moz-border-radius: 3px;
-		-webkit-border-radius: 3px;
-		box-shadow: 0 2px 2px #ddd;
-		-moz-box-shadow: 0 2px 2px #ddd;
-		-webkit-box-shadow: 0 2px 2px #ddd
+	background: #fff;
+	border: 1px solid #ccc;
+	font-size: 15px;
+	margin-bottom: 10px;
+	padding: 8px 10px;
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	box-shadow: 0 2px 2px #ddd;
+	-moz-box-shadow: 0 2px 2px #ddd;
+	-webkit-box-shadow: 0 2px 2px #ddd
 }
-#optin input.name { background: #fff url({{ site.url }}/images/name.png) no-repeat 10px center; padding-left: 35px }
-#optin input.email { background: #fff url({{ site.url }}/images/email.png) no-repeat 10px center; padding-left: 35px }
+#optin input.name {
+background: #fff url( { {
+site.url
+}
+}
+/images/name.png) no-repeat 10px center;
+padding-left: 35px
+}
+#optin input.email {
+background: #fff url( { {
+site.url
+}
+}
+/images/email.png) no-repeat 10px center;
+padding-left: 35px
+}
 #optin input[type="submit"] {
-		background: #217b30 url({{ site.url }}/images/green.png) repeat-x top;
-		border: 1px solid #137725;
-		color: #fff;
-		cursor: pointer;
-		font-size: 18px;
-		font-weight: bold;
-		padding: 8px 0;
-		text-shadow: -1px -1px #1c5d28;
-		width: 100%
+ background: #217b30 url( { {
+site.url
 }
-#optin input[type="submit"]:hover { color: #c6ffd1 }
+}
+/images/green.png) repeat-x top;
+ border: 1px solid #137725;
+ color: #fff;
+ cursor: pointer;
+ font-size: 18px;
+ font-weight: bold;
+ padding: 8px 0;
+ text-shadow: -1px -1px #1c5d28;
+ width: 100%
+}
+#optin input[type="submit"]:hover {
+	color: #c6ffd1
+}
 @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,700italic,400italic);
 #lean_overlay {
-    position: fixed;
-    z-index:100;
-    top: 0px;
-    left: 0px;
-    height:100%;
-    width:100%;
-    background: #000;
-    display: none;
+	position: fixed;
+	z-index: 100;
+	top: 0px;
+	left: 0px;
+	height: 100%;
+	width: 100%;
+	background: #000;
+	display: none;
 }
-
-.popupContainer{
-	position:absolute;
-	width:388px;
+.popupContainer {
+	position: absolute;
+	width: 388px;
 	height: auto;
-	left:45%;
-	top:80px;
+	left: 45%;
+	top: 80px;
 	background: #FFF;
 }
-
-#modal_trigger {margin-left:184px; height: 100px; display:block;}
-#modal_trigger img{height: 135px;}
-
-.popupHeader {font-size:16px; text-transform: uppercase;}
-.popupHeader {background:#F4F4F2; position:relative; padding:10px 20px; border-bottom:1px solid #DDD; font-weight:bold;}
-.popupHeader .modal_close {position: absolute; right: 0; top:0; padding:10px 15px; background:#E4E4E2; cursor: pointer; color:#aaa; font-size:16px;}
-
-.popupBody {padding:20px;}
-			
+#modal_trigger img {
+	height: 135px;
+}
+.popupHeader {
+	font-size: 16px;
+	text-transform: uppercase;
+}
+.popupHeader {
+	background: #F4F4F2;
+	position: relative;
+	padding: 10px 20px;
+	border-bottom: 1px solid #DDD;
+	font-weight: bold;
+}
+.popupHeader .modal_close {
+	position: absolute;
+	right: 0;
+	top: 0;
+	padding: 10px 15px;
+	background: #E4E4E2;
+	cursor: pointer;
+	color: #aaa;
+	font-size: 16px;
+}
+.popupBody {
+	padding: 20px;
+}
+#modal_trigger {
+	max-width:300px;
+	margin:0 auto;
+	display:block;
+}
+#modal_trigger img{
+	width:100%;
+	height: auto !important;
+}
+@media all and (max-width:480px){
+.popupContainer{
+	width:95% !important;
+	left:0 !important;
+	right:0 !important;
+	margin:0 auto !important;
+	top:10px !important;
+}
+}
 </style>
 <body>
+<div id="feature_box">
+  <div class="format_text">
+    <h3>Hello?</h3>
+    <p>Here're how:</p>
+    <ul>
+      <li>one</li>
+      <li>two</li>
+      <li>three</li>
+    </ul>
+    <p>Just enter your name and email below and click "Subscribe"</p>
+  </div>
+  <a id="modal_trigger" href="#modal"><img src="{{ site.url }}/images/subscribe-img.jpg"></a> </div>
+<div id="modal" class="popupContainer" style="display:none;">
+  <header class="popupHeader"> <span class="header_title">Email Updates</span> <span class="modal_close"><i class="fa fa-times"></i></span> </header>
+  <section class="popupBody"> 
+    <!-- Begin MailChimp Signup Form -->
+    <div id="optin">
+      <h3 style="color:black;">Get Free Email Updates</h3>
+      <form action="http://gmlang.us9.list-manage.com/subscribe/post?u=66768baba1811dbdb4e186167&amp;id=0288c18c07" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
+        <input type="email" size="30" value="Enter your email" name="EMAIL" class="required email" id="mce-EMAIL" onFocus="if(this.value==this.defaultValue)this.value='';" onBlur="if(this.value=='')this.value=this.defaultValue;">
+        <input type="text" size="30" value="Enter your name" name="FIRST_NAME" class="required name" id="mce-FIRST_NAME" onFocus="if(this.value==this.defaultValue)this.value='';" onBlur="if(this.value=='')this.value=this.defaultValue;">
+        <input type="reset" id="chimp-reset-side" style="display:none"/>
+        <div id="mce-responses" class="clear">
+          <div class="response" id="mce-error-response" style="display:none"></div>
+          <div class="response" id="mce-success-response" style="display:none"></div>
+        </div>
+        <div class="clear">
+          <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button side-clear">
+        </div>
+      </form>
+=======
     <div id="feature_box">
 	            
 				<div class="format_text">
@@ -82,35 +167,11 @@
 					<p>Just enter your name and email below and click "Subscribe Me!" It's completely FREE and I'll never spam you.</p>
                 </div>
 	           <a id="modal_trigger" href="#modal"><img src="{{ site.url }}/images/subscribe-img.jpg"></a>
+>>>>>>> c08f7d1c0d6311bc7b30b655df66ea430e1c05bb
     </div>
-	<div id="modal" class="popupContainer" style="display:none;">
-		<header class="popupHeader">
-			<span class="header_title">Email Updates</span>
-			<span class="modal_close"><i class="fa fa-times"></i></span>
-		</header>
-		
-		<section class="popupBody">
-			<!-- Begin MailChimp Signup Form -->
-			<div id="optin">
-			<h3 style="color:black;">Get Free Email Updates</h3>
-			<form action="http://gmlang.us9.list-manage.com/subscribe/post?u=66768baba1811dbdb4e186167&amp;id=0288c18c07" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
-
-			<input type="email" size="30" value="Enter your email" name="EMAIL" class="required email" id="mce-EMAIL" onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;">
-			<input type="text" size="30" value="Enter your name" name="FIRST_NAME" class="required name" id="mce-FIRST_NAME" onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;">
-		     <input type="reset" id="chimp-reset-side" style="display:none"/>
-			<div id="mce-responses" class="clear">
-			<div class="response" id="mce-error-response" style="display:none"></div>
-			<div class="response" id="mce-success-response" style="display:none"></div>
-		    </div>
-
-			<div class="clear">
-			<input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button side-clear">
-			</div>
-			</form>
-	        </div>
-<!--End mc_embed_signup-->
-		</section>
-	</div>
+    <!--End mc_embed_signup--> 
+  </section>
+</div>
 <script type="text/javascript">
 	$("#modal_trigger").leanModal({top : 200, overlay : 0.6, closeButton: ".modal_close" });
 
