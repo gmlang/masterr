@@ -9,8 +9,8 @@ image:
 
 ---
 
-# Here's What gmlang.com Is All About
-Hey, welcome. I'm Guangming Lang, the owner of gmlang.com, and if you ever asked yourself:
+# Here's What Master R Is All About
+Hey, welcome. I'm Guangming Lang, the owner of MasterR.org, and if you ever asked yourself:
 
 * "I want to learn R, and where do I start?"
 * "How can I become better at R?"
@@ -20,18 +20,18 @@ Or if you've ever just needed to quickly find the right R function to do your ta
 
 ...You're in the RIGHT place!
 
-# Here's How gmlang.com Helps You Become Great at R
+# Here's How Master R Helps You Become Great at R
 As the chief economist at Google Hal Varian said, "the sexy job in the next 10 years will be statisticians.” As Forbes' one of the world's 7 most powerful data scientists DJ Patil said, "data scientist is the sexiest job of the 21st century." I'm here to teach you the most powerful tool statisticians or data scientists use in their everyday work: R. 
 
 Here's the deal:
 
-**I believe great statisticians and data scientists who want to win in today's job market MUST also become master R programmers.**
+**I believe statisticians and data scientists who want to win in today's job market MUST also become master R programmers.**
 
 Now, there're tons of R learning materials out there. In fact, too many to tell which ones are excellent and which ones are bad, which ones are useful and which ones are useless. How can you find the time to sort all these out and learn by yourself while catching a deadline... while taking 5 classes... while working a full-time job...
 
 Instead of digging through hundreds of books, thousands of stack overflow QAs, tens of thousands of google searches, and wasting time on dry materials or materials that talk about the less often used R features...
 
-...subscribe to gmlang.com (it's free), and you'll get the most effective R training materials and best tips from me, Guangming Lang. 
+...subscribe to MasterR.org (it's free), and you'll get the most effective R training materials and best tips from me, Guangming Lang. 
 
 <!-- Begin MailChimp Signup Form -->
 <html>
@@ -87,16 +87,16 @@ And the best part? I'll cut through the fluff, showing you exactly what's going 
 
 All because I have a knack for explaining how things work in R intuitively, and for writing INSANELY PRACTICAL RE-USEABLE R functions and packages that you can start benefiting from TODAY.
 
-# Introducing gmlang.com (The Blog and The Videos)
-gmlang.com is a thriving community of statisticians and data scientists who want to become better at R.
+# Introducing MasterR.org (The Blog and The Videos)
+MasterR.org is a thriving community of statisticians and data scientists who want to become better at R.
 
-There're two main features of gmlang.com. There's the blog and there're videos. When you subscribe for free email updates, you'll gain access to all two PLUS exclusive "email only" material (I treat my email subscribers the best).
+There're two main features of MasterR.org. There's the blog and there're videos. When you subscribe for free email updates, you'll gain access to all two PLUS exclusive "email only" material (I treat my email subscribers the best).
 
 Here's what each "feature" is all about:
 
-**gmlang.com, the blog**, is where you'll get proven R scripts that you can use in your study and work. Some scripts are about data cleaning. Others are about data analysis. You'll also get articles that help you understand certain statistical concepts and data analysis techniques. 
+**MasterR.org, the blog**, is where you'll get proven R scripts that you can use in your study and work. Some scripts are about data cleaning. Others are about data analysis. You'll also get articles that help you understand certain statistical concepts and data analysis techniques. 
 
-**gmlang videos**, are short 2 to 5 minute videos where I'll use R and RStudio to demo, step by step, a simple how-to task that you can follow along and master TODAY.
+**Master R videos**, are short 2 to 5 minute videos where I'll use R and RStudio to demo, step by step, a simple how-to task that you can follow along and master TODAY.
 
 What's the best way to get ALL of the BEST free R training material on the web? Sign up for the email list below:
 
@@ -153,7 +153,7 @@ What's the best way to get ALL of the BEST free R training material on the web? 
 # About Guangming Lang
 ![](/images/gmlang4.jpg) 
 
-gmlang.com was founded by Guangming Lang. Guangming is a data scientist and entrepreneur. He's the founder and chief data scientist of [cabaceo](http://cabaceo.com), a data science consulting company. Before founding gmlang.com and cabaceo, he worked as an analytic consultant at FICO. He has a master's degree in biostatistics from the [University of Michigan](http://umich.edu) and a bachelor's degree in math from the [New College of Florida](http://www.ncf.edu). He won the prestigious national science foundation graduate research fellowship award in 2009, the same award Steven Levitt won when he was a graduate student. 
+MasterR.org was founded by Guangming Lang. Guangming is a data scientist and entrepreneur. He's the founder and chief data scientist of [cabaceo](http://cabaceo.com), a data science consulting company. Before founding MasterR.org and cabaceo, he worked as an analytic consultant at FICO. He has a master's degree in biostatistics from the [University of Michigan](http://umich.edu) and a bachelor's degree in math from the [New College of Florida](http://www.ncf.edu). He won the prestigious national science foundation graduate research fellowship award in 2009, the same award Steven Levitt won when he was a graduate student. 
 
 He's passionate about R and teaching. He's helped students from University of Michigan, UCLA, and Iowa State University master the R programming language. If you want to get his free R training materials, all you have to do is enter you email below and click "sign me up!"
 
