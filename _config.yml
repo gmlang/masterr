@@ -5,7 +5,7 @@ locale: en_US
 description: 
 logo: site-logo.png
 search: true
-url: http://gmlang.com
+url: http://masterr.org
 
 
 # Jekyll configuration
@@ -34,7 +34,7 @@ exclude: ["lib", "config.rb", "Capfile", "config", "log", "Rakefile", "Rakefile.
 owner:
   name: Guangming Lang
   avatar: gmlang1.jpg
-  email: gmlang@cabaceo.com
+  email: news@masterr.com
   disqus-shortname: cabaceo
   twitter: gmlang
   facebook: #username
