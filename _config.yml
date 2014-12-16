@@ -36,17 +36,17 @@ owner:
   avatar: gmlang1.jpg
   email: news@masterr.com
   disqus-shortname: cabaceo
-  twitter: gmlang
+  twitter: #username
   facebook: #username
-  github: gmlang
+  github: #username
   stackexchange: #http://stackoverflow.com/users/123456/username
-  linkedin: gmlang
+  linkedin: #username
   instagram: #username
   flickr: #username
   tumblr: #username
   google:
-    plus: GuangmingLang
-    analytics: UA-52975110-1
+    plus: #username
+    analytics: UA-57697212-1
     verify:
     ad-client:
     ad-slot: 
