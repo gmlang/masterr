@@ -2,14 +2,14 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
 <title type="text">Become Great at R</title>
 <generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
-<link rel="self" type="application/atom+xml" href="http://gmlang.com/feed.xml" />
-<link rel="alternate" type="text/html" href="http://gmlang.com" />
-<updated>2014-12-09T14:24:09-05:00</updated>
-<id>http://gmlang.com/</id>
+<link rel="self" type="application/atom+xml" href="http://masterr.org/feed.xml" />
+<link rel="alternate" type="text/html" href="http://masterr.org" />
+<updated>2014-12-17T14:35:47-05:00</updated>
+<id>http://masterr.org/</id>
 <author>
   <name>Guangming Lang</name>
-  <uri>http://gmlang.com/</uri>
-  <email>gmlang@cabaceo.com</email>
+  <uri>http://masterr.org/</uri>
+  <email>news@masterr.com</email>
 </author>
 
 
@@ -17,14 +17,14 @@
 
 <entry>
   <title type="html"><![CDATA[The Switch Operator in R]]></title>
-  <link rel="alternate" type="text/html" href="http://gmlang.com/r/the-switch-operator-in-r/" />
-  <id>http://gmlang.com/r/the-switch-operator-in-r</id>
+  <link rel="alternate" type="text/html" href="http://masterr.org/r/the-switch-operator-in-r/" />
+  <id>http://masterr.org/r/the-switch-operator-in-r</id>
   <published>2014-11-21T10:48:49-05:00</published>
   <updated>2014-11-21T10:48:49-05:00</updated>
   <author>
     <name>Guangming Lang</name>
-    <uri>http://gmlang.com</uri>
-    <email>gmlang@cabaceo.com</email>
+    <uri>http://masterr.org</uri>
+    <email>news@masterr.com</email>
   </author>
   <content type="html">&lt;p&gt;The &lt;code&gt;switch()&lt;/code&gt; function in R is very powerful and here’s an example.&lt;/p&gt;
 
@@ -56,7 +56,7 @@ center&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;x&lt;span class=&quot;p&quot
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;## [1] 0.2828977&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
-  &lt;p&gt;&lt;a href=&quot;http://gmlang.com/r/the-switch-operator-in-r/&quot;&gt;The Switch Operator in R&lt;/a&gt; was originally published by Guangming Lang at &lt;a href=&quot;http://gmlang.com&quot;&gt;Become Great at R&lt;/a&gt; on November 21, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://masterr.org/r/the-switch-operator-in-r/&quot;&gt;The Switch Operator in R&lt;/a&gt; was originally published by Guangming Lang at &lt;a href=&quot;http://masterr.org&quot;&gt;Become Great at R&lt;/a&gt; on November 21, 2014.&lt;/p&gt;</content>
 </entry>
 
 
@@ -64,18 +64,18 @@ center&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;x&lt;span class=&quot;p&quot
 
 <entry>
   <title type="html"><![CDATA[Calculate Tangency Portfolios Using R]]></title>
-  <link rel="alternate" type="text/html" href="http://gmlang.com/r/calculate-tangency-portfolios-using-r/" />
-  <id>http://gmlang.com/r/calculate-tangency-portfolios-using-r</id>
+  <link rel="alternate" type="text/html" href="http://masterr.org/r/calculate-tangency-portfolios-using-r/" />
+  <id>http://masterr.org/r/calculate-tangency-portfolios-using-r</id>
   <published>2014-11-20T13:48:49-05:00</published>
   <updated>2014-11-20T13:48:49-05:00</updated>
   <author>
     <name>Guangming Lang</name>
-    <uri>http://gmlang.com</uri>
-    <email>gmlang@cabaceo.com</email>
+    <uri>http://masterr.org</uri>
+    <email>news@masterr.com</email>
   </author>
   <content type="html">&lt;p&gt;In a &lt;a href=&quot;http://gmlang.com/r/calculate-efficient-portfolios-using-r/&quot;&gt;previous post&lt;/a&gt;, I showed how to calculate the efficient portfolio given a target return using R and vanguard funds in my retirement account. All assets I used previously are risky assets. However, we can also hold risk free assets in our portfolio, for example, 1 year &lt;a href=&quot;http://www.treasury.gov/resource-center/data-chart-center/interest-rates/Pages/TextView.aspx?data=yield&quot;&gt;t-bills&lt;/a&gt;. After having included risk free assets, we can define something called the Sharpe Slope as the difference between our portfolio return and the risk free rate divided by the volatility of our portfolio. The bigger the Sharpe Slope the better. So our objective is to find the portfolio with the biggest Sharpe Slope, and this is called tangency portfolio. &lt;/p&gt;
 
-&lt;h3 id=&quot;load-libraries-and-define-helper-functions&quot;&gt;0. Load libraries and define helper functions&lt;/h3&gt;
+&lt;p&gt;Step 0. Load libraries and define helper functions.&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;&lt;span class=&quot;kn&quot;&gt;library&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;zoo&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;kn&quot;&gt;library&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;tseries&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
@@ -91,7 +91,7 @@ to_yearmon &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k
         index&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;data&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; as.yearmon&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;index&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;data&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;h3 id=&quot;i-choose-assets-from-three-broad-classes-stocks-bonds-and-commodities-for-stocks-i-choose-funds-that-cover-total-us-market-total-international-markets-and-real-estate-for-bonds-i-choose-funds-that-invest-in-the-total-us-bond-market-and-inflation-protected-securities-for-commodities-i-choose-funds-that-invest-in-gold-and-other-precious-metals-and-their-mining-companies-and-oil--gas-and-energy-companies-first-i-download-the-monthly-adjusted-closing-price-data-of-these-funds-between-june-2000-and-oct-2014-from-yahoo&quot;&gt;1. I choose assets from three broad classes: stocks, bonds, and commodities. For stocks, I choose funds that cover total US market, total international markets, and real estate. For bonds, I choose funds that invest in the total US bond market and inflation protected securities. For commodities, I choose funds that invest in gold and other precious metals and their mining companies and oil &amp;amp; gas and energy companies. First, I download the monthly adjusted closing price data of these funds between June 2000 and Oct 2014 from Yahoo!.&lt;/h3&gt;
+&lt;p&gt;Step 1. I choose assets from three broad classes: stocks, bonds, and commodities. For stocks, I choose funds that cover total US market, total international markets, and real estate. For bonds, I choose funds that invest in the total US bond market and inflation protected securities. For commodities, I choose funds that invest in gold and other precious metals and their mining companies and oil &amp;amp; gas and energy companies. First, I download the monthly adjusted closing price data of these funds between June 2000 and Oct 2014 from Yahoo.&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;&lt;span class=&quot;c1&quot;&gt;# initialize the fund symbols &lt;/span&gt;
 stocks &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;VTSMX&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;VGTSX&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;VGSIX&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
@@ -111,7 +111,7 @@ port &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kt&quot
 prices &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;do.call&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;cbind&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; port&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;kp&quot;&gt;colnames&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;prices&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; symbols&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;h3 id=&quot;calculate-monthly-continuously-compounded-returns-as-difference-in-log-prices&quot;&gt;2. Calculate monthly continuously compounded returns as difference in log prices.&lt;/h3&gt;
+&lt;p&gt;Step 2. Calculate monthly continuously compounded returns as difference in log prices.&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;ret.cc &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;diff&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kp&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;prices&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
 
@@ -123,20 +123,20 @@ prices &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kp&qu
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;&lt;span class=&quot;kp&quot;&gt;head&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;ret.cc&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;##                  VTSMX        VGTSX       VGSIX        VIPSX       VBMFX
-## 2000-07-03 -0.01966245 -0.045168968  0.08338161  0.007905180 0.007782140
-## 2000-08-01  0.07015714  0.009852296 -0.03901204  0.007843177 0.015384919
-## 2000-09-01 -0.04777254 -0.051407967  0.02852243 -0.004698521 0.007604599
+## 2000-07-03 -0.01966245 -0.045168968  0.08338161  0.007905180 0.007797310
+## 2000-08-01  0.07015714  0.009852296 -0.03901204  0.007843177 0.015414563
+## 2000-09-01 -0.04777254 -0.051407967  0.02852243 -0.004698521 0.007619084
 ##                  VGPMX       VGENX
 ## 2000-07-03 -0.01520942 -0.04692026
 ## 2000-08-01  0.11565220  0.11484304
 ## 2000-09-01 -0.07437054  0.01347060&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;h3 id=&quot;calculate-annualized-sample-average-returns-of-the-underlying-assets-and-the-sample-covariance-matrix-of-the-returns&quot;&gt;3. Calculate annualized sample average returns of the underlying assets and the sample covariance matrix of the returns.&lt;/h3&gt;
+&lt;p&gt;Step 3. Calculate annualized sample average returns of the underlying assets and the sample covariance matrix of the returns.&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;mu.hat.annual &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;apply&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;ret.cc&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;mean&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;12&lt;/span&gt;   
 cov.mat.annual &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; cov&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;ret.cc&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;12&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;h3 id=&quot;set-the-risk-free-ratehttpwwwtreasurygovresource-centerdata-chart-centerinterest-ratespagestextviewaspxdatayield-as-012-and-calculate-the-tangency-portfolio-using-a-helper-function-written-by-eric-zivot-and-hezky-varon-from-u-of-washington&quot;&gt;4. Set the &lt;a href=&quot;http://www.treasury.gov/resource-center/data-chart-center/interest-rates/Pages/TextView.aspx?data=yield&quot;&gt;risk free rate&lt;/a&gt; as 0.12% and calculate the tangency portfolio using a helper function written by Eric Zivot and Hezky Varon from U of Washington.&lt;/h3&gt;
+&lt;p&gt;Step 4. Set the &lt;a href=&quot;http://www.treasury.gov/resource-center/data-chart-center/interest-rates/Pages/TextView.aspx?data=yield&quot;&gt;risk free rate&lt;/a&gt; as 0.12% and calculate the tangency portfolio using a helper function written by Eric Zivot and Hezky Varon from U of Washington.&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;t.bill.rate.1yr &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0.12&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;100&lt;/span&gt;
 helper &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;file.path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kp&quot;&gt;Sys.getenv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;HOME&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;R/portfolio-optim/portfolio_noshorts.r&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
@@ -150,18 +150,18 @@ tan.port &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; tangency.portfolio&lt;sp
 ## tangency.portfolio(er = mu.hat.annual, cov.mat = cov.mat.annual, 
 ##     risk.free = t.bill.rate.1yr, shorts = T)
 ## 
-## Portfolio expected return:     0.06143068 
-## Portfolio standard deviation:  0.03222957 
+## Portfolio expected return:     0.06124189 
+## Portfolio standard deviation:  0.03212237 
 ## Portfolio weights:
 ##   VTSMX   VGTSX   VGSIX   VIPSX   VBMFX   VGPMX   VGENX 
-##  0.1391 -0.1721  0.0205 -0.2752  1.1951 -0.0173  0.1098&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+##  0.1382 -0.1692  0.0212 -0.2739  1.1951 -0.0184  0.1070&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;&lt;span class=&quot;c1&quot;&gt;# port weights&lt;/span&gt;
 plot&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;tan.port&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; col&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;blue&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; lwd&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;&lt;img src=&quot;/../figs/2014-11-20-calculate-tangency-portfolios-using-r/unnamed-chunk-5-1.png&quot; alt=&quot;center&quot; /&gt; &lt;/p&gt;
 
-  &lt;p&gt;&lt;a href=&quot;http://gmlang.com/r/calculate-tangency-portfolios-using-r/&quot;&gt;Calculate Tangency Portfolios Using R&lt;/a&gt; was originally published by Guangming Lang at &lt;a href=&quot;http://gmlang.com&quot;&gt;Become Great at R&lt;/a&gt; on November 20, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://masterr.org/r/calculate-tangency-portfolios-using-r/&quot;&gt;Calculate Tangency Portfolios Using R&lt;/a&gt; was originally published by Guangming Lang at &lt;a href=&quot;http://masterr.org&quot;&gt;Become Great at R&lt;/a&gt; on November 20, 2014.&lt;/p&gt;</content>
 </entry>
 
 
@@ -169,18 +169,18 @@ plot&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;tan.port&lt;span class=&quot;p
 
 <entry>
   <title type="html"><![CDATA[Calculate Efficient Portfolios Using R]]></title>
-  <link rel="alternate" type="text/html" href="http://gmlang.com/r/calculate-efficient-portfolios-using-r/" />
-  <id>http://gmlang.com/r/calculate-efficient-portfolios-using-r</id>
+  <link rel="alternate" type="text/html" href="http://masterr.org/r/calculate-efficient-portfolios-using-r/" />
+  <id>http://masterr.org/r/calculate-efficient-portfolios-using-r</id>
   <published>2014-11-19T13:48:49-05:00</published>
   <updated>2014-11-19T13:48:49-05:00</updated>
   <author>
     <name>Guangming Lang</name>
-    <uri>http://gmlang.com</uri>
-    <email>gmlang@cabaceo.com</email>
+    <uri>http://masterr.org</uri>
+    <email>news@masterr.com</email>
   </author>
   <content type="html">&lt;p&gt;In a &lt;a href=&quot;http://gmlang.com/r/calculate-global-minimum-variance-portfolio-using-r/&quot;&gt;previous post&lt;/a&gt;, I showed how to calculate the global minimum variance portfolio using R and vanguard funds in my retirement account. It had an average  annual return of 5.2% and volatility of 3.3% in the past 10 years. Because I’m holding those funds for a long term, at least 30 years. I don’t really mind a bigger volatility now. Instead, I really want a bigger return, say 10%. So I’ll set my target return as 10%, and find a portfolio that can achieve it. The resulting portfolio is called mean-variance efficient because it has the smallest volatility for the 10% target return. &lt;/p&gt;
 
-&lt;h3 id=&quot;load-libraries-and-define-helper-functions&quot;&gt;0. Load libraries and define helper functions&lt;/h3&gt;
+&lt;p&gt;Step 0. Load libraries and define helper functions.&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;&lt;span class=&quot;kn&quot;&gt;library&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;zoo&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;kn&quot;&gt;library&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;tseries&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
@@ -196,7 +196,7 @@ to_yearmon &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k
         index&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;data&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; as.yearmon&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;index&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;data&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;h3 id=&quot;i-choose-assets-from-three-broad-classes-stocks-bonds-and-commodities-for-stocks-i-choose-funds-that-cover-total-us-market-total-international-markets-and-real-estate-for-bonds-i-choose-funds-that-invest-in-the-total-us-bond-market-and-inflation-protected-securities-for-commodities-i-choose-funds-that-invest-in-gold-and-other-precious-metals-and-their-mining-companies-and-oil--gas-and-energy-companies-first-i-download-the-monthly-adjusted-closing-price-data-of-these-funds-between-june-2000-and-oct-2014-from-yahoo&quot;&gt;1. I choose assets from three broad classes: stocks, bonds, and commodities. For stocks, I choose funds that cover total US market, total international markets, and real estate. For bonds, I choose funds that invest in the total US bond market and inflation protected securities. For commodities, I choose funds that invest in gold and other precious metals and their mining companies and oil &amp;amp; gas and energy companies. First, I download the monthly adjusted closing price data of these funds between June 2000 and Oct 2014 from Yahoo!.&lt;/h3&gt;
+&lt;p&gt;Step 1. I choose assets from three broad classes: stocks, bonds, and commodities. For stocks, I choose funds that cover total US market, total international markets, and real estate. For bonds, I choose funds that invest in the total US bond market and inflation protected securities. For commodities, I choose funds that invest in gold and other precious metals and their mining companies and oil &amp;amp; gas and energy companies. First, I download the monthly adjusted closing price data of these funds between June 2000 and Oct 2014 from Yahoo.&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;&lt;span class=&quot;c1&quot;&gt;# initialize the fund symbols &lt;/span&gt;
 stocks &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;VTSMX&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;VGTSX&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;VGSIX&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
@@ -216,7 +216,7 @@ port &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kt&quot
 prices &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;do.call&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;cbind&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; port&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;kp&quot;&gt;colnames&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;prices&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; symbols&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;h3 id=&quot;calculate-monthly-continuously-compounded-returns-as-difference-in-log-prices&quot;&gt;2. Calculate monthly continuously compounded returns as difference in log prices.&lt;/h3&gt;
+&lt;p&gt;Step 2. Calculate monthly continuously compounded returns as difference in log prices.&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;ret.cc &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;diff&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kp&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;prices&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
 
@@ -228,20 +228,20 @@ prices &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kp&qu
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;&lt;span class=&quot;kp&quot;&gt;head&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;ret.cc&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;##                  VTSMX        VGTSX       VGSIX        VIPSX       VBMFX
-## 2000-07-03 -0.01966245 -0.045168968  0.08338161  0.007905180 0.007782140
-## 2000-08-01  0.07015714  0.009852296 -0.03901204  0.007843177 0.015384919
-## 2000-09-01 -0.04777254 -0.051407967  0.02852243 -0.004698521 0.007604599
+## 2000-07-03 -0.01966245 -0.045168968  0.08338161  0.007905180 0.007797310
+## 2000-08-01  0.07015714  0.009852296 -0.03901204  0.007843177 0.015414563
+## 2000-09-01 -0.04777254 -0.051407967  0.02852243 -0.004698521 0.007619084
 ##                  VGPMX       VGENX
 ## 2000-07-03 -0.01520942 -0.04692026
 ## 2000-08-01  0.11565220  0.11484304
 ## 2000-09-01 -0.07437054  0.01347060&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;h3 id=&quot;calculate-annualized-sample-average-returns-of-the-underlying-assets-and-the-sample-covariance-matrix-of-the-returns&quot;&gt;3. Calculate annualized sample average returns of the underlying assets and the sample covariance matrix of the returns.&lt;/h3&gt;
+&lt;p&gt;Step 3. Calculate annualized sample average returns of the underlying assets and the sample covariance matrix of the returns.&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;mu.hat.annual &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;apply&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;ret.cc&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;mean&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;12&lt;/span&gt;   
 cov.mat.annual &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; cov&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;ret.cc&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;12&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;h3 id=&quot;calculate-the-efficient-portfolio-with-10-as-target-return-using-a-helper-function-written-by-eric-zivot-and-hezky-varon-from-u-of-washington&quot;&gt;4. Calculate the efficient portfolio with 10% as target return using a helper function written by Eric Zivot and Hezky Varon from U of Washington.&lt;/h3&gt;
+&lt;p&gt;Step 4. Calculate the efficient portfolio with 10% as target return using a helper function written by Eric Zivot and Hezky Varon from U of Washington.&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;helper &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;file.path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kp&quot;&gt;Sys.getenv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;HOME&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;R/portfolio-optim/portfolio_noshorts.r&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;kn&quot;&gt;source&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;helper&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
@@ -254,17 +254,17 @@ effi.port&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 ##     target.return = 0.1, shorts = F)
 ## 
 ## Portfolio expected return:     0.1 
-## Portfolio standard deviation:  0.1541939 
+## Portfolio standard deviation:  0.1542331 
 ## Portfolio weights:
 ##  VTSMX  VGTSX  VGSIX  VIPSX  VBMFX  VGPMX  VGENX 
-## 0.0000 0.0000 0.3461 0.0000 0.2013 0.0000 0.4526&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+## 0.0000 0.0000 0.3464 0.0000 0.2013 0.0000 0.4523&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;&lt;span class=&quot;c1&quot;&gt;# port weights&lt;/span&gt;
 plot&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;effi.port&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;&lt;img src=&quot;/../figs/2014-11-19-calculate-efficient-portfolios-using-r/unnamed-chunk-5-1.png&quot; alt=&quot;center&quot; /&gt; &lt;/p&gt;
 
-  &lt;p&gt;&lt;a href=&quot;http://gmlang.com/r/calculate-efficient-portfolios-using-r/&quot;&gt;Calculate Efficient Portfolios Using R&lt;/a&gt; was originally published by Guangming Lang at &lt;a href=&quot;http://gmlang.com&quot;&gt;Become Great at R&lt;/a&gt; on November 19, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://masterr.org/r/calculate-efficient-portfolios-using-r/&quot;&gt;Calculate Efficient Portfolios Using R&lt;/a&gt; was originally published by Guangming Lang at &lt;a href=&quot;http://masterr.org&quot;&gt;Become Great at R&lt;/a&gt; on November 19, 2014.&lt;/p&gt;</content>
 </entry>
 
 
@@ -272,18 +272,18 @@ plot&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;effi.port&lt;span class=&quot;
 
 <entry>
   <title type="html"><![CDATA[Calculate Global Minimum Variance Portfolio Using R]]></title>
-  <link rel="alternate" type="text/html" href="http://gmlang.com/r/calculate-global-minimum-variance-portfolio-using-r/" />
-  <id>http://gmlang.com/r/calculate-global-minimum-variance-portfolio-using-r</id>
+  <link rel="alternate" type="text/html" href="http://masterr.org/r/calculate-global-minimum-variance-portfolio-using-r/" />
+  <id>http://masterr.org/r/calculate-global-minimum-variance-portfolio-using-r</id>
   <published>2014-11-06T13:48:49-05:00</published>
   <updated>2014-11-06T13:48:49-05:00</updated>
   <author>
     <name>Guangming Lang</name>
-    <uri>http://gmlang.com</uri>
-    <email>gmlang@cabaceo.com</email>
+    <uri>http://masterr.org</uri>
+    <email>news@masterr.com</email>
   </author>
   <content type="html">&lt;p&gt;In this and the next couple of posts, I’ll give examples of how to calculate optimized portfolios using R and the vanguard funds in my retirement account. Today, I’ll show you how to calculate the global minimum variance portfolio, which was the first major result in Markowitz’s portfolio theory. Given a collection of assets, their global minimum variance portfolio is the portfolio with the smallest portfolio volitility. &lt;/p&gt;
 
-&lt;h3 id=&quot;load-libraries-and-define-helper-functions&quot;&gt;0. Load libraries and define helper functions&lt;/h3&gt;
+&lt;p&gt;Step 0. Load libraries and define helper functions&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;&lt;span class=&quot;kn&quot;&gt;library&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;zoo&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;kn&quot;&gt;library&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;tseries&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
@@ -299,7 +299,7 @@ to_yearmon &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k
         index&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;data&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; as.yearmon&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;index&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;data&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;h3 id=&quot;i-choose-assets-from-three-broad-classes-stocks-bonds-and-commodities-for-stocks-i-choose-funds-that-cover-total-us-market-total-international-markets-and-real-estate-for-bonds-i-choose-funds-that-invest-in-the-total-us-bond-market-and-inflation-protected-securities-for-commodities-i-choose-funds-that-invest-in-gold-and-other-precious-metals-and-their-mining-companies-and-oil--gas-and-energy-companies-first-i-download-the-monthly-adjusted-closing-price-data-of-these-funds-between-june-2000-and-oct-2014-from-yahoo&quot;&gt;1. I choose assets from three broad classes: stocks, bonds, and commodities. For stocks, I choose funds that cover total US market, total international markets, and real estate. For bonds, I choose funds that invest in the total US bond market and inflation protected securities. For commodities, I choose funds that invest in gold and other precious metals and their mining companies and oil &amp;amp; gas and energy companies. First, I download the monthly adjusted closing price data of these funds between June 2000 and Oct 2014 from Yahoo!.&lt;/h3&gt;
+&lt;p&gt;Step 1. I choose assets from three broad classes: stocks, bonds, and commodities. For stocks, I choose funds that cover total US market, total international markets, and real estate. For bonds, I choose funds that invest in the total US bond market and inflation protected securities. For commodities, I choose funds that invest in gold and other precious metals and their mining companies and oil &amp;amp; gas and energy companies. First, I download the monthly adjusted closing price data of these funds between June 2000 and Oct 2014 from Yahoo.&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;&lt;span class=&quot;c1&quot;&gt;# initialize the fund symbols &lt;/span&gt;
 stocks &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;VTSMX&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;VGTSX&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;VGSIX&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
@@ -319,7 +319,7 @@ port &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kt&quot
 prices &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;do.call&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;cbind&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; port&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;kp&quot;&gt;colnames&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;prices&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; symbols&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;h3 id=&quot;calculate-monthly-continuously-compounded-returns-as-difference-in-log-prices&quot;&gt;2. Calculate monthly continuously compounded returns as difference in log prices.&lt;/h3&gt;
+&lt;p&gt;Step 2. Calculate monthly continuously compounded returns as difference in log prices.&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;ret.cc &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;diff&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kp&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;prices&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
 
@@ -331,20 +331,20 @@ prices &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kp&qu
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;&lt;span class=&quot;kp&quot;&gt;head&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;ret.cc&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;##                  VTSMX        VGTSX       VGSIX        VIPSX       VBMFX
-## 2000-07-03 -0.01966245 -0.045168968  0.08338161  0.007905180 0.007782140
-## 2000-08-01  0.07015714  0.009852296 -0.03901204  0.007843177 0.015384919
-## 2000-09-01 -0.04777254 -0.051407967  0.02852243 -0.004698521 0.007604599
+## 2000-07-03 -0.01966245 -0.045168968  0.08338161  0.007905180 0.007797310
+## 2000-08-01  0.07015714  0.009852296 -0.03901204  0.007843177 0.015414563
+## 2000-09-01 -0.04777254 -0.051407967  0.02852243 -0.004698521 0.007619084
 ##                  VGPMX       VGENX
 ## 2000-07-03 -0.01520942 -0.04692026
 ## 2000-08-01  0.11565220  0.11484304
 ## 2000-09-01 -0.07437054  0.01347060&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;h3 id=&quot;calculate-the-sample-average-returns-of-the-underlying-assets-and-the-sample-covariance-matrix-of-the-returns&quot;&gt;3. Calculate the sample average returns of the underlying assets and the sample covariance matrix of the returns&lt;/h3&gt;
+&lt;p&gt;Step 3. Calculate the sample average returns of the underlying assets and the sample covariance matrix of the returns.&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;mu.hat.annual &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;apply&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;ret.cc&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;mean&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;12&lt;/span&gt;   
 cov.mat.annual &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; cov&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;ret.cc&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;12&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;h3 id=&quot;finally-we-can-calculate-the-global-minimum-variance-portfolio-using-a-helper-function-written-by-eric-zivot-and-hezky-varon-from-u-of-washington&quot;&gt;4. Finally, we can calculate the global minimum variance portfolio using a helper function written by Eric Zivot and Hezky Varon from U of Washington.&lt;/h3&gt;
+&lt;p&gt;Step 4. Finally, we can calculate the global minimum variance portfolio using a helper function written by Eric Zivot and Hezky Varon from U of Washington.&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;helper &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;file.path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kp&quot;&gt;Sys.getenv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;HOME&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;R/portfolio-optim/portfolio_noshorts.r&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;kn&quot;&gt;source&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;helper&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
@@ -356,18 +356,18 @@ global.minvar.port&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 ## globalMin.portfolio(er = mu.hat.annual, cov.mat = cov.mat.annual, 
 ##     shorts = F)
 ## 
-## Portfolio expected return:     0.05213024 
-## Portfolio standard deviation:  0.03365854 
+## Portfolio expected return:     0.05214207 
+## Portfolio standard deviation:  0.03358856 
 ## Portfolio weights:
 ##  VTSMX  VGTSX  VGSIX  VIPSX  VBMFX  VGPMX  VGENX 
-## 0.0646 0.0000 0.0000 0.0000 0.9354 0.0000 0.0000&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+## 0.0637 0.0000 0.0000 0.0000 0.9363 0.0000 0.0000&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;&lt;span class=&quot;c1&quot;&gt;# port weights&lt;/span&gt;
 plot&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;global.minvar.port&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;&lt;img src=&quot;/../figs/2014-11-06-calculate-global-minimum-variance-portfolio-using-r/unnamed-chunk-5-1.png&quot; alt=&quot;center&quot; /&gt; &lt;/p&gt;
 
-  &lt;p&gt;&lt;a href=&quot;http://gmlang.com/r/calculate-global-minimum-variance-portfolio-using-r/&quot;&gt;Calculate Global Minimum Variance Portfolio Using R&lt;/a&gt; was originally published by Guangming Lang at &lt;a href=&quot;http://gmlang.com&quot;&gt;Become Great at R&lt;/a&gt; on November 06, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://masterr.org/r/calculate-global-minimum-variance-portfolio-using-r/&quot;&gt;Calculate Global Minimum Variance Portfolio Using R&lt;/a&gt; was originally published by Guangming Lang at &lt;a href=&quot;http://masterr.org&quot;&gt;Become Great at R&lt;/a&gt; on November 06, 2014.&lt;/p&gt;</content>
 </entry>
 
 
@@ -375,24 +375,24 @@ plot&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;global.minvar.port&lt;span cla
 
 <entry>
   <title type="html"><![CDATA[Analyze Stock Price Data Using R, Part3]]></title>
-  <link rel="alternate" type="text/html" href="http://gmlang.com/r/analyze-stock-price-data-using-r-part3/" />
-  <id>http://gmlang.com/r/analyze-stock-price-data-using-r-part3</id>
+  <link rel="alternate" type="text/html" href="http://masterr.org/r/analyze-stock-price-data-using-r-part3/" />
+  <id>http://masterr.org/r/analyze-stock-price-data-using-r-part3</id>
   <published>2014-10-30T21:18:49-04:00</published>
   <updated>2014-10-30T21:18:49-04:00</updated>
   <author>
     <name>Guangming Lang</name>
-    <uri>http://gmlang.com</uri>
-    <email>gmlang@cabaceo.com</email>
+    <uri>http://masterr.org</uri>
+    <email>news@masterr.com</email>
   </author>
   <content type="html">&lt;p&gt;When analyzing stock returns, we like to know if the average returns or volatilities are constant over time, or if the correlations between any two assets in our portfolio stay constant over time. Therefore, we need to pick a time windows and calculate the rolling means, volatilities or correlations. A common choice for a time window is 2 years. However, in practice, I often pick several time windows of different length (like 6 months, 1 year, 2 years, 5 years) and compare the results obtained under each time window. The function &lt;code&gt;rollapply()&lt;/code&gt; in the &lt;code&gt;zoo&lt;/code&gt; library allows us to calculate the rolling statistics easily. &lt;/p&gt;
 
-&lt;h3 id=&quot;load-libraries&quot;&gt;1. Load libraries&lt;/h3&gt;
+&lt;p&gt;Step 1. Load libraries&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;&lt;span class=&quot;kn&quot;&gt;library&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;PerformanceAnalytics&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;kn&quot;&gt;library&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;zoo&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;kn&quot;&gt;library&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;tseries&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;h3 id=&quot;download-the-monthly-adjusted-closing-price-data-on-vgenx-and-vtsmx-since-sept-2005-from-yahoo&quot;&gt;2. Download the monthly adjusted closing price data on VGENX and VTSMX since Sept 2005 from Yahoo!.&lt;/h3&gt;
+&lt;p&gt;Step 2. Download the monthly adjusted closing price data on VGENX and VTSMX since Sept 2005 from Yahoo.&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;VGENX &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; get.hist.quote&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;instrument&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;VGENX&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; start&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;2005-09-30&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; 
                        end&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;2014-09-30&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; origin&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;1970-01-01&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
@@ -408,12 +408,12 @@ plot&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;global.minvar.port&lt;span cla
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;## time series ends   2014-09-02&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;h3 id=&quot;change-the-class-of-the-time-index-to-yearmon&quot;&gt;3. Change the class of the time index to yearmon.&lt;/h3&gt;
+&lt;p&gt;Step 3. Change the class of the time index to yearmon.&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;index&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;VGENX&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; as.yearmon&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;index&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;VGENX&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
 index&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;VTSMX&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; as.yearmon&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;index&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;VTSMX&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;h3 id=&quot;merge-both-price-series-into-one-data-frame-and-calculate-continuously-compounded-returns&quot;&gt;4. Merge both price series into one data frame and Calculate continuously compounded returns.&lt;/h3&gt;
+&lt;p&gt;Step 4. Merge both price series into one data frame and Calculate continuously compounded returns.&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;prices &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;merge&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;VGENX&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; VTSMX&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;kp&quot;&gt;colnames&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;prices&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;VGENX&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;VTSMX&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
@@ -425,7 +425,7 @@ ret.cc &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kp&qu
 ## Nov 2005  0.02154139  0.038859285
 ## Dec 2005  0.03159695  0.001570475&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;h3 id=&quot;calculate-and-chart-the-rolling-mean-of-the-cc-returns&quot;&gt;5. Calculate and Chart the rolling mean of the cc returns.&lt;/h3&gt;
+&lt;p&gt;Step 5. Calculate and Chart the rolling mean of the cc returns.&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;time.window &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;12&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;24&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;60&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
@@ -436,10 +436,11 @@ ret.cc &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kp&qu
                          ylab&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;rolling mean of the cc returns&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;img src=&quot;/../figs/2014-10-30-analyze-stock-price-data-using-r-part3/unnamed-chunk-5-1.png&quot; alt=&quot;center&quot; /&gt; &lt;img src=&quot;/../figs/2014-10-30-analyze-stock-price-data-using-r-part3/unnamed-chunk-5-2.png&quot; alt=&quot;center&quot; /&gt; &lt;img src=&quot;/../figs/2014-10-30-analyze-stock-price-data-using-r-part3/unnamed-chunk-5-3.png&quot; alt=&quot;center&quot; /&gt; &lt;img src=&quot;/../figs/2014-10-30-analyze-stock-price-data-using-r-part3/unnamed-chunk-5-4.png&quot; alt=&quot;center&quot; /&gt; 
-Note that neither security has a constant monthly cc return.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/../figs/2014-10-30-analyze-stock-price-data-using-r-part3/unnamed-chunk-5-1.png&quot; alt=&quot;center&quot; /&gt; &lt;img src=&quot;/../figs/2014-10-30-analyze-stock-price-data-using-r-part3/unnamed-chunk-5-2.png&quot; alt=&quot;center&quot; /&gt; &lt;img src=&quot;/../figs/2014-10-30-analyze-stock-price-data-using-r-part3/unnamed-chunk-5-3.png&quot; alt=&quot;center&quot; /&gt; &lt;img src=&quot;/../figs/2014-10-30-analyze-stock-price-data-using-r-part3/unnamed-chunk-5-4.png&quot; alt=&quot;center&quot; /&gt; &lt;/p&gt;
 
-&lt;h3 id=&quot;calculate-and-chart-the-rolling-mean-of-the-volatilities&quot;&gt;6. Calculate and Chart the rolling mean of the volatilities.&lt;/h3&gt;
+&lt;p&gt;Note that neither security has a constant monthly cc return.&lt;/p&gt;
+
+&lt;p&gt;Step 6. Calculate and Chart the rolling mean of the volatilities.&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;&lt;span class=&quot;kr&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;m &lt;span class=&quot;kr&quot;&gt;in&lt;/span&gt; time.window&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
         roll.sigmahat &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; rollapply&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;ret.cc&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; width&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;m&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; FUN&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;sd&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; align&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;right&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
@@ -448,10 +449,11 @@ Note that neither security has a constant monthly cc return.&lt;/p&gt;
                          ylab&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;rolling volatility of the cc returns&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;img src=&quot;/../figs/2014-10-30-analyze-stock-price-data-using-r-part3/unnamed-chunk-6-1.png&quot; alt=&quot;center&quot; /&gt; &lt;img src=&quot;/../figs/2014-10-30-analyze-stock-price-data-using-r-part3/unnamed-chunk-6-2.png&quot; alt=&quot;center&quot; /&gt; &lt;img src=&quot;/../figs/2014-10-30-analyze-stock-price-data-using-r-part3/unnamed-chunk-6-3.png&quot; alt=&quot;center&quot; /&gt; &lt;img src=&quot;/../figs/2014-10-30-analyze-stock-price-data-using-r-part3/unnamed-chunk-6-4.png&quot; alt=&quot;center&quot; /&gt; 
-We see the volatilities of both securities are changing over time too.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/../figs/2014-10-30-analyze-stock-price-data-using-r-part3/unnamed-chunk-6-1.png&quot; alt=&quot;center&quot; /&gt; &lt;img src=&quot;/../figs/2014-10-30-analyze-stock-price-data-using-r-part3/unnamed-chunk-6-2.png&quot; alt=&quot;center&quot; /&gt; &lt;img src=&quot;/../figs/2014-10-30-analyze-stock-price-data-using-r-part3/unnamed-chunk-6-3.png&quot; alt=&quot;center&quot; /&gt; &lt;img src=&quot;/../figs/2014-10-30-analyze-stock-price-data-using-r-part3/unnamed-chunk-6-4.png&quot; alt=&quot;center&quot; /&gt; &lt;/p&gt;
 
-&lt;h3 id=&quot;calculate-and-chart-the-rolling-correlation-between-the-two-return-series&quot;&gt;7. Calculate and Chart the rolling correlation between the two return series.&lt;/h3&gt;
+&lt;p&gt;We see the volatilities of both securities are changing over time too.&lt;/p&gt;
+
+&lt;p&gt;Step 7. Calculate and Chart the rolling correlation between the two return series.&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;rhohat &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kr&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;x&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; cor&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;x&lt;span class=&quot;p&quot;&gt;)[&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
 
@@ -468,7 +470,7 @@ We see the volatilities of both securities are changing over time too.&lt;/p&gt;
 
 &lt;p&gt;We see the correlations between the returns of VTSMX (all stocks) and VGENX (energy stocks) are NOT constant overtime. Between 2006 and 2007, their correlation is small, and sometimes is even close to zero, but during the financial crisis of 2007 - 2011, they are highly correlated. You’ll see this a lot in other pairs of securities. In general, assets are not correlated during normal time will become highly correlated during crisis. As my old finance professor liked to say, “Diversification helps except when the world is on fire. And some day, the world will be on fire.”&lt;/p&gt;
 
-  &lt;p&gt;&lt;a href=&quot;http://gmlang.com/r/analyze-stock-price-data-using-r-part3/&quot;&gt;Analyze Stock Price Data Using R, Part3&lt;/a&gt; was originally published by Guangming Lang at &lt;a href=&quot;http://gmlang.com&quot;&gt;Become Great at R&lt;/a&gt; on October 30, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://masterr.org/r/analyze-stock-price-data-using-r-part3/&quot;&gt;Analyze Stock Price Data Using R, Part3&lt;/a&gt; was originally published by Guangming Lang at &lt;a href=&quot;http://masterr.org&quot;&gt;Become Great at R&lt;/a&gt; on October 30, 2014.&lt;/p&gt;</content>
 </entry>
 
 
@@ -476,14 +478,14 @@ We see the volatilities of both securities are changing over time too.&lt;/p&gt;
 
 <entry>
   <title type="html"><![CDATA[An Example of the Bootstrap Method]]></title>
-  <link rel="alternate" type="text/html" href="http://gmlang.com/r/an-example-of-the-bootstrap-method/" />
-  <id>http://gmlang.com/r/an-example-of-the-bootstrap-method</id>
+  <link rel="alternate" type="text/html" href="http://masterr.org/r/an-example-of-the-bootstrap-method/" />
+  <id>http://masterr.org/r/an-example-of-the-bootstrap-method</id>
   <published>2014-10-29T19:28:49-04:00</published>
   <updated>2014-10-29T19:28:49-04:00</updated>
   <author>
     <name>Guangming Lang</name>
-    <uri>http://gmlang.com</uri>
-    <email>gmlang@cabaceo.com</email>
+    <uri>http://masterr.org</uri>
+    <email>news@masterr.com</email>
   </author>
   <content type="html">&lt;p&gt;When calculating the &lt;a href=&quot;http://gmlang.com/da/bias-and-precision/&quot;&gt;bias and precision&lt;/a&gt; of a sample estimate to the popluation parameter, because we often don’t know the true value of the population parameter and we often only have one sample, we use a procedure called &lt;em&gt;bootstrap&lt;/em&gt;. The idea is simple:&lt;/p&gt;
 
@@ -497,7 +499,7 @@ We see the volatilities of both securities are changing over time too.&lt;/p&gt;
 
 &lt;p&gt;The following is a concrete example implementing the above bootstrap procedure using R and some stock price data.&lt;/p&gt;
 
-&lt;h3 id=&quot;download-the-monthly-adjusted-closing-price-data-of-vtsmxhttpswwwgooglecomsearchclientsafarirlsenqvtsmxieutf-8oeutf-8-since-sept-2005-from-yahoo-change-the-class-of-the-time-index-to-yearmon-and-calculate-continuously-compounded-returns&quot;&gt;1. Download the monthly adjusted closing price data of &lt;a href=&quot;https://www.google.com/search?client=safari&amp;amp;rls=en&amp;amp;q=VTSMX&amp;amp;ie=UTF-8&amp;amp;oe=UTF-8&quot;&gt;VTSMX&lt;/a&gt; since Sept 2005 from Yahoo!. Change the class of the time index to yearmon. And calculate continuously compounded returns.&lt;/h3&gt;
+&lt;p&gt;Step 1. Download the monthly adjusted closing price data of &lt;a href=&quot;https://www.google.com/search?client=safari&amp;amp;rls=en&amp;amp;q=VTSMX&amp;amp;ie=UTF-8&amp;amp;oe=UTF-8&quot;&gt;VTSMX&lt;/a&gt; since Sept 2005 from Yahoo!. Change the class of the time index to yearmon. And calculate continuously compounded returns.&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;&lt;span class=&quot;kn&quot;&gt;library&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;zoo&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;kn&quot;&gt;library&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;tseries&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
@@ -520,14 +522,14 @@ ret.cc &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kp&qu
 ## Dec 2005  0.001570475
 ## Jan 2006  0.034319929&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;h3 id=&quot;calculate-the-sample-average-cc-returns&quot;&gt;2. Calculate the sample average c.c. returns&lt;/h3&gt;
+&lt;p&gt;Step 2. Calculate the sample average c.c. returns&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;muhat.VTSMX &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;mean&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;ret.cc&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;kp&quot;&gt;cat&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kp&quot;&gt;paste0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kp&quot;&gt;round&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;muhat.VTSMX&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;%&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;## 0.63%&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;h3 id=&quot;calculate-bias-and-precision-of-the-mean-using-bootstrap&quot;&gt;3. Calculate bias and precision of the mean using bootstrap&lt;/h3&gt;
+&lt;p&gt;Step 3. Calculate bias and precision of the mean using bootstrap.&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;VTSMX &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; coredata&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;ret.cc&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 n.samples &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;999&lt;/span&gt;
@@ -542,15 +544,15 @@ nobs &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kp&quot
 bias &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;mean&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;muhat.boot&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; muhat.VTSMX
 &lt;span class=&quot;kp&quot;&gt;cat&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kp&quot;&gt;paste0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kp&quot;&gt;round&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;bias&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;%&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;## -0.01%&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;## 0%&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;&lt;span class=&quot;c1&quot;&gt;# bootstrap SE&lt;/span&gt;
 precision &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; sd&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;muhat.boot&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;kp&quot;&gt;cat&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kp&quot;&gt;paste0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kp&quot;&gt;round&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;precision&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;%&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;## 0.45%&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;## 0.46%&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;h3 id=&quot;instead-of-doing-the-bootstrap-procedure-ourselves-we-can-use-the-boot-function-in-the-boot-library-for-example-we-can-use-the-following-code-to-calculate-the-bootstrap-bias-and-precision-for-the-volatility-standard-deviation&quot;&gt;4. Instead of doing the bootstrap procedure ourselves, we can use the &lt;code&gt;boot()&lt;/code&gt; function in the &lt;code&gt;boot&lt;/code&gt; library. For example, we can use the following code to calculate the bootstrap bias and precision for the volatility (standard deviation).&lt;/h3&gt;
+&lt;p&gt;Step 4. Instead of doing the bootstrap procedure ourselves, we can use the &lt;code&gt;boot()&lt;/code&gt; function in the &lt;code&gt;boot&lt;/code&gt; library. For example, we can use the following code to calculate the bootstrap bias and precision for the volatility (standard deviation).&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;&lt;span class=&quot;kn&quot;&gt;library&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;boot&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
@@ -581,13 +583,13 @@ VTSMX.sd.boot &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; boot&lt;span class=
 ## 
 ## Bootstrap Statistics :
 ##       original        bias    std. error
-## t1* 0.04646405 -0.0003577972 0.004818161&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+## t1* 0.04646405 -0.0007377369 0.004656785&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;plot&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;VTSMX.sd.boot&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;&lt;img src=&quot;/../figs/2014-10-29-an-example-of-the-bootstrap-method/unnamed-chunk-4-1.png&quot; alt=&quot;center&quot; /&gt; &lt;/p&gt;
 
-&lt;h3 id=&quot;we-can-also-calculate-the-bootstrap-95-confidence-intervals-of-the-volatility&quot;&gt;5. We can also calculate the bootstrap 95% confidence intervals of the volatility&lt;/h3&gt;
+&lt;p&gt;Step 5. We can also calculate the bootstrap 95% confidence intervals of the volatility.&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;&lt;span class=&quot;c1&quot;&gt;# bootstrap confidence interval&lt;/span&gt;
 boot.ci&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;VTSMX.sd.boot&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; conf&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;0.95&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; type&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;norm&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;perc&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
@@ -601,10 +603,10 @@ boot.ci&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;VTSMX.sd.boot&lt;span class
 ## 
 ## Intervals : 
 ## Level      Normal             Percentile     
-## 95%   ( 0.0374,  0.0563 )   ( 0.0371,  0.0553 )  
+## 95%   ( 0.0381,  0.0563 )   ( 0.0370,  0.0548 )  
 ## Calculations and Intervals on Original Scale&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;h3 id=&quot;a-common-measure-in-risk-management-is-value-at-risk-var-we-can-find-the-bootstrap-95-confidence-intervals-of-the-var-assuming-the-initial-investment-is-100000&quot;&gt;6. A common measure in risk management is Value at Risk (VaR). We can find the bootstrap 95% confidence intervals of the VaR assuming the initial investment is $100,000&lt;/h3&gt;
+&lt;p&gt;Step 6. A common measure in risk management is Value at Risk (VaR). We can find the bootstrap 95% confidence intervals of the VaR assuming the initial investment is $100,000.&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;&lt;span class=&quot;c1&quot;&gt;# define a function to calculate VaR&lt;/span&gt;
 VaR.boot &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kr&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;x&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; idx&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; p&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;0.05&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; w&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;100000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
@@ -626,11 +628,11 @@ boot.ci&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;VTSMX.VaR.boot&lt;span clas
 ## 
 ## Intervals : 
 ## Level      Normal             Percentile     
-## 95%   (-8803, -4916 )   (-8712, -4769 )  
+## 95%   (-8920, -4810 )   (-8781, -4766 )  
 ## Calculations and Intervals on Original Scale&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
-  &lt;p&gt;&lt;a href=&quot;http://gmlang.com/r/an-example-of-the-bootstrap-method/&quot;&gt;An Example of the Bootstrap Method&lt;/a&gt; was originally published by Guangming Lang at &lt;a href=&quot;http://gmlang.com&quot;&gt;Become Great at R&lt;/a&gt; on October 29, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://masterr.org/r/an-example-of-the-bootstrap-method/&quot;&gt;An Example of the Bootstrap Method&lt;/a&gt; was originally published by Guangming Lang at &lt;a href=&quot;http://masterr.org&quot;&gt;Become Great at R&lt;/a&gt; on October 29, 2014.&lt;/p&gt;</content>
 </entry>
 
 
@@ -638,14 +640,14 @@ boot.ci&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;VTSMX.VaR.boot&lt;span clas
 
 <entry>
   <title type="html"><![CDATA[Handy R Functions for Summary Statistics]]></title>
-  <link rel="alternate" type="text/html" href="http://gmlang.com/r/handy-r-functions-for-summary-statistics/" />
-  <id>http://gmlang.com/r/handy-r-functions-for-summary-statistics</id>
+  <link rel="alternate" type="text/html" href="http://masterr.org/r/handy-r-functions-for-summary-statistics/" />
+  <id>http://masterr.org/r/handy-r-functions-for-summary-statistics</id>
   <published>2014-10-22T13:38:49-04:00</published>
   <updated>2014-10-22T13:38:49-04:00</updated>
   <author>
     <name>Guangming Lang</name>
-    <uri>http://gmlang.com</uri>
-    <email>gmlang@cabaceo.com</email>
+    <uri>http://masterr.org</uri>
+    <email>news@masterr.com</email>
   </author>
   <content type="html">&lt;p&gt;When analyzing a variable, one of the first things you want to do is to count how many non-missing (or non-NA) values the variable has. Unfortunately, there’s no default functions in R that perform this simply task. The &lt;code&gt;length()&lt;/code&gt; function counts every element including the NAs. But it’s not hard to use it together with a &lt;code&gt;if&lt;/code&gt; clause to handle NAs. &lt;/p&gt;
 
@@ -692,7 +694,7 @@ summary2 &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kr&
 
 &lt;p&gt;Use these functions and tell others how they’ve made your daily data analysis job easier.&lt;/p&gt;
 
-  &lt;p&gt;&lt;a href=&quot;http://gmlang.com/r/handy-r-functions-for-summary-statistics/&quot;&gt;Handy R Functions for Summary Statistics&lt;/a&gt; was originally published by Guangming Lang at &lt;a href=&quot;http://gmlang.com&quot;&gt;Become Great at R&lt;/a&gt; on October 22, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://masterr.org/r/handy-r-functions-for-summary-statistics/&quot;&gt;Handy R Functions for Summary Statistics&lt;/a&gt; was originally published by Guangming Lang at &lt;a href=&quot;http://masterr.org&quot;&gt;Become Great at R&lt;/a&gt; on October 22, 2014.&lt;/p&gt;</content>
 </entry>
 
 
@@ -700,14 +702,14 @@ summary2 &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kr&
 
 <entry>
   <title type="html"><![CDATA[Bias and Precision]]></title>
-  <link rel="alternate" type="text/html" href="http://gmlang.com/da/bias-and-precision/" />
-  <id>http://gmlang.com/da/bias-and-precision</id>
+  <link rel="alternate" type="text/html" href="http://masterr.org/da/bias-and-precision/" />
+  <id>http://masterr.org/da/bias-and-precision</id>
   <published>2014-10-20T11:30:49-04:00</published>
   <updated>2014-10-20T11:30:49-04:00</updated>
   <author>
     <name>Guangming Lang</name>
-    <uri>http://gmlang.com</uri>
-    <email>gmlang@cabaceo.com</email>
+    <uri>http://masterr.org</uri>
+    <email>news@masterr.com</email>
   </author>
   <content type="html">&lt;p&gt;Statistics, by and large, deals with the “known unknowns.” The “unknowns” have to do with the population, while samples are “known.” Although it’s impossible or impractical to completely get to know the population, statistics allows us to learn about it using samples. Moreover, it provides tools to measure how well we do it. There’re two such measures, namely, bias and precision. Don’t be scared off by these two technical words. Their meanings are actually very intuitive. Let me explain.&lt;/p&gt;
 
@@ -717,7 +719,7 @@ summary2 &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kr&
 
 &lt;p&gt;You may wonder, “In practice, we often don’t know the value of the population parameter. How do we calculate bias and precision?” The answer lies in a method called &lt;em&gt;bootstrap&lt;/em&gt;, and you can read it &lt;a href=&quot;http://gmlang.com/r/an-example-of-the-bootstrap-method/&quot;&gt;here&lt;/a&gt;.   &lt;/p&gt;
 
-  &lt;p&gt;&lt;a href=&quot;http://gmlang.com/da/bias-and-precision/&quot;&gt;Bias and Precision&lt;/a&gt; was originally published by Guangming Lang at &lt;a href=&quot;http://gmlang.com&quot;&gt;Become Great at R&lt;/a&gt; on October 20, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://masterr.org/da/bias-and-precision/&quot;&gt;Bias and Precision&lt;/a&gt; was originally published by Guangming Lang at &lt;a href=&quot;http://masterr.org&quot;&gt;Become Great at R&lt;/a&gt; on October 20, 2014.&lt;/p&gt;</content>
 </entry>
 
 
@@ -725,24 +727,24 @@ summary2 &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kr&
 
 <entry>
   <title type="html"><![CDATA[Analyze Stock Price Data Using R, Part2]]></title>
-  <link rel="alternate" type="text/html" href="http://gmlang.com/r/analyze-stock-price-data-using-r-part2/" />
-  <id>http://gmlang.com/r/analyze-stock-price-data-using-r-part2</id>
+  <link rel="alternate" type="text/html" href="http://masterr.org/r/analyze-stock-price-data-using-r-part2/" />
+  <id>http://masterr.org/r/analyze-stock-price-data-using-r-part2</id>
   <published>2014-10-19T12:48:49-04:00</published>
   <updated>2014-10-19T12:48:49-04:00</updated>
   <author>
     <name>Guangming Lang</name>
-    <uri>http://gmlang.com</uri>
-    <email>gmlang@cabaceo.com</email>
+    <uri>http://masterr.org</uri>
+    <email>news@masterr.com</email>
   </author>
   <content type="html">&lt;p&gt;When constructing a portfolio, it’s important to pick un-correlated assets. This is just a corollary of the “don’t put all your eggs in one basket” principle. If asset B goes up (or down) when asset A goes up (or down) and vice versa, there’s really no reason to own both assets. By and large, assets of different classes are weakly correlated, for example, stocks and bonds, stocks and gold, and etc. In &lt;a href=&quot;http://gmlang.com/r/analyze-stock-price-data-using-r-part1/&quot;&gt;part1&lt;/a&gt;, I said I’m interested in a vanguard energy fund (VGENX) because oil price has been hammered. However, because I already own the Total Stock Market Index Fund (VTSMX), I want to find out how correlated VGENX is with VTSMX.&lt;/p&gt;
 
-&lt;h3 id=&quot;load-libraries-and-helper-functions&quot;&gt;1. Load libraries and helper functions&lt;/h3&gt;
+&lt;p&gt;Step 1. Load libraries and helper functions&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;&lt;span class=&quot;kn&quot;&gt;library&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;PerformanceAnalytics&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;kn&quot;&gt;library&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;zoo&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;kn&quot;&gt;library&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;tseries&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;h3 id=&quot;download-the-monthly-adjusted-closing-price-data-on-vgenx-and-vtsmx-since-sept-2005-from-yahoo&quot;&gt;2. Download the monthly adjusted closing price data on VGENX and VTSMX since Sept 2005 from Yahoo!.&lt;/h3&gt;
+&lt;p&gt;Step 2. Download the monthly adjusted closing price data on VGENX and VTSMX since Sept 2005 from Yahoo.&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;VGENX &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; get.hist.quote&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;instrument&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;VGENX&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; start&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;2005-09-30&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; 
                        end&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;2014-09-30&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; origin&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;1970-01-01&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
@@ -758,12 +760,12 @@ summary2 &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kr&
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;## time series ends   2014-09-02&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;h3 id=&quot;change-the-class-of-the-time-index-to-yearmon&quot;&gt;3. Change the class of the time index to yearmon.&lt;/h3&gt;
+&lt;p&gt;Step 3. Change the class of the time index to yearmon.&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;index&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;VGENX&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; as.yearmon&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;index&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;VGENX&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
 index&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;VTSMX&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; as.yearmon&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;index&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;VTSMX&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;h3 id=&quot;merge-both-price-series-into-one-data-frame-and-calculate-continuously-compounded-returns&quot;&gt;4. Merge both price series into one data frame and Calculate continuously compounded returns.&lt;/h3&gt;
+&lt;p&gt;Step 4. Merge both price series into one data frame and Calculate continuously compounded returns.&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;prices &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;merge&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;VGENX&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; VTSMX&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;kp&quot;&gt;colnames&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;prices&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;VGENX&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;VTSMX&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
@@ -775,7 +777,7 @@ ret.cc &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kp&qu
 ## Nov 2005  0.02154139  0.038859285
 ## Dec 2005  0.03159695  0.001570475&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;h3 id=&quot;plot-cumulative-returns&quot;&gt;5. Plot cumulative returns.&lt;/h3&gt;
+&lt;p&gt;Step 5. Plot cumulative returns.&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;ret.simple &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;diff&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;prices&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; lag&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;prices&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; k&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;-1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 chart.CumReturns&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;ret.simple&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; legend.loc&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;topleft&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; wealth.index&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;TRUE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; 
@@ -783,7 +785,7 @@ chart.CumReturns&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;ret.simple&lt;span
 
 &lt;p&gt;&lt;img src=&quot;/../figs/2014-10-19-analyze-stock-price-data-using-r-part2/unnamed-chunk-5-1.png&quot; alt=&quot;center&quot; /&gt; &lt;/p&gt;
 
-&lt;h3 id=&quot;display-pair-wise-scatter-plots&quot;&gt;6. Display pair-wise scatter plots&lt;/h3&gt;
+&lt;p&gt;Step 6. Display pair-wise scatter plots.&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;return_matrix &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; coredata&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;ret.cc&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 pairs&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;return_matrix&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; pch&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;16&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; col&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;dodgerblue2&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
@@ -792,7 +794,7 @@ pairs&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;return_matrix&lt;span class=&
 
 &lt;p&gt;Both plots show the returns of VGENX and VTSMX are pretty correlated.&lt;/p&gt;
 
-&lt;h3 id=&quot;compute-correlation-matrices&quot;&gt;7. Compute correlation matrices&lt;/h3&gt;
+&lt;p&gt;Step 7. Compute correlation matrices.&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;cor&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;return_matrix&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
@@ -802,7 +804,7 @@ pairs&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;return_matrix&lt;span class=&
 
 &lt;p&gt;We see their correlation is 0.78, which is pretty high.&lt;/p&gt;
 
-  &lt;p&gt;&lt;a href=&quot;http://gmlang.com/r/analyze-stock-price-data-using-r-part2/&quot;&gt;Analyze Stock Price Data Using R, Part2&lt;/a&gt; was originally published by Guangming Lang at &lt;a href=&quot;http://gmlang.com&quot;&gt;Become Great at R&lt;/a&gt; on October 19, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://masterr.org/r/analyze-stock-price-data-using-r-part2/&quot;&gt;Analyze Stock Price Data Using R, Part2&lt;/a&gt; was originally published by Guangming Lang at &lt;a href=&quot;http://masterr.org&quot;&gt;Become Great at R&lt;/a&gt; on October 19, 2014.&lt;/p&gt;</content>
 </entry>
 
 
@@ -810,18 +812,18 @@ pairs&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;return_matrix&lt;span class=&
 
 <entry>
   <title type="html"><![CDATA[Analyze Stock Price Data Using R, Part1]]></title>
-  <link rel="alternate" type="text/html" href="http://gmlang.com/r/analyze-stock-price-data-using-r-part1/" />
-  <id>http://gmlang.com/r/analyze-stock-price-data-using-r-part1</id>
+  <link rel="alternate" type="text/html" href="http://masterr.org/r/analyze-stock-price-data-using-r-part1/" />
+  <id>http://masterr.org/r/analyze-stock-price-data-using-r-part1</id>
   <published>2014-10-17T13:48:49-04:00</published>
   <updated>2014-10-17T13:48:49-04:00</updated>
   <author>
     <name>Guangming Lang</name>
-    <uri>http://gmlang.com</uri>
-    <email>gmlang@cabaceo.com</email>
+    <uri>http://masterr.org</uri>
+    <email>news@masterr.com</email>
   </author>
   <content type="html">&lt;p&gt;Crude oil has been hammered. Yesterday, it hit the lowest price in 2 years. Being a contrarian, I smell the opportunity to buy. My interest is a vanguard energy fund (&lt;a href=&quot;https://personal.vanguard.com/us/funds/snapshot?FundId=0051&amp;amp;FundIntExt=INT&quot;&gt;VGENX&lt;/a&gt;), which has 95% of its assets invested in oil or oil related sectors. Let’s first take a look at its prices and returns histories since Sept 2005.&lt;/p&gt;
 
-&lt;h3 id=&quot;load-libraries-and-helper-functions&quot;&gt;1. Load libraries and helper functions&lt;/h3&gt;
+&lt;p&gt;Step 1. Load libraries and helper functions&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;&lt;span class=&quot;kn&quot;&gt;library&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;PerformanceAnalytics&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;kn&quot;&gt;library&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;zoo&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
@@ -853,7 +855,7 @@ plt_dist &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kr&
         par&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;mfrow&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;h3 id=&quot;download-the-monthly-adjusted-closing-price-data-on-vgenx-since-sept-2005-from-yahoo&quot;&gt;2. Download the monthly adjusted closing price data on VGENX since Sept 2005 from Yahoo!.&lt;/h3&gt;
+&lt;p&gt;Step 2. Download the monthly adjusted closing price data on VGENX since Sept 2005 from Yahoo!.&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;VGENX &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; get.hist.quote&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;instrument&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;VGENX&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; start&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;2005-09-30&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; 
                        end&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;2014-09-30&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; origin&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;1970-01-01&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
@@ -862,12 +864,12 @@ plt_dist &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kr&
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;## time series ends   2014-09-02&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;h3 id=&quot;change-the-class-of-the-time-index-to-yearmon&quot;&gt;3. Change the class of the time index to yearmon.&lt;/h3&gt;
+&lt;p&gt;Step 3. Change the class of the time index to yearmon.&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;index&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;VGENX&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; as.yearmon&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;index&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;VGENX&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
 &lt;span class=&quot;kp&quot;&gt;colnames&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;VGENX&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;VGENX&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;h3 id=&quot;calculate-continuously-compounded-returns&quot;&gt;4. Calculate continuously compounded returns.&lt;/h3&gt;
+&lt;p&gt;Step 4. Calculate continuously compounded returns.&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;ret.cc &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;diff&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kp&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;VGENX&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
 &lt;span class=&quot;kp&quot;&gt;head&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;ret.cc&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
@@ -877,14 +879,14 @@ plt_dist &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kr&
 ## Nov 2005  0.02154139
 ## Dec 2005  0.03159695&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;h3 id=&quot;plot-prices&quot;&gt;5. Plot prices.&lt;/h3&gt;
+&lt;p&gt;Step 5. Plot prices.&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;chart.TimeSeries&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;VGENX&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; legend.loc&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;bottomright&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; main&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; 
                  ylab&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;monthly adj. closing prices&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;&lt;img src=&quot;/../figs/2014-10-17-analyze-stock-price-data-using-r-part1/unnamed-chunk-5-1.png&quot; alt=&quot;center&quot; /&gt; &lt;/p&gt;
 
-&lt;h3 id=&quot;plot-cumulative-returns&quot;&gt;6. Plot cumulative returns.&lt;/h3&gt;
+&lt;p&gt;Step 6. Plot cumulative returns.&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;ret.simple &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;diff&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;VGENX&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; lag&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;VGENX&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; k&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;-1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 chart.CumReturns&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;ret.simple&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; legend.loc&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;topleft&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; wealth.index&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;TRUE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; 
@@ -892,7 +894,7 @@ chart.CumReturns&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;ret.simple&lt;span
 
 &lt;p&gt;&lt;img src=&quot;/../figs/2014-10-17-analyze-stock-price-data-using-r-part1/unnamed-chunk-6-1.png&quot; alt=&quot;center&quot; /&gt; &lt;/p&gt;
 
-&lt;h3 id=&quot;plot-the-distribution-of-cc-returns&quot;&gt;7. Plot the distribution of cc returns.&lt;/h3&gt;
+&lt;p&gt;Step 7. Plot the distribution of cc returns.&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;&lt;span class=&quot;c1&quot;&gt;# Create matrix with returns&lt;/span&gt;
 return_matrix &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; coredata&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;ret.cc&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
@@ -900,10 +902,11 @@ return_matrix &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; coredata&lt;span cl
 &lt;span class=&quot;c1&quot;&gt;# Plot the distribution of cc returns&lt;/span&gt;
 plt_dist&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;return_matrix&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;VGENX&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;img src=&quot;/../figs/2014-10-17-analyze-stock-price-data-using-r-part1/unnamed-chunk-7-1.png&quot; alt=&quot;center&quot; /&gt; 
-The histogram, boxplot and the smoothed density curve show the cc returns are slightly left skewed. The qqplot shows their distribution has fatter tails.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/../figs/2014-10-17-analyze-stock-price-data-using-r-part1/unnamed-chunk-7-1.png&quot; alt=&quot;center&quot; /&gt; &lt;/p&gt;
 
-&lt;h3 id=&quot;compute-all-of-the-relevant-descriptive-statistics&quot;&gt;8. Compute all of the relevant descriptive statistics&lt;/h3&gt;
+&lt;p&gt;The histogram, boxplot and the smoothed density curve show the cc returns are slightly left skewed. The qqplot shows their distribution has fatter tails.&lt;/p&gt;
+
+&lt;p&gt;Step 8. Compute all of the relevant descriptive statistics&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;table.Stats&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;ret.cc&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
@@ -927,7 +930,7 @@ The histogram, boxplot and the smoothed density curve show the cc returns are sl
 
 &lt;p&gt;Indeed, we see the cc returns have a negative skewness and an excess kurtosis of 1.55 compared to the normal distribution.&lt;/p&gt;
 
-&lt;h3 id=&quot;run-the-jarque-bera-test-to-see-if-the-cc-returns-are-normal&quot;&gt;9. Run the Jarque Bera test to see if the cc returns are normal&lt;/h3&gt;
+&lt;p&gt;Step 9. Run the Jarque Bera test to see if the cc returns are normal&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;jarque.bera.test&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;ret.cc&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
@@ -939,14 +942,15 @@ The histogram, boxplot and the smoothed density curve show the cc returns are sl
 
 &lt;p&gt;Because the p-value is extremely small, we have strong evidence to reject the null hypothesis that the continously compounded monthly returns for VGENX are normally distributed.&lt;/p&gt;
 
-&lt;h3 id=&quot;plot-autocorrelations-over-time-lags&quot;&gt;10. Plot autocorrelations over time lags&lt;/h3&gt;
+&lt;p&gt;Step 10. Plot autocorrelations over time lags &lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;acf&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;ret.cc&lt;span class=&quot;o&quot;&gt;$&lt;/span&gt;VGENX&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;img src=&quot;/../figs/2014-10-17-analyze-stock-price-data-using-r-part1/unnamed-chunk-10-1.png&quot; alt=&quot;center&quot; /&gt; 
-The monthly cc returns doesn’t appear to be correlated over time.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/../figs/2014-10-17-analyze-stock-price-data-using-r-part1/unnamed-chunk-10-1.png&quot; alt=&quot;center&quot; /&gt; &lt;/p&gt;
 
-&lt;h3 id=&quot;compute-the-annualized-continuously-compounded-mean-return-and-volatility&quot;&gt;11. Compute the annualized continuously compounded mean return and volatility&lt;/h3&gt;
+&lt;p&gt;The monthly cc returns doesn’t appear to be correlated over time.&lt;/p&gt;
+
+&lt;p&gt;Step 11. Compute the annualized continuously compounded mean return and volatility&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;ret.cc.annual &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;apply&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;return_matrix&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;mean&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;12&lt;/span&gt; 
 &lt;span class=&quot;kp&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;ret.cc.annual&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
@@ -960,7 +964,7 @@ The monthly cc returns doesn’t appear to be correlated over time.&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;##     VGENX 
 ## 0.2372476&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;h3 id=&quot;compute-the-annualized-simple-mean-return&quot;&gt;12. Compute the annualized simple mean return&lt;/h3&gt;
+&lt;p&gt;Step 12. Compute the annualized simple mean return&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;&lt;span class=&quot;kp&quot;&gt;exp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;ret.cc.annual&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
@@ -968,7 +972,7 @@ The monthly cc returns doesn’t appear to be correlated over time.&lt;/p&gt;
 ## 0.06325957&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
-  &lt;p&gt;&lt;a href=&quot;http://gmlang.com/r/analyze-stock-price-data-using-r-part1/&quot;&gt;Analyze Stock Price Data Using R, Part1&lt;/a&gt; was originally published by Guangming Lang at &lt;a href=&quot;http://gmlang.com&quot;&gt;Become Great at R&lt;/a&gt; on October 17, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://masterr.org/r/analyze-stock-price-data-using-r-part1/&quot;&gt;Analyze Stock Price Data Using R, Part1&lt;/a&gt; was originally published by Guangming Lang at &lt;a href=&quot;http://masterr.org&quot;&gt;Become Great at R&lt;/a&gt; on October 17, 2014.&lt;/p&gt;</content>
 </entry>
 
 
@@ -976,24 +980,24 @@ The monthly cc returns doesn’t appear to be correlated over time.&lt;/p&gt;
 
 <entry>
   <title type="html"><![CDATA[Download Stock Price Data Using R]]></title>
-  <link rel="alternate" type="text/html" href="http://gmlang.com/r/download-stock-price-data-using-r/" />
-  <id>http://gmlang.com/r/download-stock-price-data-using-r</id>
+  <link rel="alternate" type="text/html" href="http://masterr.org/r/download-stock-price-data-using-r/" />
+  <id>http://masterr.org/r/download-stock-price-data-using-r</id>
   <published>2014-10-16T13:48:49-04:00</published>
   <updated>2014-10-16T13:48:49-04:00</updated>
   <author>
     <name>Guangming Lang</name>
-    <uri>http://gmlang.com</uri>
-    <email>gmlang@cabaceo.com</email>
+    <uri>http://masterr.org</uri>
+    <email>news@masterr.com</email>
   </author>
   <content type="html">&lt;p&gt;Downloading and charting stock prices data become easy when using the &lt;code&gt;tseries&lt;/code&gt; and &lt;code&gt;PerformanceAnalytics&lt;/code&gt; R packages. &lt;/p&gt;
 
-&lt;h3 id=&quot;load-these-libraries&quot;&gt;1. Load these libraries.&lt;/h3&gt;
+&lt;p&gt;Step 1. Load these libraries.&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;&lt;span class=&quot;kn&quot;&gt;library&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;PerformanceAnalytics&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;kn&quot;&gt;library&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;zoo&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;kn&quot;&gt;library&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;tseries&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;h3 id=&quot;download-the-monthly-adjusted-closing-price-data-on-sp500-gspc-and-novagold-ng-between-jan-2004-and-sept-2014-from-yahoo-using-the-function-gethistquote-from-the-tseries-package&quot;&gt;2. Download the monthly adjusted closing price data on S&amp;amp;P500 (^GSPC) and NovaGold (NG) between Jan 2004 and Sept 2014 from Yahoo! using the function &lt;code&gt;get.hist.quote()&lt;/code&gt; from the &lt;code&gt;tseries&lt;/code&gt; package.&lt;/h3&gt;
+&lt;p&gt;Step 2. Download the monthly adjusted closing price data on S&amp;amp;P500 (^GSPC) and NovaGold (NG) between Jan 2004 and Sept 2014 from Yahoo using the function &lt;code&gt;get.hist.quote()&lt;/code&gt; from the &lt;code&gt;tseries&lt;/code&gt; package.&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;sp500 &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; get.hist.quote&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;instrument&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;^GSPC&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; start&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;2004-01-01&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; 
                        end&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;2014-09-30&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; origin&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;1970-01-01&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
@@ -1011,7 +1015,7 @@ The monthly cc returns doesn’t appear to be correlated over time.&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;## time series starts 2004-01-02
 ## time series ends   2014-09-02&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;h3 id=&quot;change-the-class-of-the-time-index-to-yearmon-which-is-appropriate-for-monthly-data-using-asyearmon-in-the-zoo-package&quot;&gt;3. Change the class of the time index to yearmon which is appropriate for monthly data using &lt;code&gt;as.yearmon()&lt;/code&gt; in the &lt;code&gt;zoo&lt;/code&gt; package.&lt;/h3&gt;
+&lt;p&gt;Step 3. Change the class of the time index to yearmon which is appropriate for monthly data using &lt;code&gt;as.yearmon()&lt;/code&gt; in the &lt;code&gt;zoo&lt;/code&gt; package.  &lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;index&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;sp500&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; as.yearmon&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;index&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;sp500&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
 index&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;ng&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; as.yearmon&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;index&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;ng&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
@@ -1025,12 +1029,12 @@ index&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;ng&lt;span class=&quot;p&quot
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;## Start:  Jan 2004   End:  Sep 2014&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;h3 id=&quot;put-both-sp500-and-ng-price-data-in-one-data-frame-to-make-it-easier-for-analysis&quot;&gt;4. Put both SP500 and NG price data in one data frame to make it easier for analysis.&lt;/h3&gt;
+&lt;p&gt;Step 4. Put both SP500 and NG price data in one data frame to make it easier for analysis.&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;prices &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;merge&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;sp500&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; ng&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;kp&quot;&gt;colnames&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;prices&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;SP500&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;NG&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;h3 id=&quot;calculate-continuously-compounded-returns-as-difference-in-log-prices&quot;&gt;5. Calculate continuously compounded returns as difference in log prices.&lt;/h3&gt;
+&lt;p&gt;Step 5. Calculate continuously compounded returns as difference in log prices.&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;ret.cc &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;diff&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kp&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;prices&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
 
@@ -1046,7 +1050,7 @@ index&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;ng&lt;span class=&quot;p&quot
 ## Mar 2004 -0.01649422  0.04689952
 ## Apr 2004 -0.01693339 -0.27842887&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;h3 id=&quot;plot-returns-using-charttimeseries-and-chartbar-in-the-performanceanalytics-package&quot;&gt;6. Plot returns using &lt;code&gt;chart.TimeSeries()&lt;/code&gt; and &lt;code&gt;chart.Bar()&lt;/code&gt; in the &lt;code&gt;PerformanceAnalytics&lt;/code&gt; package.&lt;/h3&gt;
+&lt;p&gt;Step 6. Plot returns using &lt;code&gt;chart.TimeSeries()&lt;/code&gt; and &lt;code&gt;chart.Bar()&lt;/code&gt; in the &lt;code&gt;PerformanceAnalytics&lt;/code&gt; package. &lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;chart.TimeSeries&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;ret.cc&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; legend.loc&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;bottomright&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; main&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; 
                  ylab&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;monthly cc return&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
@@ -1058,8 +1062,8 @@ index&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;ng&lt;span class=&quot;p&quot
 
 &lt;p&gt;&lt;img src=&quot;/../figs/2014-10-16-download-stock-price-data-using-r/unnamed-chunk-6-2.png&quot; alt=&quot;center&quot; /&gt; &lt;/p&gt;
 
-&lt;h3 id=&quot;plot-cumulative-returns-using-chartcumreturns-in-the-performanceanalytics-package&quot;&gt;7. Plot cumulative returns using &lt;code&gt;chart.CumReturns()&lt;/code&gt; in the &lt;code&gt;PerformanceAnalytics&lt;/code&gt; package.&lt;/h3&gt;
-&lt;p&gt;Note we need to use simple returns instead of continuously compounded returns for this, so we first calcualte the simple returns using &lt;code&gt;diff()&lt;/code&gt; and &lt;code&gt;lag()&lt;/code&gt; on the price data.&lt;/p&gt;
+&lt;p&gt;Step 7. Plot cumulative returns using &lt;code&gt;chart.CumReturns()&lt;/code&gt; in the &lt;code&gt;PerformanceAnalytics&lt;/code&gt; package. 
+Note we need to use simple returns instead of continuously compounded returns for this, so we first calcualte the simple returns using &lt;code&gt;diff()&lt;/code&gt; and &lt;code&gt;lag()&lt;/code&gt; on the price data.&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;ret.simple &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;diff&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;prices&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; lag&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;prices&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; k&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;-1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 chart.CumReturns&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;ret.simple&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; legend.loc&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;topleft&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; wealth.index&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;TRUE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; 
@@ -1068,7 +1072,7 @@ chart.CumReturns&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;ret.simple&lt;span
 &lt;p&gt;&lt;img src=&quot;/../figs/2014-10-16-download-stock-price-data-using-r/unnamed-chunk-7-1.png&quot; alt=&quot;center&quot; /&gt; &lt;/p&gt;
 
 
-  &lt;p&gt;&lt;a href=&quot;http://gmlang.com/r/download-stock-price-data-using-r/&quot;&gt;Download Stock Price Data Using R&lt;/a&gt; was originally published by Guangming Lang at &lt;a href=&quot;http://gmlang.com&quot;&gt;Become Great at R&lt;/a&gt; on October 16, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://masterr.org/r/download-stock-price-data-using-r/&quot;&gt;Download Stock Price Data Using R&lt;/a&gt; was originally published by Guangming Lang at &lt;a href=&quot;http://masterr.org&quot;&gt;Become Great at R&lt;/a&gt; on October 16, 2014.&lt;/p&gt;</content>
 </entry>
 
 
@@ -1076,14 +1080,14 @@ chart.CumReturns&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;ret.simple&lt;span
 
 <entry>
   <title type="html"><![CDATA[Replacement Functions in R]]></title>
-  <link rel="alternate" type="text/html" href="http://gmlang.com/r/replacement-functions-in-r/" />
-  <id>http://gmlang.com/r/replacement-functions-in-r</id>
+  <link rel="alternate" type="text/html" href="http://masterr.org/r/replacement-functions-in-r/" />
+  <id>http://masterr.org/r/replacement-functions-in-r</id>
   <published>2014-10-15T15:12:49-04:00</published>
   <updated>2014-10-15T15:12:49-04:00</updated>
   <author>
     <name>Guangming Lang</name>
-    <uri>http://gmlang.com</uri>
-    <email>gmlang@cabaceo.com</email>
+    <uri>http://masterr.org</uri>
+    <email>news@masterr.com</email>
   </author>
   <content type="html">&lt;p&gt;Replacement functions have names in the form of &lt;code&gt;xxx&amp;lt;-&lt;/code&gt; and they modify their arguments in place. Here’s an example:&lt;/p&gt;
 
@@ -1146,7 +1150,7 @@ str&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;replacement.funs&lt;span class=
 ##  [9] &amp;quot;names&amp;lt;-&amp;quot;        &amp;quot;oldClass&amp;lt;-&amp;quot;     &amp;quot;storage.mode&amp;lt;-&amp;quot;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
-  &lt;p&gt;&lt;a href=&quot;http://gmlang.com/r/replacement-functions-in-r/&quot;&gt;Replacement Functions in R&lt;/a&gt; was originally published by Guangming Lang at &lt;a href=&quot;http://gmlang.com&quot;&gt;Become Great at R&lt;/a&gt; on October 15, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://masterr.org/r/replacement-functions-in-r/&quot;&gt;Replacement Functions in R&lt;/a&gt; was originally published by Guangming Lang at &lt;a href=&quot;http://masterr.org&quot;&gt;Become Great at R&lt;/a&gt; on October 15, 2014.&lt;/p&gt;</content>
 </entry>
 
 
@@ -1154,14 +1158,14 @@ str&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;replacement.funs&lt;span class=
 
 <entry>
   <title type="html"><![CDATA[How to Calculate Sknewness and Kurtosis in R]]></title>
-  <link rel="alternate" type="text/html" href="http://gmlang.com/r/sknewness-and-kurtosis-examples/" />
-  <id>http://gmlang.com/r/sknewness-and-kurtosis-examples</id>
+  <link rel="alternate" type="text/html" href="http://masterr.org/r/sknewness-and-kurtosis-examples/" />
+  <id>http://masterr.org/r/sknewness-and-kurtosis-examples</id>
   <published>2014-10-14T11:51:49-04:00</published>
   <updated>2014-10-14T11:51:49-04:00</updated>
   <author>
     <name>Guangming Lang</name>
-    <uri>http://gmlang.com</uri>
-    <email>gmlang@cabaceo.com</email>
+    <uri>http://masterr.org</uri>
+    <email>news@masterr.com</email>
   </author>
   <content type="html">&lt;p&gt;Previously, I wrote about the &lt;a href=&quot;http://gmlang.com/da/skewness-and-kurtosis/&quot;&gt;intuitions behind skewness and kurtosis&lt;/a&gt;. Today I’m going to do some calculations using the daily adjusted close prices of the S&amp;amp;P500 and NovaGold between January 4, 2007 and October 10, 2014. You can download the data from yahoo and follow along. First of all, I defined some helper functions, which can also be used in other contexts to improve code organization and efficiency. &lt;/p&gt;
 
@@ -1257,7 +1261,7 @@ plt_density&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;ret.ng&lt;span class=&q
 
 &lt;p&gt;Note, both NovaGold and the S&amp;amp;P500 have longer and fatter tails than the normal curve. &lt;/p&gt;
 
-  &lt;p&gt;&lt;a href=&quot;http://gmlang.com/r/sknewness-and-kurtosis-examples/&quot;&gt;How to Calculate Sknewness and Kurtosis in R&lt;/a&gt; was originally published by Guangming Lang at &lt;a href=&quot;http://gmlang.com&quot;&gt;Become Great at R&lt;/a&gt; on October 14, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://masterr.org/r/sknewness-and-kurtosis-examples/&quot;&gt;How to Calculate Sknewness and Kurtosis in R&lt;/a&gt; was originally published by Guangming Lang at &lt;a href=&quot;http://masterr.org&quot;&gt;Become Great at R&lt;/a&gt; on October 14, 2014.&lt;/p&gt;</content>
 </entry>
 
 
@@ -1265,14 +1269,14 @@ plt_density&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;ret.ng&lt;span class=&q
 
 <entry>
   <title type="html"><![CDATA[Sknewness and Kurtosis]]></title>
-  <link rel="alternate" type="text/html" href="http://gmlang.com/da/skewness-and-kurtosis/" />
-  <id>http://gmlang.com/da/skewness-and-kurtosis</id>
+  <link rel="alternate" type="text/html" href="http://masterr.org/da/skewness-and-kurtosis/" />
+  <id>http://masterr.org/da/skewness-and-kurtosis</id>
   <published>2014-10-13T12:39:49-04:00</published>
   <updated>2014-10-13T12:39:49-04:00</updated>
   <author>
     <name>Guangming Lang</name>
-    <uri>http://gmlang.com</uri>
-    <email>gmlang@cabaceo.com</email>
+    <uri>http://masterr.org</uri>
+    <email>news@masterr.com</email>
   </author>
   <content type="html">&lt;p&gt;When analyzing a continuous variable, you often want to look at its distribution using a histogram or density plot and compare it against a benchmark distribution (a common choice is the normal distribution). In addition, you also want to quantify its shape characteristics:&lt;/p&gt;
 
@@ -1313,7 +1317,7 @@ plt_density&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;ret.ng&lt;span class=&q
   &lt;/ol&gt;
 &lt;/div&gt;
 
-  &lt;p&gt;&lt;a href=&quot;http://gmlang.com/da/skewness-and-kurtosis/&quot;&gt;Sknewness and Kurtosis&lt;/a&gt; was originally published by Guangming Lang at &lt;a href=&quot;http://gmlang.com&quot;&gt;Become Great at R&lt;/a&gt; on October 13, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://masterr.org/da/skewness-and-kurtosis/&quot;&gt;Sknewness and Kurtosis&lt;/a&gt; was originally published by Guangming Lang at &lt;a href=&quot;http://masterr.org&quot;&gt;Become Great at R&lt;/a&gt; on October 13, 2014.&lt;/p&gt;</content>
 </entry>
 
 
@@ -1321,14 +1325,14 @@ plt_density&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;ret.ng&lt;span class=&q
 
 <entry>
   <title type="html"><![CDATA[Which R Base Generic Has the Most Number of Methods]]></title>
-  <link rel="alternate" type="text/html" href="http://gmlang.com/r/which-r-base-generic-has-the-most-number-of-methods/" />
-  <id>http://gmlang.com/r/which-r-base-generic-has-the-most-number-of-methods</id>
+  <link rel="alternate" type="text/html" href="http://masterr.org/r/which-r-base-generic-has-the-most-number-of-methods/" />
+  <id>http://masterr.org/r/which-r-base-generic-has-the-most-number-of-methods</id>
   <published>2014-10-12T10:11:49-04:00</published>
   <updated>2014-10-12T10:11:49-04:00</updated>
   <author>
     <name>Guangming Lang</name>
-    <uri>http://gmlang.com</uri>
-    <email>gmlang@cabaceo.com</email>
+    <uri>http://masterr.org</uri>
+    <email>news@masterr.com</email>
   </author>
   <content type="html">&lt;p&gt;A generic (short for generic function) is a special type of function in R. R’s S3 system uses generics to decide which method to call. In other words, when it comes to the S3 system, “object oriented programming” specifically means “generic oriented programming” because S3 methods belong to generic functions instead of classes or objects. &lt;/p&gt;
 
@@ -1363,7 +1367,7 @@ generics&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;kp&qu
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;## [1] 2596&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
-  &lt;p&gt;&lt;a href=&quot;http://gmlang.com/r/which-r-base-generic-has-the-most-number-of-methods/&quot;&gt;Which R Base Generic Has the Most Number of Methods&lt;/a&gt; was originally published by Guangming Lang at &lt;a href=&quot;http://gmlang.com&quot;&gt;Become Great at R&lt;/a&gt; on October 12, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://masterr.org/r/which-r-base-generic-has-the-most-number-of-methods/&quot;&gt;Which R Base Generic Has the Most Number of Methods&lt;/a&gt; was originally published by Guangming Lang at &lt;a href=&quot;http://masterr.org&quot;&gt;Become Great at R&lt;/a&gt; on October 12, 2014.&lt;/p&gt;</content>
 </entry>
 
 
@@ -1371,14 +1375,14 @@ generics&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;kp&qu
 
 <entry>
   <title type="html"><![CDATA[How to View Source Code in R]]></title>
-  <link rel="alternate" type="text/html" href="http://gmlang.com/r/how-to-view-source-code-in-r/" />
-  <id>http://gmlang.com/r/how-to-view-source-code-in-r</id>
+  <link rel="alternate" type="text/html" href="http://masterr.org/r/how-to-view-source-code-in-r/" />
+  <id>http://masterr.org/r/how-to-view-source-code-in-r</id>
   <published>2014-10-09T12:29:49-04:00</published>
   <updated>2014-10-09T12:29:49-04:00</updated>
   <author>
     <name>Guangming Lang</name>
-    <uri>http://gmlang.com</uri>
-    <email>gmlang@cabaceo.com</email>
+    <uri>http://masterr.org</uri>
+    <email>news@masterr.com</email>
   </author>
   <content type="html">&lt;p&gt;The best way to learn how to use a function written by other people is to read its source code. If you use Rstudio, you just need to type the function name at the command line. However, a lot of times, you will get something like this. &lt;/p&gt;
 
@@ -1448,7 +1452,7 @@ generics&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;kp&qu
 ## &amp;lt;environment: namespace:base&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
-  &lt;p&gt;&lt;a href=&quot;http://gmlang.com/r/how-to-view-source-code-in-r/&quot;&gt;How to View Source Code in R&lt;/a&gt; was originally published by Guangming Lang at &lt;a href=&quot;http://gmlang.com&quot;&gt;Become Great at R&lt;/a&gt; on October 09, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://masterr.org/r/how-to-view-source-code-in-r/&quot;&gt;How to View Source Code in R&lt;/a&gt; was originally published by Guangming Lang at &lt;a href=&quot;http://masterr.org&quot;&gt;Become Great at R&lt;/a&gt; on October 09, 2014.&lt;/p&gt;</content>
 </entry>
 
 
@@ -1456,14 +1460,14 @@ generics&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;kp&qu
 
 <entry>
   <title type="html"><![CDATA[Functions That Return Functions Part 2]]></title>
-  <link rel="alternate" type="text/html" href="http://gmlang.com/r/functions-that-return-functions-part-2/" />
-  <id>http://gmlang.com/r/functions-that-return-functions-part-2</id>
+  <link rel="alternate" type="text/html" href="http://masterr.org/r/functions-that-return-functions-part-2/" />
+  <id>http://masterr.org/r/functions-that-return-functions-part-2</id>
   <published>2014-10-07T18:10:37-04:00</published>
   <updated>2014-10-07T18:10:37-04:00</updated>
   <author>
     <name>Guangming Lang</name>
-    <uri>http://gmlang.com</uri>
-    <email>gmlang@cabaceo.com</email>
+    <uri>http://masterr.org</uri>
+    <email>news@masterr.com</email>
   </author>
   <content type="html">&lt;p&gt;Previously, I wrote about the idea of &lt;a href=&quot;http://gmlang.com/r/functions-that-return-functions/&quot;&gt;functions that return other functions&lt;/a&gt;, where I gave a trivial example that didn’t demonstrate the power of the idea. Today, I’m giving several more examples, which I use frequently in my work. They allow me to make the same kind of ggplot2 plots without repeatedly typing the same commands, and hence make my code shorter and less error prone. &lt;/p&gt;
 
@@ -1526,7 +1530,7 @@ mk_box_plt &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k
 
 &lt;p&gt;If you’re having trouble understanding these functions, drop a comment. I’d be happy to answer your questions.&lt;/p&gt;
 
-  &lt;p&gt;&lt;a href=&quot;http://gmlang.com/r/functions-that-return-functions-part-2/&quot;&gt;Functions That Return Functions Part 2&lt;/a&gt; was originally published by Guangming Lang at &lt;a href=&quot;http://gmlang.com&quot;&gt;Become Great at R&lt;/a&gt; on October 07, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://masterr.org/r/functions-that-return-functions-part-2/&quot;&gt;Functions That Return Functions Part 2&lt;/a&gt; was originally published by Guangming Lang at &lt;a href=&quot;http://masterr.org&quot;&gt;Become Great at R&lt;/a&gt; on October 07, 2014.&lt;/p&gt;</content>
 </entry>
 
 
@@ -1534,14 +1538,14 @@ mk_box_plt &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k
 
 <entry>
   <title type="html"><![CDATA[When Does A Flexible Model Beat An Inflexible One and Vice Versa]]></title>
-  <link rel="alternate" type="text/html" href="http://gmlang.com/da/when-does-a-flexible-model-beat-an-inflexible-one-and-vice-versa/" />
-  <id>http://gmlang.com/da/when-does-a-flexible-model-beat-an-inflexible-one-and-vice-versa</id>
+  <link rel="alternate" type="text/html" href="http://masterr.org/da/when-does-a-flexible-model-beat-an-inflexible-one-and-vice-versa/" />
+  <id>http://masterr.org/da/when-does-a-flexible-model-beat-an-inflexible-one-and-vice-versa</id>
   <published>2014-10-06T10:13:17-04:00</published>
   <updated>2014-10-06T10:13:17-04:00</updated>
   <author>
     <name>Guangming Lang</name>
-    <uri>http://gmlang.com</uri>
-    <email>gmlang@cabaceo.com</email>
+    <uri>http://masterr.org</uri>
+    <email>news@masterr.com</email>
   </author>
   <content type="html">&lt;p&gt;Machine Learning or Statistical Learning methods fall into a spectrum according to their flexibility. At the left end of the spectrum, for example, when dealing with a regression problem where the response variable is quantitative, you have lasso and linear regression, which are very restrictive and hence inflexible since they impose a linear structure onto what the true model looks like. Moving to the right, you have splines models which allow non-linearity, and hence are more flexible. Similarly, when facing a classification problem where the response variable is qualitative, you can use &lt;script type=&quot;math/tex&quot;&gt;k&lt;/script&gt;-nearest neighbors (KNN) algorithm, where a bigger &lt;script type=&quot;math/tex&quot;&gt;k&lt;/script&gt; corresponds to a less flexible model. When &lt;script type=&quot;math/tex&quot;&gt;k=1&lt;/script&gt;, the model is the most flexible.&lt;/p&gt;
 
@@ -1563,7 +1567,7 @@ mk_box_plt &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k
   &lt;li&gt;An inflexible model will perform better in general. Because a flexible model will capture too much of the noise in the data due to the large variance of the errors. &lt;/li&gt;
 &lt;/ol&gt;
 
-  &lt;p&gt;&lt;a href=&quot;http://gmlang.com/da/when-does-a-flexible-model-beat-an-inflexible-one-and-vice-versa/&quot;&gt;When Does A Flexible Model Beat An Inflexible One and Vice Versa&lt;/a&gt; was originally published by Guangming Lang at &lt;a href=&quot;http://gmlang.com&quot;&gt;Become Great at R&lt;/a&gt; on October 06, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://masterr.org/da/when-does-a-flexible-model-beat-an-inflexible-one-and-vice-versa/&quot;&gt;When Does A Flexible Model Beat An Inflexible One and Vice Versa&lt;/a&gt; was originally published by Guangming Lang at &lt;a href=&quot;http://masterr.org&quot;&gt;Become Great at R&lt;/a&gt; on October 06, 2014.&lt;/p&gt;</content>
 </entry>
 
 
@@ -1571,14 +1575,14 @@ mk_box_plt &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k
 
 <entry>
   <title type="html"><![CDATA[The Magic of Substitute and Deparse]]></title>
-  <link rel="alternate" type="text/html" href="http://gmlang.com/r/the-magic-of-substitute-and-deparse/" />
-  <id>http://gmlang.com/r/the-magic-of-substitute-and-deparse</id>
+  <link rel="alternate" type="text/html" href="http://masterr.org/r/the-magic-of-substitute-and-deparse/" />
+  <id>http://masterr.org/r/the-magic-of-substitute-and-deparse</id>
   <published>2014-10-05T12:04:44-04:00</published>
   <updated>2014-10-05T12:04:44-04:00</updated>
   <author>
     <name>Guangming Lang</name>
-    <uri>http://gmlang.com</uri>
-    <email>gmlang@cabaceo.com</email>
+    <uri>http://masterr.org</uri>
+    <email>news@masterr.com</email>
   </author>
   <content type="html">&lt;p&gt;The R functions &lt;code&gt;substitute()&lt;/code&gt; and &lt;code&gt;deparse()&lt;/code&gt; are very interesting and here’s why.&lt;/p&gt;
 
@@ -1606,7 +1610,7 @@ foo1&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;x&lt;span class=&quot;p&quot;&
 
 &lt;p&gt;You can learn more about them &lt;a href=&quot;http://stackoverflow.com/questions/5754367/using-substitute-to-get-argument-name-with&quot;&gt;here&lt;/a&gt; and &lt;a href=&quot;http://stackoverflow.com/questions/3057341/how-to-use-rs-ellipsis-feature-when-writing-your-own-function&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
 
-  &lt;p&gt;&lt;a href=&quot;http://gmlang.com/r/the-magic-of-substitute-and-deparse/&quot;&gt;The Magic of Substitute and Deparse&lt;/a&gt; was originally published by Guangming Lang at &lt;a href=&quot;http://gmlang.com&quot;&gt;Become Great at R&lt;/a&gt; on October 05, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://masterr.org/r/the-magic-of-substitute-and-deparse/&quot;&gt;The Magic of Substitute and Deparse&lt;/a&gt; was originally published by Guangming Lang at &lt;a href=&quot;http://masterr.org&quot;&gt;Become Great at R&lt;/a&gt; on October 05, 2014.&lt;/p&gt;</content>
 </entry>
 
 
@@ -1614,14 +1618,14 @@ foo1&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;x&lt;span class=&quot;p&quot;&
 
 <entry>
   <title type="html"><![CDATA[The setwd Function in R]]></title>
-  <link rel="alternate" type="text/html" href="http://gmlang.com/r/the-setwd-function-in-r/" />
-  <id>http://gmlang.com/r/the-setwd-function-in-r</id>
+  <link rel="alternate" type="text/html" href="http://masterr.org/r/the-setwd-function-in-r/" />
+  <id>http://masterr.org/r/the-setwd-function-in-r</id>
   <published>2014-10-03T17:40:12-04:00</published>
   <updated>2014-10-03T17:40:12-04:00</updated>
   <author>
     <name>Guangming Lang</name>
-    <uri>http://gmlang.com</uri>
-    <email>gmlang@cabaceo.com</email>
+    <uri>http://masterr.org</uri>
+    <email>news@masterr.com</email>
   </author>
   <content type="html">&lt;p&gt;Previously, I wrote an &lt;a href=&quot;http://gmlang.com/r/how-to-work-with-files-in-r-and-improve-reproducibility/&quot;&gt;article&lt;/a&gt; on how not to use &lt;code&gt;setwd()&lt;/code&gt;. Today I discovered a side effect of &lt;code&gt;setwd()&lt;/code&gt; that is really cool and useful. It turns out that when you run &lt;code&gt;setwd(path)&lt;/code&gt;, not only will it reset the working directory to path, it will also return the working directory before the reset.&lt;/p&gt;
 
@@ -1680,7 +1684,7 @@ old &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; home.path&lt;/code&gt;&lt;/p
   &lt;/ol&gt;
 &lt;/div&gt;
 
-  &lt;p&gt;&lt;a href=&quot;http://gmlang.com/r/the-setwd-function-in-r/&quot;&gt;The setwd Function in R&lt;/a&gt; was originally published by Guangming Lang at &lt;a href=&quot;http://gmlang.com&quot;&gt;Become Great at R&lt;/a&gt; on October 03, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://masterr.org/r/the-setwd-function-in-r/&quot;&gt;The setwd Function in R&lt;/a&gt; was originally published by Guangming Lang at &lt;a href=&quot;http://masterr.org&quot;&gt;Become Great at R&lt;/a&gt; on October 03, 2014.&lt;/p&gt;</content>
 </entry>
 
 </feed>
