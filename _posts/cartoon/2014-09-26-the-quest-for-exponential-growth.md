@@ -7,6 +7,7 @@ categories: cartoon
 keywords: "exponential growth, how to get exponentail growth, the quest for exponential growth, xkcd, R xkcd package"
 published: true
 share: true
+ads: true
 
 ---
 ![](/images/xkcd-exponential-growth.png)

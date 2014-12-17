@@ -7,6 +7,7 @@ categories: R
 keywords: "R, cache, caching in R"
 published: true
 share: true
+ads: true
 
 ---
 

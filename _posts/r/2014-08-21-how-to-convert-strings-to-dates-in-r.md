@@ -7,6 +7,7 @@ categories: R
 keywords: "R, string to date conversion, character vector in R, numeric vector in R, date in R"
 published: true
 share: true
+ads: true
 
 ---
 Dealing with date variables is usually tedious. When reading in a text data file into R, R will not automatically convert the date values into dates, rather, it will treat them as strings (make sure you specify `stringsAsFactors = FALSE` in your `read.table()` or `read.csv()` function. Otherwise, R will read in them as factors, which you don't want). Sometimes, the date values are of the format “yyyymmdd”, like “20051023”, and R will treat them as numbers. It's your job to convert these strings or numbers to dates. I've written a function that allows you to do that easily. 

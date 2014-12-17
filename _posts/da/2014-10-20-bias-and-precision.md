@@ -7,6 +7,7 @@ categories: da
 keywords: "data analysis, da mondays, bias, precision"
 published: true
 share: true
+ads: true
 
 ---
 Statistics, by and large, deals with the "known unknowns." The "unknowns" have to do with the population, while samples are "known." Although it's impossible or impractical to completely get to know the population, statistics allows us to learn about it using samples. Moreover, it provides tools to measure how well we do it. There're two such measures, namely, bias and precision. Don't be scared off by these two technical words. Their meanings are actually very intuitive. Let me explain.

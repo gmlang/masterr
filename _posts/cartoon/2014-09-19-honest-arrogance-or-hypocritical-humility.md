@@ -7,6 +7,7 @@ categories: cartoon
 keywords: "honest arrogance, hypocritical humility, xkcd, R xkcd package"
 published: true
 share: true
+ads: true
 
 ---
 ![](/images/xkcd-honesty-vs-humility.png)

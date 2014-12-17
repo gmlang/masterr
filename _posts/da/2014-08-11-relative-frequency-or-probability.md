@@ -7,6 +7,7 @@ categories: da
 keywords: "relative frequency, probability"
 published: true
 share: true
+ads: true
 
 ---
 Consider these two numbers: 5 out of 100 and 5%. They are the same, just expressed differently. The first number is expressed as a relative frequency and the second number is expressed as a probability in percentage format. It turns out people perceive them differently when putting them into a context. Consider the following two statements about the chance that a mental patient commits an act of violence within 6 months after discharge[^1]:

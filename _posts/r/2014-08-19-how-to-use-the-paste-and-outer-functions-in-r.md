@@ -8,6 +8,7 @@ keywords: "R, outer, paste, roll a dice n times, roll two dies n times,
 roll a dice"
 published: true
 share: true
+ads: true
 
 ---
 Today I want to show you the power of two little R functions: `paste()` and `outer()`. Why should you care? Because you may encounter scenarios like the following.

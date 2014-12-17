@@ -7,6 +7,7 @@ categories: r
 keywords: "financial markets, algorithmic trading, quantstrat, R, shiny app, quantitative trading"
 published: true
 share: true
+ads: true
  
 ---
 [quantstrat](http://blog.fosstrading.com/2011/08/introduction-to-quantstrat.html) is a R package. It makes backtesting trading strategies easy. It is still under heavy development and can't be installed from CRAN yet. You can install it from source and the process is straightforward.

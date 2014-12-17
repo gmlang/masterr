@@ -7,6 +7,7 @@ categories: R
 keywords: "R, read large dataset in R, big data and R, size"
 published: true
 share: true
+ads: true
 
 ---
 R is my favorite tool for data analysis except when it comes to dealing with large datasets. If the data file is larger than the size of your RAM, R will fail at reading it in. So when you have a large dataset, you should first check if you have enough memory. I showed [a method of doing that](http://gmlang.com/r/how-to-handle-large-datasets-in-r-part-1/) when all you know is the number of rows and columns in the data file. 

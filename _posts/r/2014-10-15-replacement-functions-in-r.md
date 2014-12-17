@@ -7,6 +7,7 @@ categories: R
 keywords: "R, replacement functions"
 published: true
 share: true
+ads: true
 
 ---
 

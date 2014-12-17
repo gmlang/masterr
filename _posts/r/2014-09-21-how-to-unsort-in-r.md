@@ -7,6 +7,7 @@ categories: R
 keywords: "R, sort, unsort, undo a sort in R"
 published: true
 share: true
+ads: true
 
 ---
 When doing data analysis in R, we often want to sort a vector or [data frame](http://gmlang.com/r/how-to-easily-sort-a-data-frame/). Sometimes, we want to undo the sorting. This usually happens inside of a function where you want to first sort the input object, do some operations and undo the sorting before you return the output object. 

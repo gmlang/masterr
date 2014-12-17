@@ -7,6 +7,7 @@ categories: cartoon
 keywords: "interpretability, flexibility, statistical learning methods, machine learning methods, xkcd, R xkcd package"
 published: true
 share: true
+ads: true
 
 ---
 ![](/images/xkcd-interpretability-vs-flexibility.png)

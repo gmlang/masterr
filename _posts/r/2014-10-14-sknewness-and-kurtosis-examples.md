@@ -7,6 +7,7 @@ categories: R
 keywords: "R, sknewness, kurtosis, sp500, novagold"
 published: true
 share: true
+ads: true
 
 ---
 

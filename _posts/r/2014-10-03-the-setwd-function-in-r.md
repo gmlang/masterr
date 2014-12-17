@@ -7,6 +7,7 @@ categories: R
 keywords: "R, functions in R, setwd"
 published: true
 share: true
+ads: true
 
 ---
 

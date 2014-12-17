@@ -7,6 +7,7 @@ categories: cartoon
 keywords: "correlation, covariance, linear association, linear relationship, independence, xkcd, R xkcd package"
 published: true
 share: true
+ads: true
 
 ---
 ![](/images/xkcd-correlation-vs-independence.png)

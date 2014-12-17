@@ -7,6 +7,7 @@ categories: da
 keywords: "when does data analysis become worthless, things to avoid when doing data analysis"
 published: true
 share: true
+ads: true
 
 ---
 The short answer is that when it tells you what you already know or when it tells you something so out of line with what you already know. 

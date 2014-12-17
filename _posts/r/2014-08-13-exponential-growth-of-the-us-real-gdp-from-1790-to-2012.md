@@ -7,6 +7,7 @@ categories: r
 keywords: "US real GDP, exponential growth, the rule of 72, charlie munger, log linear, quandl"
 published: true
 share: true
+ads: true
 
 ---
 Exponential model is one of the most powerful mathematical models because it allows us to understand some important worldly phenomenons. The word “exponential” means “amplified.” There're two kinds of exponential models: exponential decay and exponential growth. In this article, I'm going to show you what exponential growth is and how to use it to model the US real GDP.[^1]

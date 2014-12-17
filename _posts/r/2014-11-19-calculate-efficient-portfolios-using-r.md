@@ -7,6 +7,7 @@ categories: R
 keywords: "R, PerformanceAnalytics, zoo, tseries, download stock price data using R, analyze stock price data using R, efficient portfolios, portfolio optimization using R"
 published: true
 share: true
+ads: true
 
 ---
 

@@ -7,6 +7,7 @@ categories: R
 keywords: "R, functions in R, quickly subset list elements in R"
 published: true
 share: true
+ads: true
 
 ---
 

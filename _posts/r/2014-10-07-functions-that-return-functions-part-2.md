@@ -7,6 +7,7 @@ categories: R
 keywords: "R, closures, functions that return other functions, function factory"
 published: true
 share: true
+ads: true
 
 ---
 Previously, I wrote about the idea of [functions that return other functions](http://gmlang.com/r/functions-that-return-functions/), where I gave a trivial example that didn't demonstrate the power of the idea. Today, I'm giving several more examples, which I use frequently in my work. They allow me to make the same kind of ggplot2 plots without repeatedly typing the same commands, and hence make my code shorter and less error prone. 

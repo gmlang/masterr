@@ -7,6 +7,7 @@ categories: da
 keywords: "data analysis, da mondays, sknewness, kurtosis"
 published: true
 share: true
+ads: true
 
 ---
 When analyzing a continuous variable, you often want to look at its distribution using a histogram or density plot and compare it against a benchmark distribution (a common choice is the normal distribution). In addition, you also want to quantify its shape characteristics:

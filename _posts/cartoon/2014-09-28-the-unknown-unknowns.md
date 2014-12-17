@@ -7,6 +7,7 @@ categories: cartoon
 keywords: "known knowns, known unknowns, unknown unknowns, breakdown of knowledge"
 published: true
 share: ture
+ads: true
 
 ---
 ![](/images/xkcd-unknown-unknowns.png)

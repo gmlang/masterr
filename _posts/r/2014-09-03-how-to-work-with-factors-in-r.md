@@ -7,6 +7,7 @@ categories: R
 keywords: "R, factor, factors in R, ordered bars, barchart, barplot, rank, order"
 published: true
 share: true
+ads: true
 
 ---
 If you want to deal with categorical variables in R, you need to use a data structure called factor. A factor is just a numeric vector with a special attribute called levels. You can think of the levels as labels for the values. Given a character vector, you can turn it into a factor using the factor() function, for example,

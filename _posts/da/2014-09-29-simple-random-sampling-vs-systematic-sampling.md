@@ -7,6 +7,7 @@ categories: da
 keywords: "simple random sampling, systematic sampling"
 published: true
 share: true
+ads: true
 
 ---
 Suppose you're selling electronics and you wish to analyze the transaction data. Because there are too much data, you need to take a sample. Which sampling technique would you use? 

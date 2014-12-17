@@ -7,6 +7,7 @@ categories: R
 keywords: "R code style guide"
 published: true
 share: true
+ads: true
 
 ---
 I didn't pay much attention to code style until recently when I had to collaborate with a couple of guys on a project. That experience taught me having a consistent style across all team members can greatly reduce communication time and help people understand each other's code. If you're not already using a style, you should decide on a style today. Even if you program solo, you will also benefit from sticking to a style. It will allow you to write code faster, for example, once you choose a style, you don't have to spend time deciding whether you should use all lowercase letters chained by dots or undersores or use camelCase everytime you write a variable name. It will also make your code easier to read. 

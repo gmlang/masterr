@@ -7,6 +7,7 @@ categories: da
 keywords: "when does a flexible statistical learning method perform better than an inflexible one, when does an inflexible statistical learning method perform better than a flexible one"
 published: true
 share: true
+ads: true
 
 ---
 Machine Learning or Statistical Learning methods fall into a spectrum according to their flexibility. At the left end of the spectrum, for example, when dealing with a regression problem where the response variable is quantitative, you have lasso and linear regression, which are very restrictive and hence inflexible since they impose a linear structure onto what the true model looks like. Moving to the right, you have splines models which allow non-linearity, and hence are more flexible. Similarly, when facing a classification problem where the response variable is qualitative, you can use $$k$$-nearest neighbors (KNN) algorithm, where a bigger $$k$$ corresponds to a less flexible model. When $$k=1$$, the model is the most flexible.

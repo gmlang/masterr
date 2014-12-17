@@ -7,6 +7,7 @@ categories: R
 keywords: "R, histogram, normality, qqplot, hist, R base graphing system"
 published: true
 share: true
+ads: true
 
 ---
 When doing descriptive analysis, we often want to see how each variable is distributed. For a continuous variable, this means we want to plot its histogram and check its normality (checking normality of the response variable is necessary when you plan to use linear regression in your inference or predictive analysis). Here're two small functions that allow you to do that on the fly. They don't give you dazzling plots for final presentation, however, they do give you informative plots that allow you to see if a variable needs any transformation.

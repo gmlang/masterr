@@ -7,6 +7,7 @@ categories: R
 keywords: "R, consecutive repeats in R"
 published: true
 share: true
+ads: true
 
 ---
 

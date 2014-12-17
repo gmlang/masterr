@@ -7,6 +7,7 @@ categories: R
 keywords: "R, zoo, tseries, download stock price data using R, analyze stock price data using R, bootstrap examples"
 published: true
 share: true
+ads: true
 
 ---
 

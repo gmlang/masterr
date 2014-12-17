@@ -7,6 +7,7 @@ categories: R
 keywords: "read excel file into R"
 published: true
 share: true
+ads: true
 
 ---
 You can use the [XLConnect](http://cran.r-project.org/web/packages/XLConnect/vignettes/XLConnect.pdf) package to read .xls or .xlsx files into R. Suppose you have a file named example.xls in your working directory. You can read the data on sheet1 into R using the following commands.

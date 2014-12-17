@@ -7,6 +7,7 @@ categories: R
 keywords: "R, constructor functions, functions that return functions"
 published: true
 share: true
+ads: true
 
 ---
 I love the idea of writing a function that returns another function. For example, say we want to compute $$x^n$$ for any given $$x$$ and $$n$$. We can write a function that takes $$n$$ as input and returns a function, which can further take $$x$$ as input and returns the result. Here's the R code:

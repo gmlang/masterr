@@ -7,7 +7,8 @@ categories: da
 keywords: "data analysis, da mondays, data cleaning, descriptive, exploratory, inference, prediction, models, visualization"
 published: true
 share: true
- 
+ads: true
+
 ---
 When I tell people I do data analysis for a living, I usually get one of these responses:
 

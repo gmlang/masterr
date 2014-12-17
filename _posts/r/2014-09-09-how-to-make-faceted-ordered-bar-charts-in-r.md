@@ -8,6 +8,7 @@ keywords: "R, factor, factors in R, ordered bars, barchart, barplot,
 rank, order, ggplot2"
 published: true
 share: true
+ads: true
 
 ---
 Previously, I showed [two examples](http://gmlang.com/r/how-to-work-with-factors-in-r/) of how to make ordered bar charts using ggplot2. Sometimes, you want to create multiple facets and put on each facet an ordered bar chart. Here's how you can do that using ggplot2.

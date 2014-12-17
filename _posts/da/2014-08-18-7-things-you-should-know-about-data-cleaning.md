@@ -7,6 +7,7 @@ categories: da
 keywords: "data cleaning, data processing, tidy data"
 published: true
 share: true
+ads: true
 
 ---
 When doing a data analysis project, it's often said that 80% of the effort is spent on data cleaning. I've cleaned lots of datasets and have become quite good at it. These experiences have taught me 
