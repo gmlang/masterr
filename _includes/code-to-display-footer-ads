@@ -1,0 +1,2 @@
+<!-- add the following line to the beginning of footer.html to display adds on footer -->
+{% if site.owner.google.ad-client and site.owner.google.ad-slot %}{% include ad-footer.html %}{% endif %}
