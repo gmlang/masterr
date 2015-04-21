@@ -65,12 +65,6 @@ barplt("student", "pct", "student", legend=F, ypct=T)
 
 ![center](/../figs/2015-04-21-an-easy-way-to-make-ggplot2-plots-ezplot-part1/unnamed-chunk-3-3.png) 
 
-{% highlight r %}
-barplt("student", "pct", "student", legend=F)
-{% endhighlight %}
-
-![center](/../figs/2015-04-21-an-easy-way-to-make-ggplot2-plots-ezplot-part1/unnamed-chunk-3-4.png) 
-
 ### Make some fake data again
 
 {% highlight r %}
