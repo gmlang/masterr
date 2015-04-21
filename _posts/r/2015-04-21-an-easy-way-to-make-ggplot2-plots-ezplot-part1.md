@@ -48,61 +48,28 @@ print(df)
 {% highlight r %}
 barplt = mk_barplot(df)
 p = barplt("student", "grade", "student") 
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## Error in Scales$new: could not find function "loadMethod"
-{% endhighlight %}
-
-
-
-{% highlight r %}
 print(p)
 {% endhighlight %}
 
-
-
-{% highlight text %}
-## Error in print(p): object 'p' not found
-{% endhighlight %}
-
-
+![center](/../figs/2015-04-21-an-easy-way-to-make-ggplot2-plots-ezplot-part1/unnamed-chunk-3-1.png) 
 
 {% highlight r %}
 barplt("student", "grade", "student", legend=F) 
 {% endhighlight %}
 
-
-
-{% highlight text %}
-## Error in Scales$new: could not find function "loadMethod"
-{% endhighlight %}
-
-
+![center](/../figs/2015-04-21-an-easy-way-to-make-ggplot2-plots-ezplot-part1/unnamed-chunk-3-2.png) 
 
 {% highlight r %}
 barplt("student", "pct", "student", legend=F, ypct=T) 
 {% endhighlight %}
 
-
-
-{% highlight text %}
-## Error in Scales$new: could not find function "loadMethod"
-{% endhighlight %}
-
-
+![center](/../figs/2015-04-21-an-easy-way-to-make-ggplot2-plots-ezplot-part1/unnamed-chunk-3-3.png) 
 
 {% highlight r %}
 barplt("student", "pct", "student", legend=F)
 {% endhighlight %}
 
-
-
-{% highlight text %}
-## Error in Scales$new: could not find function "loadMethod"
-{% endhighlight %}
+![center](/../figs/2015-04-21-an-easy-way-to-make-ggplot2-plots-ezplot-part1/unnamed-chunk-3-4.png) 
 
 ### Make some fake data again
 
@@ -138,39 +105,16 @@ barplt = mk_barplot(df2)
 barplt("group", "val", "level") 
 {% endhighlight %}
 
-
-
-{% highlight text %}
-## Error in Scales$new: could not find function "loadMethod"
-{% endhighlight %}
-
-
+![center](/../figs/2015-04-21-an-easy-way-to-make-ggplot2-plots-ezplot-part1/unnamed-chunk-5-1.png) 
 
 {% highlight r %}
 # display percentages
 barplt = mk_barplot(pct)
 p = barplt("group", "pct", "level", ypct=T)
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## Error in Scales$new: could not find function "loadMethod"
-{% endhighlight %}
-
-
-
-{% highlight r %}
 print(p)
 {% endhighlight %}
 
-
-
-{% highlight text %}
-## Error in print(p): object 'p' not found
-{% endhighlight %}
-
-
+![center](/../figs/2015-04-21-an-easy-way-to-make-ggplot2-plots-ezplot-part1/unnamed-chunk-5-2.png) 
 
 {% highlight r %}
 # use color-blind friendly palettes
@@ -178,13 +122,7 @@ cbPalette = palette("cb_gray")
 p + ggplot2::scale_fill_manual(values=cbPalette)
 {% endhighlight %}
 
-
-
-{% highlight text %}
-## Error in eval(expr, envir, enclos): object 'p' not found
-{% endhighlight %}
-
-
+![center](/../figs/2015-04-21-an-easy-way-to-make-ggplot2-plots-ezplot-part1/unnamed-chunk-5-3.png) 
 
 {% highlight r %}
 # use customized palettes
@@ -194,10 +132,6 @@ green = palette("green")
 p + ggplot2::scale_fill_manual(values=c(red, purple, green))
 {% endhighlight %}
 
-
-
-{% highlight text %}
-## Error in eval(expr, envir, enclos): object 'p' not found
-{% endhighlight %}
+![center](/../figs/2015-04-21-an-easy-way-to-make-ggplot2-plots-ezplot-part1/unnamed-chunk-5-4.png) 
 
 I'm the creator of ezplot, if you have any questions, just drop a comment below. 
