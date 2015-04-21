@@ -12,12 +12,13 @@ share: true
 
 Do you love [ggplot2](http://ggplot2.org) plots? If you've worked with ggplot2 before, you know that to get a satisfying plot, you often need to use many detailed ggplot2 syntaxes, which are difficult to remember and time consuming to look up. Wouldn't it be awesome if there're simpler and intuitive syntaxes? The answer is yes and the package [ezplot](https://github.com/gmlang/ezplot) does exactly that. In this and the next few posts, I'll demo how to use ezplot.
 
-### Installation 
+### Install and Load ezplot
 
 {% highlight r %}
 # First install devtools if you don't already have it installed, with:
 # install.packages("devtools")
 devtools::install_github("gmlang/ezplot")
+library(ezplot)
 {% endhighlight %}
 
 ### Make some fake data
@@ -42,19 +43,29 @@ print(df)
 ## 3    Alex    50 0.2325581
 {% endhighlight %}
 
-### Load ezplot and use it to create a simple barplot
+### Create simple barplots
 
 {% highlight r %}
-library(ezplot)
-
 barplt = mk_barplot(df)
-barplt("student", "grade", "student") 
+p = barplt("student", "grade", "student") 
 {% endhighlight %}
 
 
 
 {% highlight text %}
 ## Error in Scales$new: could not find function "loadMethod"
+{% endhighlight %}
+
+
+
+{% highlight r %}
+print(p)
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## Error in print(p): object 'p' not found
 {% endhighlight %}
 
 

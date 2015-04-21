@@ -12,11 +12,12 @@ share: true
 
 Do you love [ggplot2](http://ggplot2.org) plots? If you've worked with ggplot2 before, you know that to get a satisfying plot, you often need to use many detailed ggplot2 syntaxes, which are difficult to remember and time consuming to look up. Wouldn't it be awesome if there're simpler and intuitive syntaxes? The answer is yes and the package [ezplot](https://github.com/gmlang/ezplot) does exactly that. In this and the next few posts, I'll demo how to use ezplot.
 
-### Installation 
+### Install and Load ezplot
 ```{r, warning=FALSE, message=FALSE}
 # First install devtools if you don't already have it installed, with:
 # install.packages("devtools")
 devtools::install_github("gmlang/ezplot")
+library(ezplot)
 ```
 
 ### Make some fake data
@@ -31,12 +32,11 @@ df$pct = df$grade / sum(df$grade)
 print(df)
 ```
 
-### Load ezplot and use it to create a simple barplot
+### Create simple barplots
 ```{r, warning=FALSE, message=FALSE}
-library(ezplot)
-
 barplt = mk_barplot(df)
-barplt("student", "grade", "student") 
+p = barplt("student", "grade", "student") 
+print(p)
 barplt("student", "grade", "student", legend=F) 
 barplt("student", "pct", "student", legend=F, ypct=T) 
 barplt("student", "pct", "student", legend=F)
