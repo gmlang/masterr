@@ -35,10 +35,11 @@ print(df)
 ### Create simple barplots
 ```{r, warning=FALSE, message=FALSE}
 barplt = mk_barplot(df)
-p = barplt("student", "grade", "student") 
-print(p)
+barplt("student", "grade", "student") 
 barplt("student", "grade", "student", legend=F) 
-barplt("student", "pct", "student", legend=F, ypct=T) 
+p = barplt("student", "pct", "student", legend=F) 
+scale_axis(p, use_pct=T)
+scale_axis(p, use_pct=T, pct_jump=0.3)
 ```
 
 ### Make some fake data again
@@ -74,7 +75,8 @@ barplt("group", "val", "level")
 
 # display percentages
 barplt = mk_barplot(pct)
-p = barplt("group", "pct", "level", ypct=T)
+p = barplt("group", "pct", "level")
+p = scale_axis(p, use_pct=T)
 print(p)
 
 # use color-blind friendly palettes

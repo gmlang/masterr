@@ -47,8 +47,7 @@ print(df)
 
 {% highlight r %}
 barplt = mk_barplot(df)
-p = barplt("student", "grade", "student") 
-print(p)
+barplt("student", "grade", "student") 
 {% endhighlight %}
 
 ![center](/../figs/2015-04-21-an-easy-way-to-make-ggplot2-plots-ezplot-part1/unnamed-chunk-3-1.png) 
@@ -60,10 +59,17 @@ barplt("student", "grade", "student", legend=F)
 ![center](/../figs/2015-04-21-an-easy-way-to-make-ggplot2-plots-ezplot-part1/unnamed-chunk-3-2.png) 
 
 {% highlight r %}
-barplt("student", "pct", "student", legend=F, ypct=T) 
+p = barplt("student", "pct", "student", legend=F) 
+scale_axis(p, use_pct=T)
 {% endhighlight %}
 
 ![center](/../figs/2015-04-21-an-easy-way-to-make-ggplot2-plots-ezplot-part1/unnamed-chunk-3-3.png) 
+
+{% highlight r %}
+scale_axis(p, use_pct=T, pct_jump=0.3)
+{% endhighlight %}
+
+![center](/../figs/2015-04-21-an-easy-way-to-make-ggplot2-plots-ezplot-part1/unnamed-chunk-3-4.png) 
 
 ### Make some fake data again
 
@@ -104,7 +110,8 @@ barplt("group", "val", "level")
 {% highlight r %}
 # display percentages
 barplt = mk_barplot(pct)
-p = barplt("group", "pct", "level", ypct=T)
+p = barplt("group", "pct", "level")
+p = scale_axis(p, use_pct=T)
 print(p)
 {% endhighlight %}
 
