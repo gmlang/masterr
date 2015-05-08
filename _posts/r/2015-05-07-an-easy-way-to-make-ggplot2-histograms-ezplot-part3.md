@@ -12,7 +12,7 @@ share: true
 
 Previously, I introduced the ezplot package and demoed how to use it to easily make nice looking ggplot2 [barcharts](http://masterr.org/r/an-easy-way-to-make-ggplot2-plots-ezplot-part1/) and [boxplots](http://masterr.org/r/an-easy-way-to-make-ggplot2-boxplots-ezplot-part2/). In this post, I'll discuss two common plot types that are used for displaying distributions of numeric variables, namely, the histogram and the density plot. By the end of this tutorial, you'll learn how to make sophisticated ggplot2 histograms and density plots using ezplot. And once again, you'll be amazed how simple and intuitive it is. Let's get started.
 
-### Install and Load ezplot
+#### Install and Load ezplot
 
 {% highlight r %}
 # First install devtools if you don't already have it installed, with:
@@ -21,7 +21,7 @@ devtools::install_github("gmlang/ezplot")
 library(ezplot)
 {% endhighlight %}
 
-### We'll use the famous iris dataset, which comes with the base R distribution. First, we pass iris (note: iris is a data frame) into the function mk_distplot() to output a function that we can use to draw histograms or density plots for any numeric variables in iris. 
+#### We'll use the famous iris dataset, which comes with the base R distribution. First, we pass iris (note: iris is a data frame) into the function mk_distplot() to output a function that we can use to draw histograms or density plots for any numeric variables in iris. 
 
 {% highlight r %}
 plt = mk_distplot(iris)
@@ -29,7 +29,7 @@ plt = mk_distplot(iris)
 
 If you haven't noticed, all the "mk_" functions in ezplot has one and only one input parameter, namely, a data frame. And they all output functions that can be called to make plots by passing in variables (surrounded by quotations) in the data frame. This design came from the simple idea that [functions can return functions instead of values](http://masterr.org/r/functions-that-return-functions-part-2/). 
 
-### Next, we use the function plt() to draw histogram for Sepal.Length.
+#### Next, we use the function plt() to draw histogram for Sepal.Length.
 
 {% highlight r %}
 # plot histogram for Sepal.Length
@@ -72,7 +72,7 @@ print(p)
 
 ![center](/../figs/2015-05-07-an-easy-way-to-make-ggplot2-histograms-ezplot-part3/unnamed-chunk-3-5.png) 
 
-### We can also draw density plots instead of histograms.
+#### We can also draw density plots instead of histograms.
 
 {% highlight r %}
 # draw density plots for Sepal.Length
@@ -106,7 +106,7 @@ print(p)
 
 ![center](/../figs/2015-05-07-an-easy-way-to-make-ggplot2-histograms-ezplot-part3/unnamed-chunk-4-4.png) 
 
-### Now, the iris data has a variable called "Species". Wouldn't it be nice if we can see how Sepal Length is distributed by different Species? It turns out that this is really easy to do with ezplot. We just need to pass in one more parameter to plt().
+#### Now, the iris data has a variable called "Species". Wouldn't it be nice if we can see how Sepal Length is distributed by different Species? It turns out that this is really easy to do with ezplot. We just need to pass in one more parameter to plt().
 
 {% highlight r %}
 # draw histogram of Sepal.Length by Species
