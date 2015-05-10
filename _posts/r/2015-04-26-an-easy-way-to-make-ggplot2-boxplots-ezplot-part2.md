@@ -12,16 +12,23 @@ share: true
 
 Previously, I introduced the ezplot package and [demoed how to use it to make nice looking ggplot2 bar charts easily and quickly](http://masterr.org/r/an-easy-way-to-make-ggplot2-plots-ezplot-part1/).   Today, I'm going to show you how to make nice looking boxplots. Once again, the code is super simple.
 
-### Install and Load ezplot
+#### Prerequisites
+1. Install a set of development tools
+* On Windows, download and install [Rtools](http://cran.r-project.org/bin/windows/Rtools/). 
+* On Mac, install the [Xcode command line tools](https://developer.apple.com/downloads). 
+* On Linux, install the R development package, usually called **r-devel** or **r-base-dev**.
+2. Install devtools by running `install.packages("devtools")` in R.
+
+#### Install and Load ezplot
 
 {% highlight r %}
-# First install devtools if you don't already have it installed, with:
-# install.packages("devtools")
 devtools::install_github("gmlang/ezplot")
 library(ezplot)
 {% endhighlight %}
 
-### The ezplot package comes with a films dataset obtain from IMBD.com, and I'll use it to demo boxplots. First, let's draw boxplots of budget vs. years. 
+#### The ezplot package comes with a films dataset obtain from IMBD.com, and I'll use it to demo boxplots. 
+
+First, let's draw boxplots of budget vs. years. 
 
 {% highlight r %}
 # call the films dataset make a function that will draw boxplots 
