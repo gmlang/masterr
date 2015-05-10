@@ -12,15 +12,20 @@ share: true
 
 Do you love [ggplot2](http://ggplot2.org) plots? If you've worked with ggplot2 before, you know that to get a satisfying plot, you often need to use many detailed ggplot2 syntaxes, which are difficult to remember and time consuming to look up. Wouldn't it be awesome if there're simpler and intuitive syntaxes? The answer is yes and the package [ezplot](https://github.com/gmlang/ezplot) does exactly that. In this and the next few posts, I'll demo how to use ezplot.
 
-### Install and Load ezplot
+#### Prerequisites
+1. Install a set of development tools
+* On Windows, download and install [Rtools](http://cran.r-project.org/bin/windows/Rtools/). 
+* On Mac, install the [Xcode command line tools](https://developer.apple.com/downloads). 
+* On Linux, install the R development package, usually called **r-devel** or **r-base-dev**.
+2. Install devtools by running `install.packages("devtools")` in R.
+
+#### Install and Load ezplot
 ```{r, warning=FALSE, message=FALSE}
-# First install devtools if you don't already have it installed, with:
-# install.packages("devtools")
 devtools::install_github("gmlang/ezplot")
 library(ezplot)
 ```
 
-### Make some fake data
+#### Make some fake data
 ```{r, warning=FALSE, message=FALSE}
 # make some data
 df = read.table(header=TRUE, text='
@@ -32,7 +37,7 @@ df$pct = df$grade / sum(df$grade)
 print(df)
 ```
 
-### Create simple barplots
+#### Create simple barplots
 ```{r, warning=FALSE, message=FALSE}
 barplt = mk_barplot(df)
 barplt("student", "grade", "student") 
@@ -42,7 +47,7 @@ scale_axis(p, use_pct=T)
 scale_axis(p, use_pct=T, pct_jump=0.3)
 ```
 
-### Make some fake data again
+#### Make some fake data again
 ```{r, warning=FALSE, message=FALSE}
 df2 = read.table(header=TRUE, text='
 group level val
@@ -67,7 +72,7 @@ pct = pct %>% gather(level, pct, -group)
 pct$level = factor(pct$level, levels=c("small", "medium", "large"))
 ```
 
-### Make stacked barplots
+#### Make stacked barplots
 ```{r, warning=FALSE, message=FALSE}
 # display counts
 barplt = mk_barplot(df2)

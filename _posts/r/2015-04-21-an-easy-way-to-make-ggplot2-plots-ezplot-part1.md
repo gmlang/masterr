@@ -12,16 +12,21 @@ share: true
 
 Do you love [ggplot2](http://ggplot2.org) plots? If you've worked with ggplot2 before, you know that to get a satisfying plot, you often need to use many detailed ggplot2 syntaxes, which are difficult to remember and time consuming to look up. Wouldn't it be awesome if there're simpler and intuitive syntaxes? The answer is yes and the package [ezplot](https://github.com/gmlang/ezplot) does exactly that. In this and the next few posts, I'll demo how to use ezplot.
 
-### Install and Load ezplot
+#### Prerequisites
+1. Install a set of development tools
+* On Windows, download and install [Rtools](http://cran.r-project.org/bin/windows/Rtools/). 
+* On Mac, install the [Xcode command line tools](https://developer.apple.com/downloads). 
+* On Linux, install the R development package, usually called **r-devel** or **r-base-dev**.
+2. Install devtools by running `install.packages("devtools")` in R.
+
+#### Install and Load ezplot
 
 {% highlight r %}
-# First install devtools if you don't already have it installed, with:
-# install.packages("devtools")
 devtools::install_github("gmlang/ezplot")
 library(ezplot)
 {% endhighlight %}
 
-### Make some fake data
+#### Make some fake data
 
 {% highlight r %}
 # make some data
@@ -43,7 +48,7 @@ print(df)
 ## 3    Alex    50 0.2325581
 {% endhighlight %}
 
-### Create simple barplots
+#### Create simple barplots
 
 {% highlight r %}
 barplt = mk_barplot(df)
@@ -71,7 +76,7 @@ scale_axis(p, use_pct=T, pct_jump=0.3)
 
 ![center](/../figs/2015-04-21-an-easy-way-to-make-ggplot2-plots-ezplot-part1/unnamed-chunk-3-4.png) 
 
-### Make some fake data again
+#### Make some fake data again
 
 {% highlight r %}
 df2 = read.table(header=TRUE, text='
@@ -97,7 +102,7 @@ pct = pct %>% gather(level, pct, -group)
 pct$level = factor(pct$level, levels=c("small", "medium", "large"))
 {% endhighlight %}
 
-### Make stacked barplots
+#### Make stacked barplots
 
 {% highlight r %}
 # display counts
