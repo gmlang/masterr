@@ -12,15 +12,22 @@ share: true
 
 Previously, I introduced the ezplot package and demoed how to use it to easily make nice looking ggplot2 [barcharts](http://masterr.org/r/an-easy-way-to-make-ggplot2-plots-ezplot-part1/) and [boxplots](http://masterr.org/r/an-easy-way-to-make-ggplot2-boxplots-ezplot-part2/). In this post, I'll discuss two common plot types that are used for displaying distributions of numeric variables, namely, the histogram and the density plot. By the end of this tutorial, you'll learn how to make sophisticated ggplot2 histograms and density plots using ezplot. And once again, you'll be amazed how simple and intuitive it is. Let's get started.
 
+#### Prerequisites
+1. Install a set of development tools
+* On Windows, download and install [Rtools](http://cran.r-project.org/bin/windows/Rtools/). 
+* On Mac, install the [Xcode command line tools](https://developer.apple.com/downloads). 
+* On Linux, install the R development package, usually called **r-devel** or **r-base-dev**.
+2. Install devtools by running `install.packages("devtools")` in R.
+
 #### Install and Load ezplot
 ```{r, warning=FALSE, message=FALSE}
-# First install devtools if you don't already have it installed, with:
-# install.packages("devtools")
 devtools::install_github("gmlang/ezplot")
 library(ezplot)
 ```
 
-#### We'll use the famous iris dataset, which comes with the base R distribution. First, we pass iris (note: iris is a data frame) into the function mk_distplot() to output a function that we can use to draw histograms or density plots for any numeric variables in iris. 
+#### We'll use the famous iris dataset, which comes with the base R distribution. 
+
+First, we pass iris (note: iris is a data frame) into the function mk_distplot() to output a function that we can use to draw histograms or density plots for any numeric variables in iris. 
 ```{r, warning=FALSE, message=FALSE}
 plt = mk_distplot(iris)
 ```
