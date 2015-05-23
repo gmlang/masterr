@@ -1,0 +1,100 @@
+---
+layout: post
+title: "A Super Easy Way to Make Ggplot2 Bar Charts with Labels, ezplot - Part 4"
+date: 2015-05-22 22:44:13 -0400
+comments: true
+categories: R
+keywords: "R, ggplot, ggplot2, ezplot, bar plots, bar charts, bar charts with labels, label the bars, bars with labels"
+published: true
+share: true
+
+---
+
+In my very first tutorial on the ezplot R package, I showed you how easy and quick it is to make nice looking ggplot2 [bar charts](http://masterr.org/r/an-easy-way-to-make-ggplot2-plots-ezplot-part1/) using ezplot. In this post, I'll show you how to easily add labels on the bars. Let's get started.
+
+#### Prerequisites
+1. Install a set of development tools
+* On Windows, download and install [Rtools](http://cran.r-project.org/bin/windows/Rtools/). 
+* On Mac, install the [Xcode command line tools](https://developer.apple.com/downloads). 
+* On Linux, install the R development package, usually called **r-devel** or **r-base-dev**.
+2. Install devtools by running `install.packages("devtools")` in R.
+
+#### Install and Load ezplot
+```{r, warning=FALSE, message=FALSE}
+devtools::install_github("gmlang/ezplot")
+library(ezplot)
+```
+
+We'll use the diamonds data in the ggplot2 package. First, we count each clarity and calculate the percentages.
+```{r, warning=FALSE, message=FALSE}
+tbl = table(ggplot2::diamonds$clarity) # use diamonds data in the ggplot2 library
+tbl_cnt = data.frame(cbind(freq=tbl))
+tbl_cnt$clarity = row.names(tbl_cnt)
+row.names(tbl_cnt) = NULL
+
+# add percentages
+tbl = within(tbl_cnt, {pct = freq / sum(freq)})
+tbl
+```
+
+We want to make a bar chart displaying either the count or the percent of the clarities, and we want to label the bars with either the count or the percent. To do that, we first need to append columns of the label positions to the data frame `tbl`. We can easily do that using the `add_bar_label_pos()` function in ezplot. Run `?add_bar_label_pos` in R to learn more about it, or `add_bar_label_pos` to see the function body.
+```{r, warning=FALSE, message=FALSE}
+# make a function that can be used to add columns of label positions to tbl
+f = add_bar_label_pos(tbl)
+
+# add columns of label positions based on freq
+tbl_w_pos = f("clarity", "freq", vpos=500)
+tbl_w_pos
+
+# make a function that can be used to add columns of label positions to tbl_w_pos
+f = add_bar_label_pos(tbl_w_pos)
+
+# add columns of label positions based on pct
+tbl_w_pos = f("clarity", "pct", vpos=0.01)
+tbl_w_pos
+```
+
+Next, we make a function that can be used to draw bar charts based on variables in `tbl_w_pos`. If you've been reading the tutorials, this step should be familiar.
+```{r, warning=FALSE, message=FALSE}
+barplt = mk_barplot(tbl_w_pos)
+```
+
+Now, we're ready to draw bar charts. First, we draw a bar chart where y is freq and label the bars with freq, by default, it places the labels at the middle of the bars.
+```{r, warning=FALSE, message=FALSE}
+p = barplt("clarity", "freq", fillby="clarity", legend=F, barlab="freq") 
+p = scale_axis(p, use_comma=T)
+print(p)
+```
+
+If you think it's difficult to read the labels, you can easily place them at the top of the bars by passing in the argument `barlab_at_top=T`.
+```{r, warning=FALSE, message=FALSE}
+p = barplt("clarity", "freq", fillby="clarity", legend=F, barlab="freq",
+            barlab_at_top=T) 
+p = scale_axis(p, use_comma=T)
+print(p)
+```
+
+Another cool thing you can do is to label the bars with percent although the y-axis is frequency count. This is super easy too!
+```{r, warning=FALSE, message=FALSE}
+# label the bars with pct instead of freq
+p = barplt("clarity", "freq", fillby="clarity", legend=F, barlab="pct",
+            barlab_use_pct=T) 
+p = scale_axis(p, use_comma=T)
+print(p)
+```
+
+Finally, you can draw a bar chart where y is percent and label the bars with percent.
+```{r, warning=FALSE, message=FALSE}
+p = barplt("clarity", "pct", fillby="clarity", legend=F, barlab="pct",
+            barlab_use_pct=T) 
+p = scale_axis(p, use_pct=T, pct_max=0.3, pct_jump=0.05)
+print(p)
+
+# place the labels at the top of the bars
+p = barplt("clarity", "pct", fillby="clarity", legend=F, barlab="pct",
+            barlab_use_pct=T, barlab_at_top=T) 
+p = scale_axis(p, use_pct=T, pct_max=0.3, pct_jump=0.05)
+print(p)
+```
+
+I created [ezplot](https://github.com/gmlang/ezplot) out of the frustration that there are too many detailed commands to remember when making and customizing a ggplot. If ezplot has improved your productivity, please share it with your friends, and you're always welcome to drop a comment below. 
