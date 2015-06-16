@@ -11,7 +11,7 @@ share: true
 ads: true
 
 ---
-Previously, I showed [two examples](http://gmlang.com/r/how-to-work-with-factors-in-r/) of how to make ordered bar charts using ggplot2. Sometimes, you want to create multiple facets and put on each facet an ordered bar chart. Here's how you can do that using ggplot2.
+Previously, I showed [how to make ordered bar charts using ggplot2](http://masterr.org/r/how-to-work-with-factors-in-r/). Sometimes, you want to create multiple facets and put on each facet an ordered bar chart. Here's how you can do that using ggplot2.
 
 {% highlight r %}
 suppressMessages({library(ggplot2)})
