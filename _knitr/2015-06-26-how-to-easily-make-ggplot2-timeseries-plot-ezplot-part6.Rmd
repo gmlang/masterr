@@ -1,0 +1,60 @@
+---
+layout: post
+title: "How to easily make ggplot2 type of time series plot, ezplot - Part 6"
+date: 2015-06-26 16:29:49 -0400
+comments: true
+categories: R
+keywords: "R, ezplot, ggplot, ggplot2, time series plot, line plot"
+published: true
+share: true
+
+---
+
+Time series plot is commonly used and this post will show you how easy it is to make them using the `mk_lineplot()` function from the ezplot package. 
+
+#### Prerequisites
+1. Install a set of development tools
+* On Windows, download and install [Rtools](http://cran.r-project.org/bin/windows/Rtools/). 
+* On Mac, install the [Xcode command line tools](https://developer.apple.com/downloads). 
+* On Linux, install the R development package, usually called **r-devel** or **r-base-dev**.
+2. Install devtools by running `install.packages("devtools")` in R.
+
+#### Install and Load ezplot
+```{r, warning=FALSE, message=FALSE}
+devtools::install_github("gmlang/ezplot")
+library(ezplot)
+```
+
+#### The ezplot package comes with a films dataset containing the annual boxoffice/budget ratio between 1913 and 2014. We can plot these ratios over the years. 
+```{r, warning=FALSE, message=FALSE}
+plt = mk_lineplot(bo_bt_ratio_by_year)
+title = "Boxoffice/Budget Ratio from 1913 to 2014"
+p = plt("year", "bo_bt_ratio", ylab="boxoffice/budget ratio", main=title)
+print(p)
+```
+
+#### It might be more informative if we use log10 scale on the y-axis.  
+```{r, warning=FALSE, message=FALSE}
+scale_axis(p, use_log10=T)
+```
+
+#### We can also change the width of the line and the size of the points by passing values to the `linew` and `pt_size` arguments.
+```{r, warning=FALSE, message=FALSE}
+p = plt("year", "bo_bt_ratio", ylab="boxoffice/budget ratio", main=title,
+        linew=1, pt_size=2)
+print(p)
+```
+
+#### We can also use log scale on the y-axis.
+```{r, warning=FALSE, message=FALSE}
+scale_axis(p, use_log=T)
+```
+
+#### Finally, we can plot two time series and color them differently. For example, we can plot annual total budget and boxoffice over the years on the same plot.
+```{r, warning=FALSE, message=FALSE}
+plt = mk_lineplot(btbo_by_year)
+title = "Annual Total Budget and Boxoffice from 1913 to 2014"
+plt("year", "tot", "type", ylab="total amount ($billion)", main=title)
+```
+
+I created [ezplot](https://github.com/gmlang/ezplot) because there are too many detailed commands to remember when making and customizing a ggplot. If ezplot has improved your productivity, please tell your friends about it.
