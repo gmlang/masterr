@@ -55,6 +55,7 @@ print(p)
 {% endhighlight %}
 
 ![center](/../figs/2015-07-27-how-to-easily-make-ggplot2-scatterplot-ezplot-part7/unnamed-chunk-3-1.png) 
+
 Note we also changed the transparency and size of the points by passing values to the `pt_alpha` and `pt_size` arguments. And we added a regression line by setting `add_line=T` and gave it a narrower width by setting `linew=0.8`.
 
 #### Finally, the dataset contains a variable called "made_money", indicating if a film made money or not. We can use it to separate the points into two groups, where each group has its own regression line. 
@@ -68,6 +69,7 @@ print(p)
 {% endhighlight %}
 
 ![center](/../figs/2015-07-27-how-to-easily-make-ggplot2-scatterplot-ezplot-part7/unnamed-chunk-4-1.png) 
+
 See how easy it is? All we need is to pass the name of the grouping variable,
 "made_money", to the `fillby` argument. 
 

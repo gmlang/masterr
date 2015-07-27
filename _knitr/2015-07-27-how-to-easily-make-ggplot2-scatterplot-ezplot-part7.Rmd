@@ -48,6 +48,7 @@ p = scale_axis(p, "x", use_log10=T)
 p = scale_axis(p, "y", use_log10=T)
 print(p)
 ```
+
 Note we also changed the transparency and size of the points by passing values to the `pt_alpha` and `pt_size` arguments. And we added a regression line by setting `add_line=T` and gave it a narrower width by setting `linew=0.8`.
 
 #### Finally, the dataset contains a variable called "made_money", indicating if a film made money or not. We can use it to separate the points into two groups, where each group has its own regression line. 
@@ -58,6 +59,7 @@ p = scale_axis(p, "x", use_log10=T)
 p = scale_axis(p, "y", use_log10=T)
 print(p)
 ```
+
 See how easy it is? All we need is to pass the name of the grouping variable,
 "made_money", to the `fillby` argument. 
 
