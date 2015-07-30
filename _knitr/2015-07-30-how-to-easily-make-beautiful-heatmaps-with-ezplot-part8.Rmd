@@ -82,9 +82,9 @@ f("stats", "Name", "val_scaled", use_theme_gray=F, legend=F)
 
 We can also change the size of the tick text on both axes. 
 
-#### Change tick text to 15 (default is 12).
+#### Change tick text to 10 (default is 12).
 ```{r, warning=FALSE, message=FALSE}
-f("stats", "Name", "val_scaled", base_size=15, legend=F)
+f("stats", "Name", "val_scaled", base_size=10, legend=F)
 ```
 
 This is the last post in the ezplot series. If you've enjoyed it, please help spread the word for it. I created [ezplot](https://github.com/gmlang/ezplot) because there are too many detailed commands to remember when making and customizing a ggplot. I hope ezplot can improve your productivity and make many analysts' work easier and more enjoyable.

@@ -163,10 +163,10 @@ f("stats", "Name", "val_scaled", use_theme_gray=F, legend=F)
 
 We can also change the size of the tick text on both axes. 
 
-#### Change tick text to 15 (default is 12).
+#### Change tick text to 10 (default is 12).
 
 {% highlight r %}
-f("stats", "Name", "val_scaled", base_size=15, legend=F)
+f("stats", "Name", "val_scaled", base_size=10, legend=F)
 {% endhighlight %}
 
 ![center](/../figs/2015-07-30-how-to-easily-make-beautiful-heatmaps-with-ezplot-part8/unnamed-chunk-8-1.png) 
