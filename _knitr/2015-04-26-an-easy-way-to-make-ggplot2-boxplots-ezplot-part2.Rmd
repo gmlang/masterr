@@ -39,15 +39,15 @@ p = plt("year_cat", "budget", ylab="budget", main=title1)
 print(p)
 ```
 
-We see the y-axis tick labels are expressed in scientific notations. This makes it difficult to read. We can use the function `r scale_axis()` to use the comma scale on the y-axis, which will display the numbers in 000,000 format.
+We see the y-axis tick labels are expressed in scientific notations. This makes it difficult to read. We can use the comma scale on the y-axis, which will display the numbers in 000,000 format.
 ```{r}
-scale_axis(p, "y", use_comma=T)
+scale_axis(p, "y", scale = "comma")
 ```
 
-We also observe that all the boxes are squashed down, indicating budget is heavily right-skewed. We can use either the log scale or the log10 scale on the y-axis. Once again, this can be easily done using the function `r scale_axis()`.
+We also observe that all the boxes are squashed down, indicating budget is heavily right-skewed. We can use either the log scale or the log10 scale on the y-axis. Once again, this can be easily done using the function `scale_axis()`.
 ```{r}
-scale_axis(p, "y", use_log=T)
-scale_axis(p, "y", use_log10=T)
+scale_axis(p, "y", scale = "log")
+scale_axis(p, "y", scale = "log10")
 ```
 
 I created [ezplot](https://github.com/gmlang/ezplot). Drop a comment below if you have questions.

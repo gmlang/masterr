@@ -43,24 +43,24 @@ print(p)
 
 ![center](/../figs/2015-04-26-an-easy-way-to-make-ggplot2-boxplots-ezplot-part2/unnamed-chunk-2-1.png) 
 
-We see the y-axis tick labels are expressed in scientific notations. This makes it difficult to read. We can use the function  to use the comma scale on the y-axis, which will display the numbers in 000,000 format.
+We see the y-axis tick labels are expressed in scientific notations. This makes it difficult to read. We can use the comma scale on the y-axis, which will display the numbers in 000,000 format.
 
 {% highlight r %}
-scale_axis(p, "y", use_comma=T)
+scale_axis(p, "y", scale = "comma")
 {% endhighlight %}
 
 ![center](/../figs/2015-04-26-an-easy-way-to-make-ggplot2-boxplots-ezplot-part2/unnamed-chunk-3-1.png) 
 
-We also observe that all the boxes are squashed down, indicating budget is heavily right-skewed. We can use either the log scale or the log10 scale on the y-axis. Once again, this can be easily done using the function .
+We also observe that all the boxes are squashed down, indicating budget is heavily right-skewed. We can use either the log scale or the log10 scale on the y-axis. Once again, this can be easily done using the function `scale_axis()`.
 
 {% highlight r %}
-scale_axis(p, "y", use_log=T)
+scale_axis(p, "y", scale = "log")
 {% endhighlight %}
 
 ![center](/../figs/2015-04-26-an-easy-way-to-make-ggplot2-boxplots-ezplot-part2/unnamed-chunk-4-1.png) 
 
 {% highlight r %}
-scale_axis(p, "y", use_log10=T)
+scale_axis(p, "y", scale = "log10")
 {% endhighlight %}
 
 ![center](/../figs/2015-04-26-an-easy-way-to-make-ggplot2-boxplots-ezplot-part2/unnamed-chunk-4-2.png) 
