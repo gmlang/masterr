@@ -68,7 +68,10 @@ scale_axis(p, scale = "log")
 {% highlight r %}
 plt = mk_lineplot(btbo_by_year)
 title = "Annual Total Budget and Boxoffice from 1913 to 2014"
-plt("year", "tot", "type", ylab="total amount ($billion)", main=title)
+red = cb_color("reddish_purple")
+green = cb_color("bluish_green")
+plt("year", "tot", "type", ylab="total amount ($billion)", main=title) + 
+        ggplot2::scale_color_manual(values=c(red, green))
 {% endhighlight %}
 
 ![center](/../figs/2015-06-26-how-to-easily-make-ggplot2-timeseries-plot-ezplot-part6/unnamed-chunk-6-1.png) 

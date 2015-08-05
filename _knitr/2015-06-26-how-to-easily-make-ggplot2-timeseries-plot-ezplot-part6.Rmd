@@ -54,7 +54,10 @@ scale_axis(p, scale = "log")
 ```{r, warning=FALSE, message=FALSE}
 plt = mk_lineplot(btbo_by_year)
 title = "Annual Total Budget and Boxoffice from 1913 to 2014"
-plt("year", "tot", "type", ylab="total amount ($billion)", main=title)
+red = cb_color("reddish_purple")
+green = cb_color("bluish_green")
+plt("year", "tot", "type", ylab="total amount ($billion)", main=title) + 
+        ggplot2::scale_color_manual(values=c(red, green))
 ```
 
 I created [ezplot](https://github.com/gmlang/ezplot) because there are too many detailed commands to remember when making and customizing a ggplot. If ezplot has improved your productivity, please tell your friends about it.
