@@ -37,8 +37,8 @@ p = plt("budget", "boxoffice", xlab="budget", ylab="boxoffice",
         main="Boxoffice vs. Budget")
 
 # use comma scale so that a number like "10000" is displayed as "10,000"
-p = scale_axis(p, "y", use_comma=T)
-p = scale_axis(p, "x", use_comma=T)
+p = scale_axis(p, "y", scale = "comma")
+p = scale_axis(p, "x", scale = "comma")
 print(p)
 {% endhighlight %}
 
@@ -49,8 +49,8 @@ print(p)
 {% highlight r %}
 p = plt("budget", "boxoffice", xlab="budget", ylab="boxoffice", 
         pt_alpha=0.2, pt_size=1.5, add_line=T, linew=0.8)
-p = scale_axis(p, "x", use_log10=T)
-p = scale_axis(p, "y", use_log10=T)
+p = scale_axis(p, "x", scale = "log10")
+p = scale_axis(p, "y", scale = "log10")
 print(p)
 {% endhighlight %}
 
@@ -63,9 +63,13 @@ Note we also changed the transparency and size of the points by passing values t
 {% highlight r %}
 p = plt("budget", "boxoffice", fillby="made_money", ylab="boxoffice", 
         xlab="budget", add_line=T, linew=0.5)
-p = scale_axis(p, "x", use_log10=T)
-p = scale_axis(p, "y", use_log10=T)
-print(p)
+p = scale_axis(p, "x", scale = "log10")
+p = scale_axis(p, "y", scale = "log10")
+
+# use color-blind friendly color
+red = cb_color("reddish_purple")
+green = cb_color("bluish_green")
+p + ggplot2::scale_color_manual(values=c(red, green))
 {% endhighlight %}
 
 ![center](/../figs/2015-07-27-how-to-easily-make-ggplot2-scatterplot-ezplot-part7/unnamed-chunk-4-1.png) 
