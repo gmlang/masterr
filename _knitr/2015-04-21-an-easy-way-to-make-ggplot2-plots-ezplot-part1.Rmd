@@ -43,8 +43,8 @@ barplt = mk_barplot(df)
 barplt("student", "grade", "student") 
 barplt("student", "grade", "student", legend=F) 
 p = barplt("student", "pct", "student", legend=F) 
-scale_axis(p, use_pct=T)
-scale_axis(p, use_pct=T, pct_jump=0.3)
+scale_axis(p, scale="pct")
+scale_axis(p, scale="pct", pct_jump=0.3, pct_max=0.6)
 ```
 
 #### Make some fake data again
@@ -81,17 +81,17 @@ barplt("group", "val", "level")
 # display percentages
 barplt = mk_barplot(pct)
 p = barplt("group", "pct", "level")
-p = scale_axis(p, use_pct=T)
+p = scale_axis(p, scale="pct")
 print(p)
 
 # use color-blind friendly palettes
-cbPalette = palette("cb_gray")
+cbPalette = cb_color("cb_gray")
 p + ggplot2::scale_fill_manual(values=cbPalette)
 
 # use customized palettes
-red = palette("red")
-purple = palette("purple")
-green = palette("green")
+red = cb_color("vermilion")
+purple = cb_color("reddish_purple")
+green = cb_color("bluish_green")
 p + ggplot2::scale_fill_manual(values=c(red, purple, green))
 ```
 

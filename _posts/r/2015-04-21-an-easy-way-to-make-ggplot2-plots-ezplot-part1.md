@@ -65,13 +65,13 @@ barplt("student", "grade", "student", legend=F)
 
 {% highlight r %}
 p = barplt("student", "pct", "student", legend=F) 
-scale_axis(p, use_pct=T)
+scale_axis(p, scale="pct")
 {% endhighlight %}
 
 ![center](/../figs/2015-04-21-an-easy-way-to-make-ggplot2-plots-ezplot-part1/unnamed-chunk-3-3.png) 
 
 {% highlight r %}
-scale_axis(p, use_pct=T, pct_jump=0.3)
+scale_axis(p, scale="pct", pct_jump=0.3, pct_max=0.6)
 {% endhighlight %}
 
 ![center](/../figs/2015-04-21-an-easy-way-to-make-ggplot2-plots-ezplot-part1/unnamed-chunk-3-4.png) 
@@ -116,7 +116,7 @@ barplt("group", "val", "level")
 # display percentages
 barplt = mk_barplot(pct)
 p = barplt("group", "pct", "level")
-p = scale_axis(p, use_pct=T)
+p = scale_axis(p, scale="pct")
 print(p)
 {% endhighlight %}
 
@@ -124,7 +124,7 @@ print(p)
 
 {% highlight r %}
 # use color-blind friendly palettes
-cbPalette = palette("cb_gray")
+cbPalette = cb_color("cb_gray")
 p + ggplot2::scale_fill_manual(values=cbPalette)
 {% endhighlight %}
 
@@ -132,9 +132,9 @@ p + ggplot2::scale_fill_manual(values=cbPalette)
 
 {% highlight r %}
 # use customized palettes
-red = palette("red")
-purple = palette("purple")
-green = palette("green")
+red = cb_color("vermilion")
+purple = cb_color("reddish_purple")
+green = cb_color("bluish_green")
 p + ggplot2::scale_fill_manual(values=c(red, purple, green))
 {% endhighlight %}
 
