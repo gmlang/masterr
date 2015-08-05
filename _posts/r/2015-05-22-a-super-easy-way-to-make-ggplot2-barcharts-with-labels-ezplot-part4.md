@@ -122,7 +122,7 @@ Now, we're ready to draw bar charts. First, we draw a bar chart where y is freq 
 
 {% highlight r %}
 p = barplt("clarity", "freq", fillby="clarity", legend=F, barlab="freq") 
-p = scale_axis(p, use_comma=T)
+p = scale_axis(p, scale = "comma")
 print(p)
 {% endhighlight %}
 
@@ -133,7 +133,7 @@ If you think it's difficult to read the labels, you can easily place them at the
 {% highlight r %}
 p = barplt("clarity", "freq", fillby="clarity", legend=F, barlab="freq",
             barlab_at_top=T) 
-p = scale_axis(p, use_comma=T)
+p = scale_axis(p, scale = "comma")
 print(p)
 {% endhighlight %}
 
@@ -145,7 +145,7 @@ Another cool thing you can do is to label the bars with percent although the y-a
 # label the bars with pct instead of freq
 p = barplt("clarity", "freq", fillby="clarity", legend=F, barlab="pct",
             barlab_use_pct=T) 
-p = scale_axis(p, use_comma=T)
+p = scale_axis(p, scale = "comma")
 print(p)
 {% endhighlight %}
 
@@ -156,7 +156,7 @@ Finally, you can draw a bar chart where y is percent and label the bars with per
 {% highlight r %}
 p = barplt("clarity", "pct", fillby="clarity", legend=F, barlab="pct",
             barlab_use_pct=T) 
-p = scale_axis(p, use_pct=T, pct_max=0.3, pct_jump=0.05)
+p = scale_axis(p, scale="pct", pct_max=0.3, pct_jump=0.05)
 print(p)
 {% endhighlight %}
 
@@ -166,7 +166,7 @@ print(p)
 # place the labels at the top of the bars
 p = barplt("clarity", "pct", fillby="clarity", legend=F, barlab="pct",
             barlab_use_pct=T, barlab_at_top=T) 
-p = scale_axis(p, use_pct=T, pct_max=0.3, pct_jump=0.05)
+p = scale_axis(p, scale = "pct", pct_max=0.3, pct_jump=0.05)
 print(p)
 {% endhighlight %}
 

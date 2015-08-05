@@ -34,7 +34,7 @@ plt = mk_distplot(iris)
 
 If you haven't noticed, all the "mk_" functions in ezplot has one and only one input parameter, namely, a data frame. And they all output functions that can be called to make plots by passing in variables (surrounded by quotations) in the data frame. This design came from the simple idea that [functions can return functions instead of values](http://masterr.org/r/functions-that-return-functions-part-2/). 
 
-#### Next, we use the function plt() to draw histogram for Sepal.Length.
+#### Next, we use the function `plt()` to draw histogram for Sepal.Length.
 ```{r, warning=FALSE, message=FALSE}
 # plot histogram for Sepal.Length
 title1 = "Histogram of Sepal Length"
