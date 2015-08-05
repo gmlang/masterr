@@ -35,7 +35,7 @@ print(p)
 
 #### It might be more informative if we use log10 scale on the y-axis.  
 ```{r, warning=FALSE, message=FALSE}
-scale_axis(p, use_log10=T)
+scale_axis(p, scale = "log10")
 ```
 
 #### We can also change the width of the line and the size of the points by passing values to the `linew` and `pt_size` arguments.
@@ -47,7 +47,7 @@ print(p)
 
 #### We can also use log scale on the y-axis.
 ```{r, warning=FALSE, message=FALSE}
-scale_axis(p, use_log=T)
+scale_axis(p, scale = "log")
 ```
 
 #### Finally, we can plot two time series and color them differently. For example, we can plot annual total budget and boxoffice over the years on the same plot.

@@ -40,7 +40,7 @@ print(p)
 #### It might be more informative if we use log10 scale on the y-axis.  
 
 {% highlight r %}
-scale_axis(p, use_log10=T)
+scale_axis(p, scale = "log10")
 {% endhighlight %}
 
 ![center](/../figs/2015-06-26-how-to-easily-make-ggplot2-timeseries-plot-ezplot-part6/unnamed-chunk-3-1.png) 
@@ -58,7 +58,7 @@ print(p)
 #### We can also use log scale on the y-axis.
 
 {% highlight r %}
-scale_axis(p, use_log=T)
+scale_axis(p, scale = "log")
 {% endhighlight %}
 
 ![center](/../figs/2015-06-26-how-to-easily-make-ggplot2-timeseries-plot-ezplot-part6/unnamed-chunk-5-1.png) 
