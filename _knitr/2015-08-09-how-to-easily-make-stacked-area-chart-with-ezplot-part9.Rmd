@@ -52,7 +52,7 @@ p = plt("year", "rev", fillby = "type", ylab = "Revenue (in Billions of USD)",
 
 # make x-axis look nice and use brewer colors instead of default
 p + ggplot2::scale_x_continuous(limit = c(2000, 2014),
-                                breaks = seq(2000, 2014, 1)) +
+                                breaks = seq(2000, 2014, 2)) +
         ggplot2::scale_fill_brewer(palette = "Set3")
 ```
 
@@ -73,7 +73,7 @@ p = plt("year", "pct", fillby = "type",
 # change the y-axis to display percent instead of decimals
 p = scale_axis(p, "y", scale = "pct")
 p + ggplot2::scale_x_continuous(limit = c(2000, 2014), 
-                                breaks = seq(2000, 2014, 1)) +
+                                breaks = seq(2000, 2014, 2)) +
         ggplot2::scale_fill_brewer(palette = "Set3")
 ```
 
