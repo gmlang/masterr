@@ -40,10 +40,11 @@ str(cars)
 ##  $ dist : num  2 10 4 22 16 10 18 26 34 17 ...
 {% endhighlight %}
 
-#### We'll plot dist first. The Q-Q plot shows that it isn't normally distributed. A normal variable would have all the blue dots form a line along the 45 degree line.  
+#### We'll plot dist first. The Q-Q plot shows that it isn't normally distributed. A normal variable would have have most of the blue dots aligned linearly along the 45 degree diagonal line connecting the bottom left corner to the upper right corner. 
 
 {% highlight r %}
-plt_dist(cars, "dist")
+f = plt_dist(cars)
+f("dist")
 {% endhighlight %}
 
 ![center](/../figs/2015-06-07-how-to-visualize-the-distribution-of-a-continuous-variable-ezplot-part5/unnamed-chunk-3-1.png) 
@@ -51,7 +52,7 @@ plt_dist(cars, "dist")
 #### We'll plot speed next. We see speed is more or less normally distributed.
 
 {% highlight r %}
-plt_dist(cars, "speed")
+f("speed")
 {% endhighlight %}
 
 ![center](/../figs/2015-06-07-how-to-visualize-the-distribution-of-a-continuous-variable-ezplot-part5/unnamed-chunk-4-1.png) 
