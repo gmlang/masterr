@@ -43,6 +43,6 @@ Now, we just need to sapply `summ_stats()` to each column of the data frame. I'd
 ```{r, warning=FALSE, message=FALSE}
 out_lst = sapply(df, summ_stats)
 out = data.frame(out_lst)
-row.names(out) = c("mean", "median", "sd", "mad", "IQR")
+row.names(out) = c("min", "max", "mean", "median", "sd", "mad", "IQR")
 out
 ```

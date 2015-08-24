@@ -58,30 +58,19 @@ Now, we just need to sapply `summ_stats()` to each column of the data frame. I'd
 {% highlight r %}
 out_lst = sapply(df, summ_stats)
 out = data.frame(out_lst)
-row.names(out) = c("mean", "median", "sd", "mad", "IQR")
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## Error in `row.names<-.data.frame`(`*tmp*`, value = c("mean", "median", : invalid 'row.names' length
-{% endhighlight %}
-
-
-
-{% highlight r %}
+row.names(out) = c("min", "max", "mean", "median", "sd", "mad", "IQR")
 out
 {% endhighlight %}
 
 
 
 {% highlight text %}
-##         X1       X2      X3
-## 1        1       17       1
-## 2       39       49      43
-## 3     22.5       32      14
-## 4     24.5       31     8.5
-## 5 12.77106 11.13553 16.1493
-## 6   8.8956   8.8956 10.3782
-## 7     9.25       11    16.5
+##              X1       X2      X3
+## min           1       17       1
+## max          39       49      43
+## mean       22.5       32      14
+## median     24.5       31     8.5
+## sd     12.77106 11.13553 16.1493
+## mad      8.8956   8.8956 10.3782
+## IQR        9.25       11    16.5
 {% endhighlight %}
