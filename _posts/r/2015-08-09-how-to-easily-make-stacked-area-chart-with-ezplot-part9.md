@@ -167,4 +167,5 @@ p + ggplot2::scale_x_continuous(limit = c(2000, 2014),
 
 ![center](/../figs/2015-08-09-how-to-easily-make-stacked-area-chart-with-ezplot-part9/unnamed-chunk-5-1.png) 
 
-I created [ezplot](https://github.com/gmlang/ezplot) because there are too many detailed commands to remember when making and customizing a ggplot. I hope ezplot can improve your productivity. If you enjoyed reading this post, please share it with your friends. 
+I created ezplot because there are too many detailed commands to remember when making and customizing a ggplot. I hope ezplot can improve your productivity. If you enjoyed reading this post, please share it with your friends. I'm writing a book called ezplot: How to Easily Make ggplot2 Graphics for Data Analysis, and it is 20% complete. [Read the sample chapters for FREE](https://leanpub.com/ezplot) and get notified when the book is published.
+

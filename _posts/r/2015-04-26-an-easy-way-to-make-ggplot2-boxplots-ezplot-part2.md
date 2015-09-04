@@ -65,4 +65,4 @@ scale_axis(p, "y", scale = "log10")
 
 ![center](/../figs/2015-04-26-an-easy-way-to-make-ggplot2-boxplots-ezplot-part2/unnamed-chunk-4-2.png) 
 
-I created [ezplot](https://github.com/gmlang/ezplot). Drop a comment below if you have questions.
+I'm writing a book called ezplot: How to Easily Make ggplot2 Graphics for Data Analysis, and it is 20% complete. [Take a sneak peek](https://leanpub.com/ezplot) and get notified when the book is published.

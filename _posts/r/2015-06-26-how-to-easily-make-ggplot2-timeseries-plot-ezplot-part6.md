@@ -76,4 +76,4 @@ plt("year", "tot", "type", ylab="total amount ($billion)", main=title) +
 
 ![center](/../figs/2015-06-26-how-to-easily-make-ggplot2-timeseries-plot-ezplot-part6/unnamed-chunk-6-1.png) 
 
-I created [ezplot](https://github.com/gmlang/ezplot) because there are too many detailed commands to remember when making and customizing a ggplot. If ezplot has improved your productivity, please tell your friends about it.
+I created ezplot because there are too many detailed commands to remember when customizing a ggplot. If ezplot has improved your productivity, please tell your friends about it. In addition, I'm writing a book called ezplot: How to Easily Make ggplot2 Graphics for Data Analysis, and it is 20% complete. [Read the sample chapters for FREE](https://leanpub.com/ezplot) and get notified when the book is published.

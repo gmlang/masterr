@@ -163,4 +163,4 @@ print(p)
 
 ![center](/../figs/2015-05-07-an-easy-way-to-make-ggplot2-histograms-ezplot-part3/unnamed-chunk-5-6.png) 
 
-I created [ezplot](https://github.com/gmlang/ezplot) out of the frustration that there are too many detailed commands to remember when making and customizing a ggplot. I'd love to hear how ezplot has improved your productivity. So drop a comment below.
+I created ezplot out of the frustration that there are too many detailed commands to remember when customizing a ggplot. I'd love to hear how ezplot has improved your productivity. In addition, I'm writing a book called ezplot: How to Easily Make ggplot2 Graphics for Data Analysis, and it is 20% complete. [Take a sneak peek](https://leanpub.com/ezplot) and get notified when the book is published.

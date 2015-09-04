@@ -172,4 +172,4 @@ print(p)
 
 ![center](/../figs/2015-05-22-a-super-easy-way-to-make-ggplot2-barcharts-with-labels-ezplot-part4/unnamed-chunk-8-2.png) 
 
-I created [ezplot](https://github.com/gmlang/ezplot) out of the frustration that there are too many detailed commands to remember when making and customizing a ggplot. If ezplot has improved your productivity, please share it with your friends, and you're always welcome to drop a comment below. 
+I created ezplot out of the frustration that there are too many detailed commands to remember when customizing a ggplot. If ezplot has improved your productivity, please share it with your friends, and you're always welcome to drop a comment below. In addition, I'm writing a book called ezplot: How to Easily Make ggplot2 Graphics for Data Analysis, and it is 20% complete. [Take a sneak peek](https://leanpub.com/ezplot) and get notified when the book is published.

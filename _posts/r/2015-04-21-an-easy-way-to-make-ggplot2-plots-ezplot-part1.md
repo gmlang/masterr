@@ -140,4 +140,4 @@ p + ggplot2::scale_fill_manual(values=c(red, purple, green))
 
 ![center](/../figs/2015-04-21-an-easy-way-to-make-ggplot2-plots-ezplot-part1/unnamed-chunk-5-4.png) 
 
-I'm the creator of ezplot, if you have any questions, just drop a comment below. 
+I'm the creator of ezplot, if you have any questions, just drop a comment below. In addition, I'm writing a book called ezplot: How to Easily Make ggplot2 Graphics for Data Analysis, and it is 20% complete. [Take a sneak peek](https://leanpub.com/ezplot) and get notified when the book is published.

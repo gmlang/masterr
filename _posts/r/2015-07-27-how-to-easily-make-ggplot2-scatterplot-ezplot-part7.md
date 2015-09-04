@@ -77,4 +77,4 @@ p + ggplot2::scale_color_manual(values=c(red, green))
 See how easy it is? All we need is to pass the name of the grouping variable,
 "made_money", to the `fillby` argument. 
 
-I created [ezplot](https://github.com/gmlang/ezplot) because there are too many detailed commands to remember when making and customizing a ggplot. If ezplot has improved your productivity, please tell your friends about it.
+I created ezplot because there are too many detailed commands to remember when making and customizing a ggplot. If ezplot has improved your productivity, please tell your friends about it. In addition, I'm writing a book called ezplot: How to Easily Make ggplot2 Graphics for Data Analysis, and it is 20% complete. [Read the sample chapters for FREE](https://leanpub.com/ezplot) and get notified when the book is published.

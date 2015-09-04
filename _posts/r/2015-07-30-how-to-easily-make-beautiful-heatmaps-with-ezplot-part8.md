@@ -171,4 +171,4 @@ f("stats", "Name", "val_scaled", base_size=10, legend=F)
 
 ![center](/../figs/2015-07-30-how-to-easily-make-beautiful-heatmaps-with-ezplot-part8/unnamed-chunk-8-1.png) 
 
-This is the last post in the ezplot series. If you've enjoyed it, please help spread the word for it. I created [ezplot](https://github.com/gmlang/ezplot) because there are too many detailed commands to remember when making and customizing a ggplot. I hope ezplot can improve your productivity and make many analysts' work easier and more enjoyable.
+I created ezplot because there are too many detailed commands to remember when customizing a ggplot. I hope ezplot can improve your productivity and make your data analysis work easier. If you've enjoyed using it, please spread the word. I'm writing a book called ezplot: How to Easily Make ggplot2 Graphics for Data Analysis, and it is 20% complete. [Read the sample chapters for FREE](https://leanpub.com/ezplot) and get notified when the book is published.
