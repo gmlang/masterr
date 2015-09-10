@@ -60,7 +60,7 @@ dat = read.table(header=TRUE, text='
 dat
 ```
 
-I've cleaned much worse data than this one, but this is good and representative enough for our purpose. Here're the places we need to clean up:
+I've cleaned much worse data, but this is good and representative enough for our purpose. Here're the places we need to clean up:
 1. the city and state are in one column, and we need to separate it into two columns.
 2. the first 5 and last 4 digits of the zip code are in one column, and we also want to separate them into two columns.
 3. we need to make sure the separated columns do not contain spaces.
