@@ -3,7 +3,7 @@ layout: post
 title: "How to Unsort in R"
 date: 2014-09-21 16:02:33 -0400
 comments: true
-categories: R
+categories: r
 keywords: "R, sort, unsort, undo a sort in R"
 published: true
 share: true

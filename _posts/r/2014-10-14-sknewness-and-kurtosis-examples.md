@@ -3,7 +3,7 @@ layout: post
 title: "How to Calculate Sknewness and Kurtosis in R"
 date: 2014-10-14 11:51:49 -0400
 comments: true
-categories: R
+categories: r
 keywords: "R, sknewness, kurtosis, sp500, novagold"
 published: true
 share: true

@@ -3,7 +3,7 @@ layout: post
 title: "How to easily make stacked area chart with ezplot - Part 9"
 date: 2015-08-09 15:51:49 -0400
 comments: true
-categories: R
+categories: r
 keywords: "R, ezplot, ggplot, ggplot2, stacked area charts, continuous x-axis"
 published: true
 share: true

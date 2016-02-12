@@ -3,7 +3,7 @@ layout: post
 title: "An Example of the Bootstrap Method"
 date: 2014-10-29 19:28:49 -0400
 comments: true
-categories: R
+categories: r
 keywords: "R, zoo, tseries, download stock price data using R, analyze stock price data using R, bootstrap examples"
 published: true
 share: true

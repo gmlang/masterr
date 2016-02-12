@@ -3,7 +3,7 @@ layout: post
 title: "On R Code Style"
 date: 2014-09-24 11:17:36 -0400
 comments: true
-categories: R
+categories: r
 keywords: "R code style guide"
 published: true
 share: true

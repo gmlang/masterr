@@ -3,7 +3,7 @@ layout: post
 title: "The stringr Package"
 date: 2014-08-29 12:42:38 -0400
 comments: true
-categories: R
+categories: r
 keywords: "R, stringr, text parsing in R"
 published: true
 share: true

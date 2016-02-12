@@ -3,7 +3,7 @@ layout: post
 title: "How to Convert Millisecond to Date in R"
 date: 2014-09-02 11:03:39 -0400
 comments: true
-categories: R
+categories: r
 keywords: "R, convert milliseconds to date in R, POSIXct"
 published: true
 share: true

@@ -3,7 +3,7 @@ layout: post
 title: "How to easily make beautiful heatmaps with ezplot - Part 8"
 date: 2015-07-30 14:50:49 -0400
 comments: true
-categories: R
+categories: r
 keywords: "R, ezplot, ggplot, ggplot2, heatmap, heat map, NBA data analysis, NBA statistics, Dwyane Wade, LeBron James, Dirk Nowitzki, Kevin Durant, Koby"
 published: true
 share: true

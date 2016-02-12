@@ -3,7 +3,7 @@ layout: post
 title: "How to Use the Paste and Outer Functions in R"
 date: 2014-08-19 14:14:47 -0400
 comments: true
-categories: R
+categories: r
 keywords: "R, outer, paste, roll a dice n times, roll two dies n times,
 roll a dice"
 published: true

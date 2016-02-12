@@ -3,7 +3,7 @@ layout: post
 title: "How to Work with Files in R and Improve Reproducibility"
 date: 2014-08-27 13:09:29 -0400
 comments: true
-categories: R
+categories: r
 keywords: "R, get path in R, set path in R, list.files in R, dir.create, file.path, directory management"
 published: true
 share: true

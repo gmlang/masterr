@@ -3,7 +3,7 @@ layout: post
 title: "Which R Base Generic Has the Most Number of Methods"
 date: 2014-10-12 10:11:49 -0400
 comments: true
-categories: R
+categories: r
 keywords: "R, base package, generic, generic function, methods"
 published: true
 share: true

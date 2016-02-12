@@ -3,7 +3,7 @@ layout: post
 title: "How to Work with Factors in R"
 date: 2014-09-03 15:18:44 -0400
 comments: true
-categories: R
+categories: r
 keywords: "R, factor, factors in R, ordered bars, barchart, barplot, rank, order"
 published: true
 share: true

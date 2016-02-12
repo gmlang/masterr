@@ -3,7 +3,7 @@ layout: post
 title: "Download Stock Price Data Using R"
 date: 2014-10-16 13:48:49 -0400
 comments: true
-categories: R
+categories: r
 keywords: "R, PerformanceAnalytics, zoo, tseries, download stock price data using R, analyze stock price data using R"
 published: true
 share: true

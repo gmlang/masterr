@@ -3,7 +3,7 @@ layout: post
 title: "How to Handle Large Datasets in R - Part 2"
 date: 2014-08-26 15:40:03 -0400
 comments: true
-categories: R
+categories: r
 keywords: "R, read large dataset in R, big data and R, size"
 published: true
 share: true

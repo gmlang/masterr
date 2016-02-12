@@ -3,7 +3,7 @@ layout: post
 title: "Replacement Functions in R"
 date: 2014-10-15 15:12:49 -0400
 comments: true
-categories: R
+categories: r
 keywords: "R, replacement functions"
 published: true
 share: true

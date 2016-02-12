@@ -3,7 +3,7 @@ layout: post
 title: "How to Find Consecutive Repeats in R"
 date: 2014-08-31 12:49:59 -0400
 comments: true
-categories: R
+categories: r
 keywords: "R, consecutive repeats in R"
 published: true
 share: true

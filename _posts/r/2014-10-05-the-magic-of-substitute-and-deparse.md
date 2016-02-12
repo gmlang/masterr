@@ -3,7 +3,7 @@ layout: post
 title: "The Magic of Substitute and Deparse"
 date: 2014-10-05 12:04:44 -0400
 comments: true
-categories: R
+categories: r
 keywords: "R, functions in R, deparse(), substitute()"
 published: true
 share: true

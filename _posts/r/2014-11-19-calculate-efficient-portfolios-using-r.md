@@ -3,7 +3,7 @@ layout: post
 title: "Calculate Efficient Portfolios Using R"
 date: 2014-11-19 14:48:49 -0400
 comments: true
-categories: R
+categories: r
 keywords: "R, PerformanceAnalytics, zoo, tseries, download stock price data using R, analyze stock price data using R, efficient portfolios, portfolio optimization using R"
 published: true
 share: true

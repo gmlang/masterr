@@ -3,7 +3,7 @@ layout: post
 title: "An Easy Way to Make Ggplot2 Boxplots, ezplot - Part 2"
 date: 2015-04-26 12:14:49 -0400
 comments: true
-categories: R
+categories: r
 keywords: "R, ggplot, ggplot2, ezplot, boxplot"
 published: true
 share: true

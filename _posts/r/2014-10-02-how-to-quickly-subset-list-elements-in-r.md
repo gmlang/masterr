@@ -3,7 +3,7 @@ layout: post
 title: "How to Quickly Subset List Elements in R"
 date: 2014-10-02 11:56:00 -0400
 comments: true
-categories: R
+categories: r
 keywords: "R, functions in R, quickly subset list elements in R"
 published: true
 share: true

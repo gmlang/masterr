@@ -3,7 +3,7 @@ layout: post
 title: "Functions That Return Functions Part 2"
 date: 2014-10-07 18:10:37 -0400
 comments: true
-categories: R
+categories: r
 keywords: "R, closures, functions that return other functions, function factory"
 published: true
 share: true

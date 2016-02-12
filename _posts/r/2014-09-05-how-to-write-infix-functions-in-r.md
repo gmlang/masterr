@@ -3,7 +3,7 @@ layout: post
 title: "How to Write Infix Functions in R"
 date: 2014-09-05 15:18:35 -0400
 comments: true
-categories: R
+categories: r
 keywords: "R, infix functions"
 published: true
 share: true
