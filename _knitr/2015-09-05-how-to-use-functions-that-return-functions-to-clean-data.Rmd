@@ -3,7 +3,7 @@ layout: post
 title: "How to use functions that return functions to clean data"
 date: 2015-09-05 21:30:00 -0400
 comments: true
-categories: R
+categories: r
 keywords: "R, functions, how to write R functions, functionals, function that return functions, data cleaning, remove spaces from a string, split a string, split a column into two"
 published: true
 share: true

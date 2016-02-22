@@ -3,7 +3,7 @@ layout: post
 title: "Analyze Stock Price Data Using R, Part3"
 date: 2014-10-30 21:18:49 -0400
 comments: true
-categories: R
+categories: r
 keywords: "R, PerformanceAnalytics, zoo, tseries, download stock price data using R, analyze stock price data using R, rolling mean"
 published: true
 share: true

@@ -3,7 +3,7 @@ layout: post
 title: "The Switch Operator in R"
 date: 2014-11-21 11:48:49 -0400
 comments: true
-categories: R
+categories: r
 keywords: "R, switch, R tips"
 published: true
 share: true

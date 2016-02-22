@@ -3,7 +3,7 @@ layout: post
 title: "Calculate Tangency Portfolios Using R"
 date: 2014-11-20 14:48:49 -0400
 comments: true
-categories: R
+categories: r
 keywords: "R, PerformanceAnalytics, zoo, tseries, download stock price data using R, analyze stock price data using R, tangency portfolios, portfolio optimization using R"
 published: true
 share: true

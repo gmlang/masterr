@@ -3,7 +3,7 @@ layout: post
 title: "The setwd Function in R"
 date: 2014-10-03 17:40:12 -0400
 comments: true
-categories: R
+categories: r
 keywords: "R, functions in R, setwd"
 published: true
 share: true

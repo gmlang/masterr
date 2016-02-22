@@ -3,7 +3,7 @@ layout: post
 title: "Handy R Functions for Summary Statistics"
 date: 2014-10-22 13:38:49 -0400
 comments: true
-categories: R
+categories: r
 keywords: "R, non-NA length, non-NA summary, summary statistics, five number summary"
 published: true
 share: true

@@ -3,7 +3,7 @@ layout: post
 title: "How to Correctly Load a R Package"
 date: 2014-09-10 10:37:44 -0400
 comments: true
-categories: R
+categories: r
 keywords: "R, library(), require(), how to load a R package"
 published: true
 share: true

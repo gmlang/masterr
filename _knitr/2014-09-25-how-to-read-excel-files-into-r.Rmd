@@ -3,7 +3,7 @@ layout: post
 title: "How to Read Excel Files into R"
 date: 2014-09-25 18:01:32 -0400
 comments: true
-categories: R
+categories: r
 keywords: "read excel file into R"
 published: true
 share: true

@@ -3,7 +3,7 @@ layout: post
 title: "A Super Easy Way to Make Ggplot2 Bar Charts with Labels, ezplot - Part 4"
 date: 2015-05-22 22:44:13 -0400
 comments: true
-categories: R
+categories: r
 keywords: "R, ggplot, ggplot2, ezplot, bar plots, bar charts, bar charts with labels, label the bars, bars with labels"
 published: true
 share: true

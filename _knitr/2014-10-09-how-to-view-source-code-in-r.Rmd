@@ -3,7 +3,7 @@ layout: post
 title: "How to View Source Code in R"
 date: 2014-10-09 12:29:49 -0400
 comments: true
-categories: R
+categories: r
 keywords: "R, source code of a function"
 published: true
 share: true

@@ -3,7 +3,7 @@ layout: post
 title: "Calculate Global Minimum Variance Portfolio Using R"
 date: 2014-11-06 14:48:49 -0400
 comments: true
-categories: R
+categories: r
 keywords: "R, PerformanceAnalytics, zoo, tseries, download stock price data using R, analyze stock price data using R, global min,
 global minimum variance portfolio, portfolio optimization using R"
 published: true

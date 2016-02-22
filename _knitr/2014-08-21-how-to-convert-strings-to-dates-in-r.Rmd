@@ -3,7 +3,7 @@ layout: post
 title: "How to Convert Strings to Dates in R"
 date: 2014-08-21 11:32:09 -0400
 comments: true
-categories: R
+categories: r
 keywords: "R, string to date conversion, character vector in R, numeric vector in R, date in R"
 published: true
 share: true

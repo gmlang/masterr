@@ -3,7 +3,7 @@ layout: post
 title: "How to Easily Sort A Data Frame"
 date: 2014-08-22 13:22:23 -0400
 comments: true
-categories: R
+categories: r
 keywords: "R, sort a data frame, sort a data frame by multiple variables"
 published: true
 share: true

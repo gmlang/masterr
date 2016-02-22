@@ -3,7 +3,7 @@ layout: post
 title: "How to Make Faceted Ordered Bar Charts in R"
 date: 2014-09-09 12:59:59 -0400
 comments: true
-categories: R
+categories: r
 keywords: "R, factor, factors in R, ordered bars, barchart, barplot,
 rank, order, ggplot2"
 published: true

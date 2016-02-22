@@ -3,7 +3,7 @@ layout: post
 title: "Functions that Return Functions"
 date: 2014-08-24 10:58:50 -0400
 comments: true
-categories: R
+categories: r
 keywords: "R, constructor functions, functions that return functions"
 published: true
 share: true

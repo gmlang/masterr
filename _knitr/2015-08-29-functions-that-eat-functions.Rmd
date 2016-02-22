@@ -3,7 +3,7 @@ layout: post
 title: "Functions that eat functions"
 date: 2015-08-29 15:00:00 -0400
 comments: true
-categories: R
+categories: r
 keywords: "R, functions, how to write R functions, closure"
 published: true
 share: true
