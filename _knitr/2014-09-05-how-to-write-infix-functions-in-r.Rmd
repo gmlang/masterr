@@ -31,3 +31,5 @@ Here's another example of an infix function that allows you to return a default 
 100 %||% NA
 NULL %||% NA
 ```
+
+To learn more, read [the chapter on functions](http://adv-r.had.co.nz/Functions.html) from Hadley's book, Advanced R.

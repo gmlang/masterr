@@ -7,7 +7,6 @@ categories: r
 keywords: "R, infix functions"
 published: true
 share: true
-ads: true
 
 ---
 Infix functions are functions where the function name comes in between its arguments when used. For example, operators like + and - are actually infix functions. Conversely, you can think of infix functions as operators. Here's an example of an infix function that concatenate two vectors.
@@ -69,3 +68,5 @@ NULL %||% NA
 {% highlight text %}
 ## [1] NA
 {% endhighlight %}
+
+To learn more, read [the chapter on functions](http://adv-r.had.co.nz/Functions.html) from Hadley's book, Advanced R.
