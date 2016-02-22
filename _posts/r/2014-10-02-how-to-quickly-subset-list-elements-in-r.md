@@ -7,7 +7,6 @@ categories: r
 keywords: "R, functions in R, quickly subset list elements in R"
 published: true
 share: true
-ads: true
 
 ---
 
@@ -57,3 +56,5 @@ lapply(x, `[`, 2)
 ## [[3]]
 ## [1] FALSE
 {% endhighlight %}
+
+To learn more, read [the chapter on functions](http://adv-r.had.co.nz/Functions.html) from Hadley's book, Advanced R.
