@@ -7,7 +7,6 @@ categories: r
 keywords: "R, replacement functions"
 published: true
 share: true
-ads: true
 
 ---
 
@@ -92,3 +91,5 @@ names(replacement.funs)[sapply(replacement.funs, is.primitive)]
 ##  [5] "dimnames<-"     "environment<-"  "length<-"       "levels<-"      
 ##  [9] "names<-"        "oldClass<-"     "storage.mode<-"
 {% endhighlight %}
+
+To learn more, read [the chapter on functions](http://adv-r.had.co.nz/Functions.html) from Hadley's book, Advanced R.

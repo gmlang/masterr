@@ -37,3 +37,5 @@ str(replacement.funs)
 # which ones are primitive functions
 names(replacement.funs)[sapply(replacement.funs, is.primitive)]
 ```
+
+To learn more, read [the chapter on functions](http://adv-r.had.co.nz/Functions.html) from Hadley's book, Advanced R.
