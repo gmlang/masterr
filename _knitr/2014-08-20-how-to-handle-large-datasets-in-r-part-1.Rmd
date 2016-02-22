@@ -29,4 +29,4 @@ tabAll = read.table("datatable.txt", colClasses = classes)
 If your data file doesn't contain commented lines, setting 
 `comment.char = ""` will also reduce the read-in time. 
 
-This article is inspired by Roger Peng's [R Programming course](https://www.coursera.org/learn/r-programming) at coursera. He's also written a [R book](https://www.coursera.org/specializations/jhu-data-science), which you can get for $20 or FREE.
+This article is inspired by Roger Peng's [R Programming course](https://www.coursera.org/learn/r-programming) at coursera. He's also written a [R book](https://leanpub.com/rprogramming), which you can get for $20 or FREE.
