@@ -3,7 +3,7 @@ layout: post
 title: "Exponential Growth of the US Real GDP from 1790 to 2012"
 date: 2014-08-13 11:21:53 -0400
 comments: true
-categories: R
+categories: r
 keywords: "US real GDP, exponential growth, the rule of 72, charlie munger, log linear, quandl"
 published: true
 share: true

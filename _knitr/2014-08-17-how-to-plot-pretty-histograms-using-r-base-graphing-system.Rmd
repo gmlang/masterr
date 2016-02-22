@@ -3,7 +3,7 @@ layout: post
 title: "How to Plot Pretty Histograms using R Base Graphing System"
 date: 2014-08-17 13:23:10 -0400
 comments: true
-categories: R
+categories: r
 keywords: "R, histogram, normality, qqplot, hist, R base graphing system"
 published: true
 share: true

@@ -3,7 +3,7 @@ layout: post
 title: "How to Install Quantstrat"
 date: 2014-08-15 10:52:08 -0400
 comments: true
-categories: R
+categories: r
 keywords: "financial markets, algorithmic trading, quantstrat, R, shiny app, quantitative trading"
 published: true
 share: true 
