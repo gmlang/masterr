@@ -3,11 +3,10 @@ layout: post
 title: "How to Handle Large Datasets in R - Part 1"
 date: 2014-08-20 12:10:56 -0400
 comments: true
-categories: r
+categories: R
 keywords: "R, read large dataset in R, big data and R, classes, size"
 published: true
 share: true
-ads: true
 
 ---
 Before you can do any analysis, you need to first read in the data. One thing that's not so nice about R is that it loads the entire dataset into RAM. As a result, if the dataset is bigger than your RAM, R will run out of memory before it can read in the data. So it's a good habit to check the size of the data first. Sometimes this is simply a matter of looking it up. Other times, you'll know the number of rows and columns in the dataset, and you can calculate a lower bound for its size by assuming the data are all numeric. Here's how.
@@ -30,3 +29,4 @@ tabAll = read.table("datatable.txt", colClasses = classes)
 If your data file doesn't contain commented lines, setting 
 `comment.char = ""` will also reduce the read-in time. 
 
+This article is inspired by Roger Peng's [R Programming course](https://www.coursera.org/learn/r-programming) at coursera. He's also written a [R book](https://www.coursera.org/specializations/jhu-data-science), which you can get for $20 or FREE.
