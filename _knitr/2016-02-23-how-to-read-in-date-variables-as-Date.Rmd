@@ -15,7 +15,7 @@ If you work with stocks or eCommerce data, you know you have to deal with dates,
 ```{r, warning=FALSE, message=FALSE}
 # define a new class 
 methods::setClass('myDate')
-setAs("character", "myDate", function(from) as.Date(from, format="%m/%d/%Y"))
+methods::setAs("character", "myDate", function(from) as.Date(from, format="%m/%d/%Y"))
 
 # apply it to the following sample data
 df = read.table(header=TRUE, text="date close
