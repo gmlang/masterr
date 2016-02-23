@@ -15,18 +15,7 @@ If you work with stocks or eCommerce data, you know you have to deal with dates,
 
 {% highlight r %}
 # define a new class 
-setClass('myDate')
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## Error in eval(expr, envir, enclos): could not find function "setClass"
-{% endhighlight %}
-
-
-
-{% highlight r %}
+methods::setClass('myDate')
 setAs("character", "myDate", function(from) as.Date(from, format="%m/%d/%Y"))
 {% endhighlight %}
 
