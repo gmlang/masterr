@@ -151,7 +151,7 @@ What's the best way to get ALL of these R training materials for FREE? Sign up f
 <!--End mc_embed_signup-->
 
 # About Guangming Lang
-![](/images/gmlang4.jpg) 
+![](/images/gmlang.jpg) 
 
 Guangming Lang is a data scientist and entrepreneur. He's the founder and chief data scientist of [cabaceo](http://cabaceo.com), a data science consulting company. Before founding MasterR.org and cabaceo, he worked as an analytic consultant at FICO. He has a master's degree in biostatistics from the [University of Michigan](http://umich.edu) and a bachelor's degree in math from the [New College of Florida](http://www.ncf.edu). He won the prestigious national science foundation graduate research fellowship award in 2009, the same award Steven Levitt won when he was a graduate student. 
 
