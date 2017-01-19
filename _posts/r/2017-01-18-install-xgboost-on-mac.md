@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Install XGBoost on Mac"
-date: 2017-01-18 20:24:00 -0400
+date: 2017-01-18 2:24:00 -0400
 comments: true
 categories: r
 keywords: "R, xgboost multi-thread Mac OSX El Capitan installation, gradient boosting, GBM"
@@ -15,22 +15,30 @@ share: true
 Step 1. Open up your terminal and run the following cmd.
 
 1. install gcc-6.x.x with openmp. This can take a while (~ 30 minutes).
+
 `brew install gcc --without-multilib`
 
 2. clone the repository.
+
 `git clone --recursive https://github.com/dmlc/xgboost`
 
 3. build xgboost.
+
 `cd xgboost; cp make/config.mk ./config.mk; make -j4`
 
 4. make an empty Makevars file and open it.
+
 ```
 mkdir ~/.R
+
 touch ~/.R/Makevars
+
 open -a TextEdit ~/.R/Makevars
+
 ```
 
 5. paste the following into the Makevars file
+
 ```
 CC = gcc-6
 CXX = g++-6
@@ -46,6 +54,7 @@ SHLIB_OPENMP_FFLAGS = -fopenmp
 6. save and close the file.
 
 Step 2. Open Rstudio and install the xgboost package.
+
 `install.packages("xgboost")`
 
 Done! Now you can start with some [tutorials](https://xgboost.readthedocs.io/en/latest/tutorials/index.html). 
