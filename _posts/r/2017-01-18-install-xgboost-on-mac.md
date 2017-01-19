@@ -30,11 +30,8 @@ Step 1. Open up your terminal and run the following cmd.
 
 ```
 mkdir ~/.R
-
 touch ~/.R/Makevars
-
 open -a TextEdit ~/.R/Makevars
-
 ```
 
 5. paste the following into the Makevars file
@@ -48,7 +45,6 @@ SHLIB_OPENMP_CFLAGS = -fopenmp
 SHLIB_OPENMP_CXXFLAGS = -fopenmp
 SHLIB_OPENMP_FCFLAGS = -fopenmp
 SHLIB_OPENMP_FFLAGS = -fopenmp
-
 ```
 
 6. save and close the file.
