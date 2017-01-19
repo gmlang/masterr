@@ -7,6 +7,7 @@ categories: r
 keywords: "R, predicate functional, Filter, where, Find, Position"
 published: true
 share: true
+ads: true
 
 ---
 

@@ -7,6 +7,7 @@ categories: r
 keywords: "R, ezplot, histogram, density plots, boxplot, check normality, qq plot, normal Q-Q plot"
 published: true
 share: true
+ads: true
 
 ---
 

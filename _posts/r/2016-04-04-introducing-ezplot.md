@@ -7,6 +7,7 @@ categories: r
 keywords: "R, ezplot, ggplot2, bar chart, tufte bar chart, scatter plot, heatmaps, interval plot, histogram, density plot, labeled bar chart, line plot, tufte slopegraph"
 published: true
 share: true
+ads: true
 
 ---
 

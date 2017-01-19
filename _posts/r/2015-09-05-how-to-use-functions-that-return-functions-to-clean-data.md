@@ -7,6 +7,7 @@ categories: r
 keywords: "R, functions, how to write R functions, functionals, function that return functions, data cleaning, remove spaces from a string, split a string, split a column into two"
 published: true
 share: true
+ads: true
 
 ---
 

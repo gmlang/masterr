@@ -7,6 +7,7 @@ categories: r
 keywords: "R, ezplot, ggplot, ggplot2, scatterplot, regression line"
 published: true
 share: true
+ads: true
 
 ---
 

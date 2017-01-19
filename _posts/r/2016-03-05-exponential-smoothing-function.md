@@ -7,6 +7,7 @@ categories: r
 keywords: "R, exponential smoothing, alpha, weighted average"
 published: true
 share: true
+ads: true
 
 ---
 

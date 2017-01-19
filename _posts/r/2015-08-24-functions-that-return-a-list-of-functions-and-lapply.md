@@ -7,6 +7,7 @@ categories: r
 keywords: "R, lapply, list, sapply, functions, store functions in a list"
 published: true
 share: true
+ads: true
 
 ---
 

@@ -7,6 +7,7 @@ categories: r
 keywords: "R, ggplot, ggplot2, ezplot, bar plots, bar charts, bar charts with labels, label the bars, bars with labels"
 published: true
 share: true
+ads: true
 
 ---
 

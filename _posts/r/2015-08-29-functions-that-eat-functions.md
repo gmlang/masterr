@@ -7,6 +7,7 @@ categories: r
 keywords: "R, functions, how to write R functions, closure"
 published: true
 share: true
+ads: true
 
 ---
 

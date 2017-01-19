@@ -7,6 +7,7 @@ categories: r
 keywords: "R, ggplot, ggplot2, ezplot, histograms and density plots"
 published: true
 share: true
+ads: true
 
 ---
 
