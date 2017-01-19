@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Introducing ezplot: An Easy Way to Make Beautiful Charts for Real World Clients"
+title: "Install XGBoost on Mac"
 date: 2017-01-18 20:24:00 -0400
 comments: true
 categories: r
