@@ -28,7 +28,7 @@ If you want to become a data scientist, you need to learn how to use git, github
 1. Go to [Gitlab](https://gitlab.com) and make sure you are logged in.
 2. Click the big PLUS (**+**) button next to your profile picture to create a new project. 
 3. After you've created a new project, you've created a repo. You should see a screen like this under the **Project** tab
-![gitlab](/../figs/2017-01-11-on-git-github-and-gitlab/gitlab.png)
+![center](/../figs/2017-01-11-on-git-github-and-gitlab/gitlab.png)
 4. Copy the SSH path shown in the screen.
 5. Open SourceTree, click **New Repository -> Clone from URL**.
 6. Paste the copied SSH path into the Source URL field.
