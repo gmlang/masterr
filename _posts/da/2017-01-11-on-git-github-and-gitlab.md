@@ -3,8 +3,8 @@ layout: post
 title: "On Git, Github and Gitlab"
 date: 2017-01-10 20:24:00 -0400
 comments: true
-categories: r
-keywords: "git, github, gitlab"
+categories: da
+keywords: "git, github, gitlab, da mondays, data science project management"
 published: true
 share: true
 
