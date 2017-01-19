@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Install XGBoost on Mac"
-date: 2017-01-18 2:24:00 -0400
+date: 2017-01-18
 comments: true
 categories: r
 keywords: "R, xgboost multi-thread Mac OSX El Capitan installation, gradient boosting, GBM"

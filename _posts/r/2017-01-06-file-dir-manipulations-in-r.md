@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "File and Dir Manipulations in R"
-date: 2017-01-06 20:24:00 -0400
+date: 2017-01-06
 comments: true
 categories: r
 keywords: "R, cmd, file manipulation, dir manipulation, use R to do low level file and folder manipulations"
