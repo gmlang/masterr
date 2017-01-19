@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "On Git, Github and Gitlab"
-date: 2017-01-02 20:24:00 -0400
+date: 2017-01-02 
 comments: true
 categories: da
 keywords: "git, github, gitlab, da mondays, data science project management"
