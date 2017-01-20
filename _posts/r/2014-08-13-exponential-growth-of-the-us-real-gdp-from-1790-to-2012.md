@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Exponential Growth of the US Real GDP from 1790 to 2012"
-date: 2014-08-13 11:21:53 -0400
+date: 2014-08-13 
 comments: true
 categories: r
 keywords: "US real GDP, exponential growth, the rule of 72, charlie munger, log linear, quandl"
@@ -10,6 +10,7 @@ share: true
 ads: true
 
 ---
+
 Exponential model is one of the most powerful mathematical models because it allows us to understand some important worldly phenomenons. The word “exponential” means “amplified.” There're two kinds of exponential models: exponential decay and exponential growth. In this article, I'm going to show you what exponential growth is and how to use it to model the US real GDP.[^1]
 
 First of all, let's download the US real GDP data (1790 - 2012) from [quandl](http://www.quandl.com/MWORTH-MeasuringWorth/0_1-United-States-Real-GDP), and plot it over time. The plot shows what exponential growth looks like. 
