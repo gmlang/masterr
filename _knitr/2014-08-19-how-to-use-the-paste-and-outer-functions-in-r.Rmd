@@ -1,15 +1,16 @@
 ---
 layout: post
 title: "How to Use the Paste and Outer Functions in R"
-date: 2014-08-19 14:14:47 -0400
+date: 2014-08-19 
 comments: true
 categories: r
 keywords: "R, outer, paste, roll a dice n times, roll two dies n times,
 roll a dice"
 published: true
 share: true
-
+ads: true
 ---
+
 Today I want to show you the power of two little R functions: `paste()` and `outer()`. Why should you care? Because you may encounter scenarios like the following.
 
 First, roll a dice 10 times. This can be simulated with one line of R code:
