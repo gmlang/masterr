@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "How to easily make ggplot2 type of time series plot, ezplot - Part 6"
-date: 2015-06-26 16:29:49 -0400
+date: 2015-06-26 
 comments: true
 categories: r
 keywords: "R, ezplot, ggplot, ggplot2, time series plot, line plot"

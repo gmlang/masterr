@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "How to visualize the distribution of a continuous variable, ezplot - Part 5"
-date: 2015-06-07 20:14:49 -0400
+date: 2015-06-07 
 comments: true
 categories: r
 keywords: "R, ezplot, histogram, density plots, boxplot, check normality, qq plot, normal Q-Q plot"
