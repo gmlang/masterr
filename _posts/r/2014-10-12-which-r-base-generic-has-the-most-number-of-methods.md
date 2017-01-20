@@ -17,72 +17,22 @@ Can you guess which generic in the base package has the most number of methods? 
 {% highlight r %}
 library(methods)
 library(pryr)
-{% endhighlight %}
 
-
-
-{% highlight text %}
-## Error in library(pryr): there is no package called 'pryr'
-{% endhighlight %}
-
-
-
-{% highlight r %}
 # get a list of functions in the base package
 objs = mget(ls("package:base"), inherits = TRUE)
 funs = Filter(is.function, objs)
 fun_types = lapply(funs, ftype) # ftype lives in the package pryr
-{% endhighlight %}
 
-
-
-{% highlight text %}
-## Error in match.fun(FUN): object 'ftype' not found
-{% endhighlight %}
-
-
-
-{% highlight r %}
 # extract the generic functions
 is_S3_generic = function(x) length(x) == 2 && x[2] == "generic"
 generics = Filter(is_S3_generic, fun_types)
-{% endhighlight %}
 
-
-
-{% highlight text %}
-## Error in lapply(x, f): object 'fun_types' not found
-{% endhighlight %}
-
-
-
-{% highlight r %}
 # get a list of the methods for each generic
 gen_methods = lapply(names(generics), methods)
-{% endhighlight %}
 
-
-
-{% highlight text %}
-## Error in lapply(names(generics), methods): object 'generics' not found
-{% endhighlight %}
-
-
-
-{% highlight r %}
 # count the number of methods for each generic
 gen_methods_cnt = sapply(gen_methods, length)
-{% endhighlight %}
 
-
-
-{% highlight text %}
-## Error in lapply(X = X, FUN = FUN, ...): object 'gen_methods' not found
-{% endhighlight %}
-
-
-
-{% highlight r %}
 # find the generic with the most methods
 generics[which.max(gen_methods_cnt)]
 {% endhighlight %}
@@ -90,7 +40,8 @@ generics[which.max(gen_methods_cnt)]
 
 
 {% highlight text %}
-## Error in eval(expr, envir, enclos): object 'generics' not found
+## $`|`
+## [1] "primitive" "generic"
 {% endhighlight %}
 
 
@@ -102,5 +53,5 @@ max(gen_methods_cnt)
 
 
 {% highlight text %}
-## Error in eval(expr, envir, enclos): object 'gen_methods_cnt' not found
+## [1] 2671
 {% endhighlight %}
