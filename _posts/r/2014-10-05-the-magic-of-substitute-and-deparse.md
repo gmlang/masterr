@@ -1,18 +1,16 @@
 ---
 layout: post
 title: "The Magic of Substitute and Deparse"
-date: 2014-10-05 12:04:44 -0400
+date: 2014-10-05 
 comments: true
 categories: r
 keywords: "R, functions in R, deparse(), substitute()"
 published: true
 share: true
 ads: true
-
 ---
 
 The R functions `substitute()` and `deparse()` are very interesting and here's why.
-
 
 {% highlight r %}
 foo1 = function(a, ...) {
