@@ -1,13 +1,13 @@
 ---
 layout: post
 title: "Analyze Stock Price Data Using R, Part1"
-date: 2014-10-17 13:48:49 -0400
+date: 2014-10-17 
 comments: true
 categories: r
 keywords: "R, PerformanceAnalytics, zoo, tseries, download stock price data using R, analyze stock price data using R"
 published: true
 share: true
-
+ads: true
 ---
 
 Crude oil has been hammered. Yesterday, it hit the lowest price in 2 years. Being a contrarian, I smell the opportunity to buy. My interest is a vanguard energy fund ([VGENX](https://personal.vanguard.com/us/funds/snapshot?FundId=0051&FundIntExt=INT)), which has 95% of its assets invested in oil or oil related sectors. Let's first take a look at its prices and returns histories since Sept 2005.
