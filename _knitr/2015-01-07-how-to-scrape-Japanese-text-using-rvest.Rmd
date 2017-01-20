@@ -11,24 +11,13 @@ ads: true
 ---
 
 The [rvest](https://github.com/hadley/rvest) package is yet another 
-powerful tool developed by Hadley. It makes web scraping using R easy, however, sometimes, it fails on non-English languages. For example, say I want to scrape [this page](http://www3.boj.or.jp/market/jp/stat/of141205.htm) from the Bank of Japan. I can try to use the `html` function directly while specifying `encoding="UTF-8"`, but this will not display the Japanese character correctly.
-
+powerful tool developed by Hadley. It makes web scraping super easy. For example, say I want to scrape [this page](http://www3.boj.or.jp/market/jp/stat/of141205.htm) from the Bank of Japan. I can just use the `read_html()` function without specifying
+the encoding. I think under the hood, it guesses the encoding. 
 ```{r, warning=FALSE, message=FALSE}
 library(methods)
 library(rvest)
 url = "http://www3.boj.or.jp/market/jp/stat/of141205.htm"
-page = html(url, encoding="UTF-8")
-
-# extract title
-page %>% html_nodes("title") %>% html_text()
-
-# extract 2nd table
-page %>% html_nodes('table') %>% .[[2]] %>% html_table()
-```
-
-To solve this issue, we can use `readLines()` and then `html()`.
-```{r, warning=FALSE, message=FALSE}
-page = html(readLines(url, encoding = "UTF-8"))
+page = read_html(url)
 
 # extract title
 page %>% html_nodes('title') %>% html_text()
@@ -36,3 +25,4 @@ page %>% html_nodes('title') %>% html_text()
 # extract 2nd table
 page %>% html_nodes('table') %>% .[[2]] %>% html_table()
 ```
+
