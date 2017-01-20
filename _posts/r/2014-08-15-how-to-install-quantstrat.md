@@ -1,18 +1,19 @@
 ---
 layout: post
 title: "How to Install Quantstrat"
-date: 2014-08-15 10:52:08 -0400
+date: 2014-08-15
 comments: true
 categories: r
 keywords: "financial markets, algorithmic trading, quantstrat, R, shiny app, quantitative trading"
 published: true
-share: true
+share: true 
 ads: true
- 
 ---
+
 [quantstrat](http://blog.fosstrading.com/2011/08/introduction-to-quantstrat.html) is a R package. It makes backtesting trading strategies easy. It is still under heavy development and can't be installed from CRAN yet. You can install it from source and the process is straightforward.
 
 Step1. Install these dependencies in R:
+
 
 {% highlight r %}
 install.packages("FinancialInstrument")
@@ -21,6 +22,7 @@ install.packages("foreach")
 {% endhighlight %}
 
 Step2. Go to [R-forge](https://r-forge.r-project.org/R/?group_id=316) and download the .tar.gz files for blotter and quantstrat, and run the following commands in R (change version numbers to reflect the version you downloaded):
+
 
 {% highlight r %}
 install.packages("/Users/gmlang/Downloads/blotter_0.8.17.tar", repos = NULL, type="source")
