@@ -1,13 +1,13 @@
 ---
 layout: post
 title: "Introducing ezplot: An Easy Way to Make Beautiful Charts for Real World Clients"
-date: 2016-04-04 20:40:00 -0400
+date: 2016-04-04 
 comments: true
 categories: r
 keywords: "R, ezplot, ggplot2, bar chart, tufte bar chart, scatter plot, heatmaps, interval plot, histogram, density plot, labeled bar chart, line plot, tufte slopegraph"
 published: true
 share: true
-
+ads: true
 ---
 
 Three years ago, I started a data science consulting [company](http://www.cabaceo.com/). Many of our projects involved making some kind of data visualization. Because I used R to do the analysis, I chose ggplot2 as my primary charting tool. The thing about ggplot2 is that making a generic plot is easy, but customizing and annotating it is hard. There're just two many details to remember. So at first, I did a lot of code recycling, but that was still very inefficient as I had to understand and manually change things to make old code work with new data. And as the repertoire of reusable code grew, it became a pain in the ass to find the right code for the things I wanted to do. Moreover, code recycling lead to code repetition, which caused my R script to grow long quickly, making it difficult to read.

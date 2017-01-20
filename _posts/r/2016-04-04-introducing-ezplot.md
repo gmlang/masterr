@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Introducing ezplot: An Easy Way to Make Beautiful Charts for Real World Clients"
-date: 2016-04-04 20:40:00 -0400
+date: 2016-04-04 
 comments: true
 categories: r
 keywords: "R, ezplot, ggplot2, bar chart, tufte bar chart, scatter plot, heatmaps, interval plot, histogram, density plot, labeled bar chart, line plot, tufte slopegraph"

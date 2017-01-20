@@ -11,7 +11,6 @@ ads: true
 ---
 
 I had to draw some flowcharts to demo the pipeline I built for a client. I was very pleased to discover [DiagrammeR](http://rich-iannone.github.io/DiagrammeR/). It allows you to make flowcharts and many other diagrams using R. Below is a simple example.
-
 ```{r, warning=FALSE, message=FALSE}
 library(DiagrammeR)
 grViz("digraph a_nice_graph {
