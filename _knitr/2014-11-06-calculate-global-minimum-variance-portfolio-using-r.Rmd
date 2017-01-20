@@ -1,14 +1,14 @@
 ---
 layout: post
 title: "Calculate Global Minimum Variance Portfolio Using R"
-date: 2014-11-06 14:48:49 -0400
+date: 2014-11-06 
 comments: true
 categories: r
 keywords: "R, PerformanceAnalytics, zoo, tseries, download stock price data using R, analyze stock price data using R, global min,
 global minimum variance portfolio, portfolio optimization using R"
 published: true
 share: true
-
+ads: true
 ---
 
 In this and the next couple of posts, I'll give examples of how to calculate optimized portfolios using R and the vanguard funds in my retirement account. Today, I'll show you how to calculate the global minimum variance portfolio, which was the first major result in Markowitz's portfolio theory. Given a collection of assets, their global minimum variance portfolio is the portfolio with the smallest portfolio volitility. 
@@ -68,7 +68,7 @@ cov.mat.annual = cov(ret.cc) * 12
 
 Step 4. Finally, we can calculate the global minimum variance portfolio using a helper function written by Eric Zivot and Hezky Varon from U of Washington.
 ```{r}
-helper = file.path(Sys.getenv("HOME"), "R/portfolio-optim/portfolio_noshorts.r")
+helper = "~/Coding/R-related/R/portfolio-optim/portfolio_noshorts.r"
 source(helper)
 global.minvar.port = globalMin.portfolio(mu.hat.annual, cov.mat.annual, short=F)
 

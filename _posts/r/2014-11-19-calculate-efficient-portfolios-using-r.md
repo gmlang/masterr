@@ -1,17 +1,16 @@
 ---
 layout: post
 title: "Calculate Efficient Portfolios Using R"
-date: 2014-11-19 14:48:49 -0400
+date: 2014-11-19 
 comments: true
 categories: r
 keywords: "R, PerformanceAnalytics, zoo, tseries, download stock price data using R, analyze stock price data using R, efficient portfolios, portfolio optimization using R"
 published: true
 share: true
 ads: true
-
 ---
 
-In a [previous post](http://gmlang.com/r/calculate-global-minimum-variance-portfolio-using-r/), I showed how to calculate the global minimum variance portfolio using R and vanguard funds in my retirement account. It had an average  annual return of 5.2% and volatility of 3.3% in the past 10 years. Because I'm holding those funds for a long term, at least 30 years. I don't really mind a bigger volatility now. Instead, I really want a bigger return, say 10%. So I'll set my target return as 10%, and find a portfolio that can achieve it. The resulting portfolio is called mean-variance efficient because it has the smallest volatility for the 10% target return. 
+In a [previous post](http://masterr.org/r/calculate-global-minimum-variance-portfolio-using-r/), I showed how to calculate the global minimum variance portfolio using R and vanguard funds in my retirement account. It had an average  annual return of 5.2% and volatility of 3.3% in the past 10 years. Because I'm holding those funds for a long term, at least 30 years. I don't really mind a bigger volatility now. Instead, I really want a bigger return, say 10%. So I'll set my target return as 10%, and find a portfolio that can achieve it. The resulting portfolio is called mean-variance efficient because it has the smallest volatility for the 10% target return. 
 
 Step 0. Load libraries and define helper functions.
 
@@ -44,7 +43,26 @@ symbols = c(stocks, bonds, commodities)
 port = list()
 for (symbol in symbols)
         port[[symbol]] = download_data(symbol, "2000-06-29", "2014-10-31")
+{% endhighlight %}
 
+
+
+{% highlight text %}
+## Warning in download.file(url, destfile, method = method, quiet
+## = quiet): cannot open URL 'http://chart.yahoo.com/table.csv?
+## s=VTSMX&a=5&b=29&c=2000&d=9&e=31&f=2014&g=m&q=q&y=0&z=VTSMX&x=.csv': HTTP
+## status was '502 Server Hangup'
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## download error, retrying ...
+{% endhighlight %}
+
+
+
+{% highlight r %}
 # change the class of the time index to yearmon
 lapply(port, to_yearmon)
 
@@ -78,13 +96,13 @@ head(ret.cc, 3)
 
 {% highlight text %}
 ##                  VTSMX        VGTSX       VGSIX        VIPSX       VBMFX
-## 2000-07-03 -0.01966245 -0.045168968  0.08338161  0.007905180 0.007797310
-## 2000-08-01  0.07015714  0.009852296 -0.03901204  0.007843177 0.015414563
-## 2000-09-01 -0.04777254 -0.051407967  0.02852243 -0.004698521 0.007619084
+## 2000-07-03 -0.01971716 -0.045649607  0.08408300  0.007936630 0.008832746
+## 2000-08-01  0.07027806  0.009904851 -0.04071584  0.006893088 0.013956404
+## 2000-09-01 -0.04782406 -0.051333260  0.02899155 -0.004918734 0.007621014
 ##                  VGPMX       VGENX
-## 2000-07-03 -0.01520942 -0.04692026
-## 2000-08-01  0.11565220  0.11484304
-## 2000-09-01 -0.07437054  0.01347060
+## 2000-07-03 -0.01628457 -0.04730217
+## 2000-08-01  0.11545891  0.11519991
+## 2000-09-01 -0.07451730  0.01346586
 {% endhighlight %}
 
 Step 3. Calculate annualized sample average returns of the underlying assets and the sample covariance matrix of the returns.
@@ -97,7 +115,7 @@ cov.mat.annual = cov(ret.cc) * 12
 Step 4. Calculate the efficient portfolio with 10% as target return using a helper function written by Eric Zivot and Hezky Varon from U of Washington.
 
 {% highlight r %}
-helper = file.path(Sys.getenv("HOME"), "R/portfolio-optim/portfolio_noshorts.r")
+helper = "~/Coding/R-related/R/portfolio-optim/portfolio_noshorts.r"
 source(helper)
 effi.port = efficient.portfolio(mu.hat.annual, cov.mat.annual, 0.1, F)
 
@@ -112,10 +130,10 @@ effi.port
 ##     target.return = 0.1, shorts = F)
 ## 
 ## Portfolio expected return:     0.1 
-## Portfolio standard deviation:  0.1542331 
+## Portfolio standard deviation:  0.1542217 
 ## Portfolio weights:
 ##  VTSMX  VGTSX  VGSIX  VIPSX  VBMFX  VGPMX  VGENX 
-## 0.0000 0.0000 0.3464 0.0000 0.2013 0.0000 0.4523
+## 0.0000 0.0000 0.3460 0.0000 0.2012 0.0000 0.4528
 {% endhighlight %}
 
 
@@ -125,4 +143,4 @@ effi.port
 plot(effi.port)
 {% endhighlight %}
 
-![center](/../figs/2014-11-19-calculate-efficient-portfolios-using-r/unnamed-chunk-5-1.png) 
+![center](/../figs/2014-11-19-calculate-efficient-portfolios-using-r/unnamed-chunk-5-1.png)

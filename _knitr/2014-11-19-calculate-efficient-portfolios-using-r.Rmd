@@ -1,16 +1,16 @@
 ---
 layout: post
 title: "Calculate Efficient Portfolios Using R"
-date: 2014-11-19 14:48:49 -0400
+date: 2014-11-19 
 comments: true
 categories: r
 keywords: "R, PerformanceAnalytics, zoo, tseries, download stock price data using R, analyze stock price data using R, efficient portfolios, portfolio optimization using R"
 published: true
 share: true
-
+ads: true
 ---
 
-In a [previous post](http://gmlang.com/r/calculate-global-minimum-variance-portfolio-using-r/), I showed how to calculate the global minimum variance portfolio using R and vanguard funds in my retirement account. It had an average  annual return of 5.2% and volatility of 3.3% in the past 10 years. Because I'm holding those funds for a long term, at least 30 years. I don't really mind a bigger volatility now. Instead, I really want a bigger return, say 10%. So I'll set my target return as 10%, and find a portfolio that can achieve it. The resulting portfolio is called mean-variance efficient because it has the smallest volatility for the 10% target return. 
+In a [previous post](http://masterr.org/r/calculate-global-minimum-variance-portfolio-using-r/), I showed how to calculate the global minimum variance portfolio using R and vanguard funds in my retirement account. It had an average  annual return of 5.2% and volatility of 3.3% in the past 10 years. Because I'm holding those funds for a long term, at least 30 years. I don't really mind a bigger volatility now. Instead, I really want a bigger return, say 10%. So I'll set my target return as 10%, and find a portfolio that can achieve it. The resulting portfolio is called mean-variance efficient because it has the smallest volatility for the 10% target return. 
 
 Step 0. Load libraries and define helper functions.
 ```{r, warning=FALSE, message=FALSE}
@@ -67,7 +67,7 @@ cov.mat.annual = cov(ret.cc) * 12
 
 Step 4. Calculate the efficient portfolio with 10% as target return using a helper function written by Eric Zivot and Hezky Varon from U of Washington.
 ```{r}
-helper = file.path(Sys.getenv("HOME"), "R/portfolio-optim/portfolio_noshorts.r")
+helper = "~/Coding/R-related/R/portfolio-optim/portfolio_noshorts.r"
 source(helper)
 effi.port = efficient.portfolio(mu.hat.annual, cov.mat.annual, 0.1, F)
 

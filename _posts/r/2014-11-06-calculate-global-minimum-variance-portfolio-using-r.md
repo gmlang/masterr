@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Calculate Global Minimum Variance Portfolio Using R"
-date: 2014-11-06 14:48:49 -0400
+date: 2014-11-06 
 comments: true
 categories: r
 keywords: "R, PerformanceAnalytics, zoo, tseries, download stock price data using R, analyze stock price data using R, global min,
@@ -9,7 +9,6 @@ global minimum variance portfolio, portfolio optimization using R"
 published: true
 share: true
 ads: true
-
 ---
 
 In this and the next couple of posts, I'll give examples of how to calculate optimized portfolios using R and the vanguard funds in my retirement account. Today, I'll show you how to calculate the global minimum variance portfolio, which was the first major result in Markowitz's portfolio theory. Given a collection of assets, their global minimum variance portfolio is the portfolio with the smallest portfolio volitility. 
@@ -79,13 +78,13 @@ head(ret.cc, 3)
 
 {% highlight text %}
 ##                  VTSMX        VGTSX       VGSIX        VIPSX       VBMFX
-## 2000-07-03 -0.01966245 -0.045168968  0.08338161  0.007905180 0.007797310
-## 2000-08-01  0.07015714  0.009852296 -0.03901204  0.007843177 0.015414563
-## 2000-09-01 -0.04777254 -0.051407967  0.02852243 -0.004698521 0.007619084
+## 2000-07-03 -0.01971716 -0.045649607  0.08408300  0.007936630 0.008832746
+## 2000-08-01  0.07027806  0.009904851 -0.04071584  0.006893088 0.013956404
+## 2000-09-01 -0.04782406 -0.051333260  0.02899155 -0.004918734 0.007621014
 ##                  VGPMX       VGENX
-## 2000-07-03 -0.01520942 -0.04692026
-## 2000-08-01  0.11565220  0.11484304
-## 2000-09-01 -0.07437054  0.01347060
+## 2000-07-03 -0.01628457 -0.04730217
+## 2000-08-01  0.11545891  0.11519991
+## 2000-09-01 -0.07451730  0.01346586
 {% endhighlight %}
 
 Step 3. Calculate the sample average returns of the underlying assets and the sample covariance matrix of the returns.
@@ -98,7 +97,7 @@ cov.mat.annual = cov(ret.cc) * 12
 Step 4. Finally, we can calculate the global minimum variance portfolio using a helper function written by Eric Zivot and Hezky Varon from U of Washington.
 
 {% highlight r %}
-helper = file.path(Sys.getenv("HOME"), "R/portfolio-optim/portfolio_noshorts.r")
+helper = "~/Coding/R-related/R/portfolio-optim/portfolio_noshorts.r"
 source(helper)
 global.minvar.port = globalMin.portfolio(mu.hat.annual, cov.mat.annual, short=F)
 
@@ -112,11 +111,11 @@ global.minvar.port
 ## globalMin.portfolio(er = mu.hat.annual, cov.mat = cov.mat.annual, 
 ##     shorts = F)
 ## 
-## Portfolio expected return:     0.05214207 
-## Portfolio standard deviation:  0.03358856 
+## Portfolio expected return:     0.05214958 
+## Portfolio standard deviation:  0.03355 
 ## Portfolio weights:
-##  VTSMX  VGTSX  VGSIX  VIPSX  VBMFX  VGPMX  VGENX 
-## 0.0637 0.0000 0.0000 0.0000 0.9363 0.0000 0.0000
+## VTSMX VGTSX VGSIX VIPSX VBMFX VGPMX VGENX 
+## 0.065 0.000 0.000 0.000 0.935 0.000 0.000
 {% endhighlight %}
 
 
@@ -126,4 +125,4 @@ global.minvar.port
 plot(global.minvar.port)
 {% endhighlight %}
 
-![center](/../figs/2014-11-06-calculate-global-minimum-variance-portfolio-using-r/unnamed-chunk-5-1.png) 
+![center](/../figs/2014-11-06-calculate-global-minimum-variance-portfolio-using-r/unnamed-chunk-5-1.png)
