@@ -79,7 +79,8 @@ Next, I calculated the 4 shape characteristics of these daily returns for each s
 
 
 {% highlight text %}
-## Error in library(PerformanceAnalytics): there is no package called 'PerformanceAnalytics'
+##            mean              sd        skewness excess.kurtosis 
+##     -0.09003839      5.81212763     -3.73626258     85.80061898
 {% endhighlight %}
 
 
@@ -91,7 +92,8 @@ Next, I calculated the 4 shape characteristics of these daily returns for each s
 
 
 {% highlight text %}
-## Error in library(PerformanceAnalytics): there is no package called 'PerformanceAnalytics'
+##            mean              sd        skewness excess.kurtosis 
+##      0.01516686      1.41858330     -0.31423801      9.22125158
 {% endhighlight %}
 
 Note the S&P500 had a mild negative skewness while NovaGold had a big negative skewness. Remember the normal distribution has a skewness of 0. In addition, both stocks had excess kurtosis comparing to the normal distribution. In particular, NovaGold had an excess kurtosis of 85.8, which made it much more likely to experience wild price swings than both the S&P500 and a normal distribution would.
@@ -101,98 +103,25 @@ Next, I simulated normal data using the corresponding mean and sd of the daily r
 {% highlight r %}
 set.seed(1020)
 norm.ng = rnorm(nrow(ng), mean=ng.shape["mean"], sd=ng.shape["sd"])
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## Error in rnorm(nrow(ng), mean = ng.shape["mean"], sd = ng.shape["sd"]): object 'ng.shape' not found
-{% endhighlight %}
-
-
-
-{% highlight r %}
 norm.sp500 = rnorm(nrow(sp500), mean=sp500.shape["mean"], sd=sp500.shape["sd"])
-{% endhighlight %}
 
-
-
-{% highlight text %}
-## Error in rnorm(nrow(sp500), mean = sp500.shape["mean"], sd = sp500.shape["sd"]): object 'sp500.shape' not found
-{% endhighlight %}
-
-
-
-{% highlight r %}
 library(tidyr)
 ret.ng = data.frame(ng = ng$rt, normal = norm.ng)
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## Error in data.frame(ng = ng$rt, normal = norm.ng): object 'norm.ng' not found
-{% endhighlight %}
-
-
-
-{% highlight r %}
 ret.ng = ret.ng %>% gather(label, ret, ng:normal)
-{% endhighlight %}
 
-
-
-{% highlight text %}
-## Error in eval(expr, envir, enclos): object 'ret.ng' not found
-{% endhighlight %}
-
-
-
-{% highlight r %}
 ret.sp500 = data.frame(sp500 = sp500$rt, normal = norm.sp500)
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## Error in data.frame(sp500 = sp500$rt, normal = norm.sp500): object 'norm.sp500' not found
-{% endhighlight %}
-
-
-
-{% highlight r %}
 ret.sp500 = ret.sp500 %>% gather(label, ret, sp500:normal)
-{% endhighlight %}
 
-
-
-{% highlight text %}
-## Error in eval(expr, envir, enclos): object 'ret.sp500' not found
-{% endhighlight %}
-
-
-
-{% highlight r %}
 # plot
 plt_density(ret.ng)
 {% endhighlight %}
 
-
-
-{% highlight text %}
-## Error in ggplot(df, aes(x = ret, color = label)): object 'ret.ng' not found
-{% endhighlight %}
-
-
+![center](/../figs/2014-10-14-sknewness-and-kurtosis-examples/unnamed-chunk-4-1.png)
 
 {% highlight r %}
 plt_density(ret.sp500)
 {% endhighlight %}
 
-
-
-{% highlight text %}
-## Error in ggplot(df, aes(x = ret, color = label)): object 'ret.sp500' not found
-{% endhighlight %}
+![center](/../figs/2014-10-14-sknewness-and-kurtosis-examples/unnamed-chunk-4-2.png)
 
 Note, both NovaGold and the S&P500 have longer and fatter tails than the normal curve. 
