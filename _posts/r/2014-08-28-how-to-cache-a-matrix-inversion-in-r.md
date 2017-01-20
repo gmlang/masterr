@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "How to Cache a Matrix Inversion in R"
-date: 2014-08-28 12:15:04 -0400
+date: 2014-08-28 
 comments: true
 categories: r
 keywords: "R, cache, caching in R"

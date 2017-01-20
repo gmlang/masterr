@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "On R Code Style"
-date: 2014-09-24 11:17:36 -0400
+date: 2014-09-24 
 comments: true
 categories: r
 keywords: "R code style guide"
