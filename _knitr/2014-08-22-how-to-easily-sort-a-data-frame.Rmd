@@ -1,14 +1,15 @@
 ---
 layout: post
 title: "How to Easily Sort A Data Frame"
-date: 2014-08-22 13:22:23 -0400
+date: 2014-08-22
 comments: true
 categories: r
 keywords: "R, sort a data frame, sort a data frame by multiple variables"
 published: true
 share: true
-
+ads: true
 ---
+
 How do you sort a data frame by one or more of its variables? This is one of the activities I do a lot when analyzing a dataset, so I wrote a function to take care of the details. It uses two other functions, `do.call()` and `order()`. `do.call()` takes in two arguments: a function and a list of arguments that can be passed to it. `order()` does the sorting, and you can look up how it works by running `?order`. Here's the function I wrote that can make sorting data frames much easier.
 ```{r}
 # sortframe is a function that sorts a data frame by any of its variables in
