@@ -1,13 +1,13 @@
 ---
 layout: post
 title: "Download Stock Price Data Using R"
-date: 2014-10-16 13:48:49 -0400
+date: 2014-10-16
 comments: true
 categories: r
 keywords: "R, PerformanceAnalytics, zoo, tseries, download stock price data using R, analyze stock price data using R"
 published: true
 share: true
-
+ads: true
 ---
 
 Downloading and charting stock prices data become easy when using the `tseries` and `PerformanceAnalytics` R packages. 

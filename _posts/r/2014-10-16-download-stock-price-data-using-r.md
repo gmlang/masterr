@@ -1,14 +1,13 @@
 ---
 layout: post
 title: "Download Stock Price Data Using R"
-date: 2014-10-16 13:48:49 -0400
+date: 2014-10-16
 comments: true
 categories: r
 keywords: "R, PerformanceAnalytics, zoo, tseries, download stock price data using R, analyze stock price data using R"
 published: true
 share: true
 ads: true
-
 ---
 
 Downloading and charting stock prices data become easy when using the `tseries` and `PerformanceAnalytics` R packages. 
@@ -113,9 +112,9 @@ head(ret.cc, 3)
 
 {% highlight text %}
 ##                SP500          NG
-## Feb 2004  0.01213510 -0.03889948
-## Mar 2004 -0.01649422  0.04689952
-## Apr 2004 -0.01693339 -0.27842887
+## Feb 2004  0.01213504 -0.03889948
+## Mar 2004 -0.01649420  0.04689952
+## Apr 2004 -0.01693331 -0.27842887
 {% endhighlight %}
 
 Step 6. Plot returns using `chart.TimeSeries()` and `chart.Bar()` in the `PerformanceAnalytics` package. 
@@ -125,14 +124,14 @@ chart.TimeSeries(ret.cc, legend.loc="bottomright", main="",
                  ylab="monthly cc return") 
 {% endhighlight %}
 
-![center](/../figs/2014-10-16-download-stock-price-data-using-r/unnamed-chunk-6-1.png) 
+![center](/../figs/2014-10-16-download-stock-price-data-using-r/unnamed-chunk-6-1.png)
 
 {% highlight r %}
 chart.Bar(ret.cc, legend.loc="bottomright", main="", 
           ylab="monthly cc return")
 {% endhighlight %}
 
-![center](/../figs/2014-10-16-download-stock-price-data-using-r/unnamed-chunk-6-2.png) 
+![center](/../figs/2014-10-16-download-stock-price-data-using-r/unnamed-chunk-6-2.png)
 
 Step 7. Plot cumulative returns using `chart.CumReturns()` in the `PerformanceAnalytics` package. 
 Note we need to use simple returns instead of continuously compounded returns for this, so we first calcualte the simple returns using `diff()` and `lag()` on the price data.
@@ -143,5 +142,5 @@ chart.CumReturns(ret.simple, legend.loc="topleft", wealth.index=TRUE,
                  ylab="$", main="Future Value of $1 invested")
 {% endhighlight %}
 
-![center](/../figs/2014-10-16-download-stock-price-data-using-r/unnamed-chunk-7-1.png) 
+![center](/../figs/2014-10-16-download-stock-price-data-using-r/unnamed-chunk-7-1.png)
 
