@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "How to read in date variables as Date"
-date: 2016-02-23 10:47:00 -0400
+date: 2016-02-23 
 comments: true
 categories: r
 keywords: "R, convert strings to Dates, date types in R, read in dates in R"

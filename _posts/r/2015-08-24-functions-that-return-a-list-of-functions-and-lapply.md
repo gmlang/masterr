@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Functions that return a list of functions and lapply"
-date: 2015-08-24 14:31:49 -0400
+date: 2015-08-24 
 comments: true
 categories: r
 keywords: "R, lapply, list, sapply, functions, store functions in a list"

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "A Simple R Function for Exponential Smoothing"
-date: 2016-03-05 11:47:00 -0400
+date: 2016-03-05
 comments: true
 categories: r
 keywords: "R, exponential smoothing, alpha, weighted average"

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Functions that eat functions"
-date: 2015-08-29 15:00:00 -0400
+date: 2015-08-29
 comments: true
 categories: r
 keywords: "R, functions, how to write R functions, closure"

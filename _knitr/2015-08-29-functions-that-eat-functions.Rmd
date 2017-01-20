@@ -1,13 +1,13 @@
 ---
 layout: post
 title: "Functions that eat functions"
-date: 2015-08-29 15:00:00 -0400
+date: 2015-08-29 
 comments: true
 categories: r
 keywords: "R, functions, how to write R functions, closure"
 published: true
 share: true
-
+ads: true
 ---
 
 We human eat different kind of foods. Similarly, functions can eat different kind of things. We've seen [functions that eat a number](http://masterr.org/r/functions-that-return-functions/), [a data frame](http://masterr.org/r/functions-that-return-functions-part-2/), and [a vector of numbers](http://masterr.org/r/functions-that-return-a-list-of-functions-and-lapply/). Today, I'm going to show you how to create functions that eat functions. By that, I mean functions that take functions as input. For example, look at the following function. 
