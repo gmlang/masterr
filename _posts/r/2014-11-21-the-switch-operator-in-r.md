@@ -1,18 +1,16 @@
 ---
 layout: post
 title: "The Switch Operator in R"
-date: 2014-11-21 11:48:49 -0400
+date: 2014-11-21 
 comments: true
 categories: r
 keywords: "R, switch, R tips"
 published: true
 share: true
 ads: true
-
 ---
 
 The `switch()` function in R is very powerful and here's an example.
-
 
 {% highlight r %}
 center = function(x, type) {
@@ -36,7 +34,7 @@ center(x, "mean")
 
 
 {% highlight text %}
-## [1] -0.4589026
+## [1] -1.237765
 {% endhighlight %}
 
 
@@ -48,7 +46,7 @@ center(x, "median")
 
 
 {% highlight text %}
-## [1] 0.07131463
+## [1] -0.9514988
 {% endhighlight %}
 
 
@@ -60,6 +58,6 @@ center(x, "trimmed")
 
 
 {% highlight text %}
-## [1] 0.2828977
+## [1] -1.082965
 {% endhighlight %}
 

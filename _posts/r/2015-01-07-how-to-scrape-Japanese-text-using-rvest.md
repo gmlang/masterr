@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "How to Scrape Japanese Text Using the rvest Package"
-date: 2015-01-07 10:04:49 -0400
+date: 2015-01-07
 comments: true
 categories: r
 keywords: "R, web scraping, Japanese characters, rvest, html"
