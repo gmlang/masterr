@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "How to Make Faceted Ordered Bar Charts in R"
-date: 2014-09-09 12:59:59 -0400
+date: 2014-09-09 
 comments: true
 categories: r
 keywords: "R, factor, factors in R, ordered bars, barchart, barplot,
@@ -9,8 +9,8 @@ rank, order, ggplot2"
 published: true
 share: true
 ads: true
-
 ---
+
 Previously, I showed [how to make ordered bar charts using ggplot2](http://masterr.org/r/how-to-work-with-factors-in-r/). Sometimes, you want to create multiple facets and put on each facet an ordered bar chart. Here's how you can do that using ggplot2.
 
 {% highlight r %}
@@ -35,4 +35,4 @@ ggplot(df, aes(group.cat, val)) +
         labs(x = "", size=2)
 {% endhighlight %}
 
-![center](/../figs/2014-09-09-how-to-make-faceted-ordered-bar-charts-in-r/unnamed-chunk-1-1.png) 
+![center](/../figs/2014-09-09-how-to-make-faceted-ordered-bar-charts-in-r/unnamed-chunk-1-1.png)
