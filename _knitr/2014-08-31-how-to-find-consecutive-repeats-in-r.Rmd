@@ -1,13 +1,13 @@
 ---
 layout: post
 title: "How to Find Consecutive Repeats in R"
-date: 2014-08-31 12:49:59 -0400
+date: 2014-08-31
 comments: true
 categories: r
 keywords: "R, consecutive repeats in R"
 published: true
 share: true
-
+ads: true
 ---
 
 **Q**: Given a sequence of random numbers, find the start and end positions of runs of five or more consecutive numbers that are greater than zero.
