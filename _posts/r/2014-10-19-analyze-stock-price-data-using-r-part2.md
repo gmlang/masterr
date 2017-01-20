@@ -1,14 +1,13 @@
 ---
 layout: post
 title: "Analyze Stock Price Data Using R, Part2"
-date: 2014-10-19 12:48:49 -0400
+date: 2014-10-19 
 comments: true
 categories: r
 keywords: "R, PerformanceAnalytics, zoo, tseries, download stock price data using R, analyze stock price data using R"
 published: true
 share: true
 ads: true
-
 ---
 
 When constructing a portfolio, it's important to pick un-correlated assets. This is just a corollary of the "don't put all your eggs in one basket" principle. If asset B goes up (or down) when asset A goes up (or down) and vice versa, there's really no reason to own both assets. By and large, assets of different classes are weakly correlated, for example, stocks and bonds, stocks and gold, and etc. In [part1](http://gmlang.com/r/analyze-stock-price-data-using-r-part1/), I said I'm interested in a vanguard energy fund (VGENX) because oil price has been hammered. However, because I already own the Total Stock Market Index Fund (VTSMX), I want to find out how correlated VGENX is with VTSMX.
@@ -71,9 +70,9 @@ head(ret.cc, 3)
 
 {% highlight text %}
 ##                VGENX        VTSMX
-## Oct 2005 -0.08831978 -0.018616483
-## Nov 2005  0.02154139  0.038859285
-## Dec 2005  0.03159695  0.001570475
+## Oct 2005 -0.08818443 -0.018813600
+## Nov 2005  0.02153350  0.038941761
+## Dec 2005  0.03146979  0.001354186
 {% endhighlight %}
 
 Step 5. Plot cumulative returns.
@@ -84,7 +83,7 @@ chart.CumReturns(ret.simple, legend.loc="topleft", wealth.index=TRUE,
                  ylab="$", main="Future Value of $1 invested")
 {% endhighlight %}
 
-![center](/../figs/2014-10-19-analyze-stock-price-data-using-r-part2/unnamed-chunk-5-1.png) 
+![center](/../figs/2014-10-19-analyze-stock-price-data-using-r-part2/unnamed-chunk-5-1.png)
 
 Step 6. Display pair-wise scatter plots.
 
@@ -93,7 +92,7 @@ return_matrix = coredata(ret.cc)
 pairs(return_matrix, pch=16, col="dodgerblue2")
 {% endhighlight %}
 
-![center](/../figs/2014-10-19-analyze-stock-price-data-using-r-part2/unnamed-chunk-6-1.png) 
+![center](/../figs/2014-10-19-analyze-stock-price-data-using-r-part2/unnamed-chunk-6-1.png)
 
 Both plots show the returns of VGENX and VTSMX are pretty correlated.
 
@@ -107,8 +106,8 @@ cor(return_matrix)
 
 {% highlight text %}
 ##           VGENX     VTSMX
-## VGENX 1.0000000 0.7835808
-## VTSMX 0.7835808 1.0000000
+## VGENX 1.0000000 0.7833628
+## VTSMX 0.7833628 1.0000000
 {% endhighlight %}
 
 We see their correlation is 0.78, which is pretty high.
