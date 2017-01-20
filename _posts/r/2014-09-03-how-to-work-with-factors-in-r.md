@@ -1,15 +1,15 @@
 ---
 layout: post
 title: "How to Work with Factors in R"
-date: 2014-09-03 15:18:44 -0400
+date: 2014-09-03 
 comments: true
 categories: r
 keywords: "R, factor, factors in R, ordered bars, barchart, barplot, rank, order"
 published: true
 share: true
 ads: true
-
 ---
+
 If you want to deal with categorical variables in R, you need to use a data structure called factor. A factor is just a numeric vector with a special attribute called levels. You can think of the levels as labels for the values. Given a character vector, you can turn it into a factor using the factor() function, for example,
 
 {% highlight r %}
@@ -172,7 +172,7 @@ ggplot(df, aes(x=cat, y=val)) +
         geom_text(aes(label=val, y=val+1), size=3)
 {% endhighlight %}
 
-![center](/../figs/2014-09-03-how-to-work-with-factors-in-r/unnamed-chunk-5-1.png) 
+![center](/../figs/2014-09-03-how-to-work-with-factors-in-r/unnamed-chunk-5-1.png)
 
 It'd be nice if we order the bars from tallest to shortest. To do that, we can make a factor specifying its levels to be the categories corresponding to the descending order of val. 
 
@@ -189,7 +189,7 @@ ggplot(df, aes(x=cat, y=val)) +
         geom_text(aes(label=val, y=val+1), size=3)
 {% endhighlight %}
 
-![center](/../figs/2014-09-03-how-to-work-with-factors-in-r/unnamed-chunk-6-1.png) 
+![center](/../figs/2014-09-03-how-to-work-with-factors-in-r/unnamed-chunk-6-1.png)
 
 Alternatively, we can use `reorder()` and `rank()` to merely reorder the levels of cat by the descending order of val.
 
@@ -206,6 +206,6 @@ ggplot(df, aes(x=cat, y=val)) +
         geom_text(aes(label=val, y=val+1), size=3)
 {% endhighlight %}
 
-![center](/../figs/2014-09-03-how-to-work-with-factors-in-r/unnamed-chunk-7-1.png) 
+![center](/../figs/2014-09-03-how-to-work-with-factors-in-r/unnamed-chunk-7-1.png)
 
 Notice that `rank()` returns the ranking order of each value in its input vector, whereas `order()` returns the indices that would put its input vector in order.
