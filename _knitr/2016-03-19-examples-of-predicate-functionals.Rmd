@@ -1,17 +1,16 @@
 ---
 layout: post
 title: "Examples of Predicate Functionals"
-date: 2016-03-19 11:47:00 -0400
+date: 2016-03-19 
 comments: true
 categories: r
 keywords: "R, predicate functional, Filter, where, Find, Position"
 published: true
 share: true
-
+ads: true
 ---
 
 A predicate is a function that returns a single TRUE or FALSE, for example, `is.factor()`, `all()`, or `is.NULL()`. A predicate functional is a function that applies a predicate to each element of a list or data frame. For example, we can define a predicate functional `where()` that checks the type of each column in a data frame.
-
 ```{r, warning=FALSE, message=FALSE}
 where = function(f, x) {
         # Applies a predicate function to every element of a list or data frame.
@@ -24,7 +23,6 @@ where = function(f, x) {
 ```
 
 Here's how you'd use it.
-
 ```{r, warning=FALSE, message=FALSE}
 # make a example data frame
 df = data.frame(x = 1:3, y = c("a", "b", "c"), z = c("Alex", "Bob", "Chris"))
@@ -39,8 +37,7 @@ where(is.integer, df)
 where(is.character, df)
 ```
 
-There're 3 common predicate functionals already defined in base R, namely, Filter(), Find(), Position(). Here's how you can use them.
-
+There're 3 common predicate functionals already defined in base R, namely, `Filter(), Find(), Position()`. Here's how you can use them.
 ```{r, warning=FALSE, message=FALSE}
 # filter the factors in a data frame
 subdf = Filter(is.factor, df)
