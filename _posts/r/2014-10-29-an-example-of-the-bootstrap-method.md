@@ -1,23 +1,22 @@
 ---
 layout: post
 title: "An Example of the Bootstrap Method"
-date: 2014-10-29 19:28:49 -0400
+date: 2014-10-29
 comments: true
 categories: r
 keywords: "R, zoo, tseries, download stock price data using R, analyze stock price data using R, bootstrap examples"
 published: true
 share: true
 ads: true
-
 ---
 
-When calculating the [bias and precision](http://gmlang.com/da/bias-and-precision/) of a sample estimate to the popluation parameter, because we often don't know the true value of the population parameter and we often only have one sample, we use a procedure called *bootstrap*. The idea is simple:
+When calculating the [bias and precision](http://masterr.org/da/bias-and-precision/) of a sample estimate to the popluation parameter, because we often don't know the true value of the population parameter and we often only have one sample, we use a procedure called *bootstrap*. The idea is simple:
 
 1. treat the sample as the population
 2. understand the sampling scheme, i.e., how the sample was taken from the population
 3. sample the same number of observations with replacement from the sample according to the same sampling scheme
 4. for each of the new samples, calculate its sample statistic. For example, if you're interested in the mean of the population, you just calculate the sample average. If you're interested in the sd of the population, you just calculate the sample sd. 
-5. these sample statistics form a distribution. Take its average and use it as a proxy to the true value of the population parameter. Plug it and the sample statistic of your original sample into [the formulas of bias and precision](http://gmlang.com/da/bias-and-precision/).
+5. these sample statistics form a distribution. Take its average and use it as a proxy to the true value of the population parameter. Plug it and the sample statistic of your original sample into [the formulas of bias and precision](http://masterr.org/da/bias-and-precision/).
 
 The following is a concrete example implementing the above bootstrap procedure using R and some stock price data.
 
@@ -52,10 +51,10 @@ head(ret.cc, 4)
 
 {% highlight text %}
 ##                 VTSMX
-## Oct 2005 -0.018616483
-## Nov 2005  0.038859285
-## Dec 2005  0.001570475
-## Jan 2006  0.034319929
+## Oct 2005 -0.018813600
+## Nov 2005  0.038941761
+## Dec 2005  0.001354186
+## Jan 2006  0.034401428
 {% endhighlight %}
 
 Step 2. Calculate the sample average c.c. returns
@@ -91,7 +90,7 @@ cat(paste0(round(bias*100, 2), "%"))
 
 
 {% highlight text %}
-## 0%
+## 0.02%
 {% endhighlight %}
 
 
@@ -105,7 +104,7 @@ cat(paste0(round(precision*100, 2), "%"))
 
 
 {% highlight text %}
-## 0.46%
+## 0.45%
 {% endhighlight %}
 
 Step 4. Instead of doing the bootstrap procedure ourselves, we can use the `boot()` function in the `boot` library. For example, we can use the following code to calculate the bootstrap bias and precision for the volatility (standard deviation).
@@ -152,7 +151,7 @@ VTSMX.sd.boot
 ## 
 ## Bootstrap Statistics :
 ##       original        bias    std. error
-## t1* 0.04646405 -0.0007377369 0.004656785
+## t1* 0.04646892 -0.0003882149 0.004814115
 {% endhighlight %}
 
 
@@ -161,7 +160,7 @@ VTSMX.sd.boot
 plot(VTSMX.sd.boot)
 {% endhighlight %}
 
-![center](/../figs/2014-10-29-an-example-of-the-bootstrap-method/unnamed-chunk-4-1.png) 
+![center](/../figs/2014-10-29-an-example-of-the-bootstrap-method/unnamed-chunk-4-1.png)
 
 Step 5. We can also calculate the bootstrap 95% confidence intervals of the volatility.
 
@@ -182,7 +181,7 @@ boot.ci(VTSMX.sd.boot, conf=0.95, type=c("norm", "perc"))
 ## 
 ## Intervals : 
 ## Level      Normal             Percentile     
-## 95%   ( 0.0381,  0.0563 )   ( 0.0370,  0.0548 )  
+## 95%   ( 0.0374,  0.0563 )   ( 0.0372,  0.0561 )  
 ## Calculations and Intervals on Original Scale
 {% endhighlight %}
 
@@ -213,7 +212,7 @@ boot.ci(VTSMX.VaR.boot, conf=0.95, type=c("norm", "perc"))
 ## 
 ## Intervals : 
 ## Level      Normal             Percentile     
-## 95%   (-8920, -4810 )   (-8781, -4766 )  
+## 95%   (-8820, -4898 )   (-8896, -4939 )  
 ## Calculations and Intervals on Original Scale
 {% endhighlight %}
 

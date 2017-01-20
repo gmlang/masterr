@@ -1,22 +1,22 @@
 ---
 layout: post
 title: "An Example of the Bootstrap Method"
-date: 2014-10-29 19:28:49 -0400
+date: 2014-10-29
 comments: true
 categories: r
 keywords: "R, zoo, tseries, download stock price data using R, analyze stock price data using R, bootstrap examples"
 published: true
 share: true
-
+ads: true
 ---
 
-When calculating the [bias and precision](http://gmlang.com/da/bias-and-precision/) of a sample estimate to the popluation parameter, because we often don't know the true value of the population parameter and we often only have one sample, we use a procedure called *bootstrap*. The idea is simple:
+When calculating the [bias and precision](http://masterr.org/da/bias-and-precision/) of a sample estimate to the popluation parameter, because we often don't know the true value of the population parameter and we often only have one sample, we use a procedure called *bootstrap*. The idea is simple:
 
 1. treat the sample as the population
 2. understand the sampling scheme, i.e., how the sample was taken from the population
 3. sample the same number of observations with replacement from the sample according to the same sampling scheme
 4. for each of the new samples, calculate its sample statistic. For example, if you're interested in the mean of the population, you just calculate the sample average. If you're interested in the sd of the population, you just calculate the sample sd. 
-5. these sample statistics form a distribution. Take its average and use it as a proxy to the true value of the population parameter. Plug it and the sample statistic of your original sample into [the formulas of bias and precision](http://gmlang.com/da/bias-and-precision/).
+5. these sample statistics form a distribution. Take its average and use it as a proxy to the true value of the population parameter. Plug it and the sample statistic of your original sample into [the formulas of bias and precision](http://masterr.org/da/bias-and-precision/).
 
 The following is a concrete example implementing the above bootstrap procedure using R and some stock price data.
 
