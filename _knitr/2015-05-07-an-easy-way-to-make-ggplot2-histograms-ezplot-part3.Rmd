@@ -1,13 +1,13 @@
 ---
 layout: post
 title: "An Easy Way to Make Ggplot2 Histograms and Density Plots, ezplot - Part 3"
-date: 2015-05-07 20:14:49 -0400
+date: 2015-05-07
 comments: true
 categories: r
 keywords: "R, ggplot, ggplot2, ezplot, histograms and density plots"
 published: true
 share: true
-
+ads: true
 ---
 
 Previously, I introduced the ezplot package and demoed how to use it to easily make nice looking ggplot2 [barcharts](http://masterr.org/r/an-easy-way-to-make-ggplot2-plots-ezplot-part1/) and [boxplots](http://masterr.org/r/an-easy-way-to-make-ggplot2-boxplots-ezplot-part2/). In this post, I'll discuss two common plot types that are used for displaying distributions of numeric variables, namely, the histogram and the density plot. By the end of this tutorial, you'll learn how to make sophisticated ggplot2 histograms and density plots using ezplot. And once again, you'll be amazed how simple and intuitive it is. Let's get started.

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "An Easy Way to Make Ggplot2 Histograms and Density Plots, ezplot - Part 3"
-date: 2015-05-07 20:14:49 -0400
+date: 2015-05-07
 comments: true
 categories: r
 keywords: "R, ggplot, ggplot2, ezplot, histograms and density plots"

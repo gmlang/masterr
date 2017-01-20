@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "An Easy Way to Make Ggplot2 Plots, ezplot - Part 1"
-date: 2015-04-21 14:04:49 -0400
+date: 2015-04-21 
 comments: true
 categories: r
 keywords: "R, ggplot, ggplot2, ezplot, barchart, barplot"

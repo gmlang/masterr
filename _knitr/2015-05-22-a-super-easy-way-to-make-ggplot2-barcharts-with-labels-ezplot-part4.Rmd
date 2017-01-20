@@ -1,13 +1,13 @@
 ---
 layout: post
 title: "A Super Easy Way to Make Ggplot2 Bar Charts with Labels, ezplot - Part 4"
-date: 2015-05-22 22:44:13 -0400
+date: 2015-05-22 
 comments: true
 categories: r
 keywords: "R, ggplot, ggplot2, ezplot, bar plots, bar charts, bar charts with labels, label the bars, bars with labels"
 published: true
 share: true
-
+ads: true
 ---
 
 In my very first tutorial on the ezplot R package, I showed you how easy and quick it is to make nice looking ggplot2 [bar charts](http://masterr.org/r/an-easy-way-to-make-ggplot2-plots-ezplot-part1/) using ezplot. In this post, I'll show you how to easily add labels on the bars. Let's get started.

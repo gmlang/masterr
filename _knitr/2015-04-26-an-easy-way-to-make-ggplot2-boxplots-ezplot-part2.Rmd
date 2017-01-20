@@ -1,13 +1,13 @@
 ---
 layout: post
 title: "An Easy Way to Make Ggplot2 Boxplots, ezplot - Part 2"
-date: 2015-04-26 12:14:49 -0400
+date: 2015-04-26 
 comments: true
 categories: r
 keywords: "R, ggplot, ggplot2, ezplot, boxplot"
 published: true
 share: true
-
+ads: true
 ---
 
 Previously, I introduced the ezplot package and [demoed how to use it to make nice looking ggplot2 bar charts easily and quickly](http://masterr.org/r/an-easy-way-to-make-ggplot2-plots-ezplot-part1/).   Today, I'm going to show you how to make nice looking boxplots. Once again, the code is super simple.
