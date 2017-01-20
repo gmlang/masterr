@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "When Does Data Analysis Become Worthless"
-date: 2014-09-22 13:36:45 -0400
+date: 2014-09-22 
 comments: true
 categories: da
 keywords: "when does data analysis become worthless, things to avoid when doing data analysis"

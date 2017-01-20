@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Bias and Precision"
-date: 2014-10-20 11:30:49 -0400
+date: 2014-10-20 
 comments: true
 categories: da
 keywords: "data analysis, da mondays, bias, precision"
@@ -16,4 +16,4 @@ Imagine you have one population and one sample taken from the population. Suppos
 
 Coming back to our example, if you take the squared root of the mean squared differences between the sample averages and the population average, you'd get the *precision*. Similarly, precision doesn't depend on any particular summary statistic like the mean. It also makes sense to talk about the precision of the median, standard deviation, correlation and so on. Intuitively, *precision* measures the average spread of the sample estimates to the population truth, and hence it quantifies the accuracy of any one typical random sample estimate to the population truth. A smaller precision implies a higher accuracy and a bigger precision implies a lower accuracy. 
 
-You may wonder, "In practice, we often don't know the value of the population parameter. How do we calculate bias and precision?" The answer lies in a method called *bootstrap*, and you can read it [here](http://gmlang.com/r/an-example-of-the-bootstrap-method/).   
+You may wonder, "In practice, we often don't know the value of the population parameter. How do we calculate bias and precision?" The answer lies in a method called *bootstrap*, and you can read it [here](http://masterr.org/r/an-example-of-the-bootstrap-method/).   

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Reservoir Sampling and Algorithm R"
-date: 2014-08-04 06:24:33 -0400
+date: 2014-08-04
 comments: true
 categories: da
 keywords: "reservoir sampling, algorithm R"
@@ -10,14 +10,14 @@ share: true
 ads: true
  
 ---
-When doing data analysis, it's important to work with a [random sample](http://gmlang.com/da/sampling/). We can get a random sample by drawing members from the population according to fixed probabilities known to us prior to our draw. Furthermore, If each member is drawn with an equal probability, the resulting sample is called a simple random sample. The concept is clear, but how do we actually do it? In other words, given a population of size $$N$$, how can we generate a simple random sample of size $$n$$ ($$n < N$$) without replacement (meaning the same member cannot appear more than once in the sample)?
+When doing data analysis, it's important to work with a [random sample](http://masterr.org/da/sampling/). We can get a random sample by drawing members from the population according to fixed probabilities known to us prior to our draw. Furthermore, If each member is drawn with an equal probability, the resulting sample is called a simple random sample. The concept is clear, but how do we actually do it? In other words, given a population of size $$N$$, how can we generate a simple random sample of size $$n$$ ($$n < N$$) without replacement (meaning the same member cannot appear more than once in the sample)?
  
 There are two cases:
 
 1. $$N$$ is known and not large 
 2. $$N$$ is very large or unknown.
 
-When $$N$$ is known and not large, the algorithms for generating simple random samples are implemented in most statistical softwares. So analysts can take things for granted and run a one line command, for example, in R, you can run ```sample(1:N, n)``` to get a simple random sample of size $$n$$ without replacement.
+When $$N$$ is known and not large, the algorithms for generating simple random samples are implemented in most statistical softwares. So analysts can take things for granted and run a one line command, for example, in R, you can run `sample(1:N, n)` to get a simple random sample of size $$n$$ without replacement.
 
 When $$N$$ is very large or unknown, things become more interesting. This happens quite often in today's big data era. For example, when streaming live data, often the size of the streamed data (population) grows over time. Or when the population data file is extremely large, it becomes inefficient to count $$N$$ first and then apply the algorithms in case 1 because doing so will require sequentially passing through the file twice. Reservoir sampling is a set of algorithms that can generate a simple random sample efficiently (one pass and linear time) when $$N$$ is very large or unknown. The simplest reservoir sampling algorithm is Algorithm R invented by Alan Waterman, and it works as follows:
 

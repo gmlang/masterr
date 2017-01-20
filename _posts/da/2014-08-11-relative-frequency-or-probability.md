@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Relative Frequency or Probability"
-date: 2014-08-11 08:38:32 -0400
+date: 2014-08-11 
 comments: true
 categories: da
 keywords: "relative frequency, probability"

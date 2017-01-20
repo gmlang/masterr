@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "What is Data Analysis?"
-date: 2014-07-21 15:25:52 -0400
+date: 2014-07-21 
 comments: true
 categories: da
 keywords: "data analysis, da mondays, data cleaning, descriptive, exploratory, inference, prediction, models, visualization"

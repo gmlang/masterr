@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "7 Things You Should Know About Data Cleaning"
-date: 2014-08-18 15:04:03 -0400
+date: 2014-08-18 
 comments: true
 categories: da
 keywords: "data cleaning, data processing, tidy data"
@@ -31,7 +31,7 @@ There're at least 4 reasons:
 
 1. Data cleaning consists a broad range of activities, for example,
 	* text parsing 
-	* [date conversion](http://gmlang.com/r/how-to-convert-strings-to-dates-in-r/) 
+	* [date conversion](http://masterr.org/r/how-to-convert-strings-to-dates-in-r/) 
 	* outlier checking 
 	* missing data imputation
 	* variable transformation 
@@ -40,4 +40,4 @@ There're at least 4 reasons:
 	* merging
 2. Data cleaning is not a do-it-once step, instead, it is recurrent throughout the entire analysis because we need to clean the data as new problems arise during the analysis, and they almost always do. Here's a typical data analysis process: data cleaning → descriptive and exploratory analysis → more data cleaning → descriptive and exploratory analysis → inferential or predictive analysis → more data cleaning → inferential or predictive analysis.
 3. Everything we do in data cleaning needs to be reproducible. This means you should try to avoid doing it by hand, instead, you should write code to do it and you should document your code. This allows others or you in a later time to understand what you did. For the things you cannot do by code, you should document your manual cleaning actions.
-4. When the dataset is large, even reading them into the software becomes challenging. Although there're some [workarounds](http://gmlang.com/r/how-to-handle-large-datasets-in-r-part-2/), you'll often need to write sql/nosql scripts to query and drop some variables to make the data smaller, or write scripts to [take a random sample](http://gmlang.com/da/reservoir-sampling-and-algorithm-r/) from the data and work with the sample instead.
+4. When the dataset is large, even reading them into the software becomes challenging. Although there're some [workarounds](http://masterr.org/r/how-to-handle-large-datasets-in-r-part-2/), you'll often need to write sql/nosql scripts to query and drop some variables to make the data smaller, or write scripts to [take a random sample](http://masterr.org/da/reservoir-sampling-and-algorithm-r/) from the data and work with the sample instead.

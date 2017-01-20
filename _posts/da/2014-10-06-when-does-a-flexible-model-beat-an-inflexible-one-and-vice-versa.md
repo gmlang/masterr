@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "When Does A Flexible Model Beat An Inflexible One and Vice Versa"
-date: 2014-10-06 10:13:17 -0400
+date: 2014-10-06 
 comments: true
 categories: da
 keywords: "when does a flexible statistical learning method perform better than an inflexible one, when does an inflexible statistical learning method perform better than a flexible one"

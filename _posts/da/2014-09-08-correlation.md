@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Correlation"
-date: 2014-09-08 13:01:53 -0400
+date: 2014-09-08 
 comments: true
 categories: da
 keywords: "correlation"

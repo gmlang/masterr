@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Sknewness and Kurtosis"
-date: 2014-10-13 12:39:49 -0400
+date: 2014-10-13 
 comments: true
 categories: da
 keywords: "data analysis, da mondays, sknewness, kurtosis"
@@ -35,6 +35,6 @@ Finally, when a distribution is neither right or left skewed, we say it's symmet
 ## Intuition behind Kurtosis
 If the variable has some extremely large or small values, its centered-and-scaled version will have some extremely big positive or negative values, raise them to the 4th power will amplify the magnitude, and all these amplified bigness contribute to the final average, which will result in some very large number. Conversely, a big kurtosis implies higher chance of getting extreme values. However, how big is big? Once again, we compare to the normal distribution, which has a kurtosis of 3. If your interested variable has a kurtosis > 3, then your variable follows a distribution under which extremely values are more likely to happen than under the normal distribution. And its density curve will have fatter tails than the normal curve.
 
-Click [here](http://gmlang.com/r/sknewness-and-kurtosis-examples/) for some example calculations using stock market data.
+Click [here](http://masterr.org/da/skewness-and-kurtosis/) for some example calculations using stock market data.
 
 [^1]: divide by (n-1) instead of n
