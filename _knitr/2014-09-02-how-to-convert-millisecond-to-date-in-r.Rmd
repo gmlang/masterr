@@ -1,14 +1,15 @@
 ---
 layout: post
 title: "How to Convert Millisecond to Date in R"
-date: 2014-09-02 11:03:39 -0400
+date: 2014-09-02 
 comments: true
 categories: r
 keywords: "R, convert milliseconds to date in R, POSIXct"
 published: true
 share: true
-
+ads: true
 ---
+
 Sometimes, we receive data where the timestamps are milliseconds and we want to convert them to dates. This is quite easy in R. We just need to use the `as.POSIXct()` function. Here's a function wrapper I wrote to make it even easier.
 ```{r}
 ms.to.date = function(x, t0="1970-01-01", timezone) {
