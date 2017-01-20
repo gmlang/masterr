@@ -1,13 +1,13 @@
 ---
 layout: post
 title: "How to easily make ggplot2 type of scatterplot, ezplot - Part 7"
-date: 2015-07-27 09:29:49 -0400
+date: 2015-07-27 
 comments: true
 categories: r
 keywords: "R, ezplot, ggplot, ggplot2, scatterplot, regression line"
 published: true
 share: true
-
+ads: true
 ---
 
 When you have two continuous variables and want to see their relationship, you'd draw a scatterplot by putting one variable on the x-axis and the other variable on the y-axis. In this post, we'll look at how to draw scatterplots using the `mk_scatterplot()` function from the ezplot package. We'll also use the `scale_axis()` function, which allows us to easily change the scale of the x-axis or y-axis. Let's get started. 

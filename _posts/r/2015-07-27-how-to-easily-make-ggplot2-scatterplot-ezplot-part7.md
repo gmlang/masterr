@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "How to easily make ggplot2 type of scatterplot, ezplot - Part 7"
-date: 2015-07-27 09:29:49 -0400
+date: 2015-07-27 
 comments: true
 categories: r
 keywords: "R, ezplot, ggplot, ggplot2, scatterplot, regression line"

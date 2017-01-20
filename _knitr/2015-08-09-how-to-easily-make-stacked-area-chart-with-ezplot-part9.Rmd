@@ -1,13 +1,13 @@
 ---
 layout: post
 title: "How to easily make stacked area chart with ezplot - Part 9"
-date: 2015-08-09 15:51:49 -0400
+date: 2015-08-09
 comments: true
 categories: r
 keywords: "R, ezplot, ggplot, ggplot2, stacked area charts, continuous x-axis"
 published: true
 share: true
-
+ads: true
 ---
 
 Stacked area chart isn't something I use often. However, I see Economists use it a lot. For example, if you open the book <a href="http://www.amazon.com/gp/product/067443000X/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=067443000X&linkCode=as2&tag=cabaceo-20&linkId=VFX64EPFR3YKA7OG">Capital in the Twenty-First Century</a><img src="http://ir-na.amazon-adsystem.com/e/ir?t=cabaceo-20&l=as2&o=1&a=067443000X" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />, you'll find many stacked area charts. By the way, it's a thought-provoking book. A stacked area chart is the continuous analog of a stacked bar chart. We can use it to show how different components of the whole vary over time. The reason I don't like it is because as you move up the stacks, it becomes increasingly hard to see the patterns. Therefore, it's very important
