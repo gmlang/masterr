@@ -1,17 +1,16 @@
 ---
 layout: post
 title: "The stringr Package"
-date: 2014-08-29 12:42:38 -0400
+date: 2014-08-29
 comments: true
 categories: r
 keywords: "R, stringr, text parsing in R"
 published: true
 share: true
 ads: true
-
 ---
-When doing data cleaning, we often have to clean up strings of text. Doing this in R used to be a pain until the birth of the [stringr](http://cran.r-project.org/web/packages/stringr/index.html) package. For example, it contains a function called `str_trim()` that allows you to easily remove any leading and trailing whitespace of a string. It also contains a function called `str_sub()` that allows you to easily extract substrings from any string. Run the following code to see these two functions work.
 
+When doing data cleaning, we often have to clean up strings of text. Doing this in R used to be a pain until the birth of the [stringr](http://cran.r-project.org/web/packages/stringr/index.html) package. For example, it contains a function called `str_trim()` that allows you to easily remove any leading and trailing whitespace of a string. It also contains a function called `str_sub()` that allows you to easily extract substrings from any string. Run the following code to see these two functions work.
 
 {% highlight r %}
 library(stringr)
