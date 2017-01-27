@@ -1,0 +1,30 @@
+---
+layout: post
+title: "Use Grep to Drop Columns"
+date: 2017-01-27 
+comments: true
+categories: r
+keywords: "R, grep, drop variables, drop columns"
+published: true
+share: true
+ads: true
+---
+
+It's very easy to drop columns from a data frame using the `grep()` function. The following example shows you how.
+```{r, warning=FALSE, message=FALSE}
+# print the first 3 records of the iris dataset 
+head(iris, 3)
+
+# grep the indices of the columns with "Sepal" in their names
+sepal_col_num = grep("Sepal", names(iris))
+
+# drop these columns
+iris_sub = iris[, -sepal_col_num]
+head(iris_sub, 3)
+```
+
+You can also use `grep()` to extract column names.
+```{r, warning=FALSE, message=FALSE}
+# grep the names of the columns with "Petal" in their names
+grep("Petal", names(iris), value=T)
+```
