@@ -6,40 +6,39 @@
 <head>
 <meta charset="utf-8">
 <title>Analyze Stock Price Data Using R, Part3 &#8211; Become Great at R</title>
-<meta name="description" content="When analyzing stock returns, we like to know if the average returns or volatilities are constant over time, or if the correlations between any two assets in our portfolio stay constant over time. Therefore, we need to pick a time windows and calculate the rolling means, volatilities or correlations. A common choice for a time window is 2 years. However, in practice, I often pick several time windows of different length (like 6 months, 1 year, 2 years, 5 years) and compare the results obtained under each time window. The function rollapply() in the zoo library allows us to calculate the rolling statistics easily. 
+<meta name="description" content="When analyzing stock returns, we like to know if the average returns or volatilities are constant over time, or if the correlations between any two assets in our portfolio stay constant over time. Therefore, we need to pick a time windows and calculate the rolling means, volatilities or correlations. A common choice for a time window is 2 years. However, in practice, I often pick several time windows of different length (like 6 months, 1 year, 2 years, 5 years) and compare the results obtained under each time window. The function rollapply() in the zoo library allows us to calculate the rolling statistics easily.
 
 ">
 <meta name="keywords" content="">
 
 
-
 <!-- Twitter Cards -->
 <meta name="twitter:title" content="Analyze Stock Price Data Using R, Part3">
-<meta name="twitter:description" content="When analyzing stock returns, we like to know if the average returns or volatilities are constant over time, or if the correlations between any two assets in our portfolio stay constant over time. Therefore, we need to pick a time windows and calculate the rolling means, volatilities or correlations. A common choice for a time window is 2 years. However, in practice, I often pick several time windows of different length (like 6 months, 1 year, 2 years, 5 years) and compare the results obtained under each time window. The function rollapply() in the zoo library allows us to calculate the rolling statistics easily. 
+<meta name="twitter:description" content="When analyzing stock returns, we like to know if the average returns or volatilities are constant over time, or if the correlations between any two assets in our portfolio stay constant over time. Therefore, we need to pick a time windows and calculate the rolling means, volatilities or correlations. A common choice for a time window is 2 years. However, in practice, I often pick several time windows of different length (like 6 months, 1 year, 2 years, 5 years) and compare the results obtained under each time window. The function rollapply() in the zoo library allows us to calculate the rolling statistics easily.
 
 ">
 
 
 
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://masterr.org/images/site-logo.png">
+<meta name="twitter:image" content="http://localhost:4000/images/site-logo.png">
 
 <!-- Open Graph -->
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Analyze Stock Price Data Using R, Part3">
-<meta property="og:description" content="When analyzing stock returns, we like to know if the average returns or volatilities are constant over time, or if the correlations between any two assets in our portfolio stay constant over time. Therefore, we need to pick a time windows and calculate the rolling means, volatilities or correlations. A common choice for a time window is 2 years. However, in practice, I often pick several time windows of different length (like 6 months, 1 year, 2 years, 5 years) and compare the results obtained under each time window. The function rollapply() in the zoo library allows us to calculate the rolling statistics easily. 
+<meta property="og:description" content="When analyzing stock returns, we like to know if the average returns or volatilities are constant over time, or if the correlations between any two assets in our portfolio stay constant over time. Therefore, we need to pick a time windows and calculate the rolling means, volatilities or correlations. A common choice for a time window is 2 years. However, in practice, I often pick several time windows of different length (like 6 months, 1 year, 2 years, 5 years) and compare the results obtained under each time window. The function rollapply() in the zoo library allows us to calculate the rolling statistics easily.
 
 ">
-<meta property="og:url" content="http://masterr.org/r/analyze-stock-price-data-using-r-part3/">
+<meta property="og:url" content="http://localhost:4000/r/analyze-stock-price-data-using-r-part3/">
 <meta property="og:site_name" content="Become Great at R">
 
 
+<meta name="msvalidate.01" content="F608C5B05384F7B0200AC62F5BB60411">
 
 
-
-<link rel="canonical" href="http://masterr.org/r/analyze-stock-price-data-using-r-part3/">
-<link href="http://masterr.org/feed.xml" type="application/atom+xml" rel="alternate" title="Become Great at R Feed">
+<link rel="canonical" href="http://localhost:4000/r/analyze-stock-price-data-using-r-part3/">
+<link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="Become Great at R Feed">
 
 
 <!-- http://t.co/dKP3o1e -->
@@ -48,7 +47,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- For all browsers -->
-<link rel="stylesheet" href="http://masterr.org/assets/css/main.css">
+<link rel="stylesheet" href="http://localhost:4000/assets/css/main.css">
 <!-- Webfonts -->
 <script src="//use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
 
@@ -56,26 +55,26 @@
 
 <!-- HTML5 Shiv and Media Query Support -->
 <!--[if lt IE 9]>
-  <script src="http://masterr.org/assets/js/vendor/html5shiv.min.js"></script>
-  <script src="http://masterr.org/assets/js/vendor/respond.min.js"></script>
+  <script src="http://localhost:4000/assets/js/vendor/html5shiv.min.js"></script>
+  <script src="http://localhost:4000/assets/js/vendor/respond.min.js"></script>
 <![endif]-->
 
 <!-- Modernizr -->
-<script src="http://masterr.org/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+<script src="http://localhost:4000/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
 
 <!-- Icons -->
 <!-- 16x16 -->
-<link rel="shortcut icon" href="http://masterr.org/favicon.ico">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico">
 <!-- 32x32 -->
-<link rel="shortcut icon" href="http://masterr.org/favicon.png">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.png">
 <!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
-<link rel="apple-touch-icon-precomposed" href="http://masterr.org/images/apple-touch-icon-precomposed.png">
+<link rel="apple-touch-icon-precomposed" href="http://localhost:4000/images/apple-touch-icon-precomposed.png">
 <!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
-<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://masterr.org/images/apple-touch-icon-72x72-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://localhost:4000/images/apple-touch-icon-72x72-precomposed.png">
 <!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
-<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://masterr.org/images/apple-touch-icon-114x114-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://localhost:4000/images/apple-touch-icon-114x114-precomposed.png">
 <!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
-<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://masterr.org/images/apple-touch-icon-144x144-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://localhost:4000/images/apple-touch-icon-144x144-precomposed.png">
 
 </head>
 
@@ -86,24 +85,22 @@
 	    <ul>
       
 		    
-		        
-		    
-		    <li><a href="http://masterr.org/about/" >About</a></li>
+		    <li><a href="http://localhost:4000/about/" >About</a></li>
 		  
 		    
-		        
-		    
-		    <li><a href="http://masterr.org/da/" >Data Analysis</a></li>
+		    <li><a href="http://localhost:4000/da/" >Data Analysis</a></li>
 		  
 		    
-		        
-		    
-		    <li><a href="http://masterr.org/r/" >R</a></li>
+		    <li><a href="http://localhost:4000/r/" >R</a></li>
 		  
 		    
-		        
+		    <li><a href="http://localhost:4000/books/" >Books</a></li>
+		  
 		    
-		    <li><a href="http://masterr.org/cartoon/" >Cartoon</a></li>
+		    <li><a href="http://localhost:4000/apps/" >Apps</a></li>
+		  
+		    
+		    <li><a href="http://localhost:4000/cartoon/" >Cartoon</a></li>
 		  
         <li class="dosearch"><span><i class="fa fa-search"></i> Search</span></li>
 	    </ul>
@@ -123,9 +120,9 @@
 <header class="masthead">
 	<div class="wrap">
         
-    		<a href="http://masterr.org" class="site-logo" rel="home" title="Become Great at R"><img src="http://masterr.org/images/site-logo.png" width="200" height="200" alt="Become Great at R logo" class="animated fadeInUp"></a>
+    		<a href="http://localhost:4000" class="site-logo" rel="home" title="Become Great at R"><img src="http://localhost:4000/images/site-logo.png" width="200" height="200" alt="Become Great at R logo" class="animated fadeInUp"></a>
         
-        <h1 class="site-title animated fadeIn"><a href="http://masterr.org">Become Great at R</a></h1>
+        <h1 class="site-title animated fadeIn"><a href="http://localhost:4000">Become Great at R</a></h1>
 		<h2 class="site-description animated fadeIn" itemprop="description"></h2>
 	</div>
 </header><!-- /.masthead -->
@@ -204,20 +201,19 @@
     });
 </script> 
 <!--End mc_embed_signup-->
-        <span class="entry-date date published"><time datetime="2014-10-30T21:18:49-04:00"><i class="fa fa-calendar-o"></i> October 30, 2014</time></span>
-        
+        <span class="entry-date date published"><time datetime="2014-10-30T00:00:00-04:00"><i class="fa fa-calendar-o"></i> October 30, 2014</time></span>
         
         
         <span class="author vcard">By <span class="fn">Guangming Lang</span></span>
 		<span class="entry-comments"><i class="fa fa-comment-o"></i> <a href="#disqus_thread">Comment</a></span>
 		<span class="social-share-twitter">
-  <a href="https://twitter.com/intent/tweet?hashtags=&amp;text=Analyze%20Stock%20Price%20Data%20Using%20R,%20Part3&amp;url=http://masterr.org/r/analyze-stock-price-data-using-r-part3/" title="Share on Twitter" itemprop="Twitter"><i class="fa fa-twitter-square"></i> Tweet</a>
+  <a href="https://twitter.com/intent/tweet?hashtags=&amp;text=Analyze%20Stock%20Price%20Data%20Using%20R,%20Part3&amp;url=http://localhost:4000/r/analyze-stock-price-data-using-r-part3/" title="Share on Twitter" itemprop="Twitter"><i class="fa fa-twitter-square"></i> Tweet</a>
 </span>
 <span class="social-share-facebook">
-  <a href="https://www.facebook.com/sharer/sharer.php?u=http://masterr.org/r/analyze-stock-price-data-using-r-part3/" title="Share on Facebook" itemprop="Facebook"><i class="fa fa-facebook-square"></i> Like</a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/r/analyze-stock-price-data-using-r-part3/" title="Share on Facebook" itemprop="Facebook"><i class="fa fa-facebook-square"></i> Like</a>
 </span>
 <span class="social-share-googleplus">
-  <a href="https://plus.google.com/share?url=http://masterr.org/r/analyze-stock-price-data-using-r-part3/" title="Share on Google Plus" itemprop="GooglePlus"><i class="fa fa-google-plus-square"></i> +1</a>
+  <a href="https://plus.google.com/share?url=http://localhost:4000/r/analyze-stock-price-data-using-r-part3/" title="Share on Google Plus" itemprop="GooglePlus"><i class="fa fa-google-plus-square"></i> +1</a>
 </span>
 <!-- /.social-share -->
         <div class="google-ads" style="margin-top:40px; text-align:center;">
@@ -233,89 +229,89 @@
 </div><!-- /.google-ads --><!-- /.google-ads -->
       </footer>
       <div class="entry-content">
-        <p>When analyzing stock returns, we like to know if the average returns or volatilities are constant over time, or if the correlations between any two assets in our portfolio stay constant over time. Therefore, we need to pick a time windows and calculate the rolling means, volatilities or correlations. A common choice for a time window is 2 years. However, in practice, I often pick several time windows of different length (like 6 months, 1 year, 2 years, 5 years) and compare the results obtained under each time window. The function <code>rollapply()</code> in the <code>zoo</code> library allows us to calculate the rolling statistics easily. </p>
+        <p>When analyzing stock returns, we like to know if the average returns or volatilities are constant over time, or if the correlations between any two assets in our portfolio stay constant over time. Therefore, we need to pick a time windows and calculate the rolling means, volatilities or correlations. A common choice for a time window is 2 years. However, in practice, I often pick several time windows of different length (like 6 months, 1 year, 2 years, 5 years) and compare the results obtained under each time window. The function <code class="highlighter-rouge">rollapply()</code> in the <code class="highlighter-rouge">zoo</code> library allows us to calculate the rolling statistics easily.</p>
 
 <p>Step 1. Load libraries</p>
 
-<div class="highlight"><pre><code class="language-r" data-lang="r"><span class="kn">library</span><span class="p">(</span>PerformanceAnalytics<span class="p">)</span>
-<span class="kn">library</span><span class="p">(</span>zoo<span class="p">)</span>
-<span class="kn">library</span><span class="p">(</span>tseries<span class="p">)</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">library</span><span class="p">(</span><span class="n">PerformanceAnalytics</span><span class="p">)</span><span class="w">
+</span><span class="n">library</span><span class="p">(</span><span class="n">zoo</span><span class="p">)</span><span class="w">
+</span><span class="n">library</span><span class="p">(</span><span class="n">tseries</span><span class="p">)</span></code></pre></figure>
 
 <p>Step 2. Download the monthly adjusted closing price data on VGENX and VTSMX since Sept 2005 from Yahoo.</p>
 
-<div class="highlight"><pre><code class="language-r" data-lang="r">VGENX <span class="o">=</span> get.hist.quote<span class="p">(</span>instrument<span class="o">=</span><span class="s">&quot;VGENX&quot;</span><span class="p">,</span> start<span class="o">=</span><span class="s">&quot;2005-09-30&quot;</span><span class="p">,</span> 
-                       end<span class="o">=</span><span class="s">&quot;2014-09-30&quot;</span><span class="p">,</span> origin<span class="o">=</span><span class="s">&quot;1970-01-01&quot;</span><span class="p">,</span>
-                       quote<span class="o">=</span><span class="s">&quot;AdjClose&quot;</span><span class="p">,</span> provider<span class="o">=</span><span class="s">&quot;yahoo&quot;</span><span class="p">,</span> 
-                       compression<span class="o">=</span><span class="s">&quot;m&quot;</span><span class="p">,</span> retclass<span class="o">=</span><span class="s">&quot;zoo&quot;</span><span class="p">)</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">VGENX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">get.hist.quote</span><span class="p">(</span><span class="n">instrument</span><span class="o">=</span><span class="s2">"VGENX"</span><span class="p">,</span><span class="w"> </span><span class="n">start</span><span class="o">=</span><span class="s2">"2005-09-30"</span><span class="p">,</span><span class="w"> 
+                       </span><span class="n">end</span><span class="o">=</span><span class="s2">"2014-09-30"</span><span class="p">,</span><span class="w"> </span><span class="n">origin</span><span class="o">=</span><span class="s2">"1970-01-01"</span><span class="p">,</span><span class="w">
+                       </span><span class="n">quote</span><span class="o">=</span><span class="s2">"AdjClose"</span><span class="p">,</span><span class="w"> </span><span class="n">provider</span><span class="o">=</span><span class="s2">"yahoo"</span><span class="p">,</span><span class="w"> 
+                       </span><span class="n">compression</span><span class="o">=</span><span class="s2">"m"</span><span class="p">,</span><span class="w"> </span><span class="n">retclass</span><span class="o">=</span><span class="s2">"zoo"</span><span class="p">)</span></code></pre></figure>
 
-<div class="highlight"><pre><code class="language-text" data-lang="text">## time series ends   2014-09-02</code></pre></div>
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## time series ends   2014-09-02</code></pre></figure>
 
-<div class="highlight"><pre><code class="language-r" data-lang="r">VTSMX <span class="o">=</span> get.hist.quote<span class="p">(</span>instrument<span class="o">=</span><span class="s">&quot;VTSMX&quot;</span><span class="p">,</span> start<span class="o">=</span><span class="s">&quot;2005-09-30&quot;</span><span class="p">,</span> 
-                       end<span class="o">=</span><span class="s">&quot;2014-09-30&quot;</span><span class="p">,</span> origin<span class="o">=</span><span class="s">&quot;1970-01-01&quot;</span><span class="p">,</span>
-                       quote<span class="o">=</span><span class="s">&quot;AdjClose&quot;</span><span class="p">,</span> provider<span class="o">=</span><span class="s">&quot;yahoo&quot;</span><span class="p">,</span>
-                       compression<span class="o">=</span><span class="s">&quot;m&quot;</span><span class="p">,</span> retclass<span class="o">=</span><span class="s">&quot;zoo&quot;</span><span class="p">)</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">VTSMX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">get.hist.quote</span><span class="p">(</span><span class="n">instrument</span><span class="o">=</span><span class="s2">"VTSMX"</span><span class="p">,</span><span class="w"> </span><span class="n">start</span><span class="o">=</span><span class="s2">"2005-09-30"</span><span class="p">,</span><span class="w"> 
+                       </span><span class="n">end</span><span class="o">=</span><span class="s2">"2014-09-30"</span><span class="p">,</span><span class="w"> </span><span class="n">origin</span><span class="o">=</span><span class="s2">"1970-01-01"</span><span class="p">,</span><span class="w">
+                       </span><span class="n">quote</span><span class="o">=</span><span class="s2">"AdjClose"</span><span class="p">,</span><span class="w"> </span><span class="n">provider</span><span class="o">=</span><span class="s2">"yahoo"</span><span class="p">,</span><span class="w">
+                       </span><span class="n">compression</span><span class="o">=</span><span class="s2">"m"</span><span class="p">,</span><span class="w"> </span><span class="n">retclass</span><span class="o">=</span><span class="s2">"zoo"</span><span class="p">)</span></code></pre></figure>
 
-<div class="highlight"><pre><code class="language-text" data-lang="text">## time series ends   2014-09-02</code></pre></div>
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## time series ends   2014-09-02</code></pre></figure>
 
 <p>Step 3. Change the class of the time index to yearmon.</p>
 
-<div class="highlight"><pre><code class="language-r" data-lang="r">index<span class="p">(</span>VGENX<span class="p">)</span> <span class="o">=</span> as.yearmon<span class="p">(</span>index<span class="p">(</span>VGENX<span class="p">))</span>
-index<span class="p">(</span>VTSMX<span class="p">)</span> <span class="o">=</span> as.yearmon<span class="p">(</span>index<span class="p">(</span>VTSMX<span class="p">))</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">index</span><span class="p">(</span><span class="n">VGENX</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">as.yearmon</span><span class="p">(</span><span class="n">index</span><span class="p">(</span><span class="n">VGENX</span><span class="p">))</span><span class="w">
+</span><span class="n">index</span><span class="p">(</span><span class="n">VTSMX</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">as.yearmon</span><span class="p">(</span><span class="n">index</span><span class="p">(</span><span class="n">VTSMX</span><span class="p">))</span></code></pre></figure>
 
 <p>Step 4. Merge both price series into one data frame and Calculate continuously compounded returns.</p>
 
-<div class="highlight"><pre><code class="language-r" data-lang="r">prices <span class="o">=</span> <span class="kp">merge</span><span class="p">(</span>VGENX<span class="p">,</span> VTSMX<span class="p">)</span>
-<span class="kp">colnames</span><span class="p">(</span>prices<span class="p">)</span> <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="s">&quot;VGENX&quot;</span><span class="p">,</span> <span class="s">&quot;VTSMX&quot;</span><span class="p">)</span>
-ret.cc <span class="o">=</span> <span class="kp">diff</span><span class="p">(</span><span class="kp">log</span><span class="p">(</span>prices<span class="p">))</span>
-<span class="kp">head</span><span class="p">(</span>ret.cc<span class="p">,</span> <span class="m">3</span><span class="p">)</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">prices</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">merge</span><span class="p">(</span><span class="n">VGENX</span><span class="p">,</span><span class="w"> </span><span class="n">VTSMX</span><span class="p">)</span><span class="w">
+</span><span class="n">colnames</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"VGENX"</span><span class="p">,</span><span class="w"> </span><span class="s2">"VTSMX"</span><span class="p">)</span><span class="w">
+</span><span class="n">ret.cc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">diff</span><span class="p">(</span><span class="nf">log</span><span class="p">(</span><span class="n">prices</span><span class="p">))</span><span class="w">
+</span><span class="n">head</span><span class="p">(</span><span class="n">ret.cc</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">)</span></code></pre></figure>
 
-<div class="highlight"><pre><code class="language-text" data-lang="text">##                VGENX        VTSMX
-## Oct 2005 -0.08831978 -0.018616483
-## Nov 2005  0.02154139  0.038859285
-## Dec 2005  0.03159695  0.001570475</code></pre></div>
+<figure class="highlight"><pre><code class="language-text" data-lang="text">##                VGENX        VTSMX
+## Oct 2005 -0.08818443 -0.018813600
+## Nov 2005  0.02153350  0.038941761
+## Dec 2005  0.03146979  0.001354186</code></pre></figure>
 
 <p>Step 5. Calculate and Chart the rolling mean of the cc returns.</p>
 
-<div class="highlight"><pre><code class="language-r" data-lang="r">time.window <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="m">6</span><span class="p">,</span> <span class="m">12</span><span class="p">,</span> <span class="m">24</span><span class="p">,</span> <span class="m">60</span><span class="p">)</span>
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">time.window</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">6</span><span class="p">,</span><span class="w"> </span><span class="m">12</span><span class="p">,</span><span class="w"> </span><span class="m">24</span><span class="p">,</span><span class="w"> </span><span class="m">60</span><span class="p">)</span><span class="w">
 
-<span class="kr">for</span> <span class="p">(</span>m <span class="kr">in</span> time.window<span class="p">)</span> <span class="p">{</span>
-        roll.muhat <span class="o">=</span> rollapply<span class="p">(</span>ret.cc<span class="p">,</span> width<span class="o">=</span>m<span class="p">,</span> FUN<span class="o">=</span><span class="kp">mean</span><span class="p">,</span> align<span class="o">=</span><span class="s">&quot;right&quot;</span><span class="p">)</span>
-        chart.TimeSeries<span class="p">(</span>roll.muhat<span class="p">,</span> legend.loc<span class="o">=</span><span class="s">&quot;bottomright&quot;</span><span class="p">,</span> 
-                         main <span class="o">=</span> <span class="kp">paste</span><span class="p">(</span><span class="s">&quot;rolling period:&quot;</span><span class="p">,</span> m<span class="p">,</span> <span class="s">&quot;months&quot;</span><span class="p">),</span> 
-                         ylab<span class="o">=</span><span class="s">&quot;rolling mean of the cc returns&quot;</span><span class="p">)</span>
-<span class="p">}</span></code></pre></div>
+</span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">m</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">time.window</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="n">roll.muhat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rollapply</span><span class="p">(</span><span class="n">ret.cc</span><span class="p">,</span><span class="w"> </span><span class="n">width</span><span class="o">=</span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="n">FUN</span><span class="o">=</span><span class="n">mean</span><span class="p">,</span><span class="w"> </span><span class="n">align</span><span class="o">=</span><span class="s2">"right"</span><span class="p">)</span><span class="w">
+        </span><span class="n">chart.TimeSeries</span><span class="p">(</span><span class="n">roll.muhat</span><span class="p">,</span><span class="w"> </span><span class="n">legend.loc</span><span class="o">=</span><span class="s2">"bottomright"</span><span class="p">,</span><span class="w"> 
+                         </span><span class="n">main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">paste</span><span class="p">(</span><span class="s2">"rolling period:"</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="s2">"months"</span><span class="p">),</span><span class="w"> 
+                         </span><span class="n">ylab</span><span class="o">=</span><span class="s2">"rolling mean of the cc returns"</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span></code></pre></figure>
 
-<p><img src="/../figs/2014-10-30-analyze-stock-price-data-using-r-part3/unnamed-chunk-5-1.png" alt="center" /> <img src="/../figs/2014-10-30-analyze-stock-price-data-using-r-part3/unnamed-chunk-5-2.png" alt="center" /> <img src="/../figs/2014-10-30-analyze-stock-price-data-using-r-part3/unnamed-chunk-5-3.png" alt="center" /> <img src="/../figs/2014-10-30-analyze-stock-price-data-using-r-part3/unnamed-chunk-5-4.png" alt="center" /> </p>
+<p><img src="/../figs/2014-10-30-analyze-stock-price-data-using-r-part3/unnamed-chunk-5-1.png" alt="center" /><img src="/../figs/2014-10-30-analyze-stock-price-data-using-r-part3/unnamed-chunk-5-2.png" alt="center" /><img src="/../figs/2014-10-30-analyze-stock-price-data-using-r-part3/unnamed-chunk-5-3.png" alt="center" /><img src="/../figs/2014-10-30-analyze-stock-price-data-using-r-part3/unnamed-chunk-5-4.png" alt="center" /></p>
 
 <p>Note that neither security has a constant monthly cc return.</p>
 
 <p>Step 6. Calculate and Chart the rolling mean of the volatilities.</p>
 
-<div class="highlight"><pre><code class="language-r" data-lang="r"><span class="kr">for</span> <span class="p">(</span>m <span class="kr">in</span> time.window<span class="p">)</span> <span class="p">{</span>
-        roll.sigmahat <span class="o">=</span> rollapply<span class="p">(</span>ret.cc<span class="p">,</span> width<span class="o">=</span>m<span class="p">,</span> FUN<span class="o">=</span>sd<span class="p">,</span> align<span class="o">=</span><span class="s">&quot;right&quot;</span><span class="p">)</span>
-        chart.TimeSeries<span class="p">(</span>roll.sigmahat<span class="p">,</span> legend.loc<span class="o">=</span><span class="s">&quot;bottomright&quot;</span><span class="p">,</span> 
-                         main <span class="o">=</span> <span class="kp">paste</span><span class="p">(</span><span class="s">&quot;rolling period:&quot;</span><span class="p">,</span> m<span class="p">,</span> <span class="s">&quot;months&quot;</span><span class="p">),</span> 
-                         ylab<span class="o">=</span><span class="s">&quot;rolling volatility of the cc returns&quot;</span><span class="p">)</span>
-<span class="p">}</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">m</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">time.window</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="n">roll.sigmahat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rollapply</span><span class="p">(</span><span class="n">ret.cc</span><span class="p">,</span><span class="w"> </span><span class="n">width</span><span class="o">=</span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="n">FUN</span><span class="o">=</span><span class="n">sd</span><span class="p">,</span><span class="w"> </span><span class="n">align</span><span class="o">=</span><span class="s2">"right"</span><span class="p">)</span><span class="w">
+        </span><span class="n">chart.TimeSeries</span><span class="p">(</span><span class="n">roll.sigmahat</span><span class="p">,</span><span class="w"> </span><span class="n">legend.loc</span><span class="o">=</span><span class="s2">"bottomright"</span><span class="p">,</span><span class="w"> 
+                         </span><span class="n">main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">paste</span><span class="p">(</span><span class="s2">"rolling period:"</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="s2">"months"</span><span class="p">),</span><span class="w"> 
+                         </span><span class="n">ylab</span><span class="o">=</span><span class="s2">"rolling volatility of the cc returns"</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span></code></pre></figure>
 
-<p><img src="/../figs/2014-10-30-analyze-stock-price-data-using-r-part3/unnamed-chunk-6-1.png" alt="center" /> <img src="/../figs/2014-10-30-analyze-stock-price-data-using-r-part3/unnamed-chunk-6-2.png" alt="center" /> <img src="/../figs/2014-10-30-analyze-stock-price-data-using-r-part3/unnamed-chunk-6-3.png" alt="center" /> <img src="/../figs/2014-10-30-analyze-stock-price-data-using-r-part3/unnamed-chunk-6-4.png" alt="center" /> </p>
+<p><img src="/../figs/2014-10-30-analyze-stock-price-data-using-r-part3/unnamed-chunk-6-1.png" alt="center" /><img src="/../figs/2014-10-30-analyze-stock-price-data-using-r-part3/unnamed-chunk-6-2.png" alt="center" /><img src="/../figs/2014-10-30-analyze-stock-price-data-using-r-part3/unnamed-chunk-6-3.png" alt="center" /><img src="/../figs/2014-10-30-analyze-stock-price-data-using-r-part3/unnamed-chunk-6-4.png" alt="center" /></p>
 
 <p>We see the volatilities of both securities are changing over time too.</p>
 
 <p>Step 7. Calculate and Chart the rolling correlation between the two return series.</p>
 
-<div class="highlight"><pre><code class="language-r" data-lang="r">rhohat <span class="o">=</span> <span class="kr">function</span><span class="p">(</span>x<span class="p">)</span> cor<span class="p">(</span>x<span class="p">)[</span><span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">]</span>
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">rhohat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="n">cor</span><span class="p">(</span><span class="n">x</span><span class="p">)[</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">]</span><span class="w">
 
-<span class="kr">for</span> <span class="p">(</span>m <span class="kr">in</span> time.window<span class="p">)</span> <span class="p">{</span>
-        <span class="c1"># set by.column=FALSE to apply FUN to both cols at once</span>
-        roll.rhohat <span class="o">=</span> rollapply<span class="p">(</span>ret.cc<span class="p">,</span> width<span class="o">=</span>m<span class="p">,</span> FUN<span class="o">=</span>rhohat<span class="p">,</span> by.column<span class="o">=</span><span class="kc">FALSE</span><span class="p">,</span> 
-                                align<span class="o">=</span><span class="s">&quot;right&quot;</span><span class="p">)</span> 
-        chart.TimeSeries<span class="p">(</span>roll.rhohat<span class="p">,</span>
-                         main <span class="o">=</span> <span class="kp">paste</span><span class="p">(</span><span class="s">&quot;rolling period:&quot;</span><span class="p">,</span> m<span class="p">,</span> <span class="s">&quot;months&quot;</span><span class="p">),</span> 
-                         ylab<span class="o">=</span><span class="s">&quot;rolling correlation of the two cc return series&quot;</span><span class="p">)</span>
-<span class="p">}</span></code></pre></div>
+</span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">m</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">time.window</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="c1"># set by.column=FALSE to apply FUN to both cols at once
+</span><span class="w">        </span><span class="n">roll.rhohat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rollapply</span><span class="p">(</span><span class="n">ret.cc</span><span class="p">,</span><span class="w"> </span><span class="n">width</span><span class="o">=</span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="n">FUN</span><span class="o">=</span><span class="n">rhohat</span><span class="p">,</span><span class="w"> </span><span class="n">by.column</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">,</span><span class="w"> 
+                                </span><span class="n">align</span><span class="o">=</span><span class="s2">"right"</span><span class="p">)</span><span class="w"> 
+        </span><span class="n">chart.TimeSeries</span><span class="p">(</span><span class="n">roll.rhohat</span><span class="p">,</span><span class="w">
+                         </span><span class="n">main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">paste</span><span class="p">(</span><span class="s2">"rolling period:"</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="s2">"months"</span><span class="p">),</span><span class="w"> 
+                         </span><span class="n">ylab</span><span class="o">=</span><span class="s2">"rolling correlation of the two cc return series"</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span></code></pre></figure>
 
-<p><img src="/../figs/2014-10-30-analyze-stock-price-data-using-r-part3/unnamed-chunk-7-1.png" alt="center" /> <img src="/../figs/2014-10-30-analyze-stock-price-data-using-r-part3/unnamed-chunk-7-2.png" alt="center" /> <img src="/../figs/2014-10-30-analyze-stock-price-data-using-r-part3/unnamed-chunk-7-3.png" alt="center" /> <img src="/../figs/2014-10-30-analyze-stock-price-data-using-r-part3/unnamed-chunk-7-4.png" alt="center" /> </p>
+<p><img src="/../figs/2014-10-30-analyze-stock-price-data-using-r-part3/unnamed-chunk-7-1.png" alt="center" /><img src="/../figs/2014-10-30-analyze-stock-price-data-using-r-part3/unnamed-chunk-7-2.png" alt="center" /><img src="/../figs/2014-10-30-analyze-stock-price-data-using-r-part3/unnamed-chunk-7-3.png" alt="center" /><img src="/../figs/2014-10-30-analyze-stock-price-data-using-r-part3/unnamed-chunk-7-4.png" alt="center" /></p>
 
 <p>We see the correlations between the returns of VTSMX (all stocks) and VGENX (energy stocks) are NOT constant overtime. Between 2006 and 2007, their correlation is small, and sometimes is even close to zero, but during the financial crisis of 2007 - 2011, they are highly correlated. You’ll see this a lot in other pairs of securities. In general, assets are not correlated during normal time will become highly correlated during crisis. As my old finance professor liked to say, “Diversification helps except when the world is on fire. And some day, the world will be on fire.”</p>
 
@@ -385,10 +381,10 @@ ret.cc <span class="o">=</span> <span class="kp">diff</span><span class="p">(</s
     </div><!-- /.entry-wrapper -->
     <nav class="pagination" role="navigation">
       
-        <a href="http://masterr.org/r/an-example-of-the-bootstrap-method/" class="btn" title="An Example of the Bootstrap Method">Previous</a>
+        <a href="http://localhost:4000/r/an-example-of-the-bootstrap-method/" class="btn" title="An Example of the Bootstrap Method">Previous</a>
       
       
-        <a href="http://masterr.org/r/calculate-global-minimum-variance-portfolio-using-r/" class="btn" title="Calculate Global Minimum Variance Portfolio Using R">Next</a>
+        <a href="http://localhost:4000/r/calculate-global-minimum-variance-portfolio-using-r/" class="btn" title="Calculate Global Minimum Variance Portfolio Using R">Next</a>
       
     </nav><!-- /.pagination -->
   </article>
@@ -397,7 +393,7 @@ ret.cc <span class="o">=</span> <span class="kp">diff</span><span class="p">(</s
 <div class="footer-wrapper">
   <footer role="contentinfo" class="entry-wrapper">
     
-<span>&copy; 2014 Guangming Lang. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://mademistakes.com/so-simple/" rel="nofollow">So Simple Theme</a>.</span>
+<span>&copy; 2017 Guangming Lang. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://mademistakes.com/so-simple/" rel="nofollow">So Simple Theme</a>.</span>
 <div class="social-icons">
 	
 	
@@ -408,21 +404,21 @@ ret.cc <span class="o">=</span> <span class="kp">diff</span><span class="p">(</s
 	
 	
 	
-<!-- no feed button <a href="http://masterr.org/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss-square fa-2x"></i></a> -->
+<!-- no feed button <a href="http://localhost:4000/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss-square fa-2x"></i></a> -->
 </div><!-- /.social-icons -->
 
   </footer>
 </div><!-- /.footer-wrapper -->
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="http://masterr.org/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
-<script src="http://masterr.org/assets/js/scripts.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://localhost:4000/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://localhost:4000/assets/js/scripts.min.js"></script>
 
 <!-- Jekyll Simple Search option -->
 <script>
   $(document).ready(function() {
       $('.search-field').jekyllSearch({
-          jsonFile: 'http://masterr.org/search.json',
+          jsonFile: 'http://localhost:4000/search.json',
           searchResults: '.search-results',
           template: '<li><article><a href="{url}">{title} <span class="entry-date"><time datetime="{date}">{shortdate}</time></span></a></article></li>',
           fuzzy: true,
@@ -457,7 +453,9 @@ ret.cc <span class="o">=</span> <span class="kp">diff</span><span class="p">(</s
 </script>
 
 
-<!-- Asynchronous Google Analytics snippet -->
+<!-- doesn't work optimally 
+author's Asynchronous Google Analytics snippet
+
 <script>
   var _gaq = _gaq || [];
   var pluginUrl = 
@@ -473,12 +471,25 @@ ret.cc <span class="o">=</span> <span class="kp">diff</span><span class="p">(</s
   })();
 </script>
 
+-->
+
+<!-- google analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-57697212-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
 
 
   
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-    var disqus_shortname = 'cabaceo'; // required: replace example with your forum shortname
+    var disqus_shortname = 'masterrorg'; // required: replace example with your forum shortname
 
     /* * * DON'T EDIT BELOW THIS LINE * * */
     (function() {

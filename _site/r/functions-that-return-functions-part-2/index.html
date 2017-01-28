@@ -6,40 +6,39 @@
 <head>
 <meta charset="utf-8">
 <title>Functions That Return Functions Part 2 &#8211; Become Great at R</title>
-<meta name="description" content="Previously, I wrote about the idea of functions that return other functions, where I gave a trivial example that didn’t demonstrate the power of the idea. Today, I’m giving several more examples, which I use frequently in my work. They allow me to make the same kind of ggplot2 plots without repeatedly typing the same commands, and hence make my code shorter and less error prone. 
+<meta name="description" content="Previously, I wrote about the idea of functions that return other functions, where I gave a trivial example that didn’t demonstrate the power of the idea. Today, I’m giving several more examples, which I use frequently in my work. They allow me to make the same kind of ggplot2 plots without repeatedly typing the same commands, and hence make my code shorter and less error prone.
 
 ">
 <meta name="keywords" content="">
 
 
-
 <!-- Twitter Cards -->
 <meta name="twitter:title" content="Functions That Return Functions Part 2">
-<meta name="twitter:description" content="Previously, I wrote about the idea of functions that return other functions, where I gave a trivial example that didn’t demonstrate the power of the idea. Today, I’m giving several more examples, which I use frequently in my work. They allow me to make the same kind of ggplot2 plots without repeatedly typing the same commands, and hence make my code shorter and less error prone. 
+<meta name="twitter:description" content="Previously, I wrote about the idea of functions that return other functions, where I gave a trivial example that didn’t demonstrate the power of the idea. Today, I’m giving several more examples, which I use frequently in my work. They allow me to make the same kind of ggplot2 plots without repeatedly typing the same commands, and hence make my code shorter and less error prone.
 
 ">
 
 
 
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://masterr.org/images/site-logo.png">
+<meta name="twitter:image" content="http://localhost:4000/images/site-logo.png">
 
 <!-- Open Graph -->
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Functions That Return Functions Part 2">
-<meta property="og:description" content="Previously, I wrote about the idea of functions that return other functions, where I gave a trivial example that didn’t demonstrate the power of the idea. Today, I’m giving several more examples, which I use frequently in my work. They allow me to make the same kind of ggplot2 plots without repeatedly typing the same commands, and hence make my code shorter and less error prone. 
+<meta property="og:description" content="Previously, I wrote about the idea of functions that return other functions, where I gave a trivial example that didn’t demonstrate the power of the idea. Today, I’m giving several more examples, which I use frequently in my work. They allow me to make the same kind of ggplot2 plots without repeatedly typing the same commands, and hence make my code shorter and less error prone.
 
 ">
-<meta property="og:url" content="http://masterr.org/r/functions-that-return-functions-part-2/">
+<meta property="og:url" content="http://localhost:4000/r/functions-that-return-functions-part-2/">
 <meta property="og:site_name" content="Become Great at R">
 
 
+<meta name="msvalidate.01" content="F608C5B05384F7B0200AC62F5BB60411">
 
 
-
-<link rel="canonical" href="http://masterr.org/r/functions-that-return-functions-part-2/">
-<link href="http://masterr.org/feed.xml" type="application/atom+xml" rel="alternate" title="Become Great at R Feed">
+<link rel="canonical" href="http://localhost:4000/r/functions-that-return-functions-part-2/">
+<link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="Become Great at R Feed">
 
 
 <!-- http://t.co/dKP3o1e -->
@@ -48,7 +47,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- For all browsers -->
-<link rel="stylesheet" href="http://masterr.org/assets/css/main.css">
+<link rel="stylesheet" href="http://localhost:4000/assets/css/main.css">
 <!-- Webfonts -->
 <script src="//use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
 
@@ -56,26 +55,26 @@
 
 <!-- HTML5 Shiv and Media Query Support -->
 <!--[if lt IE 9]>
-  <script src="http://masterr.org/assets/js/vendor/html5shiv.min.js"></script>
-  <script src="http://masterr.org/assets/js/vendor/respond.min.js"></script>
+  <script src="http://localhost:4000/assets/js/vendor/html5shiv.min.js"></script>
+  <script src="http://localhost:4000/assets/js/vendor/respond.min.js"></script>
 <![endif]-->
 
 <!-- Modernizr -->
-<script src="http://masterr.org/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+<script src="http://localhost:4000/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
 
 <!-- Icons -->
 <!-- 16x16 -->
-<link rel="shortcut icon" href="http://masterr.org/favicon.ico">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico">
 <!-- 32x32 -->
-<link rel="shortcut icon" href="http://masterr.org/favicon.png">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.png">
 <!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
-<link rel="apple-touch-icon-precomposed" href="http://masterr.org/images/apple-touch-icon-precomposed.png">
+<link rel="apple-touch-icon-precomposed" href="http://localhost:4000/images/apple-touch-icon-precomposed.png">
 <!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
-<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://masterr.org/images/apple-touch-icon-72x72-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://localhost:4000/images/apple-touch-icon-72x72-precomposed.png">
 <!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
-<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://masterr.org/images/apple-touch-icon-114x114-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://localhost:4000/images/apple-touch-icon-114x114-precomposed.png">
 <!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
-<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://masterr.org/images/apple-touch-icon-144x144-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://localhost:4000/images/apple-touch-icon-144x144-precomposed.png">
 
 </head>
 
@@ -86,24 +85,22 @@
 	    <ul>
       
 		    
-		        
-		    
-		    <li><a href="http://masterr.org/about/" >About</a></li>
+		    <li><a href="http://localhost:4000/about/" >About</a></li>
 		  
 		    
-		        
-		    
-		    <li><a href="http://masterr.org/da/" >Data Analysis</a></li>
+		    <li><a href="http://localhost:4000/da/" >Data Analysis</a></li>
 		  
 		    
-		        
-		    
-		    <li><a href="http://masterr.org/r/" >R</a></li>
+		    <li><a href="http://localhost:4000/r/" >R</a></li>
 		  
 		    
-		        
+		    <li><a href="http://localhost:4000/books/" >Books</a></li>
+		  
 		    
-		    <li><a href="http://masterr.org/cartoon/" >Cartoon</a></li>
+		    <li><a href="http://localhost:4000/apps/" >Apps</a></li>
+		  
+		    
+		    <li><a href="http://localhost:4000/cartoon/" >Cartoon</a></li>
 		  
         <li class="dosearch"><span><i class="fa fa-search"></i> Search</span></li>
 	    </ul>
@@ -123,9 +120,9 @@
 <header class="masthead">
 	<div class="wrap">
         
-    		<a href="http://masterr.org" class="site-logo" rel="home" title="Become Great at R"><img src="http://masterr.org/images/site-logo.png" width="200" height="200" alt="Become Great at R logo" class="animated fadeInUp"></a>
+    		<a href="http://localhost:4000" class="site-logo" rel="home" title="Become Great at R"><img src="http://localhost:4000/images/site-logo.png" width="200" height="200" alt="Become Great at R logo" class="animated fadeInUp"></a>
         
-        <h1 class="site-title animated fadeIn"><a href="http://masterr.org">Become Great at R</a></h1>
+        <h1 class="site-title animated fadeIn"><a href="http://localhost:4000">Become Great at R</a></h1>
 		<h2 class="site-description animated fadeIn" itemprop="description"></h2>
 	</div>
 </header><!-- /.masthead -->
@@ -204,20 +201,19 @@
     });
 </script> 
 <!--End mc_embed_signup-->
-        <span class="entry-date date published"><time datetime="2014-10-07T18:10:37-04:00"><i class="fa fa-calendar-o"></i> October 07, 2014</time></span>
-        
+        <span class="entry-date date published"><time datetime="2014-10-07T00:00:00-04:00"><i class="fa fa-calendar-o"></i> October 07, 2014</time></span>
         
         
         <span class="author vcard">By <span class="fn">Guangming Lang</span></span>
 		<span class="entry-comments"><i class="fa fa-comment-o"></i> <a href="#disqus_thread">Comment</a></span>
 		<span class="social-share-twitter">
-  <a href="https://twitter.com/intent/tweet?hashtags=&amp;text=Functions%20That%20Return%20Functions%20Part%202&amp;url=http://masterr.org/r/functions-that-return-functions-part-2/" title="Share on Twitter" itemprop="Twitter"><i class="fa fa-twitter-square"></i> Tweet</a>
+  <a href="https://twitter.com/intent/tweet?hashtags=&amp;text=Functions%20That%20Return%20Functions%20Part%202&amp;url=http://localhost:4000/r/functions-that-return-functions-part-2/" title="Share on Twitter" itemprop="Twitter"><i class="fa fa-twitter-square"></i> Tweet</a>
 </span>
 <span class="social-share-facebook">
-  <a href="https://www.facebook.com/sharer/sharer.php?u=http://masterr.org/r/functions-that-return-functions-part-2/" title="Share on Facebook" itemprop="Facebook"><i class="fa fa-facebook-square"></i> Like</a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/r/functions-that-return-functions-part-2/" title="Share on Facebook" itemprop="Facebook"><i class="fa fa-facebook-square"></i> Like</a>
 </span>
 <span class="social-share-googleplus">
-  <a href="https://plus.google.com/share?url=http://masterr.org/r/functions-that-return-functions-part-2/" title="Share on Google Plus" itemprop="GooglePlus"><i class="fa fa-google-plus-square"></i> +1</a>
+  <a href="https://plus.google.com/share?url=http://localhost:4000/r/functions-that-return-functions-part-2/" title="Share on Google Plus" itemprop="GooglePlus"><i class="fa fa-google-plus-square"></i> +1</a>
 </span>
 <!-- /.social-share -->
         <div class="google-ads" style="margin-top:40px; text-align:center;">
@@ -233,64 +229,64 @@
 </div><!-- /.google-ads --><!-- /.google-ads -->
       </footer>
       <div class="entry-content">
-        <p>Previously, I wrote about the idea of <a href="http://gmlang.com/r/functions-that-return-functions/">functions that return other functions</a>, where I gave a trivial example that didn’t demonstrate the power of the idea. Today, I’m giving several more examples, which I use frequently in my work. They allow me to make the same kind of ggplot2 plots without repeatedly typing the same commands, and hence make my code shorter and less error prone. </p>
+        <p>Previously, I wrote about the idea of <a href="http://masterr.org/r/functions-that-return-functions/">functions that return other functions</a>, where I gave a trivial example that didn’t demonstrate the power of the idea. Today, I’m giving several more examples, which I use frequently in my work. They allow me to make the same kind of ggplot2 plots without repeatedly typing the same commands, and hence make my code shorter and less error prone.</p>
 
-<div class="highlight"><pre><code class="language-r" data-lang="r">mk_density_plt <span class="o">=</span> <span class="kr">function</span><span class="p">(</span>df<span class="p">)</span> <span class="p">{</span>
-        <span class="c1"># Creats a function that plots histogram and overlayed density </span>
-        <span class="c1"># </span>
-        <span class="c1"># Args:</span>
-        <span class="c1">#       df: a data frame</span>
-        <span class="c1"># Returns:</span>
-        <span class="c1">#       a function that takes two arguments:</span>
-        <span class="c1">#               xvar     : a string specifying the x variable</span>
-        <span class="c1">#               bin.width: a numeric value specifying the bin width</span>
-        <span class="kr">function</span><span class="p">(</span>xvar<span class="p">,</span> bin.width<span class="p">)</span>
-                ggplot<span class="p">(</span>df<span class="p">,</span> aes_string<span class="p">(</span>x<span class="o">=</span>xvar<span class="p">))</span> <span class="o">+</span> 
-                geom_histogram<span class="p">(</span>aes<span class="p">(</span>y<span class="o">=</span><span class="m">..</span>density..<span class="p">),</span> colour<span class="o">=</span><span class="s">&quot;black&quot;</span><span class="p">,</span> 
-                               fill<span class="o">=</span><span class="s">&quot;white&quot;</span><span class="p">,</span> binwidth<span class="o">=</span>bin.width<span class="p">)</span> <span class="o">+</span>
-                geom_density<span class="p">(</span>alpha<span class="o">=</span><span class="m">.2</span><span class="p">,</span> fill<span class="o">=</span><span class="s">&quot;#FF6666&quot;</span><span class="p">,</span> 
-                             colour<span class="o">=</span><span class="s">&quot;darkgreen&quot;</span><span class="p">,</span> size<span class="o">=</span><span class="m">2</span><span class="p">)</span>
-<span class="p">}</span>
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">mk_density_plt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="c1"># Creats a function that plots histogram and overlayed density 
+</span><span class="w">        </span><span class="c1"># 
+</span><span class="w">        </span><span class="c1"># Args:
+</span><span class="w">        </span><span class="c1">#       df: a data frame
+</span><span class="w">        </span><span class="c1"># Returns:
+</span><span class="w">        </span><span class="c1">#       a function that takes two arguments:
+</span><span class="w">        </span><span class="c1">#               xvar     : a string specifying the x variable
+</span><span class="w">        </span><span class="c1">#               bin.width: a numeric value specifying the bin width
+</span><span class="w">        </span><span class="k">function</span><span class="p">(</span><span class="n">xvar</span><span class="p">,</span><span class="w"> </span><span class="n">bin.width</span><span class="p">)</span><span class="w">
+                </span><span class="n">ggplot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="n">aes_string</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">xvar</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> 
+                </span><span class="n">geom_histogram</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">..density..</span><span class="p">),</span><span class="w"> </span><span class="n">colour</span><span class="o">=</span><span class="s2">"black"</span><span class="p">,</span><span class="w"> 
+                               </span><span class="n">fill</span><span class="o">=</span><span class="s2">"white"</span><span class="p">,</span><span class="w"> </span><span class="n">binwidth</span><span class="o">=</span><span class="n">bin.width</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+                </span><span class="n">geom_density</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="m">.2</span><span class="p">,</span><span class="w"> </span><span class="n">fill</span><span class="o">=</span><span class="s2">"#FF6666"</span><span class="p">,</span><span class="w"> 
+                             </span><span class="n">colour</span><span class="o">=</span><span class="s2">"darkgreen"</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="o">=</span><span class="m">2</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span><span class="w">
 
-mk_cond_dist_plt <span class="o">=</span> <span class="kr">function</span><span class="p">(</span>df<span class="p">,</span> type<span class="o">=</span><span class="s">&quot;density&quot;</span><span class="p">)</span> <span class="p">{</span>
-        <span class="c1"># Creates a function that draws histograms or density plots with</span>
-        <span class="c1"># multiple groups</span>
-        <span class="c1">#</span>
-        <span class="c1"># Args:</span>
-        <span class="c1">#       df  : a data frame</span>
-        <span class="c1">#       type: &quot;density&quot; (default) or &quot;histogram&quot;</span>
-        <span class="c1"># Returns:</span>
-        <span class="c1">#       a function that takes two arguments:</span>
-        <span class="c1">#               xvar : a string specifying the x variable</span>
-        <span class="c1">#               byvar: a string specifying the group variable</span>
-        <span class="kr">if</span> <span class="p">(</span>type <span class="o">==</span> <span class="s">&quot;histogram&quot;</span><span class="p">)</span> <span class="p">{</span>
-                <span class="kr">function</span><span class="p">(</span>xvar<span class="p">,</span> byvar<span class="p">)</span>
-                        ggplot<span class="p">(</span>df<span class="p">,</span> aes_string<span class="p">(</span>x<span class="o">=</span>xvar<span class="p">,</span> fill<span class="o">=</span>byvar<span class="p">))</span> <span class="o">+</span> 
-                        geom_histogram<span class="p">(</span>alpha<span class="o">=</span><span class="m">.5</span><span class="p">,</span> position<span class="o">=</span><span class="s">&quot;identity&quot;</span><span class="p">)</span>
-        <span class="p">}</span> <span class="kr">else</span> <span class="p">{</span>       
-                <span class="kr">function</span><span class="p">(</span>xvar<span class="p">,</span> byvar<span class="p">)</span>
-                        ggplot<span class="p">(</span>df<span class="p">,</span> aes_string<span class="p">(</span>x<span class="o">=</span>xvar<span class="p">,</span> fill<span class="o">=</span>byvar<span class="p">))</span> <span class="o">+</span> 
-                        geom_density<span class="p">(</span>alpha<span class="o">=</span><span class="m">.3</span><span class="p">)</span>
-        <span class="p">}</span>
+</span><span class="n">mk_cond_dist_plt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="o">=</span><span class="s2">"density"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="c1"># Creates a function that draws histograms or density plots with
+</span><span class="w">        </span><span class="c1"># multiple groups
+</span><span class="w">        </span><span class="c1">#
+</span><span class="w">        </span><span class="c1"># Args:
+</span><span class="w">        </span><span class="c1">#       df  : a data frame
+</span><span class="w">        </span><span class="c1">#       type: "density" (default) or "histogram"
+</span><span class="w">        </span><span class="c1"># Returns:
+</span><span class="w">        </span><span class="c1">#       a function that takes two arguments:
+</span><span class="w">        </span><span class="c1">#               xvar : a string specifying the x variable
+</span><span class="w">        </span><span class="c1">#               byvar: a string specifying the group variable
+</span><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">type</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">"histogram"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="k">function</span><span class="p">(</span><span class="n">xvar</span><span class="p">,</span><span class="w"> </span><span class="n">byvar</span><span class="p">)</span><span class="w">
+                        </span><span class="n">ggplot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="n">aes_string</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">xvar</span><span class="p">,</span><span class="w"> </span><span class="n">fill</span><span class="o">=</span><span class="n">byvar</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> 
+                        </span><span class="n">geom_histogram</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="m">.5</span><span class="p">,</span><span class="w"> </span><span class="n">position</span><span class="o">=</span><span class="s2">"identity"</span><span class="p">)</span><span class="w">
+        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w">       
+                </span><span class="k">function</span><span class="p">(</span><span class="n">xvar</span><span class="p">,</span><span class="w"> </span><span class="n">byvar</span><span class="p">)</span><span class="w">
+                        </span><span class="n">ggplot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="n">aes_string</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">xvar</span><span class="p">,</span><span class="w"> </span><span class="n">fill</span><span class="o">=</span><span class="n">byvar</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> 
+                        </span><span class="n">geom_density</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="m">.3</span><span class="p">)</span><span class="w">
+        </span><span class="p">}</span><span class="w">
         
-<span class="p">}</span>
+</span><span class="p">}</span><span class="w">
 
-mk_box_plt <span class="o">=</span> <span class="kr">function</span><span class="p">(</span>df<span class="p">)</span> <span class="p">{</span>
-        <span class="c1"># Creates a function that draws boxplots</span>
-        <span class="c1">#</span>
-        <span class="c1"># Args:</span>
-        <span class="c1">#       df: a data frame</span>
-        <span class="c1"># Returns:</span>
-        <span class="c1">#       a function that takes three arguments:</span>
-        <span class="c1">#               xvar      : a string specifying the x variable</span>
-        <span class="c1">#               yvar      : a string specifying the y variable</span>
-        <span class="c1">#               txt.angle : an int specifying the angle of tick labels</span>
-        <span class="kr">function</span><span class="p">(</span>xvar<span class="p">,</span> yvar<span class="p">,</span> txt.angle<span class="o">=</span><span class="m">0</span><span class="p">)</span>
-                ggplot<span class="p">(</span>df<span class="p">,</span> aes_string<span class="p">(</span>x<span class="o">=</span>xvar<span class="p">,</span> y<span class="o">=</span>yvar<span class="p">,</span> fill<span class="o">=</span>xvar<span class="p">))</span> <span class="o">+</span> 
-                geom_boxplot<span class="p">()</span> <span class="o">+</span> guides<span class="p">(</span>fill<span class="o">=</span><span class="kc">FALSE</span><span class="p">)</span> <span class="o">+</span> labs<span class="p">(</span>x<span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">)</span> <span class="o">+</span>
-                stat_summary<span class="p">(</span>fun.y<span class="o">=</span><span class="kp">mean</span><span class="p">,</span> geom<span class="o">=</span><span class="s">&quot;point&quot;</span><span class="p">,</span> shape<span class="o">=</span><span class="m">5</span><span class="p">,</span> size<span class="o">=</span><span class="m">2</span><span class="p">)</span> <span class="o">+</span>
-                theme<span class="p">(</span>axis.text.x <span class="o">=</span> element_text<span class="p">(</span>angle <span class="o">=</span> txt.angle<span class="p">))</span>
-<span class="p">}</span></code></pre></div>
+</span><span class="n">mk_box_plt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="c1"># Creates a function that draws boxplots
+</span><span class="w">        </span><span class="c1">#
+</span><span class="w">        </span><span class="c1"># Args:
+</span><span class="w">        </span><span class="c1">#       df: a data frame
+</span><span class="w">        </span><span class="c1"># Returns:
+</span><span class="w">        </span><span class="c1">#       a function that takes three arguments:
+</span><span class="w">        </span><span class="c1">#               xvar      : a string specifying the x variable
+</span><span class="w">        </span><span class="c1">#               yvar      : a string specifying the y variable
+</span><span class="w">        </span><span class="c1">#               txt.angle : an int specifying the angle of tick labels
+</span><span class="w">        </span><span class="k">function</span><span class="p">(</span><span class="n">xvar</span><span class="p">,</span><span class="w"> </span><span class="n">yvar</span><span class="p">,</span><span class="w"> </span><span class="n">txt.angle</span><span class="o">=</span><span class="m">0</span><span class="p">)</span><span class="w">
+                </span><span class="n">ggplot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="n">aes_string</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">xvar</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="o">=</span><span class="n">yvar</span><span class="p">,</span><span class="w"> </span><span class="n">fill</span><span class="o">=</span><span class="n">xvar</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> 
+                </span><span class="n">geom_boxplot</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">guides</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">labs</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">""</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+                </span><span class="n">stat_summary</span><span class="p">(</span><span class="n">fun.y</span><span class="o">=</span><span class="n">mean</span><span class="p">,</span><span class="w"> </span><span class="n">geom</span><span class="o">=</span><span class="s2">"point"</span><span class="p">,</span><span class="w"> </span><span class="n">shape</span><span class="o">=</span><span class="m">5</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="o">=</span><span class="m">2</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+                </span><span class="n">theme</span><span class="p">(</span><span class="n">axis.text.x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">element_text</span><span class="p">(</span><span class="n">angle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">txt.angle</span><span class="p">))</span><span class="w">
+</span><span class="p">}</span></code></pre></figure>
 
 <p>If you’re having trouble understanding these functions, drop a comment. I’d be happy to answer your questions.</p>
 
@@ -360,10 +356,10 @@ mk_box_plt <span class="o">=</span> <span class="kr">function</span><span class=
     </div><!-- /.entry-wrapper -->
     <nav class="pagination" role="navigation">
       
-        <a href="http://masterr.org/da/when-does-a-flexible-model-beat-an-inflexible-one-and-vice-versa/" class="btn" title="When Does A Flexible Model Beat An Inflexible One and Vice Versa">Previous</a>
+        <a href="http://localhost:4000/da/when-does-a-flexible-model-beat-an-inflexible-one-and-vice-versa/" class="btn" title="When Does A Flexible Model Beat An Inflexible One and Vice Versa">Previous</a>
       
       
-        <a href="http://masterr.org/r/how-to-view-source-code-in-r/" class="btn" title="How to View Source Code in R">Next</a>
+        <a href="http://localhost:4000/r/how-to-view-source-code-in-r/" class="btn" title="How to View Source Code in R">Next</a>
       
     </nav><!-- /.pagination -->
   </article>
@@ -372,7 +368,7 @@ mk_box_plt <span class="o">=</span> <span class="kr">function</span><span class=
 <div class="footer-wrapper">
   <footer role="contentinfo" class="entry-wrapper">
     
-<span>&copy; 2014 Guangming Lang. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://mademistakes.com/so-simple/" rel="nofollow">So Simple Theme</a>.</span>
+<span>&copy; 2017 Guangming Lang. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://mademistakes.com/so-simple/" rel="nofollow">So Simple Theme</a>.</span>
 <div class="social-icons">
 	
 	
@@ -383,21 +379,21 @@ mk_box_plt <span class="o">=</span> <span class="kr">function</span><span class=
 	
 	
 	
-<!-- no feed button <a href="http://masterr.org/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss-square fa-2x"></i></a> -->
+<!-- no feed button <a href="http://localhost:4000/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss-square fa-2x"></i></a> -->
 </div><!-- /.social-icons -->
 
   </footer>
 </div><!-- /.footer-wrapper -->
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="http://masterr.org/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
-<script src="http://masterr.org/assets/js/scripts.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://localhost:4000/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://localhost:4000/assets/js/scripts.min.js"></script>
 
 <!-- Jekyll Simple Search option -->
 <script>
   $(document).ready(function() {
       $('.search-field').jekyllSearch({
-          jsonFile: 'http://masterr.org/search.json',
+          jsonFile: 'http://localhost:4000/search.json',
           searchResults: '.search-results',
           template: '<li><article><a href="{url}">{title} <span class="entry-date"><time datetime="{date}">{shortdate}</time></span></a></article></li>',
           fuzzy: true,
@@ -432,7 +428,9 @@ mk_box_plt <span class="o">=</span> <span class="kr">function</span><span class=
 </script>
 
 
-<!-- Asynchronous Google Analytics snippet -->
+<!-- doesn't work optimally 
+author's Asynchronous Google Analytics snippet
+
 <script>
   var _gaq = _gaq || [];
   var pluginUrl = 
@@ -448,12 +446,25 @@ mk_box_plt <span class="o">=</span> <span class="kr">function</span><span class=
   })();
 </script>
 
+-->
+
+<!-- google analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-57697212-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
 
 
   
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-    var disqus_shortname = 'cabaceo'; // required: replace example with your forum shortname
+    var disqus_shortname = 'masterrorg'; // required: replace example with your forum shortname
 
     /* * * DON'T EDIT BELOW THIS LINE * * */
     (function() {

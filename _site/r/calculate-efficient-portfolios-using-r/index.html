@@ -6,40 +6,39 @@
 <head>
 <meta charset="utf-8">
 <title>Calculate Efficient Portfolios Using R &#8211; Become Great at R</title>
-<meta name="description" content="In a previous post, I showed how to calculate the global minimum variance portfolio using R and vanguard funds in my retirement account. It had an average  annual return of 5.2% and volatility of 3.3% in the past 10 years. Because I’m holding those funds for a long term, at least 30 years. I don’t really mind a bigger volatility now. Instead, I really want a bigger return, say 10%. So I’ll set my target return as 10%, and find a portfolio that can achieve it. The resulting portfolio is called mean-variance efficient because it has the smallest volatility for the 10% target return. 
+<meta name="description" content="In a previous post, I showed how to calculate the global minimum variance portfolio using R and vanguard funds in my retirement account. It had an average  annual return of 5.2% and volatility of 3.3% in the past 10 years. Because I’m holding those funds for a long term, at least 30 years. I don’t really mind a bigger volatility now. Instead, I really want a bigger return, say 10%. So I’ll set my target return as 10%, and find a portfolio that can achieve it. The resulting portfolio is called mean-variance efficient because it has the smallest volatility for the 10% target return.
 
 ">
 <meta name="keywords" content="">
 
 
-
 <!-- Twitter Cards -->
 <meta name="twitter:title" content="Calculate Efficient Portfolios Using R">
-<meta name="twitter:description" content="In a previous post, I showed how to calculate the global minimum variance portfolio using R and vanguard funds in my retirement account. It had an average  annual return of 5.2% and volatility of 3.3% in the past 10 years. Because I’m holding those funds for a long term, at least 30 years. I don’t really mind a bigger volatility now. Instead, I really want a bigger return, say 10%. So I’ll set my target return as 10%, and find a portfolio that can achieve it. The resulting portfolio is called mean-variance efficient because it has the smallest volatility for the 10% target return. 
+<meta name="twitter:description" content="In a previous post, I showed how to calculate the global minimum variance portfolio using R and vanguard funds in my retirement account. It had an average  annual return of 5.2% and volatility of 3.3% in the past 10 years. Because I’m holding those funds for a long term, at least 30 years. I don’t really mind a bigger volatility now. Instead, I really want a bigger return, say 10%. So I’ll set my target return as 10%, and find a portfolio that can achieve it. The resulting portfolio is called mean-variance efficient because it has the smallest volatility for the 10% target return.
 
 ">
 
 
 
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://masterr.org/images/site-logo.png">
+<meta name="twitter:image" content="http://localhost:4000/images/site-logo.png">
 
 <!-- Open Graph -->
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Calculate Efficient Portfolios Using R">
-<meta property="og:description" content="In a previous post, I showed how to calculate the global minimum variance portfolio using R and vanguard funds in my retirement account. It had an average  annual return of 5.2% and volatility of 3.3% in the past 10 years. Because I’m holding those funds for a long term, at least 30 years. I don’t really mind a bigger volatility now. Instead, I really want a bigger return, say 10%. So I’ll set my target return as 10%, and find a portfolio that can achieve it. The resulting portfolio is called mean-variance efficient because it has the smallest volatility for the 10% target return. 
+<meta property="og:description" content="In a previous post, I showed how to calculate the global minimum variance portfolio using R and vanguard funds in my retirement account. It had an average  annual return of 5.2% and volatility of 3.3% in the past 10 years. Because I’m holding those funds for a long term, at least 30 years. I don’t really mind a bigger volatility now. Instead, I really want a bigger return, say 10%. So I’ll set my target return as 10%, and find a portfolio that can achieve it. The resulting portfolio is called mean-variance efficient because it has the smallest volatility for the 10% target return.
 
 ">
-<meta property="og:url" content="http://masterr.org/r/calculate-efficient-portfolios-using-r/">
+<meta property="og:url" content="http://localhost:4000/r/calculate-efficient-portfolios-using-r/">
 <meta property="og:site_name" content="Become Great at R">
 
 
+<meta name="msvalidate.01" content="F608C5B05384F7B0200AC62F5BB60411">
 
 
-
-<link rel="canonical" href="http://masterr.org/r/calculate-efficient-portfolios-using-r/">
-<link href="http://masterr.org/feed.xml" type="application/atom+xml" rel="alternate" title="Become Great at R Feed">
+<link rel="canonical" href="http://localhost:4000/r/calculate-efficient-portfolios-using-r/">
+<link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="Become Great at R Feed">
 
 
 <!-- http://t.co/dKP3o1e -->
@@ -48,7 +47,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- For all browsers -->
-<link rel="stylesheet" href="http://masterr.org/assets/css/main.css">
+<link rel="stylesheet" href="http://localhost:4000/assets/css/main.css">
 <!-- Webfonts -->
 <script src="//use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
 
@@ -56,26 +55,26 @@
 
 <!-- HTML5 Shiv and Media Query Support -->
 <!--[if lt IE 9]>
-  <script src="http://masterr.org/assets/js/vendor/html5shiv.min.js"></script>
-  <script src="http://masterr.org/assets/js/vendor/respond.min.js"></script>
+  <script src="http://localhost:4000/assets/js/vendor/html5shiv.min.js"></script>
+  <script src="http://localhost:4000/assets/js/vendor/respond.min.js"></script>
 <![endif]-->
 
 <!-- Modernizr -->
-<script src="http://masterr.org/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+<script src="http://localhost:4000/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
 
 <!-- Icons -->
 <!-- 16x16 -->
-<link rel="shortcut icon" href="http://masterr.org/favicon.ico">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico">
 <!-- 32x32 -->
-<link rel="shortcut icon" href="http://masterr.org/favicon.png">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.png">
 <!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
-<link rel="apple-touch-icon-precomposed" href="http://masterr.org/images/apple-touch-icon-precomposed.png">
+<link rel="apple-touch-icon-precomposed" href="http://localhost:4000/images/apple-touch-icon-precomposed.png">
 <!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
-<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://masterr.org/images/apple-touch-icon-72x72-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://localhost:4000/images/apple-touch-icon-72x72-precomposed.png">
 <!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
-<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://masterr.org/images/apple-touch-icon-114x114-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://localhost:4000/images/apple-touch-icon-114x114-precomposed.png">
 <!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
-<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://masterr.org/images/apple-touch-icon-144x144-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://localhost:4000/images/apple-touch-icon-144x144-precomposed.png">
 
 </head>
 
@@ -86,24 +85,22 @@
 	    <ul>
       
 		    
-		        
-		    
-		    <li><a href="http://masterr.org/about/" >About</a></li>
+		    <li><a href="http://localhost:4000/about/" >About</a></li>
 		  
 		    
-		        
-		    
-		    <li><a href="http://masterr.org/da/" >Data Analysis</a></li>
+		    <li><a href="http://localhost:4000/da/" >Data Analysis</a></li>
 		  
 		    
-		        
-		    
-		    <li><a href="http://masterr.org/r/" >R</a></li>
+		    <li><a href="http://localhost:4000/r/" >R</a></li>
 		  
 		    
-		        
+		    <li><a href="http://localhost:4000/books/" >Books</a></li>
+		  
 		    
-		    <li><a href="http://masterr.org/cartoon/" >Cartoon</a></li>
+		    <li><a href="http://localhost:4000/apps/" >Apps</a></li>
+		  
+		    
+		    <li><a href="http://localhost:4000/cartoon/" >Cartoon</a></li>
 		  
         <li class="dosearch"><span><i class="fa fa-search"></i> Search</span></li>
 	    </ul>
@@ -123,9 +120,9 @@
 <header class="masthead">
 	<div class="wrap">
         
-    		<a href="http://masterr.org" class="site-logo" rel="home" title="Become Great at R"><img src="http://masterr.org/images/site-logo.png" width="200" height="200" alt="Become Great at R logo" class="animated fadeInUp"></a>
+    		<a href="http://localhost:4000" class="site-logo" rel="home" title="Become Great at R"><img src="http://localhost:4000/images/site-logo.png" width="200" height="200" alt="Become Great at R logo" class="animated fadeInUp"></a>
         
-        <h1 class="site-title animated fadeIn"><a href="http://masterr.org">Become Great at R</a></h1>
+        <h1 class="site-title animated fadeIn"><a href="http://localhost:4000">Become Great at R</a></h1>
 		<h2 class="site-description animated fadeIn" itemprop="description"></h2>
 	</div>
 </header><!-- /.masthead -->
@@ -204,20 +201,19 @@
     });
 </script> 
 <!--End mc_embed_signup-->
-        <span class="entry-date date published"><time datetime="2014-11-19T13:48:49-05:00"><i class="fa fa-calendar-o"></i> November 19, 2014</time></span>
-        
+        <span class="entry-date date published"><time datetime="2014-11-19T00:00:00-05:00"><i class="fa fa-calendar-o"></i> November 19, 2014</time></span>
         
         
         <span class="author vcard">By <span class="fn">Guangming Lang</span></span>
 		<span class="entry-comments"><i class="fa fa-comment-o"></i> <a href="#disqus_thread">Comment</a></span>
 		<span class="social-share-twitter">
-  <a href="https://twitter.com/intent/tweet?hashtags=&amp;text=Calculate%20Efficient%20Portfolios%20Using%20R&amp;url=http://masterr.org/r/calculate-efficient-portfolios-using-r/" title="Share on Twitter" itemprop="Twitter"><i class="fa fa-twitter-square"></i> Tweet</a>
+  <a href="https://twitter.com/intent/tweet?hashtags=&amp;text=Calculate%20Efficient%20Portfolios%20Using%20R&amp;url=http://localhost:4000/r/calculate-efficient-portfolios-using-r/" title="Share on Twitter" itemprop="Twitter"><i class="fa fa-twitter-square"></i> Tweet</a>
 </span>
 <span class="social-share-facebook">
-  <a href="https://www.facebook.com/sharer/sharer.php?u=http://masterr.org/r/calculate-efficient-portfolios-using-r/" title="Share on Facebook" itemprop="Facebook"><i class="fa fa-facebook-square"></i> Like</a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/r/calculate-efficient-portfolios-using-r/" title="Share on Facebook" itemprop="Facebook"><i class="fa fa-facebook-square"></i> Like</a>
 </span>
 <span class="social-share-googleplus">
-  <a href="https://plus.google.com/share?url=http://masterr.org/r/calculate-efficient-portfolios-using-r/" title="Share on Google Plus" itemprop="GooglePlus"><i class="fa fa-google-plus-square"></i> +1</a>
+  <a href="https://plus.google.com/share?url=http://localhost:4000/r/calculate-efficient-portfolios-using-r/" title="Share on Google Plus" itemprop="GooglePlus"><i class="fa fa-google-plus-square"></i> +1</a>
 </span>
 <!-- /.social-share -->
         <div class="google-ads" style="margin-top:40px; text-align:center;">
@@ -233,91 +229,98 @@
 </div><!-- /.google-ads --><!-- /.google-ads -->
       </footer>
       <div class="entry-content">
-        <p>In a <a href="http://gmlang.com/r/calculate-global-minimum-variance-portfolio-using-r/">previous post</a>, I showed how to calculate the global minimum variance portfolio using R and vanguard funds in my retirement account. It had an average  annual return of 5.2% and volatility of 3.3% in the past 10 years. Because I’m holding those funds for a long term, at least 30 years. I don’t really mind a bigger volatility now. Instead, I really want a bigger return, say 10%. So I’ll set my target return as 10%, and find a portfolio that can achieve it. The resulting portfolio is called mean-variance efficient because it has the smallest volatility for the 10% target return. </p>
+        <p>In a <a href="http://masterr.org/r/calculate-global-minimum-variance-portfolio-using-r/">previous post</a>, I showed how to calculate the global minimum variance portfolio using R and vanguard funds in my retirement account. It had an average  annual return of 5.2% and volatility of 3.3% in the past 10 years. Because I’m holding those funds for a long term, at least 30 years. I don’t really mind a bigger volatility now. Instead, I really want a bigger return, say 10%. So I’ll set my target return as 10%, and find a portfolio that can achieve it. The resulting portfolio is called mean-variance efficient because it has the smallest volatility for the 10% target return.</p>
 
 <p>Step 0. Load libraries and define helper functions.</p>
 
-<div class="highlight"><pre><code class="language-r" data-lang="r"><span class="kn">library</span><span class="p">(</span>zoo<span class="p">)</span>
-<span class="kn">library</span><span class="p">(</span>tseries<span class="p">)</span>
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">library</span><span class="p">(</span><span class="n">zoo</span><span class="p">)</span><span class="w">
+</span><span class="n">library</span><span class="p">(</span><span class="n">tseries</span><span class="p">)</span><span class="w">
 
-download_data <span class="o">=</span> <span class="kr">function</span><span class="p">(</span>symb<span class="p">,</span> begin<span class="p">,</span> end<span class="p">)</span> <span class="p">{</span>
-        get.hist.quote<span class="p">(</span>instrument<span class="o">=</span>symb<span class="p">,</span> start<span class="o">=</span>begin<span class="p">,</span> end<span class="o">=</span>end<span class="p">,</span> 
-                       origin<span class="o">=</span><span class="s">&quot;1970-01-01&quot;</span><span class="p">,</span> quote<span class="o">=</span><span class="s">&quot;AdjClose&quot;</span><span class="p">,</span> 
-                       provider<span class="o">=</span><span class="s">&quot;yahoo&quot;</span><span class="p">,</span> compression<span class="o">=</span><span class="s">&quot;m&quot;</span><span class="p">,</span> 
-                       retclass<span class="o">=</span><span class="s">&quot;zoo&quot;</span><span class="p">)</span>
-<span class="p">}</span>
+</span><span class="n">download_data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">symb</span><span class="p">,</span><span class="w"> </span><span class="n">begin</span><span class="p">,</span><span class="w"> </span><span class="n">end</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="n">get.hist.quote</span><span class="p">(</span><span class="n">instrument</span><span class="o">=</span><span class="n">symb</span><span class="p">,</span><span class="w"> </span><span class="n">start</span><span class="o">=</span><span class="n">begin</span><span class="p">,</span><span class="w"> </span><span class="n">end</span><span class="o">=</span><span class="n">end</span><span class="p">,</span><span class="w"> 
+                       </span><span class="n">origin</span><span class="o">=</span><span class="s2">"1970-01-01"</span><span class="p">,</span><span class="w"> </span><span class="n">quote</span><span class="o">=</span><span class="s2">"AdjClose"</span><span class="p">,</span><span class="w"> 
+                       </span><span class="n">provider</span><span class="o">=</span><span class="s2">"yahoo"</span><span class="p">,</span><span class="w"> </span><span class="n">compression</span><span class="o">=</span><span class="s2">"m"</span><span class="p">,</span><span class="w"> 
+                       </span><span class="n">retclass</span><span class="o">=</span><span class="s2">"zoo"</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span><span class="w">
 
-to_yearmon <span class="o">=</span> <span class="kr">function</span><span class="p">(</span>data<span class="p">)</span> <span class="p">{</span>
-        index<span class="p">(</span>data<span class="p">)</span> <span class="o">=</span> as.yearmon<span class="p">(</span>index<span class="p">(</span>data<span class="p">))</span>
-<span class="p">}</span></code></pre></div>
+</span><span class="n">to_yearmon</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="n">index</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">as.yearmon</span><span class="p">(</span><span class="n">index</span><span class="p">(</span><span class="n">data</span><span class="p">))</span><span class="w">
+</span><span class="p">}</span></code></pre></figure>
 
 <p>Step 1. I choose assets from three broad classes: stocks, bonds, and commodities. For stocks, I choose funds that cover total US market, total international markets, and real estate. For bonds, I choose funds that invest in the total US bond market and inflation protected securities. For commodities, I choose funds that invest in gold and other precious metals and their mining companies and oil &amp; gas and energy companies. First, I download the monthly adjusted closing price data of these funds between June 2000 and Oct 2014 from Yahoo.</p>
 
-<div class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># initialize the fund symbols </span>
-stocks <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="s">&quot;VTSMX&quot;</span><span class="p">,</span> <span class="s">&quot;VGTSX&quot;</span><span class="p">,</span> <span class="s">&quot;VGSIX&quot;</span><span class="p">)</span>
-bonds <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="s">&quot;VIPSX&quot;</span><span class="p">,</span> <span class="s">&quot;VBMFX&quot;</span><span class="p">)</span>
-commodities <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="s">&quot;VGPMX&quot;</span><span class="p">,</span> <span class="s">&quot;VGENX&quot;</span><span class="p">)</span>
-symbols <span class="o">=</span> <span class="kt">c</span><span class="p">(</span>stocks<span class="p">,</span> bonds<span class="p">,</span> commodities<span class="p">)</span>
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># initialize the fund symbols 
+</span><span class="n">stocks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"VTSMX"</span><span class="p">,</span><span class="w"> </span><span class="s2">"VGTSX"</span><span class="p">,</span><span class="w"> </span><span class="s2">"VGSIX"</span><span class="p">)</span><span class="w">
+</span><span class="n">bonds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"VIPSX"</span><span class="p">,</span><span class="w"> </span><span class="s2">"VBMFX"</span><span class="p">)</span><span class="w">
+</span><span class="n">commodities</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"VGPMX"</span><span class="p">,</span><span class="w"> </span><span class="s2">"VGENX"</span><span class="p">)</span><span class="w">
+</span><span class="n">symbols</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="n">stocks</span><span class="p">,</span><span class="w"> </span><span class="n">bonds</span><span class="p">,</span><span class="w"> </span><span class="n">commodities</span><span class="p">)</span><span class="w">
 
-<span class="c1"># download adj. price data</span>
-port <span class="o">=</span> <span class="kt">list</span><span class="p">()</span>
-<span class="kr">for</span> <span class="p">(</span>symbol <span class="kr">in</span> symbols<span class="p">)</span>
-        port<span class="p">[[</span>symbol<span class="p">]]</span> <span class="o">=</span> download_data<span class="p">(</span>symbol<span class="p">,</span> <span class="s">&quot;2000-06-29&quot;</span><span class="p">,</span> <span class="s">&quot;2014-10-31&quot;</span><span class="p">)</span>
+</span><span class="c1"># download adj. price data
+</span><span class="n">port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">list</span><span class="p">()</span><span class="w">
+</span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">symbol</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">symbols</span><span class="p">)</span><span class="w">
+        </span><span class="n">port</span><span class="p">[[</span><span class="n">symbol</span><span class="p">]]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">download_data</span><span class="p">(</span><span class="n">symbol</span><span class="p">,</span><span class="w"> </span><span class="s2">"2000-06-29"</span><span class="p">,</span><span class="w"> </span><span class="s2">"2014-10-31"</span><span class="p">)</span></code></pre></figure>
 
-<span class="c1"># change the class of the time index to yearmon</span>
-<span class="kp">lapply</span><span class="p">(</span>port<span class="p">,</span> to_yearmon<span class="p">)</span>
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Warning in download.file(url, destfile, method = method, quiet
+## = quiet): cannot open URL 'http://chart.yahoo.com/table.csv?
+## s=VTSMX&amp;a=5&amp;b=29&amp;c=2000&amp;d=9&amp;e=31&amp;f=2014&amp;g=m&amp;q=q&amp;y=0&amp;z=VTSMX&amp;x=.csv': HTTP
+## status was '502 Server Hangup'</code></pre></figure>
 
-<span class="c1"># put both all price data in one data frame</span>
-prices <span class="o">=</span> <span class="kp">do.call</span><span class="p">(</span><span class="s">&quot;cbind&quot;</span><span class="p">,</span> port<span class="p">)</span>
-<span class="kp">colnames</span><span class="p">(</span>prices<span class="p">)</span> <span class="o">=</span> symbols</code></pre></div>
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## download error, retrying ...</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># change the class of the time index to yearmon
+</span><span class="n">lapply</span><span class="p">(</span><span class="n">port</span><span class="p">,</span><span class="w"> </span><span class="n">to_yearmon</span><span class="p">)</span><span class="w">
+
+</span><span class="c1"># put both all price data in one data frame
+</span><span class="n">prices</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">do.call</span><span class="p">(</span><span class="s2">"cbind"</span><span class="p">,</span><span class="w"> </span><span class="n">port</span><span class="p">)</span><span class="w">
+</span><span class="n">colnames</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">symbols</span></code></pre></figure>
 
 <p>Step 2. Calculate monthly continuously compounded returns as difference in log prices.</p>
 
-<div class="highlight"><pre><code class="language-r" data-lang="r">ret.cc <span class="o">=</span> <span class="kp">diff</span><span class="p">(</span><span class="kp">log</span><span class="p">(</span>prices<span class="p">))</span>
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">ret.cc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">diff</span><span class="p">(</span><span class="nf">log</span><span class="p">(</span><span class="n">prices</span><span class="p">))</span><span class="w">
 
-<span class="c1"># inspect the return data</span>
-<span class="kp">cat</span><span class="p">(</span><span class="s">&quot;Start: &quot;</span><span class="p">,</span> <span class="kp">as.character</span><span class="p">(</span>start<span class="p">(</span>ret.cc<span class="p">)),</span> <span class="s">&quot;  End: &quot;</span><span class="p">,</span> <span class="kp">as.character</span><span class="p">(</span>end<span class="p">(</span>ret.cc<span class="p">)))</span></code></pre></div>
+</span><span class="c1"># inspect the return data
+</span><span class="n">cat</span><span class="p">(</span><span class="s2">"Start: "</span><span class="p">,</span><span class="w"> </span><span class="nf">as.character</span><span class="p">(</span><span class="n">start</span><span class="p">(</span><span class="n">ret.cc</span><span class="p">)),</span><span class="w"> </span><span class="s2">"  End: "</span><span class="p">,</span><span class="w"> </span><span class="nf">as.character</span><span class="p">(</span><span class="n">end</span><span class="p">(</span><span class="n">ret.cc</span><span class="p">)))</span></code></pre></figure>
 
-<div class="highlight"><pre><code class="language-text" data-lang="text">## Start:  2000-07-03   End:  2014-10-01</code></pre></div>
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Start:  2000-07-03   End:  2014-10-01</code></pre></figure>
 
-<div class="highlight"><pre><code class="language-r" data-lang="r"><span class="kp">head</span><span class="p">(</span>ret.cc<span class="p">,</span> <span class="m">3</span><span class="p">)</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">head</span><span class="p">(</span><span class="n">ret.cc</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">)</span></code></pre></figure>
 
-<div class="highlight"><pre><code class="language-text" data-lang="text">##                  VTSMX        VGTSX       VGSIX        VIPSX       VBMFX
-## 2000-07-03 -0.01966245 -0.045168968  0.08338161  0.007905180 0.007797310
-## 2000-08-01  0.07015714  0.009852296 -0.03901204  0.007843177 0.015414563
-## 2000-09-01 -0.04777254 -0.051407967  0.02852243 -0.004698521 0.007619084
+<figure class="highlight"><pre><code class="language-text" data-lang="text">##                  VTSMX        VGTSX       VGSIX        VIPSX       VBMFX
+## 2000-07-03 -0.01971716 -0.045649607  0.08408300  0.007936630 0.008832746
+## 2000-08-01  0.07027806  0.009904851 -0.04071584  0.006893088 0.013956404
+## 2000-09-01 -0.04782406 -0.051333260  0.02899155 -0.004918734 0.007621014
 ##                  VGPMX       VGENX
-## 2000-07-03 -0.01520942 -0.04692026
-## 2000-08-01  0.11565220  0.11484304
-## 2000-09-01 -0.07437054  0.01347060</code></pre></div>
+## 2000-07-03 -0.01628457 -0.04730217
+## 2000-08-01  0.11545891  0.11519991
+## 2000-09-01 -0.07451730  0.01346586</code></pre></figure>
 
 <p>Step 3. Calculate annualized sample average returns of the underlying assets and the sample covariance matrix of the returns.</p>
 
-<div class="highlight"><pre><code class="language-r" data-lang="r">mu.hat.annual <span class="o">=</span> <span class="kp">apply</span><span class="p">(</span>ret.cc<span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="kp">mean</span><span class="p">)</span> <span class="o">*</span> <span class="m">12</span>   
-cov.mat.annual <span class="o">=</span> cov<span class="p">(</span>ret.cc<span class="p">)</span> <span class="o">*</span> <span class="m">12</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">mu.hat.annual</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">apply</span><span class="p">(</span><span class="n">ret.cc</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">mean</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">12</span><span class="w">   
+</span><span class="n">cov.mat.annual</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cov</span><span class="p">(</span><span class="n">ret.cc</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">12</span><span class="w"> </span></code></pre></figure>
 
 <p>Step 4. Calculate the efficient portfolio with 10% as target return using a helper function written by Eric Zivot and Hezky Varon from U of Washington.</p>
 
-<div class="highlight"><pre><code class="language-r" data-lang="r">helper <span class="o">=</span> <span class="kp">file.path</span><span class="p">(</span><span class="kp">Sys.getenv</span><span class="p">(</span><span class="s">&quot;HOME&quot;</span><span class="p">),</span> <span class="s">&quot;R/portfolio-optim/portfolio_noshorts.r&quot;</span><span class="p">)</span>
-<span class="kn">source</span><span class="p">(</span>helper<span class="p">)</span>
-effi.port <span class="o">=</span> efficient.portfolio<span class="p">(</span>mu.hat.annual<span class="p">,</span> cov.mat.annual<span class="p">,</span> <span class="m">0.1</span><span class="p">,</span> <span class="bp">F</span><span class="p">)</span>
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">helper</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"~/Coding/R-related/R/portfolio-optim/portfolio_noshorts.r"</span><span class="w">
+</span><span class="n">source</span><span class="p">(</span><span class="n">helper</span><span class="p">)</span><span class="w">
+</span><span class="n">effi.port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">efficient.portfolio</span><span class="p">(</span><span class="n">mu.hat.annual</span><span class="p">,</span><span class="w"> </span><span class="n">cov.mat.annual</span><span class="p">,</span><span class="w"> </span><span class="m">0.1</span><span class="p">,</span><span class="w"> </span><span class="nb">F</span><span class="p">)</span><span class="w">
 
-effi.port</code></pre></div>
+</span><span class="n">effi.port</span></code></pre></figure>
 
-<div class="highlight"><pre><code class="language-text" data-lang="text">## Call:
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Call:
 ## efficient.portfolio(er = mu.hat.annual, cov.mat = cov.mat.annual, 
 ##     target.return = 0.1, shorts = F)
 ## 
 ## Portfolio expected return:     0.1 
-## Portfolio standard deviation:  0.1542331 
+## Portfolio standard deviation:  0.1542217 
 ## Portfolio weights:
 ##  VTSMX  VGTSX  VGSIX  VIPSX  VBMFX  VGPMX  VGENX 
-## 0.0000 0.0000 0.3464 0.0000 0.2013 0.0000 0.4523</code></pre></div>
+## 0.0000 0.0000 0.3460 0.0000 0.2012 0.0000 0.4528</code></pre></figure>
 
-<div class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># port weights</span>
-plot<span class="p">(</span>effi.port<span class="p">)</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># port weights
+</span><span class="n">plot</span><span class="p">(</span><span class="n">effi.port</span><span class="p">)</span></code></pre></figure>
 
-<p><img src="/../figs/2014-11-19-calculate-efficient-portfolios-using-r/unnamed-chunk-5-1.png" alt="center" /> </p>
+<p><img src="/../figs/2014-11-19-calculate-efficient-portfolios-using-r/unnamed-chunk-5-1.png" alt="center" /></p>
 
 		<!-- Begin MailChimp Signup Form -->
 <html>
@@ -385,10 +388,10 @@ plot<span class="p">(</span>effi.port<span class="p">)</span></code></pre></div>
     </div><!-- /.entry-wrapper -->
     <nav class="pagination" role="navigation">
       
-        <a href="http://masterr.org/r/calculate-global-minimum-variance-portfolio-using-r/" class="btn" title="Calculate Global Minimum Variance Portfolio Using R">Previous</a>
+        <a href="http://localhost:4000/r/calculate-global-minimum-variance-portfolio-using-r/" class="btn" title="Calculate Global Minimum Variance Portfolio Using R">Previous</a>
       
       
-        <a href="http://masterr.org/r/calculate-tangency-portfolios-using-r/" class="btn" title="Calculate Tangency Portfolios Using R">Next</a>
+        <a href="http://localhost:4000/r/calculate-tangency-portfolios-using-r/" class="btn" title="Calculate Tangency Portfolios Using R">Next</a>
       
     </nav><!-- /.pagination -->
   </article>
@@ -397,7 +400,7 @@ plot<span class="p">(</span>effi.port<span class="p">)</span></code></pre></div>
 <div class="footer-wrapper">
   <footer role="contentinfo" class="entry-wrapper">
     
-<span>&copy; 2014 Guangming Lang. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://mademistakes.com/so-simple/" rel="nofollow">So Simple Theme</a>.</span>
+<span>&copy; 2017 Guangming Lang. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://mademistakes.com/so-simple/" rel="nofollow">So Simple Theme</a>.</span>
 <div class="social-icons">
 	
 	
@@ -408,21 +411,21 @@ plot<span class="p">(</span>effi.port<span class="p">)</span></code></pre></div>
 	
 	
 	
-<!-- no feed button <a href="http://masterr.org/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss-square fa-2x"></i></a> -->
+<!-- no feed button <a href="http://localhost:4000/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss-square fa-2x"></i></a> -->
 </div><!-- /.social-icons -->
 
   </footer>
 </div><!-- /.footer-wrapper -->
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="http://masterr.org/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
-<script src="http://masterr.org/assets/js/scripts.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://localhost:4000/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://localhost:4000/assets/js/scripts.min.js"></script>
 
 <!-- Jekyll Simple Search option -->
 <script>
   $(document).ready(function() {
       $('.search-field').jekyllSearch({
-          jsonFile: 'http://masterr.org/search.json',
+          jsonFile: 'http://localhost:4000/search.json',
           searchResults: '.search-results',
           template: '<li><article><a href="{url}">{title} <span class="entry-date"><time datetime="{date}">{shortdate}</time></span></a></article></li>',
           fuzzy: true,
@@ -457,7 +460,9 @@ plot<span class="p">(</span>effi.port<span class="p">)</span></code></pre></div>
 </script>
 
 
-<!-- Asynchronous Google Analytics snippet -->
+<!-- doesn't work optimally 
+author's Asynchronous Google Analytics snippet
+
 <script>
   var _gaq = _gaq || [];
   var pluginUrl = 
@@ -473,12 +478,25 @@ plot<span class="p">(</span>effi.port<span class="p">)</span></code></pre></div>
   })();
 </script>
 
+-->
+
+<!-- google analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-57697212-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
 
 
   
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-    var disqus_shortname = 'cabaceo'; // required: replace example with your forum shortname
+    var disqus_shortname = 'masterrorg'; // required: replace example with your forum shortname
 
     /* * * DON'T EDIT BELOW THIS LINE * * */
     (function() {
