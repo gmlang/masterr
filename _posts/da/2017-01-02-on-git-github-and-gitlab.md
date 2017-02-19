@@ -25,8 +25,7 @@ If you want to become a data scientist, you need to learn how to use git, github
 9. [Add the same public key (see step 6 and 7) to Gitlab](https://docs.gitlab.com/ee/gitlab-basics/create-your-ssh-keys.html). Afterwards, you can clone Gitlab repos using SourceTree. 
 10. If you have two github accounts, for example, one for personal use and the other for your organization, you need to have two sets of SSH keys in order to manage your repos in both accounts using SourceTree on the same computer. Click [here](https://gist.github.com/jexchan/2351996) to learn how to set them up.
 
-##
- Work flow when starting a new project (I'm using Gitlab here, but the same logic also holds for Github)
+## Work flow when starting a new project (I'm using Gitlab here, but the same logic also holds for Github)
 1. Go to [Gitlab](https://gitlab.com) and make sure you are logged in.
 2. Click the big PLUS (**+**) button next to your profile picture to create a new project. 
 3. After you've created a new project, you've created a repo. You should see a screen like this under the **Project** tab
