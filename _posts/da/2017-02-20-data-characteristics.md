@@ -26,4 +26,5 @@ When looking at the predictors, remember to ask yourself:
 * Does this predictor have any missing values?
 * Is this predictor sparse?
 * Are there any correlations among the predictors?
-* What's the unit of this predictor? Do the predictors have different scales?
+* What's the unit of this predictor? 
+* Do the predictors have different scales?
