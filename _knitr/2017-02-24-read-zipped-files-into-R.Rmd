@@ -1,0 +1,30 @@
+---
+layout: post
+title: "Read Zipped Files into R"
+date: 2017-02-24
+comments: true
+categories: r
+keywords: "R, csv, zipped file, txt, read zipped files in R"
+published: true
+share: true
+ads: true
+---
+
+In the age of big data, it's not uncommon to encounter a large zipped file of multiple text files. Unzipping will take time. It turns out we can read them into R without unzipping first.
+
+```{r, eval=FALSE, warning=FALSE, message=FALSE}
+# get the name of the zipped file
+fname_zipped = "xxxxx.zip"
+
+# list all files names inside of a .zip file
+fnames = as.character(unzip(fname_zipped, list = TRUE)$Name)
+
+# read every file into R, assuming they are .csv files
+lst = vector("list", length(fnames))
+for (i in seq_along(fnames))
+        lst[[i]] = read.csv(unz(fname_zipped, fnames[i]), stringsAsFactors = F)
+
+# check
+str(lst[[1]])
+```
+
