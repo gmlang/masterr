@@ -1,0 +1,37 @@
+---
+layout: post
+title: "The on.exit() Function"
+date: 2017-03-03
+comments: true
+categories: r
+keywords: "R, on.exit"
+published: true
+share: true
+ads: true
+---
+
+There's an interesting little function in R called `on.exit()`. It can be used 
+in your own function to perform some side effect. For example, in addition to 
+returning a value, the following function uses `on.exit()` to also print two messages.
+```{r, warning=FALSE, message=FALSE}
+myfun = function(x){
+        on.exit(print("first"))
+        on.exit(print("second"), add = TRUE)
+        return(x)
+}
+myfun(2)
+```
+
+Note what happens if we remove `add=TRUE` from the second `on.exit()` usage.
+```{r, warning=FALSE, message=FALSE}
+fun = function(x){
+        on.exit(print("first"))
+        on.exit(print("second"))
+        return(x)
+}
+fun(2)
+```
+We see "first" isn't printed anymore.
+
+To learn more about `on.exit()`, refer to Hadley's book "Advanced R." You can <a rel="nofollow" href="http://www.amazon.com/gp/product/1466586966/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1466586966&linkCode=as2&tag=cabaceo-20&linkId=2GDWMZSF4NX32QIO">buy it from Amazon</a><img src="http://ir-na.amazon-adsystem.com/e/ir?t=cabaceo-20&l=as2&o=1&a=1466586966" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+or read it [online](http://adv-r.had.co.nz/Functions.html) for FREE.
