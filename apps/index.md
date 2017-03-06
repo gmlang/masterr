@@ -9,7 +9,7 @@ image:
 
 ---
 
-##[tsplotr](https://cabaceo.shinyapps.io/tsplotr/) 
+## [tsplotr](https://cabaceo.shinyapps.io/tsplotr/) 
 Use this app to visualize your own time series data. It comes with a real estate dataset from one of Hadley's talks to demo the importance of removing seasonality for trend reveal.|
 
 ## [plotr](https://cabaceo.shinyapps.io/plotr/) 
