@@ -10,12 +10,12 @@ share: true
 ads: true
 ---
 
-The regular assignment arrow <- always creates a variable in the current 
-environment. The deep assignment arrow <<- never creates a variable in the 
+The regular assignment arrow `<-` always creates a variable in the current 
+environment. The deep assignment arrow `<<-` never creates a variable in the 
 current environment, but instead modifies an existing variable in the 
 parent environments. You can also do deep binding with `assign()`: 
 `name <<- value is equivalent to assign("name", value, inherits = TRUE)`.
-If <<- doesn’t find an existing variable, it will create one in the global 
+If `<<-` doesn’t find an existing variable, it will create one in the global 
 environment. This is usually undesirable because global variables introduce 
 non-obvious dependencies between functions. 
 
@@ -33,7 +33,7 @@ rebind = function(name, value, env = parent.frame()) {
 }
 ```
 
-It behaves like <<- except when failing to find an existing variable, 
+It behaves like `<<-` except when failing to find an existing variable, 
 it runs into an error and stops.
 
 The best way to become a master in R is to learn from the masters. 
