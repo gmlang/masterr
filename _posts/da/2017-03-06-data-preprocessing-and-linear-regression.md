@@ -25,7 +25,6 @@ This article summarizes data preprocessing steps when using linear regression fo
 	* imputation (median, knn or bagged tree methods)
 	* PCA (situational)
 	* ICA (situational, avoid using PCA and ICA together and click [here](https://www.quora.com/What-is-the-difference-between-PCA-and-ICA) for their differences)
-11) 
 	* Spatial Sign Transformation (situational, use it to deal with outliers)
 
 If you use caret to train the model, you will need to turn the categorical features into dummy variables. You don't need to do this if you use the lm function.
