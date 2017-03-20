@@ -11,7 +11,7 @@ ads: true
 
 ---
 
-When it comes to model interpretability and prediction performance, we often just can't have the best of both worlds. But we almost always want a model that both makes sense and predicts well. This is especially true if we or the end user of the model have expert domain (for example, medicine) knowlege. When presented with a model, the domain expert's state of mind is usually like this. 
+When it comes to model interpretability and prediction performance, we often just can't have the best of both worlds. But we almost always want a model that both makes sense and predicts well. This is especially true if we  have expert domain (for example, medicine) knowlege. When presented with a model, the domain expert's state of mind is usually like this: 
 
 * I know more X causes more Y (by my domain knowlege, experience, intuition and etc.), the model has a big positive coefficient in front of X, so it makes sense. I trust the model. 
 * I never thought more X could cause more Y, but the model says so. This is interesting. Why would this be? 
