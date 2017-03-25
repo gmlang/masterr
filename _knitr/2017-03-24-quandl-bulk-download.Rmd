@@ -1,0 +1,56 @@
+---
+layout: post
+title: "Bulk Download Data from Quandl"
+date: 2017-03-24
+comments: true
+categories: r
+keywords: "R, Quandl, bulk data download, download data from Quandl using R"
+published: true
+share: true
+ads: true
+---
+
+I'm going to show you how to bulk download data from Quandl.com via an example. 
+Make sure you apply for an API Key first.
+
+```{r, eval=FALSE, warning=FALSE, message=FALSE}
+library(Quandl)
+
+# set api key
+my_api_key = "your API key"
+
+# set path
+data_path = "data"
+fname_rev = file.path(data_path, "SF1.zip") # saving data as a zip file
+
+# bulk download all data
+Quandl.database.bulk_download_to_file("SF1", fname_rev)
+
+# list all files names inside of a .zip file
+fname = as.character(unzip(fname_rev, list = TRUE)$Name)
+# fname happens to be a vector of 1 element. Usually it's a list of names.
+
+# read in R
+dat = read.csv(unz(fname_rev, fname), nrows=500, header=F, stringsAsFactors=F)
+dat2 = read.csv(unz(fname_rev, fname), header=F, stringsAsFactors=F)
+
+## alternatively
+
+# download revenue, gross profit, and price to book value - Most Recent Annual (MRY)
+df1 = Quandl.datatable("SHARADAR/SF1", dimension = "MRY", 
+                       qopts.columns = c("ticker", "calendardate", "REVENUEUSD", 
+                                         "GP", "PB"), 
+                       paginate = T)
+
+# download price to sales ratio and price to earnings ratio - Most Recent Trailing Twelve Months (MRT)
+df2 = Quandl.datatable("SHARADAR/SF1", dimension = "MRT", collapse = "annual",
+                       qopts.columns = c("ticker", "calendardate", "PS1", "PE1"),
+                       paginate = T) 
+
+# download data
+df = Quandl.datatable("SHARADAR/SF1", dimension = "MRT", 
+                      qopts.columns = c("ticker", "datekey", "REVENUEUSD", 
+                                        "GP", "PB", "PS1", "PE1", "MARKETCAP"), 
+                      paginate = T)
+head(df)
+```
