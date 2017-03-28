@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "When n < p"
-date: 2017-03-30
+date: 2017-03-20
 comments: true
 categories: da
 keywords: "da, sample size, number of predictors, multivariate regression analysis, multiple linear regression, linear discriminant analysis, partial least squares regression, recursive partitioning, regression tree, classification tree, K-nearest neighbors, KNNs, k nearest neighbors algorithm, predictive modeling, predictive analysis, predictive analytics solutions"
