@@ -10,24 +10,28 @@ share: true
 ads: true
 ---
 
+This post is updated based on Luca's comments. 
+
 Sometimes, we receive data where the timestamps are milliseconds and we want to convert them to dates. This is quite easy in R. We just need to use the `as.POSIXct()` function. Here's a function wrapper I wrote to make it even easier.
 
 {% highlight r %}
-ms.to.date = function(x, t0="1970-01-01", timezone) {
-        ## @x: a numeric vector
+ms_to_date = function(ms, t0="1970-01-01", timezone) {
+        ## @ms: a numeric vector of milliseconds (big integers of 13 digits)
         ## @t0: a string of the format "yyyy-mm-dd", specifying the date that
         ##      corresponds to 0 millisecond
         ## @timezone: a string specifying a timezone that can be recognized by R
         ## return: a POSIXct vector representing calendar dates and times        
-        as.POSIXct(x, origin=t0, tz=timezone)
+        sec = ms / 1000
+        as.POSIXct(sec, origin=t0, tz=timezone)
 }
 {% endhighlight %}
 
 Here's an example of how to use it:
 
 {% highlight r %}
-date.in.ms = c(1348034028, 1348034031)
-ms.to.date(date.in.ms, timezone="America/Los_Angeles")
+date_in_sec = c(1348034028, 1348034031)
+date_in_ms  = date_in_sec * 1000
+ms_to_date(date_in_ms, timezone="America/Los_Angeles")
 {% endhighlight %}
 
 
