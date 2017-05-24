@@ -13,7 +13,7 @@ ads: true
 
 Exponential model is one of the most powerful mathematical models because it allows us to understand some important worldly phenomenons. The word “exponential” means “amplified.” There're two kinds of exponential models: exponential decay and exponential growth. In this article, I'm going to show you what exponential growth is and how to use it to model the US real GDP.[^1]
 
-First of all, let's download the US real GDP data (1790 - 2012) from [quandl](http://www.quandl.com/MWORTH-MeasuringWorth/0_1-United-States-Real-GDP), and plot it over time. The plot shows what exponential growth looks like. 
+First of all, let's download the US real GDP data (1790 - 2012) from [quandl](https://www.quandl.com/data/MWORTH/USA_RGDP-United-States-Real-GDP), and plot it over time. The plot shows what exponential growth looks like. 
 
 ![](/images/USGDP.png)
 

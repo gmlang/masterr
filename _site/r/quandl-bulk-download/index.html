@@ -5,16 +5,18 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
 <head>
 <meta charset="utf-8">
-<title>On Git, Github and Gitlab &#8211; Become Great at R</title>
-<meta name="description" content="If you want to become a data scientist, you need to learn how to use git, github and gitlab. They are good for project storage, backup and collaboration. I’m going to give you a fairly detailed list of instructions on how to set them up in this post.
+<title>Bulk Download Data from Quandl &#8211; Become Great at R</title>
+<meta name="description" content="I’m going to show you how to bulk download data from Quandl.com via an example. 
+Make sure you apply for an API Key first.
 
 ">
 <meta name="keywords" content="">
 
 
 <!-- Twitter Cards -->
-<meta name="twitter:title" content="On Git, Github and Gitlab">
-<meta name="twitter:description" content="If you want to become a data scientist, you need to learn how to use git, github and gitlab. They are good for project storage, backup and collaboration. I’m going to give you a fairly detailed list of instructions on how to set them up in this post.
+<meta name="twitter:title" content="Bulk Download Data from Quandl">
+<meta name="twitter:description" content="I’m going to show you how to bulk download data from Quandl.com via an example. 
+Make sure you apply for an API Key first.
 
 ">
 
@@ -26,18 +28,19 @@
 <!-- Open Graph -->
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
-<meta property="og:title" content="On Git, Github and Gitlab">
-<meta property="og:description" content="If you want to become a data scientist, you need to learn how to use git, github and gitlab. They are good for project storage, backup and collaboration. I’m going to give you a fairly detailed list of instructions on how to set them up in this post.
+<meta property="og:title" content="Bulk Download Data from Quandl">
+<meta property="og:description" content="I’m going to show you how to bulk download data from Quandl.com via an example. 
+Make sure you apply for an API Key first.
 
 ">
-<meta property="og:url" content="http://localhost:4000/da/on-git-github-and-gitlab/">
+<meta property="og:url" content="http://localhost:4000/r/quandl-bulk-download/">
 <meta property="og:site_name" content="Become Great at R">
 
 
 <meta name="msvalidate.01" content="F608C5B05384F7B0200AC62F5BB60411">
 
 
-<link rel="canonical" href="http://localhost:4000/da/on-git-github-and-gitlab/">
+<link rel="canonical" href="http://localhost:4000/r/quandl-bulk-download/">
 <link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="Become Great at R Feed">
 
 
@@ -136,7 +139,7 @@
       <header class="entry-header">
         <span class="entry-tags"></span>
         
-          <h1 class="entry-title">On Git, Github and Gitlab</h1>
+          <h1 class="entry-title">Bulk Download Data from Quandl</h1>
         
       </header>
       <footer class="entry-meta">
@@ -201,19 +204,19 @@
     });
 </script> 
 <!--End mc_embed_signup-->
-        <span class="entry-date date published"><time datetime="2017-01-02T00:00:00-05:00"><i class="fa fa-calendar-o"></i> January 02, 2017</time></span>
+        <span class="entry-date date published"><time datetime="2017-03-24T00:00:00-04:00"><i class="fa fa-calendar-o"></i> March 24, 2017</time></span>
         
         
         <span class="author vcard">By <span class="fn">Guangming Lang</span></span>
 		<span class="entry-comments"><i class="fa fa-comment-o"></i> <a href="#disqus_thread">Comment</a></span>
 		<span class="social-share-twitter">
-  <a href="https://twitter.com/intent/tweet?hashtags=&amp;text=On%20Git,%20Github%20and%20Gitlab&amp;url=http://localhost:4000/da/on-git-github-and-gitlab/" title="Share on Twitter" itemprop="Twitter"><i class="fa fa-twitter-square"></i> Tweet</a>
+  <a href="https://twitter.com/intent/tweet?hashtags=&amp;text=Bulk%20Download%20Data%20from%20Quandl&amp;url=http://localhost:4000/r/quandl-bulk-download/" title="Share on Twitter" itemprop="Twitter"><i class="fa fa-twitter-square"></i> Tweet</a>
 </span>
 <span class="social-share-facebook">
-  <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/da/on-git-github-and-gitlab/" title="Share on Facebook" itemprop="Facebook"><i class="fa fa-facebook-square"></i> Like</a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/r/quandl-bulk-download/" title="Share on Facebook" itemprop="Facebook"><i class="fa fa-facebook-square"></i> Like</a>
 </span>
 <span class="social-share-googleplus">
-  <a href="https://plus.google.com/share?url=http://localhost:4000/da/on-git-github-and-gitlab/" title="Share on Google Plus" itemprop="GooglePlus"><i class="fa fa-google-plus-square"></i> +1</a>
+  <a href="https://plus.google.com/share?url=http://localhost:4000/r/quandl-bulk-download/" title="Share on Google Plus" itemprop="GooglePlus"><i class="fa fa-google-plus-square"></i> +1</a>
 </span>
 <!-- /.social-share -->
         <div class="google-ads" style="margin-top:40px; text-align:center;">
@@ -229,76 +232,49 @@
 </div><!-- /.google-ads --><!-- /.google-ads -->
       </footer>
       <div class="entry-content">
-        <p>If you want to become a data scientist, you need to learn how to use git, github and gitlab. They are good for project storage, backup and collaboration. I’m going to give you a fairly detailed list of instructions on how to set them up in this post.</p>
+        <p>I’m going to show you how to bulk download data from Quandl.com via an example. 
+Make sure you apply for an API Key first.</p>
 
-<h2 id="installation">Installation</h2>
-<ol>
-  <li><a href="http://happygitwithr.com/github-acct.html">Sign up for Github</a></li>
-  <li><a href="http://happygitwithr.com/install-git.html">Install Git</a></li>
-  <li><a href="http://happygitwithr.com/hello-git.html">Introduce yourself to Git</a>. Make sure you <strong>ignore</strong> 8.1.</li>
-  <li><a href="http://happygitwithr.com/git-client.html">Pick a Git client</a>. I use SourceTree.</li>
-  <li><a href="http://happygitwithr.com/push-pull-github.html">Connect to Github</a>. The link shows you how to do it using the shell. You should also learn how to do it using the git client you picked. The reason is that you rarely need to go back to the shell once you master a git client.</li>
-  <li><a href="http://happygitwithr.com/ssh-keys.html#check-for-existing-keys">Check for existing SSH keys</a></li>
-  <li>If you don’t have one, <a href="http://happygitwithr.com/ssh-keys.html#set-up-from-the-shell">create SSH keys from the shell and add the public key to Github</a></li>
-  <li><a href="https://gitlab.com">Sign up for Gitlab</a></li>
-  <li><a href="https://docs.gitlab.com/ee/gitlab-basics/create-your-ssh-keys.html">Add the same public key (see step 6 and 7) to Gitlab</a>. Afterwards, you can clone Gitlab repos using SourceTree.</li>
-  <li>If you have two github accounts, for example, one for personal use and the other for your organization, you need to have two sets of SSH keys in order to manage your repos in both accounts using SourceTree on the same computer. Click <a href="https://gist.github.com/jexchan/2351996">here</a> to learn how to set them up.</li>
-</ol>
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">library</span><span class="p">(</span><span class="n">Quandl</span><span class="p">)</span><span class="w">
 
-<h2 id="work-flow-when-starting-a-new-project-im-using-gitlab-here-but-the-same-logic-also-holds-for-github">Work flow when starting a new project (I’m using Gitlab here, but the same logic also holds for Github)</h2>
-<ol>
-  <li>Go to <a href="https://gitlab.com">Gitlab</a> and make sure you are logged in.</li>
-  <li>Click the big PLUS (<strong>+</strong>) button next to your profile picture to create a new project.</li>
-  <li>After you’ve created a new project, you’ve created a repo. You should see a screen like this under the <strong>Project</strong> tab</li>
-</ol>
+</span><span class="c1"># set api key
+</span><span class="n">my_api_key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"your API key"</span><span class="w">
 
-<p><img src="/images/gitlab.png" alt="" /></p>
+</span><span class="c1"># set path
+</span><span class="n">data_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"data"</span><span class="w">
+</span><span class="n">fname_rev</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">file.path</span><span class="p">(</span><span class="n">data_path</span><span class="p">,</span><span class="w"> </span><span class="s2">"SF1.zip"</span><span class="p">)</span><span class="w"> </span><span class="c1"># saving data as a zip file
+</span><span class="w">
+</span><span class="c1"># bulk download all data
+</span><span class="n">Quandl.database.bulk_download_to_file</span><span class="p">(</span><span class="s2">"SF1"</span><span class="p">,</span><span class="w"> </span><span class="n">fname_rev</span><span class="p">)</span><span class="w">
 
-<ol>
-  <li>Copy the SSH path shown in the screen.</li>
-  <li>Open SourceTree, click <strong>New Repository -&gt; Clone from URL</strong>.</li>
-  <li>Paste the copied SSH path into the Source URL field.</li>
-  <li>Specify the Destination Path and Name.</li>
-  <li>Click <strong>Clone</strong>.
-Now, you can <a href="https://confluence.atlassian.com/sourcetreekb/commit-push-and-pull-a-repository-on-sourcetree-785616067.html">stage, commit, push and pull from SourceTree</a>. If you are using a different git client, make sure you learn how to do these actions. Some tutorials teach you to do them inside Rstudio. <strong>Don’t do that</strong>. Let me repeat: <strong>“Don’t waste the effort connecting git/github with RStudio. Not worthy it.”</strong> Instead,  use a git client (I prefer SourceTree). Leave the job of connecting git and a git hosting service (for example: github, gitlab, bitbucket) exclusively to a git client.</li>
-</ol>
+</span><span class="c1"># list all files names inside of a .zip file
+</span><span class="n">fname</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">as.character</span><span class="p">(</span><span class="n">unzip</span><span class="p">(</span><span class="n">fname_rev</span><span class="p">,</span><span class="w"> </span><span class="n">list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span><span class="o">$</span><span class="n">Name</span><span class="p">)</span><span class="w">
+</span><span class="c1"># fname happens to be a vector of 1 element. Usually it's a list of names.
+</span><span class="w">
+</span><span class="c1"># read in R
+</span><span class="n">dat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">read.csv</span><span class="p">(</span><span class="n">unz</span><span class="p">(</span><span class="n">fname_rev</span><span class="p">,</span><span class="w"> </span><span class="n">fname</span><span class="p">),</span><span class="w"> </span><span class="n">nrows</span><span class="o">=</span><span class="m">500</span><span class="p">,</span><span class="w"> </span><span class="n">header</span><span class="o">=</span><span class="nb">F</span><span class="p">,</span><span class="w"> </span><span class="n">stringsAsFactors</span><span class="o">=</span><span class="nb">F</span><span class="p">)</span><span class="w">
+</span><span class="n">dat2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">read.csv</span><span class="p">(</span><span class="n">unz</span><span class="p">(</span><span class="n">fname_rev</span><span class="p">,</span><span class="w"> </span><span class="n">fname</span><span class="p">),</span><span class="w"> </span><span class="n">header</span><span class="o">=</span><span class="nb">F</span><span class="p">,</span><span class="w"> </span><span class="n">stringsAsFactors</span><span class="o">=</span><span class="nb">F</span><span class="p">)</span><span class="w">
 
-<h2 id="ignore-files">Ignore files</h2>
-<p>You don’t want to use git to track everything. You only want to track your code. For example, you don’t want to track files like .Rhistory, .Rapp.history and .Rproj.user/*.</p>
+</span><span class="c1">## alternatively
+</span><span class="w">
+</span><span class="c1"># download revenue, gross profit, and price to book value - Most Recent Annual (MRY)
+</span><span class="n">df1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Quandl.datatable</span><span class="p">(</span><span class="s2">"SHARADAR/SF1"</span><span class="p">,</span><span class="w"> </span><span class="n">dimension</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"MRY"</span><span class="p">,</span><span class="w"> 
+                       </span><span class="n">qopts.columns</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"ticker"</span><span class="p">,</span><span class="w"> </span><span class="s2">"calendardate"</span><span class="p">,</span><span class="w"> </span><span class="s2">"REVENUEUSD"</span><span class="p">,</span><span class="w"> 
+                                         </span><span class="s2">"GP"</span><span class="p">,</span><span class="w"> </span><span class="s2">"PB"</span><span class="p">),</span><span class="w"> 
+                       </span><span class="n">paginate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">T</span><span class="p">)</span><span class="w">
 
-<ol>
-  <li><a href="http://stackoverflow.com/questions/12501324/how-to-use-gitignore-command-in-git">How to create .gitignore file</a></li>
-</ol>
+</span><span class="c1"># download price to sales ratio and price to earnings ratio - Most Recent Trailing Twelve Months (MRT)
+</span><span class="n">df2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Quandl.datatable</span><span class="p">(</span><span class="s2">"SHARADAR/SF1"</span><span class="p">,</span><span class="w"> </span><span class="n">dimension</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"MRT"</span><span class="p">,</span><span class="w"> </span><span class="n">collapse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"annual"</span><span class="p">,</span><span class="w">
+                       </span><span class="n">qopts.columns</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"ticker"</span><span class="p">,</span><span class="w"> </span><span class="s2">"calendardate"</span><span class="p">,</span><span class="w"> </span><span class="s2">"PS1"</span><span class="p">,</span><span class="w"> </span><span class="s2">"PE1"</span><span class="p">),</span><span class="w">
+                       </span><span class="n">paginate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">T</span><span class="p">)</span><span class="w"> 
 
-<h2 id="work-flow-when-collaborating-on-github">Work flow when collaborating on Github</h2>
-<p>Let’s demo the work flow using the following example.</p>
+</span><span class="c1"># download data
+</span><span class="n">df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Quandl.datatable</span><span class="p">(</span><span class="s2">"SHARADAR/SF1"</span><span class="p">,</span><span class="w"> </span><span class="n">dimension</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"MRT"</span><span class="p">,</span><span class="w"> 
+                      </span><span class="n">qopts.columns</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"ticker"</span><span class="p">,</span><span class="w"> </span><span class="s2">"datekey"</span><span class="p">,</span><span class="w"> </span><span class="s2">"REVENUEUSD"</span><span class="p">,</span><span class="w"> 
+                                        </span><span class="s2">"GP"</span><span class="p">,</span><span class="w"> </span><span class="s2">"PB"</span><span class="p">,</span><span class="w"> </span><span class="s2">"PS1"</span><span class="p">,</span><span class="w"> </span><span class="s2">"PE1"</span><span class="p">,</span><span class="w"> </span><span class="s2">"MARKETCAP"</span><span class="p">),</span><span class="w"> 
+                      </span><span class="n">paginate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">T</span><span class="p">)</span><span class="w">
+</span><span class="n">head</span><span class="p">(</span><span class="n">df</span><span class="p">)</span></code></pre></figure>
 
-<ol>
-  <li><a href="https://github.com/gmlang/test">Fork my repo</a> (Upper right corner fork button)</li>
-  <li>You’ll see the same repo show up under your github account. <a href="https://confluence.atlassian.com/sourcetreekb/clone-a-repository-into-sourcetree-780870050.html">Clone it using source tree</a>.</li>
-  <li><a href="http://stackoverflow.com/questions/13273852/how-do-i-update-my-forked-repo-using-sourcetree">Add upstream</a>. This allows you to update your repo based on my updates. Once you add upstream, you can pull the changes I make directly to your local repo.</li>
-  <li>Make changes to your local copy and commit and push to the repo in your github account.</li>
-  <li><a href="https://yangsu.github.io/pull-request-tutorial/">Create a pull request</a>.</li>
-  <li>I’ll review your pull request and decide if to merge with mine.</li>
-</ol>
-
-<h2 id="exercises">Exercises</h2>
-<ol>
-  <li><a href="http://happygitwithr.com/big-picture.html">Understand git and git hosting services from the big picture level</a>.</li>
-  <li><a href="http://happygitwithr.com/clone.html">Clone a repo</a>.</li>
-  <li><a href="http://happygitwithr.com/fork.html">Fork a repo</a>. <a href="http://happygitwithr.com/bingo.html">A specific fork and pull practice</a>.</li>
-  <li>Mistakes Recovery: <a href="http://happygitwithr.com/burn.html">part1</a>, <a href="http://happygitwithr.com/reset.html">part2</a>.</li>
-</ol>
-
-<h2 id="beyond">Beyond</h2>
-<ol>
-  <li><a href="https://barro.github.io/2016/02/a-succesful-git-branching-model-considered-harmful/">How to branch</a>.</li>
-  <li><a href="http://learngitbranching.js.org">Learn Git branching</a> (animated).</li>
-  <li><a href="http://vallandingham.me/git-workflow.html">A Git workflow walkthrough series</a>.</li>
-  <li><a href="https://www.atlassian.com/git/tutorials/">Git tutorial on Atlassian</a>.</li>
-  <li><a href="https://services.github.com/kit/">Github training</a></li>
-  <li><a href="http://kbroman.org/github_tutorial/">A minimal command line git tutorial</a>.</li>
-</ol>
 
 		<!-- Begin MailChimp Signup Form -->
 <html>
@@ -366,10 +342,10 @@ Now, you can <a href="https://confluence.atlassian.com/sourcetreekb/commit-push-
     </div><!-- /.entry-wrapper -->
     <nav class="pagination" role="navigation">
       
-        <a href="http://localhost:4000/r/introducing-ezplot/" class="btn" title="Introducing ezplot: An Easy Way to Make Beautiful Charts for Real World Clients">Previous</a>
+        <a href="http://localhost:4000/da/when-n-less-than-p-copy/" class="btn" title="When n < p">Previous</a>
       
       
-        <a href="http://localhost:4000/r/file-dir-manipulations-in-r/" class="btn" title="File and Dir Manipulations in R">Next</a>
+        <a href="http://localhost:4000/da/feature-engineer-dates/" class="btn" title="How to Feature Engineer Dates">Next</a>
       
     </nav><!-- /.pagination -->
   </article>
