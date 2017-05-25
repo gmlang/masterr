@@ -27,6 +27,6 @@ install.packages("/Users/gmlang/Downloads/blotter_0.8.17.tar", repos = NULL, typ
 install.packages("/Users/gmlang/Downloads/quantstrat_0.8.0.tar", repos = NULL, type="source")
 ```
 
-[shiny](http://shiny.rstudio.com/) is a tool that allows you to easily make and publish web apps using R. [Here's an app](http://free.cabaceo.com/app/dp1.html) I made using Shiny and Quantstrat to backtest a couple of trading strategies on a group of vanguard funds. I also made [a version where you can enter your own stock symbols](http://free.cabaceo.com/app/mt1.html), however it can take 8-10 minutes to run. 
+[shiny](http://shiny.rstudio.com/) is a tool that allows you to easily make and publish web apps using R. [Here's an app](https://cabaceo.shinyapps.io/quantdp/) I made using Shiny and Quantstrat to backtest a couple of trading strategies on a group of vanguard funds. 
 
 A client of mine told me about a web service called [Quantopian](https://www.quantopian.com/) that allows you to easily build, test and execute your trading algorithms. I haven't used it yet, but on the first look, it seems they're doing a pretty good job.
