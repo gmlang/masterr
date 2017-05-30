@@ -15,6 +15,6 @@ Feature engineering is almost situational because generating useful features for
 
 * Calculate the number of days since a reference date.
 * Extract the year, quarter, month, week, and day as separate features. Year, quarter, month and week can be used as grouping variable or seasonality component to be removed from the model.
-* Calculate the numeric day of the year. For example, March 27, 2017 is 86th day of the year 2017. In orther words, its numeric day of the year is 86. If it appears that there's a seasonal component to the data, the numeric day of the year is the best.
+* Calculate the numeric day of the year. For example, March 27, 2017 is 86th day of the year 2017. In orther words, its numeric day of the year is 86. If it appears that there's a seasonal component to the data, you can use both the seasonal component and the numeric day of the year as features. Alternatively, you can remove seasonality effect first and then model the residuals using the numeric day of the year as a feature.
 
-As an example, see how Hadley feature engineered his date variables in this [talk](https://www.rstudio.com/resources/webinars/pipelines-for-data-analysis-in-r/).
+As an example, see how Hadley feature engineered his date variables (start at 31:51) in this [talk](https://www.rstudio.com/resources/webinars/pipelines-for-data-analysis-in-r/).

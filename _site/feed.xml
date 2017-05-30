@@ -4,7 +4,7 @@
 <generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://localhost:4000/feed.xml" />
 <link rel="alternate" type="text/html" href="http://localhost:4000" />
-<updated>2017-05-24T20:02:22-04:00</updated>
+<updated>2017-05-30T12:26:00-04:00</updated>
 <id>http://localhost:4000/</id>
 <author>
   <name>Guangming Lang</name>
@@ -29,7 +29,7 @@
 &lt;ul&gt;
   &lt;li&gt;Calculate the number of days since a reference date.&lt;/li&gt;
   &lt;li&gt;Extract the year, quarter, month, week, and day as separate features. Year, quarter, month and week can be used as grouping variable or seasonality component to be removed from the model.&lt;/li&gt;
-  &lt;li&gt;Calculate the numeric day of the year. For example, March 27, 2017 is 86th day of the year 2017. In orther words, its numeric day of the year is 86. If it appears that there’s a seasonal component to the data, the numeric day of the year is the best.&lt;/li&gt;
+  &lt;li&gt;Calculate the numeric day of the year. For example, March 27, 2017 is 86th day of the year 2017. In orther words, its numeric day of the year is 86. If it appears that there’s a seasonal component to the data, you can use both the seasonal component and the numeric day of the year as features. Alternatively, you can remove seasonality effect first and then model the residuals using the numeric day of the year as a feature.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;As an example, see how Hadley feature engineered his date variables in this &lt;a href=&quot;https://www.rstudio.com/resources/webinars/pipelines-for-data-analysis-in-r/&quot;&gt;talk&lt;/a&gt;.&lt;/p&gt;
