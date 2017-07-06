@@ -1,0 +1,55 @@
+---
+layout: post
+title: "On Recursion - Part 2"
+date: 2017-07-06
+comments: true
+categories: r
+keywords: "R, recursion, recusive functions in R, environment, recursing over environments in R"
+published: true
+share: true
+ads: true
+---
+
+In the [*Environments*](http://adv-r.had.co.nz/Environments.html#env-recursion) chapter of the book *Advanced R*, Hadley presented a function 
+`where(name, env = parent.frame())` that finds the environment where a given name is defined. The parameter `env` is the environment where the search begins. Its default value is the global environment (the environment where you normally work). The function was written recursively. I encourage you to study it first before reading on because I'm giving a solution here to one of the exercises, which asks to write a recursive function to find all environments that contain a binding for `name`. 
+
+Here's my solution. 
+
+
+{% highlight r %}
+where_all = function(name, env = parent.frame()) {
+        # Finds all environments that contain a binding for name.
+        # 
+        # name: string, name of an object
+        # env : environment object where the search begins
+        
+        if (identical(env, emptyenv())) { # base case
+                res = NULL
+        } else {
+                if (exists(name, envir = env, inherits = F)) res = env
+                else res = NULL
+                
+                # recursive step
+                c(res, where_all(name, parent.env(env)))
+        }
+}
+{% endhighlight %}
+
+Let's test it.
+
+
+{% highlight r %}
+# test
+mean = function(x) "guck"
+where_all("mean")
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## [[1]]
+## <environment: R_GlobalEnv>
+## 
+## [[2]]
+## <environment: base>
+{% endhighlight %}
