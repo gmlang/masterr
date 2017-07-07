@@ -65,6 +65,28 @@ exists2 = function(name, env=parent.frame(), inherits = T) {
         if (inherits) {
                 if (identical(env, emptyenv())) { # base case
                         FALSE
+                } else { # non-base case
+                        if (name %in% ls(env)) { # success case
+                                TRUE
+                        } else { # fail case
+                                # recursive step
+                                exists2(name, parent.env(env)) 
+                        }
+                }        
+        } else {
+                name %in% ls(env)
+        }
+}
+{% endhighlight %}
+
+We can simplify the code a bit by collapsing the `if...else...` inside the non-base case with the outside `else` clause. This makes the code a bit easier to read.
+
+
+{% highlight r %}
+exists2 = function(name, env=parent.frame(), inherits = T) {
+        if (inherits) {
+                if (identical(env, emptyenv())) { # base case
+                        FALSE
                 } else if (name %in% ls(env)) { # success case
                         TRUE
                 } else { # fail case
@@ -76,7 +98,7 @@ exists2 = function(name, env=parent.frame(), inherits = T) {
 }
 {% endhighlight %}
 
-We can test it.
+Let's test it out.
 
 
 {% highlight r %}
