@@ -62,7 +62,7 @@ Now inside of `where_all()` I used a base R function `exists()` to check if `nam
 
 {% highlight r %}
 exists2 = function(name, env=parent.frame(), inherits = T) {
-        # Checks is name is in the given environment or its parent environments.
+        # Checks if name is in the given environment or its parent environments.
         # 
         # name: string, name of an object
         # env : environment object where the search begins
@@ -90,7 +90,7 @@ We can simplify the code a bit by collapsing the `if...else...` inside the non-b
 
 {% highlight r %}
 exists2 = function(name, env=parent.frame(), inherits = T) {
-        # Checks is name is in the given environment or its parent environments.
+        # Checks if name is in the given environment or its parent environments.
         # 
         # name: string, name of an object
         # env : environment object where the search begins
