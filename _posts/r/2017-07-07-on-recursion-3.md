@@ -35,7 +35,7 @@ get("mean") # inherits is set to TRUE by default
 {% highlight text %}
 ## function (x, ...) 
 ## UseMethod("mean")
-## <bytecode: 0x7fd1f4a34228>
+## <bytecode: 0x7f99b373e028>
 ## <environment: namespace:base>
 {% endhighlight %}
 
@@ -75,7 +75,8 @@ get_helper = function(name, env = parent.frame()) {
         # Returns the value that name binds to. Looks for name in the given 
         #       environment and all its parents.
         # name: string, name of an object
-        # env : environment object, default is the global environment
+        # env : environment object where the search begins. Default value is 
+        #       the global environment
         
         if (identical(env, emptyenv())) { # base case
                 stop("object '", name, "'", " not found", call. = F)
@@ -117,7 +118,8 @@ get_gmlang = function(name, env=parent.frame(), inherits = T) {
         #       for name only in the given environment.
         #
         # name: string, name of an object
-        # env : environment object, default is the global environment
+        # env : environment object where the search begins. Default value is 
+        #       the global environment
         # inherits: logical
         
         if (inherits) { 
@@ -185,7 +187,8 @@ fget_helper = function(name, env = parent.frame()) {
         #       Looks for name in the given environment and all its parents.
         #
         # name: string, name of an object
-        # env : environment object, default is the global environment
+        # env : environment object where the search begins. Default value is 
+        #       the global environment
 
         if (identical(env, emptyenv())) { # base case
                 stop("Can't find ", name, " as a function object", call. = F)
@@ -230,7 +233,7 @@ fget_helper("mean")
 {% highlight text %}
 ## function (x, ...) 
 ## UseMethod("mean")
-## <bytecode: 0x7fd1f4a34228>
+## <bytecode: 0x7f99b373e028>
 ## <environment: namespace:base>
 {% endhighlight %}
 
