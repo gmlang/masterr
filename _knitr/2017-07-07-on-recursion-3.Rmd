@@ -1,0 +1,105 @@
+---
+layout: post
+title: "On Recursion - Part 3"
+date: 2017-07-07
+comments: true
+categories: r
+keywords: "R, recursion, recusive functions in R, environment, recursing over environments in R, get(), fget(), tail recursion"
+published: true
+share: true
+ads: true
+---
+
+Base R has a function `get()` that searches for a given name over the environment stack and returns its value after finding it. For example, we can use it like this.
+
+```{r}
+x = 9
+get("x")
+
+get("mean") # inherits is set to TRUE by default
+get("mean", inherits = FALSE)
+
+mean = function() "fake mean"
+get("mean")
+```
+
+If you don't understand why they returned the values they did, you can learn how 
+environment works by reading Hadley's [book](http://adv-r.had.co.nz/Environments.html).
+
+We can write our own version of get() using recursion. First we write a helper function that works the same as `get(name, inherits = T)`.
+
+```{r}
+get_helper = function(name, env = parent.frame()) {
+        # Returns the value that name binds to. Looks for name in the given 
+        #       environment and all its parents.
+        # name: string, name of an object
+        # env : environment object, default is the global environment
+        
+        if (identical(env, emptyenv())) { # base case
+                stop("object '", name, "'", " not found", call. = F)
+        } else if (exists(name, envir = env, inherits = F)) { # success case
+                env[[name]]
+        } else { # recursive case
+                get_helper(name, parent.env(env))
+        }
+}
+
+get_helper("x")
+get("mean")
+```
+
+Next we can easily extend it to a more general version that takes an additional parameter `inherits`.
+
+```{r}
+get_gmlang = function(name, env=parent.frame(), inherits = T) {
+        # Returns the value that name binds to. If inherits = T, looks for name
+        #       in the given environment and all its parents. Otherwise, looks
+        #       for name only in the given environment.
+        #
+        # name: string, name of an object
+        # env : environment object, default is the global environment
+        # inherits: logical
+        
+        if (inherits) { 
+                get_helper(name, env)
+        } else if (exists(name, envir = env, inherits = F)) {
+                env[[name]]
+        } else {
+                stop("object '", name, "'", " not found", call. = F)
+        }
+}
+
+e = new.env()
+e$z = 100
+get_gmlang("x", env=e, inherits = T)
+get_gmlang("x", env=e, inherits = F)
+get_gmlang("z", env=e)
+get_gmlang("z") # note: global environment is the parent of e
+```
+
+Moreover, we can easily extend `get_helper()` to a function `fget_helper()` that finds only function objects.
+
+```{r}
+fget_helper = function(name, env = parent.frame()) {
+        # Returns the value that name binds to when name binds to a function. 
+        #       Looks for name in the given environment and all its parents.
+        #
+        # name: string, name of an object
+        # env : environment object, default is the global environment
+
+        if (identical(env, emptyenv())) { # base case
+                stop("Can't find ", name, " as a function object", call. = F)
+        } else if (class(env[[name]]) == "function") { # success case
+                # if name not in env, env[[name]] returns NULL with class "NULL"
+                env[[name]]
+        } else { # fail case
+                fget_helper(name, parent.env(env))
+        }
+}
+
+fget_helper("x")
+fget_helper("mean")
+rm("mean")
+fget_helper("mean")
+```
+
