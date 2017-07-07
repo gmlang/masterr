@@ -4,7 +4,7 @@ title: "On Recursion - Part 2"
 date: 2017-07-06
 comments: true
 categories: r
-keywords: "R, recursion, recusive functions in R, environment, recursing over environments in R"
+keywords: "R, recursion, recusive functions in R, environment, recursing over environments in R, where(), exists(), tail recursion"
 published: true
 share: true
 ads: true
