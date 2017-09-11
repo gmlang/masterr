@@ -25,8 +25,8 @@ Step2. Go to [R-forge](https://r-forge.r-project.org/R/?group_id=316) and downlo
 
 
 {% highlight r %}
-install.packages("/Users/gmlang/Downloads/blotter_0.8.17.tar", repos = NULL, type="source")
-install.packages("/Users/gmlang/Downloads/quantstrat_0.8.0.tar", repos = NULL, type="source")
+install.packages("~/Downloads/blotter_0.8.17.tar", repos = NULL, type="source")
+install.packages("~/Downloads/quantstrat_0.8.0.tar", repos = NULL, type="source")
 {% endhighlight %}
 
 [shiny](http://shiny.rstudio.com/) is a tool that allows you to easily make and publish web apps using R. [Here's an app](https://cabaceo.shinyapps.io/quantdp/) I made using Shiny and Quantstrat to backtest a couple of trading strategies on a group of vanguard funds. 

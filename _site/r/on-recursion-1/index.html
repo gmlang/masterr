@@ -5,16 +5,18 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
 <head>
 <meta charset="utf-8">
-<title>File and Dir Manipulations in R &#8211; Become Great at R</title>
-<meta name="description" content="If you’ve created a file or copied a folder of files using the command line, do you know that you can do the same thing within R? If you never touched the terminal in your life, well, R allows you to move around folders and create files without using your mouse to click. This becomes very important when you write pipelines chained by R scripts as you probably want to automatically save and read files. Below is a collection of such R commands.
+<title>On Recursion - Part 1 &#8211; Become Great at R</title>
+<meta name="description" content="Intro
+I’ve been thinking about recursion lately. It’s very powerful but it can be hard to reason about sometimes. Through this article and the following ones, hopefully I can make it easier for you to understand it and to write more recursive functions.
 
 ">
 <meta name="keywords" content="">
 
 
 <!-- Twitter Cards -->
-<meta name="twitter:title" content="File and Dir Manipulations in R">
-<meta name="twitter:description" content="If you’ve created a file or copied a folder of files using the command line, do you know that you can do the same thing within R? If you never touched the terminal in your life, well, R allows you to move around folders and create files without using your mouse to click. This becomes very important when you write pipelines chained by R scripts as you probably want to automatically save and read files. Below is a collection of such R commands.
+<meta name="twitter:title" content="On Recursion - Part 1">
+<meta name="twitter:description" content="Intro
+I’ve been thinking about recursion lately. It’s very powerful but it can be hard to reason about sometimes. Through this article and the following ones, hopefully I can make it easier for you to understand it and to write more recursive functions.
 
 ">
 
@@ -26,18 +28,19 @@
 <!-- Open Graph -->
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
-<meta property="og:title" content="File and Dir Manipulations in R">
-<meta property="og:description" content="If you’ve created a file or copied a folder of files using the command line, do you know that you can do the same thing within R? If you never touched the terminal in your life, well, R allows you to move around folders and create files without using your mouse to click. This becomes very important when you write pipelines chained by R scripts as you probably want to automatically save and read files. Below is a collection of such R commands.
+<meta property="og:title" content="On Recursion - Part 1">
+<meta property="og:description" content="Intro
+I’ve been thinking about recursion lately. It’s very powerful but it can be hard to reason about sometimes. Through this article and the following ones, hopefully I can make it easier for you to understand it and to write more recursive functions.
 
 ">
-<meta property="og:url" content="http://masterr.org/r/file-dir-manipulations-in-r/">
+<meta property="og:url" content="http://masterr.org/r/on-recursion-1/">
 <meta property="og:site_name" content="Become Great at R">
 
 
 <meta name="msvalidate.01" content="F608C5B05384F7B0200AC62F5BB60411">
 
 
-<link rel="canonical" href="http://masterr.org/r/file-dir-manipulations-in-r/">
+<link rel="canonical" href="http://masterr.org/r/on-recursion-1/">
 <link href="http://masterr.org/feed.xml" type="application/atom+xml" rel="alternate" title="Become Great at R Feed">
 
 
@@ -136,7 +139,7 @@
       <header class="entry-header">
         <span class="entry-tags"></span>
         
-          <h1 class="entry-title">File and Dir Manipulations in R</h1>
+          <h1 class="entry-title">On Recursion - Part 1</h1>
         
       </header>
       <footer class="entry-meta">
@@ -201,19 +204,19 @@
     });
 </script> 
 <!--End mc_embed_signup-->
-        <span class="entry-date date published"><time datetime="2017-01-06T00:00:00+09:00"><i class="fa fa-calendar-o"></i> January 06, 2017</time></span>
+        <span class="entry-date date published"><time datetime="2017-07-05T00:00:00+09:00"><i class="fa fa-calendar-o"></i> July 05, 2017</time></span>
         
         
         <span class="author vcard">By <span class="fn">Guangming Lang</span></span>
 		<span class="entry-comments"><i class="fa fa-comment-o"></i> <a href="#disqus_thread">Comment</a></span>
 		<span class="social-share-twitter">
-  <a href="https://twitter.com/intent/tweet?hashtags=&amp;text=File%20and%20Dir%20Manipulations%20in%20R&amp;url=http://masterr.org/r/file-dir-manipulations-in-r/" title="Share on Twitter" itemprop="Twitter"><i class="fa fa-twitter-square"></i> Tweet</a>
+  <a href="https://twitter.com/intent/tweet?hashtags=&amp;text=On%20Recursion%20-%20Part%201&amp;url=http://masterr.org/r/on-recursion-1/" title="Share on Twitter" itemprop="Twitter"><i class="fa fa-twitter-square"></i> Tweet</a>
 </span>
 <span class="social-share-facebook">
-  <a href="https://www.facebook.com/sharer/sharer.php?u=http://masterr.org/r/file-dir-manipulations-in-r/" title="Share on Facebook" itemprop="Facebook"><i class="fa fa-facebook-square"></i> Like</a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http://masterr.org/r/on-recursion-1/" title="Share on Facebook" itemprop="Facebook"><i class="fa fa-facebook-square"></i> Like</a>
 </span>
 <span class="social-share-googleplus">
-  <a href="https://plus.google.com/share?url=http://masterr.org/r/file-dir-manipulations-in-r/" title="Share on Google Plus" itemprop="GooglePlus"><i class="fa fa-google-plus-square"></i> +1</a>
+  <a href="https://plus.google.com/share?url=http://masterr.org/r/on-recursion-1/" title="Share on Google Plus" itemprop="GooglePlus"><i class="fa fa-google-plus-square"></i> +1</a>
 </span>
 <!-- /.social-share -->
         <div class="google-ads" style="margin-top:40px; text-align:center;">
@@ -229,65 +232,47 @@
 </div><!-- /.google-ads --><!-- /.google-ads -->
       </footer>
       <div class="entry-content">
-        <p>If you’ve created a file or copied a folder of files using the command line, do you know that you can do the same thing within R? If you never touched the terminal in your life, well, R allows you to move around folders and create files without using your mouse to click. This becomes very important when you write pipelines chained by R scripts as you probably want to automatically save and read files. Below is a collection of such R commands.</p>
+        <h2 id="intro">Intro</h2>
+<p>I’ve been thinking about recursion lately. It’s very powerful but it can be hard to reason about sometimes. Through this article and the following ones, hopefully I can make it easier for you to understand it and to write more recursive functions.</p>
 
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># home directory and working directory
-</span><span class="p">(</span><span class="n">home_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Sys.getenv</span><span class="p">(</span><span class="s2">"HOME"</span><span class="p">))</span><span class="w">
-</span><span class="n">getwd</span><span class="p">()</span><span class="w">
-</span><span class="n">setwd</span><span class="p">(</span><span class="n">file.path</span><span class="p">(</span><span class="n">home_path</span><span class="p">,</span><span class="w"> </span><span class="s2">"Projects"</span><span class="p">))</span><span class="w">
-</span><span class="n">getwd</span><span class="p">()</span><span class="w">
-</span><span class="n">setwd</span><span class="p">(</span><span class="n">home_path</span><span class="p">)</span><span class="w">
-</span><span class="n">getwd</span><span class="p">()</span><span class="w">
+<h2 id="find-the-first-3-prime-numbers">Find the first 3 prime numbers</h2>
+<p>Let’s start with a very simple task: find the first 3 prime numbers. How’d you do it? The intuitive way is to start with 1, and ask if 1 is a prime. The answer is no. So we move to 2 and ask if 2 is a prime, and the answer is yes. We now have our first prime number. We then move onto 3 and ask if 3 is a prime and we repeat the procedure until we find the 3rd prime number. The answer, of course, is the sequence <code class="highlighter-rouge">(2, 3, 5)</code>. This way of thinking is recursion. Keep reading to find out why.</p>
 
-</span><span class="c1"># list all files and sub-folders in the working directory
-</span><span class="n">list.files</span><span class="p">()</span><span class="w">
+<h2 id="find-the-first-n-primes-that-are-greater-than-m">Find the first N primes that are greater than M</h2>
+<p>The task is to find the first 3 prime numbers. What’s unsaid but self-evident is that the numbers must be greater than 0 because all prime numbers are greater than 0. So we can rewrite the task: find the first 3 primes that are greater than 0. Further more, let’s be ambitious and consider its general version: find the first N primes that are greater than M.</p>
 
-</span><span class="c1"># list all files and sub-folders in another directory
-</span><span class="n">dir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">file.path</span><span class="p">(</span><span class="n">Sys.getenv</span><span class="p">(</span><span class="s2">"HOME"</span><span class="p">),</span><span class="w"> </span><span class="s2">"Projects"</span><span class="p">)</span><span class="w">
-</span><span class="n">list.files</span><span class="p">(</span><span class="n">dir</span><span class="p">)</span><span class="w">
+<p>The basic structure of any recursion involves the base case and the non-base case. In the general task, the base case is when N = 0 and the result will be the empty sequence <code class="highlighter-rouge">()</code>. The non-base case is When N &gt; 0, and when N &gt; 0, if M+1 is a prime, the result will be <code class="highlighter-rouge">(M+1, the first N-1 primes that are greater than M+1)</code>, otherwise, <code class="highlighter-rouge">(the first N primes that are greater than M+1)</code></p>
 
-</span><span class="c1"># create a new dir
-</span><span class="n">newdir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">file.path</span><span class="p">(</span><span class="n">Sys.getenv</span><span class="p">(</span><span class="s2">"HOME"</span><span class="p">),</span><span class="w"> </span><span class="s2">"demo-folder"</span><span class="p">)</span><span class="w">
-</span><span class="n">dir.create</span><span class="p">(</span><span class="n">newdir</span><span class="p">,</span><span class="w"> </span><span class="n">showWarnings</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span><span class="w">
+<p>You probably realized it by now we can view the task as a math function
+<code class="highlighter-rouge">f(N, M) = (the first N primes &gt; M)</code> with input parameters N and M and outputs a sequence of first N primes &gt; M. We can then translate the above recursive description into R code.</p>
 
-</span><span class="c1"># create a new file
-</span><span class="n">file1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">file.path</span><span class="p">(</span><span class="n">newdir</span><span class="p">,</span><span class="w"> </span><span class="s2">"code.R"</span><span class="p">)</span><span class="w">
-</span><span class="n">file.create</span><span class="p">(</span><span class="n">file1</span><span class="p">)</span><span class="w">
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">f</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="w"> </span><span class="n">M</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">N</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1"># base case
+</span><span class="w">                </span><span class="nf">return</span><span class="p">(</span><span class="nf">c</span><span class="p">())</span><span class="w">
+        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1"># non-base case
+</span><span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">is_prime</span><span class="p">(</span><span class="n">M</span><span class="m">+1</span><span class="p">))</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="n">M</span><span class="m">+1</span><span class="p">,</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">N</span><span class="m">-1</span><span class="p">,</span><span class="w"> </span><span class="n">M</span><span class="m">+1</span><span class="p">))</span><span class="w"> 
+                </span><span class="k">else</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="w"> </span><span class="n">M</span><span class="m">+1</span><span class="p">)</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
 
-</span><span class="c1"># creat a new file and fill it with some text
-</span><span class="n">file2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">file.path</span><span class="p">(</span><span class="n">newdir</span><span class="p">,</span><span class="w"> </span><span class="s2">"cat-demo.md"</span><span class="p">)</span><span class="w">
-</span><span class="n">cat</span><span class="p">(</span><span class="s2">"This shows how the cat function works."</span><span class="p">,</span><span class="w"> </span><span class="n">file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">file2</span><span class="p">)</span><span class="w">
+</span><span class="n">is_prime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">1L</span><span class="p">)</span><span class="w"> </span><span class="kc">FALSE</span><span class="w">
+        </span><span class="k">else</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">2L</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nf">all</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">%%</span><span class="w"> </span><span class="m">2L</span><span class="o">:</span><span class="nf">max</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="nf">floor</span><span class="p">(</span><span class="nf">sqrt</span><span class="p">(</span><span class="n">n</span><span class="p">)))</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="m">0</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span></code></pre></figure>
 
-</span><span class="c1"># use append = T to add text to exsiting file
-</span><span class="n">cat</span><span class="p">(</span><span class="s2">"\nEverybody is crazy about deep learning these days!!!"</span><span class="p">,</span><span class="w"> </span><span class="n">file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">file2</span><span class="p">,</span><span class="w"> 
-    </span><span class="n">append</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">T</span><span class="p">)</span><span class="w">
+<p>The function <code class="highlighter-rouge">is_prime()</code> is taken from <a href="https://stackoverflow.com/questions/19767408/prime-number-function-in-r">this stackoverflow answer</a>, you can read the logics behind there. Alternatively, you can implement it using recursion. Consider it as today’s homework. :)</p>
 
-</span><span class="c1"># copy a file
-</span><span class="n">file.copy</span><span class="p">(</span><span class="n">from</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">file2</span><span class="p">,</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">file.path</span><span class="p">(</span><span class="n">newdir</span><span class="p">,</span><span class="w"> </span><span class="s2">"cat-demo-copy.md"</span><span class="p">))</span><span class="w">
-</span><span class="n">list.files</span><span class="p">(</span><span class="n">newdir</span><span class="p">)</span><span class="w">
+<p>Let’s use <code class="highlighter-rouge">f</code> to find the first 3 prime numbers and first 5 primes greater than 100.</p>
 
-</span><span class="c1"># rename a file
-</span><span class="p">(</span><span class="n">copied_file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">file.path</span><span class="p">(</span><span class="n">newdir</span><span class="p">,</span><span class="w"> </span><span class="s2">"cat-demo-copy.md"</span><span class="p">))</span><span class="w">
-</span><span class="n">file.rename</span><span class="p">(</span><span class="n">from</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">copied_file</span><span class="p">,</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">file.path</span><span class="p">(</span><span class="n">newdir</span><span class="p">,</span><span class="w"> </span><span class="s2">"cat-demo-cp.md"</span><span class="p">))</span><span class="w">
-</span><span class="n">list.files</span><span class="p">(</span><span class="n">newdir</span><span class="p">)</span><span class="w">
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">f</span><span class="p">(</span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">)</span></code></pre></figure>
 
-</span><span class="c1"># move a file from one directory to another
-</span><span class="n">file1</span><span class="w">
-</span><span class="n">file.rename</span><span class="p">(</span><span class="n">from</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">file1</span><span class="p">,</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">file.path</span><span class="p">(</span><span class="n">home_path</span><span class="p">,</span><span class="w"> </span><span class="s2">"code.R"</span><span class="p">))</span><span class="w">
-</span><span class="n">list.files</span><span class="p">(</span><span class="n">newdir</span><span class="p">)</span><span class="w">
-</span><span class="n">list.files</span><span class="p">(</span><span class="n">home_path</span><span class="p">)</span><span class="w">
-</span><span class="s2">"code.R"</span><span class="w"> </span><span class="o">%in%</span><span class="w"> </span><span class="n">list.files</span><span class="p">(</span><span class="n">home_path</span><span class="p">)</span><span class="w">
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] 2 3 5</code></pre></figure>
 
-</span><span class="c1"># delete files 
-</span><span class="n">unlink</span><span class="p">(</span><span class="n">file.path</span><span class="p">(</span><span class="n">home_path</span><span class="p">,</span><span class="w"> </span><span class="s2">"code.R"</span><span class="p">))</span><span class="w">
-</span><span class="n">list.files</span><span class="p">(</span><span class="n">home_path</span><span class="p">)</span><span class="w">
-</span><span class="s2">"code.R"</span><span class="w"> </span><span class="o">%in%</span><span class="w"> </span><span class="n">list.files</span><span class="p">(</span><span class="n">home_path</span><span class="p">)</span><span class="w">
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">f</span><span class="p">(</span><span class="m">5</span><span class="p">,</span><span class="w"> </span><span class="m">100</span><span class="p">)</span></code></pre></figure>
 
-</span><span class="c1"># delete directories
-</span><span class="n">list.files</span><span class="p">(</span><span class="n">newdir</span><span class="p">)</span><span class="w">
-</span><span class="n">unlink</span><span class="p">(</span><span class="n">newdir</span><span class="p">,</span><span class="w"> </span><span class="n">recursive</span><span class="o">=</span><span class="nb">T</span><span class="p">)</span><span class="w">
-</span><span class="n">list.files</span><span class="p">(</span><span class="n">newdir</span><span class="p">)</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] 101 103 107 109 113</code></pre></figure>
 
+<p>This article is inspired by an example described in this little <a href="https://panicz.github.io/pamphlet/">pamphlet</a> by Panicz.</p>
 
 		<!-- Begin MailChimp Signup Form -->
 <html>
@@ -355,10 +340,10 @@
     </div><!-- /.entry-wrapper -->
     <nav class="pagination" role="navigation">
       
-        <a href="http://masterr.org/da/on-git-github-and-gitlab/" class="btn" title="On Git, Github and Gitlab">Previous</a>
+        <a href="http://masterr.org/da/feature-engineer-dates/" class="btn" title="How to Feature Engineer Dates">Previous</a>
       
       
-        <a href="http://masterr.org/da/the-more-the-better/" class="btn" title="The More The Better?">Next</a>
+        <a href="http://masterr.org/r/on-recursion-2/" class="btn" title="On Recursion - Part 2">Next</a>
       
     </nav><!-- /.pagination -->
   </article>
