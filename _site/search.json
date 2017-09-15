@@ -1,10 +1,19 @@
 [
 	
 		{
+		  "title"      : "Quote, Unquote and Quasiquote",
+		  "category"   : "",
+      "tags"       : "",
+		  "url"        : "http://localhost:4000/r/quote-n-quasiquote/",
+		  "date"       : "2017-09-15 00:00:00 +0900",
+		  "shortdate"  : "September 15, 2017"
+		} ,
+	
+		{
 		  "title"      : "On Recursion - Part 3",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://masterr.org/r/on-recursion-3/",
+		  "url"        : "http://localhost:4000/r/on-recursion-3/",
 		  "date"       : "2017-07-07 00:00:00 +0900",
 		  "shortdate"  : "July 07, 2017"
 		} ,
@@ -13,7 +22,7 @@
 		  "title"      : "On Recursion - Part 2",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://masterr.org/r/on-recursion-2/",
+		  "url"        : "http://localhost:4000/r/on-recursion-2/",
 		  "date"       : "2017-07-06 00:00:00 +0900",
 		  "shortdate"  : "July 06, 2017"
 		} ,
@@ -22,7 +31,7 @@
 		  "title"      : "On Recursion - Part 1",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://masterr.org/r/on-recursion-1/",
+		  "url"        : "http://localhost:4000/r/on-recursion-1/",
 		  "date"       : "2017-07-05 00:00:00 +0900",
 		  "shortdate"  : "July 05, 2017"
 		} ,
@@ -31,7 +40,7 @@
 		  "title"      : "How to Feature Engineer Dates",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://masterr.org/da/feature-engineer-dates/",
+		  "url"        : "http://localhost:4000/da/feature-engineer-dates/",
 		  "date"       : "2017-03-27 00:00:00 +0900",
 		  "shortdate"  : "March 27, 2017"
 		} ,
@@ -40,7 +49,7 @@
 		  "title"      : "Bulk Download Data from Quandl",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://masterr.org/r/quandl-bulk-download/",
+		  "url"        : "http://localhost:4000/r/quandl-bulk-download/",
 		  "date"       : "2017-03-24 00:00:00 +0900",
 		  "shortdate"  : "March 24, 2017"
 		} ,
@@ -49,7 +58,7 @@
 		  "title"      : "When n &lt; p",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://masterr.org/da/when-n-less-than-p-copy/",
+		  "url"        : "http://localhost:4000/da/when-n-less-than-p-copy/",
 		  "date"       : "2017-03-20 00:00:00 +0900",
 		  "shortdate"  : "March 20, 2017"
 		} ,
@@ -58,7 +67,7 @@
 		  "title"      : "Rebind",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://masterr.org/r/rebind/",
+		  "url"        : "http://localhost:4000/r/rebind/",
 		  "date"       : "2017-03-17 00:00:00 +0900",
 		  "shortdate"  : "March 17, 2017"
 		} ,
@@ -67,7 +76,7 @@
 		  "title"      : "Resampling",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://masterr.org/da/resampling/",
+		  "url"        : "http://localhost:4000/da/resampling/",
 		  "date"       : "2017-03-13 00:00:00 +0900",
 		  "shortdate"  : "March 13, 2017"
 		} ,
@@ -76,7 +85,7 @@
 		  "title"      : "Moving Average Models Demo",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://masterr.org/r/ma-models-demo/",
+		  "url"        : "http://localhost:4000/r/ma-models-demo/",
 		  "date"       : "2017-03-10 00:00:00 +0900",
 		  "shortdate"  : "March 10, 2017"
 		} ,
@@ -85,7 +94,7 @@
 		  "title"      : "Data Preprocessing and Linear Regression",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://masterr.org/da/data-preprocessing-and-linear-regression/",
+		  "url"        : "http://localhost:4000/da/data-preprocessing-and-linear-regression/",
 		  "date"       : "2017-03-06 00:00:00 +0900",
 		  "shortdate"  : "March 06, 2017"
 		} ,
@@ -94,7 +103,7 @@
 		  "title"      : "The on.exit() Function",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://masterr.org/r/on-exit/",
+		  "url"        : "http://localhost:4000/r/on-exit/",
 		  "date"       : "2017-03-03 00:00:00 +0900",
 		  "shortdate"  : "March 03, 2017"
 		} ,
@@ -103,7 +112,7 @@
 		  "title"      : "Root Mean Squared Error (RMSE)",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://masterr.org/da/rmse/",
+		  "url"        : "http://localhost:4000/da/rmse/",
 		  "date"       : "2017-02-27 00:00:00 +0900",
 		  "shortdate"  : "February 27, 2017"
 		} ,
@@ -112,7 +121,7 @@
 		  "title"      : "Read Zipped Files into R",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://masterr.org/r/read-zipped-files-into-R/",
+		  "url"        : "http://localhost:4000/r/read-zipped-files-into-R/",
 		  "date"       : "2017-02-24 00:00:00 +0900",
 		  "shortdate"  : "February 24, 2017"
 		} ,
@@ -121,7 +130,7 @@
 		  "title"      : "Data Characteristics",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://masterr.org/da/data-characteristics/",
+		  "url"        : "http://localhost:4000/da/data-characteristics/",
 		  "date"       : "2017-02-20 00:00:00 +0900",
 		  "shortdate"  : "February 20, 2017"
 		} ,
@@ -130,7 +139,7 @@
 		  "title"      : "R and MySQL",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://masterr.org/r/R-and-MySQL/",
+		  "url"        : "http://localhost:4000/r/R-and-MySQL/",
 		  "date"       : "2017-02-18 00:00:00 +0900",
 		  "shortdate"  : "February 18, 2017"
 		} ,
@@ -139,7 +148,7 @@
 		  "title"      : "Data Preprocessing and Xgboost",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://masterr.org/da/data-preprocessing-and-xgboost/",
+		  "url"        : "http://localhost:4000/da/data-preprocessing-and-xgboost/",
 		  "date"       : "2017-02-13 00:00:00 +0900",
 		  "shortdate"  : "February 13, 2017"
 		} ,
@@ -148,7 +157,7 @@
 		  "title"      : "Tips for Caret",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://masterr.org/r/tips-for-caret/",
+		  "url"        : "http://localhost:4000/r/tips-for-caret/",
 		  "date"       : "2017-02-09 00:00:00 +0900",
 		  "shortdate"  : "February 09, 2017"
 		} ,
@@ -157,7 +166,7 @@
 		  "title"      : "The Response Variable",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://masterr.org/da/the-response-variable/",
+		  "url"        : "http://localhost:4000/da/the-response-variable/",
 		  "date"       : "2017-02-06 00:00:00 +0900",
 		  "shortdate"  : "February 06, 2017"
 		} ,
@@ -166,7 +175,7 @@
 		  "title"      : "R Parallel and Zombie Processes",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://masterr.org/r/R-parallel-and-zombie-processes/",
+		  "url"        : "http://localhost:4000/r/R-parallel-and-zombie-processes/",
 		  "date"       : "2017-02-03 00:00:00 +0900",
 		  "shortdate"  : "February 03, 2017"
 		} ,
@@ -175,7 +184,7 @@
 		  "title"      : "Prediction vs. Interpretability",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://masterr.org/da/prediction-vs-interpretability/",
+		  "url"        : "http://localhost:4000/da/prediction-vs-interpretability/",
 		  "date"       : "2017-01-30 00:00:00 +0900",
 		  "shortdate"  : "January 30, 2017"
 		} ,
@@ -184,7 +193,7 @@
 		  "title"      : "Use Grep to Drop Columns",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://masterr.org/r/use-grep-to-drop-columns/",
+		  "url"        : "http://localhost:4000/r/use-grep-to-drop-columns/",
 		  "date"       : "2017-01-27 00:00:00 +0900",
 		  "shortdate"  : "January 27, 2017"
 		} ,
@@ -193,7 +202,7 @@
 		  "title"      : "Why Models Fail",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://masterr.org/da/why-models-fail/",
+		  "url"        : "http://localhost:4000/da/why-models-fail/",
 		  "date"       : "2017-01-23 00:00:00 +0900",
 		  "shortdate"  : "January 23, 2017"
 		} ,
@@ -202,7 +211,7 @@
 		  "title"      : "Install XGBoost on Mac",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://masterr.org/r/install-xgboost-on-mac/",
+		  "url"        : "http://localhost:4000/r/install-xgboost-on-mac/",
 		  "date"       : "2017-01-18 00:00:00 +0900",
 		  "shortdate"  : "January 18, 2017"
 		} ,
@@ -211,7 +220,7 @@
 		  "title"      : "Sources of Noise That Cause Poor Model Performance",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://masterr.org/da/sources-of-noise/",
+		  "url"        : "http://localhost:4000/da/sources-of-noise/",
 		  "date"       : "2017-01-16 00:00:00 +0900",
 		  "shortdate"  : "January 16, 2017"
 		} ,
@@ -220,7 +229,7 @@
 		  "title"      : "Make Flowchart in R",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://masterr.org/r/make-flowchart-in-r/",
+		  "url"        : "http://localhost:4000/r/make-flowchart-in-r/",
 		  "date"       : "2017-01-13 00:00:00 +0900",
 		  "shortdate"  : "January 13, 2017"
 		} ,
@@ -229,7 +238,7 @@
 		  "title"      : "The More The Better?",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://masterr.org/da/the-more-the-better/",
+		  "url"        : "http://localhost:4000/da/the-more-the-better/",
 		  "date"       : "2017-01-09 00:00:00 +0900",
 		  "shortdate"  : "January 09, 2017"
 		} ,
@@ -238,7 +247,7 @@
 		  "title"      : "File and Dir Manipulations in R",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://masterr.org/r/file-dir-manipulations-in-r/",
+		  "url"        : "http://localhost:4000/r/file-dir-manipulations-in-r/",
 		  "date"       : "2017-01-06 00:00:00 +0900",
 		  "shortdate"  : "January 06, 2017"
 		} ,
@@ -247,7 +256,7 @@
 		  "title"      : "On Git, Github and Gitlab",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://masterr.org/da/on-git-github-and-gitlab/",
+		  "url"        : "http://localhost:4000/da/on-git-github-and-gitlab/",
 		  "date"       : "2017-01-02 00:00:00 +0900",
 		  "shortdate"  : "January 02, 2017"
 		} ,
@@ -256,7 +265,7 @@
 		  "title"      : "Introducing ezplot: An Easy Way to Make Beautiful Charts for Real World Clients",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://masterr.org/r/introducing-ezplot/",
+		  "url"        : "http://localhost:4000/r/introducing-ezplot/",
 		  "date"       : "2016-04-04 00:00:00 +0900",
 		  "shortdate"  : "April 04, 2016"
 		} ,
@@ -265,7 +274,7 @@
 		  "title"      : "Examples of Predicate Functionals",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://masterr.org/r/examples-of-predicate-functionals/",
+		  "url"        : "http://localhost:4000/r/examples-of-predicate-functionals/",
 		  "date"       : "2016-03-19 00:00:00 +0900",
 		  "shortdate"  : "March 19, 2016"
 		} ,
@@ -274,7 +283,7 @@
 		  "title"      : "A Simple R Function for Exponential Smoothing",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://masterr.org/r/exponential-smoothing-function/",
+		  "url"        : "http://localhost:4000/r/exponential-smoothing-function/",
 		  "date"       : "2016-03-05 00:00:00 +0900",
 		  "shortdate"  : "March 05, 2016"
 		} ,
@@ -283,7 +292,7 @@
 		  "title"      : "How to read in date variables as Date",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://masterr.org/r/how-to-read-in-date-variables-as-Date/",
+		  "url"        : "http://localhost:4000/r/how-to-read-in-date-variables-as-Date/",
 		  "date"       : "2016-02-23 00:00:00 +0900",
 		  "shortdate"  : "February 23, 2016"
 		} ,
@@ -292,7 +301,7 @@
 		  "title"      : "How to use functions that return functions to clean data",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://masterr.org/r/how-to-use-functions-that-return-functions-to-clean-data/",
+		  "url"        : "http://localhost:4000/r/how-to-use-functions-that-return-functions-to-clean-data/",
 		  "date"       : "2015-09-05 00:00:00 +0900",
 		  "shortdate"  : "September 05, 2015"
 		} ,
@@ -301,7 +310,7 @@
 		  "title"      : "Functions that eat functions",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://masterr.org/r/functions-that-eat-functions/",
+		  "url"        : "http://localhost:4000/r/functions-that-eat-functions/",
 		  "date"       : "2015-08-29 00:00:00 +0900",
 		  "shortdate"  : "August 29, 2015"
 		} ,
@@ -310,7 +319,7 @@
 		  "title"      : "Functions that return a list of functions and lapply",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://masterr.org/r/functions-that-return-a-list-of-functions-and-lapply/",
+		  "url"        : "http://localhost:4000/r/functions-that-return-a-list-of-functions-and-lapply/",
 		  "date"       : "2015-08-24 00:00:00 +0900",
 		  "shortdate"  : "August 24, 2015"
 		} ,
@@ -319,7 +328,7 @@
 		  "title"      : "How to easily make stacked area chart with ezplot - Part 9",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://masterr.org/r/how-to-easily-make-stacked-area-chart-with-ezplot-part9/",
+		  "url"        : "http://localhost:4000/r/how-to-easily-make-stacked-area-chart-with-ezplot-part9/",
 		  "date"       : "2015-08-09 00:00:00 +0900",
 		  "shortdate"  : "August 09, 2015"
 		} ,
@@ -328,7 +337,7 @@
 		  "title"      : "How to easily make beautiful heatmaps with ezplot - Part 8",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://masterr.org/r/how-to-easily-make-beautiful-heatmaps-with-ezplot-part8/",
+		  "url"        : "http://localhost:4000/r/how-to-easily-make-beautiful-heatmaps-with-ezplot-part8/",
 		  "date"       : "2015-07-30 00:00:00 +0900",
 		  "shortdate"  : "July 30, 2015"
 		} ,
@@ -337,7 +346,7 @@
 		  "title"      : "How to easily make ggplot2 type of scatterplot, ezplot - Part 7",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://masterr.org/r/how-to-easily-make-ggplot2-scatterplot-ezplot-part7/",
+		  "url"        : "http://localhost:4000/r/how-to-easily-make-ggplot2-scatterplot-ezplot-part7/",
 		  "date"       : "2015-07-27 00:00:00 +0900",
 		  "shortdate"  : "July 27, 2015"
 		} ,
@@ -346,7 +355,7 @@
 		  "title"      : "How to easily make ggplot2 type of time series plot, ezplot - Part 6",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://masterr.org/r/how-to-easily-make-ggplot2-timeseries-plot-ezplot-part6/",
+		  "url"        : "http://localhost:4000/r/how-to-easily-make-ggplot2-timeseries-plot-ezplot-part6/",
 		  "date"       : "2015-06-26 00:00:00 +0900",
 		  "shortdate"  : "June 26, 2015"
 		} ,
@@ -355,7 +364,7 @@
 		  "title"      : "How to visualize the distribution of a continuous variable, ezplot - Part 5",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://masterr.org/r/how-to-visualize-the-distribution-of-a-continuous-variable-ezplot-part5/",
+		  "url"        : "http://localhost:4000/r/how-to-visualize-the-distribution-of-a-continuous-variable-ezplot-part5/",
 		  "date"       : "2015-06-07 00:00:00 +0900",
 		  "shortdate"  : "June 07, 2015"
 		} ,
@@ -364,7 +373,7 @@
 		  "title"      : "A Super Easy Way to Make Ggplot2 Bar Charts with Labels, ezplot - Part 4",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://masterr.org/r/a-super-easy-way-to-make-ggplot2-barcharts-with-labels-ezplot-part4/",
+		  "url"        : "http://localhost:4000/r/a-super-easy-way-to-make-ggplot2-barcharts-with-labels-ezplot-part4/",
 		  "date"       : "2015-05-22 00:00:00 +0900",
 		  "shortdate"  : "May 22, 2015"
 		} ,
@@ -373,7 +382,7 @@
 		  "title"      : "An Easy Way to Make Ggplot2 Histograms and Density Plots, ezplot - Part 3",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://masterr.org/r/an-easy-way-to-make-ggplot2-histograms-ezplot-part3/",
+		  "url"        : "http://localhost:4000/r/an-easy-way-to-make-ggplot2-histograms-ezplot-part3/",
 		  "date"       : "2015-05-07 00:00:00 +0900",
 		  "shortdate"  : "May 07, 2015"
 		} ,
@@ -382,7 +391,7 @@
 		  "title"      : "An Easy Way to Make Ggplot2 Boxplots, ezplot - Part 2",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://masterr.org/r/an-easy-way-to-make-ggplot2-boxplots-ezplot-part2/",
+		  "url"        : "http://localhost:4000/r/an-easy-way-to-make-ggplot2-boxplots-ezplot-part2/",
 		  "date"       : "2015-04-26 00:00:00 +0900",
 		  "shortdate"  : "April 26, 2015"
 		} ,
@@ -391,7 +400,7 @@
 		  "title"      : "An Easy Way to Make Ggplot2 Plots, ezplot - Part 1",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://masterr.org/r/an-easy-way-to-make-ggplot2-plots-ezplot-part1/",
+		  "url"        : "http://localhost:4000/r/an-easy-way-to-make-ggplot2-plots-ezplot-part1/",
 		  "date"       : "2015-04-21 00:00:00 +0900",
 		  "shortdate"  : "April 21, 2015"
 		} ,
@@ -400,7 +409,7 @@
 		  "title"      : "How to Scrape Japanese Text Using the rvest Package",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://masterr.org/r/how-to-scrape-Japanese-text-using-rvest/",
+		  "url"        : "http://localhost:4000/r/how-to-scrape-Japanese-text-using-rvest/",
 		  "date"       : "2015-01-07 00:00:00 +0900",
 		  "shortdate"  : "January 07, 2015"
 		} ,
@@ -409,7 +418,7 @@
 		  "title"      : "The Switch Operator in R",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://masterr.org/r/the-switch-operator-in-r/",
+		  "url"        : "http://localhost:4000/r/the-switch-operator-in-r/",
 		  "date"       : "2014-11-21 00:00:00 +0900",
 		  "shortdate"  : "November 21, 2014"
 		} ,
@@ -418,7 +427,7 @@
 		  "title"      : "Calculate Tangency Portfolios Using R",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://masterr.org/r/calculate-tangency-portfolios-using-r/",
+		  "url"        : "http://localhost:4000/r/calculate-tangency-portfolios-using-r/",
 		  "date"       : "2014-11-20 00:00:00 +0900",
 		  "shortdate"  : "November 20, 2014"
 		} ,
@@ -427,7 +436,7 @@
 		  "title"      : "Calculate Efficient Portfolios Using R",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://masterr.org/r/calculate-efficient-portfolios-using-r/",
+		  "url"        : "http://localhost:4000/r/calculate-efficient-portfolios-using-r/",
 		  "date"       : "2014-11-19 00:00:00 +0900",
 		  "shortdate"  : "November 19, 2014"
 		} ,
@@ -436,7 +445,7 @@
 		  "title"      : "Calculate Global Minimum Variance Portfolio Using R",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://masterr.org/r/calculate-global-minimum-variance-portfolio-using-r/",
+		  "url"        : "http://localhost:4000/r/calculate-global-minimum-variance-portfolio-using-r/",
 		  "date"       : "2014-11-06 00:00:00 +0900",
 		  "shortdate"  : "November 06, 2014"
 		} ,
@@ -445,7 +454,7 @@
 		  "title"      : "Analyze Stock Price Data Using R, Part3",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://masterr.org/r/analyze-stock-price-data-using-r-part3/",
+		  "url"        : "http://localhost:4000/r/analyze-stock-price-data-using-r-part3/",
 		  "date"       : "2014-10-30 00:00:00 +0900",
 		  "shortdate"  : "October 30, 2014"
 		} ,
@@ -454,7 +463,7 @@
 		  "title"      : "An Example of the Bootstrap Method",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://masterr.org/r/an-example-of-the-bootstrap-method/",
+		  "url"        : "http://localhost:4000/r/an-example-of-the-bootstrap-method/",
 		  "date"       : "2014-10-29 00:00:00 +0900",
 		  "shortdate"  : "October 29, 2014"
 		} ,
@@ -463,7 +472,7 @@
 		  "title"      : "Handy R Functions for Summary Statistics",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://masterr.org/r/handy-r-functions-for-summary-statistics/",
+		  "url"        : "http://localhost:4000/r/handy-r-functions-for-summary-statistics/",
 		  "date"       : "2014-10-22 00:00:00 +0900",
 		  "shortdate"  : "October 22, 2014"
 		} ,
@@ -472,7 +481,7 @@
 		  "title"      : "Bias and Precision",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://masterr.org/da/bias-and-precision/",
+		  "url"        : "http://localhost:4000/da/bias-and-precision/",
 		  "date"       : "2014-10-20 00:00:00 +0900",
 		  "shortdate"  : "October 20, 2014"
 		} ,
@@ -481,7 +490,7 @@
 		  "title"      : "Analyze Stock Price Data Using R, Part2",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://masterr.org/r/analyze-stock-price-data-using-r-part2/",
+		  "url"        : "http://localhost:4000/r/analyze-stock-price-data-using-r-part2/",
 		  "date"       : "2014-10-19 00:00:00 +0900",
 		  "shortdate"  : "October 19, 2014"
 		} ,
@@ -490,7 +499,7 @@
 		  "title"      : "Analyze Stock Price Data Using R, Part1",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://masterr.org/r/analyze-stock-price-data-using-r-part1/",
+		  "url"        : "http://localhost:4000/r/analyze-stock-price-data-using-r-part1/",
 		  "date"       : "2014-10-17 00:00:00 +0900",
 		  "shortdate"  : "October 17, 2014"
 		} ,
@@ -499,7 +508,7 @@
 		  "title"      : "Download Stock Price Data Using R",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://masterr.org/r/download-stock-price-data-using-r/",
+		  "url"        : "http://localhost:4000/r/download-stock-price-data-using-r/",
 		  "date"       : "2014-10-16 00:00:00 +0900",
 		  "shortdate"  : "October 16, 2014"
 		} ,
@@ -508,7 +517,7 @@
 		  "title"      : "Replacement Functions in R",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://masterr.org/r/replacement-functions-in-r/",
+		  "url"        : "http://localhost:4000/r/replacement-functions-in-r/",
 		  "date"       : "2014-10-15 00:00:00 +0900",
 		  "shortdate"  : "October 15, 2014"
 		} ,
@@ -517,7 +526,7 @@
 		  "title"      : "How to Calculate Sknewness and Kurtosis in R",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://masterr.org/r/sknewness-and-kurtosis-examples/",
+		  "url"        : "http://localhost:4000/r/sknewness-and-kurtosis-examples/",
 		  "date"       : "2014-10-14 00:00:00 +0900",
 		  "shortdate"  : "October 14, 2014"
 		} ,
@@ -526,7 +535,7 @@
 		  "title"      : "Sknewness and Kurtosis",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://masterr.org/da/skewness-and-kurtosis/",
+		  "url"        : "http://localhost:4000/da/skewness-and-kurtosis/",
 		  "date"       : "2014-10-13 00:00:00 +0900",
 		  "shortdate"  : "October 13, 2014"
 		} ,
@@ -535,7 +544,7 @@
 		  "title"      : "Which R Base Generic Has the Most Number of Methods",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://masterr.org/r/which-r-base-generic-has-the-most-number-of-methods/",
+		  "url"        : "http://localhost:4000/r/which-r-base-generic-has-the-most-number-of-methods/",
 		  "date"       : "2014-10-12 00:00:00 +0900",
 		  "shortdate"  : "October 12, 2014"
 		} ,
@@ -544,7 +553,7 @@
 		  "title"      : "How to View Source Code in R",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://masterr.org/r/how-to-view-source-code-in-r/",
+		  "url"        : "http://localhost:4000/r/how-to-view-source-code-in-r/",
 		  "date"       : "2014-10-09 00:00:00 +0900",
 		  "shortdate"  : "October 09, 2014"
 		} ,
@@ -553,7 +562,7 @@
 		  "title"      : "Functions That Return Functions Part 2",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://masterr.org/r/functions-that-return-functions-part-2/",
+		  "url"        : "http://localhost:4000/r/functions-that-return-functions-part-2/",
 		  "date"       : "2014-10-07 00:00:00 +0900",
 		  "shortdate"  : "October 07, 2014"
 		} ,
@@ -562,7 +571,7 @@
 		  "title"      : "When Does A Flexible Model Beat An Inflexible One and Vice Versa",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://masterr.org/da/when-does-a-flexible-model-beat-an-inflexible-one-and-vice-versa/",
+		  "url"        : "http://localhost:4000/da/when-does-a-flexible-model-beat-an-inflexible-one-and-vice-versa/",
 		  "date"       : "2014-10-06 00:00:00 +0900",
 		  "shortdate"  : "October 06, 2014"
 		} ,
@@ -571,7 +580,7 @@
 		  "title"      : "The Magic of Substitute and Deparse",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://masterr.org/r/the-magic-of-substitute-and-deparse/",
+		  "url"        : "http://localhost:4000/r/the-magic-of-substitute-and-deparse/",
 		  "date"       : "2014-10-05 00:00:00 +0900",
 		  "shortdate"  : "October 05, 2014"
 		} ,
@@ -580,7 +589,7 @@
 		  "title"      : "The setwd Function in R",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://masterr.org/r/the-setwd-function-in-r/",
+		  "url"        : "http://localhost:4000/r/the-setwd-function-in-r/",
 		  "date"       : "2014-10-03 00:00:00 +0900",
 		  "shortdate"  : "October 03, 2014"
 		} ,
@@ -589,7 +598,7 @@
 		  "title"      : "Interpretability vs. Flexibility of Different Models",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://masterr.org/cartoon/interpretability-vs-flexibility-of-different-models/",
+		  "url"        : "http://localhost:4000/cartoon/interpretability-vs-flexibility-of-different-models/",
 		  "date"       : "2014-10-01 14:19:36 -0400",
 		  "shortdate"  : "October 01, 2014"
 		} ,
@@ -598,7 +607,7 @@
 		  "title"      : "How to Quickly Subset List Elements in R",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://masterr.org/r/how-to-quickly-subset-list-elements-in-r/",
+		  "url"        : "http://localhost:4000/r/how-to-quickly-subset-list-elements-in-r/",
 		  "date"       : "2014-10-02 00:00:00 +0900",
 		  "shortdate"  : "October 02, 2014"
 		} ,
@@ -607,7 +616,7 @@
 		  "title"      : "Correlation Only Measures Linear Relationship",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://masterr.org/cartoon/correlation-only-measures-linear-relationship/",
+		  "url"        : "http://localhost:4000/cartoon/correlation-only-measures-linear-relationship/",
 		  "date"       : "2014-09-30 15:22:18 -0400",
 		  "shortdate"  : "September 30, 2014"
 		} ,
@@ -616,7 +625,7 @@
 		  "title"      : "The Unknown Unknowns",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://masterr.org/cartoon/the-unknown-unknowns/",
+		  "url"        : "http://localhost:4000/cartoon/the-unknown-unknowns/",
 		  "date"       : "2014-09-28 15:59:11 -0400",
 		  "shortdate"  : "September 28, 2014"
 		} ,
@@ -625,7 +634,7 @@
 		  "title"      : "Simple Random Sampling vs. Systematic Sampling",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://masterr.org/da/simple-random-sampling-vs-systematic-sampling/",
+		  "url"        : "http://localhost:4000/da/simple-random-sampling-vs-systematic-sampling/",
 		  "date"       : "2014-09-29 00:00:00 +0900",
 		  "shortdate"  : "September 29, 2014"
 		} ,
@@ -634,7 +643,7 @@
 		  "title"      : "The Quest for Exponential Growth",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://masterr.org/cartoon/the-quest-for-exponential-growth/",
+		  "url"        : "http://localhost:4000/cartoon/the-quest-for-exponential-growth/",
 		  "date"       : "2014-09-26 12:37:18 -0400",
 		  "shortdate"  : "September 26, 2014"
 		} ,
@@ -643,7 +652,7 @@
 		  "title"      : "How to Read Excel Files into R",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://masterr.org/r/how-to-read-excel-files-into-r/",
+		  "url"        : "http://localhost:4000/r/how-to-read-excel-files-into-r/",
 		  "date"       : "2014-09-25 00:00:00 +0900",
 		  "shortdate"  : "September 25, 2014"
 		} ,
@@ -652,7 +661,7 @@
 		  "title"      : "On R Code Style",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://masterr.org/r/on-r-code-style/",
+		  "url"        : "http://localhost:4000/r/on-r-code-style/",
 		  "date"       : "2014-09-24 00:00:00 +0900",
 		  "shortdate"  : "September 24, 2014"
 		} ,
@@ -661,7 +670,7 @@
 		  "title"      : "When Does Data Analysis Become Worthless",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://masterr.org/da/when-does-data-analysis-become-worthless/",
+		  "url"        : "http://localhost:4000/da/when-does-data-analysis-become-worthless/",
 		  "date"       : "2014-09-22 00:00:00 +0900",
 		  "shortdate"  : "September 22, 2014"
 		} ,
@@ -670,7 +679,7 @@
 		  "title"      : "How to Unsort in R",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://masterr.org/r/how-to-unsort-in-r/",
+		  "url"        : "http://localhost:4000/r/how-to-unsort-in-r/",
 		  "date"       : "2014-09-21 00:00:00 +0900",
 		  "shortdate"  : "September 21, 2014"
 		} ,
@@ -679,7 +688,7 @@
 		  "title"      : "Honest Arrogance or Hypocritical Humility",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://masterr.org/cartoon/honest-arrogance-or-hypocritical-humility/",
+		  "url"        : "http://localhost:4000/cartoon/honest-arrogance-or-hypocritical-humility/",
 		  "date"       : "2014-09-19 13:45:02 -0400",
 		  "shortdate"  : "September 19, 2014"
 		} ,
@@ -688,7 +697,7 @@
 		  "title"      : "How to Correctly Load a R Package",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://masterr.org/r/how-to-correctly-load-a-r-package/",
+		  "url"        : "http://localhost:4000/r/how-to-correctly-load-a-r-package/",
 		  "date"       : "2014-09-10 00:00:00 +0900",
 		  "shortdate"  : "September 10, 2014"
 		} ,
@@ -697,7 +706,7 @@
 		  "title"      : "How to Make Faceted Ordered Bar Charts in R",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://masterr.org/r/how-to-make-faceted-ordered-bar-charts-in-r/",
+		  "url"        : "http://localhost:4000/r/how-to-make-faceted-ordered-bar-charts-in-r/",
 		  "date"       : "2014-09-09 00:00:00 +0900",
 		  "shortdate"  : "September 09, 2014"
 		} ,
@@ -706,7 +715,7 @@
 		  "title"      : "Correlation",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://masterr.org/da/correlation/",
+		  "url"        : "http://localhost:4000/da/correlation/",
 		  "date"       : "2014-09-08 00:00:00 +0900",
 		  "shortdate"  : "September 08, 2014"
 		} ,
@@ -715,7 +724,7 @@
 		  "title"      : "How to Write Infix Functions in R",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://masterr.org/r/how-to-write-infix-functions-in-r/",
+		  "url"        : "http://localhost:4000/r/how-to-write-infix-functions-in-r/",
 		  "date"       : "2014-09-05 00:00:00 +0900",
 		  "shortdate"  : "September 05, 2014"
 		} ,
@@ -724,7 +733,7 @@
 		  "title"      : "How to Work with Factors in R",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://masterr.org/r/how-to-work-with-factors-in-r/",
+		  "url"        : "http://localhost:4000/r/how-to-work-with-factors-in-r/",
 		  "date"       : "2014-09-03 00:00:00 +0900",
 		  "shortdate"  : "September 03, 2014"
 		} ,
@@ -733,7 +742,7 @@
 		  "title"      : "How to Convert Millisecond to Date in R",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://masterr.org/r/how-to-convert-millisecond-to-date-in-r/",
+		  "url"        : "http://localhost:4000/r/how-to-convert-millisecond-to-date-in-r/",
 		  "date"       : "2014-09-02 00:00:00 +0900",
 		  "shortdate"  : "September 02, 2014"
 		} ,
@@ -742,7 +751,7 @@
 		  "title"      : "How to Find Consecutive Repeats in R",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://masterr.org/r/how-to-find-consecutive-repeats-in-r/",
+		  "url"        : "http://localhost:4000/r/how-to-find-consecutive-repeats-in-r/",
 		  "date"       : "2014-08-31 00:00:00 +0900",
 		  "shortdate"  : "August 31, 2014"
 		} ,
@@ -751,7 +760,7 @@
 		  "title"      : "The stringr Package",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://masterr.org/r/the-stringr-package/",
+		  "url"        : "http://localhost:4000/r/the-stringr-package/",
 		  "date"       : "2014-08-29 00:00:00 +0900",
 		  "shortdate"  : "August 29, 2014"
 		} ,
@@ -760,7 +769,7 @@
 		  "title"      : "How to Cache a Matrix Inversion in R",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://masterr.org/r/how-to-cache-a-matrix-inversion-in-r/",
+		  "url"        : "http://localhost:4000/r/how-to-cache-a-matrix-inversion-in-r/",
 		  "date"       : "2014-08-28 00:00:00 +0900",
 		  "shortdate"  : "August 28, 2014"
 		} ,
@@ -769,7 +778,7 @@
 		  "title"      : "How to Work with Files in R and Improve Reproducibility",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://masterr.org/r/how-to-work-with-files-in-r-and-improve-reproducibility/",
+		  "url"        : "http://localhost:4000/r/how-to-work-with-files-in-r-and-improve-reproducibility/",
 		  "date"       : "2014-08-27 00:00:00 +0900",
 		  "shortdate"  : "August 27, 2014"
 		} ,
@@ -778,7 +787,7 @@
 		  "title"      : "How to Handle Large Datasets in R - Part 2",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://masterr.org/r/how-to-handle-large-datasets-in-r-part-2/",
+		  "url"        : "http://localhost:4000/r/how-to-handle-large-datasets-in-r-part-2/",
 		  "date"       : "2014-08-26 00:00:00 +0900",
 		  "shortdate"  : "August 26, 2014"
 		} ,
@@ -787,7 +796,7 @@
 		  "title"      : "Functions that Return Functions",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://masterr.org/r/functions-that-return-functions/",
+		  "url"        : "http://localhost:4000/r/functions-that-return-functions/",
 		  "date"       : "2014-08-24 00:00:00 +0900",
 		  "shortdate"  : "August 24, 2014"
 		} ,
@@ -796,7 +805,7 @@
 		  "title"      : "How to Easily Sort A Data Frame",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://masterr.org/r/how-to-easily-sort-a-data-frame/",
+		  "url"        : "http://localhost:4000/r/how-to-easily-sort-a-data-frame/",
 		  "date"       : "2014-08-22 00:00:00 +0900",
 		  "shortdate"  : "August 22, 2014"
 		} ,
@@ -805,7 +814,7 @@
 		  "title"      : "How to Convert Strings to Dates in R",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://masterr.org/r/how-to-convert-strings-to-dates-in-r/",
+		  "url"        : "http://localhost:4000/r/how-to-convert-strings-to-dates-in-r/",
 		  "date"       : "2014-08-21 00:00:00 +0900",
 		  "shortdate"  : "August 21, 2014"
 		} ,
@@ -814,7 +823,7 @@
 		  "title"      : "How to Handle Large Datasets in R - Part 1",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://masterr.org/r/how-to-handle-large-datasets-in-r-part-1/",
+		  "url"        : "http://localhost:4000/r/how-to-handle-large-datasets-in-r-part-1/",
 		  "date"       : "2014-08-20 00:00:00 +0900",
 		  "shortdate"  : "August 20, 2014"
 		} ,
@@ -823,7 +832,7 @@
 		  "title"      : "How to Use the Paste and Outer Functions in R",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://masterr.org/r/how-to-use-the-paste-and-outer-functions-in-r/",
+		  "url"        : "http://localhost:4000/r/how-to-use-the-paste-and-outer-functions-in-r/",
 		  "date"       : "2014-08-19 00:00:00 +0900",
 		  "shortdate"  : "August 19, 2014"
 		} ,
@@ -832,7 +841,7 @@
 		  "title"      : "7 Things You Should Know About Data Cleaning",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://masterr.org/da/7-things-you-should-know-about-data-cleaning/",
+		  "url"        : "http://localhost:4000/da/7-things-you-should-know-about-data-cleaning/",
 		  "date"       : "2014-08-18 00:00:00 +0900",
 		  "shortdate"  : "August 18, 2014"
 		} ,
@@ -841,7 +850,7 @@
 		  "title"      : "How to Plot Pretty Histograms using R Base Graphing System",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://masterr.org/r/how-to-plot-pretty-histograms-using-r-base-graphing-system/",
+		  "url"        : "http://localhost:4000/r/how-to-plot-pretty-histograms-using-r-base-graphing-system/",
 		  "date"       : "2014-08-17 00:00:00 +0900",
 		  "shortdate"  : "August 17, 2014"
 		} ,
@@ -850,7 +859,7 @@
 		  "title"      : "How to Install Quantstrat",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://masterr.org/r/how-to-install-quantstrat/",
+		  "url"        : "http://localhost:4000/r/how-to-install-quantstrat/",
 		  "date"       : "2014-08-15 00:00:00 +0900",
 		  "shortdate"  : "August 15, 2014"
 		} ,
@@ -859,7 +868,7 @@
 		  "title"      : "Exponential Growth of the US Real GDP from 1790 to 2012",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://masterr.org/r/exponential-growth-of-the-us-real-gdp-from-1790-to-2012/",
+		  "url"        : "http://localhost:4000/r/exponential-growth-of-the-us-real-gdp-from-1790-to-2012/",
 		  "date"       : "2014-08-13 00:00:00 +0900",
 		  "shortdate"  : "August 13, 2014"
 		} ,
@@ -868,7 +877,7 @@
 		  "title"      : "Relative Frequency or Probability",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://masterr.org/da/relative-frequency-or-probability/",
+		  "url"        : "http://localhost:4000/da/relative-frequency-or-probability/",
 		  "date"       : "2014-08-11 00:00:00 +0900",
 		  "shortdate"  : "August 11, 2014"
 		} ,
@@ -877,7 +886,7 @@
 		  "title"      : "Reservoir Sampling and Algorithm R",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://masterr.org/da/reservoir-sampling-and-algorithm-r/",
+		  "url"        : "http://localhost:4000/da/reservoir-sampling-and-algorithm-r/",
 		  "date"       : "2014-08-04 00:00:00 +0900",
 		  "shortdate"  : "August 04, 2014"
 		} ,
@@ -886,7 +895,7 @@
 		  "title"      : "Sampling",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://masterr.org/da/sampling/",
+		  "url"        : "http://localhost:4000/da/sampling/",
 		  "date"       : "2014-07-28 00:00:00 +0900",
 		  "shortdate"  : "July 28, 2014"
 		} ,
@@ -895,7 +904,7 @@
 		  "title"      : "What is Data Analysis?",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://masterr.org/da/what-is-data-analysis/",
+		  "url"        : "http://localhost:4000/da/what-is-data-analysis/",
 		  "date"       : "2014-07-21 00:00:00 +0900",
 		  "shortdate"  : "July 21, 2014"
 		} 

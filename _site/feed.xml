@@ -2,26 +2,141 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
 <title type="text">Become Great at R</title>
 <generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
-<link rel="self" type="application/atom+xml" href="http://masterr.org/feed.xml" />
-<link rel="alternate" type="text/html" href="http://masterr.org" />
-<updated>2017-09-11T20:28:01+09:00</updated>
-<id>http://masterr.org/</id>
+<link rel="self" type="application/atom+xml" href="http://localhost:4000/feed.xml" />
+<link rel="alternate" type="text/html" href="http://localhost:4000" />
+<updated>2017-09-15T16:44:50+09:00</updated>
+<id>http://localhost:4000/</id>
 <author>
   <name>Guangming Lang</name>
-  <uri>http://masterr.org/</uri>
+  <uri>http://localhost:4000/</uri>
   <email>news@masterr.com</email>
 </author>
 
 
 <entry>
+  <title type="html"><![CDATA[Quote, Unquote and Quasiquote]]></title>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/r/quote-n-quasiquote/" />
+  <id>http://localhost:4000/r/quote-n-quasiquote</id>
+  <published>2017-09-15T00:00:00+09:00</published>
+  <updated>2017-09-15T00:00:00+09:00</updated>
+  <author>
+    <name>Guangming Lang</name>
+    <uri>http://localhost:4000</uri>
+    <email>news@masterr.com</email>
+  </author>
+  <content type="html">&lt;p&gt;Suppose we are asked to write a test bank of 10,000 simple addition questions for first graders. What shall we do?&lt;/p&gt;
+
+&lt;p&gt;Base R has a function &lt;code class=&quot;highlighter-rouge&quot;&gt;quote()&lt;/code&gt; that allows us to capture the R code we type instead of evaluating them. For example,&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;&lt;span class=&quot;nf&quot;&gt;quote&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;m&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;## 1 + 3&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;See? We’ve just written one test question, and there’re 9,999 more to go. We certainly don’t want to type &lt;code class=&quot;highlighter-rouge&quot;&gt;quote&lt;/code&gt; 9,999 times. How shall we generalize it? Instead of using particular numbers like 1 and 3, we can use variables x and y.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;&lt;span class=&quot;nf&quot;&gt;quote&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;## x + y&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;This way, each time we plug in a number for x and y, we’d have a new question.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;m&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;quote&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;## x + y&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Wait, &lt;code class=&quot;highlighter-rouge&quot;&gt;quote()&lt;/code&gt; still returns &lt;code class=&quot;highlighter-rouge&quot;&gt;x + y&lt;/code&gt;! It doesn’t give what we expected. We want &lt;code class=&quot;highlighter-rouge&quot;&gt;2 + 4&lt;/code&gt;. This is because &lt;code class=&quot;highlighter-rouge&quot;&gt;quote()&lt;/code&gt; only echos. We need another function to turn off
+the quotation that &lt;code class=&quot;highlighter-rouge&quot;&gt;quote()&lt;/code&gt; turns on, i.e., to “unquote.” The &lt;code class=&quot;highlighter-rouge&quot;&gt;bquote()&lt;/code&gt; function in base R can do this. For example,&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;m&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bquote&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;## 2 + 4&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;&lt;span class=&quot;c1&quot;&gt;# can both quote and unquote at the same time, or quasiquote
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bquote&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;## x + y == 2 + 4&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;&lt;span class=&quot;n&quot;&gt;bquote&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;q&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;## q1 &amp;lt;- 2 + 4&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;&lt;span class=&quot;c1&quot;&gt;# we also want to produce answers for the test questions
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bquote&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;## a1 &amp;lt;- 6&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Alternatively, the funtion &lt;code class=&quot;highlighter-rouge&quot;&gt;rlang::expr()&lt;/code&gt; in the &lt;code class=&quot;highlighter-rouge&quot;&gt;rlang&lt;/code&gt; package can also achieve this.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;m&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+
+&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# demo of quasiquotation, which allows to plug values inside of parameters 
+#       of a quotation.
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rlang&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;expr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;q&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;UQ&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;UQ&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;make&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;question&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;## q1 &amp;lt;- 2 + 4&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;&lt;span class=&quot;n&quot;&gt;rlang&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;expr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;UQ&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;answer&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;the&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;question&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;## a1 &amp;lt;- 6&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;&lt;span class=&quot;n&quot;&gt;rlang&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;expr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!!&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;   &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;answer&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;the&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;question&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;## a1 &amp;lt;- 6&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;&lt;span class=&quot;n&quot;&gt;rlang&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;expr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!!&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;answer&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;the&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;question&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;## a1 &amp;lt;- 6&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Remark: &lt;code class=&quot;highlighter-rouge&quot;&gt;rlang::expr()&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;base::bquote()&lt;/code&gt; are almost equivalent except the latter has a second argument that allows you to pass in an environment where to look up the values of the symbols used in the expression (1st argument). I think this is a general design pattern of rlang and tidyeval, that it separates environments from what a function does as much as possible to make it more consistent and neater.&lt;/p&gt;
+
+&lt;p&gt;Finally, we can use a loop to generate 10,000 questions and answers, while randomly choosing x and y values.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;&lt;span class=&quot;n&quot;&gt;set.seed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;102023&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;m&quot;&gt;10000&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;questions&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vector&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;list&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;answers&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vector&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;numeric&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; 
+&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;in&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;seq_len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;round&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;runif&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;min&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;m&quot;&gt;-999&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;max&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;m&quot;&gt;999&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;round&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;runif&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;min&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;m&quot;&gt;-99&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;max&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1999&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        
+        &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# make a test question and answer it
+&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;        &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;questions&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rlang&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;expr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;UQ&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;UQ&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; 
+        &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;answers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rlang&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;expr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!!&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; 
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;head&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;questions&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;m&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;        &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;## [[1]]
+## -716.7 + 750.4
+## 
+## [[2]]
+## -292.9 + 1232.7
+## 
+## [[3]]
+## -951.2 + 936.1&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;&lt;span class=&quot;n&quot;&gt;head&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;answers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;m&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;## [1]  33.7 939.8 -15.1&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+
+  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/r/quote-n-quasiquote/&quot;&gt;Quote, Unquote and Quasiquote&lt;/a&gt; was originally published by Guangming Lang at &lt;a href=&quot;http://localhost:4000&quot;&gt;Become Great at R&lt;/a&gt; on September 15, 2017.&lt;/p&gt;</content>
+</entry>
+
+
+<entry>
   <title type="html"><![CDATA[On Recursion - Part 3]]></title>
-  <link rel="alternate" type="text/html" href="http://masterr.org/r/on-recursion-3/" />
-  <id>http://masterr.org/r/on-recursion-3</id>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/r/on-recursion-3/" />
+  <id>http://localhost:4000/r/on-recursion-3</id>
   <published>2017-07-07T00:00:00+09:00</published>
   <updated>2017-07-07T00:00:00+09:00</updated>
   <author>
     <name>Guangming Lang</name>
-    <uri>http://masterr.org</uri>
+    <uri>http://localhost:4000</uri>
     <email>news@masterr.com</email>
   </author>
   <content type="html">&lt;p&gt;Base R has a function &lt;code class=&quot;highlighter-rouge&quot;&gt;get()&lt;/code&gt; that searches for a given name over the environment stack and returns its value after finding it. For example, we can use it like this.&lt;/p&gt;
@@ -152,19 +267,19 @@ environment works by reading Hadley’s &lt;a href=&quot;http://adv-r.had.co.nz/
 ## &amp;lt;environment: namespace:base&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 
-  &lt;p&gt;&lt;a href=&quot;http://masterr.org/r/on-recursion-3/&quot;&gt;On Recursion - Part 3&lt;/a&gt; was originally published by Guangming Lang at &lt;a href=&quot;http://masterr.org&quot;&gt;Become Great at R&lt;/a&gt; on July 07, 2017.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/r/on-recursion-3/&quot;&gt;On Recursion - Part 3&lt;/a&gt; was originally published by Guangming Lang at &lt;a href=&quot;http://localhost:4000&quot;&gt;Become Great at R&lt;/a&gt; on July 07, 2017.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[On Recursion - Part 2]]></title>
-  <link rel="alternate" type="text/html" href="http://masterr.org/r/on-recursion-2/" />
-  <id>http://masterr.org/r/on-recursion-2</id>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/r/on-recursion-2/" />
+  <id>http://localhost:4000/r/on-recursion-2</id>
   <published>2017-07-06T00:00:00+09:00</published>
   <updated>2017-07-06T00:00:00+09:00</updated>
   <author>
     <name>Guangming Lang</name>
-    <uri>http://masterr.org</uri>
+    <uri>http://localhost:4000</uri>
     <email>news@masterr.com</email>
   </author>
   <content type="html">&lt;p&gt;In the &lt;a href=&quot;http://adv-r.had.co.nz/Environments.html#env-recursion&quot;&gt;&lt;em&gt;Environments&lt;/em&gt;&lt;/a&gt; chapter of the book &lt;em&gt;Advanced R&lt;/em&gt;, Hadley presented a function 
@@ -276,19 +391,19 @@ environment works by reading Hadley’s &lt;a href=&quot;http://adv-r.had.co.nz/
 &lt;p&gt;Take a moment to compare &lt;code class=&quot;highlighter-rouge&quot;&gt;exists2()&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;where_all()&lt;/code&gt;. Where does the recursive step happen? In &lt;code class=&quot;highlighter-rouge&quot;&gt;exists2()&lt;/code&gt;, it happens when the fail case is triggered. But in &lt;code class=&quot;highlighter-rouge&quot;&gt;where_all()&lt;/code&gt;, it happens after both the success and fail cases. So the take away is that although all recursions are the same in concept but they can differ in implementation. The key difference lies in where the recursive step happens.&lt;/p&gt;
 
 
-  &lt;p&gt;&lt;a href=&quot;http://masterr.org/r/on-recursion-2/&quot;&gt;On Recursion - Part 2&lt;/a&gt; was originally published by Guangming Lang at &lt;a href=&quot;http://masterr.org&quot;&gt;Become Great at R&lt;/a&gt; on July 06, 2017.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/r/on-recursion-2/&quot;&gt;On Recursion - Part 2&lt;/a&gt; was originally published by Guangming Lang at &lt;a href=&quot;http://localhost:4000&quot;&gt;Become Great at R&lt;/a&gt; on July 06, 2017.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[On Recursion - Part 1]]></title>
-  <link rel="alternate" type="text/html" href="http://masterr.org/r/on-recursion-1/" />
-  <id>http://masterr.org/r/on-recursion-1</id>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/r/on-recursion-1/" />
+  <id>http://localhost:4000/r/on-recursion-1</id>
   <published>2017-07-05T00:00:00+09:00</published>
   <updated>2017-07-05T00:00:00+09:00</updated>
   <author>
     <name>Guangming Lang</name>
-    <uri>http://masterr.org</uri>
+    <uri>http://localhost:4000</uri>
     <email>news@masterr.com</email>
   </author>
   <content type="html">&lt;h2 id=&quot;intro&quot;&gt;Intro&lt;/h2&gt;
@@ -333,19 +448,19 @@ environment works by reading Hadley’s &lt;a href=&quot;http://adv-r.had.co.nz/
 
 &lt;p&gt;This article is inspired by an example described in this little &lt;a href=&quot;https://panicz.github.io/pamphlet/&quot;&gt;pamphlet&lt;/a&gt; by Panicz.&lt;/p&gt;
 
-  &lt;p&gt;&lt;a href=&quot;http://masterr.org/r/on-recursion-1/&quot;&gt;On Recursion - Part 1&lt;/a&gt; was originally published by Guangming Lang at &lt;a href=&quot;http://masterr.org&quot;&gt;Become Great at R&lt;/a&gt; on July 05, 2017.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/r/on-recursion-1/&quot;&gt;On Recursion - Part 1&lt;/a&gt; was originally published by Guangming Lang at &lt;a href=&quot;http://localhost:4000&quot;&gt;Become Great at R&lt;/a&gt; on July 05, 2017.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[How to Feature Engineer Dates]]></title>
-  <link rel="alternate" type="text/html" href="http://masterr.org/da/feature-engineer-dates/" />
-  <id>http://masterr.org/da/feature-engineer-dates</id>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/da/feature-engineer-dates/" />
+  <id>http://localhost:4000/da/feature-engineer-dates</id>
   <published>2017-03-27T00:00:00+09:00</published>
   <updated>2017-03-27T00:00:00+09:00</updated>
   <author>
     <name>Guangming Lang</name>
-    <uri>http://masterr.org</uri>
+    <uri>http://localhost:4000</uri>
     <email>news@masterr.com</email>
   </author>
   <content type="html">&lt;p&gt;Feature engineering is almost situational because generating useful features for prediction purpose often require deep domain knowledge and familiarity with the data at hand. But Having dates (of the format mm-dd-yyyy for example) occuring in a data set is typical, and there’re at least three ways of feature engineering a date variable:&lt;/p&gt;
@@ -358,19 +473,19 @@ environment works by reading Hadley’s &lt;a href=&quot;http://adv-r.had.co.nz/
 
 &lt;p&gt;As an example, see how Hadley feature engineered his date variables (start at 31:51) in this &lt;a href=&quot;https://www.rstudio.com/resources/webinars/pipelines-for-data-analysis-in-r/&quot;&gt;talk&lt;/a&gt;.&lt;/p&gt;
 
-  &lt;p&gt;&lt;a href=&quot;http://masterr.org/da/feature-engineer-dates/&quot;&gt;How to Feature Engineer Dates&lt;/a&gt; was originally published by Guangming Lang at &lt;a href=&quot;http://masterr.org&quot;&gt;Become Great at R&lt;/a&gt; on March 27, 2017.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/da/feature-engineer-dates/&quot;&gt;How to Feature Engineer Dates&lt;/a&gt; was originally published by Guangming Lang at &lt;a href=&quot;http://localhost:4000&quot;&gt;Become Great at R&lt;/a&gt; on March 27, 2017.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Bulk Download Data from Quandl]]></title>
-  <link rel="alternate" type="text/html" href="http://masterr.org/r/quandl-bulk-download/" />
-  <id>http://masterr.org/r/quandl-bulk-download</id>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/r/quandl-bulk-download/" />
+  <id>http://localhost:4000/r/quandl-bulk-download</id>
   <published>2017-03-24T00:00:00+09:00</published>
   <updated>2017-03-24T00:00:00+09:00</updated>
   <author>
     <name>Guangming Lang</name>
-    <uri>http://masterr.org</uri>
+    <uri>http://localhost:4000</uri>
     <email>news@masterr.com</email>
   </author>
   <content type="html">&lt;p&gt;I’m going to show you how to bulk download data from Quandl.com via an example. 
@@ -417,38 +532,38 @@ Make sure you apply for an API Key first.&lt;/p&gt;
 &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;head&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 
-  &lt;p&gt;&lt;a href=&quot;http://masterr.org/r/quandl-bulk-download/&quot;&gt;Bulk Download Data from Quandl&lt;/a&gt; was originally published by Guangming Lang at &lt;a href=&quot;http://masterr.org&quot;&gt;Become Great at R&lt;/a&gt; on March 24, 2017.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/r/quandl-bulk-download/&quot;&gt;Bulk Download Data from Quandl&lt;/a&gt; was originally published by Guangming Lang at &lt;a href=&quot;http://localhost:4000&quot;&gt;Become Great at R&lt;/a&gt; on March 24, 2017.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[When n < p]]></title>
-  <link rel="alternate" type="text/html" href="http://masterr.org/da/when-n-less-than-p-copy/" />
-  <id>http://masterr.org/da/when-n-less-than-p copy</id>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/da/when-n-less-than-p-copy/" />
+  <id>http://localhost:4000/da/when-n-less-than-p copy</id>
   <published>2017-03-20T00:00:00+09:00</published>
   <updated>2017-03-20T00:00:00+09:00</updated>
   <author>
     <name>Guangming Lang</name>
-    <uri>http://masterr.org</uri>
+    <uri>http://localhost:4000</uri>
     <email>news@masterr.com</email>
   </author>
   <content type="html">&lt;p&gt;The relationship between the number of rows (n) and the number of columns (p) is important for choosing which predictive modeling techniques to use when providing predictive analytics solutions. If n &amp;lt; p, there’s always a risk that a relevant predictor found in the training data set will not be reproducible. In addition, some predictive modeling techniques such as multiple linear regression (and multivariate regression analysis for more than one outcome variables) or linear discriminant analysis cannot be directly used when n &amp;lt; p. Yet, some models such as regression tree, classification tree, random forest and the k nearest neighbors algorithm (KNNs) can be used directly when n &amp;lt; p.&lt;/p&gt;
 
 &lt;p&gt;When p is big, i.e., when there’re many predictors, we’re almost guaranteed to have some of them correlated. Predictive models such as partial least squares regression manages correlated predictors by default but is more stable if the predictors are on similar scales. Recursive partitioning such as tree based models has a less stable partitioning structure when facing correlated predictors but is immune to predictors of different scales.&lt;/p&gt;
 
-  &lt;p&gt;&lt;a href=&quot;http://masterr.org/da/when-n-less-than-p-copy/&quot;&gt;When n < p&lt;/a&gt; was originally published by Guangming Lang at &lt;a href=&quot;http://masterr.org&quot;&gt;Become Great at R&lt;/a&gt; on March 20, 2017.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/da/when-n-less-than-p-copy/&quot;&gt;When n < p&lt;/a&gt; was originally published by Guangming Lang at &lt;a href=&quot;http://localhost:4000&quot;&gt;Become Great at R&lt;/a&gt; on March 20, 2017.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Rebind]]></title>
-  <link rel="alternate" type="text/html" href="http://masterr.org/r/rebind/" />
-  <id>http://masterr.org/r/rebind</id>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/r/rebind/" />
+  <id>http://localhost:4000/r/rebind</id>
   <published>2017-03-17T00:00:00+09:00</published>
   <updated>2017-03-17T00:00:00+09:00</updated>
   <author>
     <name>Guangming Lang</name>
-    <uri>http://masterr.org</uri>
+    <uri>http://localhost:4000</uri>
     <email>news@masterr.com</email>
   </author>
   <content type="html">&lt;p&gt;The regular assignment arrow &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;-&lt;/code&gt; always creates a variable in the current 
@@ -480,19 +595,19 @@ it runs into an error and stops.&lt;/p&gt;
 You can buy a copy of Hadley’s book
 &lt;a rel=&quot;nofollow&quot; href=&quot;http://www.amazon.com/gp/product/1466586966/ref=as_li_tl?ie=UTF8&amp;amp;camp=1789&amp;amp;creative=9325&amp;amp;creativeASIN=1466586966&amp;amp;linkCode=as2&amp;amp;tag=cabaceo-20&amp;amp;linkId=2GDWMZSF4NX32QIO&quot;&gt;Advanced R&lt;/a&gt;&lt;img src=&quot;http://ir-na.amazon-adsystem.com/e/ir?t=cabaceo-20&amp;amp;l=as2&amp;amp;o=1&amp;amp;a=1466586966&quot; width=&quot;1&quot; height=&quot;1&quot; border=&quot;0&quot; alt=&quot;&quot; style=&quot;border:none !important; margin:0px !important;&quot; /&gt; from Amazon.&lt;/p&gt;
 
-  &lt;p&gt;&lt;a href=&quot;http://masterr.org/r/rebind/&quot;&gt;Rebind&lt;/a&gt; was originally published by Guangming Lang at &lt;a href=&quot;http://masterr.org&quot;&gt;Become Great at R&lt;/a&gt; on March 17, 2017.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/r/rebind/&quot;&gt;Rebind&lt;/a&gt; was originally published by Guangming Lang at &lt;a href=&quot;http://localhost:4000&quot;&gt;Become Great at R&lt;/a&gt; on March 17, 2017.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Resampling]]></title>
-  <link rel="alternate" type="text/html" href="http://masterr.org/da/resampling/" />
-  <id>http://masterr.org/da/resampling</id>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/da/resampling/" />
+  <id>http://localhost:4000/da/resampling</id>
   <published>2017-03-13T00:00:00+09:00</published>
   <updated>2017-03-13T00:00:00+09:00</updated>
   <author>
     <name>Guangming Lang</name>
-    <uri>http://masterr.org</uri>
+    <uri>http://localhost:4000</uri>
     <email>news@masterr.com</email>
   </author>
   <content type="html">&lt;p&gt;When training a model for prediction purpose, resampling is used to&lt;/p&gt;
@@ -522,19 +637,19 @@ You can buy a copy of Hadley’s book
 &lt;p&gt;When shall we use which method? It depends. If the sample  size is small and the goal is to estimate model performance, repeated 10-fold cross-validation will work very well. If the goal is to choose amongst models, the bootstrap method will work better due to its tiny variance. For large datasets, the potential issues with variance and bias become less pronounced among different methods and computation time becomes more important, and 10-fold cross-validation is a good choice.&lt;/p&gt;
 
 
-  &lt;p&gt;&lt;a href=&quot;http://masterr.org/da/resampling/&quot;&gt;Resampling&lt;/a&gt; was originally published by Guangming Lang at &lt;a href=&quot;http://masterr.org&quot;&gt;Become Great at R&lt;/a&gt; on March 13, 2017.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/da/resampling/&quot;&gt;Resampling&lt;/a&gt; was originally published by Guangming Lang at &lt;a href=&quot;http://localhost:4000&quot;&gt;Become Great at R&lt;/a&gt; on March 13, 2017.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Moving Average Models Demo]]></title>
-  <link rel="alternate" type="text/html" href="http://masterr.org/r/ma-models-demo/" />
-  <id>http://masterr.org/r/ma-models-demo</id>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/r/ma-models-demo/" />
+  <id>http://localhost:4000/r/ma-models-demo</id>
   <published>2017-03-10T00:00:00+09:00</published>
   <updated>2017-03-10T00:00:00+09:00</updated>
   <author>
     <name>Guangming Lang</name>
-    <uri>http://masterr.org</uri>
+    <uri>http://localhost:4000</uri>
     <email>news@masterr.com</email>
   </author>
   <content type="html">&lt;p&gt;If you work with time series data, you need to know &lt;a href=&quot;https://onlinecourses.science.psu.edu/stat510/node/48&quot;&gt;moving average models&lt;/a&gt;. I’m going to show
@@ -583,19 +698,19 @@ you some basic related R commands.&lt;/p&gt;
 &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;par&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mfrow&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 
-  &lt;p&gt;&lt;a href=&quot;http://masterr.org/r/ma-models-demo/&quot;&gt;Moving Average Models Demo&lt;/a&gt; was originally published by Guangming Lang at &lt;a href=&quot;http://masterr.org&quot;&gt;Become Great at R&lt;/a&gt; on March 10, 2017.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/r/ma-models-demo/&quot;&gt;Moving Average Models Demo&lt;/a&gt; was originally published by Guangming Lang at &lt;a href=&quot;http://localhost:4000&quot;&gt;Become Great at R&lt;/a&gt; on March 10, 2017.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Data Preprocessing and Linear Regression]]></title>
-  <link rel="alternate" type="text/html" href="http://masterr.org/da/data-preprocessing-and-linear-regression/" />
-  <id>http://masterr.org/da/data-preprocessing-and-linear-regression</id>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/da/data-preprocessing-and-linear-regression/" />
+  <id>http://localhost:4000/da/data-preprocessing-and-linear-regression</id>
   <published>2017-03-06T00:00:00+09:00</published>
   <updated>2017-03-06T00:00:00+09:00</updated>
   <author>
     <name>Guangming Lang</name>
-    <uri>http://masterr.org</uri>
+    <uri>http://localhost:4000</uri>
     <email>news@masterr.com</email>
   </author>
   <content type="html">&lt;p&gt;This article summarizes data preprocessing steps when using linear regression for prediction purpose.&lt;/p&gt;
@@ -622,19 +737,19 @@ you some basic related R commands.&lt;/p&gt;
 
 &lt;p&gt;If you use caret to train the model, you will need to turn the categorical features into dummy variables. You don’t need to do this if you use the lm function.&lt;/p&gt;
 
-  &lt;p&gt;&lt;a href=&quot;http://masterr.org/da/data-preprocessing-and-linear-regression/&quot;&gt;Data Preprocessing and Linear Regression&lt;/a&gt; was originally published by Guangming Lang at &lt;a href=&quot;http://masterr.org&quot;&gt;Become Great at R&lt;/a&gt; on March 06, 2017.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/da/data-preprocessing-and-linear-regression/&quot;&gt;Data Preprocessing and Linear Regression&lt;/a&gt; was originally published by Guangming Lang at &lt;a href=&quot;http://localhost:4000&quot;&gt;Become Great at R&lt;/a&gt; on March 06, 2017.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[The on.exit() Function]]></title>
-  <link rel="alternate" type="text/html" href="http://masterr.org/r/on-exit/" />
-  <id>http://masterr.org/r/on-exit</id>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/r/on-exit/" />
+  <id>http://localhost:4000/r/on-exit</id>
   <published>2017-03-03T00:00:00+09:00</published>
   <updated>2017-03-03T00:00:00+09:00</updated>
   <author>
     <name>Guangming Lang</name>
-    <uri>http://masterr.org</uri>
+    <uri>http://localhost:4000</uri>
     <email>news@masterr.com</email>
   </author>
   <content type="html">&lt;p&gt;There’s an interesting little function in R called &lt;code class=&quot;highlighter-rouge&quot;&gt;on.exit()&lt;/code&gt;. It can be used 
@@ -671,19 +786,19 @@ returning a value, the following function uses &lt;code class=&quot;highlighter-
 &lt;p&gt;To learn more about &lt;code class=&quot;highlighter-rouge&quot;&gt;on.exit()&lt;/code&gt;, refer to Hadley’s book “Advanced R.” You can &lt;a rel=&quot;nofollow&quot; href=&quot;http://www.amazon.com/gp/product/1466586966/ref=as_li_tl?ie=UTF8&amp;amp;camp=1789&amp;amp;creative=9325&amp;amp;creativeASIN=1466586966&amp;amp;linkCode=as2&amp;amp;tag=cabaceo-20&amp;amp;linkId=2GDWMZSF4NX32QIO&quot;&gt;buy it from Amazon&lt;/a&gt;&lt;img src=&quot;http://ir-na.amazon-adsystem.com/e/ir?t=cabaceo-20&amp;amp;l=as2&amp;amp;o=1&amp;amp;a=1466586966&quot; width=&quot;1&quot; height=&quot;1&quot; border=&quot;0&quot; alt=&quot;&quot; style=&quot;border:none !important; margin:0px !important;&quot; /&gt;
 or read it &lt;a href=&quot;http://adv-r.had.co.nz/Functions.html&quot;&gt;online&lt;/a&gt; for FREE.&lt;/p&gt;
 
-  &lt;p&gt;&lt;a href=&quot;http://masterr.org/r/on-exit/&quot;&gt;The on.exit() Function&lt;/a&gt; was originally published by Guangming Lang at &lt;a href=&quot;http://masterr.org&quot;&gt;Become Great at R&lt;/a&gt; on March 03, 2017.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/r/on-exit/&quot;&gt;The on.exit() Function&lt;/a&gt; was originally published by Guangming Lang at &lt;a href=&quot;http://localhost:4000&quot;&gt;Become Great at R&lt;/a&gt; on March 03, 2017.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Root Mean Squared Error (RMSE)]]></title>
-  <link rel="alternate" type="text/html" href="http://masterr.org/da/rmse/" />
-  <id>http://masterr.org/da/rmse</id>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/da/rmse/" />
+  <id>http://localhost:4000/da/rmse</id>
   <published>2017-02-27T00:00:00+09:00</published>
   <updated>2017-02-27T00:00:00+09:00</updated>
   <author>
     <name>Guangming Lang</name>
-    <uri>http://masterr.org</uri>
+    <uri>http://localhost:4000</uri>
     <email>news@masterr.com</email>
   </author>
   <content type="html">&lt;p&gt;When predicting numeric values, the root mean squared error (RMSE) is frequently
@@ -720,19 +835,19 @@ The following plots shows a simulated example.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/../figs/2017-02-27-rmse/unnamed-chunk-2-1.png&quot; alt=&quot;center&quot; /&gt;&lt;/p&gt;
 
-  &lt;p&gt;&lt;a href=&quot;http://masterr.org/da/rmse/&quot;&gt;Root Mean Squared Error (RMSE)&lt;/a&gt; was originally published by Guangming Lang at &lt;a href=&quot;http://masterr.org&quot;&gt;Become Great at R&lt;/a&gt; on February 27, 2017.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/da/rmse/&quot;&gt;Root Mean Squared Error (RMSE)&lt;/a&gt; was originally published by Guangming Lang at &lt;a href=&quot;http://localhost:4000&quot;&gt;Become Great at R&lt;/a&gt; on February 27, 2017.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Read Zipped Files into R]]></title>
-  <link rel="alternate" type="text/html" href="http://masterr.org/r/read-zipped-files-into-R/" />
-  <id>http://masterr.org/r/read-zipped-files-into-R</id>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/r/read-zipped-files-into-R/" />
+  <id>http://localhost:4000/r/read-zipped-files-into-R</id>
   <published>2017-02-24T00:00:00+09:00</published>
   <updated>2017-02-24T00:00:00+09:00</updated>
   <author>
     <name>Guangming Lang</name>
-    <uri>http://masterr.org</uri>
+    <uri>http://localhost:4000</uri>
     <email>news@masterr.com</email>
   </author>
   <content type="html">&lt;p&gt;In the age of big data, it’s not uncommon to encounter a large zipped file of multiple text files. Unzipping will take time. It turns out we can read them into R without unzipping first.&lt;/p&gt;
@@ -752,19 +867,19 @@ The following plots shows a simulated example.&lt;/p&gt;
 &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lst&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[[&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]])&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 
-  &lt;p&gt;&lt;a href=&quot;http://masterr.org/r/read-zipped-files-into-R/&quot;&gt;Read Zipped Files into R&lt;/a&gt; was originally published by Guangming Lang at &lt;a href=&quot;http://masterr.org&quot;&gt;Become Great at R&lt;/a&gt; on February 24, 2017.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/r/read-zipped-files-into-R/&quot;&gt;Read Zipped Files into R&lt;/a&gt; was originally published by Guangming Lang at &lt;a href=&quot;http://localhost:4000&quot;&gt;Become Great at R&lt;/a&gt; on February 24, 2017.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Data Characteristics]]></title>
-  <link rel="alternate" type="text/html" href="http://masterr.org/da/data-characteristics/" />
-  <id>http://masterr.org/da/data-characteristics</id>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/da/data-characteristics/" />
+  <id>http://localhost:4000/da/data-characteristics</id>
   <published>2017-02-20T00:00:00+09:00</published>
   <updated>2017-02-20T00:00:00+09:00</updated>
   <author>
     <name>Guangming Lang</name>
-    <uri>http://masterr.org</uri>
+    <uri>http://localhost:4000</uri>
     <email>news@masterr.com</email>
   </author>
   <content type="html">&lt;p&gt;The most basic setup of a dataset consists of one response variable (also called outcome, target, or dependent variable) and a bunch of predictors (also called attributes, features, or independent variables).&lt;/p&gt;
@@ -789,19 +904,19 @@ The following plots shows a simulated example.&lt;/p&gt;
   &lt;li&gt;Do the predictors have different scales?&lt;/li&gt;
 &lt;/ul&gt;
 
-  &lt;p&gt;&lt;a href=&quot;http://masterr.org/da/data-characteristics/&quot;&gt;Data Characteristics&lt;/a&gt; was originally published by Guangming Lang at &lt;a href=&quot;http://masterr.org&quot;&gt;Become Great at R&lt;/a&gt; on February 20, 2017.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/da/data-characteristics/&quot;&gt;Data Characteristics&lt;/a&gt; was originally published by Guangming Lang at &lt;a href=&quot;http://localhost:4000&quot;&gt;Become Great at R&lt;/a&gt; on February 20, 2017.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[R and MySQL]]></title>
-  <link rel="alternate" type="text/html" href="http://masterr.org/r/R-and-MySQL/" />
-  <id>http://masterr.org/r/R-and-MySQL</id>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/r/R-and-MySQL/" />
+  <id>http://localhost:4000/r/R-and-MySQL</id>
   <published>2017-02-18T00:00:00+09:00</published>
   <updated>2017-02-18T00:00:00+09:00</updated>
   <author>
     <name>Guangming Lang</name>
-    <uri>http://masterr.org</uri>
+    <uri>http://localhost:4000</uri>
     <email>news@masterr.com</email>
   </author>
   <content type="html">&lt;p&gt;Sometimes you need to talk to a database using R. I’ve put together a R script
@@ -852,19 +967,19 @@ that shows you how to query data from a MySQL database and insert data back.&lt;
 &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dbUnloadDriver&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;drv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 
-  &lt;p&gt;&lt;a href=&quot;http://masterr.org/r/R-and-MySQL/&quot;&gt;R and MySQL&lt;/a&gt; was originally published by Guangming Lang at &lt;a href=&quot;http://masterr.org&quot;&gt;Become Great at R&lt;/a&gt; on February 18, 2017.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/r/R-and-MySQL/&quot;&gt;R and MySQL&lt;/a&gt; was originally published by Guangming Lang at &lt;a href=&quot;http://localhost:4000&quot;&gt;Become Great at R&lt;/a&gt; on February 18, 2017.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Data Preprocessing and Xgboost]]></title>
-  <link rel="alternate" type="text/html" href="http://masterr.org/da/data-preprocessing-and-xgboost/" />
-  <id>http://masterr.org/da/data-preprocessing-and-xgboost</id>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/da/data-preprocessing-and-xgboost/" />
+  <id>http://localhost:4000/da/data-preprocessing-and-xgboost</id>
   <published>2017-02-13T00:00:00+09:00</published>
   <updated>2017-02-13T00:00:00+09:00</updated>
   <author>
     <name>Guangming Lang</name>
-    <uri>http://masterr.org</uri>
+    <uri>http://localhost:4000</uri>
     <email>news@masterr.com</email>
   </author>
   <content type="html">&lt;p&gt;We all know we need to pre-process data before we build models. However, if you’re building a XGboost model, you can avoid many of the pre-processing steps. I’ve done some google search and book reading, and the following list summarizes my findings.&lt;/p&gt;
@@ -881,19 +996,19 @@ that shows you how to query data from a MySQL database and insert data back.&lt;
 
 &lt;p&gt;The phrase “not needed” means, by and large, doing it won’t improve (or worsen) model performance.&lt;/p&gt;
 
-  &lt;p&gt;&lt;a href=&quot;http://masterr.org/da/data-preprocessing-and-xgboost/&quot;&gt;Data Preprocessing and Xgboost&lt;/a&gt; was originally published by Guangming Lang at &lt;a href=&quot;http://masterr.org&quot;&gt;Become Great at R&lt;/a&gt; on February 13, 2017.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/da/data-preprocessing-and-xgboost/&quot;&gt;Data Preprocessing and Xgboost&lt;/a&gt; was originally published by Guangming Lang at &lt;a href=&quot;http://localhost:4000&quot;&gt;Become Great at R&lt;/a&gt; on February 13, 2017.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Tips for Caret]]></title>
-  <link rel="alternate" type="text/html" href="http://masterr.org/r/tips-for-caret/" />
-  <id>http://masterr.org/r/tips-for-caret</id>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/r/tips-for-caret/" />
+  <id>http://localhost:4000/r/tips-for-caret</id>
   <published>2017-02-09T00:00:00+09:00</published>
   <updated>2017-02-09T00:00:00+09:00</updated>
   <author>
     <name>Guangming Lang</name>
-    <uri>http://masterr.org</uri>
+    <uri>http://localhost:4000</uri>
     <email>news@masterr.com</email>
   </author>
   <content type="html">&lt;p&gt;We all love the caret package because it has made training predictive models so much easier. However, if you’re new to caret, there’re some things you probably don’t know but should know. Here’s a list.&lt;/p&gt;
@@ -904,19 +1019,19 @@ that shows you how to query data from a MySQL database and insert data back.&lt;
   &lt;li&gt;For binary classification problems, we often also need to choose the optimal probability threshold for deciding the classes. You should write self-defined functions to incorporate the search of optimal threshold into the resampling process. As a result, the optimal threshold will be amongst the best parameters returned by &lt;code class=&quot;highlighter-rouge&quot;&gt;caret::train()&lt;/code&gt;. Here’s an &lt;a href=&quot;http://topepo.github.io/caret/using-your-own-model-in-train.html#Illustration5&quot;&gt;example&lt;/a&gt; of the self-defined functions for random forest.&lt;/li&gt;
 &lt;/ul&gt;
 
-  &lt;p&gt;&lt;a href=&quot;http://masterr.org/r/tips-for-caret/&quot;&gt;Tips for Caret&lt;/a&gt; was originally published by Guangming Lang at &lt;a href=&quot;http://masterr.org&quot;&gt;Become Great at R&lt;/a&gt; on February 09, 2017.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/r/tips-for-caret/&quot;&gt;Tips for Caret&lt;/a&gt; was originally published by Guangming Lang at &lt;a href=&quot;http://localhost:4000&quot;&gt;Become Great at R&lt;/a&gt; on February 09, 2017.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[The Response Variable]]></title>
-  <link rel="alternate" type="text/html" href="http://masterr.org/da/the-response-variable/" />
-  <id>http://masterr.org/da/the-response-variable</id>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/da/the-response-variable/" />
+  <id>http://localhost:4000/da/the-response-variable</id>
   <published>2017-02-06T00:00:00+09:00</published>
   <updated>2017-02-06T00:00:00+09:00</updated>
   <author>
     <name>Guangming Lang</name>
-    <uri>http://masterr.org</uri>
+    <uri>http://localhost:4000</uri>
     <email>news@masterr.com</email>
   </author>
   <content type="html">&lt;p&gt;When it comes to building models, it’s crucial to understand the characteristics of the variable you want to predict. This variable is often called the response or target variable. First, it may be continuous (for example, housing prices, stock prices, drug compound’s permeability, precipitation, and etc) or categorical (for example, fraud or not, default or not, good or bad, churned or not, 5 stages of sepsis and etc).&lt;/p&gt;
@@ -927,19 +1042,19 @@ that shows you how to query data from a MySQL database and insert data back.&lt;
 
 &lt;p&gt;Understanding the distribution of the response variable is critical for finding the most suitable way to partition the data. Not understanding the response characteristics can lead to computational difficulties for some models and sub-optimal and less robust predictive performances.&lt;/p&gt;
 
-  &lt;p&gt;&lt;a href=&quot;http://masterr.org/da/the-response-variable/&quot;&gt;The Response Variable&lt;/a&gt; was originally published by Guangming Lang at &lt;a href=&quot;http://masterr.org&quot;&gt;Become Great at R&lt;/a&gt; on February 06, 2017.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/da/the-response-variable/&quot;&gt;The Response Variable&lt;/a&gt; was originally published by Guangming Lang at &lt;a href=&quot;http://localhost:4000&quot;&gt;Become Great at R&lt;/a&gt; on February 06, 2017.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[R Parallel and Zombie Processes]]></title>
-  <link rel="alternate" type="text/html" href="http://masterr.org/r/R-parallel-and-zombie-processes/" />
-  <id>http://masterr.org/r/R-parallel-and-zombie-processes</id>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/r/R-parallel-and-zombie-processes/" />
+  <id>http://localhost:4000/r/R-parallel-and-zombie-processes</id>
   <published>2017-02-03T00:00:00+09:00</published>
   <updated>2017-02-03T00:00:00+09:00</updated>
   <author>
     <name>Guangming Lang</name>
-    <uri>http://masterr.org</uri>
+    <uri>http://localhost:4000</uri>
     <email>news@masterr.com</email>
   </author>
   <content type="html">&lt;p&gt;I recently encountered zombie processes when running some R code in parallel. 
@@ -951,33 +1066,7 @@ efficient than doParallel, and it only works with linux or Mac, not with windows
 
 &lt;p&gt;Finally, use &lt;a href=&quot;http://stackoverflow.com/questions/25388139/r-parallel-computing-and-zombie-processes&quot;&gt;the inline package and the wait function&lt;/a&gt; by Steve Weston (scroll down) to kill zombie processes. I used them in my application and they work like a charm.&lt;/p&gt;
 
-  &lt;p&gt;&lt;a href=&quot;http://masterr.org/r/R-parallel-and-zombie-processes/&quot;&gt;R Parallel and Zombie Processes&lt;/a&gt; was originally published by Guangming Lang at &lt;a href=&quot;http://masterr.org&quot;&gt;Become Great at R&lt;/a&gt; on February 03, 2017.&lt;/p&gt;</content>
-</entry>
-
-
-<entry>
-  <title type="html"><![CDATA[Prediction vs. Interpretability]]></title>
-  <link rel="alternate" type="text/html" href="http://masterr.org/da/prediction-vs-interpretability/" />
-  <id>http://masterr.org/da/prediction-vs-interpretability</id>
-  <published>2017-01-30T00:00:00+09:00</published>
-  <updated>2017-01-30T00:00:00+09:00</updated>
-  <author>
-    <name>Guangming Lang</name>
-    <uri>http://masterr.org</uri>
-    <email>news@masterr.com</email>
-  </author>
-  <content type="html">&lt;p&gt;When it comes to model interpretability and prediction performance, we often just can’t have the best of both worlds. But we almost always want a model that both makes sense and predicts well. This is especially true if we  have expert domain (for example, medicine) knowlege. When presented with a model, the domain expert’s state of mind is usually like this:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;I know more X causes more Y (by my domain knowlege, experience, intuition and etc.), the model has a big positive coefficient in front of X, so it makes sense. I trust the model.&lt;/li&gt;
-  &lt;li&gt;I never thought more X could cause more Y, but the model says so. This is interesting. Why would this be?&lt;/li&gt;
-  &lt;li&gt;Does the model say more X cause more Y? What? We don’t know the answer because the model is a black box? Well, I don’t know if I can trust a black box. Wait, the validation results are really good and this implies the model predicts really well. Well, I still don’t know if I should trust a black box.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;There’s no general solution to resolve the tension between predictibility and interpretability. It’s all situational. In practice, if the goal is prediction, most of the time, I have no problem sacrificing interpretability by using a black box as long as it validates well on a new unseen dataset. I’d use the black box in production, see how well it predicts and tweak it when its performance gets worse. After all, model building and fine tuning is a continuous process.&lt;/p&gt;
-
-
-  &lt;p&gt;&lt;a href=&quot;http://masterr.org/da/prediction-vs-interpretability/&quot;&gt;Prediction vs. Interpretability&lt;/a&gt; was originally published by Guangming Lang at &lt;a href=&quot;http://masterr.org&quot;&gt;Become Great at R&lt;/a&gt; on January 30, 2017.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/r/R-parallel-and-zombie-processes/&quot;&gt;R Parallel and Zombie Processes&lt;/a&gt; was originally published by Guangming Lang at &lt;a href=&quot;http://localhost:4000&quot;&gt;Become Great at R&lt;/a&gt; on February 03, 2017.&lt;/p&gt;</content>
 </entry>
 
 </feed>
