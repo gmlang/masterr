@@ -8,160 +8,84 @@ keywords: "R, ggplot, ggplot2, ezplot, histograms and density plots"
 published: true
 share: true
 ads: true
-
 ---
 
-Previously, I introduced the ezplot package and demoed how to use it to easily make nice looking ggplot2 [barcharts](http://masterr.org/r/an-easy-way-to-make-ggplot2-plots-ezplot-part1/) and [boxplots](http://masterr.org/r/an-easy-way-to-make-ggplot2-boxplots-ezplot-part2/). In this post, I'll discuss two common plot types that are used for displaying distributions of numeric variables, namely, the histogram and the density plot. By the end of this tutorial, you'll learn how to make sophisticated ggplot2 histograms and density plots using ezplot. And once again, you'll be amazed how simple and intuitive it is. Let's get started.
+### Updated October 4, 2018
 
-#### Prerequisites
-1. Install a set of development tools
-* On Windows, download and install [Rtools](http://cran.r-project.org/bin/windows/Rtools/). 
-* On Mac, install the [Xcode command line tools](https://developer.apple.com/downloads). 
-* On Linux, install the R development package, usually called **r-devel** or **r-base-dev**.
-2. Install devtools by running `install.packages("devtools")` in R.
+Previously, I gave examples of ezplot [barcharts](http://masterr.org/r/an-easy-way-to-make-ggplot2-plots-ezplot-part1/) and [boxplots](http://masterr.org/r/an-easy-way-to-make-ggplot2-boxplots-ezplot-part2/). In today's post, I'll discuss two common charts for displaying distributions of numeric variables, namely, the histogram and the density plot. By the end of this article, you'll know how to make sophisticated histograms and density plots using ezplot. And once again, you'll be amazed how simple it is. Let's get started.
 
-#### Install and Load ezplot
+#### Load ezplot
+
+Make sure you first install ezplot by running the command `devtools::install_github("gmlang/ezplot")`.
 
 {% highlight r %}
-devtools::install_github("gmlang/ezplot")
 library(ezplot)
+library(dplyr)
 {% endhighlight %}
 
-#### We'll use the famous iris dataset, which comes with the base R distribution. 
+#### Histogram
 
-First, we pass iris (note: iris is a data frame) into the function mk_distplot() to output a function that we can use to draw histograms or density plots for any numeric variables in iris. 
+First, we pass the `iris` data frame into the function `mk_histogram()` to get a plotting function that for drawing histograms of any numeric variables in `iris`. 
 
 {% highlight r %}
-plt = mk_distplot(iris)
+plt = mk_histogram(iris)
 {% endhighlight %}
 
-If you haven't noticed, all the "mk_" functions in ezplot has one and only one input parameter, namely, a data frame. And they all output functions that can be called to make plots by passing in variables (surrounded by quotations) in the data frame. This design came from the simple idea that [functions can return functions instead of values](http://masterr.org/r/functions-that-return-functions-part-2/). 
+If you haven't noticed, all the `mk_xxx()` functions in ezplot takes one and only one argument, namely, a data frame. They all return plotting functions that take names of variables from the data frame as input. This design came from the simple idea that [functions can return functions](http://masterr.org/r/functions-that-return-functions-part-2/). 
 
-#### Next, we use the function `plt()` to draw histogram for Sepal.Length.
+Let's draw a histogram for `Sepal.Length`.
 
 {% highlight r %}
-# plot histogram for Sepal.Length
-title1 = "Histogram of Sepal Length"
-p = plt("Sepal.Length", main=title1)
-print(p)
+plt("Sepal.Length")
 {% endhighlight %}
 
-![center](/../figs/2015-05-07-an-easy-way-to-make-ggplot2-histograms-ezplot-part3/unnamed-chunk-3-1.png) 
+![center](/../figs/2015-05-07-an-easy-way-to-make-ggplot2-histograms-ezplot-part3/unnamed-chunk-3-1.png)
 
 {% highlight r %}
 # adjust bin width
-p = plt("Sepal.Length", main=title1, binw=0.3)
-print(p)
+plt("Sepal.Length", binw = 0.2)
 {% endhighlight %}
 
-![center](/../figs/2015-05-07-an-easy-way-to-make-ggplot2-histograms-ezplot-part3/unnamed-chunk-3-2.png) 
+![center](/../figs/2015-05-07-an-easy-way-to-make-ggplot2-histograms-ezplot-part3/unnamed-chunk-3-2.png)
 
 {% highlight r %}
-# add a vertical line at the mean
-p = plt("Sepal.Length", main=title1, binw=0.3, add_vline_mean=T)
-print(p)
+# remove the vertical line at the mean
+plt("Sepal.Length", add_vline_mean = F)
 {% endhighlight %}
 
-![center](/../figs/2015-05-07-an-easy-way-to-make-ggplot2-histograms-ezplot-part3/unnamed-chunk-3-3.png) 
+![center](/../figs/2015-05-07-an-easy-way-to-make-ggplot2-histograms-ezplot-part3/unnamed-chunk-3-3.png)
+
+#### Density plots
+
+Density plots and histograms are twins. They show the same information. In ezplot, we use
+the `mk_densityplot()` function to make density plots. For example, let's make a density plot for `Sepal.Length`.
 
 {% highlight r %}
-# add a vertical line at the median
-p = plt("Sepal.Length", main=title1, binw=0.3, add_vline_median=T)
-print(p)
+plt = mk_densityplot(iris)
+plt("Sepal.Length")
 {% endhighlight %}
 
-![center](/../figs/2015-05-07-an-easy-way-to-make-ggplot2-histograms-ezplot-part3/unnamed-chunk-3-4.png) 
+![center](/../figs/2015-05-07-an-easy-way-to-make-ggplot2-histograms-ezplot-part3/unnamed-chunk-4-1.png)
 
 {% highlight r %}
-# add both vertical lines at the mean and the median respectively
-p = plt("Sepal.Length", binw=0.3, add_vline_mean=T, add_vline_median=T)
-print(p)
+# don't remove tails
+plt("Sepal.Length", cut_tail = 0)
 {% endhighlight %}
 
-![center](/../figs/2015-05-07-an-easy-way-to-make-ggplot2-histograms-ezplot-part3/unnamed-chunk-3-5.png) 
+![center](/../figs/2015-05-07-an-easy-way-to-make-ggplot2-histograms-ezplot-part3/unnamed-chunk-4-2.png)
 
-#### We can also draw density plots instead of histograms.
+The iris data has a variable called "Species". Wouldn't it be nice if we can see how Sepal Length is distributed across different Species? This is super easy to do with ezplot.
 
 {% highlight r %}
-# draw density plots for Sepal.Length
-p = plt("Sepal.Length", type="density", main=title1)
-print(p)
+plt("Sepal.Length", yvar = "Species")
 {% endhighlight %}
 
-![center](/../figs/2015-05-07-an-easy-way-to-make-ggplot2-histograms-ezplot-part3/unnamed-chunk-4-1.png) 
 
-{% highlight r %}
-# add a vertical line at the mean
-p = plt("Sepal.Length", type="density", main=title1, add_vline_mean=T)
-print(p)
+
+{% highlight text %}
+## Picking joint bandwidth of 0.181
 {% endhighlight %}
 
-![center](/../figs/2015-05-07-an-easy-way-to-make-ggplot2-histograms-ezplot-part3/unnamed-chunk-4-2.png) 
+![center](/../figs/2015-05-07-an-easy-way-to-make-ggplot2-histograms-ezplot-part3/unnamed-chunk-5-1.png)
 
-{% highlight r %}
-# add a vertical line at the median
-p = plt("Sepal.Length", type="density", main=title1, add_vline_median=T)
-print(p)
-{% endhighlight %}
-
-![center](/../figs/2015-05-07-an-easy-way-to-make-ggplot2-histograms-ezplot-part3/unnamed-chunk-4-3.png) 
-
-{% highlight r %}
-# add both vertical lines at the mean and the median respectively
-p = plt("Sepal.Length", type="density", add_vline_median=T, add_vline_mean=T)
-print(p)
-{% endhighlight %}
-
-![center](/../figs/2015-05-07-an-easy-way-to-make-ggplot2-histograms-ezplot-part3/unnamed-chunk-4-4.png) 
-
-#### Now, the iris data has a variable called "Species". Wouldn't it be nice if we can see how Sepal Length is distributed by different Species? It turns out that this is really easy to do with ezplot. We just need to pass in one more parameter to plt().
-
-{% highlight r %}
-# draw histogram of Sepal.Length by Species
-p = plt("Sepal.Length", fillby="Species", main=title1, binw=0.3)
-print(p)
-{% endhighlight %}
-
-![center](/../figs/2015-05-07-an-easy-way-to-make-ggplot2-histograms-ezplot-part3/unnamed-chunk-5-1.png) 
-
-{% highlight r %}
-# add a vertical line at the mean
-p = plt("Sepal.Length", fillby="Species", main=title1, binw=0.3, add_vline_mean=T)
-print(p)
-{% endhighlight %}
-
-![center](/../figs/2015-05-07-an-easy-way-to-make-ggplot2-histograms-ezplot-part3/unnamed-chunk-5-2.png) 
-
-{% highlight r %}
-# add a vertical line at the median
-p = plt("Sepal.Length", fillby="Species", main=title1, binw=0.3, add_vline_median=T)
-print(p)
-{% endhighlight %}
-
-![center](/../figs/2015-05-07-an-easy-way-to-make-ggplot2-histograms-ezplot-part3/unnamed-chunk-5-3.png) 
-
-{% highlight r %}
-# draw density of Sepal.Length by Species
-p = plt("Sepal.Length", fillby="Species", main=title1, type="density")
-print(p)
-{% endhighlight %}
-
-![center](/../figs/2015-05-07-an-easy-way-to-make-ggplot2-histograms-ezplot-part3/unnamed-chunk-5-4.png) 
-
-{% highlight r %}
-# add a vertical line at the mean
-p = plt("Sepal.Length", fillby="Species", type="density", add_vline_mean=T)
-print(p)
-{% endhighlight %}
-
-![center](/../figs/2015-05-07-an-easy-way-to-make-ggplot2-histograms-ezplot-part3/unnamed-chunk-5-5.png) 
-
-{% highlight r %}
-# add a vertical line at the median
-p = plt("Sepal.Length", fillby="Species", type="density", add_vline_median=T)
-print(p)
-{% endhighlight %}
-
-![center](/../figs/2015-05-07-an-easy-way-to-make-ggplot2-histograms-ezplot-part3/unnamed-chunk-5-6.png) 
-
-I created ezplot out of the frustration that there are too many detailed commands to remember when customizing a ggplot. I'd love to hear how ezplot has improved your productivity. In addition, I'm writing a book called ezplot: How to Easily Make ggplot2 Graphics for Data Analysis, and it is 20% complete. [Take a sneak peek](https://leanpub.com/ezplot) and get notified when the book is published.
+I made [ezplot](https://leanpub.com/ezplot) out of the frustration that there are too many details to remember when customizing a ggplot. It has greatly improved my productivity. Please drop a comment below if you have questions.

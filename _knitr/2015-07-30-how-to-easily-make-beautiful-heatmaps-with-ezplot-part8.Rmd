@@ -10,29 +10,18 @@ share: true
 ads: true
 ---
 
-Q: How would you display information in three variables (2 categorical vars and 1 numerical var) in one chart?
-A: Heat map.
+### Updated October 4, 2018
 
-In this post, we'll look at how to easily make effective heatmaps using ezplot. We'll use a dataset of NBA basketball statistics hosted at flowingdata.com. Let's get started. 
-
-#### Prerequisites
-1. Install a set of development tools
-* On Windows, download and install [Rtools](http://cran.r-project.org/bin/windows/Rtools/). 
-* On Mac, install the [Xcode command line tools](https://developer.apple.com/downloads). 
-* On Linux, install the R development package, usually called **r-devel** or **r-base-dev**.
-2. Install devtools by running `install.packages("devtools")` in R.
-
-#### Install and Load ezplot
+In this post, we'll look at how to make effective heatmaps using ezplot. We'll 
+use a dataset of NBA players' statistics from flowingdata.com. Make sure you 
+first install ezplot by running the command `devtools::install_github("gmlang/ezplot")`.
 ```{r, warning=FALSE, message=FALSE}
-devtools::install_github("gmlang/ezplot")
 library(ezplot)
-
-# we also need to load the following libraries for some data wrangling
 library(dplyr)
 library(tidyr)
 ```
 
-#### Get data. Notice we pass the url of the data directly to `read.csv()`.
+Let's get the data. Notice we pass the url directly to `read.csv()`.
 ```{r, warning=FALSE, message=FALSE}
 nba = read.csv("http://datasets.flowingdata.com/ppg2008.csv")
 # examine the variables
@@ -41,50 +30,41 @@ str(nba)
 nba[1:5, 1:8]
 ```
 
-The dataset has a variable called Name that contains the names of the NBA players. By default, it's read into R as a Factor with levels ordered alphabetically. 
-
-#### Reorder the levels of Name by the points each player scored.
+The variable `Name` has the names of the NBA players. By default, it's treated 
+by R as a Factor with levels ordered alphabetically. Reorder its levels by 
+points scored.
 ```{r, warning=FALSE, message=FALSE}
 nba$Name = with(nba, reorder(Name, PTS))
 ```
 
-The other variables are various performance statistics. To visualize the data in a heat map, we first need to put the data in the long format. In other words, we need to gather the names of the statistics in one column, and their actual values in another column.
-
-#### Change dataset to long format.
+The other variables are various performance statistics. Before we can make a 
+heat map, we need to put the data in the long format. In other words, we need to 
+gather the names of the statistics in one column, and their values in another column.
 ```{r, warning=FALSE, message=FALSE}
 nba_m = nba %>% gather(stats, val, -Name)
 head(nba_m)
 ```
 
-In order to correctly display the information, we need to scale the values so that they are between 0 and 1. And we do that for each performance statistics. (After you finish reading, I encourage you to make a heat map using the unscaled values, and compare it with the scaled version. You will see the two heatmaps you get look very different. The scaled version is the correct one. To find out why, you can look up how heatmap is made in ggplot2 by looking up its source.)
-
-#### Scale the values of each performance statistics.
+We also want to scale the values of each performance statistics so that they are 
+between 0 and 1. 
 ```{r, warning=FALSE, message=FALSE}
 dat = nba_m %>% group_by(stats) %>% mutate(val_scaled = scales::rescale(val))
 head(dat)
 ```
 
-With all the data prep work done, we're ready to make a heatmap. This is super easy with the aid of ezplot.
-
-#### Make a heat map.
+With all these data prep work done, we're ready to make a heatmap. This is super 
+easy with ezplot.
 ```{r, warning=FALSE, message=FALSE}
-f = mk_heatmap(dat)
-f("stats", "Name", "val_scaled", legend=F)
+plt = mk_heatmap(dat)
+p = plt("stats", "Name", "val_scaled")
+rotate_axis_text(p, 90, vjust_x = 0.5)
 ```
 
-By default, the heatmap we get uses the gray theme (Type ?theme_gray() to learn more). We can also make a heatmap using minimal theme by setting     
-`use_theme_gray=F`.
+Not it's your turn. Make a heat map using the unscaled values, and compare it 
+with the scaled version. You will see they are very different. The scaled 
+version is the mathematically correct one.
 
-#### Make a heat map using the minimal theme.
-```{r, warning=FALSE, message=FALSE}
-f("stats", "Name", "val_scaled", use_theme_gray=F, legend=F)
-```
+This is the last post in the ezplot how-to series. If you've enjoyed it, 
+tell your friend about it. If you want to learn more about how to use
+ezplot, you can get my book [here](https://leanpub.com/ezplot). 
 
-We can also change the size of the tick text on both axes. 
-
-#### Change tick text to 10 (default is 12).
-```{r, warning=FALSE, message=FALSE}
-f("stats", "Name", "val_scaled", base_size=10, legend=F)
-```
-
-This is the last post in the ezplot series. If you've enjoyed it, please help spread the word for it. I created [ezplot](https://github.com/gmlang/ezplot) because there are too many detailed commands to remember when making and customizing a ggplot. I hope ezplot can improve your productivity and make many analysts' work easier and more enjoyable.

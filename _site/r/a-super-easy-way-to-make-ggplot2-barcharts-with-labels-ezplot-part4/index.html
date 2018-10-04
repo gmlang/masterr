@@ -6,7 +6,7 @@
 <head>
 <meta charset="utf-8">
 <title>A Super Easy Way to Make Ggplot2 Bar Charts with Labels, ezplot - Part 4 &#8211; Become Great at R</title>
-<meta name="description" content="In my very first tutorial on the ezplot R package, I showed you how easy and quick it is to make nice looking ggplot2 bar charts using ezplot. In this post, I’ll show you how to easily add labels on the bars. Let’s get started.
+<meta name="description" content="Updated October 4, 2018
 
 ">
 <meta name="keywords" content="">
@@ -14,7 +14,7 @@
 
 <!-- Twitter Cards -->
 <meta name="twitter:title" content="A Super Easy Way to Make Ggplot2 Bar Charts with Labels, ezplot - Part 4">
-<meta name="twitter:description" content="In my very first tutorial on the ezplot R package, I showed you how easy and quick it is to make nice looking ggplot2 bar charts using ezplot. In this post, I’ll show you how to easily add labels on the bars. Let’s get started.
+<meta name="twitter:description" content="Updated October 4, 2018
 
 ">
 
@@ -27,7 +27,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
 <meta property="og:title" content="A Super Easy Way to Make Ggplot2 Bar Charts with Labels, ezplot - Part 4">
-<meta property="og:description" content="In my very first tutorial on the ezplot R package, I showed you how easy and quick it is to make nice looking ggplot2 bar charts using ezplot. In this post, I’ll show you how to easily add labels on the bars. Let’s get started.
+<meta property="og:description" content="Updated October 4, 2018
 
 ">
 <meta property="og:url" content="http://localhost:4000/r/a-super-easy-way-to-make-ggplot2-barcharts-with-labels-ezplot-part4/">
@@ -201,7 +201,7 @@
     });
 </script> 
 <!--End mc_embed_signup-->
-        <span class="entry-date date published"><time datetime="2015-05-22T00:00:00+09:00"><i class="fa fa-calendar-o"></i> May 22, 2015</time></span>
+        <span class="entry-date date published"><time datetime="2015-05-22T00:00:00+07:00"><i class="fa fa-calendar-o"></i> May 22, 2015</time></span>
         
         
         <span class="author vcard">By <span class="fn">Guangming Lang</span></span>
@@ -229,140 +229,36 @@
 </div><!-- /.google-ads --><!-- /.google-ads -->
       </footer>
       <div class="entry-content">
-        <p>In my very first tutorial on the ezplot R package, I showed you how easy and quick it is to make nice looking ggplot2 <a href="http://masterr.org/r/an-easy-way-to-make-ggplot2-plots-ezplot-part1/">bar charts</a> using ezplot. In this post, I’ll show you how to easily add labels on the bars. Let’s get started.</p>
+        <h3 id="updated-october-4-2018">Updated October 4, 2018</h3>
 
-<h4 id="prerequisites">Prerequisites</h4>
-<ol>
-  <li>Install a set of development tools
-    <ul>
-      <li>On Windows, download and install <a href="http://cran.r-project.org/bin/windows/Rtools/">Rtools</a>.</li>
-      <li>On Mac, install the <a href="https://developer.apple.com/downloads">Xcode command line tools</a>.</li>
-      <li>On Linux, install the R development package, usually called <strong>r-devel</strong> or <strong>r-base-dev</strong>.</li>
-    </ul>
-  </li>
-  <li>Install devtools by running <code class="highlighter-rouge">install.packages("devtools")</code> in R.</li>
-</ol>
+<p>Previously, I showed how to use the <code class="highlighter-rouge">mk_barplot_resp()</code> function to make <a href="http://masterr.org/r/an-easy-way-to-make-ggplot2-plots-ezplot-part1/">bar charts</a>. 
+In this post, I’ll show you how to use the <code class="highlighter-rouge">mk_barplot_freq()</code> function.</p>
 
-<h4 id="install-and-load-ezplot">Install and Load ezplot</h4>
+<p>Make sure you first install ezplot by running the command <code class="highlighter-rouge">devtools::install_github("gmlang/ezplot")</code>.</p>
 
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">devtools</span><span class="o">::</span><span class="n">install_github</span><span class="p">(</span><span class="s2">"gmlang/ezplot"</span><span class="p">)</span><span class="w">
-</span><span class="n">library</span><span class="p">(</span><span class="n">ezplot</span><span class="p">)</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">library</span><span class="p">(</span><span class="n">ezplot</span><span class="p">)</span><span class="w">
+</span><span class="n">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span></code></pre></figure>
 
-<p>We’ll use the diamonds data in the ggplot2 package. First, we count each clarity and calculate the percentages.</p>
+<p>We’ll use the diamonds data in the ggplot2 package.</p>
 
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">tbl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">table</span><span class="p">(</span><span class="n">ggplot2</span><span class="o">::</span><span class="n">diamonds</span><span class="o">$</span><span class="n">clarity</span><span class="p">)</span><span class="w"> </span><span class="c1"># use diamonds data in the ggplot2 library
-</span><span class="n">tbl_cnt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data.frame</span><span class="p">(</span><span class="n">cbind</span><span class="p">(</span><span class="n">freq</span><span class="o">=</span><span class="n">tbl</span><span class="p">))</span><span class="w">
-</span><span class="n">tbl_cnt</span><span class="o">$</span><span class="n">clarity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">row.names</span><span class="p">(</span><span class="n">tbl_cnt</span><span class="p">)</span><span class="w">
-</span><span class="n">row.names</span><span class="p">(</span><span class="n">tbl_cnt</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">NULL</span><span class="w">
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">plt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mk_barplot_freq</span><span class="p">(</span><span class="n">ggplot2</span><span class="o">::</span><span class="n">diamonds</span><span class="p">)</span></code></pre></figure>
 
-</span><span class="c1"># add percentages
-</span><span class="n">tbl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">within</span><span class="p">(</span><span class="n">tbl_cnt</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="n">pct</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">freq</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="n">freq</span><span class="p">)})</span><span class="w">
-</span><span class="n">tbl</span></code></pre></figure>
+<p>Let’s make a bar chart to show the frequency distribution of the clarities.
+Notice the bars are automatically labeled with both counts and percents.</p>
 
-<figure class="highlight"><pre><code class="language-text" data-lang="text">##    freq clarity        pct
-## 1   741      I1 0.01373749
-## 2  9194     SI2 0.17044865
-## 3 13065     SI1 0.24221357
-## 4 12258     VS2 0.22725250
-## 5  8171     VS1 0.15148313
-## 6  5066    VVS2 0.09391917
-## 7  3655    VVS1 0.06776047
-## 8  1790      IF 0.03318502</code></pre></figure>
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">plt</span><span class="p">(</span><span class="s2">"clarity"</span><span class="p">)</span></code></pre></figure>
 
-<p>We want to make a bar chart displaying either the count or the percent of the clarities, and we want to label the bars with either the count or the percent. To do that, we first need to append columns of the label positions to the data frame <code class="highlighter-rouge">tbl</code>. We can easily do that using the <code class="highlighter-rouge">add_bar_label_pos()</code> function in ezplot. Run <code class="highlighter-rouge">?add_bar_label_pos</code> in R to learn more about it, or <code class="highlighter-rouge">add_bar_label_pos</code> to see the function body.</p>
+<p><img src="/../figs/2015-05-22-a-super-easy-way-to-make-ggplot2-barcharts-with-labels-ezplot-part4/unnamed-chunk-3-1.png" alt="center" /></p>
 
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># make a function that can be used to add columns of label positions to tbl
-</span><span class="n">f</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">add_bar_label_pos</span><span class="p">(</span><span class="n">tbl</span><span class="p">)</span><span class="w">
+<p>We can also choose to show relative frequencies (%) on the y-axis. Just set
+<code class="highlighter-rouge">show_pct = TRUE</code></p>
 
-</span><span class="c1"># add columns of label positions based on freq
-</span><span class="n">tbl_w_pos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="s2">"clarity"</span><span class="p">,</span><span class="w"> </span><span class="s2">"freq"</span><span class="p">,</span><span class="w"> </span><span class="n">vpos</span><span class="o">=</span><span class="m">500</span><span class="p">)</span><span class="w">
-</span><span class="n">tbl_w_pos</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">plt</span><span class="p">(</span><span class="s2">"clarity"</span><span class="p">,</span><span class="w"> </span><span class="n">show_pct</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span></code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-text" data-lang="text">##    freq clarity        pct freq_pos_top freq_pos_mid
-## 1   741      I1 0.01373749         1241        370.5
-## 2  1790      IF 0.03318502         2290        895.0
-## 3 13065     SI1 0.24221357        13565       6532.5
-## 4  9194     SI2 0.17044865         9694       4597.0
-## 5  8171     VS1 0.15148313         8671       4085.5
-## 6 12258     VS2 0.22725250        12758       6129.0
-## 7  3655    VVS1 0.06776047         4155       1827.5
-## 8  5066    VVS2 0.09391917         5566       2533.0</code></pre></figure>
+<p><img src="/../figs/2015-05-22-a-super-easy-way-to-make-ggplot2-barcharts-with-labels-ezplot-part4/unnamed-chunk-4-1.png" alt="center" /></p>
 
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># make a function that can be used to add columns of label positions to tbl_w_pos
-</span><span class="n">f</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">add_bar_label_pos</span><span class="p">(</span><span class="n">tbl_w_pos</span><span class="p">)</span><span class="w">
-
-</span><span class="c1"># add columns of label positions based on pct
-</span><span class="n">tbl_w_pos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="s2">"clarity"</span><span class="p">,</span><span class="w"> </span><span class="s2">"pct"</span><span class="p">,</span><span class="w"> </span><span class="n">vpos</span><span class="o">=</span><span class="m">0.01</span><span class="p">)</span><span class="w">
-</span><span class="n">tbl_w_pos</span></code></pre></figure>
-
-<figure class="highlight"><pre><code class="language-text" data-lang="text">##    freq clarity        pct freq_pos_top freq_pos_mid pct_pos_top
-## 1   741      I1 0.01373749         1241        370.5  0.02373749
-## 2  1790      IF 0.03318502         2290        895.0  0.04318502
-## 3 13065     SI1 0.24221357        13565       6532.5  0.25221357
-## 4  9194     SI2 0.17044865         9694       4597.0  0.18044865
-## 5  8171     VS1 0.15148313         8671       4085.5  0.16148313
-## 6 12258     VS2 0.22725250        12758       6129.0  0.23725250
-## 7  3655    VVS1 0.06776047         4155       1827.5  0.07776047
-## 8  5066    VVS2 0.09391917         5566       2533.0  0.10391917
-##   pct_pos_mid
-## 1 0.006868743
-## 2 0.016592510
-## 3 0.121106785
-## 4 0.085224323
-## 5 0.075741565
-## 6 0.113626251
-## 7 0.033880237
-## 8 0.046959585</code></pre></figure>
-
-<p>Next, we make a function that can be used to draw bar charts based on variables in <code class="highlighter-rouge">tbl_w_pos</code>. If you’ve been reading the tutorials, this step should be familiar.</p>
-
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">barplt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mk_barplot</span><span class="p">(</span><span class="n">tbl_w_pos</span><span class="p">)</span></code></pre></figure>
-
-<p>Now, we’re ready to draw bar charts. First, we draw a bar chart where y is freq and label the bars with freq, by default, it places the labels at the middle of the bars.</p>
-
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">barplt</span><span class="p">(</span><span class="s2">"clarity"</span><span class="p">,</span><span class="w"> </span><span class="s2">"freq"</span><span class="p">,</span><span class="w"> </span><span class="n">fillby</span><span class="o">=</span><span class="s2">"clarity"</span><span class="p">,</span><span class="w"> </span><span class="n">legend</span><span class="o">=</span><span class="nb">F</span><span class="p">,</span><span class="w"> </span><span class="n">barlab</span><span class="o">=</span><span class="s2">"freq"</span><span class="p">)</span><span class="w"> 
-</span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">scale_axis</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="n">scale</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"comma"</span><span class="p">)</span><span class="w">
-</span><span class="n">print</span><span class="p">(</span><span class="n">p</span><span class="p">)</span></code></pre></figure>
-
-<p><img src="/../figs/2015-05-22-a-super-easy-way-to-make-ggplot2-barcharts-with-labels-ezplot-part4/unnamed-chunk-5-1.png" alt="center" /></p>
-
-<p>If you think it’s difficult to read the labels, you can easily place them at the top of the bars by passing in the argument <code class="highlighter-rouge">barlab_at_top=T</code>.</p>
-
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">barplt</span><span class="p">(</span><span class="s2">"clarity"</span><span class="p">,</span><span class="w"> </span><span class="s2">"freq"</span><span class="p">,</span><span class="w"> </span><span class="n">fillby</span><span class="o">=</span><span class="s2">"clarity"</span><span class="p">,</span><span class="w"> </span><span class="n">legend</span><span class="o">=</span><span class="nb">F</span><span class="p">,</span><span class="w"> </span><span class="n">barlab</span><span class="o">=</span><span class="s2">"freq"</span><span class="p">,</span><span class="w">
-            </span><span class="n">barlab_at_top</span><span class="o">=</span><span class="nb">T</span><span class="p">)</span><span class="w"> 
-</span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">scale_axis</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="n">scale</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"comma"</span><span class="p">)</span><span class="w">
-</span><span class="n">print</span><span class="p">(</span><span class="n">p</span><span class="p">)</span></code></pre></figure>
-
-<p><img src="/../figs/2015-05-22-a-super-easy-way-to-make-ggplot2-barcharts-with-labels-ezplot-part4/unnamed-chunk-6-1.png" alt="center" /></p>
-
-<p>Another cool thing you can do is to label the bars with percent although the y-axis is frequency count. This is super easy too!</p>
-
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># label the bars with pct instead of freq
-</span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">barplt</span><span class="p">(</span><span class="s2">"clarity"</span><span class="p">,</span><span class="w"> </span><span class="s2">"freq"</span><span class="p">,</span><span class="w"> </span><span class="n">fillby</span><span class="o">=</span><span class="s2">"clarity"</span><span class="p">,</span><span class="w"> </span><span class="n">legend</span><span class="o">=</span><span class="nb">F</span><span class="p">,</span><span class="w"> </span><span class="n">barlab</span><span class="o">=</span><span class="s2">"pct"</span><span class="p">,</span><span class="w">
-            </span><span class="n">barlab_use_pct</span><span class="o">=</span><span class="nb">T</span><span class="p">)</span><span class="w"> 
-</span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">scale_axis</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="n">scale</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"comma"</span><span class="p">)</span><span class="w">
-</span><span class="n">print</span><span class="p">(</span><span class="n">p</span><span class="p">)</span></code></pre></figure>
-
-<p><img src="/../figs/2015-05-22-a-super-easy-way-to-make-ggplot2-barcharts-with-labels-ezplot-part4/unnamed-chunk-7-1.png" alt="center" /></p>
-
-<p>Finally, you can draw a bar chart where y is percent and label the bars with percent.</p>
-
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">barplt</span><span class="p">(</span><span class="s2">"clarity"</span><span class="p">,</span><span class="w"> </span><span class="s2">"pct"</span><span class="p">,</span><span class="w"> </span><span class="n">fillby</span><span class="o">=</span><span class="s2">"clarity"</span><span class="p">,</span><span class="w"> </span><span class="n">legend</span><span class="o">=</span><span class="nb">F</span><span class="p">,</span><span class="w"> </span><span class="n">barlab</span><span class="o">=</span><span class="s2">"pct"</span><span class="p">,</span><span class="w">
-            </span><span class="n">barlab_use_pct</span><span class="o">=</span><span class="nb">T</span><span class="p">)</span><span class="w"> 
-</span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">scale_axis</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="n">scale</span><span class="o">=</span><span class="s2">"pct"</span><span class="p">,</span><span class="w"> </span><span class="n">pct_max</span><span class="o">=</span><span class="m">0.3</span><span class="p">,</span><span class="w"> </span><span class="n">pct_jump</span><span class="o">=</span><span class="m">0.05</span><span class="p">)</span><span class="w">
-</span><span class="n">print</span><span class="p">(</span><span class="n">p</span><span class="p">)</span></code></pre></figure>
-
-<p><img src="/../figs/2015-05-22-a-super-easy-way-to-make-ggplot2-barcharts-with-labels-ezplot-part4/unnamed-chunk-8-1.png" alt="center" /></p>
-
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># place the labels at the top of the bars
-</span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">barplt</span><span class="p">(</span><span class="s2">"clarity"</span><span class="p">,</span><span class="w"> </span><span class="s2">"pct"</span><span class="p">,</span><span class="w"> </span><span class="n">fillby</span><span class="o">=</span><span class="s2">"clarity"</span><span class="p">,</span><span class="w"> </span><span class="n">legend</span><span class="o">=</span><span class="nb">F</span><span class="p">,</span><span class="w"> </span><span class="n">barlab</span><span class="o">=</span><span class="s2">"pct"</span><span class="p">,</span><span class="w">
-            </span><span class="n">barlab_use_pct</span><span class="o">=</span><span class="nb">T</span><span class="p">,</span><span class="w"> </span><span class="n">barlab_at_top</span><span class="o">=</span><span class="nb">T</span><span class="p">)</span><span class="w"> 
-</span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">scale_axis</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="n">scale</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"pct"</span><span class="p">,</span><span class="w"> </span><span class="n">pct_max</span><span class="o">=</span><span class="m">0.3</span><span class="p">,</span><span class="w"> </span><span class="n">pct_jump</span><span class="o">=</span><span class="m">0.05</span><span class="p">)</span><span class="w">
-</span><span class="n">print</span><span class="p">(</span><span class="n">p</span><span class="p">)</span></code></pre></figure>
-
-<p><img src="/../figs/2015-05-22-a-super-easy-way-to-make-ggplot2-barcharts-with-labels-ezplot-part4/unnamed-chunk-8-2.png" alt="center" /></p>
-
-<p>I created ezplot out of the frustration that there are too many detailed commands to remember when customizing a ggplot. If ezplot has improved your productivity, please share it with your friends, and you’re always welcome to drop a comment below. In addition, I’m writing a book called ezplot: How to Easily Make ggplot2 Graphics for Data Analysis, and it is 20% complete. <a href="https://leanpub.com/ezplot">Take a sneak peek</a> and get notified when the book is published.</p>
+<p>If <a href="https://leanpub.com/ezplot">ezplot</a> has improved your productivity, please 
+share it with your friends.</p>
 
 		<!-- Begin MailChimp Signup Form -->
 <html>
@@ -433,7 +329,7 @@
         <a href="http://localhost:4000/r/an-easy-way-to-make-ggplot2-histograms-ezplot-part3/" class="btn" title="An Easy Way to Make Ggplot2 Histograms and Density Plots, ezplot - Part 3">Previous</a>
       
       
-        <a href="http://localhost:4000/r/how-to-visualize-the-distribution-of-a-continuous-variable-ezplot-part5/" class="btn" title="How to visualize the distribution of a continuous variable, ezplot - Part 5">Next</a>
+        <a href="http://localhost:4000/r/how-to-check-normality-of-a-continuous-variable-ezplot-part5/" class="btn" title="How to check normality of a continuous variable, ezplot - Part 5">Next</a>
       
     </nav><!-- /.pagination -->
   </article>
@@ -442,7 +338,7 @@
 <div class="footer-wrapper">
   <footer role="contentinfo" class="entry-wrapper">
     
-<span>&copy; 2017 Guangming Lang. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://mademistakes.com/so-simple/" rel="nofollow">So Simple Theme</a>.</span>
+<span>&copy; 2018 Guangming Lang. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://mademistakes.com/so-simple/" rel="nofollow">So Simple Theme</a>.</span>
 <div class="social-icons">
 	
 	

@@ -6,7 +6,7 @@
 <head>
 <meta charset="utf-8">
 <title>An Easy Way to Make Ggplot2 Histograms and Density Plots, ezplot - Part 3 &#8211; Become Great at R</title>
-<meta name="description" content="Previously, I introduced the ezplot package and demoed how to use it to easily make nice looking ggplot2 barcharts and boxplots. In this post, I’ll discuss two common plot types that are used for displaying distributions of numeric variables, namely, the histogram and the density plot. By the end of this tutorial, you’ll learn how to make sophisticated ggplot2 histograms and density plots using ezplot. And once again, you’ll be amazed how simple and intuitive it is. Let’s get started.
+<meta name="description" content="Updated October 4, 2018
 
 ">
 <meta name="keywords" content="">
@@ -14,7 +14,7 @@
 
 <!-- Twitter Cards -->
 <meta name="twitter:title" content="An Easy Way to Make Ggplot2 Histograms and Density Plots, ezplot - Part 3">
-<meta name="twitter:description" content="Previously, I introduced the ezplot package and demoed how to use it to easily make nice looking ggplot2 barcharts and boxplots. In this post, I’ll discuss two common plot types that are used for displaying distributions of numeric variables, namely, the histogram and the density plot. By the end of this tutorial, you’ll learn how to make sophisticated ggplot2 histograms and density plots using ezplot. And once again, you’ll be amazed how simple and intuitive it is. Let’s get started.
+<meta name="twitter:description" content="Updated October 4, 2018
 
 ">
 
@@ -27,7 +27,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
 <meta property="og:title" content="An Easy Way to Make Ggplot2 Histograms and Density Plots, ezplot - Part 3">
-<meta property="og:description" content="Previously, I introduced the ezplot package and demoed how to use it to easily make nice looking ggplot2 barcharts and boxplots. In this post, I’ll discuss two common plot types that are used for displaying distributions of numeric variables, namely, the histogram and the density plot. By the end of this tutorial, you’ll learn how to make sophisticated ggplot2 histograms and density plots using ezplot. And once again, you’ll be amazed how simple and intuitive it is. Let’s get started.
+<meta property="og:description" content="Updated October 4, 2018
 
 ">
 <meta property="og:url" content="http://localhost:4000/r/an-easy-way-to-make-ggplot2-histograms-ezplot-part3/">
@@ -201,7 +201,7 @@
     });
 </script> 
 <!--End mc_embed_signup-->
-        <span class="entry-date date published"><time datetime="2015-05-07T00:00:00+09:00"><i class="fa fa-calendar-o"></i> May 07, 2015</time></span>
+        <span class="entry-date date published"><time datetime="2015-05-07T00:00:00+07:00"><i class="fa fa-calendar-o"></i> May 07, 2015</time></span>
         
         
         <span class="author vcard">By <span class="fn">Guangming Lang</span></span>
@@ -229,131 +229,65 @@
 </div><!-- /.google-ads --><!-- /.google-ads -->
       </footer>
       <div class="entry-content">
-        <p>Previously, I introduced the ezplot package and demoed how to use it to easily make nice looking ggplot2 <a href="http://masterr.org/r/an-easy-way-to-make-ggplot2-plots-ezplot-part1/">barcharts</a> and <a href="http://masterr.org/r/an-easy-way-to-make-ggplot2-boxplots-ezplot-part2/">boxplots</a>. In this post, I’ll discuss two common plot types that are used for displaying distributions of numeric variables, namely, the histogram and the density plot. By the end of this tutorial, you’ll learn how to make sophisticated ggplot2 histograms and density plots using ezplot. And once again, you’ll be amazed how simple and intuitive it is. Let’s get started.</p>
+        <h3 id="updated-october-4-2018">Updated October 4, 2018</h3>
 
-<h4 id="prerequisites">Prerequisites</h4>
-<ol>
-  <li>Install a set of development tools
-    <ul>
-      <li>On Windows, download and install <a href="http://cran.r-project.org/bin/windows/Rtools/">Rtools</a>.</li>
-      <li>On Mac, install the <a href="https://developer.apple.com/downloads">Xcode command line tools</a>.</li>
-      <li>On Linux, install the R development package, usually called <strong>r-devel</strong> or <strong>r-base-dev</strong>.</li>
-    </ul>
-  </li>
-  <li>Install devtools by running <code class="highlighter-rouge">install.packages("devtools")</code> in R.</li>
-</ol>
+<p>Previously, I gave examples of ezplot <a href="http://masterr.org/r/an-easy-way-to-make-ggplot2-plots-ezplot-part1/">barcharts</a> and <a href="http://masterr.org/r/an-easy-way-to-make-ggplot2-boxplots-ezplot-part2/">boxplots</a>. In today’s post, I’ll discuss two common charts for displaying distributions of numeric variables, namely, the histogram and the density plot. By the end of this article, you’ll know how to make sophisticated histograms and density plots using ezplot. And once again, you’ll be amazed how simple it is. Let’s get started.</p>
 
-<h4 id="install-and-load-ezplot">Install and Load ezplot</h4>
+<h4 id="load-ezplot">Load ezplot</h4>
 
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">devtools</span><span class="o">::</span><span class="n">install_github</span><span class="p">(</span><span class="s2">"gmlang/ezplot"</span><span class="p">)</span><span class="w">
-</span><span class="n">library</span><span class="p">(</span><span class="n">ezplot</span><span class="p">)</span></code></pre></figure>
+<p>Make sure you first install ezplot by running the command <code class="highlighter-rouge">devtools::install_github("gmlang/ezplot")</code>.</p>
 
-<h4 id="well-use-the-famous-iris-dataset-which-comes-with-the-base-r-distribution">We’ll use the famous iris dataset, which comes with the base R distribution.</h4>
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">library</span><span class="p">(</span><span class="n">ezplot</span><span class="p">)</span><span class="w">
+</span><span class="n">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span></code></pre></figure>
 
-<p>First, we pass iris (note: iris is a data frame) into the function mk_distplot() to output a function that we can use to draw histograms or density plots for any numeric variables in iris.</p>
+<h4 id="histogram">Histogram</h4>
 
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">plt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mk_distplot</span><span class="p">(</span><span class="n">iris</span><span class="p">)</span></code></pre></figure>
+<p>First, we pass the <code class="highlighter-rouge">iris</code> data frame into the function <code class="highlighter-rouge">mk_histogram()</code> to get a plotting function that for drawing histograms of any numeric variables in <code class="highlighter-rouge">iris</code>.</p>
 
-<p>If you haven’t noticed, all the “mk_” functions in ezplot has one and only one input parameter, namely, a data frame. And they all output functions that can be called to make plots by passing in variables (surrounded by quotations) in the data frame. This design came from the simple idea that <a href="http://masterr.org/r/functions-that-return-functions-part-2/">functions can return functions instead of values</a>.</p>
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">plt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mk_histogram</span><span class="p">(</span><span class="n">iris</span><span class="p">)</span></code></pre></figure>
 
-<h4 id="next-we-use-the-function-plt-to-draw-histogram-for-sepallength">Next, we use the function <code class="highlighter-rouge">plt()</code> to draw histogram for Sepal.Length.</h4>
+<p>If you haven’t noticed, all the <code class="highlighter-rouge">mk_xxx()</code> functions in ezplot takes one and only one argument, namely, a data frame. They all return plotting functions that take names of variables from the data frame as input. This design came from the simple idea that <a href="http://masterr.org/r/functions-that-return-functions-part-2/">functions can return functions</a>.</p>
 
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># plot histogram for Sepal.Length
-</span><span class="n">title1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Histogram of Sepal Length"</span><span class="w">
-</span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">plt</span><span class="p">(</span><span class="s2">"Sepal.Length"</span><span class="p">,</span><span class="w"> </span><span class="n">main</span><span class="o">=</span><span class="n">title1</span><span class="p">)</span><span class="w">
-</span><span class="n">print</span><span class="p">(</span><span class="n">p</span><span class="p">)</span></code></pre></figure>
+<p>Let’s draw a histogram for <code class="highlighter-rouge">Sepal.Length</code>.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">plt</span><span class="p">(</span><span class="s2">"Sepal.Length"</span><span class="p">)</span></code></pre></figure>
 
 <p><img src="/../figs/2015-05-07-an-easy-way-to-make-ggplot2-histograms-ezplot-part3/unnamed-chunk-3-1.png" alt="center" /></p>
 
 <figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># adjust bin width
-</span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">plt</span><span class="p">(</span><span class="s2">"Sepal.Length"</span><span class="p">,</span><span class="w"> </span><span class="n">main</span><span class="o">=</span><span class="n">title1</span><span class="p">,</span><span class="w"> </span><span class="n">binw</span><span class="o">=</span><span class="m">0.3</span><span class="p">)</span><span class="w">
-</span><span class="n">print</span><span class="p">(</span><span class="n">p</span><span class="p">)</span></code></pre></figure>
+</span><span class="n">plt</span><span class="p">(</span><span class="s2">"Sepal.Length"</span><span class="p">,</span><span class="w"> </span><span class="n">binw</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.2</span><span class="p">)</span></code></pre></figure>
 
 <p><img src="/../figs/2015-05-07-an-easy-way-to-make-ggplot2-histograms-ezplot-part3/unnamed-chunk-3-2.png" alt="center" /></p>
 
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># add a vertical line at the mean
-</span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">plt</span><span class="p">(</span><span class="s2">"Sepal.Length"</span><span class="p">,</span><span class="w"> </span><span class="n">main</span><span class="o">=</span><span class="n">title1</span><span class="p">,</span><span class="w"> </span><span class="n">binw</span><span class="o">=</span><span class="m">0.3</span><span class="p">,</span><span class="w"> </span><span class="n">add_vline_mean</span><span class="o">=</span><span class="nb">T</span><span class="p">)</span><span class="w">
-</span><span class="n">print</span><span class="p">(</span><span class="n">p</span><span class="p">)</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># remove the vertical line at the mean
+</span><span class="n">plt</span><span class="p">(</span><span class="s2">"Sepal.Length"</span><span class="p">,</span><span class="w"> </span><span class="n">add_vline_mean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">F</span><span class="p">)</span></code></pre></figure>
 
 <p><img src="/../figs/2015-05-07-an-easy-way-to-make-ggplot2-histograms-ezplot-part3/unnamed-chunk-3-3.png" alt="center" /></p>
 
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># add a vertical line at the median
-</span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">plt</span><span class="p">(</span><span class="s2">"Sepal.Length"</span><span class="p">,</span><span class="w"> </span><span class="n">main</span><span class="o">=</span><span class="n">title1</span><span class="p">,</span><span class="w"> </span><span class="n">binw</span><span class="o">=</span><span class="m">0.3</span><span class="p">,</span><span class="w"> </span><span class="n">add_vline_median</span><span class="o">=</span><span class="nb">T</span><span class="p">)</span><span class="w">
-</span><span class="n">print</span><span class="p">(</span><span class="n">p</span><span class="p">)</span></code></pre></figure>
+<h4 id="density-plots">Density plots</h4>
 
-<p><img src="/../figs/2015-05-07-an-easy-way-to-make-ggplot2-histograms-ezplot-part3/unnamed-chunk-3-4.png" alt="center" /></p>
+<p>Density plots and histograms are twins. They show the same information. In ezplot, we use
+the <code class="highlighter-rouge">mk_densityplot()</code> function to make density plots. For example, let’s make a density plot for <code class="highlighter-rouge">Sepal.Length</code>.</p>
 
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># add both vertical lines at the mean and the median respectively
-</span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">plt</span><span class="p">(</span><span class="s2">"Sepal.Length"</span><span class="p">,</span><span class="w"> </span><span class="n">binw</span><span class="o">=</span><span class="m">0.3</span><span class="p">,</span><span class="w"> </span><span class="n">add_vline_mean</span><span class="o">=</span><span class="nb">T</span><span class="p">,</span><span class="w"> </span><span class="n">add_vline_median</span><span class="o">=</span><span class="nb">T</span><span class="p">)</span><span class="w">
-</span><span class="n">print</span><span class="p">(</span><span class="n">p</span><span class="p">)</span></code></pre></figure>
-
-<p><img src="/../figs/2015-05-07-an-easy-way-to-make-ggplot2-histograms-ezplot-part3/unnamed-chunk-3-5.png" alt="center" /></p>
-
-<h4 id="we-can-also-draw-density-plots-instead-of-histograms">We can also draw density plots instead of histograms.</h4>
-
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># draw density plots for Sepal.Length
-</span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">plt</span><span class="p">(</span><span class="s2">"Sepal.Length"</span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="o">=</span><span class="s2">"density"</span><span class="p">,</span><span class="w"> </span><span class="n">main</span><span class="o">=</span><span class="n">title1</span><span class="p">)</span><span class="w">
-</span><span class="n">print</span><span class="p">(</span><span class="n">p</span><span class="p">)</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">plt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mk_densityplot</span><span class="p">(</span><span class="n">iris</span><span class="p">)</span><span class="w">
+</span><span class="n">plt</span><span class="p">(</span><span class="s2">"Sepal.Length"</span><span class="p">)</span></code></pre></figure>
 
 <p><img src="/../figs/2015-05-07-an-easy-way-to-make-ggplot2-histograms-ezplot-part3/unnamed-chunk-4-1.png" alt="center" /></p>
 
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># add a vertical line at the mean
-</span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">plt</span><span class="p">(</span><span class="s2">"Sepal.Length"</span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="o">=</span><span class="s2">"density"</span><span class="p">,</span><span class="w"> </span><span class="n">main</span><span class="o">=</span><span class="n">title1</span><span class="p">,</span><span class="w"> </span><span class="n">add_vline_mean</span><span class="o">=</span><span class="nb">T</span><span class="p">)</span><span class="w">
-</span><span class="n">print</span><span class="p">(</span><span class="n">p</span><span class="p">)</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># don't remove tails
+</span><span class="n">plt</span><span class="p">(</span><span class="s2">"Sepal.Length"</span><span class="p">,</span><span class="w"> </span><span class="n">cut_tail</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">)</span></code></pre></figure>
 
 <p><img src="/../figs/2015-05-07-an-easy-way-to-make-ggplot2-histograms-ezplot-part3/unnamed-chunk-4-2.png" alt="center" /></p>
 
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># add a vertical line at the median
-</span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">plt</span><span class="p">(</span><span class="s2">"Sepal.Length"</span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="o">=</span><span class="s2">"density"</span><span class="p">,</span><span class="w"> </span><span class="n">main</span><span class="o">=</span><span class="n">title1</span><span class="p">,</span><span class="w"> </span><span class="n">add_vline_median</span><span class="o">=</span><span class="nb">T</span><span class="p">)</span><span class="w">
-</span><span class="n">print</span><span class="p">(</span><span class="n">p</span><span class="p">)</span></code></pre></figure>
+<p>The iris data has a variable called “Species”. Wouldn’t it be nice if we can see how Sepal Length is distributed across different Species? This is super easy to do with ezplot.</p>
 
-<p><img src="/../figs/2015-05-07-an-easy-way-to-make-ggplot2-histograms-ezplot-part3/unnamed-chunk-4-3.png" alt="center" /></p>
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">plt</span><span class="p">(</span><span class="s2">"Sepal.Length"</span><span class="p">,</span><span class="w"> </span><span class="n">yvar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Species"</span><span class="p">)</span></code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># add both vertical lines at the mean and the median respectively
-</span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">plt</span><span class="p">(</span><span class="s2">"Sepal.Length"</span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="o">=</span><span class="s2">"density"</span><span class="p">,</span><span class="w"> </span><span class="n">add_vline_median</span><span class="o">=</span><span class="nb">T</span><span class="p">,</span><span class="w"> </span><span class="n">add_vline_mean</span><span class="o">=</span><span class="nb">T</span><span class="p">)</span><span class="w">
-</span><span class="n">print</span><span class="p">(</span><span class="n">p</span><span class="p">)</span></code></pre></figure>
-
-<p><img src="/../figs/2015-05-07-an-easy-way-to-make-ggplot2-histograms-ezplot-part3/unnamed-chunk-4-4.png" alt="center" /></p>
-
-<h4 id="now-the-iris-data-has-a-variable-called-species-wouldnt-it-be-nice-if-we-can-see-how-sepal-length-is-distributed-by-different-species-it-turns-out-that-this-is-really-easy-to-do-with-ezplot-we-just-need-to-pass-in-one-more-parameter-to-plt">Now, the iris data has a variable called “Species”. Wouldn’t it be nice if we can see how Sepal Length is distributed by different Species? It turns out that this is really easy to do with ezplot. We just need to pass in one more parameter to plt().</h4>
-
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># draw histogram of Sepal.Length by Species
-</span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">plt</span><span class="p">(</span><span class="s2">"Sepal.Length"</span><span class="p">,</span><span class="w"> </span><span class="n">fillby</span><span class="o">=</span><span class="s2">"Species"</span><span class="p">,</span><span class="w"> </span><span class="n">main</span><span class="o">=</span><span class="n">title1</span><span class="p">,</span><span class="w"> </span><span class="n">binw</span><span class="o">=</span><span class="m">0.3</span><span class="p">)</span><span class="w">
-</span><span class="n">print</span><span class="p">(</span><span class="n">p</span><span class="p">)</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Picking joint bandwidth of 0.181</code></pre></figure>
 
 <p><img src="/../figs/2015-05-07-an-easy-way-to-make-ggplot2-histograms-ezplot-part3/unnamed-chunk-5-1.png" alt="center" /></p>
 
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># add a vertical line at the mean
-</span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">plt</span><span class="p">(</span><span class="s2">"Sepal.Length"</span><span class="p">,</span><span class="w"> </span><span class="n">fillby</span><span class="o">=</span><span class="s2">"Species"</span><span class="p">,</span><span class="w"> </span><span class="n">main</span><span class="o">=</span><span class="n">title1</span><span class="p">,</span><span class="w"> </span><span class="n">binw</span><span class="o">=</span><span class="m">0.3</span><span class="p">,</span><span class="w"> </span><span class="n">add_vline_mean</span><span class="o">=</span><span class="nb">T</span><span class="p">)</span><span class="w">
-</span><span class="n">print</span><span class="p">(</span><span class="n">p</span><span class="p">)</span></code></pre></figure>
-
-<p><img src="/../figs/2015-05-07-an-easy-way-to-make-ggplot2-histograms-ezplot-part3/unnamed-chunk-5-2.png" alt="center" /></p>
-
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># add a vertical line at the median
-</span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">plt</span><span class="p">(</span><span class="s2">"Sepal.Length"</span><span class="p">,</span><span class="w"> </span><span class="n">fillby</span><span class="o">=</span><span class="s2">"Species"</span><span class="p">,</span><span class="w"> </span><span class="n">main</span><span class="o">=</span><span class="n">title1</span><span class="p">,</span><span class="w"> </span><span class="n">binw</span><span class="o">=</span><span class="m">0.3</span><span class="p">,</span><span class="w"> </span><span class="n">add_vline_median</span><span class="o">=</span><span class="nb">T</span><span class="p">)</span><span class="w">
-</span><span class="n">print</span><span class="p">(</span><span class="n">p</span><span class="p">)</span></code></pre></figure>
-
-<p><img src="/../figs/2015-05-07-an-easy-way-to-make-ggplot2-histograms-ezplot-part3/unnamed-chunk-5-3.png" alt="center" /></p>
-
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># draw density of Sepal.Length by Species
-</span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">plt</span><span class="p">(</span><span class="s2">"Sepal.Length"</span><span class="p">,</span><span class="w"> </span><span class="n">fillby</span><span class="o">=</span><span class="s2">"Species"</span><span class="p">,</span><span class="w"> </span><span class="n">main</span><span class="o">=</span><span class="n">title1</span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="o">=</span><span class="s2">"density"</span><span class="p">)</span><span class="w">
-</span><span class="n">print</span><span class="p">(</span><span class="n">p</span><span class="p">)</span></code></pre></figure>
-
-<p><img src="/../figs/2015-05-07-an-easy-way-to-make-ggplot2-histograms-ezplot-part3/unnamed-chunk-5-4.png" alt="center" /></p>
-
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># add a vertical line at the mean
-</span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">plt</span><span class="p">(</span><span class="s2">"Sepal.Length"</span><span class="p">,</span><span class="w"> </span><span class="n">fillby</span><span class="o">=</span><span class="s2">"Species"</span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="o">=</span><span class="s2">"density"</span><span class="p">,</span><span class="w"> </span><span class="n">add_vline_mean</span><span class="o">=</span><span class="nb">T</span><span class="p">)</span><span class="w">
-</span><span class="n">print</span><span class="p">(</span><span class="n">p</span><span class="p">)</span></code></pre></figure>
-
-<p><img src="/../figs/2015-05-07-an-easy-way-to-make-ggplot2-histograms-ezplot-part3/unnamed-chunk-5-5.png" alt="center" /></p>
-
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># add a vertical line at the median
-</span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">plt</span><span class="p">(</span><span class="s2">"Sepal.Length"</span><span class="p">,</span><span class="w"> </span><span class="n">fillby</span><span class="o">=</span><span class="s2">"Species"</span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="o">=</span><span class="s2">"density"</span><span class="p">,</span><span class="w"> </span><span class="n">add_vline_median</span><span class="o">=</span><span class="nb">T</span><span class="p">)</span><span class="w">
-</span><span class="n">print</span><span class="p">(</span><span class="n">p</span><span class="p">)</span></code></pre></figure>
-
-<p><img src="/../figs/2015-05-07-an-easy-way-to-make-ggplot2-histograms-ezplot-part3/unnamed-chunk-5-6.png" alt="center" /></p>
-
-<p>I created ezplot out of the frustration that there are too many detailed commands to remember when customizing a ggplot. I’d love to hear how ezplot has improved your productivity. In addition, I’m writing a book called ezplot: How to Easily Make ggplot2 Graphics for Data Analysis, and it is 20% complete. <a href="https://leanpub.com/ezplot">Take a sneak peek</a> and get notified when the book is published.</p>
+<p>I made <a href="https://leanpub.com/ezplot">ezplot</a> out of the frustration that there are too many details to remember when customizing a ggplot. It has greatly improved my productivity. Please drop a comment below if you have questions.</p>
 
 		<!-- Begin MailChimp Signup Form -->
 <html>
@@ -433,7 +367,7 @@
 <div class="footer-wrapper">
   <footer role="contentinfo" class="entry-wrapper">
     
-<span>&copy; 2017 Guangming Lang. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://mademistakes.com/so-simple/" rel="nofollow">So Simple Theme</a>.</span>
+<span>&copy; 2018 Guangming Lang. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://mademistakes.com/so-simple/" rel="nofollow">So Simple Theme</a>.</span>
 <div class="social-icons">
 	
 	

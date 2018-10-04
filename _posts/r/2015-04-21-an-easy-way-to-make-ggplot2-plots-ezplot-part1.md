@@ -8,10 +8,12 @@ keywords: "R, ggplot, ggplot2, ezplot, barchart, barplot"
 published: true
 share: true
 ads: true
-
 ---
 
-Do you love [ggplot2](http://ggplot2.org) plots? If you've worked with ggplot2 before, you know that to get a satisfying plot, you often need to use many detailed ggplot2 syntaxes, which are difficult to remember and time consuming to look up. Wouldn't it be awesome if there're simpler and intuitive syntaxes? The answer is yes and the package [ezplot](https://github.com/gmlang/ezplot) does exactly that. In this and the next few posts, I'll demo how to use ezplot.
+### Updated October 4, 2018
+
+Do you love [ggplot2](http://ggplot2.org)? If you've worked with ggplot2 before, you know 
+it often takes many lines of code to get a satisfying plot. The ggplot2 language has too many "words" and "expressions", which are difficult to remember and time consuming to look up. Wouldn't it be awesome if there's a simpler tool? The answer is [ezplot](https://github.com/gmlang/ezplot). It's a package based off ggplot2 that allows user to create high quality ggplot2 charts with zero or minimal effort of customization. In this and the next few posts, I'll demo how to use ezplot.
 
 #### Prerequisites
 1. Install a set of development tools
@@ -19,18 +21,18 @@ Do you love [ggplot2](http://ggplot2.org) plots? If you've worked with ggplot2 b
 * On Mac, install the [Xcode command line tools](https://developer.apple.com/downloads). 
 * On Linux, install the R development package, usually called **r-devel** or **r-base-dev**.
 2. Install devtools by running `install.packages("devtools")` in R.
+3. Install ezplot by running `devtools::install_github("gmlang/ezplot")` in R.
 
-#### Install and Load ezplot
+#### Load ezplot and dplyr
 
 {% highlight r %}
-devtools::install_github("gmlang/ezplot")
 library(ezplot)
+library(dplyr)
 {% endhighlight %}
 
-#### Make some fake data
+#### Generate some fake data
 
 {% highlight r %}
-# make some data
 df = read.table(header=TRUE, text='
 student grade
 Joe 90
@@ -49,35 +51,22 @@ print(df)
 ## 3    Alex    50 0.2325581
 {% endhighlight %}
 
-#### Create simple barplots
+#### Make simple bar chart
 
 {% highlight r %}
-barplt = mk_barplot(df)
-barplt("student", "grade", "student") 
+plt = mk_barplot_resp(df)
+plt("student", "grade", label_decimals = 0) 
 {% endhighlight %}
 
-![center](/../figs/2015-04-21-an-easy-way-to-make-ggplot2-plots-ezplot-part1/unnamed-chunk-3-1.png) 
+![center](/../figs/2015-04-21-an-easy-way-to-make-ggplot2-plots-ezplot-part1/unnamed-chunk-3-1.png)
 
 {% highlight r %}
-barplt("student", "grade", "student", legend=F) 
+plt("student", "pct", show_pct = T) 
 {% endhighlight %}
 
-![center](/../figs/2015-04-21-an-easy-way-to-make-ggplot2-plots-ezplot-part1/unnamed-chunk-3-2.png) 
+![center](/../figs/2015-04-21-an-easy-way-to-make-ggplot2-plots-ezplot-part1/unnamed-chunk-3-2.png)
 
-{% highlight r %}
-p = barplt("student", "pct", "student", legend=F) 
-scale_axis(p, scale="pct")
-{% endhighlight %}
-
-![center](/../figs/2015-04-21-an-easy-way-to-make-ggplot2-plots-ezplot-part1/unnamed-chunk-3-3.png) 
-
-{% highlight r %}
-scale_axis(p, scale="pct", pct_jump=0.3, pct_max=0.6)
-{% endhighlight %}
-
-![center](/../figs/2015-04-21-an-easy-way-to-make-ggplot2-plots-ezplot-part1/unnamed-chunk-3-4.png) 
-
-#### Make some fake data again
+#### Generate some fake data again
 
 {% highlight r %}
 df2 = read.table(header=TRUE, text='
@@ -91,54 +80,27 @@ B      large 1.0
 C      small 2.5
 C      medium 1.3
 C      large 2.9')
-
-# Calculate the percentage of the levels within each group
-library(tidyr)
-library(dplyr)
-
-pct = df2 %>% spread(level, val)
-temp = pct[, 2:4]
-pct = cbind(group=pct[, 1], temp / apply(temp, 1, sum))
-pct = pct %>% gather(level, pct, -group)
-pct$level = factor(pct$level, levels=c("small", "medium", "large"))
 {% endhighlight %}
 
-#### Make stacked barplots
+#### Make dodged bar chart
 
 {% highlight r %}
-# display counts
-barplt = mk_barplot(df2)
-barplt("group", "val", "level") 
+# plot val 
+plt = mk_barplot_resp(df2)
+plt("group", "val", fillby = "level") 
 {% endhighlight %}
 
-![center](/../figs/2015-04-21-an-easy-way-to-make-ggplot2-plots-ezplot-part1/unnamed-chunk-5-1.png) 
+![center](/../figs/2015-04-21-an-easy-way-to-make-ggplot2-plots-ezplot-part1/unnamed-chunk-5-1.png)
 
 {% highlight r %}
-# display percentages
-barplt = mk_barplot(pct)
-p = barplt("group", "pct", "level")
-p = scale_axis(p, scale="pct")
-print(p)
+# calc pct of val of each level within each group
+dat = df2 %>% group_by(group) %>% mutate(pct = val / sum(val))
+
+# plot pct
+plt = mk_barplot_resp(dat)
+plt("group", "pct", fillby = "level", show_pct = T)
 {% endhighlight %}
 
-![center](/../figs/2015-04-21-an-easy-way-to-make-ggplot2-plots-ezplot-part1/unnamed-chunk-5-2.png) 
+![center](/../figs/2015-04-21-an-easy-way-to-make-ggplot2-plots-ezplot-part1/unnamed-chunk-5-2.png)
 
-{% highlight r %}
-# use color-blind friendly palettes
-cbPalette = cb_color("cb_gray")
-p + ggplot2::scale_fill_manual(values=cbPalette)
-{% endhighlight %}
-
-![center](/../figs/2015-04-21-an-easy-way-to-make-ggplot2-plots-ezplot-part1/unnamed-chunk-5-3.png) 
-
-{% highlight r %}
-# use customized palettes
-red = cb_color("vermilion")
-purple = cb_color("reddish_purple")
-green = cb_color("bluish_green")
-p + ggplot2::scale_fill_manual(values=c(red, purple, green))
-{% endhighlight %}
-
-![center](/../figs/2015-04-21-an-easy-way-to-make-ggplot2-plots-ezplot-part1/unnamed-chunk-5-4.png) 
-
-I'm the creator of ezplot, if you have any questions, just drop a comment below. In addition, I'm writing a book called ezplot: How to Easily Make ggplot2 Graphics for Data Analysis, and it is 20% complete. [Take a sneak peek](https://leanpub.com/ezplot) and get notified when the book is published.
+I wrote ezplot to improve efficiency. Hope it can also help you. Drop a comment below if you have any questions. 

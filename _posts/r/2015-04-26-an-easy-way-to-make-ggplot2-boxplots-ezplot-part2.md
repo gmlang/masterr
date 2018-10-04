@@ -8,62 +8,64 @@ keywords: "R, ggplot, ggplot2, ezplot, boxplot"
 published: true
 share: true
 ads: true
-
 ---
 
-Previously, I introduced the ezplot package and [demoed how to use it to make nice looking ggplot2 bar charts easily and quickly](http://masterr.org/r/an-easy-way-to-make-ggplot2-plots-ezplot-part1/).   Today, I'm going to show you how to make nice looking boxplots. Once again, the code is super simple.
+### Updated October 4, 2018
 
-#### Prerequisites
-1. Install a set of development tools
-* On Windows, download and install [Rtools](http://cran.r-project.org/bin/windows/Rtools/). 
-* On Mac, install the [Xcode command line tools](https://developer.apple.com/downloads). 
-* On Linux, install the R development package, usually called **r-devel** or **r-base-dev**.
-2. Install devtools by running `install.packages("devtools")` in R.
+Previously, I introduced the ezplot package and [showed how to use it to make high quality bar charts](http://masterr.org/r/an-easy-way-to-make-ggplot2-plots-ezplot-part1/). Today, I'm going to show you how to make boxplots using ezplot. Once again, it's super simple.
 
-#### Install and Load ezplot
+#### Load ezplot
+
+Make sure you first install ezplot by running the command `devtools::install_github("gmlang/ezplot")`.
 
 {% highlight r %}
-devtools::install_github("gmlang/ezplot")
 library(ezplot)
+library(dplyr)
 {% endhighlight %}
 
-#### The ezplot package comes with a films dataset obtain from IMBD.com, and I'll use it to demo boxplots. 
+#### Draw boxplots. 
 
-First, let's draw boxplots of budget vs. years. 
+The ezplot package comes with a films dataset obtained from IMBD.com. Let's 
+draw a boxplot of `budget` vs. `year_cat`. 
 
 {% highlight r %}
-# call the films dataset make a function that will draw boxplots 
-# using the variables in the films data set
-plt = mk_boxplot(films)
+plt = mk_boxplot(films) # plt() is a function that can produce boxplot 
 
 # plot distributions of budget over the years
-title1 = "Annual Distribution of Budget from 1913 to 2014"
-p = plt("year_cat", "budget", ylab="budget", main=title1)
+p = plt("year_cat", "budget") 
 print(p)
 {% endhighlight %}
 
-![center](/../figs/2015-04-26-an-easy-way-to-make-ggplot2-boxplots-ezplot-part2/unnamed-chunk-2-1.png) 
+![center](/../figs/2015-04-26-an-easy-way-to-make-ggplot2-boxplots-ezplot-part2/unnamed-chunk-2-1.png)
 
-We see the y-axis tick labels are expressed in scientific notations. This makes it difficult to read. We can use the comma scale on the y-axis, which will display the numbers in 000,000 format.
-
-{% highlight r %}
-scale_axis(p, "y", scale = "comma")
-{% endhighlight %}
-
-![center](/../figs/2015-04-26-an-easy-way-to-make-ggplot2-boxplots-ezplot-part2/unnamed-chunk-3-1.png) 
-
-We also observe that all the boxes are squashed down, indicating budget is heavily right-skewed. We can use either the log scale or the log10 scale on the y-axis. Once again, this can be easily done using the function `scale_axis()`.
+We see the y-axis tick labels are in scientific notations, which makes it difficult to look at. We can use the dollar scale instead.
 
 {% highlight r %}
-scale_axis(p, "y", scale = "log")
+scale_axis(p, scale = "dollar")
 {% endhighlight %}
 
-![center](/../figs/2015-04-26-an-easy-way-to-make-ggplot2-boxplots-ezplot-part2/unnamed-chunk-4-1.png) 
+
+
+{% highlight text %}
+## Scale for 'y' is already present. Adding another scale for 'y', which
+## will replace the existing scale.
+{% endhighlight %}
+
+![center](/../figs/2015-04-26-an-easy-way-to-make-ggplot2-boxplots-ezplot-part2/unnamed-chunk-3-1.png)
+
+Notice that all boxes are squashed down, indicating budget is heavily right-skewed. To remedy this, we can use the log10 scale on the y-axis. 
 
 {% highlight r %}
-scale_axis(p, "y", scale = "log10")
+scale_axis(p, scale = "log10")
 {% endhighlight %}
 
-![center](/../figs/2015-04-26-an-easy-way-to-make-ggplot2-boxplots-ezplot-part2/unnamed-chunk-4-2.png) 
 
-I'm writing a book called ezplot: How to Easily Make ggplot2 Graphics for Data Analysis, and it is 20% complete. [Take a sneak peek](https://leanpub.com/ezplot) and get notified when the book is published.
+
+{% highlight text %}
+## Scale for 'y' is already present. Adding another scale for 'y', which
+## will replace the existing scale.
+{% endhighlight %}
+
+![center](/../figs/2015-04-26-an-easy-way-to-make-ggplot2-boxplots-ezplot-part2/unnamed-chunk-4-1.png)
+
+Please drop a comment below if you have questions.

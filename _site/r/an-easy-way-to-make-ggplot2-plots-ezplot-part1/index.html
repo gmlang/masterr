@@ -6,7 +6,7 @@
 <head>
 <meta charset="utf-8">
 <title>An Easy Way to Make Ggplot2 Plots, ezplot - Part 1 &#8211; Become Great at R</title>
-<meta name="description" content="Do you love ggplot2 plots? If you’ve worked with ggplot2 before, you know that to get a satisfying plot, you often need to use many detailed ggplot2 syntaxes, which are difficult to remember and time consuming to look up. Wouldn’t it be awesome if there’re simpler and intuitive syntaxes? The answer is yes and the package ezplot does exactly that. In this and the next few posts, I’ll demo how to use ezplot.
+<meta name="description" content="Updated October 4, 2018
 
 ">
 <meta name="keywords" content="">
@@ -14,7 +14,7 @@
 
 <!-- Twitter Cards -->
 <meta name="twitter:title" content="An Easy Way to Make Ggplot2 Plots, ezplot - Part 1">
-<meta name="twitter:description" content="Do you love ggplot2 plots? If you’ve worked with ggplot2 before, you know that to get a satisfying plot, you often need to use many detailed ggplot2 syntaxes, which are difficult to remember and time consuming to look up. Wouldn’t it be awesome if there’re simpler and intuitive syntaxes? The answer is yes and the package ezplot does exactly that. In this and the next few posts, I’ll demo how to use ezplot.
+<meta name="twitter:description" content="Updated October 4, 2018
 
 ">
 
@@ -27,7 +27,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
 <meta property="og:title" content="An Easy Way to Make Ggplot2 Plots, ezplot - Part 1">
-<meta property="og:description" content="Do you love ggplot2 plots? If you’ve worked with ggplot2 before, you know that to get a satisfying plot, you often need to use many detailed ggplot2 syntaxes, which are difficult to remember and time consuming to look up. Wouldn’t it be awesome if there’re simpler and intuitive syntaxes? The answer is yes and the package ezplot does exactly that. In this and the next few posts, I’ll demo how to use ezplot.
+<meta property="og:description" content="Updated October 4, 2018
 
 ">
 <meta property="og:url" content="http://localhost:4000/r/an-easy-way-to-make-ggplot2-plots-ezplot-part1/">
@@ -201,7 +201,7 @@
     });
 </script> 
 <!--End mc_embed_signup-->
-        <span class="entry-date date published"><time datetime="2015-04-21T00:00:00+09:00"><i class="fa fa-calendar-o"></i> April 21, 2015</time></span>
+        <span class="entry-date date published"><time datetime="2015-04-21T00:00:00+07:00"><i class="fa fa-calendar-o"></i> April 21, 2015</time></span>
         
         
         <span class="author vcard">By <span class="fn">Guangming Lang</span></span>
@@ -229,7 +229,10 @@
 </div><!-- /.google-ads --><!-- /.google-ads -->
       </footer>
       <div class="entry-content">
-        <p>Do you love <a href="http://ggplot2.org">ggplot2</a> plots? If you’ve worked with ggplot2 before, you know that to get a satisfying plot, you often need to use many detailed ggplot2 syntaxes, which are difficult to remember and time consuming to look up. Wouldn’t it be awesome if there’re simpler and intuitive syntaxes? The answer is yes and the package <a href="https://github.com/gmlang/ezplot">ezplot</a> does exactly that. In this and the next few posts, I’ll demo how to use ezplot.</p>
+        <h3 id="updated-october-4-2018">Updated October 4, 2018</h3>
+
+<p>Do you love <a href="http://ggplot2.org">ggplot2</a>? If you’ve worked with ggplot2 before, you know 
+it often takes many lines of code to get a satisfying plot. The ggplot2 language has too many “words” and “expressions”, which are difficult to remember and time consuming to look up. Wouldn’t it be awesome if there’s a simpler tool? The answer is <a href="https://github.com/gmlang/ezplot">ezplot</a>. It’s a package based off ggplot2 that allows user to create high quality ggplot2 charts with zero or minimal effort of customization. In this and the next few posts, I’ll demo how to use ezplot.</p>
 
 <h4 id="prerequisites">Prerequisites</h4>
 <ol>
@@ -241,17 +244,17 @@
     </ul>
   </li>
   <li>Install devtools by running <code class="highlighter-rouge">install.packages("devtools")</code> in R.</li>
+  <li>Install ezplot by running <code class="highlighter-rouge">devtools::install_github("gmlang/ezplot")</code> in R.</li>
 </ol>
 
-<h4 id="install-and-load-ezplot">Install and Load ezplot</h4>
+<h4 id="load-ezplot-and-dplyr">Load ezplot and dplyr</h4>
 
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">devtools</span><span class="o">::</span><span class="n">install_github</span><span class="p">(</span><span class="s2">"gmlang/ezplot"</span><span class="p">)</span><span class="w">
-</span><span class="n">library</span><span class="p">(</span><span class="n">ezplot</span><span class="p">)</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">library</span><span class="p">(</span><span class="n">ezplot</span><span class="p">)</span><span class="w">
+</span><span class="n">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span></code></pre></figure>
 
-<h4 id="make-some-fake-data">Make some fake data</h4>
+<h4 id="generate-some-fake-data">Generate some fake data</h4>
 
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># make some data
-</span><span class="n">df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">read.table</span><span class="p">(</span><span class="n">header</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">text</span><span class="o">=</span><span class="s1">'
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">read.table</span><span class="p">(</span><span class="n">header</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">text</span><span class="o">=</span><span class="s1">'
 student grade
 Joe 90
 Mary 75
@@ -264,27 +267,18 @@ Alex 50'</span><span class="p">)</span><span class="w">
 ## 2    Mary    75 0.3488372
 ## 3    Alex    50 0.2325581</code></pre></figure>
 
-<h4 id="create-simple-barplots">Create simple barplots</h4>
+<h4 id="make-simple-bar-chart">Make simple bar chart</h4>
 
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">barplt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mk_barplot</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="w">
-</span><span class="n">barplt</span><span class="p">(</span><span class="s2">"student"</span><span class="p">,</span><span class="w"> </span><span class="s2">"grade"</span><span class="p">,</span><span class="w"> </span><span class="s2">"student"</span><span class="p">)</span><span class="w"> </span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">plt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mk_barplot_resp</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="w">
+</span><span class="n">plt</span><span class="p">(</span><span class="s2">"student"</span><span class="p">,</span><span class="w"> </span><span class="s2">"grade"</span><span class="p">,</span><span class="w"> </span><span class="n">label_decimals</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">)</span><span class="w"> </span></code></pre></figure>
 
 <p><img src="/../figs/2015-04-21-an-easy-way-to-make-ggplot2-plots-ezplot-part1/unnamed-chunk-3-1.png" alt="center" /></p>
 
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">barplt</span><span class="p">(</span><span class="s2">"student"</span><span class="p">,</span><span class="w"> </span><span class="s2">"grade"</span><span class="p">,</span><span class="w"> </span><span class="s2">"student"</span><span class="p">,</span><span class="w"> </span><span class="n">legend</span><span class="o">=</span><span class="nb">F</span><span class="p">)</span><span class="w"> </span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">plt</span><span class="p">(</span><span class="s2">"student"</span><span class="p">,</span><span class="w"> </span><span class="s2">"pct"</span><span class="p">,</span><span class="w"> </span><span class="n">show_pct</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">T</span><span class="p">)</span><span class="w"> </span></code></pre></figure>
 
 <p><img src="/../figs/2015-04-21-an-easy-way-to-make-ggplot2-plots-ezplot-part1/unnamed-chunk-3-2.png" alt="center" /></p>
 
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">barplt</span><span class="p">(</span><span class="s2">"student"</span><span class="p">,</span><span class="w"> </span><span class="s2">"pct"</span><span class="p">,</span><span class="w"> </span><span class="s2">"student"</span><span class="p">,</span><span class="w"> </span><span class="n">legend</span><span class="o">=</span><span class="nb">F</span><span class="p">)</span><span class="w"> 
-</span><span class="n">scale_axis</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="n">scale</span><span class="o">=</span><span class="s2">"pct"</span><span class="p">)</span></code></pre></figure>
-
-<p><img src="/../figs/2015-04-21-an-easy-way-to-make-ggplot2-plots-ezplot-part1/unnamed-chunk-3-3.png" alt="center" /></p>
-
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">scale_axis</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="n">scale</span><span class="o">=</span><span class="s2">"pct"</span><span class="p">,</span><span class="w"> </span><span class="n">pct_jump</span><span class="o">=</span><span class="m">0.3</span><span class="p">,</span><span class="w"> </span><span class="n">pct_max</span><span class="o">=</span><span class="m">0.6</span><span class="p">)</span></code></pre></figure>
-
-<p><img src="/../figs/2015-04-21-an-easy-way-to-make-ggplot2-plots-ezplot-part1/unnamed-chunk-3-4.png" alt="center" /></p>
-
-<h4 id="make-some-fake-data-again">Make some fake data again</h4>
+<h4 id="generate-some-fake-data-again">Generate some fake data again</h4>
 
 <figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">df2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">read.table</span><span class="p">(</span><span class="n">header</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">text</span><span class="o">=</span><span class="s1">'
 group level val
@@ -296,49 +290,26 @@ B      medium 2.6
 B      large 1.0
 C      small 2.5
 C      medium 1.3
-C      large 2.9'</span><span class="p">)</span><span class="w">
+C      large 2.9'</span><span class="p">)</span></code></pre></figure>
 
-</span><span class="c1"># Calculate the percentage of the levels within each group
-</span><span class="n">library</span><span class="p">(</span><span class="n">tidyr</span><span class="p">)</span><span class="w">
-</span><span class="n">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span><span class="w">
+<h4 id="make-dodged-bar-chart">Make dodged bar chart</h4>
 
-</span><span class="n">pct</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">df2</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="n">spread</span><span class="p">(</span><span class="n">level</span><span class="p">,</span><span class="w"> </span><span class="n">val</span><span class="p">)</span><span class="w">
-</span><span class="n">temp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pct</span><span class="p">[,</span><span class="w"> </span><span class="m">2</span><span class="o">:</span><span class="m">4</span><span class="p">]</span><span class="w">
-</span><span class="n">pct</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cbind</span><span class="p">(</span><span class="n">group</span><span class="o">=</span><span class="n">pct</span><span class="p">[,</span><span class="w"> </span><span class="m">1</span><span class="p">],</span><span class="w"> </span><span class="n">temp</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">apply</span><span class="p">(</span><span class="n">temp</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">sum</span><span class="p">))</span><span class="w">
-</span><span class="n">pct</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pct</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="n">gather</span><span class="p">(</span><span class="n">level</span><span class="p">,</span><span class="w"> </span><span class="n">pct</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="n">group</span><span class="p">)</span><span class="w">
-</span><span class="n">pct</span><span class="o">$</span><span class="n">level</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">factor</span><span class="p">(</span><span class="n">pct</span><span class="o">$</span><span class="n">level</span><span class="p">,</span><span class="w"> </span><span class="n">levels</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s2">"small"</span><span class="p">,</span><span class="w"> </span><span class="s2">"medium"</span><span class="p">,</span><span class="w"> </span><span class="s2">"large"</span><span class="p">))</span></code></pre></figure>
-
-<h4 id="make-stacked-barplots">Make stacked barplots</h4>
-
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># display counts
-</span><span class="n">barplt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mk_barplot</span><span class="p">(</span><span class="n">df2</span><span class="p">)</span><span class="w">
-</span><span class="n">barplt</span><span class="p">(</span><span class="s2">"group"</span><span class="p">,</span><span class="w"> </span><span class="s2">"val"</span><span class="p">,</span><span class="w"> </span><span class="s2">"level"</span><span class="p">)</span><span class="w"> </span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># plot val 
+</span><span class="n">plt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mk_barplot_resp</span><span class="p">(</span><span class="n">df2</span><span class="p">)</span><span class="w">
+</span><span class="n">plt</span><span class="p">(</span><span class="s2">"group"</span><span class="p">,</span><span class="w"> </span><span class="s2">"val"</span><span class="p">,</span><span class="w"> </span><span class="n">fillby</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"level"</span><span class="p">)</span><span class="w"> </span></code></pre></figure>
 
 <p><img src="/../figs/2015-04-21-an-easy-way-to-make-ggplot2-plots-ezplot-part1/unnamed-chunk-5-1.png" alt="center" /></p>
 
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># display percentages
-</span><span class="n">barplt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mk_barplot</span><span class="p">(</span><span class="n">pct</span><span class="p">)</span><span class="w">
-</span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">barplt</span><span class="p">(</span><span class="s2">"group"</span><span class="p">,</span><span class="w"> </span><span class="s2">"pct"</span><span class="p">,</span><span class="w"> </span><span class="s2">"level"</span><span class="p">)</span><span class="w">
-</span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">scale_axis</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="n">scale</span><span class="o">=</span><span class="s2">"pct"</span><span class="p">)</span><span class="w">
-</span><span class="n">print</span><span class="p">(</span><span class="n">p</span><span class="p">)</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># calc pct of val of each level within each group
+</span><span class="n">dat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">df2</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="n">group_by</span><span class="p">(</span><span class="n">group</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="n">mutate</span><span class="p">(</span><span class="n">pct</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">val</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="n">val</span><span class="p">))</span><span class="w">
+
+</span><span class="c1"># plot pct
+</span><span class="n">plt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mk_barplot_resp</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span><span class="w">
+</span><span class="n">plt</span><span class="p">(</span><span class="s2">"group"</span><span class="p">,</span><span class="w"> </span><span class="s2">"pct"</span><span class="p">,</span><span class="w"> </span><span class="n">fillby</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"level"</span><span class="p">,</span><span class="w"> </span><span class="n">show_pct</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">T</span><span class="p">)</span></code></pre></figure>
 
 <p><img src="/../figs/2015-04-21-an-easy-way-to-make-ggplot2-plots-ezplot-part1/unnamed-chunk-5-2.png" alt="center" /></p>
 
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># use color-blind friendly palettes
-</span><span class="n">cbPalette</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cb_color</span><span class="p">(</span><span class="s2">"cb_gray"</span><span class="p">)</span><span class="w">
-</span><span class="n">p</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">ggplot2</span><span class="o">::</span><span class="n">scale_fill_manual</span><span class="p">(</span><span class="n">values</span><span class="o">=</span><span class="n">cbPalette</span><span class="p">)</span></code></pre></figure>
-
-<p><img src="/../figs/2015-04-21-an-easy-way-to-make-ggplot2-plots-ezplot-part1/unnamed-chunk-5-3.png" alt="center" /></p>
-
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># use customized palettes
-</span><span class="n">red</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cb_color</span><span class="p">(</span><span class="s2">"vermilion"</span><span class="p">)</span><span class="w">
-</span><span class="n">purple</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cb_color</span><span class="p">(</span><span class="s2">"reddish_purple"</span><span class="p">)</span><span class="w">
-</span><span class="n">green</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cb_color</span><span class="p">(</span><span class="s2">"bluish_green"</span><span class="p">)</span><span class="w">
-</span><span class="n">p</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">ggplot2</span><span class="o">::</span><span class="n">scale_fill_manual</span><span class="p">(</span><span class="n">values</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="n">red</span><span class="p">,</span><span class="w"> </span><span class="n">purple</span><span class="p">,</span><span class="w"> </span><span class="n">green</span><span class="p">))</span></code></pre></figure>
-
-<p><img src="/../figs/2015-04-21-an-easy-way-to-make-ggplot2-plots-ezplot-part1/unnamed-chunk-5-4.png" alt="center" /></p>
-
-<p>I’m the creator of ezplot, if you have any questions, just drop a comment below. In addition, I’m writing a book called ezplot: How to Easily Make ggplot2 Graphics for Data Analysis, and it is 20% complete. <a href="https://leanpub.com/ezplot">Take a sneak peek</a> and get notified when the book is published.</p>
+<p>I wrote ezplot to improve efficiency. Hope it can also help you. Drop a comment below if you have any questions.</p>
 
 		<!-- Begin MailChimp Signup Form -->
 <html>
@@ -418,7 +389,7 @@ C      large 2.9'</span><span class="p">)</span><span class="w">
 <div class="footer-wrapper">
   <footer role="contentinfo" class="entry-wrapper">
     
-<span>&copy; 2017 Guangming Lang. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://mademistakes.com/so-simple/" rel="nofollow">So Simple Theme</a>.</span>
+<span>&copy; 2018 Guangming Lang. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://mademistakes.com/so-simple/" rel="nofollow">So Simple Theme</a>.</span>
 <div class="social-icons">
 	
 	

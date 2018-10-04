@@ -6,7 +6,7 @@
 <head>
 <meta charset="utf-8">
 <title>An Easy Way to Make Ggplot2 Boxplots, ezplot - Part 2 &#8211; Become Great at R</title>
-<meta name="description" content="Previously, I introduced the ezplot package and demoed how to use it to make nice looking ggplot2 bar charts easily and quickly.   Today, I’m going to show you how to make nice looking boxplots. Once again, the code is super simple.
+<meta name="description" content="Updated October 4, 2018
 
 ">
 <meta name="keywords" content="">
@@ -14,7 +14,7 @@
 
 <!-- Twitter Cards -->
 <meta name="twitter:title" content="An Easy Way to Make Ggplot2 Boxplots, ezplot - Part 2">
-<meta name="twitter:description" content="Previously, I introduced the ezplot package and demoed how to use it to make nice looking ggplot2 bar charts easily and quickly.   Today, I’m going to show you how to make nice looking boxplots. Once again, the code is super simple.
+<meta name="twitter:description" content="Updated October 4, 2018
 
 ">
 
@@ -27,7 +27,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
 <meta property="og:title" content="An Easy Way to Make Ggplot2 Boxplots, ezplot - Part 2">
-<meta property="og:description" content="Previously, I introduced the ezplot package and demoed how to use it to make nice looking ggplot2 bar charts easily and quickly.   Today, I’m going to show you how to make nice looking boxplots. Once again, the code is super simple.
+<meta property="og:description" content="Updated October 4, 2018
 
 ">
 <meta property="og:url" content="http://localhost:4000/r/an-easy-way-to-make-ggplot2-boxplots-ezplot-part2/">
@@ -201,7 +201,7 @@
     });
 </script> 
 <!--End mc_embed_signup-->
-        <span class="entry-date date published"><time datetime="2015-04-26T00:00:00+09:00"><i class="fa fa-calendar-o"></i> April 26, 2015</time></span>
+        <span class="entry-date date published"><time datetime="2015-04-26T00:00:00+07:00"><i class="fa fa-calendar-o"></i> April 26, 2015</time></span>
         
         
         <span class="author vcard">By <span class="fn">Guangming Lang</span></span>
@@ -229,57 +229,49 @@
 </div><!-- /.google-ads --><!-- /.google-ads -->
       </footer>
       <div class="entry-content">
-        <p>Previously, I introduced the ezplot package and <a href="http://masterr.org/r/an-easy-way-to-make-ggplot2-plots-ezplot-part1/">demoed how to use it to make nice looking ggplot2 bar charts easily and quickly</a>.   Today, I’m going to show you how to make nice looking boxplots. Once again, the code is super simple.</p>
+        <h3 id="updated-october-4-2018">Updated October 4, 2018</h3>
 
-<h4 id="prerequisites">Prerequisites</h4>
-<ol>
-  <li>Install a set of development tools
-    <ul>
-      <li>On Windows, download and install <a href="http://cran.r-project.org/bin/windows/Rtools/">Rtools</a>.</li>
-      <li>On Mac, install the <a href="https://developer.apple.com/downloads">Xcode command line tools</a>.</li>
-      <li>On Linux, install the R development package, usually called <strong>r-devel</strong> or <strong>r-base-dev</strong>.</li>
-    </ul>
-  </li>
-  <li>Install devtools by running <code class="highlighter-rouge">install.packages("devtools")</code> in R.</li>
-</ol>
+<p>Previously, I introduced the ezplot package and <a href="http://masterr.org/r/an-easy-way-to-make-ggplot2-plots-ezplot-part1/">showed how to use it to make high quality bar charts</a>. Today, I’m going to show you how to make boxplots using ezplot. Once again, it’s super simple.</p>
 
-<h4 id="install-and-load-ezplot">Install and Load ezplot</h4>
+<h4 id="load-ezplot">Load ezplot</h4>
 
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">devtools</span><span class="o">::</span><span class="n">install_github</span><span class="p">(</span><span class="s2">"gmlang/ezplot"</span><span class="p">)</span><span class="w">
-</span><span class="n">library</span><span class="p">(</span><span class="n">ezplot</span><span class="p">)</span></code></pre></figure>
+<p>Make sure you first install ezplot by running the command <code class="highlighter-rouge">devtools::install_github("gmlang/ezplot")</code>.</p>
 
-<h4 id="the-ezplot-package-comes-with-a-films-dataset-obtain-from-imbdcom-and-ill-use-it-to-demo-boxplots">The ezplot package comes with a films dataset obtain from IMBD.com, and I’ll use it to demo boxplots.</h4>
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">library</span><span class="p">(</span><span class="n">ezplot</span><span class="p">)</span><span class="w">
+</span><span class="n">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span></code></pre></figure>
 
-<p>First, let’s draw boxplots of budget vs. years.</p>
+<h4 id="draw-boxplots">Draw boxplots.</h4>
 
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># call the films dataset make a function that will draw boxplots 
-# using the variables in the films data set
-</span><span class="n">plt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mk_boxplot</span><span class="p">(</span><span class="n">films</span><span class="p">)</span><span class="w">
+<p>The ezplot package comes with a films dataset obtained from IMBD.com. Let’s 
+draw a boxplot of <code class="highlighter-rouge">budget</code> vs. <code class="highlighter-rouge">year_cat</code>.</p>
 
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">plt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mk_boxplot</span><span class="p">(</span><span class="n">films</span><span class="p">)</span><span class="w"> </span><span class="c1"># plt() is a function that can produce boxplot 
+</span><span class="w">
 </span><span class="c1"># plot distributions of budget over the years
-</span><span class="n">title1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Annual Distribution of Budget from 1913 to 2014"</span><span class="w">
-</span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">plt</span><span class="p">(</span><span class="s2">"year_cat"</span><span class="p">,</span><span class="w"> </span><span class="s2">"budget"</span><span class="p">,</span><span class="w"> </span><span class="n">ylab</span><span class="o">=</span><span class="s2">"budget"</span><span class="p">,</span><span class="w"> </span><span class="n">main</span><span class="o">=</span><span class="n">title1</span><span class="p">)</span><span class="w">
+</span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">plt</span><span class="p">(</span><span class="s2">"year_cat"</span><span class="p">,</span><span class="w"> </span><span class="s2">"budget"</span><span class="p">)</span><span class="w"> 
 </span><span class="n">print</span><span class="p">(</span><span class="n">p</span><span class="p">)</span></code></pre></figure>
 
 <p><img src="/../figs/2015-04-26-an-easy-way-to-make-ggplot2-boxplots-ezplot-part2/unnamed-chunk-2-1.png" alt="center" /></p>
 
-<p>We see the y-axis tick labels are expressed in scientific notations. This makes it difficult to read. We can use the comma scale on the y-axis, which will display the numbers in 000,000 format.</p>
+<p>We see the y-axis tick labels are in scientific notations, which makes it difficult to look at. We can use the dollar scale instead.</p>
 
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">scale_axis</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="s2">"y"</span><span class="p">,</span><span class="w"> </span><span class="n">scale</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"comma"</span><span class="p">)</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">scale_axis</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="n">scale</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"dollar"</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Scale for 'y' is already present. Adding another scale for 'y', which
+## will replace the existing scale.</code></pre></figure>
 
 <p><img src="/../figs/2015-04-26-an-easy-way-to-make-ggplot2-boxplots-ezplot-part2/unnamed-chunk-3-1.png" alt="center" /></p>
 
-<p>We also observe that all the boxes are squashed down, indicating budget is heavily right-skewed. We can use either the log scale or the log10 scale on the y-axis. Once again, this can be easily done using the function <code class="highlighter-rouge">scale_axis()</code>.</p>
+<p>Notice that all boxes are squashed down, indicating budget is heavily right-skewed. To remedy this, we can use the log10 scale on the y-axis.</p>
 
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">scale_axis</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="s2">"y"</span><span class="p">,</span><span class="w"> </span><span class="n">scale</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"log"</span><span class="p">)</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">scale_axis</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="n">scale</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"log10"</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Scale for 'y' is already present. Adding another scale for 'y', which
+## will replace the existing scale.</code></pre></figure>
 
 <p><img src="/../figs/2015-04-26-an-easy-way-to-make-ggplot2-boxplots-ezplot-part2/unnamed-chunk-4-1.png" alt="center" /></p>
 
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">scale_axis</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="s2">"y"</span><span class="p">,</span><span class="w"> </span><span class="n">scale</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"log10"</span><span class="p">)</span></code></pre></figure>
-
-<p><img src="/../figs/2015-04-26-an-easy-way-to-make-ggplot2-boxplots-ezplot-part2/unnamed-chunk-4-2.png" alt="center" /></p>
-
-<p>I’m writing a book called ezplot: How to Easily Make ggplot2 Graphics for Data Analysis, and it is 20% complete. <a href="https://leanpub.com/ezplot">Take a sneak peek</a> and get notified when the book is published.</p>
+<p>Please drop a comment below if you have questions.</p>
 
 		<!-- Begin MailChimp Signup Form -->
 <html>
@@ -359,7 +351,7 @@
 <div class="footer-wrapper">
   <footer role="contentinfo" class="entry-wrapper">
     
-<span>&copy; 2017 Guangming Lang. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://mademistakes.com/so-simple/" rel="nofollow">So Simple Theme</a>.</span>
+<span>&copy; 2018 Guangming Lang. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://mademistakes.com/so-simple/" rel="nofollow">So Simple Theme</a>.</span>
 <div class="social-icons">
 	
 	

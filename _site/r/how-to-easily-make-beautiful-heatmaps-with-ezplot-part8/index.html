@@ -6,8 +6,7 @@
 <head>
 <meta charset="utf-8">
 <title>How to easily make beautiful heatmaps with ezplot - Part 8 &#8211; Become Great at R</title>
-<meta name="description" content="Q: How would you display information in three variables (2 categorical vars and 1 numerical var) in one chart?
-A: Heat map.
+<meta name="description" content="Updated October 4, 2018
 
 ">
 <meta name="keywords" content="">
@@ -15,8 +14,7 @@ A: Heat map.
 
 <!-- Twitter Cards -->
 <meta name="twitter:title" content="How to easily make beautiful heatmaps with ezplot - Part 8">
-<meta name="twitter:description" content="Q: How would you display information in three variables (2 categorical vars and 1 numerical var) in one chart?
-A: Heat map.
+<meta name="twitter:description" content="Updated October 4, 2018
 
 ">
 
@@ -29,8 +27,7 @@ A: Heat map.
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
 <meta property="og:title" content="How to easily make beautiful heatmaps with ezplot - Part 8">
-<meta property="og:description" content="Q: How would you display information in three variables (2 categorical vars and 1 numerical var) in one chart?
-A: Heat map.
+<meta property="og:description" content="Updated October 4, 2018
 
 ">
 <meta property="og:url" content="http://localhost:4000/r/how-to-easily-make-beautiful-heatmaps-with-ezplot-part8/">
@@ -204,7 +201,7 @@ A: Heat map.
     });
 </script> 
 <!--End mc_embed_signup-->
-        <span class="entry-date date published"><time datetime="2015-07-30T00:00:00+09:00"><i class="fa fa-calendar-o"></i> July 30, 2015</time></span>
+        <span class="entry-date date published"><time datetime="2015-07-30T00:00:00+07:00"><i class="fa fa-calendar-o"></i> July 30, 2015</time></span>
         
         
         <span class="author vcard">By <span class="fn">Guangming Lang</span></span>
@@ -232,33 +229,17 @@ A: Heat map.
 </div><!-- /.google-ads --><!-- /.google-ads -->
       </footer>
       <div class="entry-content">
-        <p>Q: How would you display information in three variables (2 categorical vars and 1 numerical var) in one chart?
-A: Heat map.</p>
+        <h3 id="updated-october-4-2018">Updated October 4, 2018</h3>
 
-<p>In this post, we’ll look at how to easily make effective heatmaps using ezplot. We’ll use a dataset of NBA basketball statistics hosted at flowingdata.com. Let’s get started.</p>
+<p>In this post, we’ll look at how to make effective heatmaps using ezplot. We’ll 
+use a dataset of NBA players’ statistics from flowingdata.com. Make sure you 
+first install ezplot by running the command <code class="highlighter-rouge">devtools::install_github("gmlang/ezplot")</code>.</p>
 
-<h4 id="prerequisites">Prerequisites</h4>
-<ol>
-  <li>Install a set of development tools
-    <ul>
-      <li>On Windows, download and install <a href="http://cran.r-project.org/bin/windows/Rtools/">Rtools</a>.</li>
-      <li>On Mac, install the <a href="https://developer.apple.com/downloads">Xcode command line tools</a>.</li>
-      <li>On Linux, install the R development package, usually called <strong>r-devel</strong> or <strong>r-base-dev</strong>.</li>
-    </ul>
-  </li>
-  <li>Install devtools by running <code class="highlighter-rouge">install.packages("devtools")</code> in R.</li>
-</ol>
-
-<h4 id="install-and-load-ezplot">Install and Load ezplot</h4>
-
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">devtools</span><span class="o">::</span><span class="n">install_github</span><span class="p">(</span><span class="s2">"gmlang/ezplot"</span><span class="p">)</span><span class="w">
-</span><span class="n">library</span><span class="p">(</span><span class="n">ezplot</span><span class="p">)</span><span class="w">
-
-</span><span class="c1"># we also need to load the following libraries for some data wrangling
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">library</span><span class="p">(</span><span class="n">ezplot</span><span class="p">)</span><span class="w">
 </span><span class="n">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span><span class="w">
 </span><span class="n">library</span><span class="p">(</span><span class="n">tidyr</span><span class="p">)</span></code></pre></figure>
 
-<h4 id="get-data-notice-we-pass-the-url-of-the-data-directly-to-readcsv">Get data. Notice we pass the url of the data directly to <code class="highlighter-rouge">read.csv()</code>.</h4>
+<p>Let’s get the data. Notice we pass the url directly to <code class="highlighter-rouge">read.csv()</code>.</p>
 
 <figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">nba</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">read.csv</span><span class="p">(</span><span class="s2">"http://datasets.flowingdata.com/ppg2008.csv"</span><span class="p">)</span><span class="w">
 </span><span class="c1"># examine the variables
@@ -297,15 +278,15 @@ A: Heat map.</p>
 ## 4 Dirk Nowitzki  81 37.7 25.9  9.6 20.0 0.479 6.0
 ## 5 Danny Granger  67 36.2 25.8  8.5 19.1 0.447 6.0</code></pre></figure>
 
-<p>The dataset has a variable called Name that contains the names of the NBA players. By default, it’s read into R as a Factor with levels ordered alphabetically.</p>
-
-<h4 id="reorder-the-levels-of-name-by-the-points-each-player-scored">Reorder the levels of Name by the points each player scored.</h4>
+<p>The variable <code class="highlighter-rouge">Name</code> has the names of the NBA players. By default, it’s treated 
+by R as a Factor with levels ordered alphabetically. Reorder its levels by 
+points scored.</p>
 
 <figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">nba</span><span class="o">$</span><span class="n">Name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">with</span><span class="p">(</span><span class="n">nba</span><span class="p">,</span><span class="w"> </span><span class="n">reorder</span><span class="p">(</span><span class="n">Name</span><span class="p">,</span><span class="w"> </span><span class="n">PTS</span><span class="p">))</span></code></pre></figure>
 
-<p>The other variables are various performance statistics. To visualize the data in a heat map, we first need to put the data in the long format. In other words, we need to gather the names of the statistics in one column, and their actual values in another column.</p>
-
-<h4 id="change-dataset-to-long-format">Change dataset to long format.</h4>
+<p>The other variables are various performance statistics. Before we can make a 
+heat map, we need to put the data in the long format. In other words, we need to 
+gather the names of the statistics in one column, and their values in another column.</p>
 
 <figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">nba_m</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nba</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="n">gather</span><span class="p">(</span><span class="n">stats</span><span class="p">,</span><span class="w"> </span><span class="n">val</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="n">Name</span><span class="p">)</span><span class="w">
 </span><span class="n">head</span><span class="p">(</span><span class="n">nba_m</span><span class="p">)</span></code></pre></figure>
@@ -318,51 +299,40 @@ A: Heat map.</p>
 ## 5 Danny Granger      G  67
 ## 6  Kevin Durant      G  74</code></pre></figure>
 
-<p>In order to correctly display the information, we need to scale the values so that they are between 0 and 1. And we do that for each performance statistics. (After you finish reading, I encourage you to make a heat map using the unscaled values, and compare it with the scaled version. You will see the two heatmaps you get look very different. The scaled version is the correct one. To find out why, you can look up how heatmap is made in ggplot2 by looking up its source.)</p>
-
-<h4 id="scale-the-values-of-each-performance-statistics">Scale the values of each performance statistics.</h4>
+<p>We also want to scale the values of each performance statistics so that they are 
+between 0 and 1.</p>
 
 <figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">dat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nba_m</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="n">group_by</span><span class="p">(</span><span class="n">stats</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="n">mutate</span><span class="p">(</span><span class="n">val_scaled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">scales</span><span class="o">::</span><span class="n">rescale</span><span class="p">(</span><span class="n">val</span><span class="p">))</span><span class="w">
 </span><span class="n">head</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span></code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-text" data-lang="text">## Source: local data frame [6 x 4]
-## Groups: stats
-## 
-##             Name stats val val_scaled
-## 1   Dwyane Wade      G  79  0.9473684
-## 2  LeBron James      G  81  0.9824561
-## 3   Kobe Bryant      G  82  1.0000000
-## 4 Dirk Nowitzki      G  81  0.9824561
-## 5 Danny Granger      G  67  0.7368421
-## 6  Kevin Durant      G  74  0.8596491</code></pre></figure>
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## # A tibble: 6 x 4
+## # Groups:   stats [1]
+##   Name             stats   val val_scaled
+##   &lt;fct&gt;            &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;
+## 1 "Dwyane Wade "   G        79      0.947
+## 2 "LeBron James "  G        81      0.982
+## 3 "Kobe Bryant "   G        82      1    
+## 4 "Dirk Nowitzki " G        81      0.982
+## 5 "Danny Granger " G        67      0.737
+## 6 "Kevin Durant "  G        74      0.860</code></pre></figure>
 
-<p>With all the data prep work done, we’re ready to make a heatmap. This is super easy with the aid of ezplot.</p>
+<p>With all these data prep work done, we’re ready to make a heatmap. This is super 
+easy with ezplot.</p>
 
-<h4 id="make-a-heat-map">Make a heat map.</h4>
-
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">f</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mk_heatmap</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span><span class="w">
-</span><span class="n">f</span><span class="p">(</span><span class="s2">"stats"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Name"</span><span class="p">,</span><span class="w"> </span><span class="s2">"val_scaled"</span><span class="p">,</span><span class="w"> </span><span class="n">legend</span><span class="o">=</span><span class="nb">F</span><span class="p">)</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">plt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mk_heatmap</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span><span class="w">
+</span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">plt</span><span class="p">(</span><span class="s2">"stats"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Name"</span><span class="p">,</span><span class="w"> </span><span class="s2">"val_scaled"</span><span class="p">)</span><span class="w">
+</span><span class="n">rotate_axis_text</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="m">90</span><span class="p">,</span><span class="w"> </span><span class="n">vjust_x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.5</span><span class="p">)</span></code></pre></figure>
 
 <p><img src="/../figs/2015-07-30-how-to-easily-make-beautiful-heatmaps-with-ezplot-part8/unnamed-chunk-6-1.png" alt="center" /></p>
 
-<p>By default, the heatmap we get uses the gray theme (Type ?theme_gray() to learn more). We can also make a heatmap using minimal theme by setting   <br />
-<code class="highlighter-rouge">use_theme_gray=F</code>.</p>
+<p>Not it’s your turn. Make a heat map using the unscaled values, and compare it 
+with the scaled version. You will see they are very different. The scaled 
+version is the mathematically correct one.</p>
 
-<h4 id="make-a-heat-map-using-the-minimal-theme">Make a heat map using the minimal theme.</h4>
+<p>This is the last post in the ezplot how-to series. If you’ve enjoyed it, 
+tell your friend about it. If you want to learn more about how to use
+ezplot, you can get my book <a href="https://leanpub.com/ezplot">here</a>.</p>
 
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">f</span><span class="p">(</span><span class="s2">"stats"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Name"</span><span class="p">,</span><span class="w"> </span><span class="s2">"val_scaled"</span><span class="p">,</span><span class="w"> </span><span class="n">use_theme_gray</span><span class="o">=</span><span class="nb">F</span><span class="p">,</span><span class="w"> </span><span class="n">legend</span><span class="o">=</span><span class="nb">F</span><span class="p">)</span></code></pre></figure>
-
-<p><img src="/../figs/2015-07-30-how-to-easily-make-beautiful-heatmaps-with-ezplot-part8/unnamed-chunk-7-1.png" alt="center" /></p>
-
-<p>We can also change the size of the tick text on both axes.</p>
-
-<h4 id="change-tick-text-to-10-default-is-12">Change tick text to 10 (default is 12).</h4>
-
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">f</span><span class="p">(</span><span class="s2">"stats"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Name"</span><span class="p">,</span><span class="w"> </span><span class="s2">"val_scaled"</span><span class="p">,</span><span class="w"> </span><span class="n">base_size</span><span class="o">=</span><span class="m">10</span><span class="p">,</span><span class="w"> </span><span class="n">legend</span><span class="o">=</span><span class="nb">F</span><span class="p">)</span></code></pre></figure>
-
-<p><img src="/../figs/2015-07-30-how-to-easily-make-beautiful-heatmaps-with-ezplot-part8/unnamed-chunk-8-1.png" alt="center" /></p>
-
-<p>I created ezplot because there are too many detailed commands to remember when customizing a ggplot. I hope ezplot can improve your productivity and make your data analysis work easier. If you’ve enjoyed using it, please spread the word. I’m writing a book called ezplot: How to Easily Make ggplot2 Graphics for Data Analysis, and it is 20% complete. <a href="https://leanpub.com/ezplot">Read the sample chapters for FREE</a> and get notified when the book is published.</p>
 
 		<!-- Begin MailChimp Signup Form -->
 <html>
@@ -433,7 +403,7 @@ A: Heat map.</p>
         <a href="http://localhost:4000/r/how-to-easily-make-ggplot2-scatterplot-ezplot-part7/" class="btn" title="How to easily make ggplot2 type of scatterplot, ezplot - Part 7">Previous</a>
       
       
-        <a href="http://localhost:4000/r/how-to-easily-make-stacked-area-chart-with-ezplot-part9/" class="btn" title="How to easily make stacked area chart with ezplot - Part 9">Next</a>
+        <a href="http://localhost:4000/r/functions-that-return-a-list-of-functions-and-lapply/" class="btn" title="Functions that return a list of functions and lapply">Next</a>
       
     </nav><!-- /.pagination -->
   </article>
@@ -442,7 +412,7 @@ A: Heat map.</p>
 <div class="footer-wrapper">
   <footer role="contentinfo" class="entry-wrapper">
     
-<span>&copy; 2017 Guangming Lang. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://mademistakes.com/so-simple/" rel="nofollow">So Simple Theme</a>.</span>
+<span>&copy; 2018 Guangming Lang. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://mademistakes.com/so-simple/" rel="nofollow">So Simple Theme</a>.</span>
 <div class="social-icons">
 	
 	

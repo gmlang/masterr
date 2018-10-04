@@ -4,7 +4,7 @@
 <generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://localhost:4000/feed.xml" />
 <link rel="alternate" type="text/html" href="http://localhost:4000" />
-<updated>2017-09-15T16:44:50+09:00</updated>
+<updated>2018-10-04T22:31:58+07:00</updated>
 <id>http://localhost:4000/</id>
 <author>
   <name>Guangming Lang</name>
@@ -17,8 +17,8 @@
   <title type="html"><![CDATA[Quote, Unquote and Quasiquote]]></title>
   <link rel="alternate" type="text/html" href="http://localhost:4000/r/quote-n-quasiquote/" />
   <id>http://localhost:4000/r/quote-n-quasiquote</id>
-  <published>2017-09-15T00:00:00+09:00</published>
-  <updated>2017-09-15T00:00:00+09:00</updated>
+  <published>2017-09-15T00:00:00+07:00</published>
+  <updated>2017-09-15T00:00:00+07:00</updated>
   <author>
     <name>Guangming Lang</name>
     <uri>http://localhost:4000</uri>
@@ -132,8 +132,8 @@ the quotation that &lt;code class=&quot;highlighter-rouge&quot;&gt;quote()&lt;/c
   <title type="html"><![CDATA[On Recursion - Part 3]]></title>
   <link rel="alternate" type="text/html" href="http://localhost:4000/r/on-recursion-3/" />
   <id>http://localhost:4000/r/on-recursion-3</id>
-  <published>2017-07-07T00:00:00+09:00</published>
-  <updated>2017-07-07T00:00:00+09:00</updated>
+  <published>2017-07-07T00:00:00+07:00</published>
+  <updated>2017-07-07T00:00:00+07:00</updated>
   <author>
     <name>Guangming Lang</name>
     <uri>http://localhost:4000</uri>
@@ -275,8 +275,8 @@ environment works by reading Hadley’s &lt;a href=&quot;http://adv-r.had.co.nz/
   <title type="html"><![CDATA[On Recursion - Part 2]]></title>
   <link rel="alternate" type="text/html" href="http://localhost:4000/r/on-recursion-2/" />
   <id>http://localhost:4000/r/on-recursion-2</id>
-  <published>2017-07-06T00:00:00+09:00</published>
-  <updated>2017-07-06T00:00:00+09:00</updated>
+  <published>2017-07-06T00:00:00+07:00</published>
+  <updated>2017-07-06T00:00:00+07:00</updated>
   <author>
     <name>Guangming Lang</name>
     <uri>http://localhost:4000</uri>
@@ -399,8 +399,8 @@ environment works by reading Hadley’s &lt;a href=&quot;http://adv-r.had.co.nz/
   <title type="html"><![CDATA[On Recursion - Part 1]]></title>
   <link rel="alternate" type="text/html" href="http://localhost:4000/r/on-recursion-1/" />
   <id>http://localhost:4000/r/on-recursion-1</id>
-  <published>2017-07-05T00:00:00+09:00</published>
-  <updated>2017-07-05T00:00:00+09:00</updated>
+  <published>2017-07-05T00:00:00+07:00</published>
+  <updated>2017-07-05T00:00:00+07:00</updated>
   <author>
     <name>Guangming Lang</name>
     <uri>http://localhost:4000</uri>
@@ -456,8 +456,8 @@ environment works by reading Hadley’s &lt;a href=&quot;http://adv-r.had.co.nz/
   <title type="html"><![CDATA[How to Feature Engineer Dates]]></title>
   <link rel="alternate" type="text/html" href="http://localhost:4000/da/feature-engineer-dates/" />
   <id>http://localhost:4000/da/feature-engineer-dates</id>
-  <published>2017-03-27T00:00:00+09:00</published>
-  <updated>2017-03-27T00:00:00+09:00</updated>
+  <published>2017-03-27T00:00:00+07:00</published>
+  <updated>2017-03-27T00:00:00+07:00</updated>
   <author>
     <name>Guangming Lang</name>
     <uri>http://localhost:4000</uri>
@@ -481,8 +481,8 @@ environment works by reading Hadley’s &lt;a href=&quot;http://adv-r.had.co.nz/
   <title type="html"><![CDATA[Bulk Download Data from Quandl]]></title>
   <link rel="alternate" type="text/html" href="http://localhost:4000/r/quandl-bulk-download/" />
   <id>http://localhost:4000/r/quandl-bulk-download</id>
-  <published>2017-03-24T00:00:00+09:00</published>
-  <updated>2017-03-24T00:00:00+09:00</updated>
+  <published>2017-03-24T00:00:00+07:00</published>
+  <updated>2017-03-24T00:00:00+07:00</updated>
   <author>
     <name>Guangming Lang</name>
     <uri>http://localhost:4000</uri>
@@ -540,8 +540,8 @@ Make sure you apply for an API Key first.&lt;/p&gt;
   <title type="html"><![CDATA[When n < p]]></title>
   <link rel="alternate" type="text/html" href="http://localhost:4000/da/when-n-less-than-p-copy/" />
   <id>http://localhost:4000/da/when-n-less-than-p copy</id>
-  <published>2017-03-20T00:00:00+09:00</published>
-  <updated>2017-03-20T00:00:00+09:00</updated>
+  <published>2017-03-20T00:00:00+07:00</published>
+  <updated>2017-03-20T00:00:00+07:00</updated>
   <author>
     <name>Guangming Lang</name>
     <uri>http://localhost:4000</uri>
@@ -559,8 +559,8 @@ Make sure you apply for an API Key first.&lt;/p&gt;
   <title type="html"><![CDATA[Rebind]]></title>
   <link rel="alternate" type="text/html" href="http://localhost:4000/r/rebind/" />
   <id>http://localhost:4000/r/rebind</id>
-  <published>2017-03-17T00:00:00+09:00</published>
-  <updated>2017-03-17T00:00:00+09:00</updated>
+  <published>2017-03-17T00:00:00+07:00</published>
+  <updated>2017-03-17T00:00:00+07:00</updated>
   <author>
     <name>Guangming Lang</name>
     <uri>http://localhost:4000</uri>
@@ -603,8 +603,8 @@ You can buy a copy of Hadley’s book
   <title type="html"><![CDATA[Resampling]]></title>
   <link rel="alternate" type="text/html" href="http://localhost:4000/da/resampling/" />
   <id>http://localhost:4000/da/resampling</id>
-  <published>2017-03-13T00:00:00+09:00</published>
-  <updated>2017-03-13T00:00:00+09:00</updated>
+  <published>2017-03-13T00:00:00+07:00</published>
+  <updated>2017-03-13T00:00:00+07:00</updated>
   <author>
     <name>Guangming Lang</name>
     <uri>http://localhost:4000</uri>
@@ -645,8 +645,8 @@ You can buy a copy of Hadley’s book
   <title type="html"><![CDATA[Moving Average Models Demo]]></title>
   <link rel="alternate" type="text/html" href="http://localhost:4000/r/ma-models-demo/" />
   <id>http://localhost:4000/r/ma-models-demo</id>
-  <published>2017-03-10T00:00:00+09:00</published>
-  <updated>2017-03-10T00:00:00+09:00</updated>
+  <published>2017-03-10T00:00:00+07:00</published>
+  <updated>2017-03-10T00:00:00+07:00</updated>
   <author>
     <name>Guangming Lang</name>
     <uri>http://localhost:4000</uri>
@@ -706,8 +706,8 @@ you some basic related R commands.&lt;/p&gt;
   <title type="html"><![CDATA[Data Preprocessing and Linear Regression]]></title>
   <link rel="alternate" type="text/html" href="http://localhost:4000/da/data-preprocessing-and-linear-regression/" />
   <id>http://localhost:4000/da/data-preprocessing-and-linear-regression</id>
-  <published>2017-03-06T00:00:00+09:00</published>
-  <updated>2017-03-06T00:00:00+09:00</updated>
+  <published>2017-03-06T00:00:00+07:00</published>
+  <updated>2017-03-06T00:00:00+07:00</updated>
   <author>
     <name>Guangming Lang</name>
     <uri>http://localhost:4000</uri>
@@ -745,8 +745,8 @@ you some basic related R commands.&lt;/p&gt;
   <title type="html"><![CDATA[The on.exit() Function]]></title>
   <link rel="alternate" type="text/html" href="http://localhost:4000/r/on-exit/" />
   <id>http://localhost:4000/r/on-exit</id>
-  <published>2017-03-03T00:00:00+09:00</published>
-  <updated>2017-03-03T00:00:00+09:00</updated>
+  <published>2017-03-03T00:00:00+07:00</published>
+  <updated>2017-03-03T00:00:00+07:00</updated>
   <author>
     <name>Guangming Lang</name>
     <uri>http://localhost:4000</uri>
@@ -794,8 +794,8 @@ or read it &lt;a href=&quot;http://adv-r.had.co.nz/Functions.html&quot;&gt;onlin
   <title type="html"><![CDATA[Root Mean Squared Error (RMSE)]]></title>
   <link rel="alternate" type="text/html" href="http://localhost:4000/da/rmse/" />
   <id>http://localhost:4000/da/rmse</id>
-  <published>2017-02-27T00:00:00+09:00</published>
-  <updated>2017-02-27T00:00:00+09:00</updated>
+  <published>2017-02-27T00:00:00+07:00</published>
+  <updated>2017-02-27T00:00:00+07:00</updated>
   <author>
     <name>Guangming Lang</name>
     <uri>http://localhost:4000</uri>
@@ -843,8 +843,8 @@ The following plots shows a simulated example.&lt;/p&gt;
   <title type="html"><![CDATA[Read Zipped Files into R]]></title>
   <link rel="alternate" type="text/html" href="http://localhost:4000/r/read-zipped-files-into-R/" />
   <id>http://localhost:4000/r/read-zipped-files-into-R</id>
-  <published>2017-02-24T00:00:00+09:00</published>
-  <updated>2017-02-24T00:00:00+09:00</updated>
+  <published>2017-02-24T00:00:00+07:00</published>
+  <updated>2017-02-24T00:00:00+07:00</updated>
   <author>
     <name>Guangming Lang</name>
     <uri>http://localhost:4000</uri>
@@ -875,8 +875,8 @@ The following plots shows a simulated example.&lt;/p&gt;
   <title type="html"><![CDATA[Data Characteristics]]></title>
   <link rel="alternate" type="text/html" href="http://localhost:4000/da/data-characteristics/" />
   <id>http://localhost:4000/da/data-characteristics</id>
-  <published>2017-02-20T00:00:00+09:00</published>
-  <updated>2017-02-20T00:00:00+09:00</updated>
+  <published>2017-02-20T00:00:00+07:00</published>
+  <updated>2017-02-20T00:00:00+07:00</updated>
   <author>
     <name>Guangming Lang</name>
     <uri>http://localhost:4000</uri>
@@ -912,8 +912,8 @@ The following plots shows a simulated example.&lt;/p&gt;
   <title type="html"><![CDATA[R and MySQL]]></title>
   <link rel="alternate" type="text/html" href="http://localhost:4000/r/R-and-MySQL/" />
   <id>http://localhost:4000/r/R-and-MySQL</id>
-  <published>2017-02-18T00:00:00+09:00</published>
-  <updated>2017-02-18T00:00:00+09:00</updated>
+  <published>2017-02-18T00:00:00+07:00</published>
+  <updated>2017-02-18T00:00:00+07:00</updated>
   <author>
     <name>Guangming Lang</name>
     <uri>http://localhost:4000</uri>
@@ -975,8 +975,8 @@ that shows you how to query data from a MySQL database and insert data back.&lt;
   <title type="html"><![CDATA[Data Preprocessing and Xgboost]]></title>
   <link rel="alternate" type="text/html" href="http://localhost:4000/da/data-preprocessing-and-xgboost/" />
   <id>http://localhost:4000/da/data-preprocessing-and-xgboost</id>
-  <published>2017-02-13T00:00:00+09:00</published>
-  <updated>2017-02-13T00:00:00+09:00</updated>
+  <published>2017-02-13T00:00:00+07:00</published>
+  <updated>2017-02-13T00:00:00+07:00</updated>
   <author>
     <name>Guangming Lang</name>
     <uri>http://localhost:4000</uri>
@@ -1004,8 +1004,8 @@ that shows you how to query data from a MySQL database and insert data back.&lt;
   <title type="html"><![CDATA[Tips for Caret]]></title>
   <link rel="alternate" type="text/html" href="http://localhost:4000/r/tips-for-caret/" />
   <id>http://localhost:4000/r/tips-for-caret</id>
-  <published>2017-02-09T00:00:00+09:00</published>
-  <updated>2017-02-09T00:00:00+09:00</updated>
+  <published>2017-02-09T00:00:00+07:00</published>
+  <updated>2017-02-09T00:00:00+07:00</updated>
   <author>
     <name>Guangming Lang</name>
     <uri>http://localhost:4000</uri>
@@ -1027,8 +1027,8 @@ that shows you how to query data from a MySQL database and insert data back.&lt;
   <title type="html"><![CDATA[The Response Variable]]></title>
   <link rel="alternate" type="text/html" href="http://localhost:4000/da/the-response-variable/" />
   <id>http://localhost:4000/da/the-response-variable</id>
-  <published>2017-02-06T00:00:00+09:00</published>
-  <updated>2017-02-06T00:00:00+09:00</updated>
+  <published>2017-02-06T00:00:00+07:00</published>
+  <updated>2017-02-06T00:00:00+07:00</updated>
   <author>
     <name>Guangming Lang</name>
     <uri>http://localhost:4000</uri>
@@ -1050,8 +1050,8 @@ that shows you how to query data from a MySQL database and insert data back.&lt;
   <title type="html"><![CDATA[R Parallel and Zombie Processes]]></title>
   <link rel="alternate" type="text/html" href="http://localhost:4000/r/R-parallel-and-zombie-processes/" />
   <id>http://localhost:4000/r/R-parallel-and-zombie-processes</id>
-  <published>2017-02-03T00:00:00+09:00</published>
-  <updated>2017-02-03T00:00:00+09:00</updated>
+  <published>2017-02-03T00:00:00+07:00</published>
+  <updated>2017-02-03T00:00:00+07:00</updated>
   <author>
     <name>Guangming Lang</name>
     <uri>http://localhost:4000</uri>
