@@ -4,7 +4,7 @@
 <generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://localhost:4000/feed.xml" />
 <link rel="alternate" type="text/html" href="http://localhost:4000" />
-<updated>2018-10-04T22:31:58+07:00</updated>
+<updated>2018-11-20T20:46:49+09:00</updated>
 <id>http://localhost:4000/</id>
 <author>
   <name>Guangming Lang</name>
@@ -14,11 +14,186 @@
 
 
 <entry>
+  <title type="html"><![CDATA[How to Calculate Mortgage Payment Schedule in R]]></title>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/r/calculate-mortgage-payment-schedule/" />
+  <id>http://localhost:4000/r/calculate-mortgage-payment-schedule</id>
+  <published>2018-11-20T00:00:00+09:00</published>
+  <updated>2018-11-20T00:00:00+09:00</updated>
+  <author>
+    <name>Guangming Lang</name>
+    <uri>http://localhost:4000</uri>
+    <email>news@masterr.com</email>
+  </author>
+  <content type="html">&lt;p&gt;Suppose you want to buy a $350,000 house, and you plan to get a 30-year fixed mortage (interest rate 4.87%) with a 20% down payment. What’s your monthly repayment? How much of it will go towards interest and how much will go towards the principal?&lt;/p&gt;
+
+&lt;p&gt;Notice the mortgage amount you are borrowing is $280,000 (80% of the house price), and there’re 360 monthly payments you need to make.&lt;/p&gt;
+
+&lt;p&gt;The calculation of the monthly payment involves 2 steps conceptually:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Calculate the simple monthly rate by dividing the interest rate by 12. This is because the quoted interest rate is (almost always) an annual rate (APR).&lt;/li&gt;
+  &lt;li&gt;The mortgage amount, monthly payment amount and monthly rate are related by the &lt;a href=&quot;https://en.wikipedia.org/wiki/Annuity&quot;&gt;present value formula for annuities&lt;/a&gt;. Knowing any two of them, we can easily solve for the 3rd one.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;These 2 steps are carried out in the following R code block.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;&lt;span class=&quot;c1&quot;&gt;# calculate simple monthly rate
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;monthly_rate&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;m&quot;&gt;4.87&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;m&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;m&quot;&gt;12&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+
+&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# calculate (constant) contractual monthly payment amount
+#       derived from the present value formula for annuities
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;monthly_rate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;^&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;m&quot;&gt;360&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;payment&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;m&quot;&gt;280000&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;monthly_rate&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;So every month, you’re expected to make a payment of $1480.933374 back to your lender. The interest is calculated by multiplying the outstanding principal at the beginning of the month by the monthly rate, and the reducible amount of principal is obtained by subtracting interest from the monthly payment $1480.933374. The following code block calculates the payment schedule (also called amortization schedule) for the first 12 payment months.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;&lt;span class=&quot;n&quot;&gt;payment_months&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;m&quot;&gt;12&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+
+&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# initialize output variables
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;interest&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;principal&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;balance&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vector&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;numeric&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;payment_months&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+
+&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# calc amortization schedule
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;outstanding_principal&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;m&quot;&gt;280000&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;in&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;payment_months&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;intr&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;outstanding_principal&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;monthly_rate&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# interest to be paid
+&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;        &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;prnp&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;payment&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;intr&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# principal to be paid
+&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;        &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;outstanding_principal&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;outstanding_principal&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;prnp&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# principal left
+&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;        
+        &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;interest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;intr&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;principal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;prnp&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;balance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;outstanding_principal&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;knitr&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data.frame&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;month&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;payment_months&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;interest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;principal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;balance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+             &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;caption&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Payment schedule for first 12 months&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: right&quot;&gt;month&lt;/th&gt;
+      &lt;th style=&quot;text-align: right&quot;&gt;interest&lt;/th&gt;
+      &lt;th style=&quot;text-align: right&quot;&gt;principal&lt;/th&gt;
+      &lt;th style=&quot;text-align: right&quot;&gt;balance&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;1136.333&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;344.6000&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;279655.4&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;2&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;1134.935&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;345.9985&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;279309.4&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;3&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;1133.531&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;347.4027&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;278962.0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;4&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;1132.121&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;348.8126&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;278613.2&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;5&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;1130.705&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;350.2282&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;278263.0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;6&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;1129.284&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;351.6495&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;277911.3&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;7&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;1127.857&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;353.0766&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;277558.2&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;8&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;1126.424&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;354.5096&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;277203.7&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;9&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;1124.985&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;355.9483&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;276847.8&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;10&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;1123.541&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;357.3928&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;276490.4&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;11&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;1122.090&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;358.8432&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;276131.5&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;12&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;1120.634&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;360.2995&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;275771.2&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;The R code I give above should be very comfortable to you. If you ask 10 R users to program a mortgage payment schedule calculator, probably 8 of them will give you something similar. However, if you understand the behavior of R environments and &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;&amp;lt;-&lt;/code&gt;, you can code up the amortization schedule calculator differently. In the next blog post, I’ll explain how environments work and code up the same calculator in a different fashion using &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;&amp;lt;-&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;PS: In case you want to use the calculator, here’s a function that contains the above code blocks.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;&lt;span class=&quot;n&quot;&gt;amortize&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;loan_amt&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;m&quot;&gt;200000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;term&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;m&quot;&gt;360&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;APR&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;m&quot;&gt;4.87&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# calculate simple monthly rate 
+&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;        &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;monthly_rate&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;APR&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;m&quot;&gt;12&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        
+        &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# calculate (constant) contractual monthly payment amount
+&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;        &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;#       derived from the present value formula for annuities
+&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;        &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;#       https://en.wikipedia.org/wiki/Annuity
+&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;        &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;monthly_rate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;^&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;term&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;payment&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;loan_amt&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;monthly_rate&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        
+        &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# initialize output variables
+&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;        &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;interest&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;principal&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;balance&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vector&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;numeric&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;term&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        
+        &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# calc amortization schedule
+&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;        &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;outstanding_principal&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;loan_amt&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;in&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;term&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+                &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;intr&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;outstanding_principal&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;monthly_rate&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+                &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;prnp&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;payment&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;intr&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+                &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;outstanding_principal&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;outstanding_principal&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;prnp&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+                
+                &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;interest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;intr&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+                &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;principal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;prnp&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+                &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;balance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;outstanding_principal&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        
+        &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data.frame&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;month&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;term&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;interest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;principal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;balance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; 
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+
+  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/r/calculate-mortgage-payment-schedule/&quot;&gt;How to Calculate Mortgage Payment Schedule in R&lt;/a&gt; was originally published by Guangming Lang at &lt;a href=&quot;http://localhost:4000&quot;&gt;Become Great at R&lt;/a&gt; on November 20, 2018.&lt;/p&gt;</content>
+</entry>
+
+
+<entry>
   <title type="html"><![CDATA[Quote, Unquote and Quasiquote]]></title>
   <link rel="alternate" type="text/html" href="http://localhost:4000/r/quote-n-quasiquote/" />
   <id>http://localhost:4000/r/quote-n-quasiquote</id>
-  <published>2017-09-15T00:00:00+07:00</published>
-  <updated>2017-09-15T00:00:00+07:00</updated>
+  <published>2017-09-15T00:00:00+09:00</published>
+  <updated>2017-09-15T00:00:00+09:00</updated>
   <author>
     <name>Guangming Lang</name>
     <uri>http://localhost:4000</uri>
@@ -132,8 +307,8 @@ the quotation that &lt;code class=&quot;highlighter-rouge&quot;&gt;quote()&lt;/c
   <title type="html"><![CDATA[On Recursion - Part 3]]></title>
   <link rel="alternate" type="text/html" href="http://localhost:4000/r/on-recursion-3/" />
   <id>http://localhost:4000/r/on-recursion-3</id>
-  <published>2017-07-07T00:00:00+07:00</published>
-  <updated>2017-07-07T00:00:00+07:00</updated>
+  <published>2017-07-07T00:00:00+09:00</published>
+  <updated>2017-07-07T00:00:00+09:00</updated>
   <author>
     <name>Guangming Lang</name>
     <uri>http://localhost:4000</uri>
@@ -275,8 +450,8 @@ environment works by reading Hadley’s &lt;a href=&quot;http://adv-r.had.co.nz/
   <title type="html"><![CDATA[On Recursion - Part 2]]></title>
   <link rel="alternate" type="text/html" href="http://localhost:4000/r/on-recursion-2/" />
   <id>http://localhost:4000/r/on-recursion-2</id>
-  <published>2017-07-06T00:00:00+07:00</published>
-  <updated>2017-07-06T00:00:00+07:00</updated>
+  <published>2017-07-06T00:00:00+09:00</published>
+  <updated>2017-07-06T00:00:00+09:00</updated>
   <author>
     <name>Guangming Lang</name>
     <uri>http://localhost:4000</uri>
@@ -399,8 +574,8 @@ environment works by reading Hadley’s &lt;a href=&quot;http://adv-r.had.co.nz/
   <title type="html"><![CDATA[On Recursion - Part 1]]></title>
   <link rel="alternate" type="text/html" href="http://localhost:4000/r/on-recursion-1/" />
   <id>http://localhost:4000/r/on-recursion-1</id>
-  <published>2017-07-05T00:00:00+07:00</published>
-  <updated>2017-07-05T00:00:00+07:00</updated>
+  <published>2017-07-05T00:00:00+09:00</published>
+  <updated>2017-07-05T00:00:00+09:00</updated>
   <author>
     <name>Guangming Lang</name>
     <uri>http://localhost:4000</uri>
@@ -456,8 +631,8 @@ environment works by reading Hadley’s &lt;a href=&quot;http://adv-r.had.co.nz/
   <title type="html"><![CDATA[How to Feature Engineer Dates]]></title>
   <link rel="alternate" type="text/html" href="http://localhost:4000/da/feature-engineer-dates/" />
   <id>http://localhost:4000/da/feature-engineer-dates</id>
-  <published>2017-03-27T00:00:00+07:00</published>
-  <updated>2017-03-27T00:00:00+07:00</updated>
+  <published>2017-03-27T00:00:00+09:00</published>
+  <updated>2017-03-27T00:00:00+09:00</updated>
   <author>
     <name>Guangming Lang</name>
     <uri>http://localhost:4000</uri>
@@ -481,8 +656,8 @@ environment works by reading Hadley’s &lt;a href=&quot;http://adv-r.had.co.nz/
   <title type="html"><![CDATA[Bulk Download Data from Quandl]]></title>
   <link rel="alternate" type="text/html" href="http://localhost:4000/r/quandl-bulk-download/" />
   <id>http://localhost:4000/r/quandl-bulk-download</id>
-  <published>2017-03-24T00:00:00+07:00</published>
-  <updated>2017-03-24T00:00:00+07:00</updated>
+  <published>2017-03-24T00:00:00+09:00</published>
+  <updated>2017-03-24T00:00:00+09:00</updated>
   <author>
     <name>Guangming Lang</name>
     <uri>http://localhost:4000</uri>
@@ -540,8 +715,8 @@ Make sure you apply for an API Key first.&lt;/p&gt;
   <title type="html"><![CDATA[When n < p]]></title>
   <link rel="alternate" type="text/html" href="http://localhost:4000/da/when-n-less-than-p-copy/" />
   <id>http://localhost:4000/da/when-n-less-than-p copy</id>
-  <published>2017-03-20T00:00:00+07:00</published>
-  <updated>2017-03-20T00:00:00+07:00</updated>
+  <published>2017-03-20T00:00:00+09:00</published>
+  <updated>2017-03-20T00:00:00+09:00</updated>
   <author>
     <name>Guangming Lang</name>
     <uri>http://localhost:4000</uri>
@@ -559,8 +734,8 @@ Make sure you apply for an API Key first.&lt;/p&gt;
   <title type="html"><![CDATA[Rebind]]></title>
   <link rel="alternate" type="text/html" href="http://localhost:4000/r/rebind/" />
   <id>http://localhost:4000/r/rebind</id>
-  <published>2017-03-17T00:00:00+07:00</published>
-  <updated>2017-03-17T00:00:00+07:00</updated>
+  <published>2017-03-17T00:00:00+09:00</published>
+  <updated>2017-03-17T00:00:00+09:00</updated>
   <author>
     <name>Guangming Lang</name>
     <uri>http://localhost:4000</uri>
@@ -603,8 +778,8 @@ You can buy a copy of Hadley’s book
   <title type="html"><![CDATA[Resampling]]></title>
   <link rel="alternate" type="text/html" href="http://localhost:4000/da/resampling/" />
   <id>http://localhost:4000/da/resampling</id>
-  <published>2017-03-13T00:00:00+07:00</published>
-  <updated>2017-03-13T00:00:00+07:00</updated>
+  <published>2017-03-13T00:00:00+09:00</published>
+  <updated>2017-03-13T00:00:00+09:00</updated>
   <author>
     <name>Guangming Lang</name>
     <uri>http://localhost:4000</uri>
@@ -645,8 +820,8 @@ You can buy a copy of Hadley’s book
   <title type="html"><![CDATA[Moving Average Models Demo]]></title>
   <link rel="alternate" type="text/html" href="http://localhost:4000/r/ma-models-demo/" />
   <id>http://localhost:4000/r/ma-models-demo</id>
-  <published>2017-03-10T00:00:00+07:00</published>
-  <updated>2017-03-10T00:00:00+07:00</updated>
+  <published>2017-03-10T00:00:00+09:00</published>
+  <updated>2017-03-10T00:00:00+09:00</updated>
   <author>
     <name>Guangming Lang</name>
     <uri>http://localhost:4000</uri>
@@ -706,8 +881,8 @@ you some basic related R commands.&lt;/p&gt;
   <title type="html"><![CDATA[Data Preprocessing and Linear Regression]]></title>
   <link rel="alternate" type="text/html" href="http://localhost:4000/da/data-preprocessing-and-linear-regression/" />
   <id>http://localhost:4000/da/data-preprocessing-and-linear-regression</id>
-  <published>2017-03-06T00:00:00+07:00</published>
-  <updated>2017-03-06T00:00:00+07:00</updated>
+  <published>2017-03-06T00:00:00+09:00</published>
+  <updated>2017-03-06T00:00:00+09:00</updated>
   <author>
     <name>Guangming Lang</name>
     <uri>http://localhost:4000</uri>
@@ -745,8 +920,8 @@ you some basic related R commands.&lt;/p&gt;
   <title type="html"><![CDATA[The on.exit() Function]]></title>
   <link rel="alternate" type="text/html" href="http://localhost:4000/r/on-exit/" />
   <id>http://localhost:4000/r/on-exit</id>
-  <published>2017-03-03T00:00:00+07:00</published>
-  <updated>2017-03-03T00:00:00+07:00</updated>
+  <published>2017-03-03T00:00:00+09:00</published>
+  <updated>2017-03-03T00:00:00+09:00</updated>
   <author>
     <name>Guangming Lang</name>
     <uri>http://localhost:4000</uri>
@@ -794,8 +969,8 @@ or read it &lt;a href=&quot;http://adv-r.had.co.nz/Functions.html&quot;&gt;onlin
   <title type="html"><![CDATA[Root Mean Squared Error (RMSE)]]></title>
   <link rel="alternate" type="text/html" href="http://localhost:4000/da/rmse/" />
   <id>http://localhost:4000/da/rmse</id>
-  <published>2017-02-27T00:00:00+07:00</published>
-  <updated>2017-02-27T00:00:00+07:00</updated>
+  <published>2017-02-27T00:00:00+09:00</published>
+  <updated>2017-02-27T00:00:00+09:00</updated>
   <author>
     <name>Guangming Lang</name>
     <uri>http://localhost:4000</uri>
@@ -843,8 +1018,8 @@ The following plots shows a simulated example.&lt;/p&gt;
   <title type="html"><![CDATA[Read Zipped Files into R]]></title>
   <link rel="alternate" type="text/html" href="http://localhost:4000/r/read-zipped-files-into-R/" />
   <id>http://localhost:4000/r/read-zipped-files-into-R</id>
-  <published>2017-02-24T00:00:00+07:00</published>
-  <updated>2017-02-24T00:00:00+07:00</updated>
+  <published>2017-02-24T00:00:00+09:00</published>
+  <updated>2017-02-24T00:00:00+09:00</updated>
   <author>
     <name>Guangming Lang</name>
     <uri>http://localhost:4000</uri>
@@ -875,8 +1050,8 @@ The following plots shows a simulated example.&lt;/p&gt;
   <title type="html"><![CDATA[Data Characteristics]]></title>
   <link rel="alternate" type="text/html" href="http://localhost:4000/da/data-characteristics/" />
   <id>http://localhost:4000/da/data-characteristics</id>
-  <published>2017-02-20T00:00:00+07:00</published>
-  <updated>2017-02-20T00:00:00+07:00</updated>
+  <published>2017-02-20T00:00:00+09:00</published>
+  <updated>2017-02-20T00:00:00+09:00</updated>
   <author>
     <name>Guangming Lang</name>
     <uri>http://localhost:4000</uri>
@@ -912,8 +1087,8 @@ The following plots shows a simulated example.&lt;/p&gt;
   <title type="html"><![CDATA[R and MySQL]]></title>
   <link rel="alternate" type="text/html" href="http://localhost:4000/r/R-and-MySQL/" />
   <id>http://localhost:4000/r/R-and-MySQL</id>
-  <published>2017-02-18T00:00:00+07:00</published>
-  <updated>2017-02-18T00:00:00+07:00</updated>
+  <published>2017-02-18T00:00:00+09:00</published>
+  <updated>2017-02-18T00:00:00+09:00</updated>
   <author>
     <name>Guangming Lang</name>
     <uri>http://localhost:4000</uri>
@@ -975,8 +1150,8 @@ that shows you how to query data from a MySQL database and insert data back.&lt;
   <title type="html"><![CDATA[Data Preprocessing and Xgboost]]></title>
   <link rel="alternate" type="text/html" href="http://localhost:4000/da/data-preprocessing-and-xgboost/" />
   <id>http://localhost:4000/da/data-preprocessing-and-xgboost</id>
-  <published>2017-02-13T00:00:00+07:00</published>
-  <updated>2017-02-13T00:00:00+07:00</updated>
+  <published>2017-02-13T00:00:00+09:00</published>
+  <updated>2017-02-13T00:00:00+09:00</updated>
   <author>
     <name>Guangming Lang</name>
     <uri>http://localhost:4000</uri>
@@ -1004,8 +1179,8 @@ that shows you how to query data from a MySQL database and insert data back.&lt;
   <title type="html"><![CDATA[Tips for Caret]]></title>
   <link rel="alternate" type="text/html" href="http://localhost:4000/r/tips-for-caret/" />
   <id>http://localhost:4000/r/tips-for-caret</id>
-  <published>2017-02-09T00:00:00+07:00</published>
-  <updated>2017-02-09T00:00:00+07:00</updated>
+  <published>2017-02-09T00:00:00+09:00</published>
+  <updated>2017-02-09T00:00:00+09:00</updated>
   <author>
     <name>Guangming Lang</name>
     <uri>http://localhost:4000</uri>
@@ -1027,8 +1202,8 @@ that shows you how to query data from a MySQL database and insert data back.&lt;
   <title type="html"><![CDATA[The Response Variable]]></title>
   <link rel="alternate" type="text/html" href="http://localhost:4000/da/the-response-variable/" />
   <id>http://localhost:4000/da/the-response-variable</id>
-  <published>2017-02-06T00:00:00+07:00</published>
-  <updated>2017-02-06T00:00:00+07:00</updated>
+  <published>2017-02-06T00:00:00+09:00</published>
+  <updated>2017-02-06T00:00:00+09:00</updated>
   <author>
     <name>Guangming Lang</name>
     <uri>http://localhost:4000</uri>
@@ -1043,30 +1218,6 @@ that shows you how to query data from a MySQL database and insert data back.&lt;
 &lt;p&gt;Understanding the distribution of the response variable is critical for finding the most suitable way to partition the data. Not understanding the response characteristics can lead to computational difficulties for some models and sub-optimal and less robust predictive performances.&lt;/p&gt;
 
   &lt;p&gt;&lt;a href=&quot;http://localhost:4000/da/the-response-variable/&quot;&gt;The Response Variable&lt;/a&gt; was originally published by Guangming Lang at &lt;a href=&quot;http://localhost:4000&quot;&gt;Become Great at R&lt;/a&gt; on February 06, 2017.&lt;/p&gt;</content>
-</entry>
-
-
-<entry>
-  <title type="html"><![CDATA[R Parallel and Zombie Processes]]></title>
-  <link rel="alternate" type="text/html" href="http://localhost:4000/r/R-parallel-and-zombie-processes/" />
-  <id>http://localhost:4000/r/R-parallel-and-zombie-processes</id>
-  <published>2017-02-03T00:00:00+07:00</published>
-  <updated>2017-02-03T00:00:00+07:00</updated>
-  <author>
-    <name>Guangming Lang</name>
-    <uri>http://localhost:4000</uri>
-    <email>news@masterr.com</email>
-  </author>
-  <content type="html">&lt;p&gt;I recently encountered zombie processes when running some R code in parallel. 
-I was running the code in linux and was using doMC to register the parallel backend.
-If you’re not familiar with doMC, read this stack overflow answer on the &lt;a href=&quot;http://stackoverflow.com/questions/28989855/the-difference-between-domc-and-doparallel-in-r&quot;&gt;difference between doMC and doParallel&lt;/a&gt;. In a nutshell, doMC sometimes is more 
-efficient than doParallel, and it only works with linux or Mac, not with windows, while doParallel works with all platforms.&lt;/p&gt;
-
-&lt;p&gt;It turns out &lt;a href=&quot;http://stackoverflow.com/questions/25348607/how-to-stop-r-from-leaving-zombie-processes-behind&quot;&gt;the zombie processes weren’t caused by doMC&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Finally, use &lt;a href=&quot;http://stackoverflow.com/questions/25388139/r-parallel-computing-and-zombie-processes&quot;&gt;the inline package and the wait function&lt;/a&gt; by Steve Weston (scroll down) to kill zombie processes. I used them in my application and they work like a charm.&lt;/p&gt;
-
-  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/r/R-parallel-and-zombie-processes/&quot;&gt;R Parallel and Zombie Processes&lt;/a&gt; was originally published by Guangming Lang at &lt;a href=&quot;http://localhost:4000&quot;&gt;Become Great at R&lt;/a&gt; on February 03, 2017.&lt;/p&gt;</content>
 </entry>
 
 </feed>
