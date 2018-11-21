@@ -31,7 +31,7 @@ r = (1 + monthly_rate) ^ 360 - 1
 payment = 280000 * monthly_rate * (r + 1) / r
 {% endhighlight %}
 
-So every month, you're expected to make a payment of \$1480.933374 back to your lender. The interest is calculated by multiplying the outstanding principal at the beginning of the month by the monthly rate, and the reducible amount of principal is obtained by subtracting interest from the monthly payment \$1480.933374. The following code block calculates the payment schedule (also called amortization schedule) for the first 12 payment months. 
+So every month, you're expected to make a payment of \$1480.93 back to your lender. The interest is calculated by multiplying the outstanding principal at the beginning of the month by the monthly rate, and the reducible amount of principal is obtained by subtracting interest from the monthly payment \$1480.93. The following code block calculates the payment schedule (also called amortization schedule) for the first 12 payment months. 
 
 
 {% highlight r %}
@@ -72,9 +72,9 @@ knitr::kable(data.frame(month = 1:payment_months, interest, principal, balance),
 |    11| 1122.090|  358.8432| 276131.5|
 |    12| 1120.634|  360.2995| 275771.2|
 
-The R code I give above should be very comfortable to you. If you ask 10 R users to program a mortgage payment schedule calculator, probably 8 of them will give you something similar. However, if you understand the behavior of R environments and `<<-`, you can code up the amortization schedule calculator differently. In the next blog post, I'll explain how environments work and code up the same calculator in a different fashion using `<<-`.
+The R code I give above should be very comfortable to you. If you ask 10 R users to program a mortgage payment schedule calculator, 8 of them probably will give you something similar. However, if you understand the behavior of R environments and `<<-`, you can code it up differently. In the next blog post, I'll explain how environments work and code up the same calculator in a different fashion using `<<-`.
 
-PS: In case you want to use the calculator, here's a function that contains the above code blocks. 
+PS: I've put the above code pieces in a function for ease of use.
 
 
 {% highlight r %}
@@ -106,6 +106,4 @@ amortize = function(loan_amt = 200000, term = 360, APR = 4.87/100) {
         data.frame(month = 1:term, interest, principal, balance) 
 }
 {% endhighlight %}
-
-
 
