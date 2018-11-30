@@ -4,13 +4,95 @@
 <generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://localhost:4000/feed.xml" />
 <link rel="alternate" type="text/html" href="http://localhost:4000" />
-<updated>2018-11-21T11:01:19+09:00</updated>
+<updated>2018-11-30T20:15:21+09:00</updated>
 <id>http://localhost:4000/</id>
 <author>
   <name>Guangming Lang</name>
   <uri>http://localhost:4000/</uri>
   <email>news@masterr.com</email>
 </author>
+
+
+<entry>
+  <title type="html"><![CDATA[Understand R Environments - Part1]]></title>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/r/understand-r-environments-part1/" />
+  <id>http://localhost:4000/r/understand-r-environments-part1</id>
+  <published>2018-11-30T00:00:00+09:00</published>
+  <updated>2018-11-30T00:00:00+09:00</updated>
+  <author>
+    <name>Guangming Lang</name>
+    <uri>http://localhost:4000</uri>
+    <email>news@masterr.com</email>
+  </author>
+  <content type="html">&lt;p&gt;This is the first article of a series on how environments work in R. If this
+sounds foreign to you, you’re probably wondering, “what is a R environment?” 
+Don’t. Instead, ask “what does a R environment do?” This is because 99% of the 
+utility lies in understanding how it behaves. And yes, you can understand how it 
+behaves without knowing what it is, which is confusing given that different 
+things are carelessly named the same in the official R manual. For now, just
+think of &lt;code class=&quot;highlighter-rouge&quot;&gt;environment&lt;/code&gt; as a container. Or if you want, you can even take its 
+english meaning (after all, programmers try to name things vividly). Every time
+you open Rstudio, you’re inside an environment called the global environment.
+How do I know that? You can check it yourself by running the following command
+inside Rstudio. It tells you the current envionment you’re in.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;&lt;span class=&quot;n&quot;&gt;environment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;## &amp;lt;environment: R_GlobalEnv&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Take a look at the Environment panel and notice the global env is currently 
+empty. Let’s put some stuff inside by running the following code block.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;I'm good&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;add_one&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;g&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;g&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Look at the Environment panel again and notice the global env now has &lt;code class=&quot;highlighter-rouge&quot;&gt;y&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;add_one&lt;/code&gt;. 
+&lt;img src=&quot;/images/global-env.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;What happens if I call &lt;code class=&quot;highlighter-rouge&quot;&gt;add_one(1)&lt;/code&gt;? It returns . We see the 
+value of &lt;code class=&quot;highlighter-rouge&quot;&gt;y&lt;/code&gt; defined outside of the &lt;code class=&quot;highlighter-rouge&quot;&gt;add_one&lt;/code&gt; function doesn’t affect the 
+value of &lt;code class=&quot;highlighter-rouge&quot;&gt;y&lt;/code&gt; defined inside. But what’s really going on under the hood?&lt;/p&gt;
+
+&lt;p&gt;The call &lt;code class=&quot;highlighter-rouge&quot;&gt;add_one(1)&lt;/code&gt; happened in the global env as I simply ran it inside 
+Rstudio without changing the current environment. We say the global env is the
+calling environment of the function &lt;code class=&quot;highlighter-rouge&quot;&gt;add_one()&lt;/code&gt;. If we search for &lt;code class=&quot;highlighter-rouge&quot;&gt;y&lt;/code&gt;
+inside the function’s calling environment, we’ll get a value of “I’m good.”
+Obviously, this was not what R did when we ran &lt;code class=&quot;highlighter-rouge&quot;&gt;add_one(1)&lt;/code&gt; because otherwise,
+R would’ve returned an error as a result of adding a string and integer. So what
+did R do?&lt;/p&gt;
+
+&lt;p&gt;When we sent &lt;code class=&quot;highlighter-rouge&quot;&gt;add_one(1)&lt;/code&gt; to R (or when &lt;code class=&quot;highlighter-rouge&quot;&gt;add_one(1)&lt;/code&gt; was evaluated), a new 
+environment was created, with &lt;code class=&quot;highlighter-rouge&quot;&gt;x&lt;/code&gt; placed inside and associated with the value 1.
+Let’s call this new environment &lt;script type=&quot;math/tex&quot;&gt;e_1&lt;/script&gt;.&lt;/p&gt;
+
+&lt;p&gt;Next, the expression &lt;code class=&quot;highlighter-rouge&quot;&gt;y = x + 1&lt;/code&gt; was evaluated in &lt;script type=&quot;math/tex&quot;&gt;e_1&lt;/script&gt;, and R searched for 
+&lt;code class=&quot;highlighter-rouge&quot;&gt;x&lt;/code&gt; first in &lt;script type=&quot;math/tex&quot;&gt;e_1&lt;/script&gt; and found its value to be 1. Addition was carried out and
+&lt;code class=&quot;highlighter-rouge&quot;&gt;y&lt;/code&gt; was created in &lt;script type=&quot;math/tex&quot;&gt;e_1&lt;/script&gt; and associated with a value of 2.&lt;/p&gt;
+
+&lt;p&gt;Next, the expression &lt;code class=&quot;highlighter-rouge&quot;&gt;g = function() print(y)&lt;/code&gt; was evaluated in &lt;script type=&quot;math/tex&quot;&gt;e_1&lt;/script&gt;. As a 
+result, &lt;code class=&quot;highlighter-rouge&quot;&gt;g&lt;/code&gt; was created in &lt;script type=&quot;math/tex&quot;&gt;e_1&lt;/script&gt; and associated with a function 
+&lt;code class=&quot;highlighter-rouge&quot;&gt;function() print(y)&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Finally, the expression &lt;code class=&quot;highlighter-rouge&quot;&gt;g()&lt;/code&gt; was evaluated in &lt;script type=&quot;math/tex&quot;&gt;e_1&lt;/script&gt;. This created another
+new environment with nothing inside. Let’s call it &lt;script type=&quot;math/tex&quot;&gt;e_2&lt;/script&gt;. The body of &lt;code class=&quot;highlighter-rouge&quot;&gt;g&lt;/code&gt; 
+asks to print &lt;code class=&quot;highlighter-rouge&quot;&gt;y&lt;/code&gt;, this made R search for &lt;code class=&quot;highlighter-rouge&quot;&gt;y&lt;/code&gt;, first inside &lt;script type=&quot;math/tex&quot;&gt;e_2&lt;/script&gt; and found 
+nothing, and then inside &lt;script type=&quot;math/tex&quot;&gt;e_1&lt;/script&gt; and found a value of 2. Under the 
+hood, R could move to &lt;script type=&quot;math/tex&quot;&gt;e_1&lt;/script&gt; after done with &lt;script type=&quot;math/tex&quot;&gt;e_2&lt;/script&gt; because &lt;script type=&quot;math/tex&quot;&gt;e_2&lt;/script&gt; was 
+pointed to &lt;script type=&quot;math/tex&quot;&gt;e_1&lt;/script&gt; by a pointer. We call &lt;script type=&quot;math/tex&quot;&gt;e_1&lt;/script&gt; is the parent (environment) of 
+&lt;script type=&quot;math/tex&quot;&gt;e_2&lt;/script&gt;. In general, whenever R cannot find an object inside an environment, 
+it’ll look for it in its parent environment.&lt;/p&gt;
+
+&lt;p&gt;In the second article of the series, I’ll talk about the &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;&amp;lt;-&lt;/code&gt; operator and 
+use it to &lt;a href=&quot;http://masterr.org/r/calculate-mortgage-payment-schedule/&quot;&gt;code up the mortgage payment calculator&lt;/a&gt; in a 
+different fashion. Stay tuned.&lt;/p&gt;
+
+
+  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/r/understand-r-environments-part1/&quot;&gt;Understand R Environments - Part1&lt;/a&gt; was originally published by Guangming Lang at &lt;a href=&quot;http://localhost:4000&quot;&gt;Become Great at R&lt;/a&gt; on November 30, 2018.&lt;/p&gt;</content>
+</entry>
 
 
 <entry>
@@ -1195,29 +1277,6 @@ that shows you how to query data from a MySQL database and insert data back.&lt;
 &lt;/ul&gt;
 
   &lt;p&gt;&lt;a href=&quot;http://localhost:4000/r/tips-for-caret/&quot;&gt;Tips for Caret&lt;/a&gt; was originally published by Guangming Lang at &lt;a href=&quot;http://localhost:4000&quot;&gt;Become Great at R&lt;/a&gt; on February 09, 2017.&lt;/p&gt;</content>
-</entry>
-
-
-<entry>
-  <title type="html"><![CDATA[The Response Variable]]></title>
-  <link rel="alternate" type="text/html" href="http://localhost:4000/da/the-response-variable/" />
-  <id>http://localhost:4000/da/the-response-variable</id>
-  <published>2017-02-06T00:00:00+09:00</published>
-  <updated>2017-02-06T00:00:00+09:00</updated>
-  <author>
-    <name>Guangming Lang</name>
-    <uri>http://localhost:4000</uri>
-    <email>news@masterr.com</email>
-  </author>
-  <content type="html">&lt;p&gt;When it comes to building models, it’s crucial to understand the characteristics of the variable you want to predict. This variable is often called the response or target variable. First, it may be continuous (for example, housing prices, stock prices, drug compound’s permeability, precipitation, and etc) or categorical (for example, fraud or not, default or not, good or bad, churned or not, 5 stages of sepsis and etc).&lt;/p&gt;
-
-&lt;p&gt;Continuous responses may be symmetrically distributed (think of the Taj Mahal or the bell curve) or skewed (for example, income distribution often has a thin and long right tail). When it’s skewed, certain models such as linear regression require us to transform it to be symmetric. BoxCox transformation is often used.&lt;/p&gt;
-
-&lt;p&gt;Categorical responses may have two levels or more than two levels. The levels maybe balanced or unbalanced. In the extreme case, the unbalanced situation is so severe that we call the minority class the rare event. For example, the number of clicks an online ad receives can be 1 out of every 1000 impressions. We often want to remedy the unbalanced distribution amongst the different classes before modeling. One method is to down-sample the majority class, and the other method is to up-sample the minority class.&lt;/p&gt;
-
-&lt;p&gt;Understanding the distribution of the response variable is critical for finding the most suitable way to partition the data. Not understanding the response characteristics can lead to computational difficulties for some models and sub-optimal and less robust predictive performances.&lt;/p&gt;
-
-  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/da/the-response-variable/&quot;&gt;The Response Variable&lt;/a&gt; was originally published by Guangming Lang at &lt;a href=&quot;http://localhost:4000&quot;&gt;Become Great at R&lt;/a&gt; on February 06, 2017.&lt;/p&gt;</content>
 </entry>
 
 </feed>
