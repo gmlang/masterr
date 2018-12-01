@@ -4,13 +4,98 @@
 <generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://localhost:4000/feed.xml" />
 <link rel="alternate" type="text/html" href="http://localhost:4000" />
-<updated>2018-11-30T20:15:21+09:00</updated>
+<updated>2018-12-01T14:00:31+09:00</updated>
 <id>http://localhost:4000/</id>
 <author>
   <name>Guangming Lang</name>
   <uri>http://localhost:4000/</uri>
   <email>news@masterr.com</email>
 </author>
+
+
+<entry>
+  <title type="html"><![CDATA[Understand R Environments - Part2]]></title>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/r/understand-r-environments-part2/" />
+  <id>http://localhost:4000/r/understand-r-environments-part2</id>
+  <published>2018-12-01T00:00:00+09:00</published>
+  <updated>2018-12-01T00:00:00+09:00</updated>
+  <author>
+    <name>Guangming Lang</name>
+    <uri>http://localhost:4000</uri>
+    <email>news@masterr.com</email>
+  </author>
+  <content type="html">&lt;p&gt;This is the second article of a series on how environments work in R. Recall that in the &lt;a href=&quot;http://masterr.org/r/understand-r-environments-part1/&quot;&gt;first article&lt;/a&gt;, we demonstrated how environment and evaluation work in R and we learned the following:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;the default current environment (or workspace) is called the global env.&lt;/li&gt;
+  &lt;li&gt;when you define a function in the current environment (i.e., this is another way of saying opening Rstudio, making a funtion and sending it to Console), you effectively put that function inside the global env.&lt;/li&gt;
+  &lt;li&gt;when you call that function in the global env, a new environment is created, binding the function arguments to the values supplied. This new environment is called the environment associated with the function, and is inserted before the global env on the search path. In other words, its parent (environment) is the global env.&lt;/li&gt;
+  &lt;li&gt;when the body of that function is evaluated, a search is made, first in that newly created environment associated with the function, and next in the global env.&lt;/li&gt;
+  &lt;li&gt;in general, when you define a function &lt;code class=&quot;highlighter-rouge&quot;&gt;f&lt;/code&gt; inside another function &lt;code class=&quot;highlighter-rouge&quot;&gt;h&lt;/code&gt;, you effectively put &lt;code class=&quot;highlighter-rouge&quot;&gt;f&lt;/code&gt; inside the environment associated with &lt;code class=&quot;highlighter-rouge&quot;&gt;h&lt;/code&gt;, which is NOT the calling environment of &lt;code class=&quot;highlighter-rouge&quot;&gt;h&lt;/code&gt;, but the newly created environment that binds the arguments of &lt;code class=&quot;highlighter-rouge&quot;&gt;h&lt;/code&gt; to values supplied. When the body of &lt;code class=&quot;highlighter-rouge&quot;&gt;f&lt;/code&gt; is evaluated, R searches
+for values first in the environment associated with &lt;code class=&quot;highlighter-rouge&quot;&gt;f&lt;/code&gt;, and then in the environment associated with &lt;code class=&quot;highlighter-rouge&quot;&gt;h&lt;/code&gt;, and then in the global env (assuming &lt;code class=&quot;highlighter-rouge&quot;&gt;h&lt;/code&gt; is defined in the global env).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;the-assignment-operators-in-r&quot;&gt;The assignment operators in R&lt;/h2&gt;
+
+&lt;p&gt;There’re two assignment operators in R: &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;-&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;&amp;lt;-&lt;/code&gt;. While &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;-&lt;/code&gt; changes the values of objects in the immediate environment searched, &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;&amp;lt;-&lt;/code&gt; changes the values of objects first encountered, starting with the parent environment of the immediate environment and traversing upwards through the parent environments until the global environment is reached. Consider the following example. The function &lt;code class=&quot;highlighter-rouge&quot;&gt;h&lt;/code&gt; uses &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;-&lt;/code&gt; to only set its local y to 0. The function &lt;code class=&quot;highlighter-rouge&quot;&gt;to_zero&lt;/code&gt; uses &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;&amp;lt;-&lt;/code&gt; to
+set the &lt;code class=&quot;highlighter-rouge&quot;&gt;y&lt;/code&gt; declared in the global env to 0. If no &lt;code class=&quot;highlighter-rouge&quot;&gt;y&lt;/code&gt; found in the global env, it will create it in the global env and bind its value to 0.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;&lt;span class=&quot;c1&quot;&gt;# define functions
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;h&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;to_zero&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;-&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+
+&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# initialize y in global env
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;m&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+
+&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# h doesn't change the global y 
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;h&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;## [1] 10&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;&lt;span class=&quot;c1&quot;&gt;# to_zero sets the global y to 0
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;to_zero&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;## [1] 0&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h2 id=&quot;state-maintanence&quot;&gt;State maintanence&lt;/h2&gt;
+
+&lt;p&gt;The combination of &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;&amp;lt;-&lt;/code&gt; and R evaluation model allows functions to remember variable values between funtion calls. For example, consider the following function &lt;code class=&quot;highlighter-rouge&quot;&gt;student&lt;/code&gt;, which appends a 3-digit number to a given student name. It takes a string &lt;code class=&quot;highlighter-rouge&quot;&gt;name&lt;/code&gt; and returns a list of two functions. Because both functions are defined inside the &lt;code class=&quot;highlighter-rouge&quot;&gt;student&lt;/code&gt; function, more precisely, they are defined inside the environment associated with &lt;code class=&quot;highlighter-rouge&quot;&gt;student&lt;/code&gt;, and because &lt;code class=&quot;highlighter-rouge&quot;&gt;name&lt;/code&gt; will also be created in the same environment when &lt;code class=&quot;highlighter-rouge&quot;&gt;student&lt;/code&gt; is called, both functions of the returned list will have access to the value of &lt;code class=&quot;highlighter-rouge&quot;&gt;name&lt;/code&gt;. Notice how I use &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;&amp;lt;-&lt;/code&gt; to update
+&lt;code class=&quot;highlighter-rouge&quot;&gt;name&lt;/code&gt;.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;&lt;span class=&quot;n&quot;&gt;student&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;print_name&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+             &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;add_num&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+                     &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;ceiling&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;runif&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;min&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;m&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;max&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;m&quot;&gt;999&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+                     &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;-&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;paste0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+                     &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+             &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;We can now create name cards for different students by calling &lt;code class=&quot;highlighter-rouge&quot;&gt;student&lt;/code&gt;. Notice Joe’s name card is maintained separately from Jean’s. This is what we wanted.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;&lt;span class=&quot;n&quot;&gt;set.seed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+
+&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# create badge for joe
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;joe&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;student&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Joe&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;joe&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;add_num&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;joe&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;print_name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;## [1] &quot;Joe267&quot;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;&lt;span class=&quot;c1&quot;&gt;# create badge for jean
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;jean&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;student&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Jean&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;jean&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;add_num&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;jean&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;print_name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;## [1] &quot;Jean732&quot;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;In the next article, I’ll use &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;&amp;lt;-&lt;/code&gt; to &lt;a href=&quot;http://masterr.org/r/calculate-mortgage-payment-schedule/&quot;&gt;code up the mortgage payment calculator&lt;/a&gt; in a 
+different fashion. Stay tuned.&lt;/p&gt;
+
+  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/r/understand-r-environments-part2/&quot;&gt;Understand R Environments - Part2&lt;/a&gt; was originally published by Guangming Lang at &lt;a href=&quot;http://localhost:4000&quot;&gt;Become Great at R&lt;/a&gt; on December 01, 2018.&lt;/p&gt;</content>
+</entry>
 
 
 <entry>
@@ -86,9 +171,7 @@ pointed to &lt;script type=&quot;math/tex&quot;&gt;e_1&lt;/script&gt; by a point
 &lt;script type=&quot;math/tex&quot;&gt;e_2&lt;/script&gt;. In general, whenever R cannot find an object inside an environment, 
 it’ll look for it in its parent environment.&lt;/p&gt;
 
-&lt;p&gt;In the second article of the series, I’ll talk about the &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;&amp;lt;-&lt;/code&gt; operator and 
-use it to &lt;a href=&quot;http://masterr.org/r/calculate-mortgage-payment-schedule/&quot;&gt;code up the mortgage payment calculator&lt;/a&gt; in a 
-different fashion. Stay tuned.&lt;/p&gt;
+&lt;p&gt;In the second article of the series, I’ll talk about the &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;&amp;lt;-&lt;/code&gt; operator. Stay tuned.&lt;/p&gt;
 
 
   &lt;p&gt;&lt;a href=&quot;http://localhost:4000/r/understand-r-environments-part1/&quot;&gt;Understand R Environments - Part1&lt;/a&gt; was originally published by Guangming Lang at &lt;a href=&quot;http://localhost:4000&quot;&gt;Become Great at R&lt;/a&gt; on November 30, 2018.&lt;/p&gt;</content>
@@ -1254,29 +1337,6 @@ that shows you how to query data from a MySQL database and insert data back.&lt;
 &lt;p&gt;The phrase “not needed” means, by and large, doing it won’t improve (or worsen) model performance.&lt;/p&gt;
 
   &lt;p&gt;&lt;a href=&quot;http://localhost:4000/da/data-preprocessing-and-xgboost/&quot;&gt;Data Preprocessing and Xgboost&lt;/a&gt; was originally published by Guangming Lang at &lt;a href=&quot;http://localhost:4000&quot;&gt;Become Great at R&lt;/a&gt; on February 13, 2017.&lt;/p&gt;</content>
-</entry>
-
-
-<entry>
-  <title type="html"><![CDATA[Tips for Caret]]></title>
-  <link rel="alternate" type="text/html" href="http://localhost:4000/r/tips-for-caret/" />
-  <id>http://localhost:4000/r/tips-for-caret</id>
-  <published>2017-02-09T00:00:00+09:00</published>
-  <updated>2017-02-09T00:00:00+09:00</updated>
-  <author>
-    <name>Guangming Lang</name>
-    <uri>http://localhost:4000</uri>
-    <email>news@masterr.com</email>
-  </author>
-  <content type="html">&lt;p&gt;We all love the caret package because it has made training predictive models so much easier. However, if you’re new to caret, there’re some things you probably don’t know but should know. Here’s a list.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;When using a resampling approach inside &lt;code class=&quot;highlighter-rouge&quot;&gt;caret::train()&lt;/code&gt;, for example, 10 fold cross validation with 5 repeats, the returned object contains the model trained using the best tuning parameters and on the entire training dataset (not just the resampled dataset). In other words, it’ll return the production model that you can just use directly to predict on the validation or holdout set. No need to re-fit yourself.&lt;/li&gt;
-  &lt;li&gt;Do pre-processing by specifying the &lt;code class=&quot;highlighter-rouge&quot;&gt;preProcess&lt;/code&gt; argument of the &lt;code class=&quot;highlighter-rouge&quot;&gt;caret::train()&lt;/code&gt; function. This will perform the specified pre-processing steps during the resampling process. Here’s a pop quiz. Why don’t you want to perform pre-processing outside of the resampling process? Hint: there’re two major reasons. Doing pre-processing this way will also enable the same pre-processing steps to be applied to the validation set when applying the best model resulted from &lt;code class=&quot;highlighter-rouge&quot;&gt;caret::train()&lt;/code&gt; to it.&lt;/li&gt;
-  &lt;li&gt;For binary classification problems, we often also need to choose the optimal probability threshold for deciding the classes. You should write self-defined functions to incorporate the search of optimal threshold into the resampling process. As a result, the optimal threshold will be amongst the best parameters returned by &lt;code class=&quot;highlighter-rouge&quot;&gt;caret::train()&lt;/code&gt;. Here’s an &lt;a href=&quot;http://topepo.github.io/caret/using-your-own-model-in-train.html#Illustration5&quot;&gt;example&lt;/a&gt; of the self-defined functions for random forest.&lt;/li&gt;
-&lt;/ul&gt;
-
-  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/r/tips-for-caret/&quot;&gt;Tips for Caret&lt;/a&gt; was originally published by Guangming Lang at &lt;a href=&quot;http://localhost:4000&quot;&gt;Become Great at R&lt;/a&gt; on February 09, 2017.&lt;/p&gt;</content>
 </entry>
 
 </feed>

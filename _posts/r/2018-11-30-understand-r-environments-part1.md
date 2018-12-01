@@ -4,7 +4,7 @@ title: "Understand R Environments - Part1"
 date: 2018-11-30
 comments: true
 categories: r
-keywords: "R, environments, lexical scoping, lexing, evaluate an expression in an environment, frame, environment frame, parent environment, parent.env(), enclosing environment, enclosure"
+keywords: "R, environments, lexical scoping, lexing, evaluate an expression in an environment, frame, environment frame, parent environment, parent.env(), enclosing environment, enclosure, global_env, globalEnv, global env, global"
 published: true
 share: true
 ads: true
@@ -82,9 +82,7 @@ pointed to $$e_1$$ by a pointer. We call $$e_1$$ is the parent (environment) of
 $$e_2$$. In general, whenever R cannot find an object inside an environment, 
 it'll look for it in its parent environment.
 
-In the second article of the series, I'll talk about the `<<-` operator and 
-use it to [code up the mortgage payment calculator](http://masterr.org/r/calculate-mortgage-payment-schedule/) in a 
-different fashion. Stay tuned.
+In the second article of the series, I'll talk about the `<<-` operator. Stay tuned.
 
 
 
