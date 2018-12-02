@@ -10,7 +10,7 @@ share: true
 ads: true
 ---
 
-This is the second article of a series on how environments work in R. Recall that in the [first article](http://masterr.org/r/understand-r-environments-part1/), we demonstrated how environment and evaluation work in R and we learned the following:
+This is the second article of the series on how environments work in R. Recall that in the [first article](http://masterr.org/r/understand-r-environments-part1/), we demonstrated how environment and evaluation work in R and we learned the following:
 
 * the default current environment (or workspace) is called the global env.
 * when you define a function in the current environment (i.e., this is another way of saying opening Rstudio, making a funtion and sending it to Console), you effectively put that function inside the global env. 
@@ -72,5 +72,4 @@ jean$add_num()
 jean$print_name()
 ```
 
-In the next article, I'll use `<<-` to [code up the mortgage payment calculator](http://masterr.org/r/calculate-mortgage-payment-schedule/) in a 
-different fashion. Stay tuned.
+If you want to see a bigger example of `<<-`, click [here](http://masterr.org/r/understand-r-environments-part3/) for the final article, where I used `<<-` to code up the [mortgage payment calculator](http://masterr.org/r/calculate-mortgage-payment-schedule/) in a different fashion. 

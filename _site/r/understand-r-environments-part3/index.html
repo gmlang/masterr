@@ -5,16 +5,16 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
 <head>
 <meta charset="utf-8">
-<title>Understand R Environments - Part2 &#8211; Become Great at R</title>
-<meta name="description" content="This is the second article of the series on how environments work in R. Recall that in the first article, we demonstrated how environment and evaluation work in R and we learned the following:
+<title>Understand R Environments - Part3 &#8211; Become Great at R</title>
+<meta name="description" content="This is the final article of the series on how environments work in R. If you haven’t read the previous articles, I recommend you to do that first. Follow these links:
 
 ">
 <meta name="keywords" content="">
 
 
 <!-- Twitter Cards -->
-<meta name="twitter:title" content="Understand R Environments - Part2">
-<meta name="twitter:description" content="This is the second article of the series on how environments work in R. Recall that in the first article, we demonstrated how environment and evaluation work in R and we learned the following:
+<meta name="twitter:title" content="Understand R Environments - Part3">
+<meta name="twitter:description" content="This is the final article of the series on how environments work in R. If you haven’t read the previous articles, I recommend you to do that first. Follow these links:
 
 ">
 
@@ -26,18 +26,18 @@
 <!-- Open Graph -->
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Understand R Environments - Part2">
-<meta property="og:description" content="This is the second article of the series on how environments work in R. Recall that in the first article, we demonstrated how environment and evaluation work in R and we learned the following:
+<meta property="og:title" content="Understand R Environments - Part3">
+<meta property="og:description" content="This is the final article of the series on how environments work in R. If you haven’t read the previous articles, I recommend you to do that first. Follow these links:
 
 ">
-<meta property="og:url" content="http://localhost:4000/r/understand-r-environments-part2/">
+<meta property="og:url" content="http://localhost:4000/r/understand-r-environments-part3/">
 <meta property="og:site_name" content="Become Great at R">
 
 
 <meta name="msvalidate.01" content="F608C5B05384F7B0200AC62F5BB60411">
 
 
-<link rel="canonical" href="http://localhost:4000/r/understand-r-environments-part2/">
+<link rel="canonical" href="http://localhost:4000/r/understand-r-environments-part3/">
 <link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="Become Great at R Feed">
 
 
@@ -136,7 +136,7 @@
       <header class="entry-header">
         <span class="entry-tags"></span>
         
-          <h1 class="entry-title">Understand R Environments - Part2</h1>
+          <h1 class="entry-title">Understand R Environments - Part3</h1>
         
       </header>
       <footer class="entry-meta">
@@ -207,13 +207,13 @@
         <span class="author vcard">By <span class="fn">Guangming Lang</span></span>
 		<span class="entry-comments"><i class="fa fa-comment-o"></i> <a href="#disqus_thread">Comment</a></span>
 		<span class="social-share-twitter">
-  <a href="https://twitter.com/intent/tweet?hashtags=&amp;text=Understand%20R%20Environments%20-%20Part2&amp;url=http://localhost:4000/r/understand-r-environments-part2/" title="Share on Twitter" itemprop="Twitter"><i class="fa fa-twitter-square"></i> Tweet</a>
+  <a href="https://twitter.com/intent/tweet?hashtags=&amp;text=Understand%20R%20Environments%20-%20Part3&amp;url=http://localhost:4000/r/understand-r-environments-part3/" title="Share on Twitter" itemprop="Twitter"><i class="fa fa-twitter-square"></i> Tweet</a>
 </span>
 <span class="social-share-facebook">
-  <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/r/understand-r-environments-part2/" title="Share on Facebook" itemprop="Facebook"><i class="fa fa-facebook-square"></i> Like</a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/r/understand-r-environments-part3/" title="Share on Facebook" itemprop="Facebook"><i class="fa fa-facebook-square"></i> Like</a>
 </span>
 <span class="social-share-googleplus">
-  <a href="https://plus.google.com/share?url=http://localhost:4000/r/understand-r-environments-part2/" title="Share on Google Plus" itemprop="GooglePlus"><i class="fa fa-google-plus-square"></i> +1</a>
+  <a href="https://plus.google.com/share?url=http://localhost:4000/r/understand-r-environments-part3/" title="Share on Google Plus" itemprop="GooglePlus"><i class="fa fa-google-plus-square"></i> +1</a>
 </span>
 <!-- /.social-share -->
         <div class="google-ads" style="margin-top:40px; text-align:center;">
@@ -229,74 +229,154 @@
 </div><!-- /.google-ads --><!-- /.google-ads -->
       </footer>
       <div class="entry-content">
-        <p>This is the second article of the series on how environments work in R. Recall that in the <a href="http://masterr.org/r/understand-r-environments-part1/">first article</a>, we demonstrated how environment and evaluation work in R and we learned the following:</p>
+        <p>This is the final article of the series on how environments work in R. If you haven’t read the previous articles, I recommend you to do that first. Follow these links:</p>
 
-<ul>
-  <li>the default current environment (or workspace) is called the global env.</li>
-  <li>when you define a function in the current environment (i.e., this is another way of saying opening Rstudio, making a funtion and sending it to Console), you effectively put that function inside the global env.</li>
-  <li>when you call that function in the global env, a new environment is created, binding the function arguments to the values supplied. This new environment is called the environment associated with the function, and is inserted before the global env on the search path. In other words, its parent (environment) is the global env.</li>
-  <li>when the body of that function is evaluated, a search is made, first in that newly created environment associated with the function, and next in the global env.</li>
-  <li>in general, when you define a function <code class="highlighter-rouge">f</code> inside another function <code class="highlighter-rouge">h</code>, you effectively put <code class="highlighter-rouge">f</code> inside the environment associated with <code class="highlighter-rouge">h</code>, which is NOT the calling environment of <code class="highlighter-rouge">h</code>, but the newly created environment that binds the arguments of <code class="highlighter-rouge">h</code> to values supplied. When the body of <code class="highlighter-rouge">f</code> is evaluated, R searches
-for values first in the environment associated with <code class="highlighter-rouge">f</code>, and then in the environment associated with <code class="highlighter-rouge">h</code>, and then in the global env (assuming <code class="highlighter-rouge">h</code> is defined in the global env).</li>
-</ul>
+<ol>
+  <li>
+    <p><a href="http://masterr.org/r/understand-r-environments-part1/">Understand R Environments - Part1</a></p>
+  </li>
+  <li>
+    <p><a href="http://masterr.org/r/understand-r-environments-part2/">Understand R Environments - Part2</a></p>
+  </li>
+  <li>
+    <p><a href="http://masterr.org/r/calculate-mortgage-payment-schedule/">How to Calculate Mortgage Payment Schedule in R</a></p>
+  </li>
+</ol>
 
-<h2 id="the-assignment-operators-in-r">The assignment operators in R</h2>
+<p>Now that we understand the R evaluation model and the <code class="highlighter-rouge">&lt;&lt;-</code> operator, we can code up the Mortgage Payment Calculator in a different fashion.</p>
 
-<p>There’re two assignment operators in R: <code class="highlighter-rouge">&lt;-</code> and <code class="highlighter-rouge">&lt;&lt;-</code>. While <code class="highlighter-rouge">&lt;-</code> changes the values of objects in the immediate environment searched, <code class="highlighter-rouge">&lt;&lt;-</code> changes the values of objects first encountered, starting with the parent environment of the immediate environment and traversing upwards through the parent environments until the global environment is reached. Consider the following example. The function <code class="highlighter-rouge">h</code> uses <code class="highlighter-rouge">&lt;-</code> to only set its local y to 0. The function <code class="highlighter-rouge">to_zero</code> uses <code class="highlighter-rouge">&lt;&lt;-</code> to
-set the <code class="highlighter-rouge">y</code> declared in the global env to 0. If no <code class="highlighter-rouge">y</code> found in the global env, it will create it in the global env and bind its value to 0.</p>
-
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># define functions
-</span><span class="n">h</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">0</span><span class="w">
-</span><span class="n">to_zero</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">&lt;&lt;-</span><span class="w"> </span><span class="m">0</span><span class="w">
-
-</span><span class="c1"># initialize y in global env
-</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10</span><span class="w">
-
-</span><span class="c1"># h doesn't change the global y 
-</span><span class="n">h</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="w">
-</span><span class="n">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span></code></pre></figure>
-
-<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] 10</code></pre></figure>
-
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># to_zero sets the global y to 0
-</span><span class="n">to_zero</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="w">
-</span><span class="n">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span></code></pre></figure>
-
-<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] 0</code></pre></figure>
-
-<h2 id="state-maintanence">State maintanence</h2>
-
-<p>The combination of <code class="highlighter-rouge">&lt;&lt;-</code> and R evaluation model allows functions to remember variable values between funtion calls. For example, consider the following function <code class="highlighter-rouge">student</code>, which appends a 3-digit number to a given student name. It takes a string <code class="highlighter-rouge">name</code> and returns a list of two functions. Because both functions are defined inside the <code class="highlighter-rouge">student</code> function, more precisely, they are defined inside the environment associated with <code class="highlighter-rouge">student</code>, and because <code class="highlighter-rouge">name</code> will also be created in the same environment when <code class="highlighter-rouge">student</code> is called, both functions of the returned list will have access to the value of <code class="highlighter-rouge">name</code>. Notice how I use <code class="highlighter-rouge">&lt;&lt;-</code> to update
-<code class="highlighter-rouge">name</code>.</p>
-
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">student</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">name</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nf">list</span><span class="p">(</span><span class="n">print_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">()</span><span class="w"> </span><span class="n">print</span><span class="p">(</span><span class="n">name</span><span class="p">),</span><span class="w">
-             </span><span class="n">add_num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
-                     </span><span class="n">num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">ceiling</span><span class="p">(</span><span class="n">runif</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">min</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">100</span><span class="p">,</span><span class="w"> </span><span class="n">max</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">999</span><span class="p">))</span><span class="w">
-                     </span><span class="n">name</span><span class="w"> </span><span class="o">&lt;&lt;-</span><span class="w"> </span><span class="n">paste0</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">num</span><span class="p">)</span><span class="w">
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">amortize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">loan_amt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">200000</span><span class="p">,</span><span class="w"> </span><span class="n">term</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">360</span><span class="p">,</span><span class="w"> </span><span class="n">APR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">4.87</span><span class="o">/</span><span class="m">100</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="c1"># calculate simple monthly rate 
+</span><span class="w">        </span><span class="n">monthly_rate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">APR</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="m">12</span><span class="w">
+        
+        </span><span class="c1"># calculate (constant) contractual monthly payment amount
+</span><span class="w">        </span><span class="c1">#       derived from the present value formula for annuities
+</span><span class="w">        </span><span class="c1">#       https://en.wikipedia.org/wiki/Annuity
+</span><span class="w">        </span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="m">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">monthly_rate</span><span class="p">)</span><span class="w"> </span><span class="o">^</span><span class="w"> </span><span class="n">term</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">1</span><span class="w">
+        </span><span class="n">payment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">loan_amt</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">monthly_rate</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">r</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">r</span><span class="w">
+        
+        </span><span class="c1"># initialize outstanding principal 
+</span><span class="w">        </span><span class="n">balance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">loan_amt</span><span class="w">
+        
+        </span><span class="c1"># main
+</span><span class="w">        </span><span class="nf">list</span><span class="p">(</span><span class="n">make_payment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+                     </span><span class="n">interest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">balance</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">monthly_rate</span><span class="w">
+                     </span><span class="n">principal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">payment</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">interest</span><span class="w">
+                     </span><span class="n">balance</span><span class="w"> </span><span class="o">&lt;&lt;-</span><span class="w"> </span><span class="n">balance</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">principal</span><span class="w"> </span><span class="c1"># update balance
+</span><span class="w">                     </span><span class="n">setNames</span><span class="p">(</span><span class="n">data.frame</span><span class="p">(</span><span class="n">interest</span><span class="p">,</span><span class="w"> </span><span class="n">principal</span><span class="p">,</span><span class="w"> </span><span class="n">balance</span><span class="p">),</span><span class="w"> 
+                              </span><span class="nf">c</span><span class="p">(</span><span class="s2">"interest"</span><span class="p">,</span><span class="w"> </span><span class="s2">"principal"</span><span class="p">,</span><span class="w"> </span><span class="s2">"balance"</span><span class="p">))</span><span class="w">
                      </span><span class="p">}</span><span class="w">
              </span><span class="p">)</span><span class="w">
 </span><span class="p">}</span></code></pre></figure>
 
-<p>We can now create name cards for different students by calling <code class="highlighter-rouge">student</code>. Notice Joe’s name card is maintained separately from Jean’s. This is what we wanted.</p>
+<p>Say you want to buy a $350,000 house, and you plan to get a 30-year fixed mortage (interest rate 4.87%) with a 20% down payment. We can use function <code class="highlighter-rouge">amortize</code> to 
+calculate the monthly mortgage payment, broken down by the interest portion and the principal portion. For example, let’s calculate the payment schedule for the first 12 months.</p>
 
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">set.seed</span><span class="p">(</span><span class="m">2</span><span class="p">)</span><span class="w">
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span><span class="w">
+</span><span class="n">options</span><span class="p">(</span><span class="n">scipen</span><span class="o">=</span><span class="m">999</span><span class="p">)</span><span class="w"> </span><span class="c1"># turn off scientific notation
+</span><span class="w">
+</span><span class="c1"># make an amortizer for amortizing your mortgage
+</span><span class="n">house_price</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">350000</span><span class="w">
+</span><span class="n">downpmt_pct</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.2</span><span class="w">
+</span><span class="n">term</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">360</span><span class="w">
+</span><span class="n">amortizer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">amortize</span><span class="p">(</span><span class="n">loan_amt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">house_price</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="m">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">downpmt_pct</span><span class="p">),</span><span class="w">
+                     </span><span class="n">term</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">term</span><span class="p">,</span><span class="w"> </span><span class="n">APR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">4.87</span><span class="o">/</span><span class="m">100</span><span class="p">)</span><span class="w">
 
-</span><span class="c1"># create badge for joe
-</span><span class="n">joe</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">student</span><span class="p">(</span><span class="s2">"Joe"</span><span class="p">)</span><span class="w">
-</span><span class="n">joe</span><span class="o">$</span><span class="n">add_num</span><span class="p">()</span><span class="w">
-</span><span class="n">joe</span><span class="o">$</span><span class="n">print_name</span><span class="p">()</span></code></pre></figure>
+</span><span class="c1"># amortize first 12 months
+</span><span class="n">pmt_schedule</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lapply</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">12</span><span class="p">,</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">month</span><span class="p">)</span><span class="w"> 
+        </span><span class="n">cbind</span><span class="p">(</span><span class="n">month</span><span class="p">,</span><span class="w"> </span><span class="n">amortizer</span><span class="o">$</span><span class="n">make_payment</span><span class="p">()))</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+        </span><span class="n">bind_rows</span><span class="p">()</span><span class="w">
 
-<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "Joe267"</code></pre></figure>
+</span><span class="c1"># print
+</span><span class="n">knitr</span><span class="o">::</span><span class="n">kable</span><span class="p">(</span><span class="n">pmt_schedule</span><span class="p">,</span><span class="w"> </span><span class="n">digits</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w">
+             </span><span class="n">caption</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Payment schedule for first 12 months"</span><span class="p">)</span></code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># create badge for jean
-</span><span class="n">jean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">student</span><span class="p">(</span><span class="s2">"Jean"</span><span class="p">)</span><span class="w">
-</span><span class="n">jean</span><span class="o">$</span><span class="n">add_num</span><span class="p">()</span><span class="w">
-</span><span class="n">jean</span><span class="o">$</span><span class="n">print_name</span><span class="p">()</span></code></pre></figure>
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: right">month</th>
+      <th style="text-align: right">interest</th>
+      <th style="text-align: right">principal</th>
+      <th style="text-align: right">balance</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">1136.33</td>
+      <td style="text-align: right">344.60</td>
+      <td style="text-align: right">279655.4</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">2</td>
+      <td style="text-align: right">1134.93</td>
+      <td style="text-align: right">346.00</td>
+      <td style="text-align: right">279309.4</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">3</td>
+      <td style="text-align: right">1133.53</td>
+      <td style="text-align: right">347.40</td>
+      <td style="text-align: right">278962.0</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">4</td>
+      <td style="text-align: right">1132.12</td>
+      <td style="text-align: right">348.81</td>
+      <td style="text-align: right">278613.2</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">5</td>
+      <td style="text-align: right">1130.71</td>
+      <td style="text-align: right">350.23</td>
+      <td style="text-align: right">278263.0</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">6</td>
+      <td style="text-align: right">1129.28</td>
+      <td style="text-align: right">351.65</td>
+      <td style="text-align: right">277911.3</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">7</td>
+      <td style="text-align: right">1127.86</td>
+      <td style="text-align: right">353.08</td>
+      <td style="text-align: right">277558.2</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">8</td>
+      <td style="text-align: right">1126.42</td>
+      <td style="text-align: right">354.51</td>
+      <td style="text-align: right">277203.7</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">9</td>
+      <td style="text-align: right">1124.99</td>
+      <td style="text-align: right">355.95</td>
+      <td style="text-align: right">276847.8</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">10</td>
+      <td style="text-align: right">1123.54</td>
+      <td style="text-align: right">357.39</td>
+      <td style="text-align: right">276490.4</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">11</td>
+      <td style="text-align: right">1122.09</td>
+      <td style="text-align: right">358.84</td>
+      <td style="text-align: right">276131.5</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">12</td>
+      <td style="text-align: right">1120.63</td>
+      <td style="text-align: right">360.30</td>
+      <td style="text-align: right">275771.2</td>
+    </tr>
+  </tbody>
+</table>
 
-<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "Jean732"</code></pre></figure>
-
-<p>If you want to see a bigger example of <code class="highlighter-rouge">&lt;&lt;-</code>, click <a href="http://masterr.org/r/understand-r-environments-part3/">here</a> for the final article, where I used <code class="highlighter-rouge">&lt;&lt;-</code> to code up the <a href="http://masterr.org/r/calculate-mortgage-payment-schedule/">mortgage payment calculator</a> in a different fashion.</p>
+<p>This concludes the series on how environment works in R. Drop your questions and comments below.</p>
 
 		<!-- Begin MailChimp Signup Form -->
 <html>
@@ -364,10 +444,8 @@ set the <code class="highlighter-rouge">y</code> declared in the global env to 0
     </div><!-- /.entry-wrapper -->
     <nav class="pagination" role="navigation">
       
-        <a href="http://localhost:4000/r/understand-r-environments-part1/" class="btn" title="Understand R Environments - Part1">Previous</a>
+        <a href="http://localhost:4000/r/understand-r-environments-part2/" class="btn" title="Understand R Environments - Part2">Previous</a>
       
-      
-        <a href="http://localhost:4000/r/understand-r-environments-part3/" class="btn" title="Understand R Environments - Part3">Next</a>
       
     </nav><!-- /.pagination -->
   </article>
