@@ -5,16 +5,16 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
 <head>
 <meta charset="utf-8">
-<title>Understand R Environments - Part3 &#8211; Become Great at R</title>
-<meta name="description" content="This is the final article of the series on how environments work in R. If you haven’t read the previous articles, I recommend you to do that first. Follow these links:
+<title>Accurate Calculation of Years between Dates in R &#8211; Become Great at R</title>
+<meta name="description" content="When doing feature engineering, it’s common to turn dates into numbers by calculating the time differences. For example, given date of birth, you may want to calculate age. Given sign up date and churn date, you may want to calculate the days to churn. Depending on the situation, sometimes you want the time difference in years, and sometimes you want it in months, weeks or days; sometimes you want the years/months/weeks rounded to whole numbers, and other times you may want to keep the decimal points for more accuracy. For example, suppose we want to calculate the number of years (without rounding) between two dates, there’re 3 ways we can go about it:
 
 ">
 <meta name="keywords" content="">
 
 
 <!-- Twitter Cards -->
-<meta name="twitter:title" content="Understand R Environments - Part3">
-<meta name="twitter:description" content="This is the final article of the series on how environments work in R. If you haven’t read the previous articles, I recommend you to do that first. Follow these links:
+<meta name="twitter:title" content="Accurate Calculation of Years between Dates in R">
+<meta name="twitter:description" content="When doing feature engineering, it’s common to turn dates into numbers by calculating the time differences. For example, given date of birth, you may want to calculate age. Given sign up date and churn date, you may want to calculate the days to churn. Depending on the situation, sometimes you want the time difference in years, and sometimes you want it in months, weeks or days; sometimes you want the years/months/weeks rounded to whole numbers, and other times you may want to keep the decimal points for more accuracy. For example, suppose we want to calculate the number of years (without rounding) between two dates, there’re 3 ways we can go about it:
 
 ">
 
@@ -26,18 +26,18 @@
 <!-- Open Graph -->
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Understand R Environments - Part3">
-<meta property="og:description" content="This is the final article of the series on how environments work in R. If you haven’t read the previous articles, I recommend you to do that first. Follow these links:
+<meta property="og:title" content="Accurate Calculation of Years between Dates in R">
+<meta property="og:description" content="When doing feature engineering, it’s common to turn dates into numbers by calculating the time differences. For example, given date of birth, you may want to calculate age. Given sign up date and churn date, you may want to calculate the days to churn. Depending on the situation, sometimes you want the time difference in years, and sometimes you want it in months, weeks or days; sometimes you want the years/months/weeks rounded to whole numbers, and other times you may want to keep the decimal points for more accuracy. For example, suppose we want to calculate the number of years (without rounding) between two dates, there’re 3 ways we can go about it:
 
 ">
-<meta property="og:url" content="http://localhost:4000/r/understand-r-environments-part3/">
+<meta property="og:url" content="http://localhost:4000/r/accurate-calculation-of-years-between-dates/">
 <meta property="og:site_name" content="Become Great at R">
 
 
 <meta name="msvalidate.01" content="F608C5B05384F7B0200AC62F5BB60411">
 
 
-<link rel="canonical" href="http://localhost:4000/r/understand-r-environments-part3/">
+<link rel="canonical" href="http://localhost:4000/r/accurate-calculation-of-years-between-dates/">
 <link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="Become Great at R Feed">
 
 
@@ -136,7 +136,7 @@
       <header class="entry-header">
         <span class="entry-tags"></span>
         
-          <h1 class="entry-title">Understand R Environments - Part3</h1>
+          <h1 class="entry-title">Accurate Calculation of Years between Dates in R</h1>
         
       </header>
       <footer class="entry-meta">
@@ -201,19 +201,19 @@
     });
 </script> 
 <!--End mc_embed_signup-->
-        <span class="entry-date date published"><time datetime="2018-12-01T00:00:00+09:00"><i class="fa fa-calendar-o"></i> December 01, 2018</time></span>
+        <span class="entry-date date published"><time datetime="2018-12-04T00:00:00+09:00"><i class="fa fa-calendar-o"></i> December 04, 2018</time></span>
         
         
         <span class="author vcard">By <span class="fn">Guangming Lang</span></span>
 		<span class="entry-comments"><i class="fa fa-comment-o"></i> <a href="#disqus_thread">Comment</a></span>
 		<span class="social-share-twitter">
-  <a href="https://twitter.com/intent/tweet?hashtags=&amp;text=Understand%20R%20Environments%20-%20Part3&amp;url=http://localhost:4000/r/understand-r-environments-part3/" title="Share on Twitter" itemprop="Twitter"><i class="fa fa-twitter-square"></i> Tweet</a>
+  <a href="https://twitter.com/intent/tweet?hashtags=&amp;text=Accurate%20Calculation%20of%20Years%20between%20Dates%20in%20R&amp;url=http://localhost:4000/r/accurate-calculation-of-years-between-dates/" title="Share on Twitter" itemprop="Twitter"><i class="fa fa-twitter-square"></i> Tweet</a>
 </span>
 <span class="social-share-facebook">
-  <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/r/understand-r-environments-part3/" title="Share on Facebook" itemprop="Facebook"><i class="fa fa-facebook-square"></i> Like</a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/r/accurate-calculation-of-years-between-dates/" title="Share on Facebook" itemprop="Facebook"><i class="fa fa-facebook-square"></i> Like</a>
 </span>
 <span class="social-share-googleplus">
-  <a href="https://plus.google.com/share?url=http://localhost:4000/r/understand-r-environments-part3/" title="Share on Google Plus" itemprop="GooglePlus"><i class="fa fa-google-plus-square"></i> +1</a>
+  <a href="https://plus.google.com/share?url=http://localhost:4000/r/accurate-calculation-of-years-between-dates/" title="Share on Google Plus" itemprop="GooglePlus"><i class="fa fa-google-plus-square"></i> +1</a>
 </span>
 <!-- /.social-share -->
         <div class="google-ads" style="margin-top:40px; text-align:center;">
@@ -229,154 +229,44 @@
 </div><!-- /.google-ads --><!-- /.google-ads -->
       </footer>
       <div class="entry-content">
-        <p>This is the final article of the series on how environments work in R. If you haven’t read the previous articles, I recommend you to do that first. Follow these links:</p>
+        <p>When doing feature engineering, it’s common to turn dates into numbers by calculating the time differences. For example, given date of birth, you may want to calculate age. Given sign up date and churn date, you may want to calculate the days to churn. Depending on the situation, sometimes you want the time difference in years, and sometimes you want it in months, weeks or days; sometimes you want the years/months/weeks rounded to whole numbers, and other times you may want to keep the decimal points for more accuracy. For example, suppose we want to calculate the number of years (without rounding) between two dates, there’re 3 ways we can go about it:</p>
 
 <ol>
-  <li>
-    <p><a href="http://masterr.org/r/understand-r-environments-part1/">Understand R Environments - Part1</a></p>
-  </li>
-  <li>
-    <p><a href="http://masterr.org/r/understand-r-environments-part2/">Understand R Environments - Part2</a></p>
-  </li>
-  <li>
-    <p><a href="http://masterr.org/r/calculate-mortgage-payment-schedule/">How to Calculate Mortgage Payment Schedule in R</a></p>
-  </li>
+  <li>Calculate the number of days in between using <code class="highlighter-rouge">difftime(end_date, start_date)</code>, and divide it by 365. But this will be not accurate as some years have 366 days.</li>
+  <li>Calcualte the number of weeks in between using <code class="highlighter-rouge">difftime(end_date, start_date, unit = "weeks")</code> and divide it by 52.25. Some people believe by using 52.25 instead of 52, it will solve the 365 or 366 days issue. But this is not true and the results obtained are still not accurate as we’ll show below.</li>
+  <li>Calculate the number of days in between using <code class="highlighter-rouge">difftime(end_date, start_date)</code>, and feed it into the <code class="highlighter-rouge">lubridate::time_length()</code> function while specifying the 2nd argument as “years”. This turns out to give accurate results.</li>
 </ol>
 
-<p>Now that we understand the R evaluation model and the <code class="highlighter-rouge">&lt;&lt;-</code> operator, we can code up the Mortgage Payment Calculator in a different fashion.</p>
+<p>As an example, say we want to calculate the number of years between “2012-03-01” and “2017-03-01”. Obviously, it has to be at least 5 years. But method 2 gives 4.992, while method 3 gives 5.002.</p>
 
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">amortize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">loan_amt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">200000</span><span class="p">,</span><span class="w"> </span><span class="n">term</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">360</span><span class="p">,</span><span class="w"> </span><span class="n">APR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">4.87</span><span class="o">/</span><span class="m">100</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="c1"># calculate simple monthly rate 
-</span><span class="w">        </span><span class="n">monthly_rate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">APR</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="m">12</span><span class="w">
-        
-        </span><span class="c1"># calculate (constant) contractual monthly payment amount
-</span><span class="w">        </span><span class="c1">#       derived from the present value formula for annuities
-</span><span class="w">        </span><span class="c1">#       https://en.wikipedia.org/wiki/Annuity
-</span><span class="w">        </span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="m">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">monthly_rate</span><span class="p">)</span><span class="w"> </span><span class="o">^</span><span class="w"> </span><span class="n">term</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">1</span><span class="w">
-        </span><span class="n">payment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">loan_amt</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">monthly_rate</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">r</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">r</span><span class="w">
-        
-        </span><span class="c1"># initialize outstanding principal 
-</span><span class="w">        </span><span class="n">balance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">loan_amt</span><span class="w">
-        
-        </span><span class="c1"># main
-</span><span class="w">        </span><span class="nf">list</span><span class="p">(</span><span class="n">make_payment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
-                     </span><span class="n">interest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">balance</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">monthly_rate</span><span class="w">
-                     </span><span class="n">principal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">payment</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">interest</span><span class="w">
-                     </span><span class="n">balance</span><span class="w"> </span><span class="o">&lt;&lt;-</span><span class="w"> </span><span class="n">balance</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">principal</span><span class="w"> </span><span class="c1"># update balance
-</span><span class="w">                     </span><span class="n">setNames</span><span class="p">(</span><span class="n">data.frame</span><span class="p">(</span><span class="n">interest</span><span class="p">,</span><span class="w"> </span><span class="n">principal</span><span class="p">,</span><span class="w"> </span><span class="n">balance</span><span class="p">),</span><span class="w"> 
-                              </span><span class="nf">c</span><span class="p">(</span><span class="s2">"interest"</span><span class="p">,</span><span class="w"> </span><span class="s2">"principal"</span><span class="p">,</span><span class="w"> </span><span class="s2">"balance"</span><span class="p">))</span><span class="w">
-                     </span><span class="p">}</span><span class="w">
-             </span><span class="p">)</span><span class="w">
-</span><span class="p">}</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">start</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">as.Date</span><span class="p">(</span><span class="s2">"2012-03-01"</span><span class="p">)</span><span class="w">
+</span><span class="n">end</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">as.Date</span><span class="p">(</span><span class="s2">"2017-03-01"</span><span class="p">)</span><span class="w">
 
-<p>Say you want to buy a $350,000 house, and you plan to get a 30-year fixed mortage (interest rate 4.87%) with a 20% down payment. We can use function <code class="highlighter-rouge">amortize</code> to 
-calculate the monthly mortgage payment, broken down by the interest portion and the principal portion. For example, let’s calculate the payment schedule for the first 12 months.</p>
+</span><span class="c1"># method 2
+</span><span class="nf">as.numeric</span><span class="p">(</span><span class="n">difftime</span><span class="p">(</span><span class="n">end</span><span class="p">,</span><span class="w"> </span><span class="n">start</span><span class="p">,</span><span class="w"> </span><span class="n">unit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"weeks"</span><span class="p">))</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="m">52.25</span></code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span><span class="w">
-</span><span class="n">options</span><span class="p">(</span><span class="n">scipen</span><span class="o">=</span><span class="m">999</span><span class="p">)</span><span class="w"> </span><span class="c1"># turn off scientific notation
-</span><span class="w">
-</span><span class="c1"># make an amortizer for amortizing your mortgage
-</span><span class="n">house_price</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">350000</span><span class="w">
-</span><span class="n">downpmt_pct</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.2</span><span class="w">
-</span><span class="n">term</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">360</span><span class="w">
-</span><span class="n">amortizer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">amortize</span><span class="p">(</span><span class="n">loan_amt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">house_price</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="m">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">downpmt_pct</span><span class="p">),</span><span class="w">
-                     </span><span class="n">term</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">term</span><span class="p">,</span><span class="w"> </span><span class="n">APR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">4.87</span><span class="o">/</span><span class="m">100</span><span class="p">)</span><span class="w">
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] 4.992481</code></pre></figure>
 
-</span><span class="c1"># amortize first 12 months
-</span><span class="n">pmt_schedule</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lapply</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">12</span><span class="p">,</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">month</span><span class="p">)</span><span class="w"> 
-        </span><span class="n">cbind</span><span class="p">(</span><span class="n">month</span><span class="p">,</span><span class="w"> </span><span class="n">amortizer</span><span class="o">$</span><span class="n">make_payment</span><span class="p">()))</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
-        </span><span class="n">bind_rows</span><span class="p">()</span><span class="w">
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># method 3
+</span><span class="n">lubridate</span><span class="o">::</span><span class="n">time_length</span><span class="p">(</span><span class="n">difftime</span><span class="p">(</span><span class="n">end</span><span class="p">,</span><span class="w"> </span><span class="n">start</span><span class="p">),</span><span class="w"> </span><span class="s2">"years"</span><span class="p">)</span></code></pre></figure>
 
-</span><span class="c1"># print
-</span><span class="n">knitr</span><span class="o">::</span><span class="n">kable</span><span class="p">(</span><span class="n">pmt_schedule</span><span class="p">,</span><span class="w"> </span><span class="n">digits</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w">
-             </span><span class="n">caption</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Payment schedule for first 12 months"</span><span class="p">)</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] 5.00274</code></pre></figure>
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: right">month</th>
-      <th style="text-align: right">interest</th>
-      <th style="text-align: right">principal</th>
-      <th style="text-align: right">balance</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: right">1</td>
-      <td style="text-align: right">1136.33</td>
-      <td style="text-align: right">344.60</td>
-      <td style="text-align: right">279655.4</td>
-    </tr>
-    <tr>
-      <td style="text-align: right">2</td>
-      <td style="text-align: right">1134.93</td>
-      <td style="text-align: right">346.00</td>
-      <td style="text-align: right">279309.4</td>
-    </tr>
-    <tr>
-      <td style="text-align: right">3</td>
-      <td style="text-align: right">1133.53</td>
-      <td style="text-align: right">347.40</td>
-      <td style="text-align: right">278962.0</td>
-    </tr>
-    <tr>
-      <td style="text-align: right">4</td>
-      <td style="text-align: right">1132.12</td>
-      <td style="text-align: right">348.81</td>
-      <td style="text-align: right">278613.2</td>
-    </tr>
-    <tr>
-      <td style="text-align: right">5</td>
-      <td style="text-align: right">1130.71</td>
-      <td style="text-align: right">350.23</td>
-      <td style="text-align: right">278263.0</td>
-    </tr>
-    <tr>
-      <td style="text-align: right">6</td>
-      <td style="text-align: right">1129.28</td>
-      <td style="text-align: right">351.65</td>
-      <td style="text-align: right">277911.3</td>
-    </tr>
-    <tr>
-      <td style="text-align: right">7</td>
-      <td style="text-align: right">1127.86</td>
-      <td style="text-align: right">353.08</td>
-      <td style="text-align: right">277558.2</td>
-    </tr>
-    <tr>
-      <td style="text-align: right">8</td>
-      <td style="text-align: right">1126.42</td>
-      <td style="text-align: right">354.51</td>
-      <td style="text-align: right">277203.7</td>
-    </tr>
-    <tr>
-      <td style="text-align: right">9</td>
-      <td style="text-align: right">1124.99</td>
-      <td style="text-align: right">355.95</td>
-      <td style="text-align: right">276847.8</td>
-    </tr>
-    <tr>
-      <td style="text-align: right">10</td>
-      <td style="text-align: right">1123.54</td>
-      <td style="text-align: right">357.39</td>
-      <td style="text-align: right">276490.4</td>
-    </tr>
-    <tr>
-      <td style="text-align: right">11</td>
-      <td style="text-align: right">1122.09</td>
-      <td style="text-align: right">358.84</td>
-      <td style="text-align: right">276131.5</td>
-    </tr>
-    <tr>
-      <td style="text-align: right">12</td>
-      <td style="text-align: right">1120.63</td>
-      <td style="text-align: right">360.30</td>
-      <td style="text-align: right">275771.2</td>
-    </tr>
-  </tbody>
-</table>
+<p>As another example, say we want to calculate the number of years between “1948-12-07” and “2018-12-07”. Obviously, it has to be at least 70 years. But method 2 gives 69.902, while method 3 gives 70.047.</p>
 
-<p>This concludes the series on how environment works in R. Drop your questions and comments below.</p>
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">start</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">as.Date</span><span class="p">(</span><span class="s2">"1948-12-07"</span><span class="p">)</span><span class="w">
+</span><span class="n">end</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">as.Date</span><span class="p">(</span><span class="s2">"2018-12-07"</span><span class="p">)</span><span class="w">
+
+</span><span class="nf">as.numeric</span><span class="p">(</span><span class="n">difftime</span><span class="p">(</span><span class="n">end</span><span class="p">,</span><span class="w"> </span><span class="n">start</span><span class="p">,</span><span class="w"> </span><span class="n">unit</span><span class="o">=</span><span class="s2">"weeks"</span><span class="p">))</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="m">52.25</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] 69.90294</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">lubridate</span><span class="o">::</span><span class="n">time_length</span><span class="p">(</span><span class="n">difftime</span><span class="p">(</span><span class="n">end</span><span class="p">,</span><span class="w"> </span><span class="n">start</span><span class="p">),</span><span class="w"> </span><span class="s2">"years"</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] 70.04658</code></pre></figure>
+
+<p>For more detailed discussion, refer to <a href="https://stackoverflow.com/questions/15569333/get-date-difference-in-years-floating-point">this discussion on stackoverflow</a>.</p>
+
 
 		<!-- Begin MailChimp Signup Form -->
 <html>
@@ -444,10 +334,8 @@ calculate the monthly mortgage payment, broken down by the interest portion and 
     </div><!-- /.entry-wrapper -->
     <nav class="pagination" role="navigation">
       
-        <a href="http://localhost:4000/r/understand-r-environments-part2/" class="btn" title="Understand R Environments - Part2">Previous</a>
+        <a href="http://localhost:4000/r/understand-r-environments-part3/" class="btn" title="Understand R Environments - Part3">Previous</a>
       
-      
-        <a href="http://localhost:4000/r/accurate-calculation-of-years-between-dates/" class="btn" title="Accurate Calculation of Years between Dates in R">Next</a>
       
     </nav><!-- /.pagination -->
   </article>

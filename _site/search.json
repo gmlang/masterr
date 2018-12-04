@@ -1,6 +1,15 @@
 [
 	
 		{
+		  "title"      : "Accurate Calculation of Years between Dates in R",
+		  "category"   : "",
+      "tags"       : "",
+		  "url"        : "http://localhost:4000/r/accurate-calculation-of-years-between-dates/",
+		  "date"       : "2018-12-04 00:00:00 +0900",
+		  "shortdate"  : "December 04, 2018"
+		} ,
+	
+		{
 		  "title"      : "Understand R Environments - Part3",
 		  "category"   : "",
       "tags"       : "",
