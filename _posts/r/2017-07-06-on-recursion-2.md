@@ -10,7 +10,8 @@ share: true
 ads: true
 ---
 
-In the [*Environments*](http://adv-r.had.co.nz/Environments.html#env-recursion) chapter of the book *Advanced R*, Hadley presented a function 
+In the Environments chapter of the book 
+<a rel="nofollow" href="https://www.amazon.com/gp/product/1466586966/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1466586966&linkCode=as2&tag=cabaceo-20&linkId=2GDWMZSF4NX32QIO">Advanced R</a><img src="https://ir-na.amazon-adsystem.com/e/ir?t=cabaceo-20&l=as2&o=1&a=1466586966" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />, Hadley gives a function 
 `where(name, env = parent.frame())` that finds the first environment where a given name is defined. The parameter `env` is the environment where the search begins. Its default value is the global environment (the environment where we normally work). The function was written recursively. I encourage you to study it first before reading on because I'm giving a solution here to one of the exercises, which asks to write a recursive function to find all environments that contain a binding for `name`. 
 
 Here's my solution. 

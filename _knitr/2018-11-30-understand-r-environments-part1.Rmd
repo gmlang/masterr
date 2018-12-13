@@ -74,7 +74,7 @@ pointed to $$e_1$$ by a pointer. We call $$e_1$$ is the parent (environment) of
 $$e_2$$. In general, whenever R cannot find an object inside an environment, 
 it'll look for it in its parent environment.
 
-This concludes the first article of the series. If you're not confused yet, click here for the [second article](http://masterr.org/r/understand-r-environments-part2/), which provides a high level summary of this first article and shows how the `<<-` operator works. 
+This concludes the first article of the series. If you're not confused yet, click here for the [second article](https://masterr.org/r/understand-r-environments-part2/), which provides a high level summary of this first article and shows how the `<<-` operator works. 
 
 
 

@@ -35,7 +35,7 @@ get("mean") # inherits is set to TRUE by default
 {% highlight text %}
 ## function (x, ...) 
 ## UseMethod("mean")
-## <bytecode: 0x7f99b373e028>
+## <bytecode: 0x7fa52215a3c8>
 ## <environment: namespace:base>
 {% endhighlight %}
 
@@ -65,7 +65,7 @@ get("mean")
 {% endhighlight %}
 
 If you don't understand why they returned the values they did, you can learn how 
-environment works by reading Hadley's [book](http://adv-r.had.co.nz/Environments.html).
+environment works by reading this [post](https://masterr.org/r/understand-r-environments-part1/).
 
 We can write our own version of get() using recursion. First we write a helper function that works the same as `get(name, inherits = T)`.
 
@@ -233,7 +233,7 @@ fget_helper("mean")
 {% highlight text %}
 ## function (x, ...) 
 ## UseMethod("mean")
-## <bytecode: 0x7f99b373e028>
+## <bytecode: 0x7fa52215a3c8>
 ## <environment: namespace:base>
 {% endhighlight %}
 

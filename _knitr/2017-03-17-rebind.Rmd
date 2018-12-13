@@ -19,8 +19,8 @@ If `<<-` doesn’t find an existing variable, it will create one in the global
 environment. This is usually undesirable because global variables introduce 
 non-obvious dependencies between functions. 
 
-In the [Environments](http://adv-r.had.co.nz/Environments.html) chapter of 
-Hadley's book, "Advanced R," he gave the following function in one of the exercises.
+In the Environments chapter of Hadley's book
+<a rel="nofollow" href="https://www.amazon.com/gp/product/1466586966/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1466586966&linkCode=as2&tag=cabaceo-20&linkId=2GDWMZSF4NX32QIO">Advanced R</a><img src="https://ir-na.amazon-adsystem.com/e/ir?t=cabaceo-20&l=as2&o=1&a=1466586966" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />, he gave the following function in exercise.
 ```{r, warning=FALSE, message=FALSE}
 rebind = function(name, value, env = parent.frame()) {
         if (identical(env, emptyenv())) {
@@ -36,6 +36,3 @@ rebind = function(name, value, env = parent.frame()) {
 It behaves like `<<-` except when failing to find an existing variable, 
 it runs into an error and stops.
 
-The best way to become a master in R is to learn from the masters. 
-You can buy a copy of Hadley's book
-<a rel="nofollow" href="http://www.amazon.com/gp/product/1466586966/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1466586966&linkCode=as2&tag=cabaceo-20&linkId=2GDWMZSF4NX32QIO">Advanced R</a><img src="http://ir-na.amazon-adsystem.com/e/ir?t=cabaceo-20&l=as2&o=1&a=1466586966" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /> from Amazon.

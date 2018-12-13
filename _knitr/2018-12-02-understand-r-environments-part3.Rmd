@@ -12,11 +12,11 @@ ads: true
 
 This is the final article of the series on how environments work in R. If you haven't read the previous articles, I recommend you to do that first. Follow these links:
 
-1. [Understand R Environments - Part1](http://masterr.org/r/understand-r-environments-part1/)
+1. [Understand R Environments - Part1](https://masterr.org/r/understand-r-environments-part1/)
 
-2. [Understand R Environments - Part2](http://masterr.org/r/understand-r-environments-part2/)
+2. [Understand R Environments - Part2](https://masterr.org/r/understand-r-environments-part2/)
 
-3. [How to Calculate Mortgage Payment Schedule in R](http://masterr.org/r/calculate-mortgage-payment-schedule/)
+3. [How to Calculate Mortgage Payment Schedule in R](https://masterr.org/r/calculate-mortgage-payment-schedule/)
 
 Now that we understand the R evaluation model and the `<<-` operator, we can code up the Mortgage Payment Calculator in a different fashion. 
 

@@ -1,18 +1,16 @@
 ---
 layout: post
 title: "How to read in date variables as Date"
-date: 2016-02-23 
+date: 2016-02-23
 comments: true
 categories: r
 keywords: "R, convert strings to Dates, date types in R, read in dates in R"
 published: true
 share: true
 ads: true
-
 ---
 
-If you work with stocks or eCommerce data, you know you have to deal with dates, and often, the data exist in a text file. I once wrote an [article](http://masterr.org/r/how-to-convert-strings-to-dates-in-r/) suggesting to read in date variables as strings first and then convert them to Date type. Today, I'm going to show you another way, which does the conversion while reading in the file. We're going to use a magic function called `setClass()`.
-
+If you work with stocks or eCommerce data, you know you have to deal with dates, and often, the data exist in a text file. I once wrote an [article](https://masterr.org/r/how-to-convert-strings-to-dates-in-r/) suggesting to read in date variables as strings first and then convert them to Date type. Today, I'm going to show you another way, which does the conversion while reading in the file. We're going to use a magic function called `setClass()`.
 
 {% highlight r %}
 # define a new class 
