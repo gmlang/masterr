@@ -236,12 +236,12 @@ the encoding. I think under the hood, it guesses the encoding.
       </footer>
       <div class="entry-content">
         <p>The <a href="https://github.com/hadley/rvest">rvest</a> package is yet another 
-powerful tool developed by Hadley. It makes web scraping super easy. For example, say I want to scrape <a href="http://www3.boj.or.jp/market/jp/stat/of141205.htm">this page</a> from the Bank of Japan. I can just use the <code class="highlighter-rouge">read_html()</code> function without specifying
+powerful tool developed by Hadley. It makes web scraping super easy. For example, say I want to scrape <a href="https://www3.boj.or.jp/market/jp/stat/of141205.htm">this page</a> from the Bank of Japan. I can just use the <code class="highlighter-rouge">read_html()</code> function without specifying
 the encoding. I think under the hood, it guesses the encoding.</p>
 
 <figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">library</span><span class="p">(</span><span class="n">methods</span><span class="p">)</span><span class="w">
 </span><span class="n">library</span><span class="p">(</span><span class="n">rvest</span><span class="p">)</span><span class="w">
-</span><span class="n">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"http://www3.boj.or.jp/market/jp/stat/of141205.htm"</span><span class="w">
+</span><span class="n">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"https://www3.boj.or.jp/market/jp/stat/of141205.htm"</span><span class="w">
 </span><span class="n">page</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">read_html</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="w">
 
 </span><span class="c1"># extract title

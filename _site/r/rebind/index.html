@@ -259,8 +259,8 @@ If <code class="highlighter-rouge">&lt;&lt;-</code> doesn’t find an existing v
 environment. This is usually undesirable because global variables introduce 
 non-obvious dependencies between functions.</p>
 
-<p>In the <a href="http://adv-r.had.co.nz/Environments.html">Environments</a> chapter of 
-Hadley’s book, “Advanced R,” he gave the following function in one of the exercises.</p>
+<p>In the Environments chapter of Hadley’s book
+<a rel="nofollow" href="https://www.amazon.com/gp/product/1466586966/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=1466586966&amp;linkCode=as2&amp;tag=cabaceo-20&amp;linkId=2GDWMZSF4NX32QIO">Advanced R</a><img src="https://ir-na.amazon-adsystem.com/e/ir?t=cabaceo-20&amp;l=as2&amp;o=1&amp;a=1466586966" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />, he gave the following function in exercise.</p>
 
 <figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">rebind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p">,</span><span class="w"> </span><span class="n">env</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">parent.frame</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">identical</span><span class="p">(</span><span class="n">env</span><span class="p">,</span><span class="w"> </span><span class="nf">emptyenv</span><span class="p">()))</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -275,9 +275,6 @@ Hadley’s book, “Advanced R,” he gave the following function in one of the 
 <p>It behaves like <code class="highlighter-rouge">&lt;&lt;-</code> except when failing to find an existing variable, 
 it runs into an error and stops.</p>
 
-<p>The best way to become a master in R is to learn from the masters. 
-You can buy a copy of Hadley’s book
-<a rel="nofollow" href="http://www.amazon.com/gp/product/1466586966/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=1466586966&amp;linkCode=as2&amp;tag=cabaceo-20&amp;linkId=2GDWMZSF4NX32QIO">Advanced R</a><img src="http://ir-na.amazon-adsystem.com/e/ir?t=cabaceo-20&amp;l=as2&amp;o=1&amp;a=1466586966" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /> from Amazon.</p>
 
 		<!-- Begin MailChimp Signup Form -->
 <html>

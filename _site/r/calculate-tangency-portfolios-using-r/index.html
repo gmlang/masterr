@@ -229,14 +229,16 @@
 </div><!-- /.google-ads --><!-- /.google-ads -->
       </footer>
       <div class="entry-content">
-        <p>In a <a href="http://masterr.org/r/calculate-efficient-portfolios-using-r/">previous post</a>, I showed how to calculate the efficient portfolio given a target return using R and vanguard funds in my retirement account. All assets I used previously are risky assets. However, we can also hold risk free assets in our portfolio, for example, 1 year <a href="http://www.treasury.gov/resource-center/data-chart-center/interest-rates/Pages/TextView.aspx?data=yield">t-bills</a>. After having included risk free assets, we can define something called the Sharpe Slope as the difference between our portfolio return and the risk free rate divided by the volatility of our portfolio. The bigger the Sharpe Slope the better. So our objective is to find the portfolio with the biggest Sharpe Slope, and this is called tangency portfolio.</p>
+        <p>In a <a href="https://masterr.org/r/calculate-efficient-portfolios-using-r/">previous post</a>, I showed how to calculate the efficient portfolio given a target return using R and vanguard funds in my retirement account. All assets I used previously are risky assets. However, we can also hold risk free assets in our portfolio, for example, 1 year <a href="https://www.treasury.gov/resource-center/data-chart-center/interest-rates/Pages/TextView.aspx?data=yield">t-bills</a>. After having included risk free assets, we can define something called the Sharpe Slope as the difference between our portfolio return and the risk free rate divided by the volatility of our portfolio. The bigger the Sharpe Slope the better. So our objective is to find the portfolio with the biggest Sharpe Slope, and this is called tangency portfolio.</p>
 
 <p>Step 0. Load libraries and define helper functions.</p>
 
 <figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">library</span><span class="p">(</span><span class="n">zoo</span><span class="p">)</span><span class="w">
-</span><span class="n">library</span><span class="p">(</span><span class="n">tseries</span><span class="p">)</span><span class="w">
+</span><span class="n">library</span><span class="p">(</span><span class="n">tseries</span><span class="p">)</span></code></pre></figure>
 
-</span><span class="n">download_data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">symb</span><span class="p">,</span><span class="w"> </span><span class="n">begin</span><span class="p">,</span><span class="w"> </span><span class="n">end</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Error in library(tseries): there is no package called 'tseries'</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">download_data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">symb</span><span class="p">,</span><span class="w"> </span><span class="n">begin</span><span class="p">,</span><span class="w"> </span><span class="n">end</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="n">get.hist.quote</span><span class="p">(</span><span class="n">instrument</span><span class="o">=</span><span class="n">symb</span><span class="p">,</span><span class="w"> </span><span class="n">start</span><span class="o">=</span><span class="n">begin</span><span class="p">,</span><span class="w"> </span><span class="n">end</span><span class="o">=</span><span class="n">end</span><span class="p">,</span><span class="w"> 
                        </span><span class="n">origin</span><span class="o">=</span><span class="s2">"1970-01-01"</span><span class="p">,</span><span class="w"> </span><span class="n">quote</span><span class="o">=</span><span class="s2">"AdjClose"</span><span class="p">,</span><span class="w"> 
                        </span><span class="n">provider</span><span class="o">=</span><span class="s2">"yahoo"</span><span class="p">,</span><span class="w"> </span><span class="n">compression</span><span class="o">=</span><span class="s2">"m"</span><span class="p">,</span><span class="w"> 
@@ -258,64 +260,70 @@
 </span><span class="c1"># download adj. price data
 </span><span class="n">port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">list</span><span class="p">()</span><span class="w">
 </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">symbol</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">symbols</span><span class="p">)</span><span class="w">
-        </span><span class="n">port</span><span class="p">[[</span><span class="n">symbol</span><span class="p">]]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">download_data</span><span class="p">(</span><span class="n">symbol</span><span class="p">,</span><span class="w"> </span><span class="s2">"2000-06-29"</span><span class="p">,</span><span class="w"> </span><span class="s2">"2014-10-31"</span><span class="p">)</span><span class="w">
+        </span><span class="n">port</span><span class="p">[[</span><span class="n">symbol</span><span class="p">]]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">download_data</span><span class="p">(</span><span class="n">symbol</span><span class="p">,</span><span class="w"> </span><span class="s2">"2000-06-29"</span><span class="p">,</span><span class="w"> </span><span class="s2">"2014-10-31"</span><span class="p">)</span></code></pre></figure>
 
-</span><span class="c1"># change the class of the time index to yearmon
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Error in get.hist.quote(instrument = symb, start = begin, end = end, origin = "1970-01-01", : could not find function "get.hist.quote"</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># change the class of the time index to yearmon
 </span><span class="n">lapply</span><span class="p">(</span><span class="n">port</span><span class="p">,</span><span class="w"> </span><span class="n">to_yearmon</span><span class="p">)</span><span class="w">
 
 </span><span class="c1"># put both all price data in one data frame
 </span><span class="n">prices</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">do.call</span><span class="p">(</span><span class="s2">"cbind"</span><span class="p">,</span><span class="w"> </span><span class="n">port</span><span class="p">)</span><span class="w">
 </span><span class="n">colnames</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">symbols</span></code></pre></figure>
 
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Error in `colnames&lt;-`(`*tmp*`, value = c("VTSMX", "VGTSX", "VGSIX", "VIPSX", : attempt to set 'colnames' on an object with less than two dimensions</code></pre></figure>
+
 <p>Step 2. Calculate monthly continuously compounded returns as difference in log prices.</p>
 
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">ret.cc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">diff</span><span class="p">(</span><span class="nf">log</span><span class="p">(</span><span class="n">prices</span><span class="p">))</span><span class="w">
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">ret.cc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">diff</span><span class="p">(</span><span class="nf">log</span><span class="p">(</span><span class="n">prices</span><span class="p">))</span></code></pre></figure>
 
-</span><span class="c1"># inspect the return data
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Error in log(prices): non-numeric argument to mathematical function</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># inspect the return data
 </span><span class="n">cat</span><span class="p">(</span><span class="s2">"Start: "</span><span class="p">,</span><span class="w"> </span><span class="nf">as.character</span><span class="p">(</span><span class="n">start</span><span class="p">(</span><span class="n">ret.cc</span><span class="p">)),</span><span class="w"> </span><span class="s2">"  End: "</span><span class="p">,</span><span class="w"> </span><span class="nf">as.character</span><span class="p">(</span><span class="n">end</span><span class="p">(</span><span class="n">ret.cc</span><span class="p">)))</span></code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-text" data-lang="text">## Start:  2000-07-03   End:  2014-10-01</code></pre></figure>
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Error in start(ret.cc): object 'ret.cc' not found</code></pre></figure>
 
 <figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">head</span><span class="p">(</span><span class="n">ret.cc</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">)</span></code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-text" data-lang="text">##                  VTSMX        VGTSX       VGSIX        VIPSX       VBMFX
-## 2000-07-03 -0.01971716 -0.045649607  0.08408300  0.007936630 0.008832746
-## 2000-08-01  0.07027806  0.009904851 -0.04071584  0.006893088 0.013956404
-## 2000-09-01 -0.04782406 -0.051333260  0.02899155 -0.004918734 0.007621014
-##                  VGPMX       VGENX
-## 2000-07-03 -0.01628457 -0.04730217
-## 2000-08-01  0.11545891  0.11519991
-## 2000-09-01 -0.07451730  0.01346586</code></pre></figure>
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Error in head(ret.cc, 3): object 'ret.cc' not found</code></pre></figure>
 
 <p>Step 3. Calculate annualized sample average returns of the underlying assets and the sample covariance matrix of the returns.</p>
 
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">mu.hat.annual</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">apply</span><span class="p">(</span><span class="n">ret.cc</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">mean</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">12</span><span class="w">   
-</span><span class="n">cov.mat.annual</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cov</span><span class="p">(</span><span class="n">ret.cc</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">12</span><span class="w"> </span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">mu.hat.annual</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">apply</span><span class="p">(</span><span class="n">ret.cc</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">mean</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">12</span><span class="w">   </span></code></pre></figure>
 
-<p>Step 4. Set the <a href="http://www.treasury.gov/resource-center/data-chart-center/interest-rates/Pages/TextView.aspx?data=yield">risk free rate</a> as 0.12% and calculate the tangency portfolio using a helper function written by Eric Zivot and Hezky Varon from U of Washington.</p>
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Error in apply(ret.cc, 2, mean): object 'ret.cc' not found</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">cov.mat.annual</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cov</span><span class="p">(</span><span class="n">ret.cc</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">12</span><span class="w"> </span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Error in is.data.frame(x): object 'ret.cc' not found</code></pre></figure>
+
+<p>Step 4. Set the <a href="https://www.treasury.gov/resource-center/data-chart-center/interest-rates/Pages/TextView.aspx?data=yield">risk free rate</a> as 0.12% and calculate the tangency portfolio using a helper function written by Eric Zivot and Hezky Varon from U of Washington.</p>
 
 <figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">t.bill.rate.1yr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.12</span><span class="o">/</span><span class="m">100</span><span class="w">
 </span><span class="n">helper</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"~/Coding/R-related/R/portfolio-optim/portfolio_noshorts.r"</span><span class="w">
-</span><span class="n">source</span><span class="p">(</span><span class="n">helper</span><span class="p">)</span><span class="w">
-</span><span class="n">tan.port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tangency.portfolio</span><span class="p">(</span><span class="n">mu.hat.annual</span><span class="p">,</span><span class="w"> </span><span class="n">cov.mat.annual</span><span class="p">,</span><span class="w"> 
-                              </span><span class="n">risk.free</span><span class="o">=</span><span class="n">t.bill.rate.1yr</span><span class="p">,</span><span class="w"> </span><span class="n">shorts</span><span class="o">=</span><span class="nb">T</span><span class="p">)</span><span class="w">
+</span><span class="n">source</span><span class="p">(</span><span class="n">helper</span><span class="p">)</span></code></pre></figure>
 
-</span><span class="n">summary</span><span class="p">(</span><span class="n">tan.port</span><span class="p">)</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Warning in file(filename, "r", encoding = encoding): cannot open file '/
+## Users/gmlang/Coding/R-related/R/portfolio-optim/portfolio_noshorts.r': No
+## such file or directory</code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-text" data-lang="text">## Call:
-## tangency.portfolio(er = mu.hat.annual, cov.mat = cov.mat.annual, 
-##     risk.free = t.bill.rate.1yr, shorts = T)
-## 
-## Portfolio expected return:     0.06143802 
-## Portfolio standard deviation:  0.03207451 
-## Portfolio weights:
-##   VTSMX   VGTSX   VGSIX   VIPSX   VBMFX   VGPMX   VGENX 
-##  0.1380 -0.1699  0.0206 -0.2739  1.1936 -0.0184  0.1101</code></pre></figure>
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Error in file(filename, "r", encoding = encoding): cannot open the connection</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">tan.port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tangency.portfolio</span><span class="p">(</span><span class="n">mu.hat.annual</span><span class="p">,</span><span class="w"> </span><span class="n">cov.mat.annual</span><span class="p">,</span><span class="w"> 
+                              </span><span class="n">risk.free</span><span class="o">=</span><span class="n">t.bill.rate.1yr</span><span class="p">,</span><span class="w"> </span><span class="n">shorts</span><span class="o">=</span><span class="nb">T</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Error in tangency.portfolio(mu.hat.annual, cov.mat.annual, risk.free = t.bill.rate.1yr, : could not find function "tangency.portfolio"</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">summary</span><span class="p">(</span><span class="n">tan.port</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Error in summary(tan.port): object 'tan.port' not found</code></pre></figure>
 
 <figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># port weights
 </span><span class="n">plot</span><span class="p">(</span><span class="n">tan.port</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="o">=</span><span class="s2">"blue"</span><span class="p">,</span><span class="w"> </span><span class="n">lwd</span><span class="o">=</span><span class="m">2</span><span class="p">)</span></code></pre></figure>
 
-<p><img src="/../figs/2014-11-20-calculate-tangency-portfolios-using-r/unnamed-chunk-5-1.png" alt="center" /></p>
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Error in plot(tan.port, col = "blue", lwd = 2): object 'tan.port' not found</code></pre></figure>
+
 
 		<!-- Begin MailChimp Signup Form -->
 <html>

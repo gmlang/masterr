@@ -4,7 +4,7 @@
 <generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://localhost:4000/feed.xml" />
 <link rel="alternate" type="text/html" href="http://localhost:4000" />
-<updated>2018-12-04T12:24:02+09:00</updated>
+<updated>2018-12-14T01:12:24+09:00</updated>
 <id>http://localhost:4000/</id>
 <author>
   <name>Guangming Lang</name>
@@ -82,13 +82,13 @@
 
 &lt;ol&gt;
   &lt;li&gt;
-    &lt;p&gt;&lt;a href=&quot;http://masterr.org/r/understand-r-environments-part1/&quot;&gt;Understand R Environments - Part1&lt;/a&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;a href=&quot;https://masterr.org/r/understand-r-environments-part1/&quot;&gt;Understand R Environments - Part1&lt;/a&gt;&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
-    &lt;p&gt;&lt;a href=&quot;http://masterr.org/r/understand-r-environments-part2/&quot;&gt;Understand R Environments - Part2&lt;/a&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;a href=&quot;https://masterr.org/r/understand-r-environments-part2/&quot;&gt;Understand R Environments - Part2&lt;/a&gt;&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
-    &lt;p&gt;&lt;a href=&quot;http://masterr.org/r/calculate-mortgage-payment-schedule/&quot;&gt;How to Calculate Mortgage Payment Schedule in R&lt;/a&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;a href=&quot;https://masterr.org/r/calculate-mortgage-payment-schedule/&quot;&gt;How to Calculate Mortgage Payment Schedule in R&lt;/a&gt;&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ol&gt;
 
@@ -242,7 +242,7 @@ calculate the monthly mortgage payment, broken down by the interest portion and 
     <uri>http://localhost:4000</uri>
     <email>news@masterr.com</email>
   </author>
-  <content type="html">&lt;p&gt;This is the second article of the series on how environments work in R. Recall that in the &lt;a href=&quot;http://masterr.org/r/understand-r-environments-part1/&quot;&gt;first article&lt;/a&gt;, we demonstrated how environment and evaluation work in R and we learned the following:&lt;/p&gt;
+  <content type="html">&lt;p&gt;This is the second article of the series on how environments work in R. Recall that in the &lt;a href=&quot;https://masterr.org/r/understand-r-environments-part1/&quot;&gt;first article&lt;/a&gt;, we demonstrated how environment and evaluation work in R and we learned the following:&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;the default current environment (or workspace) is called the global env.&lt;/li&gt;
@@ -309,7 +309,7 @@ set the &lt;code class=&quot;highlighter-rouge&quot;&gt;y&lt;/code&gt; declared 
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;## [1] &quot;Jean732&quot;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;If you want to see a bigger example of &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;&amp;lt;-&lt;/code&gt;, click &lt;a href=&quot;http://masterr.org/r/understand-r-environments-part3/&quot;&gt;here&lt;/a&gt; for the final article, where I used &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;&amp;lt;-&lt;/code&gt; to code up the &lt;a href=&quot;http://masterr.org/r/calculate-mortgage-payment-schedule/&quot;&gt;mortgage payment calculator&lt;/a&gt; in a different fashion.&lt;/p&gt;
+&lt;p&gt;If you want to see a bigger example of &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;&amp;lt;-&lt;/code&gt;, click &lt;a href=&quot;https://masterr.org/r/understand-r-environments-part3/&quot;&gt;here&lt;/a&gt; for the final article, where I used &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;&amp;lt;-&lt;/code&gt; to code up the &lt;a href=&quot;https://masterr.org/r/calculate-mortgage-payment-schedule/&quot;&gt;mortgage payment calculator&lt;/a&gt; in a different fashion.&lt;/p&gt;
 
   &lt;p&gt;&lt;a href=&quot;http://localhost:4000/r/understand-r-environments-part2/&quot;&gt;Understand R Environments - Part2&lt;/a&gt; was originally published by Guangming Lang at &lt;a href=&quot;http://localhost:4000&quot;&gt;Become Great at R&lt;/a&gt; on December 01, 2018.&lt;/p&gt;</content>
 </entry>
@@ -388,7 +388,7 @@ pointed to &lt;script type=&quot;math/tex&quot;&gt;e_1&lt;/script&gt; by a point
 &lt;script type=&quot;math/tex&quot;&gt;e_2&lt;/script&gt;. In general, whenever R cannot find an object inside an environment, 
 it’ll look for it in its parent environment.&lt;/p&gt;
 
-&lt;p&gt;This concludes the first article of the series. If you’re not confused yet, click here for the &lt;a href=&quot;http://masterr.org/r/understand-r-environments-part2/&quot;&gt;second article&lt;/a&gt;, which provides a high level summary of this first article and shows how the &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;&amp;lt;-&lt;/code&gt; operator works.&lt;/p&gt;
+&lt;p&gt;This concludes the first article of the series. If you’re not confused yet, click here for the &lt;a href=&quot;https://masterr.org/r/understand-r-environments-part2/&quot;&gt;second article&lt;/a&gt;, which provides a high level summary of this first article and shows how the &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;&amp;lt;-&lt;/code&gt; operator works.&lt;/p&gt;
 
 
   &lt;p&gt;&lt;a href=&quot;http://localhost:4000/r/understand-r-environments-part1/&quot;&gt;Understand R Environments - Part1&lt;/a&gt; was originally published by Guangming Lang at &lt;a href=&quot;http://localhost:4000&quot;&gt;Become Great at R&lt;/a&gt; on November 30, 2018.&lt;/p&gt;</content>
@@ -707,7 +707,7 @@ the quotation that &lt;code class=&quot;highlighter-rouge&quot;&gt;quote()&lt;/c
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;## function (x, ...) 
 ## UseMethod(&quot;mean&quot;)
-## &amp;lt;bytecode: 0x7f99b373e028&amp;gt;
+## &amp;lt;bytecode: 0x7fa52215a3c8&amp;gt;
 ## &amp;lt;environment: namespace:base&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;&lt;span class=&quot;n&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;mean&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;inherits&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;FALSE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
@@ -720,7 +720,7 @@ the quotation that &lt;code class=&quot;highlighter-rouge&quot;&gt;quote()&lt;/c
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;## function() &quot;fake mean&quot;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;If you don’t understand why they returned the values they did, you can learn how 
-environment works by reading Hadley’s &lt;a href=&quot;http://adv-r.had.co.nz/Environments.html&quot;&gt;book&lt;/a&gt;.&lt;/p&gt;
+environment works by reading this &lt;a href=&quot;https://masterr.org/r/understand-r-environments-part1/&quot;&gt;post&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;We can write our own version of get() using recursion. First we write a helper function that works the same as &lt;code class=&quot;highlighter-rouge&quot;&gt;get(name, inherits = T)&lt;/code&gt;.&lt;/p&gt;
 
@@ -820,7 +820,7 @@ environment works by reading Hadley’s &lt;a href=&quot;http://adv-r.had.co.nz/
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;## function (x, ...) 
 ## UseMethod(&quot;mean&quot;)
-## &amp;lt;bytecode: 0x7f99b373e028&amp;gt;
+## &amp;lt;bytecode: 0x7fa52215a3c8&amp;gt;
 ## &amp;lt;environment: namespace:base&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 
@@ -839,7 +839,8 @@ environment works by reading Hadley’s &lt;a href=&quot;http://adv-r.had.co.nz/
     <uri>http://localhost:4000</uri>
     <email>news@masterr.com</email>
   </author>
-  <content type="html">&lt;p&gt;In the &lt;a href=&quot;http://adv-r.had.co.nz/Environments.html#env-recursion&quot;&gt;&lt;em&gt;Environments&lt;/em&gt;&lt;/a&gt; chapter of the book &lt;em&gt;Advanced R&lt;/em&gt;, Hadley presented a function 
+  <content type="html">&lt;p&gt;In the Environments chapter of the book 
+&lt;a rel=&quot;nofollow&quot; href=&quot;https://www.amazon.com/gp/product/1466586966/ref=as_li_tl?ie=UTF8&amp;amp;camp=1789&amp;amp;creative=9325&amp;amp;creativeASIN=1466586966&amp;amp;linkCode=as2&amp;amp;tag=cabaceo-20&amp;amp;linkId=2GDWMZSF4NX32QIO&quot;&gt;Advanced R&lt;/a&gt;&lt;img src=&quot;https://ir-na.amazon-adsystem.com/e/ir?t=cabaceo-20&amp;amp;l=as2&amp;amp;o=1&amp;amp;a=1466586966&quot; width=&quot;1&quot; height=&quot;1&quot; border=&quot;0&quot; alt=&quot;&quot; style=&quot;border:none !important; margin:0px !important;&quot; /&gt;, Hadley gives a function 
 &lt;code class=&quot;highlighter-rouge&quot;&gt;where(name, env = parent.frame())&lt;/code&gt; that finds the first environment where a given name is defined. The parameter &lt;code class=&quot;highlighter-rouge&quot;&gt;env&lt;/code&gt; is the environment where the search begins. Its default value is the global environment (the environment where we normally work). The function was written recursively. I encourage you to study it first before reading on because I’m giving a solution here to one of the exercises, which asks to write a recursive function to find all environments that contain a binding for &lt;code class=&quot;highlighter-rouge&quot;&gt;name&lt;/code&gt;.&lt;/p&gt;
 
 &lt;p&gt;Here’s my solution.&lt;/p&gt;
@@ -1132,8 +1133,8 @@ If &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;&amp;lt;-&lt;/code&gt
 environment. This is usually undesirable because global variables introduce 
 non-obvious dependencies between functions.&lt;/p&gt;
 
-&lt;p&gt;In the &lt;a href=&quot;http://adv-r.had.co.nz/Environments.html&quot;&gt;Environments&lt;/a&gt; chapter of 
-Hadley’s book, “Advanced R,” he gave the following function in one of the exercises.&lt;/p&gt;
+&lt;p&gt;In the Environments chapter of Hadley’s book
+&lt;a rel=&quot;nofollow&quot; href=&quot;https://www.amazon.com/gp/product/1466586966/ref=as_li_tl?ie=UTF8&amp;amp;camp=1789&amp;amp;creative=9325&amp;amp;creativeASIN=1466586966&amp;amp;linkCode=as2&amp;amp;tag=cabaceo-20&amp;amp;linkId=2GDWMZSF4NX32QIO&quot;&gt;Advanced R&lt;/a&gt;&lt;img src=&quot;https://ir-na.amazon-adsystem.com/e/ir?t=cabaceo-20&amp;amp;l=as2&amp;amp;o=1&amp;amp;a=1466586966&quot; width=&quot;1&quot; height=&quot;1&quot; border=&quot;0&quot; alt=&quot;&quot; style=&quot;border:none !important; margin:0px !important;&quot; /&gt;, he gave the following function in exercise.&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;&lt;span class=&quot;n&quot;&gt;rebind&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;parent.frame&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
         &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;identical&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;emptyenv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()))&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
@@ -1148,9 +1149,6 @@ Hadley’s book, “Advanced R,” he gave the following function in one of the 
 &lt;p&gt;It behaves like &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;&amp;lt;-&lt;/code&gt; except when failing to find an existing variable, 
 it runs into an error and stops.&lt;/p&gt;
 
-&lt;p&gt;The best way to become a master in R is to learn from the masters. 
-You can buy a copy of Hadley’s book
-&lt;a rel=&quot;nofollow&quot; href=&quot;http://www.amazon.com/gp/product/1466586966/ref=as_li_tl?ie=UTF8&amp;amp;camp=1789&amp;amp;creative=9325&amp;amp;creativeASIN=1466586966&amp;amp;linkCode=as2&amp;amp;tag=cabaceo-20&amp;amp;linkId=2GDWMZSF4NX32QIO&quot;&gt;Advanced R&lt;/a&gt;&lt;img src=&quot;http://ir-na.amazon-adsystem.com/e/ir?t=cabaceo-20&amp;amp;l=as2&amp;amp;o=1&amp;amp;a=1466586966&quot; width=&quot;1&quot; height=&quot;1&quot; border=&quot;0&quot; alt=&quot;&quot; style=&quot;border:none !important; margin:0px !important;&quot; /&gt; from Amazon.&lt;/p&gt;
 
   &lt;p&gt;&lt;a href=&quot;http://localhost:4000/r/rebind/&quot;&gt;Rebind&lt;/a&gt; was originally published by Guangming Lang at &lt;a href=&quot;http://localhost:4000&quot;&gt;Become Great at R&lt;/a&gt; on March 17, 2017.&lt;/p&gt;</content>
 </entry>
@@ -1340,8 +1338,7 @@ returning a value, the following function uses &lt;code class=&quot;highlighter-
 
 &lt;p&gt;We see “first” isn’t printed anymore.&lt;/p&gt;
 
-&lt;p&gt;To learn more about &lt;code class=&quot;highlighter-rouge&quot;&gt;on.exit()&lt;/code&gt;, refer to Hadley’s book “Advanced R.” You can &lt;a rel=&quot;nofollow&quot; href=&quot;http://www.amazon.com/gp/product/1466586966/ref=as_li_tl?ie=UTF8&amp;amp;camp=1789&amp;amp;creative=9325&amp;amp;creativeASIN=1466586966&amp;amp;linkCode=as2&amp;amp;tag=cabaceo-20&amp;amp;linkId=2GDWMZSF4NX32QIO&quot;&gt;buy it from Amazon&lt;/a&gt;&lt;img src=&quot;http://ir-na.amazon-adsystem.com/e/ir?t=cabaceo-20&amp;amp;l=as2&amp;amp;o=1&amp;amp;a=1466586966&quot; width=&quot;1&quot; height=&quot;1&quot; border=&quot;0&quot; alt=&quot;&quot; style=&quot;border:none !important; margin:0px !important;&quot; /&gt;
-or read it &lt;a href=&quot;http://adv-r.had.co.nz/Functions.html&quot;&gt;online&lt;/a&gt; for FREE.&lt;/p&gt;
+&lt;p&gt;To learn more about &lt;code class=&quot;highlighter-rouge&quot;&gt;on.exit()&lt;/code&gt;, refer to Hadley’s book “Advanced R,” which can be &lt;a rel=&quot;nofollow&quot; href=&quot;https://www.amazon.com/gp/product/1466586966/ref=as_li_tl?ie=UTF8&amp;amp;camp=1789&amp;amp;creative=9325&amp;amp;creativeASIN=1466586966&amp;amp;linkCode=as2&amp;amp;tag=cabaceo-20&amp;amp;linkId=2GDWMZSF4NX32QIO&quot;&gt;obtained from Amazon&lt;/a&gt;&lt;img src=&quot;https://ir-na.amazon-adsystem.com/e/ir?t=cabaceo-20&amp;amp;l=as2&amp;amp;o=1&amp;amp;a=1466586966&quot; width=&quot;1&quot; height=&quot;1&quot; border=&quot;0&quot; alt=&quot;&quot; style=&quot;border:none !important; margin:0px !important;&quot; /&gt;.&lt;/p&gt;
 
   &lt;p&gt;&lt;a href=&quot;http://localhost:4000/r/on-exit/&quot;&gt;The on.exit() Function&lt;/a&gt; was originally published by Guangming Lang at &lt;a href=&quot;http://localhost:4000&quot;&gt;Become Great at R&lt;/a&gt; on March 03, 2017.&lt;/p&gt;</content>
 </entry>

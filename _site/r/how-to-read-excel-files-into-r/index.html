@@ -229,7 +229,7 @@
 </div><!-- /.google-ads --><!-- /.google-ads -->
       </footer>
       <div class="entry-content">
-        <p>You can use the <a href="http://cran.r-project.org/web/packages/XLConnect/vignettes/XLConnect.pdf">XLConnect</a> package to read .xls or .xlsx files into R. Suppose you have a file named example.xls in your working directory. You can read the data on sheet1 into R using the following commands.</p>
+        <p>You can use the <code class="highlighter-rouge">XLConnect</code> package to read .xls or .xlsx files into R. Suppose you have a file named example.xls in your working directory. You can read the data on sheet1 into R using the following commands.</p>
 
 <figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">library</span><span class="p">(</span><span class="n">XLConnect</span><span class="p">)</span><span class="w">
 </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">readWorksheetFromFile</span><span class="p">(</span><span class="s2">"example.xls"</span><span class="p">,</span><span class="w"> </span><span class="n">sheet</span><span class="o">=</span><span class="m">1</span><span class="p">)</span></code></pre></figure>
@@ -239,7 +239,7 @@
 <figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">library</span><span class="p">(</span><span class="n">XLConnect</span><span class="p">)</span><span class="w">
 </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">readWorksheetFromFile</span><span class="p">(</span><span class="s2">"example.xls"</span><span class="p">,</span><span class="w"> </span><span class="n">sheet</span><span class="o">=</span><span class="s2">"raw_data"</span><span class="p">)</span></code></pre></figure>
 
-<p>After reading data from excel into R, you often want to <a href="http://vita.had.co.nz/papers/tidy-data.html">tidy up the data</a>. Here’re some functions I use frequently for that purpose:</p>
+<p>After reading an excel file into R, you often want to tidy up the data. Here’re some functions I use frequently for that purpose:</p>
 
 <ul>
   <li>lapply</li>

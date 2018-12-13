@@ -229,13 +229,18 @@
 </div><!-- /.google-ads --><!-- /.google-ads -->
       </footer>
       <div class="entry-content">
-        <p>When constructing a portfolio, it’s important to pick un-correlated assets. This is just a corollary of the “don’t put all your eggs in one basket” principle. If asset B goes up (or down) when asset A goes up (or down) and vice versa, there’s really no reason to own both assets. By and large, assets of different classes are weakly correlated, for example, stocks and bonds, stocks and gold, and etc. In <a href="http://gmlang.com/r/analyze-stock-price-data-using-r-part1/">part1</a>, I said I’m interested in a vanguard energy fund (VGENX) because oil price has been hammered. However, because I already own the Total Stock Market Index Fund (VTSMX), I want to find out how correlated VGENX is with VTSMX.</p>
+        <p>When constructing a portfolio, it’s important to pick un-correlated assets. This is just a corollary of the “don’t put all your eggs in one basket” principle. If asset B goes up (or down) when asset A goes up (or down) and vice versa, there’s really no reason to own both assets. By and large, assets of different classes are weakly correlated, for example, stocks and bonds, stocks and gold, and etc. In <a href="https://masterr.org/r/analyze-stock-price-data-using-r-part1/">part1</a>, I said I’m interested in a vanguard energy fund (VGENX) because oil price has been hammered. However, because I already own the Total Stock Market Index Fund (VTSMX), I want to find out how correlated VGENX is with VTSMX.</p>
 
 <p>Step 1. Load libraries and helper functions</p>
 
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">library</span><span class="p">(</span><span class="n">PerformanceAnalytics</span><span class="p">)</span><span class="w">
-</span><span class="n">library</span><span class="p">(</span><span class="n">zoo</span><span class="p">)</span><span class="w">
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">library</span><span class="p">(</span><span class="n">PerformanceAnalytics</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Error in library(PerformanceAnalytics): there is no package called 'PerformanceAnalytics'</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">library</span><span class="p">(</span><span class="n">zoo</span><span class="p">)</span><span class="w">
 </span><span class="n">library</span><span class="p">(</span><span class="n">tseries</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Error in library(tseries): there is no package called 'tseries'</code></pre></figure>
 
 <p>Step 2. Download the monthly adjusted closing price data on VGENX and VTSMX since Sept 2005 from Yahoo.</p>
 
@@ -244,46 +249,63 @@
                        </span><span class="n">quote</span><span class="o">=</span><span class="s2">"AdjClose"</span><span class="p">,</span><span class="w"> </span><span class="n">provider</span><span class="o">=</span><span class="s2">"yahoo"</span><span class="p">,</span><span class="w"> 
                        </span><span class="n">compression</span><span class="o">=</span><span class="s2">"m"</span><span class="p">,</span><span class="w"> </span><span class="n">retclass</span><span class="o">=</span><span class="s2">"zoo"</span><span class="p">)</span></code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-text" data-lang="text">## time series ends   2014-09-02</code></pre></figure>
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Error in get.hist.quote(instrument = "VGENX", start = "2005-09-30", end = "2014-09-30", : could not find function "get.hist.quote"</code></pre></figure>
 
 <figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">VTSMX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">get.hist.quote</span><span class="p">(</span><span class="n">instrument</span><span class="o">=</span><span class="s2">"VTSMX"</span><span class="p">,</span><span class="w"> </span><span class="n">start</span><span class="o">=</span><span class="s2">"2005-09-30"</span><span class="p">,</span><span class="w"> 
                        </span><span class="n">end</span><span class="o">=</span><span class="s2">"2014-09-30"</span><span class="p">,</span><span class="w"> </span><span class="n">origin</span><span class="o">=</span><span class="s2">"1970-01-01"</span><span class="p">,</span><span class="w">
                        </span><span class="n">quote</span><span class="o">=</span><span class="s2">"AdjClose"</span><span class="p">,</span><span class="w"> </span><span class="n">provider</span><span class="o">=</span><span class="s2">"yahoo"</span><span class="p">,</span><span class="w">
                        </span><span class="n">compression</span><span class="o">=</span><span class="s2">"m"</span><span class="p">,</span><span class="w"> </span><span class="n">retclass</span><span class="o">=</span><span class="s2">"zoo"</span><span class="p">)</span></code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-text" data-lang="text">## time series ends   2014-09-02</code></pre></figure>
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Error in get.hist.quote(instrument = "VTSMX", start = "2005-09-30", end = "2014-09-30", : could not find function "get.hist.quote"</code></pre></figure>
 
 <p>Step 3. Change the class of the time index to yearmon.</p>
 
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">index</span><span class="p">(</span><span class="n">VGENX</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">as.yearmon</span><span class="p">(</span><span class="n">index</span><span class="p">(</span><span class="n">VGENX</span><span class="p">))</span><span class="w">
-</span><span class="n">index</span><span class="p">(</span><span class="n">VTSMX</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">as.yearmon</span><span class="p">(</span><span class="n">index</span><span class="p">(</span><span class="n">VTSMX</span><span class="p">))</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">index</span><span class="p">(</span><span class="n">VGENX</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">as.yearmon</span><span class="p">(</span><span class="n">index</span><span class="p">(</span><span class="n">VGENX</span><span class="p">))</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Error in index(VGENX): object 'VGENX' not found</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">index</span><span class="p">(</span><span class="n">VTSMX</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">as.yearmon</span><span class="p">(</span><span class="n">index</span><span class="p">(</span><span class="n">VTSMX</span><span class="p">))</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Error in index(VTSMX): object 'VTSMX' not found</code></pre></figure>
 
 <p>Step 4. Merge both price series into one data frame and Calculate continuously compounded returns.</p>
 
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">prices</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">merge</span><span class="p">(</span><span class="n">VGENX</span><span class="p">,</span><span class="w"> </span><span class="n">VTSMX</span><span class="p">)</span><span class="w">
-</span><span class="n">colnames</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"VGENX"</span><span class="p">,</span><span class="w"> </span><span class="s2">"VTSMX"</span><span class="p">)</span><span class="w">
-</span><span class="n">ret.cc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">diff</span><span class="p">(</span><span class="nf">log</span><span class="p">(</span><span class="n">prices</span><span class="p">))</span><span class="w">
-</span><span class="n">head</span><span class="p">(</span><span class="n">ret.cc</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">)</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">prices</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">merge</span><span class="p">(</span><span class="n">VGENX</span><span class="p">,</span><span class="w"> </span><span class="n">VTSMX</span><span class="p">)</span></code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-text" data-lang="text">##                VGENX        VTSMX
-## Oct 2005 -0.08818443 -0.018813600
-## Nov 2005  0.02153350  0.038941761
-## Dec 2005  0.03146979  0.001354186</code></pre></figure>
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Error in merge(VGENX, VTSMX): object 'VGENX' not found</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">colnames</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"VGENX"</span><span class="p">,</span><span class="w"> </span><span class="s2">"VTSMX"</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Error in colnames(prices) = c("VGENX", "VTSMX"): object 'prices' not found</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">ret.cc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">diff</span><span class="p">(</span><span class="nf">log</span><span class="p">(</span><span class="n">prices</span><span class="p">))</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Error in diff(log(prices)): object 'prices' not found</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">head</span><span class="p">(</span><span class="n">ret.cc</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Error in head(ret.cc, 3): object 'ret.cc' not found</code></pre></figure>
 
 <p>Step 5. Plot cumulative returns.</p>
 
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">ret.simple</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">diff</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">lag</span><span class="p">(</span><span class="n">prices</span><span class="p">,</span><span class="w"> </span><span class="n">k</span><span class="o">=</span><span class="m">-1</span><span class="p">)</span><span class="w">
-</span><span class="n">chart.CumReturns</span><span class="p">(</span><span class="n">ret.simple</span><span class="p">,</span><span class="w"> </span><span class="n">legend.loc</span><span class="o">=</span><span class="s2">"topleft"</span><span class="p">,</span><span class="w"> </span><span class="n">wealth.index</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> 
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">ret.simple</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">diff</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">lag</span><span class="p">(</span><span class="n">prices</span><span class="p">,</span><span class="w"> </span><span class="n">k</span><span class="o">=</span><span class="m">-1</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Error in diff(prices): object 'prices' not found</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">chart.CumReturns</span><span class="p">(</span><span class="n">ret.simple</span><span class="p">,</span><span class="w"> </span><span class="n">legend.loc</span><span class="o">=</span><span class="s2">"topleft"</span><span class="p">,</span><span class="w"> </span><span class="n">wealth.index</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> 
                  </span><span class="n">ylab</span><span class="o">=</span><span class="s2">"$"</span><span class="p">,</span><span class="w"> </span><span class="n">main</span><span class="o">=</span><span class="s2">"Future Value of $1 invested"</span><span class="p">)</span></code></pre></figure>
 
-<p><img src="/../figs/2014-10-19-analyze-stock-price-data-using-r-part2/unnamed-chunk-5-1.png" alt="center" /></p>
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Error in chart.CumReturns(ret.simple, legend.loc = "topleft", wealth.index = TRUE, : could not find function "chart.CumReturns"</code></pre></figure>
 
 <p>Step 6. Display pair-wise scatter plots.</p>
 
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">return_matrix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">coredata</span><span class="p">(</span><span class="n">ret.cc</span><span class="p">)</span><span class="w">
-</span><span class="n">pairs</span><span class="p">(</span><span class="n">return_matrix</span><span class="p">,</span><span class="w"> </span><span class="n">pch</span><span class="o">=</span><span class="m">16</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="o">=</span><span class="s2">"dodgerblue2"</span><span class="p">)</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">return_matrix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">coredata</span><span class="p">(</span><span class="n">ret.cc</span><span class="p">)</span></code></pre></figure>
 
-<p><img src="/../figs/2014-10-19-analyze-stock-price-data-using-r-part2/unnamed-chunk-6-1.png" alt="center" /></p>
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Error in coredata(ret.cc): object 'ret.cc' not found</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">pairs</span><span class="p">(</span><span class="n">return_matrix</span><span class="p">,</span><span class="w"> </span><span class="n">pch</span><span class="o">=</span><span class="m">16</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="o">=</span><span class="s2">"dodgerblue2"</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Error in pairs(return_matrix, pch = 16, col = "dodgerblue2"): object 'return_matrix' not found</code></pre></figure>
 
 <p>Both plots show the returns of VGENX and VTSMX are pretty correlated.</p>
 
@@ -291,9 +313,7 @@
 
 <figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">cor</span><span class="p">(</span><span class="n">return_matrix</span><span class="p">)</span></code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-text" data-lang="text">##           VGENX     VTSMX
-## VGENX 1.0000000 0.7833628
-## VTSMX 0.7833628 1.0000000</code></pre></figure>
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Error in is.data.frame(x): object 'return_matrix' not found</code></pre></figure>
 
 <p>We see their correlation is 0.78, which is pretty high.</p>
 

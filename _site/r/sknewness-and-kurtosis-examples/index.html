@@ -229,7 +229,7 @@
 </div><!-- /.google-ads --><!-- /.google-ads -->
       </footer>
       <div class="entry-content">
-        <p>Previously, I wrote about the <a href="http://masterr.org/da/skewness-and-kurtosis/">intuitions behind skewness and kurtosis</a>. Today I’m going to do some calculations using the daily adjusted close prices of the S&amp;P500 and NovaGold between January 4, 2007 and October 10, 2014. You can download the data from yahoo and follow along. First of all, I defined some helper functions, which can also be used in other contexts to improve code organization and efficiency.</p>
+        <p>Previously, I wrote about the <a href="https://masterr.org/da/skewness-and-kurtosis/">intuitions behind skewness and kurtosis</a>. Today I’m going to do some calculations using the daily adjusted close prices of the S&amp;P500 and NovaGold between January 4, 2007 and October 10, 2014. You can download the data from yahoo and follow along. First of all, I defined some helper functions, which can also be used in other contexts to improve code organization and efficiency.</p>
 
 <figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1">## helper functions
 </span><span class="n">as_date</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">...</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> 
@@ -289,37 +289,50 @@
 <figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># calcuate shape characteristics
 </span><span class="p">(</span><span class="n">ng.shape</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">calc_shape_char</span><span class="p">(</span><span class="n">ng</span><span class="o">$</span><span class="n">rt</span><span class="p">))</span></code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-text" data-lang="text">##            mean              sd        skewness excess.kurtosis 
-##     -0.09003839      5.81212763     -3.73626258     85.80061898</code></pre></figure>
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Error in library(PerformanceAnalytics): there is no package called 'PerformanceAnalytics'</code></pre></figure>
 
 <figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="p">(</span><span class="n">sp500.shape</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">calc_shape_char</span><span class="p">(</span><span class="n">sp500</span><span class="o">$</span><span class="n">rt</span><span class="p">))</span></code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-text" data-lang="text">##            mean              sd        skewness excess.kurtosis 
-##      0.01516686      1.41858330     -0.31423801      9.22125158</code></pre></figure>
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Error in library(PerformanceAnalytics): there is no package called 'PerformanceAnalytics'</code></pre></figure>
 
 <p>Note the S&amp;P500 had a mild negative skewness while NovaGold had a big negative skewness. Remember the normal distribution has a skewness of 0. In addition, both stocks had excess kurtosis comparing to the normal distribution. In particular, NovaGold had an excess kurtosis of 85.8, which made it much more likely to experience wild price swings than both the S&amp;P500 and a normal distribution would.</p>
 
 <p>Next, I simulated normal data using the corresponding mean and sd of the daily returns of each stock respectively. I then plot the densities of each stock along side with their normal counterparts.</p>
 
 <figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">set.seed</span><span class="p">(</span><span class="m">1020</span><span class="p">)</span><span class="w">
-</span><span class="n">norm.ng</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rnorm</span><span class="p">(</span><span class="n">nrow</span><span class="p">(</span><span class="n">ng</span><span class="p">),</span><span class="w"> </span><span class="n">mean</span><span class="o">=</span><span class="n">ng.shape</span><span class="p">[</span><span class="s2">"mean"</span><span class="p">],</span><span class="w"> </span><span class="n">sd</span><span class="o">=</span><span class="n">ng.shape</span><span class="p">[</span><span class="s2">"sd"</span><span class="p">])</span><span class="w">
-</span><span class="n">norm.sp500</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rnorm</span><span class="p">(</span><span class="n">nrow</span><span class="p">(</span><span class="n">sp500</span><span class="p">),</span><span class="w"> </span><span class="n">mean</span><span class="o">=</span><span class="n">sp500.shape</span><span class="p">[</span><span class="s2">"mean"</span><span class="p">],</span><span class="w"> </span><span class="n">sd</span><span class="o">=</span><span class="n">sp500.shape</span><span class="p">[</span><span class="s2">"sd"</span><span class="p">])</span><span class="w">
+</span><span class="n">norm.ng</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rnorm</span><span class="p">(</span><span class="n">nrow</span><span class="p">(</span><span class="n">ng</span><span class="p">),</span><span class="w"> </span><span class="n">mean</span><span class="o">=</span><span class="n">ng.shape</span><span class="p">[</span><span class="s2">"mean"</span><span class="p">],</span><span class="w"> </span><span class="n">sd</span><span class="o">=</span><span class="n">ng.shape</span><span class="p">[</span><span class="s2">"sd"</span><span class="p">])</span></code></pre></figure>
 
-</span><span class="n">library</span><span class="p">(</span><span class="n">tidyr</span><span class="p">)</span><span class="w">
-</span><span class="n">ret.ng</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data.frame</span><span class="p">(</span><span class="n">ng</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ng</span><span class="o">$</span><span class="n">rt</span><span class="p">,</span><span class="w"> </span><span class="n">normal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">norm.ng</span><span class="p">)</span><span class="w">
-</span><span class="n">ret.ng</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ret.ng</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="n">gather</span><span class="p">(</span><span class="n">label</span><span class="p">,</span><span class="w"> </span><span class="n">ret</span><span class="p">,</span><span class="w"> </span><span class="n">ng</span><span class="o">:</span><span class="n">normal</span><span class="p">)</span><span class="w">
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Error in rnorm(nrow(ng), mean = ng.shape["mean"], sd = ng.shape["sd"]): object 'ng.shape' not found</code></pre></figure>
 
-</span><span class="n">ret.sp500</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data.frame</span><span class="p">(</span><span class="n">sp500</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sp500</span><span class="o">$</span><span class="n">rt</span><span class="p">,</span><span class="w"> </span><span class="n">normal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">norm.sp500</span><span class="p">)</span><span class="w">
-</span><span class="n">ret.sp500</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ret.sp500</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="n">gather</span><span class="p">(</span><span class="n">label</span><span class="p">,</span><span class="w"> </span><span class="n">ret</span><span class="p">,</span><span class="w"> </span><span class="n">sp500</span><span class="o">:</span><span class="n">normal</span><span class="p">)</span><span class="w">
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">norm.sp500</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rnorm</span><span class="p">(</span><span class="n">nrow</span><span class="p">(</span><span class="n">sp500</span><span class="p">),</span><span class="w"> </span><span class="n">mean</span><span class="o">=</span><span class="n">sp500.shape</span><span class="p">[</span><span class="s2">"mean"</span><span class="p">],</span><span class="w"> </span><span class="n">sd</span><span class="o">=</span><span class="n">sp500.shape</span><span class="p">[</span><span class="s2">"sd"</span><span class="p">])</span></code></pre></figure>
 
-</span><span class="c1"># plot
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Error in rnorm(nrow(sp500), mean = sp500.shape["mean"], sd = sp500.shape["sd"]): object 'sp500.shape' not found</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">library</span><span class="p">(</span><span class="n">tidyr</span><span class="p">)</span><span class="w">
+</span><span class="n">ret.ng</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data.frame</span><span class="p">(</span><span class="n">ng</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ng</span><span class="o">$</span><span class="n">rt</span><span class="p">,</span><span class="w"> </span><span class="n">normal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">norm.ng</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Error in data.frame(ng = ng$rt, normal = norm.ng): object 'norm.ng' not found</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">ret.ng</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ret.ng</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="n">gather</span><span class="p">(</span><span class="n">label</span><span class="p">,</span><span class="w"> </span><span class="n">ret</span><span class="p">,</span><span class="w"> </span><span class="n">ng</span><span class="o">:</span><span class="n">normal</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Error in eval(lhs, parent, parent): object 'ret.ng' not found</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">ret.sp500</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data.frame</span><span class="p">(</span><span class="n">sp500</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sp500</span><span class="o">$</span><span class="n">rt</span><span class="p">,</span><span class="w"> </span><span class="n">normal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">norm.sp500</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Error in data.frame(sp500 = sp500$rt, normal = norm.sp500): object 'norm.sp500' not found</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">ret.sp500</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ret.sp500</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="n">gather</span><span class="p">(</span><span class="n">label</span><span class="p">,</span><span class="w"> </span><span class="n">ret</span><span class="p">,</span><span class="w"> </span><span class="n">sp500</span><span class="o">:</span><span class="n">normal</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Error in eval(lhs, parent, parent): object 'ret.sp500' not found</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># plot
 </span><span class="n">plt_density</span><span class="p">(</span><span class="n">ret.ng</span><span class="p">)</span></code></pre></figure>
 
-<p><img src="/../figs/2014-10-14-sknewness-and-kurtosis-examples/unnamed-chunk-4-1.png" alt="center" /></p>
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Error in ggplot(df, aes(x = ret, color = label)): object 'ret.ng' not found</code></pre></figure>
 
 <figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">plt_density</span><span class="p">(</span><span class="n">ret.sp500</span><span class="p">)</span></code></pre></figure>
 
-<p><img src="/../figs/2014-10-14-sknewness-and-kurtosis-examples/unnamed-chunk-4-2.png" alt="center" /></p>
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Error in ggplot(df, aes(x = ret, color = label)): object 'ret.sp500' not found</code></pre></figure>
 
 <p>Note, both NovaGold and the S&amp;P500 have longer and fatter tails than the normal curve.</p>
 

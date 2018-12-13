@@ -229,7 +229,7 @@
 </div><!-- /.google-ads --><!-- /.google-ads -->
       </footer>
       <div class="entry-content">
-        <p>Previously, I wrote an <a href="http://masterr.org/r/how-to-work-with-files-in-r-and-improve-reproducibility/">article</a> on how not to use <code class="highlighter-rouge">setwd()</code>. Today I discovered a side effect of <code class="highlighter-rouge">setwd()</code> that is really cool and useful. It turns out that when you run <code class="highlighter-rouge">setwd(path)</code>, not only will it reset the working directory to path, it will also return the working directory before the reset.</p>
+        <p>Previously, I wrote an <a href="https://masterr.org/r/how-to-work-with-files-in-r-and-improve-reproducibility/">article</a> on how not to use <code class="highlighter-rouge">setwd()</code>. Today I discovered a side effect of <code class="highlighter-rouge">setwd()</code> that is really cool and useful. It turns out that when you run <code class="highlighter-rouge">setwd(path)</code>, not only will it reset the working directory to path, it will also return the working directory before the reset.</p>
 
 <figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># get the default (current) working directory
 </span><span class="n">getwd</span><span class="p">()</span></code></pre></figure>
@@ -259,7 +259,7 @@
 <figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "/Users/gmlang/Communities/masterr/_knitr/Projects"</code></pre></figure>
 
 <p>We can use this side effect and <code class="highlighter-rouge">on.exit()</code><sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup> to write functions that guaranttees to restore the working directory when the function exists. For example, the following function is taken from Hadley’s book
-<a href="http://www.amazon.com/gp/product/B00NFODLIQ/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=B00NFODLIQ&amp;linkCode=as2&amp;tag=cabaceo-20&amp;linkId=ADGTP76QZMPYXEVL">Advanced R</a><img src="http://ir-na.amazon-adsystem.com/e/ir?t=cabaceo-20&amp;l=as2&amp;o=1&amp;a=B00NFODLIQ" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />.</p>
+<a href="https://www.amazon.com/gp/product/B00NFODLIQ/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=B00NFODLIQ&amp;linkCode=as2&amp;tag=cabaceo-20&amp;linkId=ADGTP76QZMPYXEVL">Advanced R</a><img src="https://ir-na.amazon-adsystem.com/e/ir?t=cabaceo-20&amp;l=as2&amp;o=1&amp;a=B00NFODLIQ" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />.</p>
 
 <figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">in_dir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">dir</span><span class="p">,</span><span class="w"> </span><span class="n">code</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
   </span><span class="n">old</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">setwd</span><span class="p">(</span><span class="n">dir</span><span class="p">)</span><span class="w">

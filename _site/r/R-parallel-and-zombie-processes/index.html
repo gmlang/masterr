@@ -240,12 +240,12 @@ efficient than doParallel, and it only works with linux or Mac, not with windows
       <div class="entry-content">
         <p>I recently encountered zombie processes when running some R code in parallel. 
 I was running the code in linux and was using doMC to register the parallel backend.
-If you’re not familiar with doMC, read this stack overflow answer on the <a href="http://stackoverflow.com/questions/28989855/the-difference-between-domc-and-doparallel-in-r">difference between doMC and doParallel</a>. In a nutshell, doMC sometimes is more 
+If you’re not familiar with doMC, read this stack overflow answer on the <a href="https://stackoverflow.com/questions/28989855/the-difference-between-domc-and-doparallel-in-r">difference between doMC and doParallel</a>. In a nutshell, doMC sometimes is more 
 efficient than doParallel, and it only works with linux or Mac, not with windows, while doParallel works with all platforms.</p>
 
-<p>It turns out <a href="http://stackoverflow.com/questions/25348607/how-to-stop-r-from-leaving-zombie-processes-behind">the zombie processes weren’t caused by doMC</a>.</p>
+<p>It turns out <a href="https://stackoverflow.com/questions/25348607/how-to-stop-r-from-leaving-zombie-processes-behind">the zombie processes weren’t caused by doMC</a>.</p>
 
-<p>Finally, use <a href="http://stackoverflow.com/questions/25388139/r-parallel-computing-and-zombie-processes">the inline package and the wait function</a> by Steve Weston (scroll down) to kill zombie processes. I used them in my application and they work like a charm.</p>
+<p>Finally, use <a href="https://stackoverflow.com/questions/25388139/r-parallel-computing-and-zombie-processes">the inline package and the wait function</a> by Steve Weston (scroll down) to kill zombie processes. I used them in my application and they work like a charm.</p>
 
 		<!-- Begin MailChimp Signup Form -->
 <html>

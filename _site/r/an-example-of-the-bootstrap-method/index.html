@@ -229,14 +229,14 @@
 </div><!-- /.google-ads --><!-- /.google-ads -->
       </footer>
       <div class="entry-content">
-        <p>When calculating the <a href="http://masterr.org/da/bias-and-precision/">bias and precision</a> of a sample estimate to the popluation parameter, because we often don’t know the true value of the population parameter and we often only have one sample, we use a procedure called <em>bootstrap</em>. The idea is simple:</p>
+        <p>When calculating the <a href="https://masterr.org/da/bias-and-precision/">bias and precision</a> of a sample estimate to the popluation parameter, because we often don’t know the true value of the population parameter and we often only have one sample, we use a procedure called <em>bootstrap</em>. The idea is simple:</p>
 
 <ol>
   <li>treat the sample as the population</li>
   <li>understand the sampling scheme, i.e., how the sample was taken from the population</li>
   <li>sample the same number of observations with replacement from the sample according to the same sampling scheme</li>
   <li>for each of the new samples, calculate its sample statistic. For example, if you’re interested in the mean of the population, you just calculate the sample average. If you’re interested in the sd of the population, you just calculate the sample sd.</li>
-  <li>these sample statistics form a distribution. Take its average and use it as a proxy to the true value of the population parameter. Plug it and the sample statistic of your original sample into <a href="http://masterr.org/da/bias-and-precision/">the formulas of bias and precision</a>.</li>
+  <li>these sample statistics form a distribution. Take its average and use it as a proxy to the true value of the population parameter. Plug it and the sample statistic of your original sample into <a href="https://masterr.org/da/bias-and-precision/">the formulas of bias and precision</a>.</li>
 </ol>
 
 <p>The following is a concrete example implementing the above bootstrap procedure using R and some stock price data.</p>
@@ -244,55 +244,76 @@
 <p>Step 1. Download the monthly adjusted closing price data of <a href="https://www.google.com/search?client=safari&amp;rls=en&amp;q=VTSMX&amp;ie=UTF-8&amp;oe=UTF-8">VTSMX</a> since Sept 2005 from Yahoo!. Change the class of the time index to yearmon. And calculate continuously compounded returns.</p>
 
 <figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">library</span><span class="p">(</span><span class="n">zoo</span><span class="p">)</span><span class="w">
-</span><span class="n">library</span><span class="p">(</span><span class="n">tseries</span><span class="p">)</span><span class="w">
+</span><span class="n">library</span><span class="p">(</span><span class="n">tseries</span><span class="p">)</span></code></pre></figure>
 
-</span><span class="n">VTSMX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">get.hist.quote</span><span class="p">(</span><span class="n">instrument</span><span class="o">=</span><span class="s2">"VTSMX"</span><span class="p">,</span><span class="w"> </span><span class="n">start</span><span class="o">=</span><span class="s2">"2005-09-30"</span><span class="p">,</span><span class="w"> 
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Error in library(tseries): there is no package called 'tseries'</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">VTSMX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">get.hist.quote</span><span class="p">(</span><span class="n">instrument</span><span class="o">=</span><span class="s2">"VTSMX"</span><span class="p">,</span><span class="w"> </span><span class="n">start</span><span class="o">=</span><span class="s2">"2005-09-30"</span><span class="p">,</span><span class="w"> 
                        </span><span class="n">end</span><span class="o">=</span><span class="s2">"2014-09-30"</span><span class="p">,</span><span class="w"> </span><span class="n">origin</span><span class="o">=</span><span class="s2">"1970-01-01"</span><span class="p">,</span><span class="w">
                        </span><span class="n">quote</span><span class="o">=</span><span class="s2">"AdjClose"</span><span class="p">,</span><span class="w"> </span><span class="n">provider</span><span class="o">=</span><span class="s2">"yahoo"</span><span class="p">,</span><span class="w">
                        </span><span class="n">compression</span><span class="o">=</span><span class="s2">"m"</span><span class="p">,</span><span class="w"> </span><span class="n">retclass</span><span class="o">=</span><span class="s2">"zoo"</span><span class="p">)</span></code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-text" data-lang="text">## time series ends   2014-09-02</code></pre></figure>
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Error in get.hist.quote(instrument = "VTSMX", start = "2005-09-30", end = "2014-09-30", : could not find function "get.hist.quote"</code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">index</span><span class="p">(</span><span class="n">VTSMX</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">as.yearmon</span><span class="p">(</span><span class="n">index</span><span class="p">(</span><span class="n">VTSMX</span><span class="p">))</span><span class="w">
-</span><span class="n">colnames</span><span class="p">(</span><span class="n">VTSMX</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"VTSMX"</span><span class="w">
-</span><span class="n">ret.cc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">diff</span><span class="p">(</span><span class="nf">log</span><span class="p">(</span><span class="n">VTSMX</span><span class="p">))</span><span class="w">
-</span><span class="n">head</span><span class="p">(</span><span class="n">ret.cc</span><span class="p">,</span><span class="w"> </span><span class="m">4</span><span class="p">)</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">index</span><span class="p">(</span><span class="n">VTSMX</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">as.yearmon</span><span class="p">(</span><span class="n">index</span><span class="p">(</span><span class="n">VTSMX</span><span class="p">))</span></code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-text" data-lang="text">##                 VTSMX
-## Oct 2005 -0.018813600
-## Nov 2005  0.038941761
-## Dec 2005  0.001354186
-## Jan 2006  0.034401428</code></pre></figure>
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Error in index(VTSMX): object 'VTSMX' not found</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">colnames</span><span class="p">(</span><span class="n">VTSMX</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"VTSMX"</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Error in colnames(VTSMX) = "VTSMX": object 'VTSMX' not found</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">ret.cc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">diff</span><span class="p">(</span><span class="nf">log</span><span class="p">(</span><span class="n">VTSMX</span><span class="p">))</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Error in diff(log(VTSMX)): object 'VTSMX' not found</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">head</span><span class="p">(</span><span class="n">ret.cc</span><span class="p">,</span><span class="w"> </span><span class="m">4</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Error in head(ret.cc, 4): object 'ret.cc' not found</code></pre></figure>
 
 <p>Step 2. Calculate the sample average c.c. returns</p>
 
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">muhat.VTSMX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mean</span><span class="p">(</span><span class="n">ret.cc</span><span class="p">)</span><span class="w">
-</span><span class="n">cat</span><span class="p">(</span><span class="n">paste0</span><span class="p">(</span><span class="nf">round</span><span class="p">(</span><span class="n">muhat.VTSMX</span><span class="o">*</span><span class="m">100</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">),</span><span class="w"> </span><span class="s2">"%"</span><span class="p">))</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">muhat.VTSMX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mean</span><span class="p">(</span><span class="n">ret.cc</span><span class="p">)</span></code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-text" data-lang="text">## 0.63%</code></pre></figure>
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Error in mean(ret.cc): object 'ret.cc' not found</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">cat</span><span class="p">(</span><span class="n">paste0</span><span class="p">(</span><span class="nf">round</span><span class="p">(</span><span class="n">muhat.VTSMX</span><span class="o">*</span><span class="m">100</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">),</span><span class="w"> </span><span class="s2">"%"</span><span class="p">))</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Error in paste0(round(muhat.VTSMX * 100, 2), "%"): object 'muhat.VTSMX' not found</code></pre></figure>
 
 <p>Step 3. Calculate bias and precision of the mean using bootstrap.</p>
 
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">VTSMX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">coredata</span><span class="p">(</span><span class="n">ret.cc</span><span class="p">)</span><span class="w">
-</span><span class="n">n.samples</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">999</span><span class="w">
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">VTSMX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">coredata</span><span class="p">(</span><span class="n">ret.cc</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Error in coredata(ret.cc): object 'ret.cc' not found</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">n.samples</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">999</span><span class="w">
 </span><span class="n">muhat.boot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">rep</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="n">n.samples</span><span class="p">)</span><span class="w">
-</span><span class="n">nobs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">length</span><span class="p">(</span><span class="n">ret.cc</span><span class="p">)</span><span class="w">
-</span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="n">n.samples</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="n">nobs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">length</span><span class="p">(</span><span class="n">ret.cc</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Error in eval(expr, envir, enclos): object 'ret.cc' not found</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="n">n.samples</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="n">boot.data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sample</span><span class="p">(</span><span class="n">VTSMX</span><span class="p">,</span><span class="w"> </span><span class="n">nobs</span><span class="p">,</span><span class="w"> </span><span class="n">replace</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span><span class="w">
         </span><span class="n">muhat.boot</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mean</span><span class="p">(</span><span class="n">boot.data</span><span class="p">)</span><span class="w">
-</span><span class="p">}</span><span class="w">
+</span><span class="p">}</span></code></pre></figure>
 
-</span><span class="c1"># bootstrap bias
-</span><span class="n">bias</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mean</span><span class="p">(</span><span class="n">muhat.boot</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">muhat.VTSMX</span><span class="w">
-</span><span class="n">cat</span><span class="p">(</span><span class="n">paste0</span><span class="p">(</span><span class="nf">round</span><span class="p">(</span><span class="n">bias</span><span class="o">*</span><span class="m">100</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">),</span><span class="w"> </span><span class="s2">"%"</span><span class="p">))</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Error in sample(VTSMX, nobs, replace = TRUE): object 'VTSMX' not found</code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-text" data-lang="text">## 0.02%</code></pre></figure>
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># bootstrap bias
+</span><span class="n">bias</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mean</span><span class="p">(</span><span class="n">muhat.boot</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">muhat.VTSMX</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Error in eval(expr, envir, enclos): object 'muhat.VTSMX' not found</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">cat</span><span class="p">(</span><span class="n">paste0</span><span class="p">(</span><span class="nf">round</span><span class="p">(</span><span class="n">bias</span><span class="o">*</span><span class="m">100</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">),</span><span class="w"> </span><span class="s2">"%"</span><span class="p">))</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Error in paste0(round(bias * 100, 2), "%"): object 'bias' not found</code></pre></figure>
 
 <figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># bootstrap SE
 </span><span class="n">precision</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sd</span><span class="p">(</span><span class="n">muhat.boot</span><span class="p">)</span><span class="w">
 </span><span class="n">cat</span><span class="p">(</span><span class="n">paste0</span><span class="p">(</span><span class="nf">round</span><span class="p">(</span><span class="n">precision</span><span class="o">*</span><span class="m">100</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">),</span><span class="w"> </span><span class="s2">"%"</span><span class="p">))</span></code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-text" data-lang="text">## 0.45%</code></pre></figure>
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## 0%</code></pre></figure>
 
 <p>Step 4. Instead of doing the bootstrap procedure ourselves, we can use the <code class="highlighter-rouge">boot()</code> function in the <code class="highlighter-rouge">boot</code> library. For example, we can use the following code to calculate the bootstrap bias and precision for the volatility (standard deviation).</p>
 
@@ -308,45 +329,28 @@
 </span><span class="p">}</span><span class="w">
 
 </span><span class="c1"># pass sd.boot to the boot() function to calculate the bootstrap sd's
-</span><span class="n">VTSMX.sd.boot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">boot</span><span class="p">(</span><span class="n">VTSMX</span><span class="p">,</span><span class="w"> </span><span class="n">statistic</span><span class="o">=</span><span class="n">sd.boot</span><span class="p">,</span><span class="w"> </span><span class="n">R</span><span class="o">=</span><span class="m">999</span><span class="p">)</span><span class="w">
-</span><span class="nf">class</span><span class="p">(</span><span class="n">VTSMX.sd.boot</span><span class="p">)</span></code></pre></figure>
+</span><span class="n">VTSMX.sd.boot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">boot</span><span class="p">(</span><span class="n">VTSMX</span><span class="p">,</span><span class="w"> </span><span class="n">statistic</span><span class="o">=</span><span class="n">sd.boot</span><span class="p">,</span><span class="w"> </span><span class="n">R</span><span class="o">=</span><span class="m">999</span><span class="p">)</span></code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "boot"</code></pre></figure>
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Error in NROW(data): object 'VTSMX' not found</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="nf">class</span><span class="p">(</span><span class="n">VTSMX.sd.boot</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Error in eval(expr, envir, enclos): object 'VTSMX.sd.boot' not found</code></pre></figure>
 
 <figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">VTSMX.sd.boot</span></code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-text" data-lang="text">## 
-## ORDINARY NONPARAMETRIC BOOTSTRAP
-## 
-## 
-## Call:
-## boot(data = VTSMX, statistic = sd.boot, R = 999)
-## 
-## 
-## Bootstrap Statistics :
-##       original        bias    std. error
-## t1* 0.04646892 -0.0003882149 0.004814115</code></pre></figure>
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Error in eval(expr, envir, enclos): object 'VTSMX.sd.boot' not found</code></pre></figure>
 
 <figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">plot</span><span class="p">(</span><span class="n">VTSMX.sd.boot</span><span class="p">)</span></code></pre></figure>
 
-<p><img src="/../figs/2014-10-29-an-example-of-the-bootstrap-method/unnamed-chunk-4-1.png" alt="center" /></p>
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Error in plot(VTSMX.sd.boot): object 'VTSMX.sd.boot' not found</code></pre></figure>
 
 <p>Step 5. We can also calculate the bootstrap 95% confidence intervals of the volatility.</p>
 
 <figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># bootstrap confidence interval
 </span><span class="n">boot.ci</span><span class="p">(</span><span class="n">VTSMX.sd.boot</span><span class="p">,</span><span class="w"> </span><span class="n">conf</span><span class="o">=</span><span class="m">0.95</span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s2">"norm"</span><span class="p">,</span><span class="w"> </span><span class="s2">"perc"</span><span class="p">))</span></code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-text" data-lang="text">## BOOTSTRAP CONFIDENCE INTERVAL CALCULATIONS
-## Based on 999 bootstrap replicates
-## 
-## CALL : 
-## boot.ci(boot.out = VTSMX.sd.boot, conf = 0.95, type = c("norm", 
-##     "perc"))
-## 
-## Intervals : 
-## Level      Normal             Percentile     
-## 95%   ( 0.0374,  0.0563 )   ( 0.0372,  0.0561 )  
-## Calculations and Intervals on Original Scale</code></pre></figure>
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Error in boot.ci(VTSMX.sd.boot, conf = 0.95, type = c("norm", "perc")): object 'VTSMX.sd.boot' not found</code></pre></figure>
 
 <p>Step 6. A common measure in risk management is Value at Risk (VaR). We can find the bootstrap 95% confidence intervals of the VaR assuming the initial investment is $100,000.</p>
 
@@ -358,20 +362,13 @@
 </span><span class="p">}</span><span class="w">
 
 </span><span class="c1"># pass VaR.boot to the boot() function to calculate the bootstrap VaRs
-</span><span class="n">VTSMX.VaR.boot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">boot</span><span class="p">(</span><span class="n">VTSMX</span><span class="p">,</span><span class="w"> </span><span class="n">statistic</span><span class="o">=</span><span class="n">VaR.boot</span><span class="p">,</span><span class="w"> </span><span class="n">R</span><span class="o">=</span><span class="m">999</span><span class="p">)</span><span class="w">
-</span><span class="n">boot.ci</span><span class="p">(</span><span class="n">VTSMX.VaR.boot</span><span class="p">,</span><span class="w"> </span><span class="n">conf</span><span class="o">=</span><span class="m">0.95</span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s2">"norm"</span><span class="p">,</span><span class="w"> </span><span class="s2">"perc"</span><span class="p">))</span></code></pre></figure>
+</span><span class="n">VTSMX.VaR.boot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">boot</span><span class="p">(</span><span class="n">VTSMX</span><span class="p">,</span><span class="w"> </span><span class="n">statistic</span><span class="o">=</span><span class="n">VaR.boot</span><span class="p">,</span><span class="w"> </span><span class="n">R</span><span class="o">=</span><span class="m">999</span><span class="p">)</span></code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-text" data-lang="text">## BOOTSTRAP CONFIDENCE INTERVAL CALCULATIONS
-## Based on 999 bootstrap replicates
-## 
-## CALL : 
-## boot.ci(boot.out = VTSMX.VaR.boot, conf = 0.95, type = c("norm", 
-##     "perc"))
-## 
-## Intervals : 
-## Level      Normal             Percentile     
-## 95%   (-8820, -4898 )   (-8896, -4939 )  
-## Calculations and Intervals on Original Scale</code></pre></figure>
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Error in NROW(data): object 'VTSMX' not found</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">boot.ci</span><span class="p">(</span><span class="n">VTSMX.VaR.boot</span><span class="p">,</span><span class="w"> </span><span class="n">conf</span><span class="o">=</span><span class="m">0.95</span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s2">"norm"</span><span class="p">,</span><span class="w"> </span><span class="s2">"perc"</span><span class="p">))</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Error in boot.ci(VTSMX.VaR.boot, conf = 0.95, type = c("norm", "perc")): object 'VTSMX.VaR.boot' not found</code></pre></figure>
 
 
 		<!-- Begin MailChimp Signup Form -->
