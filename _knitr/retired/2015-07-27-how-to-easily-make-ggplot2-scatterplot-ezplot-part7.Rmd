@@ -11,7 +11,7 @@ ads: true
 ---
 
 When you have two continuous variables and want to see their relationship, you
-want to draw a scatter plot. Click [here](http://samples.leanpub.com/ezplot-sample.pdf) 
+want to draw a scatter plot. Click [here](https://samples.leanpub.com/ezplot-sample.pdf) 
 to download the FREE chapter and learn how to quickly make high quality 
 scatter plot using ezplot. 
 

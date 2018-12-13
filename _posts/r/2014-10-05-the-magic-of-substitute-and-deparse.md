@@ -48,4 +48,4 @@ foo2(x, y, z)
 ## [1] "x" "2" "3"
 {% endhighlight %}
 
-You can learn more about them [here](http://stackoverflow.com/questions/5754367/using-substitute-to-get-argument-name-with) and [here](http://stackoverflow.com/questions/3057341/how-to-use-rs-ellipsis-feature-when-writing-your-own-function).
+You can learn more about them [here](https://stackoverflow.com/questions/5754367/using-substitute-to-get-argument-name-with) and [here](https://stackoverflow.com/questions/3057341/how-to-use-rs-ellipsis-feature-when-writing-your-own-function).

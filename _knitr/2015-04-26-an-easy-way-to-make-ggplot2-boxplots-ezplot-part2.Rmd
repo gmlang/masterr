@@ -12,7 +12,7 @@ ads: true
 
 ### Updated October 4, 2018
 
-Previously, I introduced the ezplot package and [showed how to use it to make high quality bar charts](http://masterr.org/r/an-easy-way-to-make-ggplot2-plots-ezplot-part1/). Today, I'm going to show you how to make boxplots using ezplot. Once again, it's super simple.
+Previously, I introduced the ezplot package and [showed how to use it to make high quality bar charts](https://masterr.org/r/an-easy-way-to-make-ggplot2-plots-ezplot-part1/). Today, I'm going to show you how to make boxplots using ezplot. Once again, it's super simple.
 
 #### Load ezplot
 

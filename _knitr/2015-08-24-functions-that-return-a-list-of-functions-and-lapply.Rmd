@@ -10,7 +10,7 @@ share: true
 ads: true
 ---
 
-Have you written functions in R before? If you have, I want you to go back to one of the functions you wrote and take a look at its input and output. Does it take in a piece of data and return another piece of data, be it a number, string, vector, data frame, matrix, or list? Now, if all or most of your functions are like that, you're missing out on the true power of functions. Do you know that you can write functions to return a function instead of a data structure? ([part1](http://masterr.org/r/functions-that-return-functions/), [part2](http://masterr.org/r/functions-that-return-functions-part-2/)) Do you also know that you can write functions to return a list of functions instead of one function?
+Have you written functions in R before? If you have, I want you to go back to one of the functions you wrote and take a look at its input and output. Does it take in a piece of data and return another piece of data, be it a number, string, vector, data frame, matrix, or list? Now, if all or most of your functions are like that, you're missing out on the true power of functions. Do you know that you can write functions to return a function instead of a data structure? ([part1](https://masterr.org/r/functions-that-return-functions/), [part2](https://masterr.org/r/functions-that-return-functions-part-2/)) Do you also know that you can write functions to return a list of functions instead of one function?
 
 To demonstrate, let's first generate some data. 
 ```{r, warning=FALSE, message=FALSE}
@@ -45,5 +45,4 @@ row.names(out) = c("min", "max", "mean", "median", "sd", "mad", "IQR")
 out
 ```
 
-This article is inspired by Hadley's book "Advanced R", you can <a rel="nofollow" href="http://www.amazon.com/gp/product/1466586966/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1466586966&linkCode=as2&tag=cabaceo-20&linkId=2GDWMZSF4NX32QIO">buy it from Amazon</a><img src="http://ir-na.amazon-adsystem.com/e/ir?t=cabaceo-20&l=as2&o=1&a=1466586966" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
-or read it [online](http://adv-r.had.co.nz/Functions.html) for FREE.
+This article is inspired by Hadley's book "Advanced R", which can be <a rel="nofollow" href="https://www.amazon.com/gp/product/1466586966/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1466586966&linkCode=as2&tag=cabaceo-20&linkId=2GDWMZSF4NX32QIO">obtained from Amazon</a><img src="https://ir-na.amazon-adsystem.com/e/ir?t=cabaceo-20&l=as2&o=1&a=1466586966" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />.

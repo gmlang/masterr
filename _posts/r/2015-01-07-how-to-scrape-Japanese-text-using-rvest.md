@@ -11,13 +11,13 @@ ads: true
 ---
 
 The [rvest](https://github.com/hadley/rvest) package is yet another 
-powerful tool developed by Hadley. It makes web scraping super easy. For example, say I want to scrape [this page](http://www3.boj.or.jp/market/jp/stat/of141205.htm) from the Bank of Japan. I can just use the `read_html()` function without specifying
+powerful tool developed by Hadley. It makes web scraping super easy. For example, say I want to scrape [this page](https://www3.boj.or.jp/market/jp/stat/of141205.htm) from the Bank of Japan. I can just use the `read_html()` function without specifying
 the encoding. I think under the hood, it guesses the encoding. 
 
 {% highlight r %}
 library(methods)
 library(rvest)
-url = "http://www3.boj.or.jp/market/jp/stat/of141205.htm"
+url = "https://www3.boj.or.jp/market/jp/stat/of141205.htm"
 page = read_html(url)
 
 # extract title

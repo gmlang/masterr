@@ -10,7 +10,7 @@ share: true
 ads: true
 ---
 
-Previously, I wrote about the [intuitions behind skewness and kurtosis](http://masterr.org/da/skewness-and-kurtosis/). Today I'm going to do some calculations using the daily adjusted close prices of the S&P500 and NovaGold between January 4, 2007 and October 10, 2014. You can download the data from yahoo and follow along. First of all, I defined some helper functions, which can also be used in other contexts to improve code organization and efficiency. 
+Previously, I wrote about the [intuitions behind skewness and kurtosis](https://masterr.org/da/skewness-and-kurtosis/). Today I'm going to do some calculations using the daily adjusted close prices of the S&P500 and NovaGold between January 4, 2007 and October 10, 2014. You can download the data from yahoo and follow along. First of all, I defined some helper functions, which can also be used in other contexts to improve code organization and efficiency. 
 ```{r, message=FALSE, warning=FALSE}
 ## helper functions
 as_date = function(x, ...) { 

@@ -12,7 +12,7 @@ ads: true
 
 ### Updated October 4, 2018
 
-In an earlier post, I showed you how easy it is to make high quality [histograms](http://masterr.org/r/an-easy-way-to-make-ggplot2-histograms-ezplot-part3/) and [boxplots](http://masterr.org/r/an-easy-way-to-make-ggplot2-boxplots-ezplot-part2/) using ezplot. When we're analyzing a continuous variable, we often want to check if it's normally distributed. Q-Q plot is a good tool to do that.
+In an earlier post, I showed you how easy it is to make high quality [histograms](https://masterr.org/r/an-easy-way-to-make-ggplot2-histograms-ezplot-part3/) and [boxplots](https://masterr.org/r/an-easy-way-to-make-ggplot2-boxplots-ezplot-part2/) using ezplot. When we're analyzing a continuous variable, we often want to check if it's normally distributed. Q-Q plot is a good tool to do that.
 
 Make sure you first install ezplot by running the command `devtools::install_github("gmlang/ezplot")`.
 

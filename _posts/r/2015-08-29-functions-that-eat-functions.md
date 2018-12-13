@@ -1,17 +1,16 @@
 ---
 layout: post
 title: "Functions that eat functions"
-date: 2015-08-29
+date: 2015-08-29 
 comments: true
 categories: r
 keywords: "R, functions, how to write R functions, closure"
 published: true
 share: true
 ads: true
-
 ---
 
-We human eat different kind of foods. Similarly, functions can eat different kind of things. We've seen [functions that eat a number](http://masterr.org/r/functions-that-return-functions/), [a data frame](http://masterr.org/r/functions-that-return-functions-part-2/), and [a vector of numbers](http://masterr.org/r/functions-that-return-a-list-of-functions-and-lapply/). Today, I'm going to show you how to create functions that eat functions. By that, I mean functions that take functions as input. For example, look at the following function. 
+We human eat different kind of foods. Similarly, functions can eat different kind of things. We've seen [functions that eat a number](https://masterr.org/r/functions-that-return-functions/), [a data frame](https://masterr.org/r/functions-that-return-functions-part-2/), and [a vector of numbers](https://masterr.org/r/functions-that-return-a-list-of-functions-and-lapply/). Today, I'm going to show you how to create functions that eat functions. By that, I mean functions that take functions as input. For example, look at the following function. 
 
 {% highlight r %}
 arg_func = function(func) {
@@ -133,5 +132,4 @@ arg_median(-5:5, function(x) x ^ 2)
 ## [1] -3  3
 {% endhighlight %}
 
-This article is inspired by Hadley's book "Advanced R", you can <a rel="nofollow" href="http://www.amazon.com/gp/product/1466586966/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1466586966&linkCode=as2&tag=cabaceo-20&linkId=2GDWMZSF4NX32QIO">buy it from Amazon</a><img src="http://ir-na.amazon-adsystem.com/e/ir?t=cabaceo-20&l=as2&o=1&a=1466586966" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
-or read it [online](http://adv-r.had.co.nz/Functions.html) for FREE.
+This article is inspired by Hadley's book "Advanced R", which can be <a rel="nofollow" href="https://www.amazon.com/gp/product/1466586966/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1466586966&linkCode=as2&tag=cabaceo-20&linkId=2GDWMZSF4NX32QIO">obtained from Amazon</a><img src="https://ir-na.amazon-adsystem.com/e/ir?t=cabaceo-20&l=as2&o=1&a=1466586966" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />.

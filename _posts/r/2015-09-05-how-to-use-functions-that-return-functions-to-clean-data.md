@@ -1,18 +1,16 @@
 ---
 layout: post
 title: "How to use functions that return functions to clean data"
-date: 2015-09-05 
+date: 2015-09-05
 comments: true
 categories: r
 keywords: "R, functions, how to write R functions, functionals, function that return functions, data cleaning, remove spaces from a string, split a string, split a column into two"
 published: true
 share: true
 ads: true
-
 ---
 
 We talked about functions that return functions and functions that eat functions. If you are new and curious, you can search my old blog posts. Today, I'm going to show you a real world example of how to use functions that return functions to clean data. By the end of the post, I'm sure you'll be amazed by their beauty and power. Let's get started. First, we define 3 functions that return functions. 
-
 
 {% highlight r %}
 split_by = function(char) {
@@ -210,5 +208,4 @@ dat
 
 Do you understand what `fix_missing()` does? If not, go back and read its definition again... 
 
-This article is inspired by Hadley's book "Advanced R", you can <a rel="nofollow" href="http://www.amazon.com/gp/product/1466586966/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1466586966&linkCode=as2&tag=cabaceo-20&linkId=2GDWMZSF4NX32QIO">buy it from Amazon</a><img src="http://ir-na.amazon-adsystem.com/e/ir?t=cabaceo-20&l=as2&o=1&a=1466586966" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
-or read it [online](http://adv-r.had.co.nz/Functions.html) for FREE.
+This article is inspired by Hadley's book "Advanced R", which can be <a rel="nofollow" href="https://www.amazon.com/gp/product/1466586966/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1466586966&linkCode=as2&tag=cabaceo-20&linkId=2GDWMZSF4NX32QIO">obtained from Amazon</a><img src="https://ir-na.amazon-adsystem.com/e/ir?t=cabaceo-20&l=as2&o=1&a=1466586966" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />.

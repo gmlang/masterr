@@ -12,12 +12,12 @@ ads: true
 
 ### Updated October 4, 2018
 
-Do you love [ggplot2](http://ggplot2.org)? If you've worked with ggplot2 before, you know 
+Do you love `ggplot2`? If you've worked with ggplot2 before, you know 
 it often takes many lines of code to get a satisfying plot. The ggplot2 language has too many "words" and "expressions", which are difficult to remember and time consuming to look up. Wouldn't it be awesome if there's a simpler tool? The answer is [ezplot](https://github.com/gmlang/ezplot). It's a package based off ggplot2 that allows user to create high quality ggplot2 charts with zero or minimal effort of customization. In this and the next few posts, I'll demo how to use ezplot.
 
 #### Prerequisites
 1. Install a set of development tools
-* On Windows, download and install [Rtools](http://cran.r-project.org/bin/windows/Rtools/). 
+* On Windows, download and install [Rtools](https://cran.r-project.org/bin/windows/Rtools/). 
 * On Mac, install the [Xcode command line tools](https://developer.apple.com/downloads). 
 * On Linux, install the R development package, usually called **r-devel** or **r-base-dev**.
 2. Install devtools by running `install.packages("devtools")` in R.

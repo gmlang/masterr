@@ -12,7 +12,7 @@ ads: true
 
 ### Updated October 4, 2018
 
-Previously, I showed how to use the `mk_barplot_resp()` function to make [bar charts](http://masterr.org/r/an-easy-way-to-make-ggplot2-plots-ezplot-part1/). 
+Previously, I showed how to use the `mk_barplot_resp()` function to make [bar charts](https://masterr.org/r/an-easy-way-to-make-ggplot2-plots-ezplot-part1/). 
 In this post, I'll show you how to use the `mk_barplot_freq()` function.
 
 Make sure you first install ezplot by running the command `devtools::install_github("gmlang/ezplot")`.

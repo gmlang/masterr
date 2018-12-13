@@ -10,13 +10,13 @@ share: true
 ads: true
 ---
 
-When calculating the [bias and precision](http://masterr.org/da/bias-and-precision/) of a sample estimate to the popluation parameter, because we often don't know the true value of the population parameter and we often only have one sample, we use a procedure called *bootstrap*. The idea is simple:
+When calculating the [bias and precision](https://masterr.org/da/bias-and-precision/) of a sample estimate to the popluation parameter, because we often don't know the true value of the population parameter and we often only have one sample, we use a procedure called *bootstrap*. The idea is simple:
 
 1. treat the sample as the population
 2. understand the sampling scheme, i.e., how the sample was taken from the population
 3. sample the same number of observations with replacement from the sample according to the same sampling scheme
 4. for each of the new samples, calculate its sample statistic. For example, if you're interested in the mean of the population, you just calculate the sample average. If you're interested in the sd of the population, you just calculate the sample sd. 
-5. these sample statistics form a distribution. Take its average and use it as a proxy to the true value of the population parameter. Plug it and the sample statistic of your original sample into [the formulas of bias and precision](http://masterr.org/da/bias-and-precision/).
+5. these sample statistics form a distribution. Take its average and use it as a proxy to the true value of the population parameter. Plug it and the sample statistic of your original sample into [the formulas of bias and precision](https://masterr.org/da/bias-and-precision/).
 
 The following is a concrete example implementing the above bootstrap procedure using R and some stock price data.
 
@@ -25,7 +25,17 @@ Step 1. Download the monthly adjusted closing price data of [VTSMX](https://www.
 {% highlight r %}
 library(zoo)
 library(tseries)
+{% endhighlight %}
 
+
+
+{% highlight text %}
+## Error in library(tseries): there is no package called 'tseries'
+{% endhighlight %}
+
+
+
+{% highlight r %}
 VTSMX = get.hist.quote(instrument="VTSMX", start="2005-09-30", 
                        end="2014-09-30", origin="1970-01-01",
                        quote="AdjClose", provider="yahoo",
@@ -35,62 +45,145 @@ VTSMX = get.hist.quote(instrument="VTSMX", start="2005-09-30",
 
 
 {% highlight text %}
-## time series ends   2014-09-02
+## Error in get.hist.quote(instrument = "VTSMX", start = "2005-09-30", end = "2014-09-30", : could not find function "get.hist.quote"
 {% endhighlight %}
 
 
 
 {% highlight r %}
 index(VTSMX) = as.yearmon(index(VTSMX))
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## Error in index(VTSMX): object 'VTSMX' not found
+{% endhighlight %}
+
+
+
+{% highlight r %}
 colnames(VTSMX) = "VTSMX"
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## Error in colnames(VTSMX) = "VTSMX": object 'VTSMX' not found
+{% endhighlight %}
+
+
+
+{% highlight r %}
 ret.cc = diff(log(VTSMX))
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## Error in diff(log(VTSMX)): object 'VTSMX' not found
+{% endhighlight %}
+
+
+
+{% highlight r %}
 head(ret.cc, 4)
 {% endhighlight %}
 
 
 
 {% highlight text %}
-##                 VTSMX
-## Oct 2005 -0.018813600
-## Nov 2005  0.038941761
-## Dec 2005  0.001354186
-## Jan 2006  0.034401428
+## Error in head(ret.cc, 4): object 'ret.cc' not found
 {% endhighlight %}
 
 Step 2. Calculate the sample average c.c. returns
 
 {% highlight r %}
 muhat.VTSMX = mean(ret.cc)
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## Error in mean(ret.cc): object 'ret.cc' not found
+{% endhighlight %}
+
+
+
+{% highlight r %}
 cat(paste0(round(muhat.VTSMX*100, 2), "%"))
 {% endhighlight %}
 
 
 
 {% highlight text %}
-## 0.63%
+## Error in paste0(round(muhat.VTSMX * 100, 2), "%"): object 'muhat.VTSMX' not found
 {% endhighlight %}
 
 Step 3. Calculate bias and precision of the mean using bootstrap.
 
 {% highlight r %}
 VTSMX = coredata(ret.cc)
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## Error in coredata(ret.cc): object 'ret.cc' not found
+{% endhighlight %}
+
+
+
+{% highlight r %}
 n.samples = 999
 muhat.boot = rep(0, n.samples)
 nobs = length(ret.cc)
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## Error in eval(expr, envir, enclos): object 'ret.cc' not found
+{% endhighlight %}
+
+
+
+{% highlight r %}
 for (i in 1:n.samples) {
         boot.data = sample(VTSMX, nobs, replace=TRUE)
         muhat.boot[i] = mean(boot.data)
 }
+{% endhighlight %}
 
+
+
+{% highlight text %}
+## Error in sample(VTSMX, nobs, replace = TRUE): object 'VTSMX' not found
+{% endhighlight %}
+
+
+
+{% highlight r %}
 # bootstrap bias
 bias = mean(muhat.boot) - muhat.VTSMX
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## Error in eval(expr, envir, enclos): object 'muhat.VTSMX' not found
+{% endhighlight %}
+
+
+
+{% highlight r %}
 cat(paste0(round(bias*100, 2), "%"))
 {% endhighlight %}
 
 
 
 {% highlight text %}
-## 0.02%
+## Error in paste0(round(bias * 100, 2), "%"): object 'bias' not found
 {% endhighlight %}
 
 
@@ -104,7 +197,7 @@ cat(paste0(round(precision*100, 2), "%"))
 
 
 {% highlight text %}
-## 0.45%
+## 0%
 {% endhighlight %}
 
 Step 4. Instead of doing the bootstrap procedure ourselves, we can use the `boot()` function in the `boot` library. For example, we can use the following code to calculate the bootstrap bias and precision for the volatility (standard deviation).
@@ -123,13 +216,24 @@ sd.boot = function(x, idx) {
 
 # pass sd.boot to the boot() function to calculate the bootstrap sd's
 VTSMX.sd.boot = boot(VTSMX, statistic=sd.boot, R=999)
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## Error in NROW(data): object 'VTSMX' not found
+{% endhighlight %}
+
+
+
+{% highlight r %}
 class(VTSMX.sd.boot)
 {% endhighlight %}
 
 
 
 {% highlight text %}
-## [1] "boot"
+## Error in eval(expr, envir, enclos): object 'VTSMX.sd.boot' not found
 {% endhighlight %}
 
 
@@ -141,17 +245,7 @@ VTSMX.sd.boot
 
 
 {% highlight text %}
-## 
-## ORDINARY NONPARAMETRIC BOOTSTRAP
-## 
-## 
-## Call:
-## boot(data = VTSMX, statistic = sd.boot, R = 999)
-## 
-## 
-## Bootstrap Statistics :
-##       original        bias    std. error
-## t1* 0.04646892 -0.0003882149 0.004814115
+## Error in eval(expr, envir, enclos): object 'VTSMX.sd.boot' not found
 {% endhighlight %}
 
 
@@ -160,7 +254,11 @@ VTSMX.sd.boot
 plot(VTSMX.sd.boot)
 {% endhighlight %}
 
-![center](/../figs/2014-10-29-an-example-of-the-bootstrap-method/unnamed-chunk-4-1.png)
+
+
+{% highlight text %}
+## Error in plot(VTSMX.sd.boot): object 'VTSMX.sd.boot' not found
+{% endhighlight %}
 
 Step 5. We can also calculate the bootstrap 95% confidence intervals of the volatility.
 
@@ -172,17 +270,7 @@ boot.ci(VTSMX.sd.boot, conf=0.95, type=c("norm", "perc"))
 
 
 {% highlight text %}
-## BOOTSTRAP CONFIDENCE INTERVAL CALCULATIONS
-## Based on 999 bootstrap replicates
-## 
-## CALL : 
-## boot.ci(boot.out = VTSMX.sd.boot, conf = 0.95, type = c("norm", 
-##     "perc"))
-## 
-## Intervals : 
-## Level      Normal             Percentile     
-## 95%   ( 0.0374,  0.0563 )   ( 0.0372,  0.0561 )  
-## Calculations and Intervals on Original Scale
+## Error in boot.ci(VTSMX.sd.boot, conf = 0.95, type = c("norm", "perc")): object 'VTSMX.sd.boot' not found
 {% endhighlight %}
 
 Step 6. A common measure in risk management is Value at Risk (VaR). We can find the bootstrap 95% confidence intervals of the VaR assuming the initial investment is $100,000.
@@ -197,22 +285,23 @@ VaR.boot = function(x, idx, p=0.05, w=100000) {
 
 # pass VaR.boot to the boot() function to calculate the bootstrap VaRs
 VTSMX.VaR.boot = boot(VTSMX, statistic=VaR.boot, R=999)
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## Error in NROW(data): object 'VTSMX' not found
+{% endhighlight %}
+
+
+
+{% highlight r %}
 boot.ci(VTSMX.VaR.boot, conf=0.95, type=c("norm", "perc"))
 {% endhighlight %}
 
 
 
 {% highlight text %}
-## BOOTSTRAP CONFIDENCE INTERVAL CALCULATIONS
-## Based on 999 bootstrap replicates
-## 
-## CALL : 
-## boot.ci(boot.out = VTSMX.VaR.boot, conf = 0.95, type = c("norm", 
-##     "perc"))
-## 
-## Intervals : 
-## Level      Normal             Percentile     
-## 95%   (-8820, -4898 )   (-8896, -4939 )  
-## Calculations and Intervals on Original Scale
+## Error in boot.ci(VTSMX.VaR.boot, conf = 0.95, type = c("norm", "perc")): object 'VTSMX.VaR.boot' not found
 {% endhighlight %}
 
