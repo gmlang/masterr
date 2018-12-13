@@ -10,7 +10,7 @@ share: true
 ads: true
 ---
 
-R is my favorite tool for data analysis except when it comes to dealing with large datasets. If the data file is larger than the size of your RAM, R will fail at reading it in. So when you have a large dataset, you should first check if you have enough memory. I showed [a method of doing that](http://masterr.org/r/how-to-handle-large-datasets-in-r-part-1/) when all you know is the number of rows and columns in the data file. 
+R is my favorite tool for data analysis except when it comes to dealing with large datasets. If the data file is larger than the size of your RAM, R will fail at reading it in. So when you have a large dataset, you should first check if you have enough memory. I showed [a method of doing that](https://masterr.org/r/how-to-handle-large-datasets-in-r-part-1/) when all you know is the number of rows and columns in the data file. 
 
 Let's say you find out the data file is too large for R to handle, what would you do? You can take a random sample from the data file, read and analyze the sample using R. The following `readbig()` function does that. It reads the input data file in chunks, takes a sample of user specified size, and returns the read-in data as a data frame.
 ```{r, eval=FALSE}
