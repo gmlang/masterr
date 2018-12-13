@@ -70,4 +70,3 @@ NULL %||% NA
 ## [1] NA
 {% endhighlight %}
 
-To learn more, read [the chapter on functions](http://adv-r.had.co.nz/Functions.html) from Hadley's book, Advanced R.

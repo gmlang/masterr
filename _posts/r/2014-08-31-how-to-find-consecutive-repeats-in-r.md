@@ -128,4 +128,3 @@ print(rnums[starts[3]:ends[3]])
 ## [1] 0.5789541 0.6795760 1.1309282 1.0107847 1.9778476
 {% endhighlight %}
 
-To see more examples of how to use `rle()`, read Winston Chang's [post](http://www.cookbook-r.com/Manipulating_data/Finding_sequences_of_identical_values/).

@@ -10,7 +10,7 @@ share: true
 ads: true
 ---
 
-You can use the [XLConnect](http://cran.r-project.org/web/packages/XLConnect/vignettes/XLConnect.pdf) package to read .xls or .xlsx files into R. Suppose you have a file named example.xls in your working directory. You can read the data on sheet1 into R using the following commands.
+You can use the `XLConnect` package to read .xls or .xlsx files into R. Suppose you have a file named example.xls in your working directory. You can read the data on sheet1 into R using the following commands.
 
 
 {% highlight r %}
@@ -26,7 +26,7 @@ library(XLConnect)
 data = readWorksheetFromFile("example.xls", sheet="raw_data")
 {% endhighlight %}
 
-After reading data from excel into R, you often want to [tidy up the data](http://vita.had.co.nz/papers/tidy-data.html). Here're some functions I use frequently for that purpose: 
+After reading an excel file into R, you often want to tidy up the data. Here're some functions I use frequently for that purpose: 
 
 * lapply
 * vapply

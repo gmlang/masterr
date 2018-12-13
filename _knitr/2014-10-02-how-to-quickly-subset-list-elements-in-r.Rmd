@@ -25,4 +25,3 @@ x = list(letters[1:4], 1:5, c(T, F, T, F, F, T))
 lapply(x, `[`, 2)
 ```
 
-To learn more, read [the chapter on functions](http://adv-r.had.co.nz/Functions.html) from Hadley's book, Advanced R.

@@ -10,7 +10,7 @@ share: true
 ads: true
 ---
 
-Previously, I wrote an [article](http://masterr.org/r/how-to-work-with-files-in-r-and-improve-reproducibility/) on how not to use `setwd()`. Today I discovered a side effect of `setwd()` that is really cool and useful. It turns out that when you run `setwd(path)`, not only will it reset the working directory to path, it will also return the working directory before the reset.
+Previously, I wrote an [article](https://masterr.org/r/how-to-work-with-files-in-r-and-improve-reproducibility/) on how not to use `setwd()`. Today I discovered a side effect of `setwd()` that is really cool and useful. It turns out that when you run `setwd(path)`, not only will it reset the working directory to path, it will also return the working directory before the reset.
 ```{r}
 # get the default (current) working directory
 getwd()
@@ -33,7 +33,7 @@ getwd()
 ```
 
 We can use this side effect and `on.exit()`[^1] to write functions that guaranttees to restore the working directory when the function exists. For example, the following function is taken from Hadley's book
-<a href="http://www.amazon.com/gp/product/B00NFODLIQ/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B00NFODLIQ&linkCode=as2&tag=cabaceo-20&linkId=ADGTP76QZMPYXEVL">Advanced R</a><img src="http://ir-na.amazon-adsystem.com/e/ir?t=cabaceo-20&l=as2&o=1&a=B00NFODLIQ" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />.
+<a href="https://www.amazon.com/gp/product/B00NFODLIQ/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B00NFODLIQ&linkCode=as2&tag=cabaceo-20&linkId=ADGTP76QZMPYXEVL">Advanced R</a><img src="https://ir-na.amazon-adsystem.com/e/ir?t=cabaceo-20&l=as2&o=1&a=B00NFODLIQ" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />.
 ```{r}
 in_dir = function(dir, code) {
   old = setwd(dir)

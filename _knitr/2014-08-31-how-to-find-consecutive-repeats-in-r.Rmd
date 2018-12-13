@@ -58,4 +58,3 @@ print(rnums[starts[2]:ends[2]])
 print(rnums[starts[3]:ends[3]])
 ```
 
-To see more examples of how to use `rle()`, read Winston Chang's [post](http://www.cookbook-r.com/Manipulating_data/Finding_sequences_of_identical_values/).
