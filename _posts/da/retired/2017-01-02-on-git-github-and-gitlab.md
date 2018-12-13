@@ -42,14 +42,14 @@ Now, you can [stage, commit, push and pull from SourceTree](https://confluence.a
 ## Ignore files
 You don't want to use git to track everything. You only want to track your code. For example, you don't want to track files like .Rhistory, .Rapp.history and .Rproj.user/*. 
 
-1. [How to create .gitignore file](http://stackoverflow.com/questions/12501324/how-to-use-gitignore-command-in-git)
+1. [How to create .gitignore file](https://stackoverflow.com/questions/12501324/how-to-use-gitignore-command-in-git)
 
 ## Work flow when collaborating on Github
 Let's demo the work flow using the following example. 
 
 1. [Fork my repo](https://github.com/gmlang/test) (Upper right corner fork button)
 2. You'll see the same repo show up under your github account. [Clone it using source tree](https://confluence.atlassian.com/sourcetreekb/clone-a-repository-into-sourcetree-780870050.html).
-3. [Add upstream](http://stackoverflow.com/questions/13273852/how-do-i-update-my-forked-repo-using-sourcetree). This allows you to update your repo based on my updates. Once you add upstream, you can pull the changes I make directly to your local repo.
+3. [Add upstream](https://stackoverflow.com/questions/13273852/how-do-i-update-my-forked-repo-using-sourcetree). This allows you to update your repo based on my updates. Once you add upstream, you can pull the changes I make directly to your local repo.
 4. Make changes to your local copy and commit and push to the repo in your github account.
 5. [Create a pull request](https://yangsu.github.io/pull-request-tutorial/). 
 6. I'll review your pull request and decide if to merge with mine.

@@ -10,7 +10,7 @@ share: true
 ads: true
  
 ---
-When doing data analysis, it's important to work with a [random sample](http://masterr.org/da/sampling/). We can get a random sample by drawing members from the population according to fixed probabilities known to us prior to our draw. Furthermore, If each member is drawn with an equal probability, the resulting sample is called a simple random sample. The concept is clear, but how do we actually do it? In other words, given a population of size $$N$$, how can we generate a simple random sample of size $$n$$ ($$n < N$$) without replacement (meaning the same member cannot appear more than once in the sample)?
+When doing data analysis, it's important to work with a [random sample](https://masterr.org/da/sampling/). We can get a random sample by drawing members from the population according to fixed probabilities known to us prior to our draw. Furthermore, If each member is drawn with an equal probability, the resulting sample is called a simple random sample. The concept is clear, but how do we actually do it? In other words, given a population of size $$N$$, how can we generate a simple random sample of size $$n$$ ($$n < N$$) without replacement (meaning the same member cannot appear more than once in the sample)?
  
 There are two cases:
 
@@ -46,6 +46,5 @@ Here's a python implementation:
     f.close() 
 {% endhighlight %}
 
-Why does Algorithm R work? You can think about it and/or read [Sahil's explanation](http://blogs.msdn.com/b/spt/archive/2008/02/05/reservoir-sampling.aspx), where he also talked about how to distribute reservoir sampling algorithms to multiple nodes.
 
-There're more efficient algorithms than Algorithm R, in particular, Algorithm Z designed by Jeffrey Vitter. You can read the paper [here](http://www.cs.umd.edu/~samir/498/vitter.pdf).
+There're more efficient algorithms than Algorithm R, in particular, Algorithm Z designed by Jeffrey Vitter. You can read the paper [here](https://www.cs.umd.edu/~samir/498/vitter.pdf).
