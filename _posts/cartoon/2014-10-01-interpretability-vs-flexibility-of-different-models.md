@@ -12,4 +12,4 @@ ads: true
 ---
 ![](/images/xkcd-interpretability-vs-flexibility.png)
 
-[inspiration](http://www-bcf.usc.edu/~gareth/ISL/)
+[inspiration](https://www-bcf.usc.edu/~gareth/ISL/)
