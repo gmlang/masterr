@@ -43,4 +43,3 @@ power2(5)
 ## [1] 25
 {% endhighlight %}
 
-You can read [Steve Losh's post](http://stevelosh.com/blog/2013/03/list-out-of-lambda/) for a thorough treatment, where he showed numbers are really made of lists, and lists are really just functions that returns other functions.

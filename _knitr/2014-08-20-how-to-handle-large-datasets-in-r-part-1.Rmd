@@ -19,7 +19,7 @@ Suppose the dataset has 1,500,000 rows and 120 columns, calculate
 = 1,373.29 MB = 1.38 GB
 
 
-Because you also need some extra memory for R to run computations smoothly, you want to multiply this lower bound by 2 or 3 to get the RAM needed. In the above example, it requires at least 2 * 1.38 GB = 2.76 GB RAM. If your computer doesn't have this much memory, you can forget about using the default way to read in the data. Instead, try to break the dataset into smaller chunks and load each chunk into R one at a time. This is the topic of [part 2](http://masterr.org/r/how-to-handle-large-datasets-in-r-part-2/). For now, let's address an easier question. Say your computer has enough memory, how can you reduce the time it takes for R to load in the data? The answer is to first find out the variable types (called classes in R) by loading in only a few hundred or thousand rows, and then pass the variable types to R when loading in the entire data. This way, R doesn't have to go through the entire dataset to detect the variable types, so it will reduce the read-in time. Here's the code. Replace “datatable.txt” with the name of your data file.
+Because you also need some extra memory for R to run computations smoothly, you want to multiply this lower bound by 2 or 3 to get the RAM needed. In the above example, it requires at least 2 * 1.38 GB = 2.76 GB RAM. If your computer doesn't have this much memory, you can forget about using the default way to read in the data. Instead, try to break the dataset into smaller chunks and load each chunk into R one at a time. This is the topic of [part 2](https://masterr.org/r/how-to-handle-large-datasets-in-r-part-2/). For now, let's address an easier question. Say your computer has enough memory, how can you reduce the time it takes for R to load in the data? The answer is to first find out the variable types (called classes in R) by loading in only a few hundred or thousand rows, and then pass the variable types to R when loading in the entire data. This way, R doesn't have to go through the entire dataset to detect the variable types, so it will reduce the read-in time. Here's the code. Replace “datatable.txt” with the name of your data file.
 
 ```{r, eval=FALSE}
 initial = read.table("datatable.txt", nrows=1000)
@@ -30,4 +30,4 @@ tabAll = read.table("datatable.txt", colClasses = classes)
 If your data file doesn't contain commented lines, setting 
 `comment.char = ""` will also reduce the read-in time. 
 
-This article is inspired by Roger Peng's [R Programming course](https://www.coursera.org/learn/r-programming) at coursera. He's also written a [R book](https://leanpub.com/rprogramming), which you can get for $20 or FREE.
+This article is inspired by Roger Peng's [R Programming course](https://www.coursera.org/learn/r-programming) at coursera. 
