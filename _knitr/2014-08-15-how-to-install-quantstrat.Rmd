@@ -10,7 +10,7 @@ share: true
 ads: true
 ---
 
-[quantstrat](http://blog.fosstrading.com/2011/08/introduction-to-quantstrat.html) is a R package. It makes backtesting trading strategies easy. It is still under heavy development and can't be installed from CRAN yet. You can install it from source and the process is straightforward.
+The R package `quantstrat` makes backtesting trading strategies easy. It is still under heavy development and can't be installed from CRAN yet. You can install it from source and the process is straightforward.
 
 Step1. Install these dependencies in R:
 
@@ -27,6 +27,6 @@ install.packages("~/Downloads/blotter_0.8.17.tar", repos = NULL, type="source")
 install.packages("~/Downloads/quantstrat_0.8.0.tar", repos = NULL, type="source")
 ```
 
-[shiny](http://shiny.rstudio.com/) is a tool that allows you to easily make and publish web apps using R. [Here's an app](https://cabaceo.shinyapps.io/quantdp/) I made using Shiny and Quantstrat to backtest a couple of trading strategies on a group of vanguard funds. 
+[Shiny](https://shiny.rstudio.com) is a tool that allows you to easily make and publish web apps using R. Using Shiny and Quantstrat, I made an [app](https://cabaceo.shinyapps.io/quantdp/) to backtest a couple of trading strategies on a group of vanguard funds. 
 
-A client of mine told me about a web service called [Quantopian](https://www.quantopian.com/) that allows you to easily build, test and execute your trading algorithms. I haven't used it yet, but on the first look, it seems they're doing a pretty good job.
+

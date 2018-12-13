@@ -56,4 +56,4 @@ sample(dice, 10, replace=TRUE)
 ##  [1] "4 4" "1 2" "1 1" "6 2" "2 2" "2 1" "3 4" "6 5" "2 2" "1 3"
 {% endhighlight %}
 
-If you want to know how to efficiently take a random sample from a population of unknown or extremely large size, you can read my post on [reservoir sampling](http://gmlang.com/da/reservoir-sampling-and-algorithm-r/).
+If you want to know how to efficiently take a random sample from a population of unknown or extremely large size, you can read my post on [reservoir sampling](https://masterr.org/da/reservoir-sampling-and-algorithm-r/).

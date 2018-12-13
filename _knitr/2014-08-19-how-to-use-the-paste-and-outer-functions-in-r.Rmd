@@ -29,4 +29,4 @@ dice = as.vector(outer(1:6, 1:6, paste))
 sample(dice, 10, replace=TRUE)
 ```
 
-If you want to know how to efficiently take a random sample from a population of unknown or extremely large size, you can read my post on [reservoir sampling](http://gmlang.com/da/reservoir-sampling-and-algorithm-r/).
+If you want to know how to efficiently take a random sample from a population of unknown or extremely large size, you can read my post on [reservoir sampling](https://masterr.org/da/reservoir-sampling-and-algorithm-r/).
