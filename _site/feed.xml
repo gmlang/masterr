@@ -4,7 +4,7 @@
 <generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://localhost:4000/feed.xml" />
 <link rel="alternate" type="text/html" href="http://localhost:4000" />
-<updated>2018-12-18T11:23:32+09:00</updated>
+<updated>2018-12-18T11:27:33+09:00</updated>
 <id>http://localhost:4000/</id>
 <author>
   <name>Guangming Lang</name>
@@ -375,13 +375,13 @@ Let’s call this new environment &lt;script type=&quot;math/tex&quot;&gt;e_1&lt
 &lt;code class=&quot;highlighter-rouge&quot;&gt;x&lt;/code&gt; first in &lt;script type=&quot;math/tex&quot;&gt;e_1&lt;/script&gt; and found its value to be 1. Addition was carried out and
 &lt;code class=&quot;highlighter-rouge&quot;&gt;y&lt;/code&gt; was created in &lt;script type=&quot;math/tex&quot;&gt;e_1&lt;/script&gt; and associated with a value of 2.&lt;/p&gt;
 
-&lt;p&gt;Next, the expression &lt;code class=&quot;highlighter-rouge&quot;&gt;g = function() print(y)&lt;/code&gt; was evaluated in &lt;script type=&quot;math/tex&quot;&gt;e_1&lt;/script&gt;. As a 
+&lt;p&gt;Next, the expression &lt;code class=&quot;highlighter-rouge&quot;&gt;g = function() y&lt;/code&gt; was evaluated in &lt;script type=&quot;math/tex&quot;&gt;e_1&lt;/script&gt;. As a 
 result, &lt;code class=&quot;highlighter-rouge&quot;&gt;g&lt;/code&gt; was created in &lt;script type=&quot;math/tex&quot;&gt;e_1&lt;/script&gt; and associated with a function 
-&lt;code class=&quot;highlighter-rouge&quot;&gt;function() print(y)&lt;/code&gt;.&lt;/p&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;function() y&lt;/code&gt;.&lt;/p&gt;
 
 &lt;p&gt;Finally, the expression &lt;code class=&quot;highlighter-rouge&quot;&gt;g()&lt;/code&gt; was evaluated in &lt;script type=&quot;math/tex&quot;&gt;e_1&lt;/script&gt;. This created another
 new environment with nothing inside. Let’s call it &lt;script type=&quot;math/tex&quot;&gt;e_2&lt;/script&gt;. The body of &lt;code class=&quot;highlighter-rouge&quot;&gt;g&lt;/code&gt; 
-asks to print &lt;code class=&quot;highlighter-rouge&quot;&gt;y&lt;/code&gt;, this made R search for &lt;code class=&quot;highlighter-rouge&quot;&gt;y&lt;/code&gt;, first inside &lt;script type=&quot;math/tex&quot;&gt;e_2&lt;/script&gt; and found 
+asks to return &lt;code class=&quot;highlighter-rouge&quot;&gt;y&lt;/code&gt;, this made R search for &lt;code class=&quot;highlighter-rouge&quot;&gt;y&lt;/code&gt;, first inside &lt;script type=&quot;math/tex&quot;&gt;e_2&lt;/script&gt; and found 
 nothing, and then inside &lt;script type=&quot;math/tex&quot;&gt;e_1&lt;/script&gt; and found a value of 2. Under the 
 hood, R could move to &lt;script type=&quot;math/tex&quot;&gt;e_1&lt;/script&gt; after done with &lt;script type=&quot;math/tex&quot;&gt;e_2&lt;/script&gt; because &lt;script type=&quot;math/tex&quot;&gt;e_2&lt;/script&gt; was 
 pointed to &lt;script type=&quot;math/tex&quot;&gt;e_1&lt;/script&gt; by a pointer. We call &lt;script type=&quot;math/tex&quot;&gt;e_1&lt;/script&gt; is the parent (environment) of 

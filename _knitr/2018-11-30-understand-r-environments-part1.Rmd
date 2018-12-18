@@ -61,13 +61,13 @@ Next, the expression `y = x + 1` was evaluated in $$e_1$$, and R searched for
 `x` first in $$e_1$$ and found its value to be 1. Addition was carried out and
 `y` was created in $$e_1$$ and associated with a value of 2.
 
-Next, the expression `g = function() print(y)` was evaluated in $$e_1$$. As a 
+Next, the expression `g = function() y` was evaluated in $$e_1$$. As a 
 result, `g` was created in $$e_1$$ and associated with a function 
-`function() print(y)`.
+`function() y`.
 
 Finally, the expression `g()` was evaluated in $$e_1$$. This created another
 new environment with nothing inside. Let's call it $$e_2$$. The body of `g` 
-asks to print `y`, this made R search for `y`, first inside $$e_2$$ and found 
+asks to return `y`, this made R search for `y`, first inside $$e_2$$ and found 
 nothing, and then inside $$e_1$$ and found a value of 2. Under the 
 hood, R could move to $$e_1$$ after done with $$e_2$$ because $$e_2$$ was 
 pointed to $$e_1$$ by a pointer. We call $$e_1$$ is the parent (environment) of 

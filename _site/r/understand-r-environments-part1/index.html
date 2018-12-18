@@ -308,13 +308,13 @@ Let’s call this new environment <script type="math/tex">e_1</script>.</p>
 <code class="highlighter-rouge">x</code> first in <script type="math/tex">e_1</script> and found its value to be 1. Addition was carried out and
 <code class="highlighter-rouge">y</code> was created in <script type="math/tex">e_1</script> and associated with a value of 2.</p>
 
-<p>Next, the expression <code class="highlighter-rouge">g = function() print(y)</code> was evaluated in <script type="math/tex">e_1</script>. As a 
+<p>Next, the expression <code class="highlighter-rouge">g = function() y</code> was evaluated in <script type="math/tex">e_1</script>. As a 
 result, <code class="highlighter-rouge">g</code> was created in <script type="math/tex">e_1</script> and associated with a function 
-<code class="highlighter-rouge">function() print(y)</code>.</p>
+<code class="highlighter-rouge">function() y</code>.</p>
 
 <p>Finally, the expression <code class="highlighter-rouge">g()</code> was evaluated in <script type="math/tex">e_1</script>. This created another
 new environment with nothing inside. Let’s call it <script type="math/tex">e_2</script>. The body of <code class="highlighter-rouge">g</code> 
-asks to print <code class="highlighter-rouge">y</code>, this made R search for <code class="highlighter-rouge">y</code>, first inside <script type="math/tex">e_2</script> and found 
+asks to return <code class="highlighter-rouge">y</code>, this made R search for <code class="highlighter-rouge">y</code>, first inside <script type="math/tex">e_2</script> and found 
 nothing, and then inside <script type="math/tex">e_1</script> and found a value of 2. Under the 
 hood, R could move to <script type="math/tex">e_1</script> after done with <script type="math/tex">e_2</script> because <script type="math/tex">e_2</script> was 
 pointed to <script type="math/tex">e_1</script> by a pointer. We call <script type="math/tex">e_1</script> is the parent (environment) of 
