@@ -281,14 +281,14 @@ empty. Let’s put some stuff inside by running the following code block.</p>
 <figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"I'm good"</span><span class="w">
 </span><span class="n">add_one</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">1</span><span class="w">
-        </span><span class="n">g</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">()</span><span class="w"> </span><span class="n">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="w">
+        </span><span class="n">g</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">()</span><span class="w"> </span><span class="n">y</span><span class="w">
         </span><span class="n">g</span><span class="p">()</span><span class="w">
 </span><span class="p">}</span></code></pre></figure>
 
 <p>Look at the Environment panel again and notice the global env now has <code class="highlighter-rouge">y</code> and <code class="highlighter-rouge">add_one</code>. 
 <img src="/images/global-env.png" alt="" /></p>
 
-<p>What happens if I call <code class="highlighter-rouge">add_one(1)</code>? It returns . We see the 
+<p>What happens if I call <code class="highlighter-rouge">add_one(1)</code>? It returns 2. We see the 
 value of <code class="highlighter-rouge">y</code> defined outside of the <code class="highlighter-rouge">add_one</code> function doesn’t affect the 
 value of <code class="highlighter-rouge">y</code> defined inside. But what’s really going on under the hood?</p>
 

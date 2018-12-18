@@ -41,7 +41,7 @@ empty. Let's put some stuff inside by running the following code block.
 y = "I'm good"
 add_one = function(x) {
         y = x + 1
-        g = function() print(y)
+        g = function() y
         g()
 }
 {% endhighlight %}
@@ -49,7 +49,7 @@ add_one = function(x) {
 Look at the Environment panel again and notice the global env now has `y` and `add_one`. 
 ![](/images/global-env.png)
 
-What happens if I call `add_one(1)`? It returns . We see the 
+What happens if I call `add_one(1)`? It returns 2. We see the 
 value of `y` defined outside of the `add_one` function doesn't affect the 
 value of `y` defined inside. But what's really going on under the hood?
 

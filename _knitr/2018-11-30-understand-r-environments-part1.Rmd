@@ -33,7 +33,7 @@ empty. Let's put some stuff inside by running the following code block.
 y = "I'm good"
 add_one = function(x) {
         y = x + 1
-        g = function() print(y)
+        g = function() y
         g()
 }
 ```
