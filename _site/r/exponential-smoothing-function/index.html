@@ -241,25 +241,25 @@
 <p>Here’s a function that implements it in R.</p>
 
 <figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">exp_smooth</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">alpha</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="c1"># Performs exponential smoothing by taking a weighted average of the
-</span><span class="w">        </span><span class="c1"># current and previous data points
-</span><span class="w">        </span><span class="c1">#
-</span><span class="w">        </span><span class="c1"># x     : numeric vector
-</span><span class="w">        </span><span class="c1"># alpha : number between 0 and 1, weight assigned to current data value
-</span><span class="w">        </span><span class="c1">#
-</span><span class="w">        </span><span class="c1"># Returns a numeric vector of the same length as x and values as the 
-</span><span class="w">        </span><span class="c1">#       weighted averages of the (current, previous) consecutive pairs
-</span><span class="w">        </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">numeric</span><span class="p">(</span><span class="nf">length</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="w"> </span><span class="c1"># make s 1 cell longer than x
-</span><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nf">seq_along</span><span class="p">(</span><span class="n">s</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1"># set the initial value of s the same as that of x
-</span><span class="w">                        </span><span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w">
+        </span><span class="c1"># Performs exponential smoothing by taking a weighted average of the</span><span class="w">
+        </span><span class="c1"># current and previous data points</span><span class="w">
+        </span><span class="c1">#</span><span class="w">
+        </span><span class="c1"># x     : numeric vector</span><span class="w">
+        </span><span class="c1"># alpha : number between 0 and 1, weight assigned to current data value</span><span class="w">
+        </span><span class="c1">#</span><span class="w">
+        </span><span class="c1"># Returns a numeric vector of the same length as x and values as the </span><span class="w">
+        </span><span class="c1">#       weighted averages of the (current, previous) consecutive pairs</span><span class="w">
+        </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">numeric</span><span class="p">(</span><span class="nf">length</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="w"> </span><span class="c1"># make s 1 cell longer than x</span><span class="w">
+        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nf">seq_along</span><span class="p">(</span><span class="n">s</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1"># set the initial value of s the same as that of x</span><span class="w">
+                        </span><span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w">
                 </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w">
-                        </span><span class="c1"># weight current value with alpha and previous value 
-</span><span class="w">                        </span><span class="c1"># with 1-alpha, and sum
-</span><span class="w">                        </span><span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">alpha</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="m">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">alpha</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">1</span><span class="p">]</span><span class="w">
+                        </span><span class="c1"># weight current value with alpha and previous value </span><span class="w">
+                        </span><span class="c1"># with 1-alpha, and sum</span><span class="w">
+                        </span><span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">alpha</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="m">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">alpha</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">1</span><span class="p">]</span><span class="w">
                 </span><span class="p">}</span><span class="w">
         </span><span class="p">}</span><span class="w">
-        </span><span class="n">s</span><span class="p">[</span><span class="m">-1</span><span class="p">]</span><span class="w"> </span><span class="c1"># drop the 1st element in s because it's extra
+        </span><span class="n">s</span><span class="p">[</span><span class="m">-1</span><span class="p">]</span><span class="w"> </span><span class="c1"># drop the 1st element in s because it's extra</span><span class="w">
 </span><span class="p">}</span></code></pre></figure>
 
 <p>In practice, people often weight the current value more heavily than the previous value, and this is based on a common sensical hypothesis that when making predictions about the future, the present matters more than the past. The following example uses <code class="highlighter-rouge">alpha=0.8</code> to exponentially smooth a vector of randomly generated numbers from a uniform distribution.</p>
@@ -353,7 +353,7 @@
 <div class="footer-wrapper">
   <footer role="contentinfo" class="entry-wrapper">
     
-<span>&copy; 2018 Guangming Lang. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="https://mademistakes.com/so-simple/" rel="nofollow">So Simple Theme</a>.</span>
+<span>&copy; 2019 Guangming Lang. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="https://mademistakes.com/so-simple/" rel="nofollow">So Simple Theme</a>.</span>
 <div class="social-icons">
 	
 	

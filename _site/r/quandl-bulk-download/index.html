@@ -237,38 +237,38 @@ Make sure you apply for an API Key first.</p>
 
 <figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">library</span><span class="p">(</span><span class="n">Quandl</span><span class="p">)</span><span class="w">
 
-</span><span class="c1"># set api key
+</span><span class="c1"># set api key</span><span class="w">
 </span><span class="n">my_api_key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"your API key"</span><span class="w">
 
-</span><span class="c1"># set path
+</span><span class="c1"># set path</span><span class="w">
 </span><span class="n">data_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"data"</span><span class="w">
-</span><span class="n">fname_rev</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">file.path</span><span class="p">(</span><span class="n">data_path</span><span class="p">,</span><span class="w"> </span><span class="s2">"SF1.zip"</span><span class="p">)</span><span class="w"> </span><span class="c1"># saving data as a zip file
-</span><span class="w">
-</span><span class="c1"># bulk download all data
+</span><span class="n">fname_rev</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">file.path</span><span class="p">(</span><span class="n">data_path</span><span class="p">,</span><span class="w"> </span><span class="s2">"SF1.zip"</span><span class="p">)</span><span class="w"> </span><span class="c1"># saving data as a zip file</span><span class="w">
+
+</span><span class="c1"># bulk download all data</span><span class="w">
 </span><span class="n">Quandl.database.bulk_download_to_file</span><span class="p">(</span><span class="s2">"SF1"</span><span class="p">,</span><span class="w"> </span><span class="n">fname_rev</span><span class="p">)</span><span class="w">
 
-</span><span class="c1"># list all files names inside of a .zip file
+</span><span class="c1"># list all files names inside of a .zip file</span><span class="w">
 </span><span class="n">fname</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">as.character</span><span class="p">(</span><span class="n">unzip</span><span class="p">(</span><span class="n">fname_rev</span><span class="p">,</span><span class="w"> </span><span class="n">list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span><span class="o">$</span><span class="n">Name</span><span class="p">)</span><span class="w">
-</span><span class="c1"># fname happens to be a vector of 1 element. Usually it's a list of names.
-</span><span class="w">
-</span><span class="c1"># read in R
+</span><span class="c1"># fname happens to be a vector of 1 element. Usually it's a list of names.</span><span class="w">
+
+</span><span class="c1"># read in R</span><span class="w">
 </span><span class="n">dat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">read.csv</span><span class="p">(</span><span class="n">unz</span><span class="p">(</span><span class="n">fname_rev</span><span class="p">,</span><span class="w"> </span><span class="n">fname</span><span class="p">),</span><span class="w"> </span><span class="n">nrows</span><span class="o">=</span><span class="m">500</span><span class="p">,</span><span class="w"> </span><span class="n">header</span><span class="o">=</span><span class="nb">F</span><span class="p">,</span><span class="w"> </span><span class="n">stringsAsFactors</span><span class="o">=</span><span class="nb">F</span><span class="p">)</span><span class="w">
 </span><span class="n">dat2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">read.csv</span><span class="p">(</span><span class="n">unz</span><span class="p">(</span><span class="n">fname_rev</span><span class="p">,</span><span class="w"> </span><span class="n">fname</span><span class="p">),</span><span class="w"> </span><span class="n">header</span><span class="o">=</span><span class="nb">F</span><span class="p">,</span><span class="w"> </span><span class="n">stringsAsFactors</span><span class="o">=</span><span class="nb">F</span><span class="p">)</span><span class="w">
 
-</span><span class="c1">## alternatively
-</span><span class="w">
-</span><span class="c1"># download revenue, gross profit, and price to book value - Most Recent Annual (MRY)
+</span><span class="c1">## alternatively</span><span class="w">
+
+</span><span class="c1"># download revenue, gross profit, and price to book value - Most Recent Annual (MRY)</span><span class="w">
 </span><span class="n">df1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Quandl.datatable</span><span class="p">(</span><span class="s2">"SHARADAR/SF1"</span><span class="p">,</span><span class="w"> </span><span class="n">dimension</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"MRY"</span><span class="p">,</span><span class="w"> 
                        </span><span class="n">qopts.columns</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"ticker"</span><span class="p">,</span><span class="w"> </span><span class="s2">"calendardate"</span><span class="p">,</span><span class="w"> </span><span class="s2">"REVENUEUSD"</span><span class="p">,</span><span class="w"> 
                                          </span><span class="s2">"GP"</span><span class="p">,</span><span class="w"> </span><span class="s2">"PB"</span><span class="p">),</span><span class="w"> 
                        </span><span class="n">paginate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">T</span><span class="p">)</span><span class="w">
 
-</span><span class="c1"># download price to sales ratio and price to earnings ratio - Most Recent Trailing Twelve Months (MRT)
+</span><span class="c1"># download price to sales ratio and price to earnings ratio - Most Recent Trailing Twelve Months (MRT)</span><span class="w">
 </span><span class="n">df2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Quandl.datatable</span><span class="p">(</span><span class="s2">"SHARADAR/SF1"</span><span class="p">,</span><span class="w"> </span><span class="n">dimension</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"MRT"</span><span class="p">,</span><span class="w"> </span><span class="n">collapse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"annual"</span><span class="p">,</span><span class="w">
                        </span><span class="n">qopts.columns</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"ticker"</span><span class="p">,</span><span class="w"> </span><span class="s2">"calendardate"</span><span class="p">,</span><span class="w"> </span><span class="s2">"PS1"</span><span class="p">,</span><span class="w"> </span><span class="s2">"PE1"</span><span class="p">),</span><span class="w">
                        </span><span class="n">paginate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">T</span><span class="p">)</span><span class="w"> 
 
-</span><span class="c1"># download data
+</span><span class="c1"># download data</span><span class="w">
 </span><span class="n">df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Quandl.datatable</span><span class="p">(</span><span class="s2">"SHARADAR/SF1"</span><span class="p">,</span><span class="w"> </span><span class="n">dimension</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"MRT"</span><span class="p">,</span><span class="w"> 
                       </span><span class="n">qopts.columns</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"ticker"</span><span class="p">,</span><span class="w"> </span><span class="s2">"datekey"</span><span class="p">,</span><span class="w"> </span><span class="s2">"REVENUEUSD"</span><span class="p">,</span><span class="w"> 
                                         </span><span class="s2">"GP"</span><span class="p">,</span><span class="w"> </span><span class="s2">"PB"</span><span class="p">,</span><span class="w"> </span><span class="s2">"PS1"</span><span class="p">,</span><span class="w"> </span><span class="s2">"PE1"</span><span class="p">,</span><span class="w"> </span><span class="s2">"MARKETCAP"</span><span class="p">),</span><span class="w"> 
@@ -354,7 +354,7 @@ Make sure you apply for an API Key first.</p>
 <div class="footer-wrapper">
   <footer role="contentinfo" class="entry-wrapper">
     
-<span>&copy; 2018 Guangming Lang. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="https://mademistakes.com/so-simple/" rel="nofollow">So Simple Theme</a>.</span>
+<span>&copy; 2019 Guangming Lang. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="https://mademistakes.com/so-simple/" rel="nofollow">So Simple Theme</a>.</span>
 <div class="social-icons">
 	
 	

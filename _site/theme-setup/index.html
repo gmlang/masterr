@@ -254,11 +254,11 @@ bundle exec jekyll serve</code></pre></figure>
 
 <p>Examples:</p>
 
-<figure class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="s">url</span><span class="pi">:</span> <span class="s">http://mmistakes.github.io/so-simple-theme</span>
-<span class="s">url</span><span class="pi">:</span> <span class="s">http://localhost:4000</span>
-<span class="s">url</span><span class="pi">:</span> <span class="s">http://mademistakes.com</span>
-<span class="s">url</span><span class="pi">:</span> <span class="s">//mademistakes.com</span>
-<span class="s">url</span><span class="pi">:</span> </code></pre></figure>
+<figure class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="na">url</span><span class="pi">:</span> <span class="s">http://mmistakes.github.io/so-simple-theme</span>
+<span class="na">url</span><span class="pi">:</span> <span class="s">http://localhost:4000</span>
+<span class="na">url</span><span class="pi">:</span> <span class="s">http://mademistakes.com</span>
+<span class="na">url</span><span class="pi">:</span> <span class="s">//mademistakes.com</span>
+<span class="na">url</span><span class="pi">:</span> </code></pre></figure>
 
 <h4 id="google-analytics-and-webmaster-tools">Google Analytics and Webmaster Tools</h4>
 
@@ -268,11 +268,11 @@ bundle exec jekyll serve</code></pre></figure>
 
 <p>To set what links appear in the top navigation edit <code class="highlighter-rouge">_data/navigation.yml</code>. Use the following format to set the URL and title for as many links as you’d like. <em>External links will open in a new window.</em></p>
 
-<figure class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="pi">-</span> <span class="s">title</span><span class="pi">:</span> <span class="s">Portfolio</span>
-  <span class="s">url</span><span class="pi">:</span> <span class="s">/portfolio/</span>
+<figure class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">Portfolio</span>
+  <span class="na">url</span><span class="pi">:</span> <span class="s">/portfolio/</span>
 
-<span class="pi">-</span> <span class="s">title</span><span class="pi">:</span> <span class="s">Made Mistakes</span>
-  <span class="s">url</span><span class="pi">:</span> <span class="s">http://mademistakes.com</span>  </code></pre></figure>
+<span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">Made Mistakes</span>
+  <span class="na">url</span><span class="pi">:</span> <span class="s">http://mademistakes.com</span>  </code></pre></figure>
 
 <hr />
 
@@ -280,23 +280,23 @@ bundle exec jekyll serve</code></pre></figure>
 
 <p>While completely optional, I’ve included Octopress and some starter templates to automate the creation of new posts and pages. To take advantage of it start by installing the <a href="https://github.com/octopress/octopress">Octopress</a> gem if it isn’t already.</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>gem install octopress --pre</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>gem <span class="nb">install </span>octopress <span class="nt">--pre</span></code></pre></figure>
 
 <h3 id="new-post">New Post</h3>
 
 <p>Default command for creating a new post.</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>octopress new post <span class="s2">"Post Title"</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>octopress new post <span class="s2">"Post Title"</span></code></pre></figure>
 
 <p>Default works great if you want all your posts in one directory, but if you’re like me and want to group them into subfolders like <code class="highlighter-rouge">/posts</code>, <code class="highlighter-rouge">/portfolio</code>, etc. Then this is the command for you. By specifying the DIR it will create a new post in that folder and populate the <code class="highlighter-rouge">categories:</code> YAML with the same value.</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>octopress new post <span class="s2">"New Post Title"</span> --dir posts</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>octopress new post <span class="s2">"New Post Title"</span> <span class="nt">--dir</span> posts</code></pre></figure>
 
 <h3 id="new-page">New Page</h3>
 
 <p>To create a new page use the following command.</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>octopress new page new-page/</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>octopress new page new-page/</code></pre></figure>
 
 <p>This will create a page at <code class="highlighter-rouge">/new-page/index.md</code></p>
 
@@ -326,16 +326,16 @@ bundle exec jekyll serve</code></pre></figure>
 
 <p>The post and page layouts make the assumption that the feature images live in the <code class="highlighter-rouge">images/</code> folder. To add a feature image to a post or page just include the filename in the front matter like so.</p>
 
-<figure class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="s">image</span><span class="pi">:</span>
-  <span class="s">feature</span><span class="pi">:</span> <span class="s">feature-image-filename.jpg</span>
-  <span class="s">thumb</span><span class="pi">:</span> <span class="s">thumbnail-image.jpg</span> <span class="c1">#keep it square 200x200 px is good</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="na">image</span><span class="pi">:</span>
+  <span class="na">feature</span><span class="pi">:</span> <span class="s">feature-image-filename.jpg</span>
+  <span class="na">thumb</span><span class="pi">:</span> <span class="s">thumbnail-image.jpg</span> <span class="c1">#keep it square 200x200 px is good</span></code></pre></figure>
 
 <p>To add attribution to a feature image use the following YAML front matter on posts or pages. Image credits appear directly below the feature image with a link back to the original source if supplied.</p>
 
-<figure class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="s">image</span><span class="pi">:</span>
-  <span class="s">feature</span><span class="pi">:</span> <span class="s">feature-image-filename.jpg</span>
-  <span class="s">credit</span><span class="pi">:</span> <span class="s">Michael Rose</span> <span class="c1">#name of the person or site you want to credit</span>
-  <span class="s">creditlink</span><span class="pi">:</span> <span class="s">http://mademistakes.com</span> <span class="c1">#url to their site or licensing</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="na">image</span><span class="pi">:</span>
+  <span class="na">feature</span><span class="pi">:</span> <span class="s">feature-image-filename.jpg</span>
+  <span class="na">credit</span><span class="pi">:</span> <span class="s">Michael Rose</span> <span class="c1">#name of the person or site you want to credit</span>
+  <span class="na">creditlink</span><span class="pi">:</span> <span class="s">http://mademistakes.com</span> <span class="c1">#url to their site or licensing</span></code></pre></figure>
 
 <h3 id="videos">Videos</h3>
 
@@ -357,28 +357,28 @@ bundle exec jekyll serve</code></pre></figure>
 
 <figure class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="c1"># Authors</span>
 
-<span class="s">billy_rick</span><span class="pi">:</span>
-  <span class="s">name</span><span class="pi">:</span> <span class="s">Billy Rick</span>
-  <span class="s">web</span><span class="pi">:</span> <span class="s">http://thewhip.com</span>
-  <span class="s">email</span><span class="pi">:</span> <span class="s">billy@rick.com</span>
-  <span class="s">bio</span><span class="pi">:</span> <span class="s2">"</span><span class="s">What</span><span class="nv"> </span><span class="s">do</span><span class="nv"> </span><span class="s">you</span><span class="nv"> </span><span class="s">want,</span><span class="nv"> </span><span class="s">jewels?</span><span class="nv"> </span><span class="s">I</span><span class="nv"> </span><span class="s">am</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">very</span><span class="nv"> </span><span class="s">extravagant</span><span class="nv"> </span><span class="s">man."</span>
-  <span class="s">avatar</span><span class="pi">:</span> <span class="s">bio-photo-2.jpg</span>
-  <span class="s">twitter</span><span class="pi">:</span> <span class="s">extravagantman</span>
-  <span class="s">google</span><span class="pi">:</span>
-    <span class="s">plus</span><span class="pi">:</span> <span class="s">+BillyRick</span>
+<span class="na">billy_rick</span><span class="pi">:</span>
+  <span class="na">name</span><span class="pi">:</span> <span class="s">Billy Rick</span>
+  <span class="na">web</span><span class="pi">:</span> <span class="s">http://thewhip.com</span>
+  <span class="na">email</span><span class="pi">:</span> <span class="s">billy@rick.com</span>
+  <span class="na">bio</span><span class="pi">:</span> <span class="s2">"</span><span class="s">What</span><span class="nv"> </span><span class="s">do</span><span class="nv"> </span><span class="s">you</span><span class="nv"> </span><span class="s">want,</span><span class="nv"> </span><span class="s">jewels?</span><span class="nv"> </span><span class="s">I</span><span class="nv"> </span><span class="s">am</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">very</span><span class="nv"> </span><span class="s">extravagant</span><span class="nv"> </span><span class="s">man."</span>
+  <span class="na">avatar</span><span class="pi">:</span> <span class="s">bio-photo-2.jpg</span>
+  <span class="na">twitter</span><span class="pi">:</span> <span class="s">extravagantman</span>
+  <span class="na">google</span><span class="pi">:</span>
+    <span class="na">plus</span><span class="pi">:</span> <span class="s">+BillyRick</span>
 
-<span class="s">cornelius_fiddlebone</span><span class="pi">:</span>
-  <span class="s">name</span><span class="pi">:</span> <span class="s">Cornelius Fiddlebone</span>
-  <span class="s">email</span><span class="pi">:</span> <span class="s">cornelius@thewhip.com</span>
-  <span class="s">bio</span><span class="pi">:</span> <span class="s2">"</span><span class="s">I</span><span class="nv"> </span><span class="s">ordered</span><span class="nv"> </span><span class="s">what?"</span>
-  <span class="s">avatar</span><span class="pi">:</span> <span class="s">bio-photo.jpg</span>
-  <span class="s">twitter</span><span class="pi">:</span> <span class="s">rhymeswithsackit</span>
-  <span class="s">google</span><span class="pi">:</span>
-    <span class="s">plus</span><span class="pi">:</span> <span class="s">+CorneliusFiddlebone</span></code></pre></figure>
+<span class="na">cornelius_fiddlebone</span><span class="pi">:</span>
+  <span class="na">name</span><span class="pi">:</span> <span class="s">Cornelius Fiddlebone</span>
+  <span class="na">email</span><span class="pi">:</span> <span class="s">cornelius@thewhip.com</span>
+  <span class="na">bio</span><span class="pi">:</span> <span class="s2">"</span><span class="s">I</span><span class="nv"> </span><span class="s">ordered</span><span class="nv"> </span><span class="s">what?"</span>
+  <span class="na">avatar</span><span class="pi">:</span> <span class="s">bio-photo.jpg</span>
+  <span class="na">twitter</span><span class="pi">:</span> <span class="s">rhymeswithsackit</span>
+  <span class="na">google</span><span class="pi">:</span>
+    <span class="na">plus</span><span class="pi">:</span> <span class="s">+CorneliusFiddlebone</span></code></pre></figure>
 
 <p>To assign Billy Rick as an author for our post. We’d add the following YAML front matter to a post:</p>
 
-<figure class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="s">author</span><span class="pi">:</span> <span class="s">billy_rick</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="na">author</span><span class="pi">:</span> <span class="s">billy_rick</span></code></pre></figure>
 
 <hr />
 
@@ -386,7 +386,7 @@ bundle exec jekyll serve</code></pre></figure>
 
 <p>To add Facebook, Twitter, and Google+ share links to a post add the following YAML front matter.</p>
 
-<figure class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="s">share</span><span class="pi">:</span> <span class="s">true</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="na">share</span><span class="pi">:</span> <span class="no">true</span></code></pre></figure>
 
 <p>Share links appear below author details in the sidebar.</p>
 
@@ -423,7 +423,7 @@ bundle exec jekyll serve</code></pre></figure>
 
 <p>To modify the site’s JavaScript files I setup a Grunt build script to lint/concatenate/minify all scripts into <code class="highlighter-rouge">scripts.min.js</code>. <a href="http://nodejs.org/">Install Node.js</a>, then <a href="http://gruntjs.com/getting-started">install Grunt</a>, and then finally install the dependencies for the theme contained in <code class="highlighter-rouge">package.json</code>:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">npm install</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">npm <span class="nb">install</span></code></pre></figure>
 
 <p>From the theme’s root, run <code class="highlighter-rouge">grunt</code> to concatenate JavaScript files, and optimize all .jpg, .png, and .svg files in the <code class="highlighter-rouge">images/</code> folder. You can also use <code class="highlighter-rouge">grunt dev</code> in combination with <code class="highlighter-rouge">jekyll build --watch</code> to watch for updates JS files that Grunt will then automatically re-build as you write your code which will in turn auto-generate your Jekyll site when developing locally.</p>
 
@@ -441,10 +441,10 @@ bundle exec jekyll serve</code></pre></figure>
 <div class="footnotes">
   <ol>
     <li id="fn:protocol">
-      <p>If you decide to use a protocol-relative URL know that it will most likely break sitemap.xml that the Jekyll-Sitemap gem creates. If a valid sitemap matters to you I’d suggest <a href="http://davidensinger.com/2013/03/generating-a-sitemap-in-jekyll-without-a-plugin/">creating your own sitemap.xml</a> and apply some Liquid logic to prepend links to posts/pages with <code class="highlighter-rouge">https:</code>.&nbsp;<a href="#fnref:protocol" class="reversefootnote">&#8617;</a></p>
+      <p>If you decide to use a protocol-relative URL know that it will most likely break sitemap.xml that the Jekyll-Sitemap gem creates. If a valid sitemap matters to you I’d suggest <a href="http://davidensinger.com/2013/03/generating-a-sitemap-in-jekyll-without-a-plugin/">creating your own sitemap.xml</a> and apply some Liquid logic to prepend links to posts/pages with <code class="highlighter-rouge">https:</code>. <a href="#fnref:protocol" class="reversefootnote">&#8617;</a></p>
     </li>
     <li id="fn:plugins">
-      <p>If you’re using GitHub Pages to host your site be aware that plugins are disabled. You’ll need to build your site locally and then manually deploy if you want to use this sweet plugin.&nbsp;<a href="#fnref:plugins" class="reversefootnote">&#8617;</a></p>
+      <p>If you’re using GitHub Pages to host your site be aware that plugins are disabled. You’ll need to build your site locally and then manually deploy if you want to use this sweet plugin. <a href="#fnref:plugins" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>
@@ -457,7 +457,7 @@ bundle exec jekyll serve</code></pre></figure>
 <div class="footer-wrapper">
   <footer role="contentinfo" class="entry-wrapper">
     
-<span>&copy; 2018 Guangming Lang. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="https://mademistakes.com/so-simple/" rel="nofollow">So Simple Theme</a>.</span>
+<span>&copy; 2019 Guangming Lang. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="https://mademistakes.com/so-simple/" rel="nofollow">So Simple Theme</a>.</span>
 <div class="social-icons">
 	
 	

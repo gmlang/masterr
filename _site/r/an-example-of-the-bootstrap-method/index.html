@@ -300,7 +300,7 @@
 
 <figure class="highlight"><pre><code class="language-text" data-lang="text">## Error in sample(VTSMX, nobs, replace = TRUE): object 'VTSMX' not found</code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># bootstrap bias
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># bootstrap bias</span><span class="w">
 </span><span class="n">bias</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mean</span><span class="p">(</span><span class="n">muhat.boot</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">muhat.VTSMX</span></code></pre></figure>
 
 <figure class="highlight"><pre><code class="language-text" data-lang="text">## Error in eval(expr, envir, enclos): object 'muhat.VTSMX' not found</code></pre></figure>
@@ -309,7 +309,7 @@
 
 <figure class="highlight"><pre><code class="language-text" data-lang="text">## Error in paste0(round(bias * 100, 2), "%"): object 'bias' not found</code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># bootstrap SE
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># bootstrap SE</span><span class="w">
 </span><span class="n">precision</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sd</span><span class="p">(</span><span class="n">muhat.boot</span><span class="p">)</span><span class="w">
 </span><span class="n">cat</span><span class="p">(</span><span class="n">paste0</span><span class="p">(</span><span class="nf">round</span><span class="p">(</span><span class="n">precision</span><span class="o">*</span><span class="m">100</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">),</span><span class="w"> </span><span class="s2">"%"</span><span class="p">))</span></code></pre></figure>
 
@@ -319,16 +319,16 @@
 
 <figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">library</span><span class="p">(</span><span class="n">boot</span><span class="p">)</span><span class="w">
 
-</span><span class="c1"># define a function to be passed in the boot() function
+</span><span class="c1"># define a function to be passed in the boot() function</span><span class="w">
 </span><span class="n">sd.boot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">idx</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="c1"># x: data to be resampled
-</span><span class="w">        </span><span class="c1"># idx: vector of scrambled indices created by boot() function
-</span><span class="w">        </span><span class="c1">#
-</span><span class="w">        </span><span class="c1"># returns: sd value computed using resampled data
-</span><span class="w">        </span><span class="n">sd</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">idx</span><span class="p">])</span><span class="w">
+        </span><span class="c1"># x: data to be resampled</span><span class="w">
+        </span><span class="c1"># idx: vector of scrambled indices created by boot() function</span><span class="w">
+        </span><span class="c1">#</span><span class="w">
+        </span><span class="c1"># returns: sd value computed using resampled data</span><span class="w">
+        </span><span class="n">sd</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">idx</span><span class="p">])</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span><span class="c1"># pass sd.boot to the boot() function to calculate the bootstrap sd's
+</span><span class="c1"># pass sd.boot to the boot() function to calculate the bootstrap sd's</span><span class="w">
 </span><span class="n">VTSMX.sd.boot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">boot</span><span class="p">(</span><span class="n">VTSMX</span><span class="p">,</span><span class="w"> </span><span class="n">statistic</span><span class="o">=</span><span class="n">sd.boot</span><span class="p">,</span><span class="w"> </span><span class="n">R</span><span class="o">=</span><span class="m">999</span><span class="p">)</span></code></pre></figure>
 
 <figure class="highlight"><pre><code class="language-text" data-lang="text">## Error in NROW(data): object 'VTSMX' not found</code></pre></figure>
@@ -347,21 +347,21 @@
 
 <p>Step 5. We can also calculate the bootstrap 95% confidence intervals of the volatility.</p>
 
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># bootstrap confidence interval
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># bootstrap confidence interval</span><span class="w">
 </span><span class="n">boot.ci</span><span class="p">(</span><span class="n">VTSMX.sd.boot</span><span class="p">,</span><span class="w"> </span><span class="n">conf</span><span class="o">=</span><span class="m">0.95</span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s2">"norm"</span><span class="p">,</span><span class="w"> </span><span class="s2">"perc"</span><span class="p">))</span></code></pre></figure>
 
 <figure class="highlight"><pre><code class="language-text" data-lang="text">## Error in boot.ci(VTSMX.sd.boot, conf = 0.95, type = c("norm", "perc")): object 'VTSMX.sd.boot' not found</code></pre></figure>
 
 <p>Step 6. A common measure in risk management is Value at Risk (VaR). We can find the bootstrap 95% confidence intervals of the VaR assuming the initial investment is $100,000.</p>
 
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># define a function to calculate VaR
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># define a function to calculate VaR</span><span class="w">
 </span><span class="n">VaR.boot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">idx</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="o">=</span><span class="m">0.05</span><span class="p">,</span><span class="w"> </span><span class="n">w</span><span class="o">=</span><span class="m">100000</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="c1"># w: initial investment
-</span><span class="w">        </span><span class="n">q</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mean</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">idx</span><span class="p">])</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">sd</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">idx</span><span class="p">])</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">qnorm</span><span class="p">(</span><span class="n">p</span><span class="p">)</span><span class="w">
+        </span><span class="c1"># w: initial investment</span><span class="w">
+        </span><span class="n">q</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mean</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">idx</span><span class="p">])</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">sd</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">idx</span><span class="p">])</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">qnorm</span><span class="p">(</span><span class="n">p</span><span class="p">)</span><span class="w">
         </span><span class="n">w</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="nf">exp</span><span class="p">(</span><span class="n">q</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span><span class="c1"># pass VaR.boot to the boot() function to calculate the bootstrap VaRs
+</span><span class="c1"># pass VaR.boot to the boot() function to calculate the bootstrap VaRs</span><span class="w">
 </span><span class="n">VTSMX.VaR.boot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">boot</span><span class="p">(</span><span class="n">VTSMX</span><span class="p">,</span><span class="w"> </span><span class="n">statistic</span><span class="o">=</span><span class="n">VaR.boot</span><span class="p">,</span><span class="w"> </span><span class="n">R</span><span class="o">=</span><span class="m">999</span><span class="p">)</span></code></pre></figure>
 
 <figure class="highlight"><pre><code class="language-text" data-lang="text">## Error in NROW(data): object 'VTSMX' not found</code></pre></figure>
@@ -449,7 +449,7 @@
 <div class="footer-wrapper">
   <footer role="contentinfo" class="entry-wrapper">
     
-<span>&copy; 2018 Guangming Lang. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="https://mademistakes.com/so-simple/" rel="nofollow">So Simple Theme</a>.</span>
+<span>&copy; 2019 Guangming Lang. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="https://mademistakes.com/so-simple/" rel="nofollow">So Simple Theme</a>.</span>
 <div class="social-icons">
 	
 	

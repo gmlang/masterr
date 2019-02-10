@@ -294,16 +294,16 @@ C      large 2.9'</span><span class="p">)</span></code></pre></figure>
 
 <h4 id="make-dodged-bar-chart">Make dodged bar chart</h4>
 
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># plot val 
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># plot val </span><span class="w">
 </span><span class="n">plt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mk_barplot_resp</span><span class="p">(</span><span class="n">df2</span><span class="p">)</span><span class="w">
 </span><span class="n">plt</span><span class="p">(</span><span class="s2">"group"</span><span class="p">,</span><span class="w"> </span><span class="s2">"val"</span><span class="p">,</span><span class="w"> </span><span class="n">fillby</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"level"</span><span class="p">)</span><span class="w"> </span></code></pre></figure>
 
 <p><img src="/../figs/2015-04-21-an-easy-way-to-make-ggplot2-plots-ezplot-part1/unnamed-chunk-5-1.png" alt="center" /></p>
 
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># calc pct of val of each level within each group
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># calc pct of val of each level within each group</span><span class="w">
 </span><span class="n">dat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">df2</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="n">group_by</span><span class="p">(</span><span class="n">group</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="n">mutate</span><span class="p">(</span><span class="n">pct</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">val</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="n">val</span><span class="p">))</span><span class="w">
 
-</span><span class="c1"># plot pct
+</span><span class="c1"># plot pct</span><span class="w">
 </span><span class="n">plt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mk_barplot_resp</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span><span class="w">
 </span><span class="n">plt</span><span class="p">(</span><span class="s2">"group"</span><span class="p">,</span><span class="w"> </span><span class="s2">"pct"</span><span class="p">,</span><span class="w"> </span><span class="n">fillby</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"level"</span><span class="p">,</span><span class="w"> </span><span class="n">show_pct</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">T</span><span class="p">)</span></code></pre></figure>
 
@@ -389,7 +389,7 @@ C      large 2.9'</span><span class="p">)</span></code></pre></figure>
 <div class="footer-wrapper">
   <footer role="contentinfo" class="entry-wrapper">
     
-<span>&copy; 2018 Guangming Lang. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="https://mademistakes.com/so-simple/" rel="nofollow">So Simple Theme</a>.</span>
+<span>&copy; 2019 Guangming Lang. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="https://mademistakes.com/so-simple/" rel="nofollow">So Simple Theme</a>.</span>
 <div class="social-icons">
 	
 	

@@ -1,6 +1,15 @@
 [
 	
 		{
+		  "title"      : "R Variables Are Mostly Immutable but Sometimes Mutable",
+		  "category"   : "",
+      "tags"       : "",
+		  "url"        : "http://localhost:4000/r/R-variables-are-mostly-immutable-but-sometimes-mutable/",
+		  "date"       : "2019-02-10 00:00:00 +0900",
+		  "shortdate"  : "February 10, 2019"
+		} ,
+	
+		{
 		  "title"      : "Accurate Calculation of Years between Dates in R",
 		  "category"   : "",
       "tags"       : "",
@@ -626,8 +635,8 @@
 		  "category"   : "",
       "tags"       : "",
 		  "url"        : "http://localhost:4000/cartoon/interpretability-vs-flexibility-of-different-models/",
-		  "date"       : "2014-10-01 14:19:36 -0400",
-		  "shortdate"  : "October 01, 2014"
+		  "date"       : "2014-10-02 03:19:36 +0900",
+		  "shortdate"  : "October 02, 2014"
 		} ,
 	
 		{
@@ -644,8 +653,8 @@
 		  "category"   : "",
       "tags"       : "",
 		  "url"        : "http://localhost:4000/cartoon/correlation-only-measures-linear-relationship/",
-		  "date"       : "2014-09-30 15:22:18 -0400",
-		  "shortdate"  : "September 30, 2014"
+		  "date"       : "2014-10-01 04:22:18 +0900",
+		  "shortdate"  : "October 01, 2014"
 		} ,
 	
 		{
@@ -653,8 +662,8 @@
 		  "category"   : "",
       "tags"       : "",
 		  "url"        : "http://localhost:4000/cartoon/the-unknown-unknowns/",
-		  "date"       : "2014-09-28 15:59:11 -0400",
-		  "shortdate"  : "September 28, 2014"
+		  "date"       : "2014-09-29 04:59:11 +0900",
+		  "shortdate"  : "September 29, 2014"
 		} ,
 	
 		{
@@ -671,8 +680,8 @@
 		  "category"   : "",
       "tags"       : "",
 		  "url"        : "http://localhost:4000/cartoon/the-quest-for-exponential-growth/",
-		  "date"       : "2014-09-26 12:37:18 -0400",
-		  "shortdate"  : "September 26, 2014"
+		  "date"       : "2014-09-27 01:37:18 +0900",
+		  "shortdate"  : "September 27, 2014"
 		} ,
 	
 		{
@@ -716,8 +725,8 @@
 		  "category"   : "",
       "tags"       : "",
 		  "url"        : "http://localhost:4000/cartoon/honest-arrogance-or-hypocritical-humility/",
-		  "date"       : "2014-09-19 13:45:02 -0400",
-		  "shortdate"  : "September 19, 2014"
+		  "date"       : "2014-09-20 02:45:02 +0900",
+		  "shortdate"  : "September 20, 2014"
 		} ,
 	
 		{

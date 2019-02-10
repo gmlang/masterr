@@ -233,11 +233,11 @@
 
 <figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">arg_func</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">func</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="k">function</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">f</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="c1"># x: a numeric vector
-</span><span class="w">                </span><span class="c1"># f: a function
-</span><span class="w">                </span><span class="n">fvals</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">vapply</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="n">numeric</span><span class="p">(</span><span class="m">1</span><span class="p">))</span><span class="w">
-                </span><span class="n">x</span><span class="p">[</span><span class="n">fvals</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">func</span><span class="p">(</span><span class="n">fvals</span><span class="p">)]</span><span class="w"> </span><span class="c1"># notice how func is used
-</span><span class="w">        </span><span class="p">}</span><span class="w">
+                </span><span class="c1"># x: a numeric vector</span><span class="w">
+                </span><span class="c1"># f: a function</span><span class="w">
+                </span><span class="n">fvals</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">vapply</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="n">numeric</span><span class="p">(</span><span class="m">1</span><span class="p">))</span><span class="w">
+                </span><span class="n">x</span><span class="p">[</span><span class="n">fvals</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">func</span><span class="p">(</span><span class="n">fvals</span><span class="p">)]</span><span class="w"> </span><span class="c1"># notice how func is used</span><span class="w">
+        </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span></code></pre></figure>
 
 <p>It uses a function as input (<code class="highlighter-rouge">func</code>) and outputs another function (<code class="highlighter-rouge">function(x, f)</code>). Notice the output function has two parameters: one is a numeric vector and the other is yet another function!</p>
@@ -269,7 +269,7 @@
 
 <p>Similarly, we can implement <code class="highlighter-rouge">arg_mean()</code> and <code class="highlighter-rouge">arg_median()</code>.</p>
 
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># arg_mean()
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># arg_mean()</span><span class="w">
 </span><span class="n">arg_mean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">arg_func</span><span class="p">(</span><span class="n">mean</span><span class="p">)</span><span class="w">
 </span><span class="n">arg_mean</span><span class="p">(</span><span class="m">-10</span><span class="o">:</span><span class="m">5</span><span class="p">,</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">^</span><span class="w"> </span><span class="m">2</span><span class="p">)</span></code></pre></figure>
 
@@ -279,7 +279,7 @@
 
 <figure class="highlight"><pre><code class="language-text" data-lang="text">## integer(0)</code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># arg_median()
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># arg_median()</span><span class="w">
 </span><span class="n">arg_median</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">arg_func</span><span class="p">(</span><span class="n">median</span><span class="p">)</span><span class="w">
 </span><span class="n">arg_median</span><span class="p">(</span><span class="m">-10</span><span class="o">:</span><span class="m">5</span><span class="p">,</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">^</span><span class="w"> </span><span class="m">2</span><span class="p">)</span></code></pre></figure>
 
@@ -369,7 +369,7 @@
 <div class="footer-wrapper">
   <footer role="contentinfo" class="entry-wrapper">
     
-<span>&copy; 2018 Guangming Lang. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="https://mademistakes.com/so-simple/" rel="nofollow">So Simple Theme</a>.</span>
+<span>&copy; 2019 Guangming Lang. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="https://mademistakes.com/so-simple/" rel="nofollow">So Simple Theme</a>.</span>
 <div class="social-icons">
 	
 	

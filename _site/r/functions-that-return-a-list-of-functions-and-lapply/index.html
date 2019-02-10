@@ -248,18 +248,18 @@
 <p>Suppose we want to calculate the min, max, mean, median, standard deviation, median absolute deviation, and interquartile range for each column, how can we do it? By the way, the base R has functions that allow us to calculate each of these summary statistics. For example, to compute the median absolute deviation, we can use <code class="highlighter-rouge">mad()</code>; to compute the interquartile range, we can use <code class="highlighter-rouge">IQR()</code>. So we can apply each of these summary statistics functions to each of the columns. This is a solution, however, it’s not elegant. What if the data has 100 or 1000 columns, and what if we have to calculate 70 summary statistics instead of 7 of them? I certainly don’t want to do that much typing, especially when most of the typing would be repetitive. We need a better solution, a more elegant solution that can scale. Here enters the idea of functions that return a list of functions. What do I mean? Take a look at the following function, <code class="highlighter-rouge">summ_stats()</code>. Notice how I used <code class="highlighter-rouge">lapply()</code> to loop through each summary statistics function and apply it to the data <code class="highlighter-rouge">x</code>.</p>
 
 <figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">summ_stats</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="c1"># Calculate summary statistics of a numeric vector.
-</span><span class="w">        </span><span class="c1">#
-</span><span class="w">        </span><span class="c1"># Args:
-</span><span class="w">        </span><span class="c1">#       x: a numeric vector
-</span><span class="w">        </span><span class="c1"># Returns:
-</span><span class="w">        </span><span class="c1">#       a list of summary statistics functions with x as input
-</span><span class="w">        
-        </span><span class="c1"># collect a bunch of functions for calculating summary stats into a vector
-</span><span class="w">        </span><span class="n">funs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="n">min</span><span class="p">,</span><span class="w"> </span><span class="n">max</span><span class="p">,</span><span class="w"> </span><span class="n">mean</span><span class="p">,</span><span class="w"> </span><span class="n">median</span><span class="p">,</span><span class="w"> </span><span class="n">sd</span><span class="p">,</span><span class="w"> </span><span class="n">mad</span><span class="p">,</span><span class="w"> </span><span class="n">IQR</span><span class="p">)</span><span class="w">
+        </span><span class="c1"># Calculate summary statistics of a numeric vector.</span><span class="w">
+        </span><span class="c1">#</span><span class="w">
+        </span><span class="c1"># Args:</span><span class="w">
+        </span><span class="c1">#       x: a numeric vector</span><span class="w">
+        </span><span class="c1"># Returns:</span><span class="w">
+        </span><span class="c1">#       a list of summary statistics functions with x as input</span><span class="w">
         
-        </span><span class="c1"># feed x to each function and collect the resulting functions into a list
-</span><span class="w">        </span><span class="n">lapply</span><span class="p">(</span><span class="n">funs</span><span class="p">,</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">f</span><span class="p">)</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">na.rm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">))</span><span class="w">
+        </span><span class="c1"># collect a bunch of functions for calculating summary stats into a vector</span><span class="w">
+        </span><span class="n">funs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="n">min</span><span class="p">,</span><span class="w"> </span><span class="n">max</span><span class="p">,</span><span class="w"> </span><span class="n">mean</span><span class="p">,</span><span class="w"> </span><span class="n">median</span><span class="p">,</span><span class="w"> </span><span class="n">sd</span><span class="p">,</span><span class="w"> </span><span class="n">mad</span><span class="p">,</span><span class="w"> </span><span class="n">IQR</span><span class="p">)</span><span class="w">
+        
+        </span><span class="c1"># feed x to each function and collect the resulting functions into a list</span><span class="w">
+        </span><span class="n">lapply</span><span class="p">(</span><span class="n">funs</span><span class="p">,</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">f</span><span class="p">)</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">na.rm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">))</span><span class="w">
 </span><span class="p">}</span></code></pre></figure>
 
 <p>Now, we just need to sapply <code class="highlighter-rouge">summ_stats()</code> to each column of the data frame. I’d like to point out a couple of things. First, <code class="highlighter-rouge">sapply()</code> is simplified <code class="highlighter-rouge">lapply()</code>, and it’s just <code class="highlighter-rouge">lapply()</code> with output beautified. In our case, because our input is a data frame, it automatically beautifies the output in a matrix format. Second, a data frame is really just a list with its columns as the list elements, therefore, we can <code class="highlighter-rouge">sapply()</code> the data frame <code class="highlighter-rouge">df</code>, and when we do this, the function <code class="highlighter-rouge">summ_stats()</code> is applied to each of the columns of <code class="highlighter-rouge">df</code>.</p>
@@ -358,7 +358,7 @@
 <div class="footer-wrapper">
   <footer role="contentinfo" class="entry-wrapper">
     
-<span>&copy; 2018 Guangming Lang. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="https://mademistakes.com/so-simple/" rel="nofollow">So Simple Theme</a>.</span>
+<span>&copy; 2019 Guangming Lang. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="https://mademistakes.com/so-simple/" rel="nofollow">So Simple Theme</a>.</span>
 <div class="social-icons">
 	
 	

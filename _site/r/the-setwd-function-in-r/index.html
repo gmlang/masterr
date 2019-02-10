@@ -231,29 +231,29 @@
       <div class="entry-content">
         <p>Previously, I wrote an <a href="https://masterr.org/r/how-to-work-with-files-in-r-and-improve-reproducibility/">article</a> on how not to use <code class="highlighter-rouge">setwd()</code>. Today I discovered a side effect of <code class="highlighter-rouge">setwd()</code> that is really cool and useful. It turns out that when you run <code class="highlighter-rouge">setwd(path)</code>, not only will it reset the working directory to path, it will also return the working directory before the reset.</p>
 
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># get the default (current) working directory
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># get the default (current) working directory</span><span class="w">
 </span><span class="n">getwd</span><span class="p">()</span></code></pre></figure>
 
 <figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "/Users/gmlang/Communities/masterr/_knitr"</code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># store it
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># store it</span><span class="w">
 </span><span class="n">home.path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getwd</span><span class="p">()</span><span class="w">
 
-</span><span class="c1"># create a subfolder called Projects
+</span><span class="c1"># create a subfolder called Projects</span><span class="w">
 </span><span class="n">dir.create</span><span class="p">(</span><span class="n">file.path</span><span class="p">(</span><span class="n">home.path</span><span class="p">,</span><span class="w"> </span><span class="s2">"Projects"</span><span class="p">),</span><span class="w"> </span><span class="n">showWarnings</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span><span class="w">
 
-</span><span class="c1"># reset the Projects folder as the working directory and store the previous working directory in a variable called old  
+</span><span class="c1"># reset the Projects folder as the working directory and store the previous working directory in a variable called old  </span><span class="w">
 </span><span class="n">old</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">setwd</span><span class="p">(</span><span class="n">file.path</span><span class="p">(</span><span class="n">home.path</span><span class="p">,</span><span class="w"> </span><span class="s2">"Projects"</span><span class="p">))</span><span class="w">
 </span><span class="n">print</span><span class="p">(</span><span class="n">old</span><span class="p">)</span></code></pre></figure>
 
 <figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "/Users/gmlang/Communities/masterr/_knitr"</code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># check old and home.path are the same
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># check old and home.path are the same</span><span class="w">
 </span><span class="n">old</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">home.path</span></code></pre></figure>
 
 <figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] TRUE</code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># get the current working directory (this is after the reset)
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># get the current working directory (this is after the reset)</span><span class="w">
 </span><span class="n">getwd</span><span class="p">()</span></code></pre></figure>
 
 <figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "/Users/gmlang/Communities/masterr/_knitr/Projects"</code></pre></figure>
@@ -281,7 +281,7 @@
 <div class="footnotes">
   <ol>
     <li id="fn:1">
-      <p>The code in <code class="highlighter-rouge">on.exit()</code> is run regardless of whether the function does an early return, throws an error, or simply reaches the end of the function body.&nbsp;<a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+      <p>The code in <code class="highlighter-rouge">on.exit()</code> is run regardless of whether the function does an early return, throws an error, or simply reaches the end of the function body. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>
@@ -364,7 +364,7 @@
 <div class="footer-wrapper">
   <footer role="contentinfo" class="entry-wrapper">
     
-<span>&copy; 2018 Guangming Lang. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="https://mademistakes.com/so-simple/" rel="nofollow">So Simple Theme</a>.</span>
+<span>&copy; 2019 Guangming Lang. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="https://mademistakes.com/so-simple/" rel="nofollow">So Simple Theme</a>.</span>
 <div class="social-icons">
 	
 	

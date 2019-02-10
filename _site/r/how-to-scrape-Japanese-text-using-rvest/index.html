@@ -244,12 +244,12 @@ the encoding. I think under the hood, it guesses the encoding.</p>
 </span><span class="n">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"https://www3.boj.or.jp/market/jp/stat/of141205.htm"</span><span class="w">
 </span><span class="n">page</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">read_html</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="w">
 
-</span><span class="c1"># extract title
+</span><span class="c1"># extract title</span><span class="w">
 </span><span class="n">page</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="n">html_nodes</span><span class="p">(</span><span class="s1">'title'</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="n">html_text</span><span class="p">()</span></code></pre></figure>
 
 <figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "オファー (12月5日＜金＞)"</code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># extract 2nd table
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># extract 2nd table</span><span class="w">
 </span><span class="n">page</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="n">html_nodes</span><span class="p">(</span><span class="s1">'table'</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="n">.</span><span class="p">[[</span><span class="m">2</span><span class="p">]]</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="n">html_table</span><span class="p">()</span></code></pre></figure>
 
 <figure class="highlight"><pre><code class="language-text" data-lang="text">##                                       X1    X2            X3 X4 X5
@@ -337,7 +337,7 @@ the encoding. I think under the hood, it guesses the encoding.</p>
 <div class="footer-wrapper">
   <footer role="contentinfo" class="entry-wrapper">
     
-<span>&copy; 2018 Guangming Lang. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="https://mademistakes.com/so-simple/" rel="nofollow">So Simple Theme</a>.</span>
+<span>&copy; 2019 Guangming Lang. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="https://mademistakes.com/so-simple/" rel="nofollow">So Simple Theme</a>.</span>
 <div class="social-icons">
 	
 	

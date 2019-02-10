@@ -231,24 +231,24 @@
       <div class="entry-content">
         <p>Previously, I wrote about the <a href="https://masterr.org/da/skewness-and-kurtosis/">intuitions behind skewness and kurtosis</a>. Today I’m going to do some calculations using the daily adjusted close prices of the S&amp;P500 and NovaGold between January 4, 2007 and October 10, 2014. You can download the data from yahoo and follow along. First of all, I defined some helper functions, which can also be used in other contexts to improve code organization and efficiency.</p>
 
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1">## helper functions
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1">## helper functions</span><span class="w">
 </span><span class="n">as_date</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">...</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> 
-        </span><span class="c1"># Converts numeric or character vectors to dates
-</span><span class="w">        </span><span class="c1"># 
-</span><span class="w">        </span><span class="c1"># Args:
-</span><span class="w">        </span><span class="c1">#       x   : a numeric or character vector
-</span><span class="w">        </span><span class="c1">#       ... : other arguments like format = "%Y%m%d"
-</span><span class="w">        </span><span class="c1"># Returns:
-</span><span class="w">        </span><span class="c1">#       a vector of dates
-</span><span class="w">        </span><span class="n">dts.char</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">unique</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w">
+        </span><span class="c1"># Converts numeric or character vectors to dates</span><span class="w">
+        </span><span class="c1"># </span><span class="w">
+        </span><span class="c1"># Args:</span><span class="w">
+        </span><span class="c1">#       x   : a numeric or character vector</span><span class="w">
+        </span><span class="c1">#       ... : other arguments like format = "%Y%m%d"</span><span class="w">
+        </span><span class="c1"># Returns:</span><span class="w">
+        </span><span class="c1">#       a vector of dates</span><span class="w">
+        </span><span class="n">dts.char</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">unique</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w">
         </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nf">is.numeric</span><span class="p">(</span><span class="n">dts.char</span><span class="p">))</span><span class="w"> </span><span class="n">dts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">as.Date</span><span class="p">(</span><span class="nf">as.character</span><span class="p">(</span><span class="n">dts.char</span><span class="p">),</span><span class="w"> </span><span class="n">...</span><span class="p">)</span><span class="w">
         </span><span class="k">else</span><span class="w"> </span><span class="n">dts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">as.Date</span><span class="p">(</span><span class="n">dts.char</span><span class="p">,</span><span class="w"> </span><span class="n">...</span><span class="p">)</span><span class="w">
         
-        </span><span class="c1"># match returns a vector of positions of first matches of elts of x in 
-</span><span class="w">        </span><span class="c1"># dts.char, and because dts.char is unique, match here really finds, 
-</span><span class="w">        </span><span class="c1"># for any element in x, the index of the element in dts.char that 
-</span><span class="w">        </span><span class="c1"># matches it.
-</span><span class="w">        </span><span class="n">dts</span><span class="p">[</span><span class="n">match</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">dts.char</span><span class="p">)]</span><span class="w"> 
+        </span><span class="c1"># match returns a vector of positions of first matches of elts of x in </span><span class="w">
+        </span><span class="c1"># dts.char, and because dts.char is unique, match here really finds, </span><span class="w">
+        </span><span class="c1"># for any element in x, the index of the element in dts.char that </span><span class="w">
+        </span><span class="c1"># matches it.</span><span class="w">
+        </span><span class="n">dts</span><span class="p">[</span><span class="n">match</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">dts.char</span><span class="p">)]</span><span class="w"> 
 </span><span class="p">}</span><span class="w">
 
 </span><span class="n">calc_cc_ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -280,13 +280,13 @@
 </span><span class="n">ng</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">read.csv</span><span class="p">(</span><span class="n">ng_path</span><span class="p">,</span><span class="w"> </span><span class="n">header</span><span class="o">=</span><span class="nb">T</span><span class="p">,</span><span class="w"> </span><span class="n">stringsAsFactors</span><span class="o">=</span><span class="nb">F</span><span class="p">)</span><span class="w">
 </span><span class="n">sp500</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">read.csv</span><span class="p">(</span><span class="n">sp500_path</span><span class="p">,</span><span class="w"> </span><span class="n">header</span><span class="o">=</span><span class="nb">T</span><span class="p">,</span><span class="w"> </span><span class="n">stringsAsFactors</span><span class="o">=</span><span class="nb">F</span><span class="p">)</span><span class="w">
 
-</span><span class="c1"># calculate continuously compounded returns
+</span><span class="c1"># calculate continuously compounded returns</span><span class="w">
 </span><span class="n">ng</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">calc_cc_ret</span><span class="p">(</span><span class="n">ng</span><span class="p">)</span><span class="w">
 </span><span class="n">sp500</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">calc_cc_ret</span><span class="p">(</span><span class="n">sp500</span><span class="p">)</span></code></pre></figure>
 
 <p>Next, I calculated the 4 shape characteristics of these daily returns for each stock.</p>
 
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># calcuate shape characteristics
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># calcuate shape characteristics</span><span class="w">
 </span><span class="p">(</span><span class="n">ng.shape</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">calc_shape_char</span><span class="p">(</span><span class="n">ng</span><span class="o">$</span><span class="n">rt</span><span class="p">))</span></code></pre></figure>
 
 <figure class="highlight"><pre><code class="language-text" data-lang="text">## Error in library(PerformanceAnalytics): there is no package called 'PerformanceAnalytics'</code></pre></figure>
@@ -325,7 +325,7 @@
 
 <figure class="highlight"><pre><code class="language-text" data-lang="text">## Error in eval(lhs, parent, parent): object 'ret.sp500' not found</code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># plot
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># plot</span><span class="w">
 </span><span class="n">plt_density</span><span class="p">(</span><span class="n">ret.ng</span><span class="p">)</span></code></pre></figure>
 
 <figure class="highlight"><pre><code class="language-text" data-lang="text">## Error in ggplot(df, aes(x = ret, color = label)): object 'ret.ng' not found</code></pre></figure>
@@ -414,7 +414,7 @@
 <div class="footer-wrapper">
   <footer role="contentinfo" class="entry-wrapper">
     
-<span>&copy; 2018 Guangming Lang. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="https://mademistakes.com/so-simple/" rel="nofollow">So Simple Theme</a>.</span>
+<span>&copy; 2019 Guangming Lang. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="https://mademistakes.com/so-simple/" rel="nofollow">So Simple Theme</a>.</span>
 <div class="social-icons">
 	
 	

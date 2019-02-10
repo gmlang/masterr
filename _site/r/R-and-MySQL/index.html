@@ -237,45 +237,45 @@ that shows you how to query data from a MySQL database and insert data back.</p>
 
 <figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">library</span><span class="p">(</span><span class="n">RMySQL</span><span class="p">)</span><span class="w">
 
-</span><span class="c1"># loads the MySQL driver
+</span><span class="c1"># loads the MySQL driver</span><span class="w">
 </span><span class="n">drv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dbDriver</span><span class="p">(</span><span class="s2">"MySQL"</span><span class="p">)</span><span class="w"> 
 
-</span><span class="c1"># create a connection to the database
+</span><span class="c1"># create a connection to the database</span><span class="w">
 </span><span class="n">con</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dbConnect</span><span class="p">(</span><span class="n">drv</span><span class="p">,</span><span class="w"> </span><span class="n">dbname</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"your database name"</span><span class="p">,</span><span class="w"> 
                 </span><span class="n">host</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"where your DB is hosted"</span><span class="p">,</span><span class="w"> 
-                </span><span class="n">port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">5432</span><span class="p">,</span><span class="w"> </span><span class="c1"># number, change to your port
-</span><span class="w">                </span><span class="n">user</span><span class="o">=</span><span class="s2">"your username"</span><span class="p">,</span><span class="w"> </span><span class="n">password</span><span class="o">=</span><span class="s2">"your password"</span><span class="p">)</span><span class="w">
+                </span><span class="n">port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">5432</span><span class="p">,</span><span class="w"> </span><span class="c1"># number, change to your port</span><span class="w">
+                </span><span class="n">user</span><span class="o">=</span><span class="s2">"your username"</span><span class="p">,</span><span class="w"> </span><span class="n">password</span><span class="o">=</span><span class="s2">"your password"</span><span class="p">)</span><span class="w">
 
-</span><span class="c1"># list all tables in the database
+</span><span class="c1"># list all tables in the database</span><span class="w">
 </span><span class="n">dbListTables</span><span class="p">(</span><span class="n">con</span><span class="p">)</span><span class="w">
 
-</span><span class="c1"># list all fileds in a particular table
+</span><span class="c1"># list all fileds in a particular table</span><span class="w">
 </span><span class="n">dbListFields</span><span class="p">(</span><span class="n">con</span><span class="p">,</span><span class="w"> </span><span class="s2">"table"</span><span class="p">)</span><span class="w">
 
-</span><span class="c1"># remove a table
+</span><span class="c1"># remove a table</span><span class="w">
 </span><span class="n">dbRemoveTable</span><span class="p">(</span><span class="n">con</span><span class="p">,</span><span class="w"> </span><span class="s2">"table"</span><span class="p">)</span><span class="w">
 
-</span><span class="c1"># delete all rows from a table
+</span><span class="c1"># delete all rows from a table</span><span class="w">
 </span><span class="n">dbGetQuery</span><span class="p">(</span><span class="n">con</span><span class="p">,</span><span class="w"> </span><span class="s2">"DELETE FROM table"</span><span class="p">)</span><span class="w">
 
-</span><span class="c1"># fetch all records and fields from a table
+</span><span class="c1"># fetch all records and fields from a table</span><span class="w">
 </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dbSendQuery</span><span class="p">(</span><span class="n">con</span><span class="p">,</span><span class="w"> </span><span class="s2">"SELECT * FROM table"</span><span class="p">)</span><span class="w">
-</span><span class="n">df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dbFetch</span><span class="p">(</span><span class="n">res</span><span class="p">)</span><span class="w"> </span><span class="c1"># returns a data frame
-</span><span class="n">dbClearResult</span><span class="p">(</span><span class="n">res</span><span class="p">)</span><span class="w"> </span><span class="c1"># frees all resources associated with a result set
-</span><span class="w">
-</span><span class="c1"># create a table 'mydata' of 2 fields: name and number of type text and double respectively
+</span><span class="n">df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dbFetch</span><span class="p">(</span><span class="n">res</span><span class="p">)</span><span class="w"> </span><span class="c1"># returns a data frame</span><span class="w">
+</span><span class="n">dbClearResult</span><span class="p">(</span><span class="n">res</span><span class="p">)</span><span class="w"> </span><span class="c1"># frees all resources associated with a result set</span><span class="w">
+
+</span><span class="c1"># create a table 'mydata' of 2 fields: name and number of type text and double respectively</span><span class="w">
 </span><span class="n">dbGetQuery</span><span class="p">(</span><span class="n">con</span><span class="p">,</span><span class="w"> </span><span class="s2">"CREATE TABLE mydata (name text, number double)"</span><span class="p">)</span><span class="w">  
 
-</span><span class="c1"># insert a row of data into the table mydata
+</span><span class="c1"># insert a row of data into the table mydata</span><span class="w">
 </span><span class="n">dbGetQuery</span><span class="p">(</span><span class="n">con</span><span class="p">,</span><span class="w"> </span><span class="s2">"INSERT INTO mydata VALUES('fred',7)"</span><span class="p">)</span><span class="w"> 
 
-</span><span class="c1"># you can also change the order of the fields when inserting 
+</span><span class="c1"># you can also change the order of the fields when inserting </span><span class="w">
 </span><span class="n">dbGetQuery</span><span class="p">(</span><span class="n">con</span><span class="p">,</span><span class="w"> </span><span class="s2">"INSERT INTO mydata (number, name) VALUES(7,'fred')"</span><span class="p">)</span><span class="w">
 
-</span><span class="c1"># you can also add multiple records at one time
+</span><span class="c1"># you can also add multiple records at one time</span><span class="w">
 </span><span class="n">dbGetQuery</span><span class="p">(</span><span class="n">con</span><span class="p">,</span><span class="w"> </span><span class="s2">"INSERT INTO mydata VALUES('tim',12),('sue',9)"</span><span class="p">)</span><span class="w">
 
-</span><span class="c1"># close the connection and unload the driver
+</span><span class="c1"># close the connection and unload the driver</span><span class="w">
 </span><span class="n">dbDisconnect</span><span class="p">(</span><span class="n">con</span><span class="p">)</span><span class="w">
 </span><span class="n">dbUnloadDriver</span><span class="p">(</span><span class="n">drv</span><span class="p">)</span></code></pre></figure>
 
@@ -358,7 +358,7 @@ that shows you how to query data from a MySQL database and insert data back.</p>
 <div class="footer-wrapper">
   <footer role="contentinfo" class="entry-wrapper">
     
-<span>&copy; 2018 Guangming Lang. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="https://mademistakes.com/so-simple/" rel="nofollow">So Simple Theme</a>.</span>
+<span>&copy; 2019 Guangming Lang. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="https://mademistakes.com/so-simple/" rel="nofollow">So Simple Theme</a>.</span>
 <div class="social-icons">
 	
 	

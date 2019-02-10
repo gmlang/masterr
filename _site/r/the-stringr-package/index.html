@@ -234,25 +234,25 @@
 <figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">library</span><span class="p">(</span><span class="n">stringr</span><span class="p">)</span><span class="w">
 </span><span class="n">gmlang</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"\t Guangming Lang \n"</span><span class="w">
 
-</span><span class="c1"># trim whitespace on both sides
+</span><span class="c1"># trim whitespace on both sides</span><span class="w">
 </span><span class="n">str_trim</span><span class="p">(</span><span class="n">gmlang</span><span class="p">)</span></code></pre></figure>
 
 <figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "Guangming Lang"</code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># trim whitespace on the left side
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># trim whitespace on the left side</span><span class="w">
 </span><span class="n">str_trim</span><span class="p">(</span><span class="n">gmlang</span><span class="p">,</span><span class="w"> </span><span class="n">side</span><span class="o">=</span><span class="s2">"left"</span><span class="p">)</span></code></pre></figure>
 
 <figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "Guangming Lang \n"</code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># trim whitespace on the right side
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># trim whitespace on the right side</span><span class="w">
 </span><span class="n">str_trim</span><span class="p">(</span><span class="n">gmlang</span><span class="p">,</span><span class="w"> </span><span class="n">side</span><span class="o">=</span><span class="s2">"right"</span><span class="p">)</span></code></pre></figure>
 
 <figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "\t Guangming Lang"</code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># re-assign trimmed value to gmlang
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># re-assign trimmed value to gmlang</span><span class="w">
 </span><span class="n">gmlang</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">str_trim</span><span class="p">(</span><span class="n">gmlang</span><span class="p">)</span><span class="w">
 
-</span><span class="c1"># extract first name
+</span><span class="c1"># extract first name</span><span class="w">
 </span><span class="n">str_sub</span><span class="p">(</span><span class="n">gmlang</span><span class="p">,</span><span class="w"> </span><span class="n">start</span><span class="o">=</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">end</span><span class="o">=</span><span class="m">9</span><span class="p">)</span></code></pre></figure>
 
 <figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "Guangming"</code></pre></figure>
@@ -261,7 +261,7 @@
 
 <figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "Guangming"</code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># extract last name
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># extract last name</span><span class="w">
 </span><span class="n">str_sub</span><span class="p">(</span><span class="n">gmlang</span><span class="p">,</span><span class="w"> </span><span class="n">start</span><span class="o">=</span><span class="m">11</span><span class="p">,</span><span class="w"> </span><span class="n">end</span><span class="o">=</span><span class="m">14</span><span class="p">)</span></code></pre></figure>
 
 <figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "Lang"</code></pre></figure>
@@ -270,12 +270,12 @@
 
 <figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "Lang"</code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># extact first and last name at the same time
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># extact first and last name at the same time</span><span class="w">
 </span><span class="n">str_sub</span><span class="p">(</span><span class="n">gmlang</span><span class="p">,</span><span class="w"> </span><span class="n">start</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">11</span><span class="p">),</span><span class="w"> </span><span class="n">end</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">9</span><span class="p">,</span><span class="w"> </span><span class="m">14</span><span class="p">))</span></code></pre></figure>
 
 <figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "Guangming" "Lang"</code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># something fun :)
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># something fun :)</span><span class="w">
 </span><span class="n">str_sub</span><span class="p">(</span><span class="n">gmlang</span><span class="p">,</span><span class="w"> </span><span class="n">start</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">seq_len</span><span class="p">(</span><span class="n">str_length</span><span class="p">(</span><span class="n">gmlang</span><span class="p">)))</span></code></pre></figure>
 
 <figure class="highlight"><pre><code class="language-text" data-lang="text">##  [1] "Guangming Lang" "uangming Lang"  "angming Lang"   "ngming Lang"   
@@ -369,7 +369,7 @@
 <div class="footer-wrapper">
   <footer role="contentinfo" class="entry-wrapper">
     
-<span>&copy; 2018 Guangming Lang. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="https://mademistakes.com/so-simple/" rel="nofollow">So Simple Theme</a>.</span>
+<span>&copy; 2019 Guangming Lang. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="https://mademistakes.com/so-simple/" rel="nofollow">So Simple Theme</a>.</span>
 <div class="social-icons">
 	
 	

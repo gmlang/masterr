@@ -232,18 +232,18 @@
         <p>Dealing with date variables is usually tedious. When reading in a text data file into R, R will not automatically convert the date values into dates, rather, it will treat them as strings (make sure you specify <code class="highlighter-rouge">stringsAsFactors = FALSE</code> in your <code class="highlighter-rouge">read.table()</code> or <code class="highlighter-rouge">read.csv()</code> function. Otherwise, R will read in them as factors, which you don’t want). Sometimes, the date values are of the format “yyyymmdd”, like “20051023”, and R will treat them as numbers. It’s your job to convert these strings or numbers to dates. I’ve written a function that allows you to do that easily.</p>
 
 <figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">as_date</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">...</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="c1"># @x: a character or numeric vector
-</span><span class="w">        </span><span class="c1"># returns: converts x to dates and returns it
-</span><span class="w">
+        </span><span class="c1"># @x: a character or numeric vector</span><span class="w">
+        </span><span class="c1"># returns: converts x to dates and returns it</span><span class="w">
+
         </span><span class="n">dts.char</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">unique</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w">
         </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nf">is.numeric</span><span class="p">(</span><span class="n">dts.char</span><span class="p">)</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">dts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">as.Date</span><span class="p">(</span><span class="nf">as.character</span><span class="p">(</span><span class="n">dts.char</span><span class="p">),</span><span class="w"> </span><span class="n">...</span><span class="p">)</span><span class="w">
         </span><span class="k">else</span><span class="w"> </span><span class="n">dts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">as.Date</span><span class="p">(</span><span class="n">dts.char</span><span class="p">,</span><span class="w"> </span><span class="n">...</span><span class="p">)</span><span class="w">
 
-        </span><span class="c1"># match returns a vector of positions of first matches of elts of x in
-</span><span class="w">        </span><span class="c1"># dts.char, and because dts.char is unique, match here really finds,
-</span><span class="w">        </span><span class="c1"># for any element in x, the index of the element in dts.char that
-</span><span class="w">        </span><span class="c1"># matches it.
-</span><span class="w">        </span><span class="n">dts</span><span class="p">[</span><span class="n">match</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">dts.char</span><span class="p">)]</span><span class="w">
+        </span><span class="c1"># match returns a vector of positions of first matches of elts of x in</span><span class="w">
+        </span><span class="c1"># dts.char, and because dts.char is unique, match here really finds,</span><span class="w">
+        </span><span class="c1"># for any element in x, the index of the element in dts.char that</span><span class="w">
+        </span><span class="c1"># matches it.</span><span class="w">
+        </span><span class="n">dts</span><span class="p">[</span><span class="n">match</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">dts.char</span><span class="p">)]</span><span class="w">
 </span><span class="p">}</span></code></pre></figure>
 
 <p>Here’re some examples of how to use it:</p>
@@ -360,7 +360,7 @@
 <div class="footer-wrapper">
   <footer role="contentinfo" class="entry-wrapper">
     
-<span>&copy; 2018 Guangming Lang. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="https://mademistakes.com/so-simple/" rel="nofollow">So Simple Theme</a>.</span>
+<span>&copy; 2019 Guangming Lang. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="https://mademistakes.com/so-simple/" rel="nofollow">So Simple Theme</a>.</span>
 <div class="social-icons">
 	
 	

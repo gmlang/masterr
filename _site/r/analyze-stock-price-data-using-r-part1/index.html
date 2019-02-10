@@ -238,18 +238,18 @@
 </span><span class="n">library</span><span class="p">(</span><span class="n">tseries</span><span class="p">)</span><span class="w">
 
 </span><span class="n">plt_dist</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span><span class="w"> </span><span class="n">varname</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="c1"># Creates a figure of 4 plots: histogram, boxplot, 
-</span><span class="w">        </span><span class="c1">#                              density curve, qqplot
-</span><span class="w">        </span><span class="c1">#
-</span><span class="w">        </span><span class="c1"># Args:
-</span><span class="w">        </span><span class="c1">#       dat     : a data frame or matrix with colnames
-</span><span class="w">        </span><span class="c1">#       varname : a string specifying the numerical variable 
-</span><span class="w">        </span><span class="c1">#                 in dat to be drawn
-</span><span class="w">        </span><span class="c1">#
-</span><span class="w">        </span><span class="c1"># Returns:
-</span><span class="w">        </span><span class="c1">#       draws 4 plots (histogram, boxplot, density curve, 
-</span><span class="w">        </span><span class="c1">#       qqplot) on one canvas
-</span><span class="w">        </span><span class="n">par</span><span class="p">(</span><span class="n">mfrow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="m">2</span><span class="p">))</span><span class="w">
+        </span><span class="c1"># Creates a figure of 4 plots: histogram, boxplot, </span><span class="w">
+        </span><span class="c1">#                              density curve, qqplot</span><span class="w">
+        </span><span class="c1">#</span><span class="w">
+        </span><span class="c1"># Args:</span><span class="w">
+        </span><span class="c1">#       dat     : a data frame or matrix with colnames</span><span class="w">
+        </span><span class="c1">#       varname : a string specifying the numerical variable </span><span class="w">
+        </span><span class="c1">#                 in dat to be drawn</span><span class="w">
+        </span><span class="c1">#</span><span class="w">
+        </span><span class="c1"># Returns:</span><span class="w">
+        </span><span class="c1">#       draws 4 plots (histogram, boxplot, density curve, </span><span class="w">
+        </span><span class="c1">#       qqplot) on one canvas</span><span class="w">
+        </span><span class="n">par</span><span class="p">(</span><span class="n">mfrow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="m">2</span><span class="p">))</span><span class="w">
         </span><span class="n">hist</span><span class="p">(</span><span class="n">dat</span><span class="p">[,</span><span class="w"> </span><span class="n">varname</span><span class="p">],</span><span class="w"> </span><span class="n">main</span><span class="o">=</span><span class="s2">"histogram"</span><span class="p">,</span><span class="w"> </span><span class="n">xlab</span><span class="o">=</span><span class="n">varname</span><span class="p">,</span><span class="w"> 
              </span><span class="n">probability</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="o">=</span><span class="n">hcl</span><span class="p">(</span><span class="n">h</span><span class="o">=</span><span class="m">195</span><span class="p">,</span><span class="n">l</span><span class="o">=</span><span class="m">65</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="m">100</span><span class="p">))</span><span class="w">
         </span><span class="n">boxplot</span><span class="p">(</span><span class="n">dat</span><span class="p">[,</span><span class="n">varname</span><span class="p">],</span><span class="w"> </span><span class="n">outchar</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">main</span><span class="o">=</span><span class="s2">"boxplot"</span><span class="p">,</span><span class="w"> </span><span class="n">cex</span><span class="o">=</span><span class="m">0.7</span><span class="p">,</span><span class="w"> 
@@ -304,10 +304,10 @@
 
 <p>Step 7. Plot the distribution of cc returns.</p>
 
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># Create matrix with returns
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># Create matrix with returns</span><span class="w">
 </span><span class="n">return_matrix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">coredata</span><span class="p">(</span><span class="n">ret.cc</span><span class="p">)</span><span class="w">
 
-</span><span class="c1"># Plot the distribution of cc returns
+</span><span class="c1"># Plot the distribution of cc returns</span><span class="w">
 </span><span class="n">plt_dist</span><span class="p">(</span><span class="n">return_matrix</span><span class="p">,</span><span class="w"> </span><span class="s2">"VGENX"</span><span class="p">)</span></code></pre></figure>
 
 <p><img src="/../figs/2014-10-17-analyze-stock-price-data-using-r-part1/unnamed-chunk-7-1.png" alt="center" /></p>
@@ -458,7 +458,7 @@
 <div class="footer-wrapper">
   <footer role="contentinfo" class="entry-wrapper">
     
-<span>&copy; 2018 Guangming Lang. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="https://mademistakes.com/so-simple/" rel="nofollow">So Simple Theme</a>.</span>
+<span>&copy; 2019 Guangming Lang. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="https://mademistakes.com/so-simple/" rel="nofollow">So Simple Theme</a>.</span>
 <div class="social-icons">
 	
 	

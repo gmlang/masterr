@@ -251,23 +251,23 @@
 
 <p>Step 1. I choose assets from three broad classes: stocks, bonds, and commodities. For stocks, I choose funds that cover total US market, total international markets, and real estate. For bonds, I choose funds that invest in the total US bond market and inflation protected securities. For commodities, I choose funds that invest in gold and other precious metals and their mining companies and oil &amp; gas and energy companies. First, I download the monthly adjusted closing price data of these funds between June 2000 and Oct 2014 from Yahoo.</p>
 
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># initialize the fund symbols 
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># initialize the fund symbols </span><span class="w">
 </span><span class="n">stocks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"VTSMX"</span><span class="p">,</span><span class="w"> </span><span class="s2">"VGTSX"</span><span class="p">,</span><span class="w"> </span><span class="s2">"VGSIX"</span><span class="p">)</span><span class="w">
 </span><span class="n">bonds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"VIPSX"</span><span class="p">,</span><span class="w"> </span><span class="s2">"VBMFX"</span><span class="p">)</span><span class="w">
 </span><span class="n">commodities</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"VGPMX"</span><span class="p">,</span><span class="w"> </span><span class="s2">"VGENX"</span><span class="p">)</span><span class="w">
 </span><span class="n">symbols</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="n">stocks</span><span class="p">,</span><span class="w"> </span><span class="n">bonds</span><span class="p">,</span><span class="w"> </span><span class="n">commodities</span><span class="p">)</span><span class="w">
 
-</span><span class="c1"># download adj. price data
+</span><span class="c1"># download adj. price data</span><span class="w">
 </span><span class="n">port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">list</span><span class="p">()</span><span class="w">
 </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">symbol</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">symbols</span><span class="p">)</span><span class="w">
         </span><span class="n">port</span><span class="p">[[</span><span class="n">symbol</span><span class="p">]]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">download_data</span><span class="p">(</span><span class="n">symbol</span><span class="p">,</span><span class="w"> </span><span class="s2">"2000-06-29"</span><span class="p">,</span><span class="w"> </span><span class="s2">"2014-10-31"</span><span class="p">)</span></code></pre></figure>
 
 <figure class="highlight"><pre><code class="language-text" data-lang="text">## Error in get.hist.quote(instrument = symb, start = begin, end = end, origin = "1970-01-01", : could not find function "get.hist.quote"</code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># change the class of the time index to yearmon
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># change the class of the time index to yearmon</span><span class="w">
 </span><span class="n">lapply</span><span class="p">(</span><span class="n">port</span><span class="p">,</span><span class="w"> </span><span class="n">to_yearmon</span><span class="p">)</span><span class="w">
 
-</span><span class="c1"># put both all price data in one data frame
+</span><span class="c1"># put both all price data in one data frame</span><span class="w">
 </span><span class="n">prices</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">do.call</span><span class="p">(</span><span class="s2">"cbind"</span><span class="p">,</span><span class="w"> </span><span class="n">port</span><span class="p">)</span><span class="w">
 </span><span class="n">colnames</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">symbols</span></code></pre></figure>
 
@@ -279,7 +279,7 @@
 
 <figure class="highlight"><pre><code class="language-text" data-lang="text">## Error in log(prices): non-numeric argument to mathematical function</code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># inspect the return data
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># inspect the return data</span><span class="w">
 </span><span class="n">cat</span><span class="p">(</span><span class="s2">"Start: "</span><span class="p">,</span><span class="w"> </span><span class="nf">as.character</span><span class="p">(</span><span class="n">start</span><span class="p">(</span><span class="n">ret.cc</span><span class="p">)),</span><span class="w"> </span><span class="s2">"  End: "</span><span class="p">,</span><span class="w"> </span><span class="nf">as.character</span><span class="p">(</span><span class="n">end</span><span class="p">(</span><span class="n">ret.cc</span><span class="p">)))</span></code></pre></figure>
 
 <figure class="highlight"><pre><code class="language-text" data-lang="text">## Error in start(ret.cc): object 'ret.cc' not found</code></pre></figure>
@@ -317,7 +317,7 @@
 
 <figure class="highlight"><pre><code class="language-text" data-lang="text">## Error in eval(expr, envir, enclos): object 'effi.port' not found</code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># port weights
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># port weights</span><span class="w">
 </span><span class="n">plot</span><span class="p">(</span><span class="n">effi.port</span><span class="p">)</span></code></pre></figure>
 
 <figure class="highlight"><pre><code class="language-text" data-lang="text">## Error in plot(effi.port): object 'effi.port' not found</code></pre></figure>
@@ -401,7 +401,7 @@
 <div class="footer-wrapper">
   <footer role="contentinfo" class="entry-wrapper">
     
-<span>&copy; 2018 Guangming Lang. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="https://mademistakes.com/so-simple/" rel="nofollow">So Simple Theme</a>.</span>
+<span>&copy; 2019 Guangming Lang. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="https://mademistakes.com/so-simple/" rel="nofollow">So Simple Theme</a>.</span>
 <div class="social-icons">
 	
 	

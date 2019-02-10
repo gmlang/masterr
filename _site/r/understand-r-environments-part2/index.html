@@ -245,20 +245,20 @@ for values first in the environment associated with <code class="highlighter-rou
 <p>There’re two assignment operators in R: <code class="highlighter-rouge">&lt;-</code> and <code class="highlighter-rouge">&lt;&lt;-</code>. While <code class="highlighter-rouge">&lt;-</code> changes the values of objects in the immediate environment searched, <code class="highlighter-rouge">&lt;&lt;-</code> changes the values of objects first encountered, starting with the parent environment of the immediate environment and traversing upwards through the parent environments until the global environment is reached. Consider the following example. The function <code class="highlighter-rouge">h</code> uses <code class="highlighter-rouge">&lt;-</code> to only set its local y to 0. The function <code class="highlighter-rouge">to_zero</code> uses <code class="highlighter-rouge">&lt;&lt;-</code> to
 set the <code class="highlighter-rouge">y</code> declared in the global env to 0. If no <code class="highlighter-rouge">y</code> found in the global env, it will create it in the global env and bind its value to 0.</p>
 
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># define functions
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># define functions</span><span class="w">
 </span><span class="n">h</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">0</span><span class="w">
 </span><span class="n">to_zero</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">&lt;&lt;-</span><span class="w"> </span><span class="m">0</span><span class="w">
 
-</span><span class="c1"># initialize y in global env
+</span><span class="c1"># initialize y in global env</span><span class="w">
 </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10</span><span class="w">
 
-</span><span class="c1"># h doesn't change the global y 
+</span><span class="c1"># h doesn't change the global y </span><span class="w">
 </span><span class="n">h</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="w">
 </span><span class="n">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span></code></pre></figure>
 
 <figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] 10</code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># to_zero sets the global y to 0
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># to_zero sets the global y to 0</span><span class="w">
 </span><span class="n">to_zero</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="w">
 </span><span class="n">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span></code></pre></figure>
 
@@ -282,14 +282,14 @@ set the <code class="highlighter-rouge">y</code> declared in the global env to 0
 
 <figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">set.seed</span><span class="p">(</span><span class="m">2</span><span class="p">)</span><span class="w">
 
-</span><span class="c1"># create badge for joe
+</span><span class="c1"># create badge for joe</span><span class="w">
 </span><span class="n">joe</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">student</span><span class="p">(</span><span class="s2">"Joe"</span><span class="p">)</span><span class="w">
 </span><span class="n">joe</span><span class="o">$</span><span class="n">add_num</span><span class="p">()</span><span class="w">
 </span><span class="n">joe</span><span class="o">$</span><span class="n">print_name</span><span class="p">()</span></code></pre></figure>
 
 <figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "Joe267"</code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># create badge for jean
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># create badge for jean</span><span class="w">
 </span><span class="n">jean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">student</span><span class="p">(</span><span class="s2">"Jean"</span><span class="p">)</span><span class="w">
 </span><span class="n">jean</span><span class="o">$</span><span class="n">add_num</span><span class="p">()</span><span class="w">
 </span><span class="n">jean</span><span class="o">$</span><span class="n">print_name</span><span class="p">()</span></code></pre></figure>
@@ -376,7 +376,7 @@ set the <code class="highlighter-rouge">y</code> declared in the global env to 0
 <div class="footer-wrapper">
   <footer role="contentinfo" class="entry-wrapper">
     
-<span>&copy; 2018 Guangming Lang. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="https://mademistakes.com/so-simple/" rel="nofollow">So Simple Theme</a>.</span>
+<span>&copy; 2019 Guangming Lang. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="https://mademistakes.com/so-simple/" rel="nofollow">So Simple Theme</a>.</span>
 <div class="social-icons">
 	
 	

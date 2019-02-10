@@ -242,11 +242,11 @@
 
 <p>These 2 steps are carried out in the following R code block.</p>
 
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># calculate simple monthly rate
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># calculate simple monthly rate</span><span class="w">
 </span><span class="n">monthly_rate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">4.87</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="m">100</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="m">12</span><span class="w">
 
-</span><span class="c1"># calculate (constant) contractual monthly payment amount
-#       derived from the present value formula for annuities
+</span><span class="c1"># calculate (constant) contractual monthly payment amount</span><span class="w">
+</span><span class="c1">#       derived from the present value formula for annuities</span><span class="w">
 </span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="m">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">monthly_rate</span><span class="p">)</span><span class="w"> </span><span class="o">^</span><span class="w"> </span><span class="m">360</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">1</span><span class="w">
 </span><span class="n">payment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">280000</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">monthly_rate</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">r</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">r</span></code></pre></figure>
 
@@ -254,16 +254,16 @@
 
 <figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">payment_months</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">12</span><span class="w">
 
-</span><span class="c1"># initialize output variables
+</span><span class="c1"># initialize output variables</span><span class="w">
 </span><span class="n">interest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">principal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">balance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">vector</span><span class="p">(</span><span class="s2">"numeric"</span><span class="p">,</span><span class="w"> </span><span class="n">payment_months</span><span class="p">)</span><span class="w">
 
-</span><span class="c1"># calc amortization schedule
+</span><span class="c1"># calc amortization schedule</span><span class="w">
 </span><span class="n">outstanding_principal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">280000</span><span class="w">
 </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="n">payment_months</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="n">intr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">outstanding_principal</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">monthly_rate</span><span class="w"> </span><span class="c1"># interest to be paid
-</span><span class="w">        </span><span class="n">prnp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">payment</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">intr</span><span class="w">  </span><span class="c1"># principal to be paid
-</span><span class="w">        </span><span class="n">outstanding_principal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">outstanding_principal</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">prnp</span><span class="w"> </span><span class="c1"># principal left
-</span><span class="w">        
+        </span><span class="n">intr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">outstanding_principal</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">monthly_rate</span><span class="w"> </span><span class="c1"># interest to be paid</span><span class="w">
+        </span><span class="n">prnp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">payment</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">intr</span><span class="w">  </span><span class="c1"># principal to be paid</span><span class="w">
+        </span><span class="n">outstanding_principal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">outstanding_principal</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">prnp</span><span class="w"> </span><span class="c1"># principal left</span><span class="w">
+        
         </span><span class="n">interest</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">intr</span><span class="w">
         </span><span class="n">principal</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">prnp</span><span class="w">
         </span><span class="n">balance</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">outstanding_principal</span><span class="w">
@@ -361,20 +361,20 @@
 <p>PS: I’ve put the above code pieces in a function for ease of use.</p>
 
 <figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">amortize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">loan_amt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">200000</span><span class="p">,</span><span class="w"> </span><span class="n">term</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">360</span><span class="p">,</span><span class="w"> </span><span class="n">APR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">4.87</span><span class="o">/</span><span class="m">100</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="c1"># calculate simple monthly rate 
-</span><span class="w">        </span><span class="n">monthly_rate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">APR</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="m">12</span><span class="w">
+        </span><span class="c1"># calculate simple monthly rate </span><span class="w">
+        </span><span class="n">monthly_rate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">APR</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="m">12</span><span class="w">
         
-        </span><span class="c1"># calculate (constant) contractual monthly payment amount
-</span><span class="w">        </span><span class="c1">#       derived from the present value formula for annuities
-</span><span class="w">        </span><span class="c1">#       https://en.wikipedia.org/wiki/Annuity
-</span><span class="w">        </span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="m">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">monthly_rate</span><span class="p">)</span><span class="w"> </span><span class="o">^</span><span class="w"> </span><span class="n">term</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">1</span><span class="w">
+        </span><span class="c1"># calculate (constant) contractual monthly payment amount</span><span class="w">
+        </span><span class="c1">#       derived from the present value formula for annuities</span><span class="w">
+        </span><span class="c1">#       https://en.wikipedia.org/wiki/Annuity</span><span class="w">
+        </span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="m">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">monthly_rate</span><span class="p">)</span><span class="w"> </span><span class="o">^</span><span class="w"> </span><span class="n">term</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">1</span><span class="w">
         </span><span class="n">payment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">loan_amt</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">monthly_rate</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">r</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">r</span><span class="w">
         
-        </span><span class="c1"># initialize output variables
-</span><span class="w">        </span><span class="n">interest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">principal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">balance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">vector</span><span class="p">(</span><span class="s2">"numeric"</span><span class="p">,</span><span class="w"> </span><span class="n">term</span><span class="p">)</span><span class="w">
+        </span><span class="c1"># initialize output variables</span><span class="w">
+        </span><span class="n">interest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">principal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">balance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">vector</span><span class="p">(</span><span class="s2">"numeric"</span><span class="p">,</span><span class="w"> </span><span class="n">term</span><span class="p">)</span><span class="w">
         
-        </span><span class="c1"># calc amortization schedule
-</span><span class="w">        </span><span class="n">outstanding_principal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">loan_amt</span><span class="w">
+        </span><span class="c1"># calc amortization schedule</span><span class="w">
+        </span><span class="n">outstanding_principal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">loan_amt</span><span class="w">
         </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="n">term</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
                 </span><span class="n">intr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">outstanding_principal</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">monthly_rate</span><span class="w">
                 </span><span class="n">prnp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">payment</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">intr</span><span class="w">
@@ -467,7 +467,7 @@
 <div class="footer-wrapper">
   <footer role="contentinfo" class="entry-wrapper">
     
-<span>&copy; 2018 Guangming Lang. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="https://mademistakes.com/so-simple/" rel="nofollow">So Simple Theme</a>.</span>
+<span>&copy; 2019 Guangming Lang. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="https://mademistakes.com/so-simple/" rel="nofollow">So Simple Theme</a>.</span>
 <div class="social-icons">
 	
 	

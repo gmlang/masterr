@@ -231,18 +231,18 @@
       <div class="entry-content">
         <p>If you work with stocks or eCommerce data, you know you have to deal with dates, and often, the data exist in a text file. I once wrote an <a href="https://masterr.org/r/how-to-convert-strings-to-dates-in-r/">article</a> suggesting to read in date variables as strings first and then convert them to Date type. Today, I’m going to show you another way, which does the conversion while reading in the file. We’re going to use a magic function called <code class="highlighter-rouge">setClass()</code>.</p>
 
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># define a new class 
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># define a new class </span><span class="w">
 </span><span class="n">methods</span><span class="o">::</span><span class="n">setClass</span><span class="p">(</span><span class="s1">'myDate'</span><span class="p">)</span><span class="w">
 </span><span class="n">methods</span><span class="o">::</span><span class="n">setAs</span><span class="p">(</span><span class="s2">"character"</span><span class="p">,</span><span class="w"> </span><span class="s2">"myDate"</span><span class="p">,</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">from</span><span class="p">)</span><span class="w"> </span><span class="n">as.Date</span><span class="p">(</span><span class="n">from</span><span class="p">,</span><span class="w"> </span><span class="n">format</span><span class="o">=</span><span class="s2">"%m/%d/%Y"</span><span class="p">))</span><span class="w">
 
-</span><span class="c1"># apply it to the following sample data
+</span><span class="c1"># apply it to the following sample data</span><span class="w">
 </span><span class="n">df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">read.table</span><span class="p">(</span><span class="n">header</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">text</span><span class="o">=</span><span class="s2">"date close
 01/01/2016 24
 01/02/2016 23.5
 01/03/2016 23.32
-01/04/2016 23"</span><span class="p">,</span><span class="w"> </span><span class="n">colClasses</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"myDate"</span><span class="p">,</span><span class="w"> </span><span class="kc">NA</span><span class="p">))</span><span class="w"> </span><span class="c1"># use NA when you want R to guess the var type
-</span><span class="w">
-</span><span class="c1"># check variable types
+01/04/2016 23"</span><span class="p">,</span><span class="w"> </span><span class="n">colClasses</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"myDate"</span><span class="p">,</span><span class="w"> </span><span class="kc">NA</span><span class="p">))</span><span class="w"> </span><span class="c1"># use NA when you want R to guess the var type</span><span class="w">
+
+</span><span class="c1"># check variable types</span><span class="w">
 </span><span class="n">str</span><span class="p">(</span><span class="n">df</span><span class="p">)</span></code></pre></figure>
 
 <figure class="highlight"><pre><code class="language-text" data-lang="text">## 'data.frame':	4 obs. of  2 variables:
@@ -329,7 +329,7 @@
 <div class="footer-wrapper">
   <footer role="contentinfo" class="entry-wrapper">
     
-<span>&copy; 2018 Guangming Lang. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="https://mademistakes.com/so-simple/" rel="nofollow">So Simple Theme</a>.</span>
+<span>&copy; 2019 Guangming Lang. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="https://mademistakes.com/so-simple/" rel="nofollow">So Simple Theme</a>.</span>
 <div class="social-icons">
 	
 	

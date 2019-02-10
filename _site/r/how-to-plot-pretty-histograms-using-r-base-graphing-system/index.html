@@ -232,23 +232,23 @@
         <p>When doing descriptive analysis, we often want to see how each variable is distributed. For a continuous variable, this means we want to plot its histogram and check its normality (checking normality of the response variable is necessary when you plan to use linear regression in your inference or predictive analysis). Here’re two small functions that allow you to do that on the fly. They don’t give you dazzling plots for final presentation, however, they do give you informative plots that allow you to see if a variable needs any transformation.</p>
 
 <figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">plot_hist</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">xlabel</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="c1">## @x: a numeric vector
-</span><span class="w">        </span><span class="c1">## @xlabel: a string
-</span><span class="w">        
-        </span><span class="c1"># draw histogram
-</span><span class="w">        </span><span class="n">hist</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mtext</span><span class="p">(</span><span class="n">bquote</span><span class="p">(</span><span class="w">
+        </span><span class="c1">## @x: a numeric vector</span><span class="w">
+        </span><span class="c1">## @xlabel: a string</span><span class="w">
+        
+        </span><span class="c1"># draw histogram</span><span class="w">
+        </span><span class="n">hist</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mtext</span><span class="p">(</span><span class="n">bquote</span><span class="p">(</span><span class="w">
                 </span><span class="n">paste</span><span class="p">(</span><span class="n">bolditalic</span><span class="p">(</span><span class="s2">"median"</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">.</span><span class="p">(</span><span class="nf">round</span><span class="p">(</span><span class="n">median</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="m">1</span><span class="p">)),</span><span class="w"> </span><span class="s2">" ("</span><span class="p">,</span><span class="w">
                       </span><span class="n">bolditalic</span><span class="p">(</span><span class="s2">"mean"</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">.</span><span class="p">(</span><span class="nf">round</span><span class="p">(</span><span class="n">mean</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="m">1</span><span class="p">)),</span><span class="w"> </span><span class="s2">")"</span><span class="p">)</span><span class="w">
                 </span><span class="p">)),</span><span class="w"> </span><span class="n">xlab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xlabel</span><span class="p">,</span><span class="w"> </span><span class="n">xlim</span><span class="o">=</span><span class="nf">range</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="w"> </span><span class="n">prob</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span><span class="w">
         
-        </span><span class="c1"># add a rug to histogram
-</span><span class="w">        </span><span class="n">rug</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w">
+        </span><span class="c1"># add a rug to histogram</span><span class="w">
+        </span><span class="n">rug</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w">
 
-        </span><span class="c1"># draw red vertical line at median
-</span><span class="w">        </span><span class="n">abline</span><span class="p">(</span><span class="n">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">median</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"red"</span><span class="p">,</span><span class="w"> </span><span class="n">lwd</span><span class="o">=</span><span class="m">2</span><span class="p">)</span><span class="w">  
+        </span><span class="c1"># draw red vertical line at median</span><span class="w">
+        </span><span class="n">abline</span><span class="p">(</span><span class="n">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">median</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"red"</span><span class="p">,</span><span class="w"> </span><span class="n">lwd</span><span class="o">=</span><span class="m">2</span><span class="p">)</span><span class="w">  
                 
-        </span><span class="c1"># draw density curve over the histogram
-</span><span class="w">	</span><span class="n">lines</span><span class="p">(</span><span class="n">density</span><span class="p">(</span><span class="n">x</span><span class="p">))</span><span class="w">   
+        </span><span class="c1"># draw density curve over the histogram</span><span class="w">
+	</span><span class="n">lines</span><span class="p">(</span><span class="n">density</span><span class="p">(</span><span class="n">x</span><span class="p">))</span><span class="w">   
 </span><span class="p">}</span><span class="w">
 
 </span><span class="n">check_normality</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -351,7 +351,7 @@
 <div class="footer-wrapper">
   <footer role="contentinfo" class="entry-wrapper">
     
-<span>&copy; 2018 Guangming Lang. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="https://mademistakes.com/so-simple/" rel="nofollow">So Simple Theme</a>.</span>
+<span>&copy; 2019 Guangming Lang. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="https://mademistakes.com/so-simple/" rel="nofollow">So Simple Theme</a>.</span>
 <div class="social-icons">
 	
 	

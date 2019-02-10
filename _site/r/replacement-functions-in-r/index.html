@@ -244,11 +244,11 @@
 
 <p>The following code finds all replacement functions that are also primitive functions in the R base package.</p>
 
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># get a list of functions in the base package
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># get a list of functions in the base package</span><span class="w">
 </span><span class="n">objs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mget</span><span class="p">(</span><span class="n">ls</span><span class="p">(</span><span class="s2">"package:base"</span><span class="p">),</span><span class="w"> </span><span class="n">inherits</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span><span class="w">
 </span><span class="n">funs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Filter</span><span class="p">(</span><span class="n">is.function</span><span class="p">,</span><span class="w"> </span><span class="n">objs</span><span class="p">)</span><span class="w">
 
-</span><span class="c1"># get a list of replacement functions in the base package
+</span><span class="c1"># get a list of replacement functions in the base package</span><span class="w">
 </span><span class="n">replacement.funs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">funs</span><span class="p">[</span><span class="n">grep</span><span class="p">(</span><span class="s2">"[a-zA-Z]+&lt;-$"</span><span class="p">,</span><span class="w"> </span><span class="nf">names</span><span class="p">(</span><span class="n">funs</span><span class="p">))]</span><span class="w">
 </span><span class="n">str</span><span class="p">(</span><span class="n">replacement.funs</span><span class="p">)</span><span class="w">     </span></code></pre></figure>
 
@@ -282,7 +282,7 @@
 ##  $ substring&lt;-     :function (text, first, last = 1000000L, value)  
 ##  $ units&lt;-         :function (x, value)</code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># which ones are primitive functions
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># which ones are primitive functions</span><span class="w">
 </span><span class="nf">names</span><span class="p">(</span><span class="n">replacement.funs</span><span class="p">)[</span><span class="n">sapply</span><span class="p">(</span><span class="n">replacement.funs</span><span class="p">,</span><span class="w"> </span><span class="n">is.primitive</span><span class="p">)]</span></code></pre></figure>
 
 <figure class="highlight"><pre><code class="language-text" data-lang="text">##  [1] "attr&lt;-"         "attributes&lt;-"   "class&lt;-"        "dim&lt;-"         
@@ -369,7 +369,7 @@
 <div class="footer-wrapper">
   <footer role="contentinfo" class="entry-wrapper">
     
-<span>&copy; 2018 Guangming Lang. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="https://mademistakes.com/so-simple/" rel="nofollow">So Simple Theme</a>.</span>
+<span>&copy; 2019 Guangming Lang. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="https://mademistakes.com/so-simple/" rel="nofollow">So Simple Theme</a>.</span>
 <div class="social-icons">
 	
 	

@@ -232,15 +232,15 @@
         <p>Previously, I wrote about the idea of <a href="https://masterr.org/r/functions-that-return-functions/">functions that return other functions</a>, where I gave a trivial example that didn’t demonstrate the power of the idea. Today, I’m giving several more examples, which I use frequently in my work. They allow me to make the same kind of ggplot2 plots without repeatedly typing the same commands, and hence make my code shorter and less error prone.</p>
 
 <figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">mk_density_plt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="c1"># Creats a function that plots histogram and overlayed density 
-</span><span class="w">        </span><span class="c1"># 
-</span><span class="w">        </span><span class="c1"># Args:
-</span><span class="w">        </span><span class="c1">#       df: a data frame
-</span><span class="w">        </span><span class="c1"># Returns:
-</span><span class="w">        </span><span class="c1">#       a function that takes two arguments:
-</span><span class="w">        </span><span class="c1">#               xvar     : a string specifying the x variable
-</span><span class="w">        </span><span class="c1">#               bin.width: a numeric value specifying the bin width
-</span><span class="w">        </span><span class="k">function</span><span class="p">(</span><span class="n">xvar</span><span class="p">,</span><span class="w"> </span><span class="n">bin.width</span><span class="p">)</span><span class="w">
+        </span><span class="c1"># Creats a function that plots histogram and overlayed density </span><span class="w">
+        </span><span class="c1"># </span><span class="w">
+        </span><span class="c1"># Args:</span><span class="w">
+        </span><span class="c1">#       df: a data frame</span><span class="w">
+        </span><span class="c1"># Returns:</span><span class="w">
+        </span><span class="c1">#       a function that takes two arguments:</span><span class="w">
+        </span><span class="c1">#               xvar     : a string specifying the x variable</span><span class="w">
+        </span><span class="c1">#               bin.width: a numeric value specifying the bin width</span><span class="w">
+        </span><span class="k">function</span><span class="p">(</span><span class="n">xvar</span><span class="p">,</span><span class="w"> </span><span class="n">bin.width</span><span class="p">)</span><span class="w">
                 </span><span class="n">ggplot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="n">aes_string</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">xvar</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> 
                 </span><span class="n">geom_histogram</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">..density..</span><span class="p">),</span><span class="w"> </span><span class="n">colour</span><span class="o">=</span><span class="s2">"black"</span><span class="p">,</span><span class="w"> 
                                </span><span class="n">fill</span><span class="o">=</span><span class="s2">"white"</span><span class="p">,</span><span class="w"> </span><span class="n">binwidth</span><span class="o">=</span><span class="n">bin.width</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
@@ -249,17 +249,17 @@
 </span><span class="p">}</span><span class="w">
 
 </span><span class="n">mk_cond_dist_plt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="o">=</span><span class="s2">"density"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="c1"># Creates a function that draws histograms or density plots with
-</span><span class="w">        </span><span class="c1"># multiple groups
-</span><span class="w">        </span><span class="c1">#
-</span><span class="w">        </span><span class="c1"># Args:
-</span><span class="w">        </span><span class="c1">#       df  : a data frame
-</span><span class="w">        </span><span class="c1">#       type: "density" (default) or "histogram"
-</span><span class="w">        </span><span class="c1"># Returns:
-</span><span class="w">        </span><span class="c1">#       a function that takes two arguments:
-</span><span class="w">        </span><span class="c1">#               xvar : a string specifying the x variable
-</span><span class="w">        </span><span class="c1">#               byvar: a string specifying the group variable
-</span><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">type</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">"histogram"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="c1"># Creates a function that draws histograms or density plots with</span><span class="w">
+        </span><span class="c1"># multiple groups</span><span class="w">
+        </span><span class="c1">#</span><span class="w">
+        </span><span class="c1"># Args:</span><span class="w">
+        </span><span class="c1">#       df  : a data frame</span><span class="w">
+        </span><span class="c1">#       type: "density" (default) or "histogram"</span><span class="w">
+        </span><span class="c1"># Returns:</span><span class="w">
+        </span><span class="c1">#       a function that takes two arguments:</span><span class="w">
+        </span><span class="c1">#               xvar : a string specifying the x variable</span><span class="w">
+        </span><span class="c1">#               byvar: a string specifying the group variable</span><span class="w">
+        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">type</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">"histogram"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
                 </span><span class="k">function</span><span class="p">(</span><span class="n">xvar</span><span class="p">,</span><span class="w"> </span><span class="n">byvar</span><span class="p">)</span><span class="w">
                         </span><span class="n">ggplot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="n">aes_string</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">xvar</span><span class="p">,</span><span class="w"> </span><span class="n">fill</span><span class="o">=</span><span class="n">byvar</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> 
                         </span><span class="n">geom_histogram</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="m">.5</span><span class="p">,</span><span class="w"> </span><span class="n">position</span><span class="o">=</span><span class="s2">"identity"</span><span class="p">)</span><span class="w">
@@ -272,16 +272,16 @@
 </span><span class="p">}</span><span class="w">
 
 </span><span class="n">mk_box_plt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="c1"># Creates a function that draws boxplots
-</span><span class="w">        </span><span class="c1">#
-</span><span class="w">        </span><span class="c1"># Args:
-</span><span class="w">        </span><span class="c1">#       df: a data frame
-</span><span class="w">        </span><span class="c1"># Returns:
-</span><span class="w">        </span><span class="c1">#       a function that takes three arguments:
-</span><span class="w">        </span><span class="c1">#               xvar      : a string specifying the x variable
-</span><span class="w">        </span><span class="c1">#               yvar      : a string specifying the y variable
-</span><span class="w">        </span><span class="c1">#               txt.angle : an int specifying the angle of tick labels
-</span><span class="w">        </span><span class="k">function</span><span class="p">(</span><span class="n">xvar</span><span class="p">,</span><span class="w"> </span><span class="n">yvar</span><span class="p">,</span><span class="w"> </span><span class="n">txt.angle</span><span class="o">=</span><span class="m">0</span><span class="p">)</span><span class="w">
+        </span><span class="c1"># Creates a function that draws boxplots</span><span class="w">
+        </span><span class="c1">#</span><span class="w">
+        </span><span class="c1"># Args:</span><span class="w">
+        </span><span class="c1">#       df: a data frame</span><span class="w">
+        </span><span class="c1"># Returns:</span><span class="w">
+        </span><span class="c1">#       a function that takes three arguments:</span><span class="w">
+        </span><span class="c1">#               xvar      : a string specifying the x variable</span><span class="w">
+        </span><span class="c1">#               yvar      : a string specifying the y variable</span><span class="w">
+        </span><span class="c1">#               txt.angle : an int specifying the angle of tick labels</span><span class="w">
+        </span><span class="k">function</span><span class="p">(</span><span class="n">xvar</span><span class="p">,</span><span class="w"> </span><span class="n">yvar</span><span class="p">,</span><span class="w"> </span><span class="n">txt.angle</span><span class="o">=</span><span class="m">0</span><span class="p">)</span><span class="w">
                 </span><span class="n">ggplot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="n">aes_string</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">xvar</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="o">=</span><span class="n">yvar</span><span class="p">,</span><span class="w"> </span><span class="n">fill</span><span class="o">=</span><span class="n">xvar</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> 
                 </span><span class="n">geom_boxplot</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">guides</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">labs</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">""</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
                 </span><span class="n">stat_summary</span><span class="p">(</span><span class="n">fun.y</span><span class="o">=</span><span class="n">mean</span><span class="p">,</span><span class="w"> </span><span class="n">geom</span><span class="o">=</span><span class="s2">"point"</span><span class="p">,</span><span class="w"> </span><span class="n">shape</span><span class="o">=</span><span class="m">5</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="o">=</span><span class="m">2</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
@@ -368,7 +368,7 @@
 <div class="footer-wrapper">
   <footer role="contentinfo" class="entry-wrapper">
     
-<span>&copy; 2018 Guangming Lang. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="https://mademistakes.com/so-simple/" rel="nofollow">So Simple Theme</a>.</span>
+<span>&copy; 2019 Guangming Lang. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="https://mademistakes.com/so-simple/" rel="nofollow">So Simple Theme</a>.</span>
 <div class="social-icons">
 	
 	

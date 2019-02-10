@@ -246,24 +246,24 @@
 <p>Now that we understand the R evaluation model and the <code class="highlighter-rouge">&lt;&lt;-</code> operator, we can code up the Mortgage Payment Calculator in a different fashion.</p>
 
 <figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">amortize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">loan_amt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">200000</span><span class="p">,</span><span class="w"> </span><span class="n">term</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">360</span><span class="p">,</span><span class="w"> </span><span class="n">APR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">4.87</span><span class="o">/</span><span class="m">100</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="c1"># calculate simple monthly rate 
-</span><span class="w">        </span><span class="n">monthly_rate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">APR</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="m">12</span><span class="w">
+        </span><span class="c1"># calculate simple monthly rate </span><span class="w">
+        </span><span class="n">monthly_rate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">APR</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="m">12</span><span class="w">
         
-        </span><span class="c1"># calculate (constant) contractual monthly payment amount
-</span><span class="w">        </span><span class="c1">#       derived from the present value formula for annuities
-</span><span class="w">        </span><span class="c1">#       https://en.wikipedia.org/wiki/Annuity
-</span><span class="w">        </span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="m">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">monthly_rate</span><span class="p">)</span><span class="w"> </span><span class="o">^</span><span class="w"> </span><span class="n">term</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">1</span><span class="w">
+        </span><span class="c1"># calculate (constant) contractual monthly payment amount</span><span class="w">
+        </span><span class="c1">#       derived from the present value formula for annuities</span><span class="w">
+        </span><span class="c1">#       https://en.wikipedia.org/wiki/Annuity</span><span class="w">
+        </span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="m">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">monthly_rate</span><span class="p">)</span><span class="w"> </span><span class="o">^</span><span class="w"> </span><span class="n">term</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">1</span><span class="w">
         </span><span class="n">payment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">loan_amt</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">monthly_rate</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">r</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">r</span><span class="w">
         
-        </span><span class="c1"># initialize outstanding principal 
-</span><span class="w">        </span><span class="n">balance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">loan_amt</span><span class="w">
+        </span><span class="c1"># initialize outstanding principal </span><span class="w">
+        </span><span class="n">balance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">loan_amt</span><span class="w">
         
-        </span><span class="c1"># main
-</span><span class="w">        </span><span class="nf">list</span><span class="p">(</span><span class="n">make_payment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="c1"># main</span><span class="w">
+        </span><span class="nf">list</span><span class="p">(</span><span class="n">make_payment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
                      </span><span class="n">interest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">balance</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">monthly_rate</span><span class="w">
                      </span><span class="n">principal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">payment</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">interest</span><span class="w">
-                     </span><span class="n">balance</span><span class="w"> </span><span class="o">&lt;&lt;-</span><span class="w"> </span><span class="n">balance</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">principal</span><span class="w"> </span><span class="c1"># update balance
-</span><span class="w">                     </span><span class="n">setNames</span><span class="p">(</span><span class="n">data.frame</span><span class="p">(</span><span class="n">interest</span><span class="p">,</span><span class="w"> </span><span class="n">principal</span><span class="p">,</span><span class="w"> </span><span class="n">balance</span><span class="p">),</span><span class="w"> 
+                     </span><span class="n">balance</span><span class="w"> </span><span class="o">&lt;&lt;-</span><span class="w"> </span><span class="n">balance</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">principal</span><span class="w"> </span><span class="c1"># update balance</span><span class="w">
+                     </span><span class="n">setNames</span><span class="p">(</span><span class="n">data.frame</span><span class="p">(</span><span class="n">interest</span><span class="p">,</span><span class="w"> </span><span class="n">principal</span><span class="p">,</span><span class="w"> </span><span class="n">balance</span><span class="p">),</span><span class="w"> 
                               </span><span class="nf">c</span><span class="p">(</span><span class="s2">"interest"</span><span class="p">,</span><span class="w"> </span><span class="s2">"principal"</span><span class="p">,</span><span class="w"> </span><span class="s2">"balance"</span><span class="p">))</span><span class="w">
                      </span><span class="p">}</span><span class="w">
              </span><span class="p">)</span><span class="w">
@@ -273,21 +273,21 @@
 calculate the monthly mortgage payment, broken down by the interest portion and the principal portion. For example, let’s calculate the payment schedule for the first 12 months.</p>
 
 <figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span><span class="w">
-</span><span class="n">options</span><span class="p">(</span><span class="n">scipen</span><span class="o">=</span><span class="m">999</span><span class="p">)</span><span class="w"> </span><span class="c1"># turn off scientific notation
-</span><span class="w">
-</span><span class="c1"># make an amortizer for amortizing your mortgage
+</span><span class="n">options</span><span class="p">(</span><span class="n">scipen</span><span class="o">=</span><span class="m">999</span><span class="p">)</span><span class="w"> </span><span class="c1"># turn off scientific notation</span><span class="w">
+
+</span><span class="c1"># make an amortizer for amortizing your mortgage</span><span class="w">
 </span><span class="n">house_price</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">350000</span><span class="w">
 </span><span class="n">downpmt_pct</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.2</span><span class="w">
 </span><span class="n">term</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">360</span><span class="w">
 </span><span class="n">amortizer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">amortize</span><span class="p">(</span><span class="n">loan_amt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">house_price</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="m">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">downpmt_pct</span><span class="p">),</span><span class="w">
                      </span><span class="n">term</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">term</span><span class="p">,</span><span class="w"> </span><span class="n">APR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">4.87</span><span class="o">/</span><span class="m">100</span><span class="p">)</span><span class="w">
 
-</span><span class="c1"># amortize first 12 months
+</span><span class="c1"># amortize first 12 months</span><span class="w">
 </span><span class="n">pmt_schedule</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lapply</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">12</span><span class="p">,</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">month</span><span class="p">)</span><span class="w"> 
         </span><span class="n">cbind</span><span class="p">(</span><span class="n">month</span><span class="p">,</span><span class="w"> </span><span class="n">amortizer</span><span class="o">$</span><span class="n">make_payment</span><span class="p">()))</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
         </span><span class="n">bind_rows</span><span class="p">()</span><span class="w">
 
-</span><span class="c1"># print
+</span><span class="c1"># print</span><span class="w">
 </span><span class="n">knitr</span><span class="o">::</span><span class="n">kable</span><span class="p">(</span><span class="n">pmt_schedule</span><span class="p">,</span><span class="w"> </span><span class="n">digits</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w">
              </span><span class="n">caption</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Payment schedule for first 12 months"</span><span class="p">)</span></code></pre></figure>
 
@@ -456,7 +456,7 @@ calculate the monthly mortgage payment, broken down by the interest portion and 
 <div class="footer-wrapper">
   <footer role="contentinfo" class="entry-wrapper">
     
-<span>&copy; 2018 Guangming Lang. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="https://mademistakes.com/so-simple/" rel="nofollow">So Simple Theme</a>.</span>
+<span>&copy; 2019 Guangming Lang. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="https://mademistakes.com/so-simple/" rel="nofollow">So Simple Theme</a>.</span>
 <div class="social-icons">
 	
 	

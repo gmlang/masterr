@@ -242,12 +242,12 @@
 <figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">start</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">as.Date</span><span class="p">(</span><span class="s2">"2012-03-01"</span><span class="p">)</span><span class="w">
 </span><span class="n">end</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">as.Date</span><span class="p">(</span><span class="s2">"2017-03-01"</span><span class="p">)</span><span class="w">
 
-</span><span class="c1"># method 2
+</span><span class="c1"># method 2</span><span class="w">
 </span><span class="nf">as.numeric</span><span class="p">(</span><span class="n">difftime</span><span class="p">(</span><span class="n">end</span><span class="p">,</span><span class="w"> </span><span class="n">start</span><span class="p">,</span><span class="w"> </span><span class="n">unit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"weeks"</span><span class="p">))</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="m">52.25</span></code></pre></figure>
 
 <figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] 4.992481</code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># method 3
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># method 3</span><span class="w">
 </span><span class="n">lubridate</span><span class="o">::</span><span class="n">time_length</span><span class="p">(</span><span class="n">difftime</span><span class="p">(</span><span class="n">end</span><span class="p">,</span><span class="w"> </span><span class="n">start</span><span class="p">),</span><span class="w"> </span><span class="s2">"years"</span><span class="p">)</span></code></pre></figure>
 
 <figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] 5.00274</code></pre></figure>
@@ -337,6 +337,8 @@
         <a href="http://localhost:4000/r/understand-r-environments-part3/" class="btn" title="Understand R Environments - Part3">Previous</a>
       
       
+        <a href="http://localhost:4000/r/R-variables-are-mostly-immutable-but-sometimes-mutable/" class="btn" title="R Variables Are Mostly Immutable but Sometimes Mutable">Next</a>
+      
     </nav><!-- /.pagination -->
   </article>
 </div><!-- /#main -->
@@ -344,7 +346,7 @@
 <div class="footer-wrapper">
   <footer role="contentinfo" class="entry-wrapper">
     
-<span>&copy; 2018 Guangming Lang. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="https://mademistakes.com/so-simple/" rel="nofollow">So Simple Theme</a>.</span>
+<span>&copy; 2019 Guangming Lang. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="https://mademistakes.com/so-simple/" rel="nofollow">So Simple Theme</a>.</span>
 <div class="social-icons">
 	
 	

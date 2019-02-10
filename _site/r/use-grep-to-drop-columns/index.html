@@ -231,7 +231,7 @@
       <div class="entry-content">
         <p>It’s very easy to drop columns from a data frame using the <code class="highlighter-rouge">grep()</code> function. The following example shows you how.</p>
 
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># print the first 3 records of the iris dataset 
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># print the first 3 records of the iris dataset </span><span class="w">
 </span><span class="n">head</span><span class="p">(</span><span class="n">iris</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">)</span></code></pre></figure>
 
 <figure class="highlight"><pre><code class="language-text" data-lang="text">##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
@@ -239,10 +239,10 @@
 ## 2          4.9         3.0          1.4         0.2  setosa
 ## 3          4.7         3.2          1.3         0.2  setosa</code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># grep the indices of the columns with "Sepal" in their names
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># grep the indices of the columns with "Sepal" in their names</span><span class="w">
 </span><span class="n">sepal_col_num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">grep</span><span class="p">(</span><span class="s2">"Sepal"</span><span class="p">,</span><span class="w"> </span><span class="nf">names</span><span class="p">(</span><span class="n">iris</span><span class="p">))</span><span class="w">
 
-</span><span class="c1"># drop these columns
+</span><span class="c1"># drop these columns</span><span class="w">
 </span><span class="n">iris_sub</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">iris</span><span class="p">[,</span><span class="w"> </span><span class="o">-</span><span class="n">sepal_col_num</span><span class="p">]</span><span class="w">
 </span><span class="n">head</span><span class="p">(</span><span class="n">iris_sub</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">)</span></code></pre></figure>
 
@@ -253,7 +253,7 @@
 
 <p>You can also use <code class="highlighter-rouge">grep()</code> to extract column names.</p>
 
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># grep the names of the columns with "Petal" in their names
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># grep the names of the columns with "Petal" in their names</span><span class="w">
 </span><span class="n">grep</span><span class="p">(</span><span class="s2">"Petal"</span><span class="p">,</span><span class="w"> </span><span class="nf">names</span><span class="p">(</span><span class="n">iris</span><span class="p">),</span><span class="w"> </span><span class="n">value</span><span class="o">=</span><span class="nb">T</span><span class="p">)</span></code></pre></figure>
 
 <figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "Petal.Length" "Petal.Width"</code></pre></figure>
@@ -337,7 +337,7 @@
 <div class="footer-wrapper">
   <footer role="contentinfo" class="entry-wrapper">
     
-<span>&copy; 2018 Guangming Lang. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="https://mademistakes.com/so-simple/" rel="nofollow">So Simple Theme</a>.</span>
+<span>&copy; 2019 Guangming Lang. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="https://mademistakes.com/so-simple/" rel="nofollow">So Simple Theme</a>.</span>
 <div class="social-icons">
 	
 	
