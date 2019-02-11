@@ -1,10 +1,10 @@
 ---
 layout: post
-title: "On Recursion - Part 3"
+title: "R Recursion - Part 3"
 date: 2017-07-07
 comments: true
 categories: r
-keywords: "R, recursion, recusive functions in R, environment, recursing over environments in R, get(), fget(), tail recursion"
+keywords: "R, recursion, recusive functions in R, environment, recursing over environments in R, get(), fget(), recursion in R"
 published: true
 share: true
 ads: true
@@ -12,23 +12,65 @@ ads: true
 
 Base R has a function `get()` that searches for a given name over the environment stack and returns its value after finding it. For example, we can use it like this.
 
-```{r}
+
+{% highlight r %}
 x = 9
 get("x")
+{% endhighlight %}
 
+
+
+{% highlight text %}
+## [1] 9
+{% endhighlight %}
+
+
+
+{% highlight r %}
 get("mean") # inherits is set to TRUE by default
-get("mean", inherits = FALSE)
+{% endhighlight %}
 
+
+
+{% highlight text %}
+## function (x, ...) 
+## UseMethod("mean")
+## <bytecode: 0x7fa52b0c08a0>
+## <environment: namespace:base>
+{% endhighlight %}
+
+
+
+{% highlight r %}
+get("mean", inherits = FALSE)
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## Error in get("mean", inherits = FALSE): object 'mean' not found
+{% endhighlight %}
+
+
+
+{% highlight r %}
 mean = function() "fake mean"
 get("mean")
-```
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## function() "fake mean"
+{% endhighlight %}
 
 If you don't understand why they returned the values they did, you can learn how 
 environment works by reading this [post](https://masterr.org/r/understand-r-environments-part1/).
 
 We can write our own version of get() using recursion. First we write a helper function that works the same as `get(name, inherits = T)`.
 
-```{r}
+
+{% highlight r %}
 get_helper = function(name, env = parent.frame()) {
         # Returns the value that name binds to. Looks for name in the given 
         #       environment and all its parents.
@@ -46,12 +88,30 @@ get_helper = function(name, env = parent.frame()) {
 }
 
 get_helper("x")
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## [1] 9
+{% endhighlight %}
+
+
+
+{% highlight r %}
 get("mean")
-```
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## function() "fake mean"
+{% endhighlight %}
 
 Next we can easily extend it to a more general version that takes an additional parameter `inherits`.
 
-```{r}
+
+{% highlight r %}
 get_gmlang = function(name, env=parent.frame(), inherits = T) {
         # Returns the value that name binds to. If inherits = T, looks for name
         #       in the given environment and all its parents. Otherwise, looks
@@ -74,14 +134,54 @@ get_gmlang = function(name, env=parent.frame(), inherits = T) {
 e = new.env()
 e$z = 100
 get_gmlang("x", env=e, inherits = T)
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## [1] 9
+{% endhighlight %}
+
+
+
+{% highlight r %}
 get_gmlang("x", env=e, inherits = F)
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## Error: object 'x' not found
+{% endhighlight %}
+
+
+
+{% highlight r %}
 get_gmlang("z", env=e)
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## [1] 100
+{% endhighlight %}
+
+
+
+{% highlight r %}
 get_gmlang("z") # note: global environment is the parent of e
-```
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## Error: object 'z' not found
+{% endhighlight %}
 
 Moreover, we can easily extend `get_helper()` to a function `fget_helper()` that finds only function objects.
 
-```{r}
+
+{% highlight r %}
 fget_helper = function(name, env = parent.frame()) {
         # Returns the value that name binds to when name binds to a function. 
         #       Looks for name in the given environment and all its parents.
@@ -101,8 +201,39 @@ fget_helper = function(name, env = parent.frame()) {
 }
 
 fget_helper("x")
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## Error: Can't find x as a function object
+{% endhighlight %}
+
+
+
+{% highlight r %}
 fget_helper("mean")
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## function() "fake mean"
+{% endhighlight %}
+
+
+
+{% highlight r %}
 rm("mean")
 fget_helper("mean")
-```
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## function (x, ...) 
+## UseMethod("mean")
+## <bytecode: 0x7fa52b0c08a0>
+## <environment: namespace:base>
+{% endhighlight %}
 

@@ -64,28 +64,28 @@
 		} ,
 	
 		{
-		  "title"      : "On Recursion - Part 3",
+		  "title"      : "R Recursion - Part 3",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://localhost:4000/r/on-recursion-3/",
+		  "url"        : "http://localhost:4000/r/R-recursion-3/",
 		  "date"       : "2017-07-07 00:00:00 +0900",
 		  "shortdate"  : "July 07, 2017"
 		} ,
 	
 		{
-		  "title"      : "On Recursion - Part 2",
+		  "title"      : "R Recursion - Part 2",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://localhost:4000/r/on-recursion-2/",
+		  "url"        : "http://localhost:4000/r/R-recursion-2/",
 		  "date"       : "2017-07-06 00:00:00 +0900",
 		  "shortdate"  : "July 06, 2017"
 		} ,
 	
 		{
-		  "title"      : "On Recursion - Part 1",
+		  "title"      : "R Recursion - Part 1",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "http://localhost:4000/r/on-recursion-1/",
+		  "url"        : "http://localhost:4000/r/R-recursion-1/",
 		  "date"       : "2017-07-05 00:00:00 +0900",
 		  "shortdate"  : "July 05, 2017"
 		} ,

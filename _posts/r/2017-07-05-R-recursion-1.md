@@ -1,10 +1,10 @@
 ---
 layout: post
-title: "On Recursion - Part 1"
+title: "R Recursion - Part 1"
 date: 2017-07-05
 comments: true
 categories: r
-keywords: "R, recursion, recusive functions in R"
+keywords: "R, recursion, recusive functions in R, recursion in R"
 published: true
 share: true
 ads: true

@@ -1,10 +1,10 @@
 ---
 layout: post
-title: "On Recursion - Part 2"
+title: "R Recursion - Part 2"
 date: 2017-07-06
 comments: true
 categories: r
-keywords: "R, recursion, recusive functions in R, environment, recursing over environments in R, where(), exists(), tail recursion"
+keywords: "R, recursion, recusive functions in R, environment, recursing over environments in R, where(), exists(), tail recursion in R, recursion in R"
 published: true
 share: true
 ads: true
@@ -16,7 +16,8 @@ In the Environments chapter of the book
 
 Here's my solution. 
 
-```{r}
+
+{% highlight r %}
 where_all = function(name, env = parent.frame()) {
         # Finds all environments that contain a binding for name.
         # 
@@ -36,19 +37,31 @@ where_all = function(name, env = parent.frame()) {
                 c(res, where_all(name, parent.env(env)))
         }
 }
-```
+{% endhighlight %}
 
 Let's test it.
 
-```{r}
+
+{% highlight r %}
 # test
 mean = function(x) "guck"
 where_all("mean")
-```
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## [[1]]
+## <environment: R_GlobalEnv>
+## 
+## [[2]]
+## <environment: base>
+{% endhighlight %}
 
 Now inside of `where_all()` I used a base R function `exists()` to check if `name` is in the current environment. But we don't have to use it, instead, we can implement our own version using recursion. Below is how to do it.
 
-```{r}
+
+{% highlight r %}
 exists2 = function(name, env=parent.frame(), inherits = T) {
         # Checks if name is in the given environment or its parent environments.
         # 
@@ -71,11 +84,12 @@ exists2 = function(name, env=parent.frame(), inherits = T) {
                 name %in% ls(env)
         }
 }
-```
+{% endhighlight %}
 
 We can simplify the code a bit by collapsing the `if...else...` inside the non-base case with the outside `else` clause. This makes the code a bit easier to read.
 
-```{r}
+
+{% highlight r %}
 exists2 = function(name, env=parent.frame(), inherits = T) {
         # Checks if name is in the given environment or its parent environments.
         # 
@@ -95,20 +109,60 @@ exists2 = function(name, env=parent.frame(), inherits = T) {
                 name %in% ls(env)
         }
 }
-```
+{% endhighlight %}
 
 Let's test it out.
 
-```{r}
+
+{% highlight r %}
 e = new.env()
 e$x = 109
 e$y = 83
 rm("x", envir=e)
 exists2("y", env=e)
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## [1] TRUE
+{% endhighlight %}
+
+
+
+{% highlight r %}
 exists2("y")
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## [1] FALSE
+{% endhighlight %}
+
+
+
+{% highlight r %}
 exists2("x", env=e)
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## [1] FALSE
+{% endhighlight %}
+
+
+
+{% highlight r %}
 ls(e)
-```
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## [1] "y"
+{% endhighlight %}
 
 Take a moment to compare `exists2()` and `where_all()`. Where does the recursive step happen? In `exists2()`, it happens when the fail case is triggered. But in `where_all()`, it happens after both the success and fail cases. So the take away is that although all recursions are the same in concept but they can differ in implementation. The key difference lies in where the recursive step happens.
 
