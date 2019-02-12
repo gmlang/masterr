@@ -1,6 +1,15 @@
 [
 	
 		{
+		  "title"      : "RFP - Part2: R Lists",
+		  "category"   : "",
+      "tags"       : "",
+		  "url"        : "http://localhost:4000/r/RFP-part2-lists/",
+		  "date"       : "2019-02-12 00:00:00 +0900",
+		  "shortdate"  : "February 12, 2019"
+		} ,
+	
+		{
 		  "title"      : "RFP - Part1: R Vectors",
 		  "category"   : "",
       "tags"       : "",
