@@ -343,7 +343,7 @@
 
 <figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] 10</code></pre></figure>
 
-<p>Or we can write functions to put the first/second elements of each pair into their separate lists.</p>
+<p>Or we can write functions to put the first or second element of each pair into separate lists.</p>
 
 <figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">firsts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="c1"># xs: a list of interger pairs represented by length-2 vectors c(i1, i2)</span><span class="w">
@@ -374,7 +374,7 @@
 ## [[2]]
 ## [1] 4</code></pre></figure>
 
-<p>You might’ve noticed that the functions <code class="highlighter-rouge">is_empty(), hd()</code>, and <code class="highlighter-rouge">tl()</code> defined above are similarly to the ones defined in part 1 of R vectors. This is because lists are just a special kind of vector in R. To see this, realize that another way of declaring an empty list is <code class="highlighter-rouge">vector("list")</code>.</p>
+<p>It should make us cringe that <code class="highlighter-rouge">firsts</code> and <code class="highlighter-rouge">seconds</code> look almost identical yet we wrote them as two different functions. “Repeating yourself” makes code maintenance difficult. We’ll learn how to fix it later. Also notice that <code class="highlighter-rouge">is_empty</code>, <code class="highlighter-rouge">hd</code> and <code class="highlighter-rouge">tl</code> defined above are very similarly to the ones defined in part 1 when we discussed R vectors. This is because lists are just a special kind of vector in R. To see this, realize that another way of declaring an empty list is <code class="highlighter-rouge">vector("list")</code>.</p>
 
 <figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">identical</span><span class="p">(</span><span class="n">vector</span><span class="p">(</span><span class="s2">"list"</span><span class="p">),</span><span class="w"> </span><span class="nf">list</span><span class="p">())</span></code></pre></figure>
 

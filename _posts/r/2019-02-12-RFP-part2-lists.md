@@ -186,7 +186,7 @@ sum_pair_list(list(c(1, 2), c(3, 4)))
 ## [1] 10
 {% endhighlight %}
 
-Or we can write functions to put the first/second elements of each pair into their separate lists.
+Or we can write functions to put the first or second element of each pair into separate lists.
 
 {% highlight r %}
 firsts = function(xs) {
@@ -231,7 +231,7 @@ seconds(xs)
 ## [1] 4
 {% endhighlight %}
 
-You might've noticed that the functions `is_empty(), hd()`, and `tl()` defined above are similarly to the ones defined in part 1 of R vectors. This is because lists are just a special kind of vector in R. To see this, realize that another way of declaring an empty list is `vector("list")`.
+It should make us cringe that `firsts` and `seconds` look almost identical yet we wrote them as two different functions. "Repeating yourself" makes code maintenance difficult. We'll learn how to fix it later. Also notice that `is_empty`, `hd` and `tl` defined above are very similarly to the ones defined in part 1 when we discussed R vectors. This is because lists are just a special kind of vector in R. To see this, realize that another way of declaring an empty list is `vector("list")`.
 
 {% highlight r %}
 identical(vector("list"), list())

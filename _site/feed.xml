@@ -4,7 +4,7 @@
 <generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://localhost:4000/feed.xml" />
 <link rel="alternate" type="text/html" href="http://localhost:4000" />
-<updated>2019-02-12T23:21:36+09:00</updated>
+<updated>2019-02-13T13:44:22+09:00</updated>
 <id>http://localhost:4000/</id>
 <author>
   <name>Guangming Lang</name>
@@ -138,7 +138,7 @@
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;## [1] 10&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;Or we can write functions to put the first/second elements of each pair into their separate lists.&lt;/p&gt;
+&lt;p&gt;Or we can write functions to put the first or second element of each pair into separate lists.&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;&lt;span class=&quot;n&quot;&gt;firsts&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;xs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
         &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# xs: a list of interger pairs represented by length-2 vectors c(i1, i2)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
@@ -169,7 +169,7 @@
 ## [[2]]
 ## [1] 4&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;You might’ve noticed that the functions &lt;code class=&quot;highlighter-rouge&quot;&gt;is_empty(), hd()&lt;/code&gt;, and &lt;code class=&quot;highlighter-rouge&quot;&gt;tl()&lt;/code&gt; defined above are similarly to the ones defined in part 1 of R vectors. This is because lists are just a special kind of vector in R. To see this, realize that another way of declaring an empty list is &lt;code class=&quot;highlighter-rouge&quot;&gt;vector(&quot;list&quot;)&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;It should make us cringe that &lt;code class=&quot;highlighter-rouge&quot;&gt;firsts&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;seconds&lt;/code&gt; look almost identical yet we wrote them as two different functions. “Repeating yourself” makes code maintenance difficult. We’ll learn how to fix it later. Also notice that &lt;code class=&quot;highlighter-rouge&quot;&gt;is_empty&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;hd&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;tl&lt;/code&gt; defined above are very similarly to the ones defined in part 1 when we discussed R vectors. This is because lists are just a special kind of vector in R. To see this, realize that another way of declaring an empty list is &lt;code class=&quot;highlighter-rouge&quot;&gt;vector(&quot;list&quot;)&lt;/code&gt;.&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;&lt;span class=&quot;n&quot;&gt;identical&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vector&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;list&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
