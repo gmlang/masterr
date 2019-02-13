@@ -231,7 +231,7 @@ seconds(xs)
 ## [1] 4
 {% endhighlight %}
 
-It should make us cringe that `firsts` and `seconds` look almost identical yet we wrote them as two different functions. "Repeating yourself" makes code maintenance difficult. We'll learn how to fix it later. Also notice that `is_empty`, `hd` and `tl` defined above are very similarly to the ones defined in part 1 when we discussed R vectors. This is because lists are just a special kind of vector in R. To see this, realize that another way of declaring an empty list is `vector("list")`.
+It should make us cringe that `firsts()` and `seconds()` look almost identical yet we wrote them as two different functions. "Repeating yourself" makes code maintenance difficult. We'll learn how to fix it later. Also notice that `is_empty()`, `hd()` and `tl()` defined above are very similarly to the ones defined in part 1 when we discussed R vectors. This is because lists are just a special kind of vector in R. To see this, realize that another way of declaring an empty list is `vector("list")`.
 
 {% highlight r %}
 identical(vector("list"), list())
