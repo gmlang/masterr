@@ -11,7 +11,7 @@ share: yes
 ads: yes
 ---
 
-The simplest data structure in R is the vector. A vector is one dimensional and can be pictured as a sequence of blocks containing values: 
+The simplest data structure in R is the vector. A vector is one dimensional and can be imagined as a sequence of blocks containing values: 
 
         | v1 | v2 | ... |
 
