@@ -1,16 +1,21 @@
 ---
-layout: post
-title: "RFP - Part1: R Vectors"
-date: 2019-02-11
-comments: true
+title: 'RFP - Part1: R Vectors'
 categories: r
-keywords: "R, vectors, R data types, R vectors, recursion in R, data types in R, RFP series, R functional programming, R is a functional programming language, FP, functional programming in R, head, tail, is empty in R, check a R vector is empty"
-published: true
-share: true
-ads: true
+date: '2019-02-11'
+output: pdf_document
+keywords: R, vectors, R data types, R vectors, recursion in R, data types in R, RFP series, R functional programming, R is a functional programming language, FP, functional programming in R, head, tail, is empty in R, check a R vector is empty, length-1 vectors, length-n vectors, singleton, atomic value in R, R basic data type, R basic data structure, sum a vector using recursion in R, count down using recursion in R
+layout: post
+comments: yes
+published: yes
+share: yes
+ads: yes
 ---
 
-The simplest data structure in R is the vector. A R vector can have any length, but all its elements must have the same type. There are four common data types: logical, integer, double (often called numeric), and character. A vector is numeric if and only if its elements are doubles. Similarly, a logical vector has TRUE or FALSE as its elements. An integer vector contains only integers, and a character vector has only strings. Given a vector `x`, we can call `typeof(x)` to check its type.
+The simplest data structure in R is the vector. A vector is one dimensional and can be pictured as a sequence of blocks containing values: 
+
+        | v1 | v2 | ... |
+
+A R vector can have any length. Its elements must have the same data type. (We'll see later that each element is itself a length-1 vector.) There are four common types: logical, integer, double (also called numeric), and character. A vector is numeric if and only if its elements are doubles. Similarly, a logical vector has `TRUE` or `FALSE` as its elements. An integer vector contains only integers, and a character vector has only strings. Given a vector `x`, we can call `typeof(x)` to find its type.
 
 ## Empty vectors 
 
@@ -21,60 +26,97 @@ There's an empty vector for each type, with the following syntax:
 * `numeric()`
 * `character()`
 
-An empty vector has 0 elements and hence length 0.
+An empty vector has 0 elements and 0 length.
 
 ## Length-1 vectors
 
-Unlike most other programming languages, R doesn't have singleton data structures. So what appear as singleton items are really just vectors of length one. For example, we get 1 when calling `length()` on a number, string or NA.
+Unlike most other programming languages, R doesn't have scalar types or values (or as I like to call them, singletons). What appear as singletons are really just vectors of length one. For example, literals like `TRUE`, `1L`, `3.124`, `"R is awesome"` are vectors of length 1, and each has a different type. Constants like `NA`, `NA_integer_`, `NA_real_` and `NA_character_` are also vectors of length 1, where `NA` has type logical even though it's not written explicitly like the others.
 
 {% highlight r %}
-length(100)
+print_atom_info = function(x) {
+        # Prints the type and length of an atomic/single value. 
+        # Shows atomic/singleton values are really just vectors of length 1.
+        #
+        # x: an atomic/singleton value such as 1L, "R is awesome", NA and etc.
+        data_type = typeof(x)
+        
+        if (is.finite(x)) {
+                if (data_type == "integer") x_str = paste0(x, "L")
+                else x_str = x
+        } else {
+                if (is.nan(x) | is.infinite(x)) x_str = x
+                else if (is.na(x)) { 
+                        if (data_type == "logical") x_str = x
+                        if (data_type == "integer") x_str = "NA_integer_"
+                        if (data_type == "double") x_str = "NA_real_"
+                        if (data_type == "character") x_str = "NA_character_"
+                } else { # x must be a string
+                        x_str = paste0("'", x, "'")   
+                }        
+        }
+                
+        print(paste(x_str, "is a vector of type", typeof(x), 
+                    "and length", length(x)))
+}
+
+# literals are vectors of length 1
+{
+        print_atom_info(TRUE)        
+        print_atom_info(1L) 
+        print_atom_info(3.124)        
+        print_atom_info("R is awesome")
+}
 {% endhighlight %}
 
 
 
 {% highlight text %}
-## [1] 1
+## [1] "TRUE is a vector of type logical and length 1"
+## [1] "1L is a vector of type integer and length 1"
+## [1] "3.124 is a vector of type double and length 1"
+## [1] "'R is awesome' is a vector of type character and length 1"
 {% endhighlight %}
 
 
 
 {% highlight r %}
-length("gm")
+# constants are also vectors of length 1
+{
+        print_atom_info(NA)
+        print_atom_info(NA_integer_)
+        print_atom_info(NA_real_)
+        print_atom_info(NA_character_)
+        print_atom_info(NaN)
+        print_atom_info(Inf)
+        print_atom_info(-Inf)
+}
 {% endhighlight %}
 
 
 
 {% highlight text %}
-## [1] 1
-{% endhighlight %}
-
-
-
-{% highlight r %}
-length(NA)
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## [1] 1
+## [1] "NA is a vector of type logical and length 1"
+## [1] "NA_integer_ is a vector of type integer and length 1"
+## [1] "NA_real_ is a vector of type double and length 1"
+## [1] "NA_character_ is a vector of type character and length 1"
+## [1] "NaN is a vector of type double and length 1"
+## [1] "Inf is a vector of type double and length 1"
+## [1] "-Inf is a vector of type double and length 1"
 {% endhighlight %}
 
 ## Length-n vectors, n > 1
 
-A vector with at least 2 values is written `c(v1, v2, ..., vn)` where the `v`'s are values. You can make a vector with `c(e1, ..., en)` where each expression is evaluated to a value. It's more common to make a vector with `c(e1, e2)`, called "`e1` consed onto `e2`," where `e1` evaluates to a "value of type t" and `e2` evaluates to a "vector of t values." The result is a new vector that starts with the value of `e1` followed by the elements in `e2`.
+The syntax for a vector with at least 2 values is `c(v1, v2, ..., vn)`. (Now we know each value `v` is itself a length-1 vector, we'll stop repeating this and simply treat them as if they are single atomic values.) We can make a vector with `c(e1, ..., en)` where each expression[^1] `e` is evaluated to a value. In practice, it's more common to make a vector with `c(e1, e2)`, called "`e1` combined with `e2`," where `e1` evaluates to a "vector of type `t`" and `e2` evaluates to another "vector of type `t`." The result is a new vector that starts with the elements in `e1` followed by the elements in `e2`. In the simpler case when `e1` evaluates to a single value, borrowing the word "cons" from FP (Functional Programming), `c(e1, e2)` can also be called "`e1` consed onto `e2`." The result would be a new vector that starts with the value of `e1` followed by the elements in `e2`.
 
 ## How to use vectors
 
-One goal of this RFP (R Functional Programming) series is to learn the fundamental ideas of functional programming using R. Viewed from the FP lens, when working with vectors, we only need three basic operations:
+One goal of this RFP (R Functional Programming) series is to learn the fundamental ideas of functional programming using R[^2]. These ideas are very powerful, and the first one we'll look at is the emphasis on recursion. As we'll see, because of recursion, all we need, when working with vectors, are three basic operations:
 
-1. Check if a vector is empty. 
+1. Check if a vector is empty.
 2. Get the first element of a vector, raising an exception if the vector is empty.
 3. Get the tail of a vector without its first element, raising an exception if the vector is empty.
 
-Armed with these three operations and recursion, we can solve almost all vector related problems. Unfortunately, R doesn't provide these operations perfectly out of the box. But we can write our own functions for them. Let's do that now.
-
+And we can solve almost all problems that involve one or more vectors. But R doesn't provide these basic operations perfectly out of the box. Instead, we have to write our own functions for them. 
 
 {% highlight r %}
 # Check if a vector is empty. Returns TRUE if it is, FALSE otherwise.
@@ -96,7 +138,7 @@ tl = function(xs) { # xs: a vector of any type
 }
 {% endhighlight %}
 
-Having defined `is_empty()`, `hd()` and `tl()`, we can use them to do complicated things to vectors. For example, we can now sum up all values in an integer or numeric vector. 
+Having defined `is_empty()`, `hd()` and `tl()`, we can use them to do complicated things to vectors. For example, we can sum up all values in an integer or numeric vector. 
 
 {% highlight r %}
 sum_vec = function(xs) {
@@ -104,31 +146,12 @@ sum_vec = function(xs) {
         if (is_empty(xs)) 0
         else hd(xs) + sum_vec(tl(xs))
 }
-sum_vec(integer())
-{% endhighlight %}
 
-
-
-{% highlight text %}
-## [1] 0
-{% endhighlight %}
-
-
-
-{% highlight r %}
-sum_vec(1)
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## [1] 1
-{% endhighlight %}
-
-
-
-{% highlight r %}
-sum_vec(1:10)
+{
+        sum_vec(integer())
+        sum_vec(1)
+        sum_vec(1:10)
+}
 {% endhighlight %}
 
 
@@ -172,3 +195,5 @@ sum_vec_while_loop = function(xs) {
 }
 {% endhighlight %}
 
+[^1]: The word 'expression' here is being used in the sense of expressions in any programming language or mathematical expressions, NOT the R expression object. 
+[^2]: R is a functional programming language in its core.
