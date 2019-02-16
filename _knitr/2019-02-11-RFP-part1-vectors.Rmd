@@ -80,7 +80,7 @@ print_atom_info = function(x) {
 
 ## Length-n vectors, n > 1
 
-The syntax for a vector with at least 2 values is `c(v1, v2, ..., vn)`. (Now we know each value `v` is itself a length-1 vector, we'll stop repeating this and simply treat them as if they are single atomic values.) We can make a vector with `c(e1, ..., en)` where each expression[^1] `e` is evaluated to a value. In practice, it's more common to make a vector with `c(e1, e2)`, called "`e1` combined with `e2`," where `e1` evaluates to a "vector of type `t`" and `e2` evaluates to another "vector of type `t`." The result is a new vector that starts with the elements in `e1` followed by the elements in `e2`. In the simpler case when `e1` evaluates to a single value, borrowing the word "cons" from FP (Functional Programming), `c(e1, e2)` can also be called "`e1` consed onto `e2`." The result would be a new vector that starts with the value of `e1` followed by the elements in `e2`.
+The syntax for a vector with at least 2 values is `c(v1, v2, ..., vn)`. (Now we know each value `v` is itself a length-1 vector, we'll stop repeating this and simply treat them as if they are single atomic values.) We can make a vector with `c(e1, ..., en)` where each expression[^1] `e` is evaluated to a value. In practice, it's more common to make a vector with `c(e1, e2)`, called "`e1` combined with `e2`," where `e1` evaluates to a "vector of type `t`" and `e2` evaluates to another "vector of type `t`." The result is a new vector that starts with the elements in `e1` followed by the elements in `e2`. When `e1` evaluates to a single value, borrowing the word "cons" from FP (Functional Programming), `c(e1, e2)` can also be called "`e1` consed onto `e2`." The result is then a new vector that starts with the value of `e1` followed by the elements in `e2`.
 
 ## How to use vectors
 
@@ -111,7 +111,7 @@ tl = function(xs) { # xs: a vector of any type
 }
 ```
 
-Having defined `is_empty()`, `hd()` and `tl()`, we can use them to do complicated things to vectors. For example, we can sum up all values in an integer or numeric vector. 
+Having defined `is_empty()`, `hd()` and `tl()`, we can use them inside of recursive functions to perform complex operations on vectors. For example, we can sum up all values in an integer or numeric vector. 
 ```{r}
 sum_vec = function(xs) {
         # xs: an interger or numeric vector
@@ -153,5 +153,5 @@ sum_vec_while_loop = function(xs) {
 }
 ```
 
-[^1]: The word 'expression' here is being used in the sense of expressions in any programming language or mathematical expressions, NOT the R expression object. 
+[^1]: The word 'expression' here is being used in the sense of expressions in any programming language or mathematical expressions. Do NOT confuse it with the R expression object. 
 [^2]: R is a functional programming language in its core.

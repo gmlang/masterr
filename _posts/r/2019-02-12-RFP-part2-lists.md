@@ -10,7 +10,7 @@ share: true
 ads: true
 ---
 
-Previously, we discussed R vectors. We now turn to R lists. Like a R vector, a R list can also grow or shrink. But unlike a R vector, where each element is a length-1 vector and all elements must have the same type, a R list can contain almost anything. For example, vectors, lists, functions, or environments can all become the elements of a list, and it's perfectly okay to mix them in the same list. 
+Previously, we discussed R vectors. We now turn to R lists. Like a vector, a R list can also grow or shrink. But unlike a vector, a R list can contain any R objects. For example, vectors, lists, functions, or environments can all be the elements of a list, and it's perfectly okay to mix them in the same list. 
 
 ## The empty list
 
@@ -18,11 +18,11 @@ The empty list, with syntax `list()`, has 0 elements. Indeed, if we call `length
 
 ## Non-empty lists
 
-A non-empty list with n values is written `list(v1, v2, ..., vn)`. You can make a list with `list(e1, ..., en)` where each expression is evaluated to a value. It's more common to make a list with `c(e1, e2)`, called "`e1` consed onto `e2`," where `e1` evaluates to "any value" and `e2` evaluates to a "list." The result is a new list that starts with the value of `e1` followed by the elements in `e2`. Here're some examples of lists:
+We can make a list with `list(e1, ..., en)` where each expression[^1] `e` is evaluated to a R object. It's more common to make a list with `c(e1, e2)`, called called "`e1` combined with `e2`," where `e1` evaluates to a "list" and `e2` evaluates to another "list." The result is a new list that starts with the elements in `e1` followed by the elements in `e2`. In the simpler case when `e1` evaluates to a single value like 5, 1.2, "hello", TRUE or NA, `c(e1, e2)` can also be called "`e1` consed onto `e2`." The result is then a new list that starts with the value of `e1` followed by the elements in `e2`. Here're some examples of lists:
 
 
 {% highlight r %}
-list(1, 2, 3) # each element is a length-1 integer vector
+list(1L, 2L, 3L) # each element is an integer
 {% endhighlight %}
 
 
@@ -41,7 +41,7 @@ list(1, 2, 3) # each element is a length-1 integer vector
 
 
 {% highlight r %}
-list(c(1, 2), c("gm", "lang")) # each element is a length-2 vector but of different type
+list(c(1, 2), c("gm", "lang")) # each element is a length-2 vector of diff. type
 {% endhighlight %}
 
 
@@ -57,7 +57,7 @@ list(c(1, 2), c("gm", "lang")) # each element is a length-2 vector but of differ
 
 
 {% highlight r %}
-list(list(1, 2), TRUE, function(x) x+1, environment()) # 1st element is a list, 2nd element is the logical TRUE, 3rd element is a function, 4th element is a env object
+list(list(1, 2), TRUE, function(x) x+1, environment()) # 1st element is a list, 3rd element is a function, 4th element is an env object
 {% endhighlight %}
 
 
@@ -85,7 +85,8 @@ list(list(1, 2), TRUE, function(x) x+1, environment()) # 1st element is a list, 
 
 
 {% highlight r %}
-c(9, list(3, 6)) # cons 9 onto the list(3, 6)
+# cons 9 onto the list(3, 6)
+c(9, list(3, 6)) 
 {% endhighlight %}
 
 
@@ -129,35 +130,34 @@ c(9, list(3, 6)) # cons 9 onto the list(3, 6)
 
 ## How to use lists
 
-When working with lists, we also only need three basic operations:
+Once again, powered by recursion, we only need three simple operations when working with lists:
 
 1. Check if a list is empty. 
 2. Get the first element of a list, raising an exception if the list is empty.
 3. Get the tail of a list without its first element, raising an exception if the list is empty.
 
-Armed with these three operations and recursion, we can solve almost all list related problems. Unfortunately, R doesn't provide these operations perfectly out of the box. But we can write our own functions for them. Let's do that now.
-
+Like in the case of vectors, R doesn't provide these operations perfectly out of the box. So we need to write them ourselves:
 
 {% highlight r %}
 # Returns TRUE if a list is empty, FALSE otherwise.
-is_empty = function(xs) { # xs: a list of any type
+is_empty = function(xs) { # xs: a list 
         is.null(xs) | identical(xs, list())
 }
 
 # Get the first element of a list, raising an exception if the list is empty.
-hd = function(xs) { # xs: a list of any type
+hd = function(xs) { # xs: a list 
         if (is_empty(xs)) stop("List is empty.")
         else xs[[1]] 
 }
 
 # Get the tail of a list without its first element, raising an exception if the list is empty.
-tl = function(xs) { # xs: a list of any type
+tl = function(xs) { # xs: a list 
         if (is_empty(xs)) stop("List is empty.")
         else xs[-1] 
 }
 {% endhighlight %}
 
-Having defined `is_empty()`, `hd()` and `tl()`, we can use them and recursion to do complicated things to lists. For example, given a list of integer pairs, we can write a function to sum up all the integers. 
+Having defined `is_empty()`, `hd()` and `tl()`, we can use them inside of recursive functions to perform complex operations on lists. For example, given a list of integer pairs, we can write a function to sum them up. 
 
 {% highlight r %}
 sum_pair_list = function(xs) {
@@ -231,7 +231,7 @@ seconds(xs)
 ## [1] 4
 {% endhighlight %}
 
-It should make us cringe that `firsts()` and `seconds()` look almost identical yet we wrote them as two different functions. "Repeating yourself" makes code maintenance difficult. We'll learn how to fix it later. Also notice that `is_empty()`, `hd()` and `tl()` defined above are very similarly to the ones defined in part 1 when we discussed R vectors. This is because lists are just a special kind of vector in R. To see this, realize that another way of declaring an empty list is `vector("list")`.
+It should make us cringe that `firsts()` and `seconds()` look almost identical yet we wrote them as two different functions. We'll learn how to fix it later. Notice that `is_empty()`, `hd()` and `tl()` defined above are very similarly to the ones defined in [part1 of this series when we discussed R vectors](https://masterr.org/r/RFP-part1-vectors/). This is because lists are just a special kind of vectors in R. To see this, realize that another way of declaring an empty list is `vector("list")`.
 
 {% highlight r %}
 identical(vector("list"), list())
@@ -242,3 +242,6 @@ identical(vector("list"), list())
 {% highlight text %}
 ## [1] TRUE
 {% endhighlight %}
+
+
+[^1]: The word 'expression' here is being used in the sense of expressions in any programming language or mathematical expressions. Do NOT confuse it with the R expression object. 
