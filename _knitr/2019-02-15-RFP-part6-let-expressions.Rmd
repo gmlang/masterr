@@ -10,8 +10,6 @@ share: true
 ads: true
 ---
 
-Previously, we discussed R vectors. We now turn to R lists. Like a R vector, a R list can also grow or shrink. But unlike a R vector, where each element is a length-1 vector and all elements must have the same type, a R list can contain almost anything. For example, vectors, lists, functions, or environments can all become the elements of a list, and it's perfectly okay to mix them in the same list. 
-
 ## The empty list
 
 ```{r}

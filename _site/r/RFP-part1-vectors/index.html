@@ -6,7 +6,7 @@
 <head>
 <meta charset="utf-8">
 <title>RFP - Part1: R Vectors &#8211; Become Great at R</title>
-<meta name="description" content="The simplest data structure in R is the vector. A vector is one dimensional and can be pictured as a sequence of blocks containing values:
+<meta name="description" content="The simplest data structure in R is the vector. A vector is one dimensional and can be imagined as a sequence of blocks containing values:
 
 ">
 <meta name="keywords" content="">
@@ -14,7 +14,7 @@
 
 <!-- Twitter Cards -->
 <meta name="twitter:title" content="RFP - Part1: R Vectors">
-<meta name="twitter:description" content="The simplest data structure in R is the vector. A vector is one dimensional and can be pictured as a sequence of blocks containing values:
+<meta name="twitter:description" content="The simplest data structure in R is the vector. A vector is one dimensional and can be imagined as a sequence of blocks containing values:
 
 ">
 
@@ -27,7 +27,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
 <meta property="og:title" content="RFP - Part1: R Vectors">
-<meta property="og:description" content="The simplest data structure in R is the vector. A vector is one dimensional and can be pictured as a sequence of blocks containing values:
+<meta property="og:description" content="The simplest data structure in R is the vector. A vector is one dimensional and can be imagined as a sequence of blocks containing values:
 
 ">
 <meta property="og:url" content="http://localhost:4000/r/RFP-part1-vectors/">
@@ -229,7 +229,7 @@
 </div><!-- /.google-ads --><!-- /.google-ads -->
       </footer>
       <div class="entry-content">
-        <p>The simplest data structure in R is the vector. A vector is one dimensional and can be pictured as a sequence of blocks containing values:</p>
+        <p>The simplest data structure in R is the vector. A vector is one dimensional and can be imagined as a sequence of blocks containing values:</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    | v1 | v2 | ... |
 </code></pre></div></div>
@@ -313,7 +313,7 @@
 
 <h2 id="length-n-vectors-n--1">Length-n vectors, n &gt; 1</h2>
 
-<p>The syntax for a vector with at least 2 values is <code class="highlighter-rouge">c(v1, v2, ..., vn)</code>. (Now we know each value <code class="highlighter-rouge">v</code> is itself a length-1 vector, we’ll stop repeating this and simply treat them as if they are single atomic values.) We can make a vector with <code class="highlighter-rouge">c(e1, ..., en)</code> where each expression<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup> <code class="highlighter-rouge">e</code> is evaluated to a value. In practice, it’s more common to make a vector with <code class="highlighter-rouge">c(e1, e2)</code>, called “<code class="highlighter-rouge">e1</code> combined with <code class="highlighter-rouge">e2</code>,” where <code class="highlighter-rouge">e1</code> evaluates to a “vector of type <code class="highlighter-rouge">t</code>” and <code class="highlighter-rouge">e2</code> evaluates to another “vector of type <code class="highlighter-rouge">t</code>.” The result is a new vector that starts with the elements in <code class="highlighter-rouge">e1</code> followed by the elements in <code class="highlighter-rouge">e2</code>. In the simpler case when <code class="highlighter-rouge">e1</code> evaluates to a single value, borrowing the word “cons” from FP (Functional Programming), <code class="highlighter-rouge">c(e1, e2)</code> can also be called “<code class="highlighter-rouge">e1</code> consed onto <code class="highlighter-rouge">e2</code>.” The result would be a new vector that starts with the value of <code class="highlighter-rouge">e1</code> followed by the elements in <code class="highlighter-rouge">e2</code>.</p>
+<p>The syntax for a vector with at least 2 values is <code class="highlighter-rouge">c(v1, v2, ..., vn)</code>. (Now we know each value <code class="highlighter-rouge">v</code> is itself a length-1 vector, we’ll stop repeating this and simply treat them as if they are single atomic values.) We can make a vector with <code class="highlighter-rouge">c(e1, ..., en)</code> where each expression<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup> <code class="highlighter-rouge">e</code> is evaluated to a value. In practice, it’s more common to make a vector with <code class="highlighter-rouge">c(e1, e2)</code>, called “<code class="highlighter-rouge">e1</code> combined with <code class="highlighter-rouge">e2</code>,” where <code class="highlighter-rouge">e1</code> evaluates to a “vector of type <code class="highlighter-rouge">t</code>” and <code class="highlighter-rouge">e2</code> evaluates to another “vector of type <code class="highlighter-rouge">t</code>.” The result is a new vector that starts with the elements in <code class="highlighter-rouge">e1</code> followed by the elements in <code class="highlighter-rouge">e2</code>. When <code class="highlighter-rouge">e1</code> evaluates to a single value, borrowing the word “cons” from FP (Functional Programming), <code class="highlighter-rouge">c(e1, e2)</code> can also be called “<code class="highlighter-rouge">e1</code> consed onto <code class="highlighter-rouge">e2</code>.” The result is then a new vector that starts with the value of <code class="highlighter-rouge">e1</code> followed by the elements in <code class="highlighter-rouge">e2</code>.</p>
 
 <h2 id="how-to-use-vectors">How to use vectors</h2>
 
@@ -345,7 +345,7 @@
         </span><span class="k">else</span><span class="w"> </span><span class="n">xs</span><span class="p">[</span><span class="m">-1</span><span class="p">]</span><span class="w">
 </span><span class="p">}</span></code></pre></figure>
 
-<p>Having defined <code class="highlighter-rouge">is_empty()</code>, <code class="highlighter-rouge">hd()</code> and <code class="highlighter-rouge">tl()</code>, we can use them to do complicated things to vectors. For example, we can sum up all values in an integer or numeric vector.</p>
+<p>Having defined <code class="highlighter-rouge">is_empty()</code>, <code class="highlighter-rouge">hd()</code> and <code class="highlighter-rouge">tl()</code>, we can use them inside of recursive functions to perform complex operations on vectors. For example, we can sum up all values in an integer or numeric vector.</p>
 
 <figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">sum_vec</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="c1"># xs: an interger or numeric vector</span><span class="w">
@@ -393,7 +393,7 @@
 <div class="footnotes">
   <ol>
     <li id="fn:1">
-      <p>The word ‘expression’ here is being used in the sense of expressions in any programming language or mathematical expressions, NOT the R expression object. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+      <p>The word ‘expression’ here is being used in the sense of expressions in any programming language or mathematical expressions. Do NOT confuse it with the R expression object. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
     </li>
     <li id="fn:2">
       <p>R is a functional programming language in its core. <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>

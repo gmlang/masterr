@@ -1,0 +1,641 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>RFP - Part3: R Variables &#8211; Become Great at R</title>
+<meta name="description" content="Previously, we discussed two data structures in R: vectors and lists. If you programmed in another language before, you probably already got a sense that R vectors and lists are a tiny bit different than what you’re used to. This is to be expected. In general, there is a nuanced difference between R data structures and that of many other languages.
+
+">
+<meta name="keywords" content="">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="RFP - Part3: R Variables">
+<meta name="twitter:description" content="Previously, we discussed two data structures in R: vectors and lists. If you programmed in another language before, you probably already got a sense that R vectors and lists are a tiny bit different than what you’re used to. This is to be expected. In general, there is a nuanced difference between R data structures and that of many other languages.
+
+">
+
+
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://localhost:4000/images/site-logo.png">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RFP - Part3: R Variables">
+<meta property="og:description" content="Previously, we discussed two data structures in R: vectors and lists. If you programmed in another language before, you probably already got a sense that R vectors and lists are a tiny bit different than what you’re used to. This is to be expected. In general, there is a nuanced difference between R data structures and that of many other languages.
+
+">
+<meta property="og:url" content="http://localhost:4000/r/RFP-part3-variables/">
+<meta property="og:site_name" content="Become Great at R">
+
+
+<meta name="msvalidate.01" content="F608C5B05384F7B0200AC62F5BB60411">
+
+
+<link rel="canonical" href="http://localhost:4000/r/RFP-part3-variables/">
+<link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="Become Great at R Feed">
+
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:4000/assets/css/main.css">
+<!-- Webfonts -->
+<script src="//use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+  <script src="http://localhost:4000/assets/js/vendor/html5shiv.min.js"></script>
+  <script src="http://localhost:4000/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="http://localhost:4000/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://localhost:4000/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://localhost:4000/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://localhost:4000/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://localhost:4000/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://localhost:4000/images/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+
+<body id="post">
+
+<div class="navigation-wrapper">
+	<nav role="navigation" id="site-nav" class="animated drop">
+	    <ul>
+      
+		    
+		    <li><a href="http://localhost:4000/about/" >About</a></li>
+		  
+		    
+		    <li><a href="http://localhost:4000/da/" >Data Analysis</a></li>
+		  
+		    
+		    <li><a href="http://localhost:4000/r/" >R</a></li>
+		  
+		    
+		    <li><a href="http://localhost:4000/books/" >Books</a></li>
+		  
+		    
+		    <li><a href="http://localhost:4000/apps/" >Apps</a></li>
+		  
+		    
+		    <li><a href="http://localhost:4000/cartoon/" >Cartoon</a></li>
+		  
+        <li class="dosearch"><span><i class="fa fa-search"></i> Search</span></li>
+	    </ul>
+	</nav>
+</div><!-- /.navigation-wrapper -->
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+<div class="search-wrapper">
+  <div class="search-form">
+    <input type="text" class="search-field" placeholder="Search...">
+    <button class="close-btn"><i class="fa fa-times-circle fa-2x"></i></button>
+    <ul class="search-results post-list"></ul><!-- /.search-results -->
+  </div><!-- /.search-form -->
+</div><!-- ./search-wrapper -->
+
+<header class="masthead">
+	<div class="wrap">
+        
+    		<a href="http://localhost:4000" class="site-logo" rel="home" title="Become Great at R"><img src="http://localhost:4000/images/site-logo.png" width="200" height="200" alt="Become Great at R logo" class="animated fadeInUp"></a>
+        
+        <h1 class="site-title animated fadeIn"><a href="http://localhost:4000">Become Great at R</a></h1>
+		<h2 class="site-description animated fadeIn" itemprop="description"></h2>
+	</div>
+</header><!-- /.masthead -->
+
+<div class="js-menu-screen menu-screen"></div>
+
+<div id="main" role="main">
+  <article class="hentry">
+    
+    <div class="entry-wrapper">
+      <header class="entry-header">
+        <span class="entry-tags"></span>
+        
+          <h1 class="entry-title">RFP - Part3: R Variables</h1>
+        
+      </header>
+      <footer class="entry-meta">
+		<!-- Begin MailChimp Signup Form -->
+<html>
+<head>
+<link href="//cdn-images.mailchimp.com/embedcode/classic-081711.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+	#mc_embed_signup{background: #EBF2F2; clear:left; font:14px Helvetica,Arial,sans-serif; border: 1px solid #ccc; padding: 20px 15px; text-align: center}
+    #mc_embed_signup input {
+		background: #fff;
+		border: 1px solid #ccc;
+		font-size: 15px;
+		margin-bottom: 10px;
+		padding: 8px 10px;
+		border-radius: 3px;
+		-moz-border-radius: 3px;
+		-webkit-border-radius: 3px;
+		box-shadow: 0 2px 2px #ddd;
+		-moz-box-shadow: 0 2px 2px #ddd;
+		-webkit-box-shadow: 0 2px 2px #ddd
+	}
+	#mc_embed_signup input.name { background: #fff  no-repeat 10px center; padding-left: 5px }
+	#mc_embed_signup input.email { background: #fff no-repeat 10px center; padding-left: 5px }
+	#mc_embed_signup .button{ background: #217b30; -moz-border-radius: 8; font: 18px; color:#FFFFFF; }
+	#mc_embed_signup .button:hover{ background: #217b30; color: #c6ffd1; }
+	/* Add your own MailChimp form style overrides in your site stylesheet or in this style block.
+	   We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
+</style>
+</head>
+<div id="mc_embed_signup">
+<form action="//gmlang.us9.list-manage.com/subscribe/post?u=66768baba1811dbdb4e186167&amp;id=0288c18c07" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
+    <div id="mc_embed_signup_scroll">
+	<h2>Master R</h2>
+<div class="mc-field-group">
+	<label for="mce-FIRST_NAME">First Name </label>
+	<input type="text" value="" name="FIRST_NAME" class="required name" id="mce-FIRST_NAME">
+</div>
+<div class="mc-field-group">
+	<label for="mce-EMAIL">Email </label>
+	<input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
+    <input type="reset" id="chimp-reset-side" style="display:none"/>
+</div>
+	<div id="mce-responses" class="clear">
+		<div class="response" id="mce-error-response" style="display:none"></div>
+		<div class="response" id="mce-success-response" style="display:none"></div>
+	</div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+    <div style="position: absolute; left: -5000px;"><input type="text" name="b_66768baba1811dbdb4e186167_0288c18c07" tabindex="-1" value=""></div>
+    <div class="clear"><input type="submit" value="Sign Up FREE!" name="subscribe" id="mc-embedded-subscribe" class="button side-clear"></div>
+    </div>
+</form>
+</div>
+</html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+	 	$(".side-clear").click(function() {
+    		 setTimeout(function(){
+				$('#chimp-reset-side').click();
+    		 },1000); 
+		});
+    });
+</script> 
+<!--End mc_embed_signup-->
+        <span class="entry-date date published"><time datetime="2019-02-13T00:00:00+09:00"><i class="fa fa-calendar-o"></i> February 13, 2019</time></span>
+        
+        
+        <span class="author vcard">By <span class="fn">Guangming Lang</span></span>
+		<span class="entry-comments"><i class="fa fa-comment-o"></i> <a href="#disqus_thread">Comment</a></span>
+		<span class="social-share-twitter">
+  <a href="https://twitter.com/intent/tweet?hashtags=&amp;text=RFP%20-%20Part3:%20R%20Variables&amp;url=http://localhost:4000/r/RFP-part3-variables/" title="Share on Twitter" itemprop="Twitter"><i class="fa fa-twitter-square"></i> Tweet</a>
+</span>
+<span class="social-share-facebook">
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/r/RFP-part3-variables/" title="Share on Facebook" itemprop="Facebook"><i class="fa fa-facebook-square"></i> Like</a>
+</span>
+<span class="social-share-googleplus">
+  <a href="https://plus.google.com/share?url=http://localhost:4000/r/RFP-part3-variables/" title="Share on Google Plus" itemprop="GooglePlus"><i class="fa fa-google-plus-square"></i> +1</a>
+</span>
+<!-- /.social-share -->
+        <div class="google-ads" style="margin-top:40px; text-align:center;">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <!-- 160x600 ad -->
+  <ins class="adsbygoogle"
+       style="display:inline-block;width:160px;height:600px"
+       data-ad-client="ca-pub-8728996999064894"
+       data-ad-slot="7055819766"></ins>
+  <script>
+  (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+</div><!-- /.google-ads --><!-- /.google-ads -->
+      </footer>
+      <div class="entry-content">
+        <p>Previously, we discussed two data structures in R: <a href="https://masterr.org/r/RFP-part1-vectors/">vectors</a> and <a href="https://masterr.org/r/RFP-part2-lists/">lists</a>. If you programmed in another language before, you probably already got a sense that R vectors and lists are a tiny bit different than what you’re used to. This is to be expected. In general, there is a nuanced difference between R data structures and that of many other languages.</p>
+
+<p>The phrase “data structure” is often used to mean value containers (e.g., tupple, list, array, vector, matrix etc.). But it can also be used in a broad sense to refer to any data-like objects that can be manipulated. In many other programming languages or informal English, data structures contain values, and values have types (e.g. int or float), but data structures don’t have types. In R, we take the broader meaning, and for this reason, R data structures are called objects<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>. R objects have types, but their types are different from data types (e.g. int or float) of most other languages. This can be best seen by example.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">In most other languages</th>
+      <th style="text-align: left">In R</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">89 is an integer.</td>
+      <td style="text-align: left">89 is an object of type integer vector with length 1.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">“hello” is a string.</td>
+      <td style="text-align: left">“hello” is an object of type character vector with length 1.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">1:10 is a container of integer values.</td>
+      <td style="text-align: left">1:10 is an object of type integer vector.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">list(TRUE, 2.2) is a container of a logical and a float.</td>
+      <td style="text-align: left">list(TRUE, 2.2) is an object of type list. Its first element is an object of type logical vector with length 1. Its second element is an object of type numeric vector with length 1.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>So vectors and lists are objects in R. In fact, not only vectors or lists, to quote John Chambers, “everything that exists (in R) is an object.”</p>
+
+<h2 id="variables-or-variable-names-are-objects">Variables or (variable) names are objects.</h2>
+
+<p>Variables in R are objects and have the type “symbol.” For example, we can <code class="highlighter-rouge">quote</code> a variable <code class="highlighter-rouge">x</code> or wrap <code class="highlighter-rouge">as.name</code> around a string <code class="highlighter-rouge">"my_var"</code> and then call <code class="highlighter-rouge">typeof</code> on them. In both cases, we’d get “symbol.”</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">typeof</span><span class="p">(</span><span class="nf">quote</span><span class="p">(</span><span class="n">x</span><span class="p">))</span><span class="w"> </span><span class="c1"># use the function quote() to create a symbol</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "symbol"</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">typeof</span><span class="p">(</span><span class="n">as.name</span><span class="p">(</span><span class="s2">"my_var"</span><span class="p">))</span><span class="w"> </span><span class="c1"># as.name() also creates a symbol. Note it takes in a string.</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "symbol"</code></pre></figure>
+
+<p>Compare this with variables in other languages. In a statically typed language like SML or Rust, variables have data types like <code class="highlighter-rouge">int</code>, <code class="highlighter-rouge">string</code>, <code class="highlighter-rouge">u32</code>, <code class="highlighter-rouge">f64</code> and etc. In a dynamically typed language like Python, variables have no types. R is also dynamically typed, even though its variables have a type<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup>.</p>
+
+<p>Because R variables are objects, they can be manipulated in the same way as vectors or lists. For example, we can capture the operation of adding two variables and evaluate it later.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">expr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">quote</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="c1"># capture (x + y) without evaluation.</span><span class="w">
+</span><span class="n">typeof</span><span class="p">(</span><span class="n">expr</span><span class="p">)</span><span class="w"> </span><span class="c1"># the captured expression is itself an object, and has type "language".</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "language"</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="c1"># give a value to x.</span><span class="w">
+</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">-1</span><span class="w"> </span><span class="c1"># give a value to y.</span><span class="w">
+</span><span class="n">eval</span><span class="p">(</span><span class="n">expr</span><span class="p">)</span><span class="w"> </span><span class="c1"># now x and y take on particular values, we can evaluate the captured expression (x + y) and get a result.</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] 9</code></pre></figure>
+
+<p>“Computing on the language” is a very powerful feature that many other languages don’t offer. Without it, the almighty <a href="https://www.tidyverse.org">tidyverse</a> would crumble. We’ll spend a lot more time talking about it in later parts of this series. For now, let’s focus on the common role of variables.</p>
+
+<h2 id="variables-refer-to-objects">Variables refer to objects.</h2>
+
+<p>Variables in R play the role of symbolic names<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup>, and can be bound to any objects. Once a variable is bound to an object, it refers to that object.</p>
+
+<p>For example, if we simply type 6 in the console, we’ll lose it the moment the cursor returns. This is annoying because we may want to do more things to it. The solution is to give it a name by putting a symbol on the left of the assignment operator <code class="highlighter-rouge">&lt;-</code> or <code class="highlighter-rouge">=</code><sup id="fnref:4"><a href="#fn:4" class="footnote">4</a></sup> and the value 6 on the right.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">6</span></code></pre></figure>
+
+<p>Now the symbol “x” refers to the value 6. Whenever we want to do more things to that 6, we can just use x.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">print</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">2</span><span class="p">)</span><span class="w"> </span><span class="c1"># prints 8</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] 8</code></pre></figure>
+
+<p>In other words, R variables are like math variables. If you’re coming from a math or science background, you may take this for granted and think this is how variables are in all programming languages. But that’s not the case. Many major programming languages make a distinction between “name” and “variable,” and between “name binding” and “variable assignment”. In those languages (for example, C, Java or Rust), a variable is more than a name, and consists of three parts: name, content box and memory location (of the content box). We can think of a variable in those languages as a carefully-stored bottle of wine, with the bottle (content box), the label (name), and the wine opener (memory address) all being part of the game. Using the wine opener, we can uncork the bottle, pour the wine out (if there’re any), and put in different wine. In contrast, a R variable is like a bottle label, while the refered object is like a bottle of wine. Given a bottle of wine, we can place one or more labels on the bottle. If it’s already labeled, we can replace the label with a different one, or we can take off the label and put it on another bottle. But we cannot open a bottle and change the wine because its wine opener isn’t provided<sup id="fnref:5"><a href="#fn:5" class="footnote">5</a></sup>.</p>
+
+<p>To summarize, SML, C or Java programmers call the “bottle labeling” operation “name binding” and the “changing the wine” operation “variable assignment.” But math people make no such distinction because there’s no “changing the wine” operation in math. In math, “variable assignment” is “name binding” and vice versa, with “variable assignment” being the prefered term. Because R was originally designed for Statisticians and mathematicians, the phrase “variable assignment” is more frequently used in the R world.</p>
+
+<p>The following table shows the different meaning of the same phrase “Variable Assignment” in R vs. many other major languages.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Operation</th>
+      <th style="text-align: left">In many major languages</th>
+      <th style="text-align: left">In R</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">bottle labeling</td>
+      <td style="text-align: left">Name Binding</td>
+      <td style="text-align: left">Variable Assignment</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">opening the bottle and changing the wine</td>
+      <td style="text-align: left">Variable Assignment</td>
+      <td style="text-align: left">Doesn’t support this in base R</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="many-to-one-many-variables-can-refer-to-the-same-object">Many-to-one: Many variables can refer to the same object.</h2>
+
+<p>An object can be assigned to one or many variables. (In other words, one or many names can be bound to the same object, or simply, an object can have many names, or more than one variables can refer to the same object.)</p>
+
+<p>Given a variable <code class="highlighter-rouge">x</code>, we can use <code class="highlighter-rouge">pryr::address(x)</code> to find the memory location of the object that <code class="highlighter-rouge">x</code> points to. (If we’re lazy, we can simply say “the memory location of <code class="highlighter-rouge">x</code>.”) If two variables have the same memory addresses, we say they refer to the same object.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="c1"># bind the symbol x to a value 1</span><span class="w">
+</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="c1"># bind the symbol y to the same value 1</span><span class="w">
+</span><span class="n">x</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="c1"># x and y are equal</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] TRUE</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">identical</span><span class="p">(</span><span class="n">pryr</span><span class="o">::</span><span class="n">address</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="w"> </span><span class="n">pryr</span><span class="o">::</span><span class="n">address</span><span class="p">(</span><span class="n">y</span><span class="p">))</span><span class="w"> </span><span class="c1"># the memory location of the value that x points to is the same as the one that y points to, indicating both x and y point to the same value.</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] TRUE</code></pre></figure>
+
+<p>On the other hand, different variables can refer to different objects, but have the same value. For example in the code below, <code class="highlighter-rouge">x</code> and <code class="highlighter-rouge">y</code> point to two different 1’s.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="c1"># bind x to 1</span><span class="w">
+</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="c1"># bind y to another 1</span><span class="w">
+</span><span class="n">x</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="c1"># x and y are equal in value</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] TRUE</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">identical</span><span class="p">(</span><span class="n">pryr</span><span class="o">::</span><span class="n">address</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="w"> </span><span class="n">pryr</span><span class="o">::</span><span class="n">address</span><span class="p">(</span><span class="n">y</span><span class="p">))</span><span class="w"> </span><span class="c1"># the memory location of x is different from that of y, indicating x and y point to different objects.</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] FALSE</code></pre></figure>
+
+<h2 id="variables-can-be-reassigned">Variables can be reassigned.</h2>
+
+<p>Variables can be reassigned an infinite number of times. This is called shadowing:</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">6</span><span class="w">
+</span><span class="n">print</span><span class="p">(</span><span class="n">paste</span><span class="p">(</span><span class="s2">"x points to"</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="s2">"located at:"</span><span class="p">,</span><span class="w"> </span><span class="n">pryr</span><span class="o">::</span><span class="n">address</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "x points to 6 located at: 0x7fec4a386100"</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="c1"># creates a new value in memory and assigns it to x</span><span class="w">
+</span><span class="n">print</span><span class="p">(</span><span class="n">paste</span><span class="p">(</span><span class="s2">"x stops pointing to the old value. It now points to"</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="s2">"at:"</span><span class="p">,</span><span class="w"> </span><span class="n">pryr</span><span class="o">::</span><span class="n">address</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "x stops pointing to the old value. It now points to 7 at: 0x7fec4b02d280"</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">f</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1"># inside this function,</span><span class="w">
+        </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">369</span><span class="w">  </span><span class="c1"># x is bound to 369, which masks the outer x</span><span class="w">
+        </span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">1</span><span class="w">    </span><span class="c1"># always return 370</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="n">f</span><span class="p">()</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] 370</code></pre></figure>
+
+<h2 id="variables-are-reassigned-independently-of-other-variables">Variables are reassigned independently of other variables.</h2>
+
+<p>Variables are not magically linked when they refer to the same object. They are still separate and independent variables. As a result, reassigning one of them won’t reassign the other:</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">6</span><span class="w">
+</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="c1"># both y and x refer to the same 6</span><span class="w">
+</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">identical</span><span class="p">(</span><span class="n">pryr</span><span class="o">::</span><span class="n">address</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="w"> </span><span class="n">pryr</span><span class="o">::</span><span class="n">address</span><span class="p">(</span><span class="n">y</span><span class="p">)))</span><span class="w">
+        </span><span class="n">print</span><span class="p">(</span><span class="n">paste</span><span class="p">(</span><span class="s2">"both x and y point to"</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="s2">"located at:"</span><span class="p">,</span><span class="w"> </span><span class="n">pryr</span><span class="o">::</span><span class="n">address</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "both x and y point to 6 located at: 0x7fec46a30fb0"</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="c1"># reassign x a value 9</span><span class="w">
+</span><span class="n">print</span><span class="p">(</span><span class="n">paste</span><span class="p">(</span><span class="s2">"reassigned x, and x now points to"</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="s2">"at:"</span><span class="p">,</span><span class="w"> </span><span class="n">pryr</span><span class="o">::</span><span class="n">address</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "reassigned x, and x now points to 9 at: 0x7fec46a30e60"</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">print</span><span class="p">(</span><span class="n">paste</span><span class="p">(</span><span class="s2">"y still points to the old"</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="s2">"at:"</span><span class="p">,</span><span class="w"> </span><span class="n">pryr</span><span class="o">::</span><span class="n">address</span><span class="p">(</span><span class="n">y</span><span class="p">)))</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "y still points to the old 6 at: 0x7fec46a30fb0"</code></pre></figure>
+
+<h2 id="objects-cant-live-long-without-variables">Objects can’t live long without variables.</h2>
+
+<p>An object has a fleeting life unless it’s assigned to at least one variable. This is because R implements “garbage collection”<sup id="fnref:6"><a href="#fn:6" class="footnote">6</a></sup>. Internally, R keeps track of the number of variables each object is bound to<sup id="fnref:7"><a href="#fn:7" class="footnote">7</a></sup>, and automatically cleans up objects that are not referenced at all. For example, when we reassign a variable, the old object it refered to will be garbage collected if it has no other references.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">rm</span><span class="p">(</span><span class="n">list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ls</span><span class="p">())</span><span class="w"> </span><span class="c1"># remove all objects in the global environment</span><span class="w">
+</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"hello"</span><span class="w"> </span><span class="c1"># look at the Environment panel inside Rstudio: x is bound to "hello".</span><span class="w">
+</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"world"</span><span class="w"> </span><span class="c1"># look at the Environment panel, notice x is bound to "world" now. The value "hello" is gone.</span></code></pre></figure>
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>To avoid confusion, we’ll stop using the phrase “R data structures” and use “objects” or “R objects” instead. We’ll keep using the phrase “data structures” as how it’s commonly understood. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+      <p>For this reason, R is sometimes called weakly typed. But this detail is not important. <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:3">
+      <p>It’s not a coincidence that R variables are designed to have type “symbol.” <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:4">
+      <p><code class="highlighter-rouge">=</code> and <code class="highlighter-rouge">&lt;-</code> are the same for all practical purpose: https://developer.r-project.org/equalAssign.html <a href="#fnref:4" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:5">
+      <p>Base R doesn’t provide ways for programmers to directly access the computer’s memory. <a href="#fnref:5" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:6">
+      <p>Not all programming languages implement garbage collection. The Rust programming language is an example. It doesn’t have garbage collection. Instead, it uses ownership to ensure memory safety. <a href="#fnref:6" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:7">
+      <p>The function <code class="highlighter-rouge">pryr::refs()</code> can be used for finding the number of references an object has, but I find its result don’t make much sense. <a href="#fnref:7" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+
+		<!-- Begin MailChimp Signup Form -->
+<html>
+<head>
+<link href="//cdn-images.mailchimp.com/embedcode/classic-081711.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+	#mc_embed_signup{background: #EBF2F2; clear:left; font:14px Helvetica,Arial,sans-serif; border: 1px solid #ccc; padding: 20px 15px; text-align: center}
+	#mc_embed_signup input {
+		background: #fff;
+		border: 1px solid #ccc;
+		font-size: 15px;
+		margin-bottom: 10px;
+		padding: 8px 10px;
+		border-radius: 3px;
+		-moz-border-radius: 3px;
+		-webkit-border-radius: 3px;
+		box-shadow: 0 2px 2px #ddd;
+		-moz-box-shadow: 0 2px 2px #ddd;
+		-webkit-box-shadow: 0 2px 2px #ddd
+	}
+	#mc_embed_signup input.name { background: #fff  no-repeat 10px center; padding-left: 5px }
+	#mc_embed_signup input.email { background: #fff no-repeat 10px center; padding-left: 5px }
+	#mc_embed_signup .button{ background: #217b30; -moz-border-radius: 8; font: 18px; color:#FFFFFF; }
+	#mc_embed_signup .button:hover{ background: #217b30; color: #c6ffd1; }
+	/* Add your own MailChimp form style overrides in your site stylesheet or in this style block.
+	   We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
+</style>
+</head>
+<div id="mc_embed_signup">
+<form action="//gmlang.us9.list-manage.com/subscribe/post?u=66768baba1811dbdb4e186167&amp;id=0288c18c07" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
+    <div id="mc_embed_signup_scroll">
+	<h2>If you enjoyed this post, get updates. It's FREE</h2>
+<div class="mc-field-group">
+	<label for="mce-FIRST_NAME">Enter Your First Name </label>
+	<input type="text" value="" name="FIRST_NAME" class="required name" id="mce-FIRST_NAME">
+</div>
+<div class="mc-field-group">
+	<label for="mce-EMAIL">Enter Your Email </label>
+	<input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
+    <input type="reset" id="chimp-reset" style="display:none"/>
+</div>
+	<div id="mce-responses" class="clear">
+		<div class="response" id="mce-error-response" style="display:none"></div>
+		<div class="response" id="mce-success-response" style="display:none"></div>
+	</div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+    <div style="position: absolute; left: -5000px;"><input type="text" name="b_66768baba1811dbdb4e186167_0288c18c07" tabindex="-1" value=""></div>
+    <div class="clear"><input type="submit" value="Get Updates!" name="subscribe" id="mc-embedded-subscribe" class="button bottom-clear"></div>
+    </div>
+</form>
+</div>
+</html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+	 	$(".bottom-clear").click(function() {
+    		 setTimeout(function(){
+				$('#chimp-reset').click();
+    		 },1000); 
+		});
+    });
+</script> 
+<!--End mc_embed_signup-->
+        <div id="disqus_thread"></div><!-- /#disqus_thread -->
+      </div><!-- /.entry-content -->
+    </div><!-- /.entry-wrapper -->
+    <nav class="pagination" role="navigation">
+      
+        <a href="http://localhost:4000/r/RFP-part2-lists/" class="btn" title="RFP - Part2: R Lists">Previous</a>
+      
+      
+    </nav><!-- /.pagination -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo" class="entry-wrapper">
+    
+<span>&copy; 2019 Guangming Lang. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="https://mademistakes.com/so-simple/" rel="nofollow">So Simple Theme</a>.</span>
+<div class="social-icons">
+	
+	
+	
+	
+	
+	
+	
+	
+	
+<!-- no feed button <a href="http://localhost:4000/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss-square fa-2x"></i></a> -->
+</div><!-- /.social-icons -->
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://localhost:4000/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://localhost:4000/assets/js/scripts.min.js"></script>
+
+<!-- Jekyll Simple Search option -->
+<script>
+  $(document).ready(function() {
+      $('.search-field').jekyllSearch({
+          jsonFile: 'http://localhost:4000/search.json',
+          searchResults: '.search-results',
+          template: '<li><article><a href="{url}">{title} <span class="entry-date"><time datetime="{date}">{shortdate}</time></span></a></article></li>',
+          fuzzy: true,
+          noResults: '<p>Nothing found.</p>'
+        });
+  });
+
+  (function( $, window, undefined ) {
+    
+     var bs = {
+          close: $(".close-btn"),
+          searchform: $(".search-form"),
+          canvas: $(".js-menu-screen"),
+          dothis: $('.dosearch')
+      };
+    
+    bs.dothis.on('click', function() {
+      $('.search-wrapper').css({ display: "block" });
+      $('body').toggleClass('no-scroll');
+      bs.searchform.toggleClass('active');
+      bs.searchform.find('input').focus();
+      bs.canvas.toggleClass('is-visible');
+    });
+    
+      bs.close.on('click', function() {
+        $('.search-wrapper').removeAttr( 'style' );
+        $('body').toggleClass('no-scroll');
+        bs.searchform.toggleClass('active');
+        bs.canvas.removeClass('is-visible');
+    });
+  })( jQuery, window );
+</script>
+
+
+<!-- doesn't work optimally 
+author's Asynchronous Google Analytics snippet
+
+<script>
+  var _gaq = _gaq || [];
+  var pluginUrl = 
+ '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+  _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+  _gaq.push(['_setAccount', 'UA-57697212-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+-->
+
+<!-- google analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-57697212-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+  
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'masterrorg'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+<!-- Mathjax -->
+<script type="text/javascript"
+    src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+	        
+
+</body>
+</html>
