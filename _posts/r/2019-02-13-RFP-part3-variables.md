@@ -173,7 +173,7 @@ identical(pryr::address(x), pryr::address(y)) # the memory location of x is diff
 
 ## Variables can be reassigned.
 
-Variables can be reassigned an infinite number of times. This is called shadowing:
+Variables can be reassigned an unlimited number of times. This allows us to use variables just like how we use them in math:
 
 {% highlight r %}
 x = 6
@@ -183,36 +183,29 @@ print(paste("x points to", x, "located at:", pryr::address(x)))
 
 
 {% highlight text %}
-## [1] "x points to 6 located at: 0x7fec4a386100"
+## [1] "x points to 6 located at: 0x7fc5d7e07a38"
 {% endhighlight %}
 
 
 
 {% highlight r %}
-x = x + 1 # creates a new value in memory and assigns it to x
+x = x + 1 # use x to compute a new value and reassign it to x
 print(paste("x stops pointing to the old value. It now points to", x, "at:", pryr::address(x)))
 {% endhighlight %}
 
 
 
 {% highlight text %}
-## [1] "x stops pointing to the old value. It now points to 7 at: 0x7fec4b02d280"
+## [1] "x stops pointing to the old value. It now points to 7 at: 0x7fc5d8823070"
 {% endhighlight %}
 
-
+R is dynamically typed, so any variable can refer to any object at any time. For example, a variable can be assigned an integer, and then a string, and then a list, and then a function.
 
 {% highlight r %}
-f = function() { # inside this function,
-        x = 369  # x is bound to 369, which masks the outer x
-        x + 1    # always return 370
-}
-f()
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## [1] 370
+x = 0
+x = "Norwegian Wood"
+x = list(TRUE, list(1:10, function() print("well...")))
+x = function(n) n^2
 {% endhighlight %}
 
 
@@ -230,7 +223,7 @@ if (identical(pryr::address(x), pryr::address(y)))
 
 
 {% highlight text %}
-## [1] "both x and y point to 6 located at: 0x7fec46a30fb0"
+## [1] "both x and y point to 6 located at: 0x7fc5da625e80"
 {% endhighlight %}
 
 
@@ -243,7 +236,7 @@ print(paste("reassigned x, and x now points to", x, "at:", pryr::address(x)))
 
 
 {% highlight text %}
-## [1] "reassigned x, and x now points to 9 at: 0x7fec46a30e60"
+## [1] "reassigned x, and x now points to 9 at: 0x7fc5da625cf8"
 {% endhighlight %}
 
 
@@ -255,7 +248,7 @@ print(paste("y still points to the old", y, "at:", pryr::address(y)))
 
 
 {% highlight text %}
-## [1] "y still points to the old 6 at: 0x7fec46a30fb0"
+## [1] "y still points to the old 6 at: 0x7fc5da625e80"
 {% endhighlight %}
 
 

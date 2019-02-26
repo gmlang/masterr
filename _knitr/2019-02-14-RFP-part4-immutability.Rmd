@@ -1,0 +1,15 @@
+---
+layout: post
+title: "RFP - Part4: Immutability in R"
+date: 2019-02-14
+comments: true
+categories: r
+keywords: "R, RFP series, functional programming in R, immutability in R, R variables are immutable, R values are immutable, base R objects are immutable"
+published: true
+share: true
+ads: true
+---
+
+## 
+
+## 

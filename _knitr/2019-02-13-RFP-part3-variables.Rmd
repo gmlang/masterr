@@ -93,17 +93,20 @@ identical(pryr::address(x), pryr::address(y)) # the memory location of x is diff
 
 ## Variables can be reassigned.
 
-Variables can be reassigned an infinite number of times. This is called shadowing:
+Variables can be reassigned an unlimited number of times. This allows us to use variables just like how we use them in math:
 ```{r}
 x = 6
 print(paste("x points to", x, "located at:", pryr::address(x)))
-x = x + 1 # creates a new value in memory and assigns it to x
+x = x + 1 # use x to compute a new value and reassign it to x
 print(paste("x stops pointing to the old value. It now points to", x, "at:", pryr::address(x)))
-f = function() { # inside this function,
-        x = 369  # x is bound to 369, which masks the outer x
-        x + 1    # always return 370
-}
-f()
+```
+
+R is dynamically typed, so any variable can refer to any object at any time. For example, a variable can be assigned an integer, and then a string, and then a list, and then a function.
+```{r}
+x = 0
+x = "Norwegian Wood"
+x = list(TRUE, list(1:10, function() print("well...")))
+x = function(n) n^2
 ```
 
 

@@ -363,25 +363,24 @@
 
 <h2 id="variables-can-be-reassigned">Variables can be reassigned.</h2>
 
-<p>Variables can be reassigned an infinite number of times. This is called shadowing:</p>
+<p>Variables can be reassigned an unlimited number of times. This allows us to use variables just like how we use them in math:</p>
 
 <figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">6</span><span class="w">
 </span><span class="n">print</span><span class="p">(</span><span class="n">paste</span><span class="p">(</span><span class="s2">"x points to"</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="s2">"located at:"</span><span class="p">,</span><span class="w"> </span><span class="n">pryr</span><span class="o">::</span><span class="n">address</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span></code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "x points to 6 located at: 0x7fec4a386100"</code></pre></figure>
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "x points to 6 located at: 0x7fc5d7e07a38"</code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="c1"># creates a new value in memory and assigns it to x</span><span class="w">
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="c1"># use x to compute a new value and reassign it to x</span><span class="w">
 </span><span class="n">print</span><span class="p">(</span><span class="n">paste</span><span class="p">(</span><span class="s2">"x stops pointing to the old value. It now points to"</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="s2">"at:"</span><span class="p">,</span><span class="w"> </span><span class="n">pryr</span><span class="o">::</span><span class="n">address</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span></code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "x stops pointing to the old value. It now points to 7 at: 0x7fec4b02d280"</code></pre></figure>
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "x stops pointing to the old value. It now points to 7 at: 0x7fc5d8823070"</code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">f</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1"># inside this function,</span><span class="w">
-        </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">369</span><span class="w">  </span><span class="c1"># x is bound to 369, which masks the outer x</span><span class="w">
-        </span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">1</span><span class="w">    </span><span class="c1"># always return 370</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span><span class="n">f</span><span class="p">()</span></code></pre></figure>
+<p>R is dynamically typed, so any variable can refer to any object at any time. For example, a variable can be assigned an integer, and then a string, and then a list, and then a function.</p>
 
-<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] 370</code></pre></figure>
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="w">
+</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Norwegian Wood"</span><span class="w">
+</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">,</span><span class="w"> </span><span class="k">function</span><span class="p">()</span><span class="w"> </span><span class="n">print</span><span class="p">(</span><span class="s2">"well..."</span><span class="p">)))</span><span class="w">
+</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="n">n</span><span class="o">^</span><span class="m">2</span></code></pre></figure>
 
 <h2 id="variables-are-reassigned-independently-of-other-variables">Variables are reassigned independently of other variables.</h2>
 
@@ -392,16 +391,16 @@
 </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">identical</span><span class="p">(</span><span class="n">pryr</span><span class="o">::</span><span class="n">address</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="w"> </span><span class="n">pryr</span><span class="o">::</span><span class="n">address</span><span class="p">(</span><span class="n">y</span><span class="p">)))</span><span class="w">
         </span><span class="n">print</span><span class="p">(</span><span class="n">paste</span><span class="p">(</span><span class="s2">"both x and y point to"</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="s2">"located at:"</span><span class="p">,</span><span class="w"> </span><span class="n">pryr</span><span class="o">::</span><span class="n">address</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span></code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "both x and y point to 6 located at: 0x7fec46a30fb0"</code></pre></figure>
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "both x and y point to 6 located at: 0x7fc5da625e80"</code></pre></figure>
 
 <figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="c1"># reassign x a value 9</span><span class="w">
 </span><span class="n">print</span><span class="p">(</span><span class="n">paste</span><span class="p">(</span><span class="s2">"reassigned x, and x now points to"</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="s2">"at:"</span><span class="p">,</span><span class="w"> </span><span class="n">pryr</span><span class="o">::</span><span class="n">address</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span></code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "reassigned x, and x now points to 9 at: 0x7fec46a30e60"</code></pre></figure>
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "reassigned x, and x now points to 9 at: 0x7fc5da625cf8"</code></pre></figure>
 
 <figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">print</span><span class="p">(</span><span class="n">paste</span><span class="p">(</span><span class="s2">"y still points to the old"</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="s2">"at:"</span><span class="p">,</span><span class="w"> </span><span class="n">pryr</span><span class="o">::</span><span class="n">address</span><span class="p">(</span><span class="n">y</span><span class="p">)))</span></code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "y still points to the old 6 at: 0x7fec46a30fb0"</code></pre></figure>
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "y still points to the old 6 at: 0x7fc5da625e80"</code></pre></figure>
 
 <h2 id="objects-cant-live-long-without-variables">Objects can’t live long without variables.</h2>
 
