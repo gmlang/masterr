@@ -1,0 +1,34 @@
+---
+layout: post
+title: "RFP - Part4: Immutability in R"
+date: 2019-02-14
+comments: true
+categories: r
+keywords: "R, RFP series, functional programming in R, immutability in R, R variables are immutable, R values are immutable, base R objects are immutable, how assignment works in R, how does variable assignment work in R"
+published: true
+share: true
+ads: true
+---
+
+## 
+
+Rebinding should not be confused with mutation.
+
+Rebinding is a change to the referencing identifier.
+Mutation is a change to the referenced entity.
+
+
+Consider the following Java code:
+        ```
+LinkedList<String> list;
+list = new LinkedList<String>();
+list.add("foo");
+list = null;
+```
+The identifier list initially references nothing (it is uninitialized);
+it is then rebound to reference an object (a linked list of strings).
+The linked list referenced by list is then mutated, adding a string to the list.
+Lastly, list is rebound to null.
+
+
+## 
