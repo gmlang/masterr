@@ -1,6 +1,15 @@
 [
 	
 		{
+		  "title"      : "RFP - Part5: Immutability in R",
+		  "category"   : "",
+      "tags"       : "",
+		  "url"        : "http://localhost:4000/r/RFP-part5-immutability/",
+		  "date"       : "2019-02-15 00:00:00 +0900",
+		  "shortdate"  : "February 15, 2019"
+		} ,
+	
+		{
 		  "title"      : "RFP - Part4: R Variable Shadowing",
 		  "category"   : "",
       "tags"       : "",

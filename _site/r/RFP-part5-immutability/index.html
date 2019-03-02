@@ -5,16 +5,16 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
 <head>
 <meta charset="utf-8">
-<title>RFP - Part4: R Variable Shadowing &#8211; Become Great at R</title>
-<meta name="description" content="Now we know that variables in R are objects, and that they can be manipulated, assigned any R objects and reassigned. (You can read the detailed discussion here.) We’ll discuss variable shadowing.
+<title>RFP - Part5: Immutability in R &#8211; Become Great at R</title>
+<meta name="description" content="Do not confuse variable reassignment (or rebinding) with mutation. Reassignment in R changes the binding. (See the second diagram for an example.) Mutation changes the referenced object itself. R supports limited mutation by default and base R objects are mostly immutable. As a result, R code often behaves like what we’d expect it to behave mathematically. This allows the programmer to focus on the mathematical or statistical problem at hand without being distracted by the “computer side of things.” Indeed, if you’re trained as a mathematician or statistician without any programming experience, you’ll find it’s easier to write R code than most typical programming languages like Python, Ruby, Java, C++, or Rust etc.
 
 ">
 <meta name="keywords" content="">
 
 
 <!-- Twitter Cards -->
-<meta name="twitter:title" content="RFP - Part4: R Variable Shadowing">
-<meta name="twitter:description" content="Now we know that variables in R are objects, and that they can be manipulated, assigned any R objects and reassigned. (You can read the detailed discussion here.) We’ll discuss variable shadowing.
+<meta name="twitter:title" content="RFP - Part5: Immutability in R">
+<meta name="twitter:description" content="Do not confuse variable reassignment (or rebinding) with mutation. Reassignment in R changes the binding. (See the second diagram for an example.) Mutation changes the referenced object itself. R supports limited mutation by default and base R objects are mostly immutable. As a result, R code often behaves like what we’d expect it to behave mathematically. This allows the programmer to focus on the mathematical or statistical problem at hand without being distracted by the “computer side of things.” Indeed, if you’re trained as a mathematician or statistician without any programming experience, you’ll find it’s easier to write R code than most typical programming languages like Python, Ruby, Java, C++, or Rust etc.
 
 ">
 
@@ -26,18 +26,18 @@
 <!-- Open Graph -->
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
-<meta property="og:title" content="RFP - Part4: R Variable Shadowing">
-<meta property="og:description" content="Now we know that variables in R are objects, and that they can be manipulated, assigned any R objects and reassigned. (You can read the detailed discussion here.) We’ll discuss variable shadowing.
+<meta property="og:title" content="RFP - Part5: Immutability in R">
+<meta property="og:description" content="Do not confuse variable reassignment (or rebinding) with mutation. Reassignment in R changes the binding. (See the second diagram for an example.) Mutation changes the referenced object itself. R supports limited mutation by default and base R objects are mostly immutable. As a result, R code often behaves like what we’d expect it to behave mathematically. This allows the programmer to focus on the mathematical or statistical problem at hand without being distracted by the “computer side of things.” Indeed, if you’re trained as a mathematician or statistician without any programming experience, you’ll find it’s easier to write R code than most typical programming languages like Python, Ruby, Java, C++, or Rust etc.
 
 ">
-<meta property="og:url" content="http://localhost:4000/r/RFP-part4-shadowing/">
+<meta property="og:url" content="http://localhost:4000/r/RFP-part5-immutability/">
 <meta property="og:site_name" content="Become Great at R">
 
 
 <meta name="msvalidate.01" content="F608C5B05384F7B0200AC62F5BB60411">
 
 
-<link rel="canonical" href="http://localhost:4000/r/RFP-part4-shadowing/">
+<link rel="canonical" href="http://localhost:4000/r/RFP-part5-immutability/">
 <link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="Become Great at R Feed">
 
 
@@ -136,7 +136,7 @@
       <header class="entry-header">
         <span class="entry-tags"></span>
         
-          <h1 class="entry-title">RFP - Part4: R Variable Shadowing</h1>
+          <h1 class="entry-title">RFP - Part5: Immutability in R</h1>
         
       </header>
       <footer class="entry-meta">
@@ -201,19 +201,19 @@
     });
 </script> 
 <!--End mc_embed_signup-->
-        <span class="entry-date date published"><time datetime="2019-02-14T00:00:00+09:00"><i class="fa fa-calendar-o"></i> February 14, 2019</time></span>
+        <span class="entry-date date published"><time datetime="2019-02-15T00:00:00+09:00"><i class="fa fa-calendar-o"></i> February 15, 2019</time></span>
         
         
         <span class="author vcard">By <span class="fn">Guangming Lang</span></span>
 		<span class="entry-comments"><i class="fa fa-comment-o"></i> <a href="#disqus_thread">Comment</a></span>
 		<span class="social-share-twitter">
-  <a href="https://twitter.com/intent/tweet?hashtags=&amp;text=RFP%20-%20Part4:%20R%20Variable%20Shadowing&amp;url=http://localhost:4000/r/RFP-part4-shadowing/" title="Share on Twitter" itemprop="Twitter"><i class="fa fa-twitter-square"></i> Tweet</a>
+  <a href="https://twitter.com/intent/tweet?hashtags=&amp;text=RFP%20-%20Part5:%20Immutability%20in%20R&amp;url=http://localhost:4000/r/RFP-part5-immutability/" title="Share on Twitter" itemprop="Twitter"><i class="fa fa-twitter-square"></i> Tweet</a>
 </span>
 <span class="social-share-facebook">
-  <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/r/RFP-part4-shadowing/" title="Share on Facebook" itemprop="Facebook"><i class="fa fa-facebook-square"></i> Like</a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/r/RFP-part5-immutability/" title="Share on Facebook" itemprop="Facebook"><i class="fa fa-facebook-square"></i> Like</a>
 </span>
 <span class="social-share-googleplus">
-  <a href="https://plus.google.com/share?url=http://localhost:4000/r/RFP-part4-shadowing/" title="Share on Google Plus" itemprop="GooglePlus"><i class="fa fa-google-plus-square"></i> +1</a>
+  <a href="https://plus.google.com/share?url=http://localhost:4000/r/RFP-part5-immutability/" title="Share on Google Plus" itemprop="GooglePlus"><i class="fa fa-google-plus-square"></i> +1</a>
 </span>
 <!-- /.social-share -->
         <div class="google-ads" style="margin-top:40px; text-align:center;">
@@ -229,67 +229,102 @@
 </div><!-- /.google-ads --><!-- /.google-ads -->
       </footer>
       <div class="entry-content">
-        <p>Now we know that variables in R are objects, and that they can be manipulated, assigned any R objects and reassigned. (You can read the detailed discussion <a href="https://masterr.org/r/RFP-part3-variables/">here</a>.) We’ll discuss variable shadowing.</p>
+        <p>Do not confuse variable reassignment (or rebinding) with mutation. Reassignment in R changes the binding. (See the <a href="https://masterr.org/r/RFP-part4-shadowing/">second diagram</a> for an example.) Mutation changes the referenced object itself. R supports limited mutation by default and base R objects are mostly immutable. As a result, R code often behaves like what we’d expect it to behave mathematically. This allows the programmer to focus on the mathematical or statistical problem at hand without being distracted by the “computer side of things.” Indeed, if you’re trained as a mathematician or statistician without any programming experience, you’ll find it’s easier to write R code than most typical programming languages like Python, Ruby, Java, C++, or Rust etc.</p>
 
-<h2 id="variable-reassignment-in-r">Variable reassignment in R</h2>
+<h2 id="r-objects-are-mostly-immutable">R objects are (mostly) immutable.</h2>
 
-<p>After we assign a R object to a variable, the variable will refer to that object. Let’s use a gray rectangular shape to represent the variable, and draw an arrow from the variable pointing to the object. For example, here is what’s going on behind the one-liner <code class="highlighter-rouge">x = 3</code> pictorially:
-<img src="/../figs/2019-02-14-RFP-part4-shadowing/unnamed-chunk-1-1.png" title="center" alt="center" style="display: block; margin: auto;" /></p>
+<p>Consider the following R code, where x and y refer to the same list initially. If we change any element of x, the value of y will not be automatically changed. This is exactly what we would expect mathematically.</p>
 
-<p>When a variable is reassigned another object, it won’t refer to the original object anymore. We represent this by changing the original solid arrow to a dashed one. A new solid arrow is drawn from the variable pointing to the new object. For example, the following diagram shows what happens if we reassign x to 32 (<code class="highlighter-rouge">x = 32</code>):
-<img src="/../figs/2019-02-14-RFP-part4-shadowing/unnamed-chunk-2-1.png" title="center" alt="center" style="display: block; margin: auto;" /></p>
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="w">
+</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="w"> 
+</span><span class="n">identical</span><span class="p">(</span><span class="n">pryr</span><span class="o">::</span><span class="n">address</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="w"> </span><span class="n">pryr</span><span class="o">::</span><span class="n">address</span><span class="p">(</span><span class="n">y</span><span class="p">))</span><span class="w"> </span><span class="c1"># x and y point to the same object</span></code></pre></figure>
 
-<p>The above diagrams depict how variable assignment and reassignment work in both R and Python. Before we talk about how variable shadowing works in R, let’s take a look at how it works in an old programing language called Standard ML (SML).</p>
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] TRUE</code></pre></figure>
 
-<h2 id="variable-shadowing-in-sml">Variable shadowing in SML</h2>
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">x</span><span class="p">[[</span><span class="m">2</span><span class="p">]]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="c1"># change the second element of x</span><span class="w">
+</span><span class="n">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w">   </span><span class="c1"># x is changed</span></code></pre></figure>
 
-<p>“Variable assignment” works differently in SML. I’m putting “variable assignment” in quotes because SML programmers don’t call it that, instead, they call it “name binding.”<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup> For example, consider the same operation of first setting x to 3 and then to 32. Its SML code is</p>
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [[1]]
+## [1] 1
+## 
+## [[2]]
+## [1] 1
+## 
+## [[3]]
+## [1] 1</code></pre></figure>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>val x = 3;  (* bind x to 3 *)
-val x = 32; (* bind x to 32 *)
-</code></pre></div></div>
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="w">   </span><span class="c1"># y is not changed     </span></code></pre></figure>
 
-<p>The following diagram captures what happens when we run the SML code:
-<img src="/../figs/2019-02-14-RFP-part4-shadowing/unnamed-chunk-3-1.png" title="center" alt="center" style="display: block; margin: auto;" /></p>
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [[1]]
+## [1] 1
+## 
+## [[2]]
+## [1] 0
+## 
+## [[3]]
+## [1] 1</code></pre></figure>
 
-<p>The second x is a new variable that’s different from the first x! It shadows the first x. As a result, if we print x we’d get 32. So the mathematical reassignment operation is carried out by variable shadowing in SML.</p>
+<p>The R code <code class="highlighter-rouge">x[[2]] = 1</code> gives the illusion of modifying the list referenced by x. Internally, it actually does two things: first create a modified copy of that list, then rebind x to the modified copy, leaving the original list unchanged. Because y is still bound to the original list, running <code class="highlighter-rouge">print(y)</code> will display the original list on screen. We summarize what’s going on in the following diagram:</p>
 
-<h2 id="variable-shadowing-in-r">Variable shadowing in R</h2>
+<p><img src="../../figs/2019-02-15-RFP-part5-immutability/immutable.png" alt="" /></p>
 
-<p>R also has variable shadowing, which happens if the same variable is assigned in different scopes. Reassignment happens if the same variable is assigned twice or more times in the same scope. Consider the following R code, where each function definition creates a new scope:</p>
+<p>If we do the same thing in Python, as shown in the code block below, we’ll discover that element change in x is also visible through y. This is often surprising to people without a formal training in programming. How could the value of y be changed when no operation was performed on y explicitly? The reason is because unlike lists in R, Python lists are mutable.</p>
 
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="c1"># global x</span><span class="w">
-</span><span class="n">outer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"The Great Gatsby"</span><span class="w"> </span><span class="c1"># outer x</span><span class="w">
-        
-        </span><span class="n">inner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="w"> </span><span class="c1"># inner x</span><span class="w">
-                </span><span class="n">print</span><span class="p">(</span><span class="n">paste</span><span class="p">(</span><span class="s2">"inner:"</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">))</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-        
-        </span><span class="n">inner</span><span class="p">()</span><span class="w"> </span><span class="c1"># call function inner()</span><span class="w">
-        </span><span class="n">print</span><span class="p">(</span><span class="n">paste</span><span class="p">(</span><span class="s2">"outer:"</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">))</span><span class="w"> 
-</span><span class="p">}</span><span class="w">
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">x</span>
+<span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># change the second element of x, python list starts at index 0
+</span><span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="c1"># x is changed</span></code></pre></figure>
 
-</span><span class="p">{</span><span class="w">
-        </span><span class="n">outer</span><span class="p">()</span><span class="w"> </span><span class="c1"># call function outer()</span><span class="w">
-        </span><span class="n">print</span><span class="p">(</span><span class="n">paste</span><span class="p">(</span><span class="s2">"global:"</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">))</span><span class="w">
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1, 1, 1]</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="c1"># y is also changed</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1, 1, 1]</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">print</span><span class="p">(</span><span class="n">x</span> <span class="ow">is</span> <span class="n">y</span><span class="p">)</span> <span class="c1"># x and y still refer to the same list, with its 2nd element changed to 1</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## True</code></pre></figure>
+
+<p>The python code <code class="highlighter-rouge">x[1] = 1</code> directly modifies the list referenced by x, updating its second element to a value of 1. There’s no new list being created. Both x and y are still bound to the original list, which has the value of its second element changed from 0 to 1. This can be seen pictorially as follows:</p>
+
+<p><img src="../../figs/2019-02-15-RFP-part5-immutability/mutable.png" alt="" /></p>
+
+<h2 id="copy-on-modify-if-necessary">Copy on modify (if necessary)</h2>
+
+<p>Detailed oriented readers probably have noticed the title of the previous section has the word “mostly” in parenthesis: “R objects are (mostly) immutable.” The implication is that some R objects (for example, lists and vectors) can also be mutable sometimes. Consider the following example, where there’s only one variable x pointing to the list [-1, 0, 1]. Because there are no other variables that refer to the same list, updating any element of x will directly modify the list instead of making a modified copy.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="p">{</span><span class="w"> </span><span class="c1"># must use curly brackets to group code if running in Rstudio. No need of them if running inside of R directly.</span><span class="w">
+        </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="m">-1</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="w">
+        </span><span class="n">print</span><span class="p">(</span><span class="n">pryr</span><span class="o">::</span><span class="n">address</span><span class="p">(</span><span class="n">x</span><span class="p">))</span><span class="w">
+        </span><span class="n">x</span><span class="p">[[</span><span class="m">2</span><span class="p">]]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="w">
+        </span><span class="n">print</span><span class="p">(</span><span class="n">pryr</span><span class="o">::</span><span class="n">address</span><span class="p">(</span><span class="n">x</span><span class="p">))</span><span class="w">
+        </span><span class="n">x</span><span class="p">[[</span><span class="m">3</span><span class="p">]]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">-9</span><span class="w">
+        </span><span class="n">print</span><span class="p">(</span><span class="n">pryr</span><span class="o">::</span><span class="n">address</span><span class="p">(</span><span class="n">x</span><span class="p">))</span><span class="w">
+</span><span class="p">}</span><span class="w"> </span><span class="c1"># identical memory addresses show there was no rebinding and x always point to the same list. So it's the list itself that gets modified.</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "0x7f8207893e48"
+## [1] "0x7f8207893e48"
+## [1] "0x7f8207893e48"</code></pre></figure>
+
+<p>Consider another example where we first assign the vector <code class="highlighter-rouge">1:13</code> to a variable v then change v’s elements:</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="p">{</span><span class="w"> </span><span class="c1"># must use curly brackets to group code if running in Rstudio. No need of them if running inside of R directly.</span><span class="w">
+        </span><span class="n">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">13</span><span class="w">
+        </span><span class="n">print</span><span class="p">(</span><span class="n">pryr</span><span class="o">::</span><span class="n">address</span><span class="p">(</span><span class="n">v</span><span class="p">))</span><span class="w">
+        </span><span class="n">v</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">100</span><span class="w">  </span><span class="c1"># makes a modified copy</span><span class="w">
+        </span><span class="n">print</span><span class="p">(</span><span class="n">pryr</span><span class="o">::</span><span class="n">address</span><span class="p">(</span><span class="n">v</span><span class="p">))</span><span class="w"> </span><span class="c1"># different memory address, indicating modified copy</span><span class="w">
+        </span><span class="n">v</span><span class="p">[</span><span class="m">2</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">-100</span><span class="w"> </span><span class="c1"># modify the copy directly</span><span class="w">
+        </span><span class="n">print</span><span class="p">(</span><span class="n">pryr</span><span class="o">::</span><span class="n">address</span><span class="p">(</span><span class="n">v</span><span class="p">))</span><span class="w"> </span><span class="c1"># same memory address, indicating direct modification</span><span class="w">
 </span><span class="p">}</span></code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "inner: TRUE"
-## [1] "outer: The Great Gatsby"
-## [1] "global: 0"</code></pre></figure>
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "0x7f81fff33fc8"
+## [1] "0x7f82057bfa98"
+## [1] "0x7f82057bfa98"</code></pre></figure>
 
-<p>From the above printed output, we see the x inside <code class="highlighter-rouge">inner()</code> shadows the x between <code class="highlighter-rouge">inner()</code> and <code class="highlighter-rouge">outer()</code>, which further shadows the x outside of <code class="highlighter-rouge">outer()</code>. This can be seen more clearly from the following diagram:
-<img src="/../figs/2019-02-14-RFP-part4-shadowing/unnamed-chunk-5-1.png" title="center" alt="center" style="display: block; margin: auto;" /></p>
+<p>Although there’s no other variables pointing to the same vector, the first time we tried to change v’s elements (<code class="highlighter-rouge">v[1] = 100</code>), R made a modified copy. When we tried to change v’s elements for the second time (<code class="highlighter-rouge">v[2] = -100</code>), R didn’t make another modified copy, instead, R modified the modified copy directly.</p>
 
-<div class="footnotes">
-  <ol>
-    <li id="fn:1">
-      <p>They make the distinction between “name binding” and “variable assignment.” To learn more, read https://masterr.org/r/RFP-part3-variables/. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
+<p>In summary, it seems R is smart to know when to directly modify an object and when to make a modified copy. How does R do it? Well, it turns out that R implements something called “copy on modify (if necessary),” which means that copying is done only when we try to modify an object, and if the modification has no “spillover effects” (for example, making the value of other variables or non-local variables changed), R will just modify without copying.</p>
+
 
 		<!-- Begin MailChimp Signup Form -->
 <html>
@@ -357,10 +392,8 @@ val x = 32; (* bind x to 32 *)
     </div><!-- /.entry-wrapper -->
     <nav class="pagination" role="navigation">
       
-        <a href="http://localhost:4000/r/RFP-part3-variables/" class="btn" title="RFP - Part3: R Variables">Previous</a>
+        <a href="http://localhost:4000/r/RFP-part4-shadowing/" class="btn" title="RFP - Part4: R Variable Shadowing">Previous</a>
       
-      
-        <a href="http://localhost:4000/r/RFP-part5-immutability/" class="btn" title="RFP - Part5: Immutability in R">Next</a>
       
     </nav><!-- /.pagination -->
   </article>
