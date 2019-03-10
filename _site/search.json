@@ -1,6 +1,15 @@
 [
 	
 		{
+		  "title"      : "RFP - Part 6: R &lt;&lt;- Assignment Operator",
+		  "category"   : "",
+      "tags"       : "",
+		  "url"        : "http://localhost:4000/r/RFP-part6/",
+		  "date"       : "2019-03-10 00:00:00 +0900",
+		  "shortdate"  : "March 10, 2019"
+		} ,
+	
+		{
 		  "title"      : "RFP - Part5: Immutability in R",
 		  "category"   : "",
       "tags"       : "",

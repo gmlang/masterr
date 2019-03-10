@@ -5,16 +5,30 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
 <head>
 <meta charset="utf-8">
-<title>RFP - Part5: Immutability in R &#8211; Become Great at R</title>
-<meta name="description" content="Do not confuse variable reassignment (or rebinding) with mutation. Reassignment in R changes the binding. (See the second diagram for an example.) Mutation changes the referenced object itself. R supports limited mutation by default and base R objects are mostly immutable. As a result, R code often behaves like what we’d expect it to behave mathematically. This allows the programmer to focus on the mathematical or statistical problem at hand without being distracted by the “computer side of things.” Indeed, if you’re trained as a mathematician or statistician without any programming experience, you’ll find it’s easier to write R code than most typical programming languages like Python, Ruby, Java, C++, or Rust etc.
+<title>RFP - Part 6: R <<- Assignment Operator &#8211; Become Great at R</title>
+<meta name="description" content="If you have been following this R Functional Programming (RFP) series1, you know by now we have discussed:
+
+
+  
+    
+      If you haven’t, I recommend you to read the linked posts first. &#8617;
+    
+  
 
 ">
 <meta name="keywords" content="">
 
 
 <!-- Twitter Cards -->
-<meta name="twitter:title" content="RFP - Part5: Immutability in R">
-<meta name="twitter:description" content="Do not confuse variable reassignment (or rebinding) with mutation. Reassignment in R changes the binding. (See the second diagram for an example.) Mutation changes the referenced object itself. R supports limited mutation by default and base R objects are mostly immutable. As a result, R code often behaves like what we’d expect it to behave mathematically. This allows the programmer to focus on the mathematical or statistical problem at hand without being distracted by the “computer side of things.” Indeed, if you’re trained as a mathematician or statistician without any programming experience, you’ll find it’s easier to write R code than most typical programming languages like Python, Ruby, Java, C++, or Rust etc.
+<meta name="twitter:title" content="RFP - Part 6: R <<- Assignment Operator">
+<meta name="twitter:description" content="If you have been following this R Functional Programming (RFP) series1, you know by now we have discussed:
+
+
+  
+    
+      If you haven’t, I recommend you to read the linked posts first. &#8617;
+    
+  
 
 ">
 
@@ -26,18 +40,25 @@
 <!-- Open Graph -->
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
-<meta property="og:title" content="RFP - Part5: Immutability in R">
-<meta property="og:description" content="Do not confuse variable reassignment (or rebinding) with mutation. Reassignment in R changes the binding. (See the second diagram for an example.) Mutation changes the referenced object itself. R supports limited mutation by default and base R objects are mostly immutable. As a result, R code often behaves like what we’d expect it to behave mathematically. This allows the programmer to focus on the mathematical or statistical problem at hand without being distracted by the “computer side of things.” Indeed, if you’re trained as a mathematician or statistician without any programming experience, you’ll find it’s easier to write R code than most typical programming languages like Python, Ruby, Java, C++, or Rust etc.
+<meta property="og:title" content="RFP - Part 6: R <<- Assignment Operator">
+<meta property="og:description" content="If you have been following this R Functional Programming (RFP) series1, you know by now we have discussed:
+
+
+  
+    
+      If you haven’t, I recommend you to read the linked posts first. &#8617;
+    
+  
 
 ">
-<meta property="og:url" content="http://localhost:4000/r/RFP-part5-immutability/">
+<meta property="og:url" content="http://localhost:4000/r/RFP-part6/">
 <meta property="og:site_name" content="Become Great at R">
 
 
 <meta name="msvalidate.01" content="F608C5B05384F7B0200AC62F5BB60411">
 
 
-<link rel="canonical" href="http://localhost:4000/r/RFP-part5-immutability/">
+<link rel="canonical" href="http://localhost:4000/r/RFP-part6/">
 <link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="Become Great at R Feed">
 
 
@@ -139,7 +160,7 @@
       <header class="entry-header">
         <span class="entry-tags"></span>
         
-          <h1 class="entry-title">RFP - Part5: Immutability in R</h1>
+          <h1 class="entry-title">RFP - Part 6: R <<- Assignment Operator</h1>
         
       </header>
       <footer class="entry-meta">
@@ -204,19 +225,19 @@
     });
 </script> 
 <!--End mc_embed_signup-->
-        <span class="entry-date date published"><time datetime="2019-02-15T00:00:00+09:00"><i class="fa fa-calendar-o"></i> February 15, 2019</time></span>
+        <span class="entry-date date published"><time datetime="2019-03-10T00:00:00+09:00"><i class="fa fa-calendar-o"></i> March 10, 2019</time></span>
         
         
         <span class="author vcard">By <span class="fn">Guangming Lang</span></span>
 		<span class="entry-comments"><i class="fa fa-comment-o"></i> <a href="#disqus_thread">Comment</a></span>
 		<span class="social-share-twitter">
-  <a href="https://twitter.com/intent/tweet?hashtags=&amp;text=RFP%20-%20Part5:%20Immutability%20in%20R&amp;url=http://localhost:4000/r/RFP-part5-immutability/" title="Share on Twitter" itemprop="Twitter"><i class="fa fa-twitter-square"></i> Tweet</a>
+  <a href="https://twitter.com/intent/tweet?hashtags=&amp;text=RFP%20-%20Part%206:%20R%20&lt;&lt;-%20Assignment%20Operator&amp;url=http://localhost:4000/r/RFP-part6/" title="Share on Twitter" itemprop="Twitter"><i class="fa fa-twitter-square"></i> Tweet</a>
 </span>
 <span class="social-share-facebook">
-  <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/r/RFP-part5-immutability/" title="Share on Facebook" itemprop="Facebook"><i class="fa fa-facebook-square"></i> Like</a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/r/RFP-part6/" title="Share on Facebook" itemprop="Facebook"><i class="fa fa-facebook-square"></i> Like</a>
 </span>
 <span class="social-share-googleplus">
-  <a href="https://plus.google.com/share?url=http://localhost:4000/r/RFP-part5-immutability/" title="Share on Google Plus" itemprop="GooglePlus"><i class="fa fa-google-plus-square"></i> +1</a>
+  <a href="https://plus.google.com/share?url=http://localhost:4000/r/RFP-part6/" title="Share on Google Plus" itemprop="GooglePlus"><i class="fa fa-google-plus-square"></i> +1</a>
 </span>
 <!-- /.social-share -->
         <div class="google-ads" style="margin-top:40px; text-align:center;">
@@ -232,102 +253,153 @@
 </div><!-- /.google-ads --><!-- /.google-ads -->
       </footer>
       <div class="entry-content">
-        <p>Do not confuse variable reassignment (or rebinding) with mutation. Reassignment in R changes the binding. (See the <a href="https://masterr.org/r/RFP-part4-shadowing/">second diagram</a> for an example.) Mutation changes the referenced object itself. R supports limited mutation by default and base R objects are mostly immutable. As a result, R code often behaves like what we’d expect it to behave mathematically. This allows the programmer to focus on the mathematical or statistical problem at hand without being distracted by the “computer side of things.” Indeed, if you’re trained as a mathematician or statistician without any programming experience, you’ll find it’s easier to write R code than most typical programming languages like Python, Ruby, Java, C++, or Rust etc.</p>
+        <p>If you have been following this R Functional Programming (RFP) series<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>, you know by now we have discussed:</p>
 
-<h2 id="r-objects-are-mostly-immutable">R objects are (mostly) immutable.</h2>
+<ul>
+  <li><a href="https://masterr.org/r/RFP-part3-variables/">how regular assignment operators <code class="highlighter-rouge">&lt;-</code>/<code class="highlighter-rouge">=</code> work in R</a>, and</li>
+  <li><a href="https://masterr.org/r/RFP-part5-immutability/">how “copy n modify” works in R</a>.</li>
+</ul>
 
-<p>Consider the following R code, where x and y refer to the same list initially. If we change any element of x, the value of y will not be automatically changed. This is exactly what we would expect mathematically.</p>
+<p>In summary, we have the following facts about the R language:</p>
 
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="w">
-</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="w"> 
-</span><span class="n">identical</span><span class="p">(</span><span class="n">pryr</span><span class="o">::</span><span class="n">address</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="w"> </span><span class="n">pryr</span><span class="o">::</span><span class="n">address</span><span class="p">(</span><span class="n">y</span><span class="p">))</span><span class="w"> </span><span class="c1"># x and y point to the same object</span></code></pre></figure>
+<ul>
+  <li>Variable assignment binds symols to objects.</li>
+  <li>Reassignment changes the binding. It doesn’t modify data.</li>
+  <li>Mutability is a property of objects. It has nothing to do with variables or variable assignment.</li>
+  <li>Copy-n-modify is everywhere.</li>
+</ul>
 
-<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] TRUE</code></pre></figure>
+<p>To better understand these facts, let’s walk through two examples. The first example consists
+of the following code block:</p>
 
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">x</span><span class="p">[[</span><span class="m">2</span><span class="p">]]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="c1"># change the second element of x</span><span class="w">
-</span><span class="n">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w">   </span><span class="c1"># x is changed</span></code></pre></figure>
-
-<figure class="highlight"><pre><code class="language-text" data-lang="text">## [[1]]
-## [1] 1
-## 
-## [[2]]
-## [1] 1
-## 
-## [[3]]
-## [1] 1</code></pre></figure>
-
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="w">   </span><span class="c1"># y is not changed     </span></code></pre></figure>
-
-<figure class="highlight"><pre><code class="language-text" data-lang="text">## [[1]]
-## [1] 1
-## 
-## [[2]]
-## [1] 0
-## 
-## [[3]]
-## [1] 1</code></pre></figure>
-
-<p>The R code <code class="highlighter-rouge">x[[2]] = 1</code> gives the illusion of modifying the list referenced by x. Internally, it actually does two things: first create a modified copy of that list, then rebind x to the modified copy, leaving the original list unchanged. Because y is still bound to the original list, running <code class="highlighter-rouge">print(y)</code> will display the original list on screen. We summarize what’s going on in the following diagram:</p>
-
-<p><img src="../../figs/2019-02-15-RFP-part5-immutability/immutable.png" alt="" /></p>
-
-<p>If we do the same thing in Python, as shown in the code block below, we’ll discover that element change in x is also visible through y. This is often surprising to people without a formal training in programming. How could the value of y be changed when no operation was performed on y explicitly? The reason is because unlike lists in R, Python lists are mutable.</p>
-
-<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">x</span>
-<span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># change the second element of x, python list starts at index 0
-</span><span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="c1"># x is changed</span></code></pre></figure>
-
-<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1, 1, 1]</code></pre></figure>
-
-<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="c1"># y is also changed</span></code></pre></figure>
-
-<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1, 1, 1]</code></pre></figure>
-
-<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">print</span><span class="p">(</span><span class="n">x</span> <span class="ow">is</span> <span class="n">y</span><span class="p">)</span> <span class="c1"># x and y still refer to the same list, with its 2nd element changed to 1</span></code></pre></figure>
-
-<figure class="highlight"><pre><code class="language-text" data-lang="text">## True</code></pre></figure>
-
-<p>The python code <code class="highlighter-rouge">x[1] = 1</code> directly modifies the list referenced by x, updating its second element to a value of 1. There’s no new list being created. Both x and y are still bound to the original list, which has the value of its second element changed from 0 to 1. This can be seen pictorially as follows:</p>
-
-<p><img src="../../figs/2019-02-15-RFP-part5-immutability/mutable.png" alt="" /></p>
-
-<h2 id="copy-on-modify-if-necessary">Copy on modify (if necessary)</h2>
-
-<p>Detailed oriented readers probably have noticed the title of the previous section has the word “mostly” in parenthesis: “R objects are (mostly) immutable.” The implication is that some R objects (for example, lists and vectors) can also be mutable sometimes. Consider the following example, where there’s only one variable x pointing to the list [-1, 0, 1]. Because there are no other variables that refer to the same list, updating any element of x will directly modify the list instead of making a modified copy.</p>
-
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="p">{</span><span class="w"> </span><span class="c1"># must use curly brackets to group code if running in Rstudio. No need of them if running inside of R directly.</span><span class="w">
-        </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="m">-1</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="w">
-        </span><span class="n">print</span><span class="p">(</span><span class="n">pryr</span><span class="o">::</span><span class="n">address</span><span class="p">(</span><span class="n">x</span><span class="p">))</span><span class="w">
-        </span><span class="n">x</span><span class="p">[[</span><span class="m">2</span><span class="p">]]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="w">
-        </span><span class="n">print</span><span class="p">(</span><span class="n">pryr</span><span class="o">::</span><span class="n">address</span><span class="p">(</span><span class="n">x</span><span class="p">))</span><span class="w">
-        </span><span class="n">x</span><span class="p">[[</span><span class="m">3</span><span class="p">]]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">-9</span><span class="w">
-        </span><span class="n">print</span><span class="p">(</span><span class="n">pryr</span><span class="o">::</span><span class="n">address</span><span class="p">(</span><span class="n">x</span><span class="p">))</span><span class="w">
-</span><span class="p">}</span><span class="w"> </span><span class="c1"># identical memory addresses show there was no rebinding and x always point to the same list. So it's the list itself that gets modified.</span></code></pre></figure>
-
-<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "0x7f8207893e48"
-## [1] "0x7f8207893e48"
-## [1] "0x7f8207893e48"</code></pre></figure>
-
-<p>Consider another example where we first assign the vector <code class="highlighter-rouge">1:13</code> to a variable v then change v’s elements:</p>
-
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="p">{</span><span class="w"> </span><span class="c1"># must use curly brackets to group code if running in Rstudio. No need of them if running inside of R directly.</span><span class="w">
-        </span><span class="n">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">13</span><span class="w">
-        </span><span class="n">print</span><span class="p">(</span><span class="n">pryr</span><span class="o">::</span><span class="n">address</span><span class="p">(</span><span class="n">v</span><span class="p">))</span><span class="w">
-        </span><span class="n">v</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">100</span><span class="w">  </span><span class="c1"># makes a modified copy</span><span class="w">
-        </span><span class="n">print</span><span class="p">(</span><span class="n">pryr</span><span class="o">::</span><span class="n">address</span><span class="p">(</span><span class="n">v</span><span class="p">))</span><span class="w"> </span><span class="c1"># different memory address, indicating modified copy</span><span class="w">
-        </span><span class="n">v</span><span class="p">[</span><span class="m">2</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">-100</span><span class="w"> </span><span class="c1"># modify the copy directly</span><span class="w">
-        </span><span class="n">print</span><span class="p">(</span><span class="n">pryr</span><span class="o">::</span><span class="n">address</span><span class="p">(</span><span class="n">v</span><span class="p">))</span><span class="w"> </span><span class="c1"># same memory address, indicating direct modification</span><span class="w">
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">change</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">5</span><span class="w">
+        </span><span class="n">print</span><span class="p">(</span><span class="n">paste</span><span class="p">(</span><span class="s2">"do work and get:"</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="s2">"at addr"</span><span class="p">,</span><span class="w"> </span><span class="n">pryr</span><span class="o">::</span><span class="n">address</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="n">main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">5</span><span class="w">
+        </span><span class="n">print</span><span class="p">(</span><span class="n">paste</span><span class="p">(</span><span class="s2">"start          :"</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="s2">"at addr"</span><span class="p">,</span><span class="w"> </span><span class="n">pryr</span><span class="o">::</span><span class="n">address</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span><span class="w">
+        
+        </span><span class="n">change</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="c1"># x is not changed. It still points to the same value 5</span><span class="w">
+        </span><span class="n">print</span><span class="p">(</span><span class="n">paste</span><span class="p">(</span><span class="s2">"end            :"</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="s2">"at addr"</span><span class="p">,</span><span class="w"> </span><span class="n">pryr</span><span class="o">::</span><span class="n">address</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span><span class="w">
 </span><span class="p">}</span></code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "0x7f81fff33fc8"
-## [1] "0x7f82057bfa98"
-## [1] "0x7f82057bfa98"</code></pre></figure>
+<p>What will happen if we call <code class="highlighter-rouge">main()</code>?</p>
 
-<p>Although there’s no other variables pointing to the same vector, the first time we tried to change v’s elements (<code class="highlighter-rouge">v[1] = 100</code>), R made a modified copy. When we tried to change v’s elements for the second time (<code class="highlighter-rouge">v[2] = -100</code>), R didn’t make another modified copy, instead, R modified the modified copy directly.</p>
+<ol>
+  <li><code class="highlighter-rouge">x</code> will be bound to 5.</li>
+  <li>5 and its memory address will be printed.</li>
+  <li><code class="highlighter-rouge">change(x)</code> will not change the value of <code class="highlighter-rouge">x</code>.</li>
+  <li>5 and the same address will be printed.</li>
+</ol>
 
-<p>In summary, it seems R is smart to know when to directly modify an object and when to make a modified copy. How does R do it? Well, it turns out that R implements something called “copy on modify (if necessary),” which means that copying is done only when we try to modify an object, and if the modification has no “spillover effects” (for example, making the value of other variables or non-local variables changed), R will just modify without copying.</p>
+<p>Let’s call it now:</p>
 
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">main</span><span class="p">()</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "start          : 5 at addr 0x7f875baea088"
+## [1] "do work and get: 0 at addr 0x7f875ebda4e8"
+## [1] "end            : 5 at addr 0x7f875baea088"</code></pre></figure>
+
+<p>The output confirms our reasoning. When the line <code class="highlighter-rouge">change(x)</code> is executed, a new 
+environment is created, then the value 5 is copied into this new environment and 
+bound to a new variable <code class="highlighter-rouge">x</code><sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup>. When the line <code class="highlighter-rouge">x = x - 5</code> is run, 
+R looks up the value 5 of this new <code class="highlighter-rouge">x</code> from this new environment, carries out the 
+subtraction and rebinds <code class="highlighter-rouge">x</code> to the result 0. When the program steps out of the 
+function <code class="highlighter-rouge">change()</code>, everything (<code class="highlighter-rouge">x</code>, 0, 5) inside of this new environment will 
+be garbage collected. I want to point out that the original <code class="highlighter-rouge">x</code> in <code class="highlighter-rouge">main()</code> is 
+never modified. See the following diagram:</p>
+
+<p><img src="../../figs/2019-03-10-RFP-part6-&lt;&lt;-/change-outside-main.png" alt="" /></p>
+
+<h2 id="--reassigns-variables-in-outer-scope"><code class="highlighter-rouge">&lt;&lt;-</code> Reassigns Variables in Outer Scope</h2>
+
+<p>Now let’s look at the second example:</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="n">change</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="n">x</span><span class="w"> </span><span class="o">&lt;&lt;-</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">5</span><span class="w">
+                </span><span class="n">print</span><span class="p">(</span><span class="n">paste</span><span class="p">(</span><span class="s2">"do work and get:"</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="s2">"at addr"</span><span class="p">,</span><span class="w"> </span><span class="n">pryr</span><span class="o">::</span><span class="n">address</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+        
+        </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">5</span><span class="w">
+        </span><span class="n">print</span><span class="p">(</span><span class="n">paste</span><span class="p">(</span><span class="s2">"start          :"</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="s2">"at addr"</span><span class="p">,</span><span class="w"> </span><span class="n">pryr</span><span class="o">::</span><span class="n">address</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span><span class="w">
+        
+        </span><span class="n">change</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="c1"># x is changed. It now points to a new value 0 at a different location </span><span class="w">
+        </span><span class="n">print</span><span class="p">(</span><span class="n">paste</span><span class="p">(</span><span class="s2">"end            :"</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="s2">"at addr"</span><span class="p">,</span><span class="w"> </span><span class="n">pryr</span><span class="o">::</span><span class="n">address</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span><span class="w">
+</span><span class="p">}</span></code></pre></figure>
+
+<p>This example differs from the first one at two places:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">change()</code> is defined inside of <code class="highlighter-rouge">main()</code>.</li>
+  <li><code class="highlighter-rouge">&lt;&lt;-</code> is used instead of <code class="highlighter-rouge">&lt;-</code> or <code class="highlighter-rouge">=</code> (<code class="highlighter-rouge">x &lt;&lt;- x - 5</code> instead of <code class="highlighter-rouge">x = x - 5</code>).</li>
+</ul>
+
+<p>The <code class="highlighter-rouge">&lt;&lt;-</code> operator is usually only used in functions. While operators <code class="highlighter-rouge">&lt;-</code> and <code class="highlighter-rouge">=</code> perform variable assignment inside the environment (or scope) where they are evaluated, <code class="highlighter-rouge">&lt;&lt;-</code> causes a search through parent environments for the variable being assigned. If such a variable is found (and its binding is not locked) then its value is redefined, otherwise assignment takes place in the global environment. 
+I’d like to point out that like <code class="highlighter-rouge">&lt;-</code> and <code class="highlighter-rouge">=</code>, <code class="highlighter-rouge">&lt;&lt;-</code> also only changes the binding and doesn’t modify data.</p>
+
+<p>In this example:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">change()</code> defines an inner scope and <code class="highlighter-rouge">main()</code> defines an outer scope.</li>
+  <li>because of <code class="highlighter-rouge">&lt;&lt;-</code>, <code class="highlighter-rouge">change(x)</code> changes the value of <code class="highlighter-rouge">x</code> defined in the outer scope.</li>
+</ul>
+
+<p>When we call <code class="highlighter-rouge">main()</code>, the following will happen:</p>
+
+<ol>
+  <li><code class="highlighter-rouge">change</code> will be bound to <code class="highlighter-rouge">function(x) { x &lt;&lt;- x - 5 ...}</code> in the outer scope.</li>
+  <li><code class="highlighter-rouge">x</code> will be bound to 5 in the outer scope.</li>
+  <li>5 and its memory address will be printed.</li>
+  <li><code class="highlighter-rouge">change(x)</code> will change the value of outer <code class="highlighter-rouge">x</code> to 0 and print 5 and a different location.</li>
+  <li>5 and yet another different location will be printed.</li>
+</ol>
+
+<p>Let’s call <code class="highlighter-rouge">main()</code> and look at the output:</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">main</span><span class="p">()</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "start          : 5 at addr 0x7f875f47f810"
+## [1] "do work and get: 5 at addr 0x7f875e8daa80"
+## [1] "end            : 0 at addr 0x7f875fcd4340"</code></pre></figure>
+
+<p>The 2nd line of output is particularly interesting. You’re probably expecting it 
+to print 0, but that wouldn’t be correct. When the line <code class="highlighter-rouge">change(x)</code> is executed, a new 
+environment is created, then the value 5 is copied into this new environment and 
+bound to a new variable <code class="highlighter-rouge">x</code><sup id="fnref:2:1"><a href="#fn:2" class="footnote">2</a></sup>. When the line <code class="highlighter-rouge">x &lt;&lt;- x - 5</code> is run, R looks up 
+the value 5 of this new <code class="highlighter-rouge">x</code> from this new environment, carries out the subtraction 
+and rebinds <em>the <code class="highlighter-rouge">x</code> in the outer scope</em> to the result 0. Notice that the 
+inner variable <code class="highlighter-rouge">x</code> is still bound to 5. When R executes the line
+<code class="highlighter-rouge">print(paste("do work and get:", x, "at addr", pryr::address(x)))</code>, it looks up the
+value and address of the inner <code class="highlighter-rouge">x</code>, and hence prints 5. Of course, because this 5 
+is a copy of the outer 5, it is a different 5 and hence has a different memory address.
+See the following diagram:</p>
+
+<p><img src="../../figs/2019-03-10-RFP-part6-&lt;&lt;-/change-inside-main.png" alt="" /></p>
+
+<p>To summarize, here’re the facts about <code class="highlighter-rouge">&lt;&lt;-</code>:</p>
+
+<ul>
+  <li>it’s usually only used in functions.</li>
+  <li>it reassigns outer variables by changing its binding.</li>
+  <li>it never modifies data directly.</li>
+</ul>
+
+<p>Here’s an example of how <code class="highlighter-rouge">&lt;&lt;-</code> can be used in real world:</p>
+
+<p><a href="https://masterr.org/r/understand-r-environments-part3/">Mortgage Payment Schedule Calculator</a></p>
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>If you haven’t, I recommend you to read the linked posts first. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+      <p>different from the <code class="highlighter-rouge">x</code> in <code class="highlighter-rouge">main()</code>. <a href="#fnref:2" class="reversefootnote">&#8617;</a> <a href="#fnref:2:1" class="reversefootnote">&#8617;<sup>2</sup></a></p>
+    </li>
+  </ol>
+</div>
 
 		<!-- Begin MailChimp Signup Form -->
 <html>
@@ -395,10 +467,8 @@
     </div><!-- /.entry-wrapper -->
     <nav class="pagination" role="navigation">
       
-        <a href="http://localhost:4000/r/RFP-part4-shadowing/" class="btn" title="RFP - Part4: R Variable Shadowing">Previous</a>
+        <a href="http://localhost:4000/r/RFP-part5-immutability/" class="btn" title="RFP - Part5: Immutability in R">Previous</a>
       
-      
-        <a href="http://localhost:4000/r/RFP-part6/" class="btn" title="RFP - Part 6: R <<- Assignment Operator">Next</a>
       
     </nav><!-- /.pagination -->
   </article>
