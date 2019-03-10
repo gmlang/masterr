@@ -18,3 +18,4 @@ image:
 - [Part 3: R Variables](https://masterr.org/r/RFP-part3-variables/)
 - [Part 4: R Variable Shadowing](https://masterr.org/r/RFP-part4-shadowing/)
 - [Part 5: Immutability in R](https://masterr.org/r/RFP-part5-immutability/)
+- [Part 6: R <<- Assignment Operator](https://masterr.org/r/RFP-part6/)
