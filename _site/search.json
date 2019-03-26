@@ -1,6 +1,15 @@
 [
 	
 		{
+		  "title"      : "RFP - Part 7: Well-behaved R Functions",
+		  "category"   : "",
+      "tags"       : "",
+		  "url"        : "http://localhost:4000/r/RFP-part7-functions00/",
+		  "date"       : "2019-03-25 00:00:00 +0900",
+		  "shortdate"  : "March 25, 2019"
+		} ,
+	
+		{
 		  "title"      : "RFP - Part 6: R &lt;&lt;- Assignment Operator",
 		  "category"   : "",
       "tags"       : "",

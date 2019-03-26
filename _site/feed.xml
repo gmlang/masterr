@@ -4,13 +4,73 @@
 <generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://localhost:4000/feed.xml" />
 <link rel="alternate" type="text/html" href="http://localhost:4000" />
-<updated>2019-03-26T13:11:51+09:00</updated>
+<updated>2019-03-26T17:24:05+09:00</updated>
 <id>http://localhost:4000/</id>
 <author>
   <name>Guangming Lang</name>
   <uri>http://localhost:4000/</uri>
   <email>news@masterr.com</email>
 </author>
+
+
+<entry>
+  <title type="html"><![CDATA[RFP - Part 7: Well-behaved R Functions]]></title>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/r/RFP-part7-functions00/" />
+  <id>http://localhost:4000/r/RFP-part7-functions00</id>
+  <published>2019-03-25T00:00:00+09:00</published>
+  <updated>2019-03-25T00:00:00+09:00</updated>
+  <author>
+    <name>Guangming Lang</name>
+    <uri>http://localhost:4000</uri>
+    <email>news@masterr.com</email>
+  </author>
+  <content type="html">&lt;p&gt;Function is a big topic in R programming. I’ll spend several blog posts talking 
+about it. But before I dive into R functions with full force, I want to show you 
+how nice it is to work with them. Consider the following code:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# Bind x to 1 in the global environment.&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# Define a function to tell what value x maps to when we call it later.&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# Rebind x to 2 in the global environment.&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# ls(envir = globalenv()) # Check that x and f are indeed in the global environment.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;When we call &lt;code class=&quot;highlighter-rouge&quot;&gt;f&lt;/code&gt;, what will it return? Mathematically and intuitively, we’d expect 
+&lt;code class=&quot;highlighter-rouge&quot;&gt;f&lt;/code&gt; to return &lt;code class=&quot;highlighter-rouge&quot;&gt;2&lt;/code&gt; because x has a value of 2 now (although it had a value of 1 before). 
+If x takes a different value later, we’d expect &lt;code class=&quot;highlighter-rouge&quot;&gt;f&lt;/code&gt; to return the new value when 
+called later. In other words, we expect &lt;code class=&quot;highlighter-rouge&quot;&gt;f&lt;/code&gt;, when called, to return the current 
+x value. This is exactly what &lt;code class=&quot;highlighter-rouge&quot;&gt;f&lt;/code&gt; does in R:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;   &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# Calling f returns 2 because x is 2&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;## [1] 2&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;m&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# Rebind x to 3&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;   &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# Calling f returns 3 because x is 3 now&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;## [1] 3&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;So R evaluation rules, by and large, mimic mathematical or intuitive reasonings 
+pretty well. As a result, we often don’t come across surprises when coding in R. 
+Don’t take this for granted. Not every programming language behave this way. For 
+example, if you try to do the same thing in SML, you’ll be surprised by 
+what you get. See the following SML code with detailed comments:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;val x = 1; (* Create an environment, and inside this environment, x is bound to 1.*)
+fun f () = x; (* Define a function that when we call it later, it tells us what value x is bound to. *)
+val x = 2; (* Create a different environment, and inside this new environment, x is bound to 2. *)
+x; (* The later binding for x shadows the earlier one, so calling x returns 2. *)
+f(); (* Calling f returns 1, NOT 2! This has to do with SML's evaluation rule. *)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;In SML, how a binding is evaluated depends on (roughly) the values of the 
+preceding bindings. Prior to the function binding (i.e., when &lt;code class=&quot;highlighter-rouge&quot;&gt;f&lt;/code&gt; is defined), 
+&lt;code class=&quot;highlighter-rouge&quot;&gt;x&lt;/code&gt; was bound to 1, so evaluating the function binding (i.e., calling &lt;code class=&quot;highlighter-rouge&quot;&gt;f&lt;/code&gt;) 
+returns 1 not 2. In other words, in SML, &lt;code class=&quot;highlighter-rouge&quot;&gt;f&lt;/code&gt; always returns the last value x was
+bound to before &lt;code class=&quot;highlighter-rouge&quot;&gt;f&lt;/code&gt; was defined.&lt;/p&gt;
+
+&lt;p&gt;Let’s all take a moment to appreciate the nice behavior of R functions.&lt;/p&gt;
+
+  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/r/RFP-part7-functions00/&quot;&gt;RFP - Part 7: Well-behaved R Functions&lt;/a&gt; was originally published by Guangming Lang at &lt;a href=&quot;http://localhost:4000&quot;&gt;Become Great at R&lt;/a&gt; on March 25, 2019.&lt;/p&gt;</content>
+</entry>
 
 
 <entry>
@@ -2090,48 +2150,6 @@ it runs into an error and stops.&lt;/p&gt;
 
 
   &lt;p&gt;&lt;a href=&quot;http://localhost:4000/r/rebind/&quot;&gt;Rebind&lt;/a&gt; was originally published by Guangming Lang at &lt;a href=&quot;http://localhost:4000&quot;&gt;Become Great at R&lt;/a&gt; on March 17, 2017.&lt;/p&gt;</content>
-</entry>
-
-
-<entry>
-  <title type="html"><![CDATA[Resampling]]></title>
-  <link rel="alternate" type="text/html" href="http://localhost:4000/da/resampling/" />
-  <id>http://localhost:4000/da/resampling</id>
-  <published>2017-03-13T00:00:00+09:00</published>
-  <updated>2017-03-13T00:00:00+09:00</updated>
-  <author>
-    <name>Guangming Lang</name>
-    <uri>http://localhost:4000</uri>
-    <email>news@masterr.com</email>
-  </author>
-  <content type="html">&lt;p&gt;When training a model for prediction purpose, resampling is used to&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;estimate model performance on unseen data,&lt;/li&gt;
-  &lt;li&gt;choose the optimal tuning parameters for a particular model, and&lt;/li&gt;
-  &lt;li&gt;choose the best model among different kinds of models.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;Here’re some common resampling techniques:&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;K-Fold Cross-Validation. When the outcome is categorical and imbalanced, make sure use stratified random sampling to select the k partitions in a way that makes the folds balanced with respect to the outcome. The choice of k is usually 5 or 10, and as k gets larger, the bias (difference between estimated and true values of performance) becomes smaller, the variance (repeating the resampling procedure may produce a very different value) gets larger, and the computation becomes slower.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Repeated Training/Test Splits. This method is also known as “leave-group-out” cross-validation or “Monte Carlo cross-validation.” A rule of thumb for the percent of training subset is 75-80% and for the number of repetitions is 50-200. The more repetition, the smaller the variance and hence the more precise the estimates of model performance.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Bootstrap. By and large, bootstrap error rates have less uncertainty than k-fold cross-validation, but bootstrap method has bias similar to 2-fold cross-validation. The “632+ method” can be used to reduce the bias. And the bias will decrease as training set size become bigger.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;K-fold cross-validation usually has bigger variance than the other methods. Repeated k-fold cross-validation can  effectively increase the precision of the estimates while still maintaining a small bias. I find 10-fold cross-validation with 5 repeats usually works well for data of dimension less than 5,000 x 300 when using ensemble tree model implementation such as xgboost running in parallel, but the computation cost becomes too much when data size becomes larger.&lt;/p&gt;
-
-&lt;p&gt;When shall we use which method? It depends. If the sample  size is small and the goal is to estimate model performance, repeated 10-fold cross-validation will work very well. If the goal is to choose amongst models, the bootstrap method will work better due to its tiny variance. For large datasets, the potential issues with variance and bias become less pronounced among different methods and computation time becomes more important, and 10-fold cross-validation is a good choice.&lt;/p&gt;
-
-
-  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/da/resampling/&quot;&gt;Resampling&lt;/a&gt; was originally published by Guangming Lang at &lt;a href=&quot;http://localhost:4000&quot;&gt;Become Great at R&lt;/a&gt; on March 13, 2017.&lt;/p&gt;</content>
 </entry>
 
 </feed>

@@ -5,30 +5,20 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
 <head>
 <meta charset="utf-8">
-<title>RFP - Part 6: R <<- Assignment Operator &#8211; Become Great at R</title>
-<meta name="description" content="If you have been following this R Functional Programming (RFP) series1, you know by now we have discussed:
-
-
-  
-    
-      If you haven’t, I recommend you to read the linked posts first. &#8617;
-    
-  
+<title>RFP - Part 7: Well-behaved R Functions &#8211; Become Great at R</title>
+<meta name="description" content="Function is a big topic in R programming. I’ll spend several blog posts talking 
+about it. But before I dive into R functions with full force, I want to show you 
+how nice it is to work with them. Consider the following code:
 
 ">
 <meta name="keywords" content="">
 
 
 <!-- Twitter Cards -->
-<meta name="twitter:title" content="RFP - Part 6: R <<- Assignment Operator">
-<meta name="twitter:description" content="If you have been following this R Functional Programming (RFP) series1, you know by now we have discussed:
-
-
-  
-    
-      If you haven’t, I recommend you to read the linked posts first. &#8617;
-    
-  
+<meta name="twitter:title" content="RFP - Part 7: Well-behaved R Functions">
+<meta name="twitter:description" content="Function is a big topic in R programming. I’ll spend several blog posts talking 
+about it. But before I dive into R functions with full force, I want to show you 
+how nice it is to work with them. Consider the following code:
 
 ">
 
@@ -40,25 +30,20 @@
 <!-- Open Graph -->
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
-<meta property="og:title" content="RFP - Part 6: R <<- Assignment Operator">
-<meta property="og:description" content="If you have been following this R Functional Programming (RFP) series1, you know by now we have discussed:
-
-
-  
-    
-      If you haven’t, I recommend you to read the linked posts first. &#8617;
-    
-  
+<meta property="og:title" content="RFP - Part 7: Well-behaved R Functions">
+<meta property="og:description" content="Function is a big topic in R programming. I’ll spend several blog posts talking 
+about it. But before I dive into R functions with full force, I want to show you 
+how nice it is to work with them. Consider the following code:
 
 ">
-<meta property="og:url" content="http://localhost:4000/r/RFP-part6/">
+<meta property="og:url" content="http://localhost:4000/r/RFP-part7-functions00/">
 <meta property="og:site_name" content="Become Great at R">
 
 
 <meta name="msvalidate.01" content="F608C5B05384F7B0200AC62F5BB60411">
 
 
-<link rel="canonical" href="http://localhost:4000/r/RFP-part6/">
+<link rel="canonical" href="http://localhost:4000/r/RFP-part7-functions00/">
 <link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="Become Great at R Feed">
 
 
@@ -160,7 +145,7 @@
       <header class="entry-header">
         <span class="entry-tags"></span>
         
-          <h1 class="entry-title">RFP - Part 6: R <<- Assignment Operator</h1>
+          <h1 class="entry-title">RFP - Part 7: Well-behaved R Functions</h1>
         
       </header>
       <footer class="entry-meta">
@@ -225,19 +210,19 @@
     });
 </script> 
 <!--End mc_embed_signup-->
-        <span class="entry-date date published"><time datetime="2019-03-10T00:00:00+09:00"><i class="fa fa-calendar-o"></i> March 10, 2019</time></span>
+        <span class="entry-date date published"><time datetime="2019-03-25T00:00:00+09:00"><i class="fa fa-calendar-o"></i> March 25, 2019</time></span>
         
         
         <span class="author vcard">By <span class="fn">Guangming Lang</span></span>
 		<span class="entry-comments"><i class="fa fa-comment-o"></i> <a href="#disqus_thread">Comment</a></span>
 		<span class="social-share-twitter">
-  <a href="https://twitter.com/intent/tweet?hashtags=&amp;text=RFP%20-%20Part%206:%20R%20&lt;&lt;-%20Assignment%20Operator&amp;url=http://localhost:4000/r/RFP-part6/" title="Share on Twitter" itemprop="Twitter"><i class="fa fa-twitter-square"></i> Tweet</a>
+  <a href="https://twitter.com/intent/tweet?hashtags=&amp;text=RFP%20-%20Part%207:%20Well-behaved%20R%20Functions&amp;url=http://localhost:4000/r/RFP-part7-functions00/" title="Share on Twitter" itemprop="Twitter"><i class="fa fa-twitter-square"></i> Tweet</a>
 </span>
 <span class="social-share-facebook">
-  <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/r/RFP-part6/" title="Share on Facebook" itemprop="Facebook"><i class="fa fa-facebook-square"></i> Like</a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/r/RFP-part7-functions00/" title="Share on Facebook" itemprop="Facebook"><i class="fa fa-facebook-square"></i> Like</a>
 </span>
 <span class="social-share-googleplus">
-  <a href="https://plus.google.com/share?url=http://localhost:4000/r/RFP-part6/" title="Share on Google Plus" itemprop="GooglePlus"><i class="fa fa-google-plus-square"></i> +1</a>
+  <a href="https://plus.google.com/share?url=http://localhost:4000/r/RFP-part7-functions00/" title="Share on Google Plus" itemprop="GooglePlus"><i class="fa fa-google-plus-square"></i> +1</a>
 </span>
 <!-- /.social-share -->
         <div class="google-ads" style="margin-top:40px; text-align:center;">
@@ -253,153 +238,50 @@
 </div><!-- /.google-ads --><!-- /.google-ads -->
       </footer>
       <div class="entry-content">
-        <p>If you have been following this R Functional Programming (RFP) series<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>, you know by now we have discussed:</p>
+        <p>Function is a big topic in R programming. I’ll spend several blog posts talking 
+about it. But before I dive into R functions with full force, I want to show you 
+how nice it is to work with them. Consider the following code:</p>
 
-<ul>
-  <li><a href="https://masterr.org/r/RFP-part3-variables/">how regular assignment operators <code class="highlighter-rouge">&lt;-</code>/<code class="highlighter-rouge">=</code> work in R</a>, and</li>
-  <li><a href="https://masterr.org/r/RFP-part5-immutability/">how “copy n modify” works in R</a>.</li>
-</ul>
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="c1"># Bind x to 1 in the global environment.</span><span class="w">
+</span><span class="n">f</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">()</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="c1"># Define a function to tell what value x maps to when we call it later.</span><span class="w">
+</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="c1"># Rebind x to 2 in the global environment.</span><span class="w">
+</span><span class="c1"># ls(envir = globalenv()) # Check that x and f are indeed in the global environment.</span></code></pre></figure>
 
-<p>In summary, we have the following facts about the R language:</p>
+<p>When we call <code class="highlighter-rouge">f</code>, what will it return? Mathematically and intuitively, we’d expect 
+<code class="highlighter-rouge">f</code> to return <code class="highlighter-rouge">2</code> because x has a value of 2 now (although it had a value of 1 before). 
+If x takes a different value later, we’d expect <code class="highlighter-rouge">f</code> to return the new value when 
+called later. In other words, we expect <code class="highlighter-rouge">f</code>, when called, to return the current 
+x value. This is exactly what <code class="highlighter-rouge">f</code> does in R:</p>
 
-<ul>
-  <li>Variable assignment binds symols to objects.</li>
-  <li>Reassignment changes the binding. It doesn’t modify data.</li>
-  <li>Mutability is a property of objects. It has nothing to do with variables or variable assignment.</li>
-  <li>Copy-n-modify is everywhere.</li>
-</ul>
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">f</span><span class="p">()</span><span class="w">   </span><span class="c1"># Calling f returns 2 because x is 2</span></code></pre></figure>
 
-<p>To better understand these facts, let’s walk through two examples. The first example consists
-of the following code block:</p>
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] 2</code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">change</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">5</span><span class="w">
-        </span><span class="n">print</span><span class="p">(</span><span class="n">paste</span><span class="p">(</span><span class="s2">"do work and get:"</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="s2">"at addr"</span><span class="p">,</span><span class="w"> </span><span class="n">pryr</span><span class="o">::</span><span class="n">address</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span><span class="n">main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">5</span><span class="w">
-        </span><span class="n">print</span><span class="p">(</span><span class="n">paste</span><span class="p">(</span><span class="s2">"start          :"</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="s2">"at addr"</span><span class="p">,</span><span class="w"> </span><span class="n">pryr</span><span class="o">::</span><span class="n">address</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span><span class="w">
-        
-        </span><span class="n">change</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="c1"># x is not changed. It still points to the same value 5</span><span class="w">
-        </span><span class="n">print</span><span class="p">(</span><span class="n">paste</span><span class="p">(</span><span class="s2">"end            :"</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="s2">"at addr"</span><span class="p">,</span><span class="w"> </span><span class="n">pryr</span><span class="o">::</span><span class="n">address</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span><span class="w">
-</span><span class="p">}</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="c1"># Rebind x to 3</span><span class="w">
+</span><span class="n">f</span><span class="p">()</span><span class="w">   </span><span class="c1"># Calling f returns 3 because x is 3 now</span></code></pre></figure>
 
-<p>What will happen if we call <code class="highlighter-rouge">main()</code>?</p>
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] 3</code></pre></figure>
 
-<ol>
-  <li><code class="highlighter-rouge">x</code> will be bound to 5.</li>
-  <li>5 and its memory address will be printed.</li>
-  <li><code class="highlighter-rouge">change(x)</code> will not change the value of <code class="highlighter-rouge">x</code>.</li>
-  <li>5 and the same address will be printed.</li>
-</ol>
+<p>So R evaluation rules, by and large, mimic mathematical or intuitive reasonings 
+pretty well. As a result, we often don’t come across surprises when coding in R. 
+Don’t take this for granted. Not every programming language behave this way. For 
+example, if you try to do the same thing in SML, you’ll be surprised by 
+what you get. See the following SML code with detailed comments:</p>
 
-<p>Let’s call it now:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>val x = 1; (* Create an environment, and inside this environment, x is bound to 1.*)
+fun f () = x; (* Define a function that when we call it later, it tells us what value x is bound to. *)
+val x = 2; (* Create a different environment, and inside this new environment, x is bound to 2. *)
+x; (* The later binding for x shadows the earlier one, so calling x returns 2. *)
+f(); (* Calling f returns 1, NOT 2! This has to do with SML's evaluation rule. *)
+</code></pre></div></div>
 
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">main</span><span class="p">()</span></code></pre></figure>
+<p>In SML, how a binding is evaluated depends on (roughly) the values of the 
+preceding bindings. Prior to the function binding (i.e., when <code class="highlighter-rouge">f</code> is defined), 
+<code class="highlighter-rouge">x</code> was bound to 1, so evaluating the function binding (i.e., calling <code class="highlighter-rouge">f</code>) 
+returns 1 not 2. In other words, in SML, <code class="highlighter-rouge">f</code> always returns the last value x was
+bound to before <code class="highlighter-rouge">f</code> was defined.</p>
 
-<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "start          : 5 at addr 0x7f875baea088"
-## [1] "do work and get: 0 at addr 0x7f875ebda4e8"
-## [1] "end            : 5 at addr 0x7f875baea088"</code></pre></figure>
-
-<p>The output confirms our reasoning. When the line <code class="highlighter-rouge">change(x)</code> is executed, a new 
-environment is created, then the value 5 is copied into this new environment and 
-bound to a new variable <code class="highlighter-rouge">x</code><sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup>. When the line <code class="highlighter-rouge">x = x - 5</code> is run, 
-R looks up the value 5 of this new <code class="highlighter-rouge">x</code> from this new environment, carries out the 
-subtraction and rebinds <code class="highlighter-rouge">x</code> to the result 0. When the program steps out of the 
-function <code class="highlighter-rouge">change()</code>, everything (<code class="highlighter-rouge">x</code>, 0, 5) inside of this new environment will 
-be garbage collected. I want to point out that the original <code class="highlighter-rouge">x</code> in <code class="highlighter-rouge">main()</code> is 
-never modified. See the following diagram:</p>
-
-<p><img src="../../figs/2019-03-10-RFP-part6-&lt;&lt;-/change-outside-main.png" alt="" /></p>
-
-<h2 id="--reassigns-variables-in-outer-scope"><code class="highlighter-rouge">&lt;&lt;-</code> Reassigns Variables in Outer Scope</h2>
-
-<p>Now let’s look at the second example:</p>
-
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="n">change</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="n">x</span><span class="w"> </span><span class="o">&lt;&lt;-</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">5</span><span class="w">
-                </span><span class="n">print</span><span class="p">(</span><span class="n">paste</span><span class="p">(</span><span class="s2">"do work and get:"</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="s2">"at addr"</span><span class="p">,</span><span class="w"> </span><span class="n">pryr</span><span class="o">::</span><span class="n">address</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-        
-        </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">5</span><span class="w">
-        </span><span class="n">print</span><span class="p">(</span><span class="n">paste</span><span class="p">(</span><span class="s2">"start          :"</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="s2">"at addr"</span><span class="p">,</span><span class="w"> </span><span class="n">pryr</span><span class="o">::</span><span class="n">address</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span><span class="w">
-        
-        </span><span class="n">change</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="c1"># x is changed. It now points to a new value 0 at a different location </span><span class="w">
-        </span><span class="n">print</span><span class="p">(</span><span class="n">paste</span><span class="p">(</span><span class="s2">"end            :"</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="s2">"at addr"</span><span class="p">,</span><span class="w"> </span><span class="n">pryr</span><span class="o">::</span><span class="n">address</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span><span class="w">
-</span><span class="p">}</span></code></pre></figure>
-
-<p>This example differs from the first one at two places:</p>
-
-<ul>
-  <li><code class="highlighter-rouge">change()</code> is defined inside of <code class="highlighter-rouge">main()</code>.</li>
-  <li><code class="highlighter-rouge">&lt;&lt;-</code> is used instead of <code class="highlighter-rouge">&lt;-</code> or <code class="highlighter-rouge">=</code> (<code class="highlighter-rouge">x &lt;&lt;- x - 5</code> instead of <code class="highlighter-rouge">x = x - 5</code>).</li>
-</ul>
-
-<p>The <code class="highlighter-rouge">&lt;&lt;-</code> operator is usually only used in functions. While operators <code class="highlighter-rouge">&lt;-</code> and <code class="highlighter-rouge">=</code> perform variable assignment inside the environment (or scope) where they are evaluated, <code class="highlighter-rouge">&lt;&lt;-</code> causes a search through parent environments for the variable being assigned. If such a variable is found (and its binding is not locked) then its value is redefined, otherwise assignment takes place in the global environment. 
-I’d like to point out that like <code class="highlighter-rouge">&lt;-</code> and <code class="highlighter-rouge">=</code>, <code class="highlighter-rouge">&lt;&lt;-</code> also only changes the binding and doesn’t modify data.</p>
-
-<p>In this example:</p>
-
-<ul>
-  <li><code class="highlighter-rouge">change()</code> defines an inner scope and <code class="highlighter-rouge">main()</code> defines an outer scope.</li>
-  <li>because of <code class="highlighter-rouge">&lt;&lt;-</code>, <code class="highlighter-rouge">change(x)</code> changes the value of <code class="highlighter-rouge">x</code> defined in the outer scope.</li>
-</ul>
-
-<p>When we call <code class="highlighter-rouge">main()</code>, the following will happen:</p>
-
-<ol>
-  <li><code class="highlighter-rouge">change</code> will be bound to <code class="highlighter-rouge">function(x) { x &lt;&lt;- x - 5 ...}</code> in the outer scope.</li>
-  <li><code class="highlighter-rouge">x</code> will be bound to 5 in the outer scope.</li>
-  <li>5 and its memory address will be printed.</li>
-  <li><code class="highlighter-rouge">change(x)</code> will change the value of outer <code class="highlighter-rouge">x</code> to 0 and print 5 and a different location.</li>
-  <li>5 and yet another different location will be printed.</li>
-</ol>
-
-<p>Let’s call <code class="highlighter-rouge">main()</code> and look at the output:</p>
-
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">main</span><span class="p">()</span></code></pre></figure>
-
-<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "start          : 5 at addr 0x7f875f47f810"
-## [1] "do work and get: 5 at addr 0x7f875e8daa80"
-## [1] "end            : 0 at addr 0x7f875fcd4340"</code></pre></figure>
-
-<p>The 2nd line of output is particularly interesting. You’re probably expecting it 
-to print 0, but that wouldn’t be correct. When the line <code class="highlighter-rouge">change(x)</code> is executed, a new 
-environment is created, then the value 5 is copied into this new environment and 
-bound to a new variable <code class="highlighter-rouge">x</code><sup id="fnref:2:1"><a href="#fn:2" class="footnote">2</a></sup>. When the line <code class="highlighter-rouge">x &lt;&lt;- x - 5</code> is run, R looks up 
-the value 5 of this new <code class="highlighter-rouge">x</code> from this new environment, carries out the subtraction 
-and rebinds <em>the <code class="highlighter-rouge">x</code> in the outer scope</em> to the result 0. Notice that the 
-inner variable <code class="highlighter-rouge">x</code> is still bound to 5. When R executes the line
-<code class="highlighter-rouge">print(paste("do work and get:", x, "at addr", pryr::address(x)))</code>, it looks up the
-value and address of the inner <code class="highlighter-rouge">x</code>, and hence prints 5. Of course, because this 5 
-is a copy of the outer 5, it is a different 5 and hence has a different memory address.
-See the following diagram:</p>
-
-<p><img src="../../figs/2019-03-10-RFP-part6-&lt;&lt;-/change-inside-main.png" alt="" /></p>
-
-<p>To summarize, here’re the facts about <code class="highlighter-rouge">&lt;&lt;-</code>:</p>
-
-<ul>
-  <li>it’s usually only used in functions.</li>
-  <li>it reassigns outer variables by changing its binding.</li>
-  <li>it never modifies data directly.</li>
-</ul>
-
-<p>Here’s an example of how <code class="highlighter-rouge">&lt;&lt;-</code> can be used in real world:</p>
-
-<p><a href="https://masterr.org/r/understand-r-environments-part3/">Mortgage Payment Schedule Calculator</a></p>
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:1">
-      <p>If you haven’t, I recommend you to read the linked posts first. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:2">
-      <p>different from the <code class="highlighter-rouge">x</code> in <code class="highlighter-rouge">main()</code>. <a href="#fnref:2" class="reversefootnote">&#8617;</a> <a href="#fnref:2:1" class="reversefootnote">&#8617;<sup>2</sup></a></p>
-    </li>
-  </ol>
-</div>
+<p>Let’s all take a moment to appreciate the nice behavior of R functions.</p>
 
 		<!-- Begin MailChimp Signup Form -->
 <html>
@@ -467,10 +349,8 @@ See the following diagram:</p>
     </div><!-- /.entry-wrapper -->
     <nav class="pagination" role="navigation">
       
-        <a href="http://localhost:4000/r/RFP-part5-immutability/" class="btn" title="RFP - Part5: Immutability in R">Previous</a>
+        <a href="http://localhost:4000/r/RFP-part6/" class="btn" title="RFP - Part 6: R <<- Assignment Operator">Previous</a>
       
-      
-        <a href="http://localhost:4000/r/RFP-part7-functions00/" class="btn" title="RFP - Part 7: Well-behaved R Functions">Next</a>
       
     </nav><!-- /.pagination -->
   </article>
