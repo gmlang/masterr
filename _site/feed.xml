@@ -4,7 +4,7 @@
 <generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://localhost:4000/feed.xml" />
 <link rel="alternate" type="text/html" href="http://localhost:4000" />
-<updated>2019-03-26T17:28:29+09:00</updated>
+<updated>2019-03-27T15:00:28+09:00</updated>
 <id>http://localhost:4000/</id>
 <author>
   <name>Guangming Lang</name>
@@ -48,7 +48,7 @@ x value. This is exactly what &lt;code class=&quot;highlighter-rouge&quot;&gt;f&
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;## [1] 3&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;So R evaluation rules, by and large, mimic mathematical or intuitive reasonings 
+&lt;p&gt;So R evaluation rules&lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;, by and large, mimic mathematical or intuitive reasonings 
 pretty well. As a result, we often don’t come across surprises when coding in R. 
 Don’t take this for granted. Not every programming language behave this way. For 
 example, if you try to do the same thing in SML, you’ll be surprised by 
@@ -62,12 +62,20 @@ f(); (* Calling f returns 1, NOT 2! This has to do with SML's evaluation rule. *
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;In SML, how a binding is evaluated depends on (roughly) the values of the 
-preceding bindings. Prior to the function binding (i.e., when &lt;code class=&quot;highlighter-rouge&quot;&gt;f&lt;/code&gt; is defined), 
+&lt;strong&gt;preceding&lt;/strong&gt; bindings. Prior to the function binding (i.e., when &lt;code class=&quot;highlighter-rouge&quot;&gt;f&lt;/code&gt; is defined), 
 &lt;code class=&quot;highlighter-rouge&quot;&gt;x&lt;/code&gt; was bound to 1, so evaluating the function binding (i.e., calling &lt;code class=&quot;highlighter-rouge&quot;&gt;f&lt;/code&gt;) 
 returns 1 not 2. In other words, in SML, &lt;code class=&quot;highlighter-rouge&quot;&gt;f&lt;/code&gt; always returns the last value x was
 bound to before &lt;code class=&quot;highlighter-rouge&quot;&gt;f&lt;/code&gt; was defined.&lt;/p&gt;
 
 &lt;p&gt;Let’s all take a moment to appreciate the nice behavior of R functions.&lt;/p&gt;
+
+&lt;div class=&quot;footnotes&quot;&gt;
+  &lt;ol&gt;
+    &lt;li id=&quot;fn:1&quot;&gt;
+      &lt;p&gt;To understand exactly how code are evaluted in R, read https://masterr.org/r/understand-r-environments-part1/ &lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;
 
   &lt;p&gt;&lt;a href=&quot;http://localhost:4000/r/RFP-part7-functions00/&quot;&gt;RFP - Part 7: Well-behaved R Functions&lt;/a&gt; was originally published by Guangming Lang at &lt;a href=&quot;http://localhost:4000&quot;&gt;Become Great at R&lt;/a&gt; on March 25, 2019.&lt;/p&gt;</content>
 </entry>

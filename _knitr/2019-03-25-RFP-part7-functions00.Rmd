@@ -31,7 +31,7 @@ x = 3 # Rebind x to 3
 f()   # Calling f returns 3 because x is 3 now
 ```
 
-So R evaluation rules, by and large, mimic mathematical or intuitive reasonings 
+So R evaluation rules[^1], by and large, mimic mathematical or intuitive reasonings 
 pretty well. As a result, we often don't come across surprises when coding in R. 
 Don't take this for granted. Not every programming language behave this way. For 
 example, if you try to do the same thing in SML, you'll be surprised by 
@@ -46,9 +46,11 @@ f(); (* Calling f returns 1, NOT 2! This has to do with SML's evaluation rule. *
 ```
 
 In SML, how a binding is evaluated depends on (roughly) the values of the 
-preceding bindings. Prior to the function binding (i.e., when `f` is defined), 
+**preceding** bindings. Prior to the function binding (i.e., when `f` is defined), 
 `x` was bound to 1, so evaluating the function binding (i.e., calling `f`) 
 returns 1 not 2. In other words, in SML, `f` always returns the last value x was
 bound to before `f` was defined. 
 
 Let's all take a moment to appreciate the nice behavior of R functions.
+
+[^1]: To understand exactly how code are evaluted in R, read https://masterr.org/r/understand-r-environments-part1/ 

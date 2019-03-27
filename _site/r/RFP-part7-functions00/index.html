@@ -262,7 +262,7 @@ x value. This is exactly what <code class="highlighter-rouge">f</code> does in R
 
 <figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] 3</code></pre></figure>
 
-<p>So R evaluation rules, by and large, mimic mathematical or intuitive reasonings 
+<p>So R evaluation rules<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>, by and large, mimic mathematical or intuitive reasonings 
 pretty well. As a result, we often don’t come across surprises when coding in R. 
 Don’t take this for granted. Not every programming language behave this way. For 
 example, if you try to do the same thing in SML, you’ll be surprised by 
@@ -276,12 +276,20 @@ f(); (* Calling f returns 1, NOT 2! This has to do with SML's evaluation rule. *
 </code></pre></div></div>
 
 <p>In SML, how a binding is evaluated depends on (roughly) the values of the 
-preceding bindings. Prior to the function binding (i.e., when <code class="highlighter-rouge">f</code> is defined), 
+<strong>preceding</strong> bindings. Prior to the function binding (i.e., when <code class="highlighter-rouge">f</code> is defined), 
 <code class="highlighter-rouge">x</code> was bound to 1, so evaluating the function binding (i.e., calling <code class="highlighter-rouge">f</code>) 
 returns 1 not 2. In other words, in SML, <code class="highlighter-rouge">f</code> always returns the last value x was
 bound to before <code class="highlighter-rouge">f</code> was defined.</p>
 
 <p>Let’s all take a moment to appreciate the nice behavior of R functions.</p>
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>To understand exactly how code are evaluted in R, read https://masterr.org/r/understand-r-environments-part1/ <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
 
 		<!-- Begin MailChimp Signup Form -->
 <html>
