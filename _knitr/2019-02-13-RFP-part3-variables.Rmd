@@ -137,7 +137,7 @@ x = "world" # look at the Environment panel, notice x is bound to "world" now. T
 [^1]: To avoid confusion, we'll stop using the phrase "R data structures" and use "objects" or "R objects" instead. We'll keep using the phrase "data structures" as how it's commonly understood.
 [^2]: For this reason, R is sometimes called weakly typed. But this detail is not important. 
 [^3]: It's not a coincidence that R variables are designed to have type "symbol."
-[^4]: `=` and `<-` are the same for all practical purpose: https://developer.r-project.org/equalAssign.html
+[^4]: `=` and `<-` are the same for all practical purpose according to [RCore](https://developer.r-project.org/equalAssign.html). 
 [^5]: Base R doesn't provide ways for programmers to directly access the computer's memory.
-[^6]: Not all programming languages implement garbage collection. The Rust programming language is an example. It doesn't have garbage collection. Instead, it uses ownership to ensure memory safety. 
-[^7]: The function `pryr::refs()` can be used for finding the number of references an object has, but I find its result don't make much sense. 
+[^6]: Not all programming languages implement garbage collection. The Rust programming language is an example. It doesn't have garbage collection. Instead, it uses ownership to ensure memory safety.
+[^7]: The function `pryr::refs()` can be used for finding the number of references an object has, but I find its result don't make much sense.

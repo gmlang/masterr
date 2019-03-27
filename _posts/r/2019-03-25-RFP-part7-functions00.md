@@ -72,4 +72,4 @@ bound to before `f` was defined.
 
 Let's all take a moment to appreciate the nice behavior of R functions.
 
-[^1]: To understand exactly how code are evaluted in R, read https://masterr.org/r/understand-r-environments-part1/ 
+[^1]: Read this [article](https://masterr.org/r/understand-r-environments-part1/) to understand exactly how code are evaluted in R. 
