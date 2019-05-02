@@ -332,8 +332,7 @@
 
 <figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># Check if a vector is empty. Returns TRUE if it is, FALSE otherwise.</span><span class="w">
 </span><span class="n">is_empty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1"># xs: a vector of any type</span><span class="w">
-        </span><span class="nf">is.null</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">identical</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span><span class="w"> </span><span class="n">logical</span><span class="p">())</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">identical</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span><span class="w"> </span><span class="n">integer</span><span class="p">())</span><span class="w"> </span><span class="o">|</span><span class="w">
-                </span><span class="n">identical</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span><span class="w"> </span><span class="n">numeric</span><span class="p">())</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">identical</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span><span class="w"> </span><span class="n">character</span><span class="p">())</span><span class="w">
+        </span><span class="nf">length</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">0</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span><span class="c1"># Get the first element of a vector, raising an exception if the vector is empty.</span><span class="w">
@@ -357,12 +356,14 @@
 </span><span class="p">}</span><span class="w">
 
 </span><span class="p">{</span><span class="w">
-        </span><span class="n">sum_vec</span><span class="p">(</span><span class="n">integer</span><span class="p">())</span><span class="w">
-        </span><span class="n">sum_vec</span><span class="p">(</span><span class="m">1</span><span class="p">)</span><span class="w">
-        </span><span class="n">sum_vec</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">)</span><span class="w">
+        </span><span class="n">print</span><span class="p">(</span><span class="n">sum_vec</span><span class="p">(</span><span class="n">integer</span><span class="p">()))</span><span class="w">
+        </span><span class="n">print</span><span class="p">(</span><span class="n">sum_vec</span><span class="p">(</span><span class="m">1</span><span class="p">))</span><span class="w">
+        </span><span class="n">print</span><span class="p">(</span><span class="n">sum_vec</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">))</span><span class="w">
 </span><span class="p">}</span></code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] 55</code></pre></figure>
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] 0
+## [1] 1
+## [1] 55</code></pre></figure>
 
 <p>We can also count from n down to 0 and return a vector with integer elements of n, n-1, …, 0.</p>
 

@@ -94,8 +94,7 @@ And we can solve almost all problems that involve one or more vectors. But R doe
 ```{r}
 # Check if a vector is empty. Returns TRUE if it is, FALSE otherwise.
 is_empty = function(xs) { # xs: a vector of any type
-        is.null(xs) | identical(xs, logical()) | identical(xs, integer()) |
-                identical(xs, numeric()) | identical(xs, character())
+        length(xs) == 0
 }
 
 # Get the first element of a vector, raising an exception if the vector is empty.
@@ -120,9 +119,9 @@ sum_vec = function(xs) {
 }
 
 {
-        sum_vec(integer())
-        sum_vec(1)
-        sum_vec(1:10)
+        print(sum_vec(integer()))
+        print(sum_vec(1))
+        print(sum_vec(1:10))
 }
 ```
 
