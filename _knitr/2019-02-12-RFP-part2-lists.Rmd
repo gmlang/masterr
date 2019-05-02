@@ -47,7 +47,7 @@ Like in the case of vectors, R doesn't provide these operations perfectly out of
 ```{r}
 # Returns TRUE if a list is empty, FALSE otherwise.
 is_empty = function(xs) { # xs: a list 
-        is.null(xs) | identical(xs, list())
+        length(xs) == 0
 }
 
 # Get the first element of a list, raising an exception if the list is empty.

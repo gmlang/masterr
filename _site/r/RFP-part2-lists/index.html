@@ -317,7 +317,7 @@
 
 <figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># Returns TRUE if a list is empty, FALSE otherwise.</span><span class="w">
 </span><span class="n">is_empty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1"># xs: a list </span><span class="w">
-        </span><span class="nf">is.null</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">identical</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span><span class="w"> </span><span class="nf">list</span><span class="p">())</span><span class="w">
+        </span><span class="nf">length</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">0</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span><span class="c1"># Get the first element of a list, raising an exception if the list is empty.</span><span class="w">
