@@ -20,3 +20,4 @@ image:
 - [Part 5: Immutability in R](https://masterr.org/r/RFP-part5-immutability/)
 - [Part 6: R <<- Assignment Operator](https://masterr.org/r/RFP-part6/)
 - [Part 7: Well-behaved R Functions](https://masterr.org/r/RFP-part7-functions00/)
+- [Part 8: R Functions](https://masterr.org/r/RFP-part8-functions01/)
