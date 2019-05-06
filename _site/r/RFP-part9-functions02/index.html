@@ -5,22 +5,16 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
 <head>
 <meta charset="utf-8">
-<title>RFP - Part 8: R Functions &#8211; Become Great at R</title>
-<meta name="description" content="Functions play a quintessential role in R. 
-John Chambers said that “in R: everything that happens is a function call.”
-Before diving into R functions, I want to explain the mathematical concept of 
-“function” because it will help us understand R functions.
+<title>RFP - Part 9: Local Functions and Local Variables &#8211; Become Great at R</title>
+<meta name="description" content="A common thing to do in functional programming is to create, within a (outer) function, a local (inner) function that uses other variables in scope. Let me give you an example. The function countup_from1() uses a local helper function count() to accumulate results recursively. Its argument x is used directly inside count().
 
 ">
 <meta name="keywords" content="">
 
 
 <!-- Twitter Cards -->
-<meta name="twitter:title" content="RFP - Part 8: R Functions">
-<meta name="twitter:description" content="Functions play a quintessential role in R. 
-John Chambers said that “in R: everything that happens is a function call.”
-Before diving into R functions, I want to explain the mathematical concept of 
-“function” because it will help us understand R functions.
+<meta name="twitter:title" content="RFP - Part 9: Local Functions and Local Variables">
+<meta name="twitter:description" content="A common thing to do in functional programming is to create, within a (outer) function, a local (inner) function that uses other variables in scope. Let me give you an example. The function countup_from1() uses a local helper function count() to accumulate results recursively. Its argument x is used directly inside count().
 
 ">
 
@@ -32,21 +26,18 @@ Before diving into R functions, I want to explain the mathematical concept of
 <!-- Open Graph -->
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
-<meta property="og:title" content="RFP - Part 8: R Functions">
-<meta property="og:description" content="Functions play a quintessential role in R. 
-John Chambers said that “in R: everything that happens is a function call.”
-Before diving into R functions, I want to explain the mathematical concept of 
-“function” because it will help us understand R functions.
+<meta property="og:title" content="RFP - Part 9: Local Functions and Local Variables">
+<meta property="og:description" content="A common thing to do in functional programming is to create, within a (outer) function, a local (inner) function that uses other variables in scope. Let me give you an example. The function countup_from1() uses a local helper function count() to accumulate results recursively. Its argument x is used directly inside count().
 
 ">
-<meta property="og:url" content="http://localhost:4000/r/RFP-part8-functions01/">
+<meta property="og:url" content="http://localhost:4000/r/RFP-part9-functions02/">
 <meta property="og:site_name" content="Become Great at R">
 
 
 <meta name="msvalidate.01" content="F608C5B05384F7B0200AC62F5BB60411">
 
 
-<link rel="canonical" href="http://localhost:4000/r/RFP-part8-functions01/">
+<link rel="canonical" href="http://localhost:4000/r/RFP-part9-functions02/">
 <link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="Become Great at R Feed">
 
 
@@ -148,7 +139,7 @@ Before diving into R functions, I want to explain the mathematical concept of
       <header class="entry-header">
         <span class="entry-tags"></span>
         
-          <h1 class="entry-title">RFP - Part 8: R Functions</h1>
+          <h1 class="entry-title">RFP - Part 9: Local Functions and Local Variables</h1>
         
       </header>
       <footer class="entry-meta">
@@ -213,19 +204,19 @@ Before diving into R functions, I want to explain the mathematical concept of
     });
 </script> 
 <!--End mc_embed_signup-->
-        <span class="entry-date date published"><time datetime="2019-04-03T00:00:00+09:00"><i class="fa fa-calendar-o"></i> April 03, 2019</time></span>
+        <span class="entry-date date published"><time datetime="2019-04-15T00:00:00+09:00"><i class="fa fa-calendar-o"></i> April 15, 2019</time></span>
         
         
         <span class="author vcard">By <span class="fn">Guangming Lang</span></span>
 		<span class="entry-comments"><i class="fa fa-comment-o"></i> <a href="#disqus_thread">Comment</a></span>
 		<span class="social-share-twitter">
-  <a href="https://twitter.com/intent/tweet?hashtags=&amp;text=RFP%20-%20Part%208:%20R%20Functions&amp;url=http://localhost:4000/r/RFP-part8-functions01/" title="Share on Twitter" itemprop="Twitter"><i class="fa fa-twitter-square"></i> Tweet</a>
+  <a href="https://twitter.com/intent/tweet?hashtags=&amp;text=RFP%20-%20Part%209:%20Local%20Functions%20and%20Local%20Variables&amp;url=http://localhost:4000/r/RFP-part9-functions02/" title="Share on Twitter" itemprop="Twitter"><i class="fa fa-twitter-square"></i> Tweet</a>
 </span>
 <span class="social-share-facebook">
-  <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/r/RFP-part8-functions01/" title="Share on Facebook" itemprop="Facebook"><i class="fa fa-facebook-square"></i> Like</a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/r/RFP-part9-functions02/" title="Share on Facebook" itemprop="Facebook"><i class="fa fa-facebook-square"></i> Like</a>
 </span>
 <span class="social-share-googleplus">
-  <a href="https://plus.google.com/share?url=http://localhost:4000/r/RFP-part8-functions01/" title="Share on Google Plus" itemprop="GooglePlus"><i class="fa fa-google-plus-square"></i> +1</a>
+  <a href="https://plus.google.com/share?url=http://localhost:4000/r/RFP-part9-functions02/" title="Share on Google Plus" itemprop="GooglePlus"><i class="fa fa-google-plus-square"></i> +1</a>
 </span>
 <!-- /.social-share -->
         <div class="google-ads" style="margin-top:40px; text-align:center;">
@@ -241,77 +232,78 @@ Before diving into R functions, I want to explain the mathematical concept of
 </div><!-- /.google-ads --><!-- /.google-ads -->
       </footer>
       <div class="entry-content">
-        <p>Functions play a quintessential role in R. 
-John Chambers said that “in R: everything that happens is a function call.”
-Before diving into R functions, I want to explain the mathematical concept of 
-“function” because it will help us understand R functions.</p>
+        <p>A common thing to do in functional programming is to create, within a (outer) function, a local (inner) function that uses other variables in scope. Let me give you an example. The function <code class="highlighter-rouge">countup_from1()</code> uses a local helper function <code class="highlighter-rouge">count()</code> to accumulate results recursively. Its argument <code class="highlighter-rouge">x</code> is used directly inside <code class="highlighter-rouge">count()</code>.</p>
 
-<p>A mathematical function is made of input variables and a body of mathematical
-statements operating on the input variables. Once defined, it can be used again
-and again, taking on different input values and returning some values as output.<br />
-But for the same inputs, a math function always outputs the same answer. 
-For example, consider the identity function <code class="highlighter-rouge">f(x) = x</code> defined over the real 
-numbers. We have</p>
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">countup_from1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1"># x: integer</span><span class="w">
+        </span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">from</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1"># from: integer</span><span class="w">
+                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">from</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="c1"># can use x because count() is local</span><span class="w">
+                </span><span class="k">else</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="n">from</span><span class="p">,</span><span class="w"> </span><span class="n">count</span><span class="p">(</span><span class="n">from</span><span class="m">+1</span><span class="p">))</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+        </span><span class="n">count</span><span class="p">(</span><span class="m">1</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="n">countup_from1</span><span class="p">(</span><span class="m">10</span><span class="p">)</span></code></pre></figure>
 
-<ul>
-  <li>the value of <code class="highlighter-rouge">f(1)</code> is always 1,</li>
-  <li>the value of <code class="highlighter-rouge">f(-100.1)</code> is always -100.1, and</li>
-  <li>in general, the value of <code class="highlighter-rouge">f(x)</code> is always <code class="highlighter-rouge">x</code> for any real number <code class="highlighter-rouge">x</code>.</li>
-</ul>
+<figure class="highlight"><pre><code class="language-text" data-lang="text">##  [1]  1  2  3  4  5  6  7  8  9 10</code></pre></figure>
 
-<p>A pure function in programming is analogous to a math function. A pure function 
-never changes the input data, and always makes a new copy and modifies the copy. 
-Functional programming (FP) encourages the usage of pure functions because they 
-make it easier to reason about what’s going on. In R, if you want to write pure
-functions (and most of the time you want to do that), avoid the <code class="highlighter-rouge">&lt;&lt;-</code> assignment
-operator<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>.</p>
+<p>Another common thing to do is to make local variables to store the results of expensive computations. Before I give you an example, let’s first define some helper functions.</p>
 
-<p>Similar to a math function, a R function also has a list of input arguments and 
-a body. The following code chunck presents a example template for defining a 
-function in R. The keyword <code class="highlighter-rouge">function</code> tells R that we’re defining a function. 
-Its input arguments are <code class="highlighter-rouge">x1</code>, <code class="highlighter-rouge">x2 = 5</code> and <code class="highlighter-rouge">...</code>, with 5 being the default value 
-of <code class="highlighter-rouge">x2</code>. The <code class="highlighter-rouge">...</code> argument is special and can contain any number of arguments. 
-It is used when the number of arguments are unknown or when the unknown 
-arguments will be passed on to another function inside the function. The braces 
-<code class="highlighter-rouge">{}</code> sourounds the function body, which is just a bunch of R statements and 
-expressions involving the input variables (<code class="highlighter-rouge">x1</code>, <code class="highlighter-rouge">x2</code>, <code class="highlighter-rouge">...</code>). The function body
-can be long or short.</p>
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># Check if a vector is empty. Returns TRUE if it is, FALSE otherwise.</span><span class="w">
+</span><span class="n">is_empty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1"># xs: a vector of any type</span><span class="w">
+        </span><span class="nf">length</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">0</span><span class="w">
+</span><span class="p">}</span><span class="w">
 
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">x</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="m">2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">5</span><span class="p">,</span><span class="w"> </span><span class="n">...</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="c1"># body content</span><span class="w">
+</span><span class="c1"># Get the first element of a vector, raising an exception if the vector is empty.</span><span class="w">
+</span><span class="n">hd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1"># xs: a vector of any type</span><span class="w">
+        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">is_empty</span><span class="p">(</span><span class="n">xs</span><span class="p">))</span><span class="w"> </span><span class="n">stop</span><span class="p">(</span><span class="s2">"Vector is empty."</span><span class="p">)</span><span class="w">
+        </span><span class="k">else</span><span class="w"> </span><span class="n">xs</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="c1"># Get the tail of a vector without its first element, raising an exception if the vector is empty.</span><span class="w">
+</span><span class="n">tl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1"># xs: a vector of any type</span><span class="w">
+        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">is_empty</span><span class="p">(</span><span class="n">xs</span><span class="p">))</span><span class="w"> </span><span class="n">stop</span><span class="p">(</span><span class="s2">"Vector is empty."</span><span class="p">)</span><span class="w">
+        </span><span class="k">else</span><span class="w"> </span><span class="n">xs</span><span class="p">[</span><span class="m">-1</span><span class="p">]</span><span class="w">
 </span><span class="p">}</span></code></pre></figure>
 
-<p>However, R functions have something that math functions don’t have: an 
-environment that was active when the function was created. Anything bound in
-this environment are available to the function. So everytime we create a R 
-function, what we see are the code we write down. When we send the code of 
-the function to R for evaluation, R attaches an environment to the function.
-This is something we don’t see but happens under the hood nonetheless. The 
-combination of the code of the function and the bindings in its environment is 
-called a “function closure.” The word “closure” emphasizes the attached 
-environment.</p>
+<p>Using these helpers, we can write a function that returns the max value of an integer vector. Without using local variables to store intermediate results, <code class="highlighter-rouge">bad_max()</code> gets very expensive even for small-lengthed input vectors.</p>
 
-<p>After a R function is created, we want to use it by calling it over some input 
-values. When a R function is called, a new environment (named the <em>calling</em> or 
-<em>evaluation environment</em>) is created, whose parent environment (also called 
-<em>enclosure</em>) is the environment from the function closure. The calling 
-environment is initially populated with the unevaluated arguments of the 
-function. As evaluation proceeds, symbols are searched from the calling 
-environment first and then from its parent, and local variables are created 
-inside the calling environment.</p>
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">bad_max</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1"># xs: integer vector</span><span class="w">
+        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">is_empty</span><span class="p">(</span><span class="n">xs</span><span class="p">))</span><span class="w"> </span><span class="m">0</span><span class="w">
+        </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">is_empty</span><span class="p">(</span><span class="n">tl</span><span class="p">(</span><span class="n">xs</span><span class="p">)))</span><span class="w"> </span><span class="n">hd</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span><span class="w">
+        </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">hd</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">bad_max</span><span class="p">(</span><span class="n">tl</span><span class="p">(</span><span class="n">xs</span><span class="p">)))</span><span class="w"> </span><span class="n">hd</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span><span class="w"> </span><span class="c1"># recursive call to bad_max()</span><span class="w">
+        </span><span class="k">else</span><span class="w"> </span><span class="n">bad_max</span><span class="p">(</span><span class="n">tl</span><span class="p">(</span><span class="n">xs</span><span class="p">))</span><span class="w"> </span><span class="c1"># recursive call to bad_max(), these two recursive</span><span class="w">
+                             </span><span class="c1"># calls hugely slow down the computation.</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="n">bad_max</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">)</span></code></pre></figure>
 
-<p>The above explanation is a little abstract. Read the following post for a 
-example that will help contextualizing things:</p>
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] 10</code></pre></figure>
 
-<p><a href="https://masterr.org/r/understand-r-environments-part1/">Understand R Environments</a></p>
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">bad_max</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">20</span><span class="p">)</span></code></pre></figure>
 
-<div class="footnotes">
-  <ol>
-    <li id="fn:1">
-      <p>This <a href="https://masterr.org/r/RFP-part6/">article</a> explains how <code class="highlighter-rouge">&lt;&lt;-</code> works. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] 20</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># bad_max(1:30) # this will take "forever"!</span></code></pre></figure>
+
+<p>We can re-write the function by using a local variable to store the
+intermediate result of the expensive recursive step.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">good_max</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">is_empty</span><span class="p">(</span><span class="n">xs</span><span class="p">))</span><span class="w"> </span><span class="m">0</span><span class="w">
+        </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">is_empty</span><span class="p">(</span><span class="n">tl</span><span class="p">(</span><span class="n">xs</span><span class="p">)))</span><span class="w"> </span><span class="n">hd</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span><span class="w">
+        </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="n">tl_ans</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">good_max</span><span class="p">(</span><span class="n">tl</span><span class="p">(</span><span class="n">xs</span><span class="p">))</span><span class="w"> </span><span class="c1"># use local variable to store expensive computation</span><span class="w">
+                </span><span class="n">hd_xs</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">hd</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span><span class="w"> 
+                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">hd_xs</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">tl_ans</span><span class="p">)</span><span class="w"> </span><span class="n">hd_xs</span><span class="w">
+                </span><span class="k">else</span><span class="w"> </span><span class="n">tl_ans</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="n">good_max</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">30</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] 30</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">good_max</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">100</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] 100</code></pre></figure>
+
 
 		<!-- Begin MailChimp Signup Form -->
 <html>
@@ -379,10 +371,8 @@ example that will help contextualizing things:</p>
     </div><!-- /.entry-wrapper -->
     <nav class="pagination" role="navigation">
       
-        <a href="http://localhost:4000/r/RFP-part7-functions00/" class="btn" title="RFP - Part 7: Well-behaved R Functions">Previous</a>
+        <a href="http://localhost:4000/r/RFP-part8-functions01/" class="btn" title="RFP - Part 8: R Functions">Previous</a>
       
-      
-        <a href="http://localhost:4000/r/RFP-part9-functions02/" class="btn" title="RFP - Part 9: Local Functions and Local Variables">Next</a>
       
     </nav><!-- /.pagination -->
   </article>

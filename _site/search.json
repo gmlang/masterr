@@ -1,6 +1,15 @@
 [
 	
 		{
+		  "title"      : "RFP - Part 9: Local Functions and Local Variables",
+		  "category"   : "",
+      "tags"       : "",
+		  "url"        : "http://localhost:4000/r/RFP-part9-functions02/",
+		  "date"       : "2019-04-15 00:00:00 +0900",
+		  "shortdate"  : "April 15, 2019"
+		} ,
+	
+		{
 		  "title"      : "RFP - Part 8: R Functions",
 		  "category"   : "",
       "tags"       : "",
