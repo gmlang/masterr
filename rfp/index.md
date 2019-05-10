@@ -21,3 +21,4 @@ image:
 - [Part 6: R <<- Assignment Operator](https://masterr.org/r/RFP-part6/)
 - [Part 7: Well-behaved R Functions](https://masterr.org/r/RFP-part7-functions00/)
 - [Part 8: R Functions](https://masterr.org/r/RFP-part8-functions01/)
+- [Part 9: Local Functions and Local Variables](https://masterr.org/r/RFP-part9-functions02/)
