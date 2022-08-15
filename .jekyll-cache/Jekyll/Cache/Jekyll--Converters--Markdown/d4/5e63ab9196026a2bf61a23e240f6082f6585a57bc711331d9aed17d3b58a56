@@ -1,0 +1,32 @@
+I"i
+<h3 id="updated-october-4-2018">Updated October 4, 2018</h3>
+
+<p>Previously, I showed how to use the <code class="language-plaintext highlighter-rouge">mk_barplot_resp()</code> function to make <a href="https://masterr.org/r/an-easy-way-to-make-ggplot2-plots-ezplot-part1/">bar charts</a>. 
+In this post, I’ll show you how to use the <code class="language-plaintext highlighter-rouge">mk_barplot_freq()</code> function.</p>
+
+<p>Make sure you first install ezplot by running the command <code class="language-plaintext highlighter-rouge">devtools::install_github("gmlang/ezplot")</code>.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">library</span><span class="p">(</span><span class="n">ezplot</span><span class="p">)</span><span class="w">
+</span><span class="n">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span></code></pre></figure>
+
+<p>We’ll use the diamonds data in the ggplot2 package.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">plt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mk_barplot_freq</span><span class="p">(</span><span class="n">ggplot2</span><span class="o">::</span><span class="n">diamonds</span><span class="p">)</span></code></pre></figure>
+
+<p>Let’s make a bar chart to show the frequency distribution of the clarities.
+Notice the bars are automatically labeled with both counts and percents.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">plt</span><span class="p">(</span><span class="s2">"clarity"</span><span class="p">)</span></code></pre></figure>
+
+<p><img src="/../figs/2015-05-22-a-super-easy-way-to-make-ggplot2-barcharts-with-labels-ezplot-part4/unnamed-chunk-3-1.png" alt="center" /></p>
+
+<p>We can also choose to show relative frequencies (%) on the y-axis. Just set
+<code class="language-plaintext highlighter-rouge">show_pct = TRUE</code></p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">plt</span><span class="p">(</span><span class="s2">"clarity"</span><span class="p">,</span><span class="w"> </span><span class="n">show_pct</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span></code></pre></figure>
+
+<p><img src="/../figs/2015-05-22-a-super-easy-way-to-make-ggplot2-barcharts-with-labels-ezplot-part4/unnamed-chunk-4-1.png" alt="center" /></p>
+
+<p>If <a href="https://leanpub.com/ezplot">ezplot</a> has improved your productivity, please 
+share it with your friends.</p>
+:ET

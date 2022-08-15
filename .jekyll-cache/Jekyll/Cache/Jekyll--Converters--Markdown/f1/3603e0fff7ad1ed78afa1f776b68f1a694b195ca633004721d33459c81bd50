@@ -1,0 +1,172 @@
+I"l.<ul class="post-list">
+ 
+  <li><article><a href="http://localhost:4000/r/RFP-part9-functions02/">RFP - Part 9: Local Functions and Local Variables</a></article></li>
+ 
+  <li><article><a href="http://localhost:4000/r/RFP-part8-functions01/">RFP - Part 8: R Functions</a></article></li>
+ 
+  <li><article><a href="http://localhost:4000/r/RFP-part7-functions00/">RFP - Part 7: Well-behaved R Functions</a></article></li>
+ 
+  <li><article><a href="http://localhost:4000/r/RFP-part6/">RFP - Part 6: R &lt;&lt;- Assignment Operator</a></article></li>
+ 
+  <li><article><a href="http://localhost:4000/r/RFP-part5-immutability/">RFP - Part5: Immutability in R</a></article></li>
+ 
+  <li><article><a href="http://localhost:4000/r/RFP-part4-shadowing/">RFP - Part4: R Variable Shadowing</a></article></li>
+ 
+  <li><article><a href="http://localhost:4000/r/RFP-part3-variables/">RFP - Part3: R Variables</a></article></li>
+ 
+  <li><article><a href="http://localhost:4000/r/RFP-part2-lists/">RFP - Part2: R Lists</a></article></li>
+ 
+  <li><article><a href="http://localhost:4000/r/RFP-part1-vectors/">RFP - Part1: R Vectors</a></article></li>
+ 
+  <li><article><a href="http://localhost:4000/r/accurate-calculation-of-years-between-dates/">Accurate Calculation of Years between Dates in R</a></article></li>
+ 
+  <li><article><a href="http://localhost:4000/r/understand-r-environments-part3/">Understand R Environments - Part3</a></article></li>
+ 
+  <li><article><a href="http://localhost:4000/r/understand-r-environments-part2/">Understand R Environments - Part2</a></article></li>
+ 
+  <li><article><a href="http://localhost:4000/r/understand-r-environments-part1/">Understand R Environments - Part1</a></article></li>
+ 
+  <li><article><a href="http://localhost:4000/r/calculate-mortgage-payment-schedule/">How to Calculate Mortgage Payment Schedule in R</a></article></li>
+ 
+  <li><article><a href="http://localhost:4000/r/quote-n-quasiquote/">Quote, Unquote and Quasiquote</a></article></li>
+ 
+  <li><article><a href="http://localhost:4000/r/R-recursion-3/">R Recursion - Part 3</a></article></li>
+ 
+  <li><article><a href="http://localhost:4000/r/R-recursion-2/">R Recursion - Part 2</a></article></li>
+ 
+  <li><article><a href="http://localhost:4000/r/R-recursion-1/">R Recursion - Part 1</a></article></li>
+ 
+  <li><article><a href="http://localhost:4000/r/quandl-bulk-download/">Bulk Download Data from Quandl</a></article></li>
+ 
+  <li><article><a href="http://localhost:4000/r/rebind/">Rebind</a></article></li>
+ 
+  <li><article><a href="http://localhost:4000/r/ma-models-demo/">Moving Average Models Demo</a></article></li>
+ 
+  <li><article><a href="http://localhost:4000/r/on-exit/">The on.exit() Function</a></article></li>
+ 
+  <li><article><a href="http://localhost:4000/r/read-zipped-files-into-R/">Read Zipped Files into R</a></article></li>
+ 
+  <li><article><a href="http://localhost:4000/r/R-and-MySQL/">R and MySQL</a></article></li>
+ 
+  <li><article><a href="http://localhost:4000/r/tips-for-caret/">Tips for Caret</a></article></li>
+ 
+  <li><article><a href="http://localhost:4000/r/R-parallel-and-zombie-processes/">R Parallel and Zombie Processes</a></article></li>
+ 
+  <li><article><a href="http://localhost:4000/r/use-grep-to-drop-columns/">Use Grep to Drop Columns</a></article></li>
+ 
+  <li><article><a href="http://localhost:4000/r/install-xgboost-on-mac/">Install XGBoost on Mac</a></article></li>
+ 
+  <li><article><a href="http://localhost:4000/r/make-flowchart-in-r/">Make Flowchart in R</a></article></li>
+ 
+  <li><article><a href="http://localhost:4000/r/file-dir-manipulations-in-r/">File and Dir Manipulations in R</a></article></li>
+ 
+  <li><article><a href="http://localhost:4000/r/introducing-ezplot/">Introducing ezplot: An Easy Way to Make Beautiful Charts for Real World Clients</a></article></li>
+ 
+  <li><article><a href="http://localhost:4000/r/examples-of-predicate-functionals/">Examples of Predicate Functionals</a></article></li>
+ 
+  <li><article><a href="http://localhost:4000/r/exponential-smoothing-function/">A Simple R Function for Exponential Smoothing</a></article></li>
+ 
+  <li><article><a href="http://localhost:4000/r/how-to-read-in-date-variables-as-Date/">How to read in date variables as Date</a></article></li>
+ 
+  <li><article><a href="http://localhost:4000/r/how-to-use-functions-that-return-functions-to-clean-data/">How to use functions that return functions to clean data</a></article></li>
+ 
+  <li><article><a href="http://localhost:4000/r/functions-that-eat-functions/">Functions that eat functions</a></article></li>
+ 
+  <li><article><a href="http://localhost:4000/r/functions-that-return-a-list-of-functions-and-lapply/">Functions that return a list of functions and lapply</a></article></li>
+ 
+  <li><article><a href="http://localhost:4000/r/how-to-easily-make-beautiful-heatmaps-with-ezplot-part8/">How to easily make beautiful heatmaps with ezplot - Part 8</a></article></li>
+ 
+  <li><article><a href="http://localhost:4000/r/how-to-easily-make-ggplot2-line-plot-ezplot-part6/">How to easily make ggplot2 type of line plot, ezplot - Part 6</a></article></li>
+ 
+  <li><article><a href="http://localhost:4000/r/how-to-check-normality-of-a-continuous-variable-ezplot-part5/">How to check normality of a continuous variable, ezplot - Part 5</a></article></li>
+ 
+  <li><article><a href="http://localhost:4000/r/a-super-easy-way-to-make-ggplot2-barcharts-with-labels-ezplot-part4/">A Super Easy Way to Make Ggplot2 Bar Charts with Labels, ezplot - Part 4</a></article></li>
+ 
+  <li><article><a href="http://localhost:4000/r/an-easy-way-to-make-ggplot2-histograms-ezplot-part3/">An Easy Way to Make Ggplot2 Histograms and Density Plots, ezplot - Part 3</a></article></li>
+ 
+  <li><article><a href="http://localhost:4000/r/an-easy-way-to-make-ggplot2-boxplots-ezplot-part2/">An Easy Way to Make Ggplot2 Boxplots, ezplot - Part 2</a></article></li>
+ 
+  <li><article><a href="http://localhost:4000/r/an-easy-way-to-make-ggplot2-plots-ezplot-part1/">An Easy Way to Make Ggplot2 Plots, ezplot - Part 1</a></article></li>
+ 
+  <li><article><a href="http://localhost:4000/r/how-to-scrape-Japanese-text-using-rvest/">How to Scrape Japanese Text Using the rvest Package</a></article></li>
+ 
+  <li><article><a href="http://localhost:4000/r/the-switch-operator-in-r/">The Switch Operator in R</a></article></li>
+ 
+  <li><article><a href="http://localhost:4000/r/calculate-tangency-portfolios-using-r/">Calculate Tangency Portfolios Using R</a></article></li>
+ 
+  <li><article><a href="http://localhost:4000/r/calculate-efficient-portfolios-using-r/">Calculate Efficient Portfolios Using R</a></article></li>
+ 
+  <li><article><a href="http://localhost:4000/r/calculate-global-minimum-variance-portfolio-using-r/">Calculate Global Minimum Variance Portfolio Using R</a></article></li>
+ 
+  <li><article><a href="http://localhost:4000/r/analyze-stock-price-data-using-r-part3/">Analyze Stock Price Data Using R, Part3</a></article></li>
+ 
+  <li><article><a href="http://localhost:4000/r/an-example-of-the-bootstrap-method/">An Example of the Bootstrap Method</a></article></li>
+ 
+  <li><article><a href="http://localhost:4000/r/handy-r-functions-for-summary-statistics/">Handy R Functions for Summary Statistics</a></article></li>
+ 
+  <li><article><a href="http://localhost:4000/r/analyze-stock-price-data-using-r-part2/">Analyze Stock Price Data Using R, Part2</a></article></li>
+ 
+  <li><article><a href="http://localhost:4000/r/analyze-stock-price-data-using-r-part1/">Analyze Stock Price Data Using R, Part1</a></article></li>
+ 
+  <li><article><a href="http://localhost:4000/r/download-stock-price-data-using-r/">Download Stock Price Data Using R</a></article></li>
+ 
+  <li><article><a href="http://localhost:4000/r/replacement-functions-in-r/">Replacement Functions in R</a></article></li>
+ 
+  <li><article><a href="http://localhost:4000/r/sknewness-and-kurtosis-examples/">How to Calculate Sknewness and Kurtosis in R</a></article></li>
+ 
+  <li><article><a href="http://localhost:4000/r/which-r-base-generic-has-the-most-number-of-methods/">Which R Base Generic Has the Most Number of Methods</a></article></li>
+ 
+  <li><article><a href="http://localhost:4000/r/how-to-view-source-code-in-r/">How to View Source Code in R</a></article></li>
+ 
+  <li><article><a href="http://localhost:4000/r/functions-that-return-functions-part-2/">Functions That Return Functions Part 2</a></article></li>
+ 
+  <li><article><a href="http://localhost:4000/r/the-magic-of-substitute-and-deparse/">The Magic of Substitute and Deparse</a></article></li>
+ 
+  <li><article><a href="http://localhost:4000/r/the-setwd-function-in-r/">The setwd Function in R</a></article></li>
+ 
+  <li><article><a href="http://localhost:4000/r/how-to-quickly-subset-list-elements-in-r/">How to Quickly Subset List Elements in R</a></article></li>
+ 
+  <li><article><a href="http://localhost:4000/r/how-to-read-excel-files-into-r/">How to Read Excel Files into R</a></article></li>
+ 
+  <li><article><a href="http://localhost:4000/r/on-r-code-style/">On R Code Style</a></article></li>
+ 
+  <li><article><a href="http://localhost:4000/r/how-to-unsort-in-r/">How to Unsort in R</a></article></li>
+ 
+  <li><article><a href="http://localhost:4000/r/how-to-correctly-load-a-r-package/">How to Correctly Load a R Package</a></article></li>
+ 
+  <li><article><a href="http://localhost:4000/r/how-to-make-faceted-ordered-bar-charts-in-r/">How to Make Faceted Ordered Bar Charts in R</a></article></li>
+ 
+  <li><article><a href="http://localhost:4000/r/how-to-write-infix-functions-in-r/">How to Write Infix Functions in R</a></article></li>
+ 
+  <li><article><a href="http://localhost:4000/r/how-to-work-with-factors-in-r/">How to Work with Factors in R</a></article></li>
+ 
+  <li><article><a href="http://localhost:4000/r/how-to-convert-millisecond-to-date-in-r/">How to Convert Millisecond to Date in R</a></article></li>
+ 
+  <li><article><a href="http://localhost:4000/r/how-to-find-consecutive-repeats-in-r/">How to Find Consecutive Repeats in R</a></article></li>
+ 
+  <li><article><a href="http://localhost:4000/r/the-stringr-package/">The stringr Package</a></article></li>
+ 
+  <li><article><a href="http://localhost:4000/r/how-to-cache-a-matrix-inversion-in-r/">How to Cache a Matrix Inversion in R</a></article></li>
+ 
+  <li><article><a href="http://localhost:4000/r/how-to-work-with-files-in-r-and-improve-reproducibility/">How to Work with Files in R and Improve Reproducibility</a></article></li>
+ 
+  <li><article><a href="http://localhost:4000/r/how-to-handle-large-datasets-in-r-part-2/">How to Handle Large Datasets in R - Part 2</a></article></li>
+ 
+  <li><article><a href="http://localhost:4000/r/functions-that-return-functions/">Functions that Return Functions</a></article></li>
+ 
+  <li><article><a href="http://localhost:4000/r/how-to-easily-sort-a-data-frame/">How to Easily Sort A Data Frame</a></article></li>
+ 
+  <li><article><a href="http://localhost:4000/r/how-to-convert-strings-to-dates-in-r/">How to Convert Strings to Dates in R</a></article></li>
+ 
+  <li><article><a href="http://localhost:4000/r/how-to-handle-large-datasets-in-r-part-1/">How to Handle Large Datasets in R - Part 1</a></article></li>
+ 
+  <li><article><a href="http://localhost:4000/r/how-to-use-the-paste-and-outer-functions-in-r/">How to Use the Paste and Outer Functions in R</a></article></li>
+ 
+  <li><article><a href="http://localhost:4000/r/how-to-plot-pretty-histograms-using-r-base-graphing-system/">How to Plot Pretty Histograms using R Base Graphing System</a></article></li>
+ 
+  <li><article><a href="http://localhost:4000/r/how-to-install-quantstrat/">How to Install Quantstrat</a></article></li>
+ 
+  <li><article><a href="http://localhost:4000/r/exponential-growth-of-the-us-real-gdp-from-1790-to-2012/">Exponential Growth of the US Real GDP from 1790 to 2012</a></article></li>
+
+</ul>
+:ET

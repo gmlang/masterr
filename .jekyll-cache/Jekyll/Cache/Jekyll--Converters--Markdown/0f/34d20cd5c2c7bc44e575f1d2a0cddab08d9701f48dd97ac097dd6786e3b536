@@ -1,0 +1,53 @@
+I"�!<p>Dealing with date variables is usually tedious. When reading in a text data file into R, R will not automatically convert the date values into dates, rather, it will treat them as strings (make sure you specify <code class="language-plaintext highlighter-rouge">stringsAsFactors = FALSE</code> in your <code class="language-plaintext highlighter-rouge">read.table()</code> or <code class="language-plaintext highlighter-rouge">read.csv()</code> function. Otherwise, R will read in them as factors, which you don’t want). Sometimes, the date values are of the format “yyyymmdd”, like “20051023”, and R will treat them as numbers. It’s your job to convert these strings or numbers to dates. I’ve written a function that allows you to do that easily.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">as_date</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">...</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="c1"># @x: a character or numeric vector</span><span class="w">
+        </span><span class="c1"># returns: converts x to dates and returns it</span><span class="w">
+
+        </span><span class="n">dts.char</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">unique</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w">
+        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nf">is.numeric</span><span class="p">(</span><span class="n">dts.char</span><span class="p">)</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">dts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">as.Date</span><span class="p">(</span><span class="nf">as.character</span><span class="p">(</span><span class="n">dts.char</span><span class="p">),</span><span class="w"> </span><span class="n">...</span><span class="p">)</span><span class="w">
+        </span><span class="k">else</span><span class="w"> </span><span class="n">dts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">as.Date</span><span class="p">(</span><span class="n">dts.char</span><span class="p">,</span><span class="w"> </span><span class="n">...</span><span class="p">)</span><span class="w">
+
+        </span><span class="c1"># match returns a vector of positions of first matches of elts of x in</span><span class="w">
+        </span><span class="c1"># dts.char, and because dts.char is unique, match here really finds,</span><span class="w">
+        </span><span class="c1"># for any element in x, the index of the element in dts.char that</span><span class="w">
+        </span><span class="c1"># matches it.</span><span class="w">
+        </span><span class="n">dts</span><span class="p">[</span><span class="n">match</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">dts.char</span><span class="p">)]</span><span class="w">
+</span><span class="p">}</span></code></pre></figure>
+
+<p>Here’re some examples of how to use it:</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">20051201</span><span class="p">,</span><span class="w"> </span><span class="m">20051202</span><span class="p">)</span><span class="w">
+</span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">rep</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s2">"2013-10-21"</span><span class="p">,</span><span class="s2">"2013-07-30"</span><span class="p">),</span><span class="w"> </span><span class="m">2</span><span class="p">)</span><span class="w">
+</span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"12/31/1983"</span><span class="p">,</span><span class="w"> </span><span class="s2">"1/1/1984"</span><span class="p">)</span><span class="w">
+
+</span><span class="n">a.as.date</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">as_date</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">format</span><span class="o">=</span><span class="s2">"%Y%m%d"</span><span class="p">)</span><span class="w">
+</span><span class="n">str</span><span class="p">(</span><span class="n">a.as.date</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">##  Date[1:2], format: "2005-12-01" "2005-12-02"</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">b.as.date</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">as_date</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="w">
+</span><span class="n">str</span><span class="p">(</span><span class="n">b.as.date</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">##  Date[1:4], format: "2013-10-21" "2013-07-30" "2013-10-21" "2013-07-30"</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">c.as.date</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">as_date</span><span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="w"> </span><span class="n">format</span><span class="o">=</span><span class="s2">"%m/%d/%Y"</span><span class="p">)</span><span class="w">
+</span><span class="n">str</span><span class="p">(</span><span class="n">c.as.date</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">##  Date[1:2], format: "1983-12-31" "1984-01-01"</code></pre></figure>
+
+<p>After you have converted the date variables from strings or numbers to date types, you often will want to extract from them the day, month, and year. Here’s how:</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="p">(</span><span class="w"> </span><span class="n">day</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">as.integer</span><span class="p">(</span><span class="n">format</span><span class="p">(</span><span class="n">a.as.date</span><span class="p">,</span><span class="w"> </span><span class="s2">"%d"</span><span class="p">))</span><span class="w"> </span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] 1 2</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="p">(</span><span class="w"> </span><span class="n">month</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">as.integer</span><span class="p">(</span><span class="n">format</span><span class="p">(</span><span class="n">b.as.date</span><span class="p">,</span><span class="w"> </span><span class="s2">"%m"</span><span class="p">))</span><span class="w"> </span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] 10  7 10  7</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="p">(</span><span class="w"> </span><span class="n">year</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">as.integer</span><span class="p">(</span><span class="n">format</span><span class="p">(</span><span class="n">c.as.date</span><span class="p">,</span><span class="w"> </span><span class="s2">"%Y"</span><span class="p">))</span><span class="w"> </span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] 1983 1984</code></pre></figure>
+
+:ET

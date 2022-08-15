@@ -1,0 +1,2 @@
+I"f<p>A generic (short for generic function) is a special type of function in R. R’s S3 system uses generics to decide which method to call. In other words, when it comes to the S3 system, “object oriented programming” specifically means “generic oriented programming” because S3 methods belong to generic functions instead of classes or objects.</p>
+:ET

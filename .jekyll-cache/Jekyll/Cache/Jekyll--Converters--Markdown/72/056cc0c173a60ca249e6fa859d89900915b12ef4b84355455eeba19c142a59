@@ -1,0 +1,60 @@
+I"t$<p>If you’ve created a file or copied a folder of files using the command line, do you know that you can do the same thing within R? If you never touched the terminal in your life, well, R allows you to move around folders and create files without using your mouse to click. This becomes very important when you write pipelines chained by R scripts as you probably want to automatically save and read files. Below is a collection of such R commands.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># home directory and working directory</span><span class="w">
+</span><span class="p">(</span><span class="n">home_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Sys.getenv</span><span class="p">(</span><span class="s2">"HOME"</span><span class="p">))</span><span class="w">
+</span><span class="n">getwd</span><span class="p">()</span><span class="w">
+</span><span class="n">setwd</span><span class="p">(</span><span class="n">file.path</span><span class="p">(</span><span class="n">home_path</span><span class="p">,</span><span class="w"> </span><span class="s2">"Projects"</span><span class="p">))</span><span class="w">
+</span><span class="n">getwd</span><span class="p">()</span><span class="w">
+</span><span class="n">setwd</span><span class="p">(</span><span class="n">home_path</span><span class="p">)</span><span class="w">
+</span><span class="n">getwd</span><span class="p">()</span><span class="w">
+
+</span><span class="c1"># list all files and sub-folders in the working directory</span><span class="w">
+</span><span class="n">list.files</span><span class="p">()</span><span class="w">
+
+</span><span class="c1"># list all files and sub-folders in another directory</span><span class="w">
+</span><span class="n">dir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">file.path</span><span class="p">(</span><span class="n">Sys.getenv</span><span class="p">(</span><span class="s2">"HOME"</span><span class="p">),</span><span class="w"> </span><span class="s2">"Projects"</span><span class="p">)</span><span class="w">
+</span><span class="n">list.files</span><span class="p">(</span><span class="n">dir</span><span class="p">)</span><span class="w">
+
+</span><span class="c1"># create a new dir</span><span class="w">
+</span><span class="n">newdir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">file.path</span><span class="p">(</span><span class="n">Sys.getenv</span><span class="p">(</span><span class="s2">"HOME"</span><span class="p">),</span><span class="w"> </span><span class="s2">"demo-folder"</span><span class="p">)</span><span class="w">
+</span><span class="n">dir.create</span><span class="p">(</span><span class="n">newdir</span><span class="p">,</span><span class="w"> </span><span class="n">showWarnings</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span><span class="w">
+
+</span><span class="c1"># create a new file</span><span class="w">
+</span><span class="n">file1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">file.path</span><span class="p">(</span><span class="n">newdir</span><span class="p">,</span><span class="w"> </span><span class="s2">"code.R"</span><span class="p">)</span><span class="w">
+</span><span class="n">file.create</span><span class="p">(</span><span class="n">file1</span><span class="p">)</span><span class="w">
+
+</span><span class="c1"># creat a new file and fill it with some text</span><span class="w">
+</span><span class="n">file2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">file.path</span><span class="p">(</span><span class="n">newdir</span><span class="p">,</span><span class="w"> </span><span class="s2">"cat-demo.md"</span><span class="p">)</span><span class="w">
+</span><span class="n">cat</span><span class="p">(</span><span class="s2">"This shows how the cat function works."</span><span class="p">,</span><span class="w"> </span><span class="n">file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">file2</span><span class="p">)</span><span class="w">
+
+</span><span class="c1"># use append = T to add text to exsiting file</span><span class="w">
+</span><span class="n">cat</span><span class="p">(</span><span class="s2">"\nEverybody is crazy about deep learning these days!!!"</span><span class="p">,</span><span class="w"> </span><span class="n">file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">file2</span><span class="p">,</span><span class="w"> 
+    </span><span class="n">append</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">T</span><span class="p">)</span><span class="w">
+
+</span><span class="c1"># copy a file</span><span class="w">
+</span><span class="n">file.copy</span><span class="p">(</span><span class="n">from</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">file2</span><span class="p">,</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">file.path</span><span class="p">(</span><span class="n">newdir</span><span class="p">,</span><span class="w"> </span><span class="s2">"cat-demo-copy.md"</span><span class="p">))</span><span class="w">
+</span><span class="n">list.files</span><span class="p">(</span><span class="n">newdir</span><span class="p">)</span><span class="w">
+
+</span><span class="c1"># rename a file</span><span class="w">
+</span><span class="p">(</span><span class="n">copied_file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">file.path</span><span class="p">(</span><span class="n">newdir</span><span class="p">,</span><span class="w"> </span><span class="s2">"cat-demo-copy.md"</span><span class="p">))</span><span class="w">
+</span><span class="n">file.rename</span><span class="p">(</span><span class="n">from</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">copied_file</span><span class="p">,</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">file.path</span><span class="p">(</span><span class="n">newdir</span><span class="p">,</span><span class="w"> </span><span class="s2">"cat-demo-cp.md"</span><span class="p">))</span><span class="w">
+</span><span class="n">list.files</span><span class="p">(</span><span class="n">newdir</span><span class="p">)</span><span class="w">
+
+</span><span class="c1"># move a file from one directory to another</span><span class="w">
+</span><span class="n">file1</span><span class="w">
+</span><span class="n">file.rename</span><span class="p">(</span><span class="n">from</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">file1</span><span class="p">,</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">file.path</span><span class="p">(</span><span class="n">home_path</span><span class="p">,</span><span class="w"> </span><span class="s2">"code.R"</span><span class="p">))</span><span class="w">
+</span><span class="n">list.files</span><span class="p">(</span><span class="n">newdir</span><span class="p">)</span><span class="w">
+</span><span class="n">list.files</span><span class="p">(</span><span class="n">home_path</span><span class="p">)</span><span class="w">
+</span><span class="s2">"code.R"</span><span class="w"> </span><span class="o">%in%</span><span class="w"> </span><span class="n">list.files</span><span class="p">(</span><span class="n">home_path</span><span class="p">)</span><span class="w">
+
+</span><span class="c1"># delete files </span><span class="w">
+</span><span class="n">unlink</span><span class="p">(</span><span class="n">file.path</span><span class="p">(</span><span class="n">home_path</span><span class="p">,</span><span class="w"> </span><span class="s2">"code.R"</span><span class="p">))</span><span class="w">
+</span><span class="n">list.files</span><span class="p">(</span><span class="n">home_path</span><span class="p">)</span><span class="w">
+</span><span class="s2">"code.R"</span><span class="w"> </span><span class="o">%in%</span><span class="w"> </span><span class="n">list.files</span><span class="p">(</span><span class="n">home_path</span><span class="p">)</span><span class="w">
+
+</span><span class="c1"># delete directories</span><span class="w">
+</span><span class="n">list.files</span><span class="p">(</span><span class="n">newdir</span><span class="p">)</span><span class="w">
+</span><span class="n">unlink</span><span class="p">(</span><span class="n">newdir</span><span class="p">,</span><span class="w"> </span><span class="n">recursive</span><span class="o">=</span><span class="nb">T</span><span class="p">)</span><span class="w">
+</span><span class="n">list.files</span><span class="p">(</span><span class="n">newdir</span><span class="p">)</span></code></pre></figure>
+
+:ET

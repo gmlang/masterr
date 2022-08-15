@@ -1,0 +1,2 @@
+I"�<p>In this and the next couple of posts, I’ll give examples of how to calculate optimized portfolios using R and the vanguard funds in my retirement account. Today, I’ll show you how to calculate the global minimum variance portfolio, which was the first major result in Markowitz’s portfolio theory. Given a collection of assets, their global minimum variance portfolio is the portfolio with the smallest portfolio volitility.</p>
+:ET

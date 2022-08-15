@@ -1,0 +1,32 @@
+I"<p>When I first started learning R, I was taught to manually set or change the working directory<sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">1</a></sup>. I don’t like pointing and clicking, so I quickly learned to use <code class="language-plaintext highlighter-rouge">setwd()</code> to do the same thing. My work flow was: create a project folder → get its full path manually → pass it to <code class="language-plaintext highlighter-rouge">setwd()</code>. This was better but still didn’t completely eliminate clicking, copying and pasting. Later, someone showed me how to use <code class="language-plaintext highlighter-rouge">file.path()</code>, and I liked it immediately. It works like <code class="language-plaintext highlighter-rouge">paste()</code> but faster. Combined with <code class="language-plaintext highlighter-rouge">Sys.getenv()</code>, <code class="language-plaintext highlighter-rouge">list.files()</code> and <code class="language-plaintext highlighter-rouge">dir.create()</code>, it allows me to eliminate manual operations completely. Here’s what I mean, assuming under the home directory, you have a folder called “Projects” where you store all your R projects, open R studio and follow these steps to create a new project folder called “test.”</p>
+
+<p>Step 1. Get the path to your home directory and print all its subfolders. Look for “Projects” to confirm it’s there.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">home.path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Sys.getenv</span><span class="p">(</span><span class="s2">"HOME"</span><span class="p">)</span><span class="w">
+</span><span class="n">list.files</span><span class="p">(</span><span class="n">home.path</span><span class="p">)</span></code></pre></figure>
+
+<p>Step 2. Get the path to the “Projects” directory and create a folder called “test” inside “Projects.”</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">proj_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">file.path</span><span class="p">(</span><span class="n">home.path</span><span class="p">,</span><span class="w"> </span><span class="s2">"Projects"</span><span class="p">)</span><span class="w">
+</span><span class="n">dir.create</span><span class="p">(</span><span class="n">file.path</span><span class="p">(</span><span class="n">proj_path</span><span class="p">,</span><span class="w"> </span><span class="s2">"test"</span><span class="p">),</span><span class="w"> </span><span class="n">showWarnings</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span></code></pre></figure>
+
+<p>Step 3. Print all subfolders under “Project” and look for “test” to confirm it’s there. Get the path to the “test” directory.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">list.files</span><span class="p">(</span><span class="n">proj_path</span><span class="p">)</span><span class="w">
+</span><span class="n">test_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">file.path</span><span class="p">(</span><span class="n">proj_path</span><span class="p">,</span><span class="w"> </span><span class="s2">"test"</span><span class="p">)</span></code></pre></figure>
+
+<p>You now have a new project folder called “test.” Download or place input data files into “test.” Say one of the input files is called “input.csv,” you can use the following code to read it into R.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">input_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">file.path</span><span class="p">(</span><span class="n">test_path</span><span class="p">,</span><span class="w"> </span><span class="s2">"input.csv"</span><span class="p">)</span><span class="w">
+</span><span class="n">input</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">read.csv</span><span class="p">(</span><span class="n">input_path</span><span class="p">)</span></code></pre></figure>
+
+<p>Notice that we never changed the working directory during these steps. In fact, if you run <code class="language-plaintext highlighter-rouge">getwd()</code> now, you’ll see it returns the default working directory. Indeed, we can always work in the default working directory and there’s no need to change it. We just need to get the input data from where they are and save the output data to where we want them to be. Four functions allow us to do that, namely, <code class="language-plaintext highlighter-rouge">Sys.getenv()</code>, <code class="language-plaintext highlighter-rouge">file.path()</code>, <code class="language-plaintext highlighter-rouge">list.files()</code>, and <code class="language-plaintext highlighter-rouge">dir.create()</code>. Use them and they’ll make your work flow neater.</p>
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1" role="doc-endnote">
+      <p>A working directory is a folder where your current R session has access to. If you put a data file in your working directory, you only need to tell R its name to read it into R. You don’t have to tell R its full path. Similarly, if you output a file with just a filename and without specifying a full path, R will save it in your working directory. To see your default working directory, open a new R session and run the command <code class="language-plaintext highlighter-rouge">getwd()</code>. <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+:ET

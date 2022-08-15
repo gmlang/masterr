@@ -1,0 +1,63 @@
+I"$<p><strong>Q</strong>: Given a sequence of random numbers, find the start and end positions of runs of five or more consecutive numbers that are greater than zero.</p>
+
+<p><strong>A</strong>: Use the <code class="language-plaintext highlighter-rouge">rle()</code> function.</p>
+
+<p>For example, let’s apply <code class="language-plaintext highlighter-rouge">rle()</code> to the following sequence of numbers.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">seq3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">5</span><span class="p">,</span><span class="m">3</span><span class="p">,</span><span class="m">7</span><span class="p">,</span><span class="m">7</span><span class="p">,</span><span class="m">7</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">5</span><span class="p">,</span><span class="m">5</span><span class="p">,</span><span class="m">5</span><span class="p">,</span><span class="m">3</span><span class="p">,</span><span class="m">3</span><span class="p">,</span><span class="m">3</span><span class="p">)</span><span class="w">
+</span><span class="p">(</span><span class="w"> </span><span class="n">rle.seq3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rle</span><span class="p">(</span><span class="n">seq3</span><span class="p">)</span><span class="w"> </span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Run Length Encoding
+##   lengths: int [1:7] 5 1 1 3 2 3 3
+##   values : num [1:7] 2 5 3 7 2 5 3</code></pre></figure>
+
+<p>We see that <code class="language-plaintext highlighter-rouge">rle()</code> returns a list of two elements: lengths and values, where the latter gives the unique number of each run, and the former gives the run length, i.e. the number of consecutive repeats within each run. For example, the first run is the number 2 repeated 5 times, and the second run is the number 5 repeated once.</p>
+
+<p>Let’s solve the original question. First, we set the seed, generate a sequence of normal random numbers greater than zero and apply <code class="language-plaintext highlighter-rouge">rle()</code> to it.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">set.seed</span><span class="p">(</span><span class="m">201</span><span class="p">)</span><span class="w">
+</span><span class="n">rnums</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rnorm</span><span class="p">(</span><span class="m">100</span><span class="p">)</span><span class="w">
+</span><span class="n">runs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rle</span><span class="p">(</span><span class="n">rnums</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">0</span><span class="p">)</span></code></pre></figure>
+
+<p>Next, we find indices of the runs with length of at least 5.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">myruns</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">which</span><span class="p">(</span><span class="n">runs</span><span class="o">$</span><span class="n">values</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">TRUE</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">runs</span><span class="o">$</span><span class="n">lengths</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="m">5</span><span class="p">)</span><span class="w">
+</span><span class="c1"># check if myruns has any value in it </span><span class="w">
+</span><span class="nf">any</span><span class="p">(</span><span class="n">myruns</span><span class="p">)</span><span class="w"> </span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] TRUE</code></pre></figure>
+
+<p>Next, we can do a cumulative sum of the run lengths and extract the end positions of the runs with length of at least 5 using the above found indices.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">runs.lengths.cumsum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">cumsum</span><span class="p">(</span><span class="n">runs</span><span class="o">$</span><span class="n">lengths</span><span class="p">)</span><span class="w">
+</span><span class="n">ends</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">runs.lengths.cumsum</span><span class="p">[</span><span class="n">myruns</span><span class="p">]</span></code></pre></figure>
+
+<p>Next, we find the start positions of these runs.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">newindex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ifelse</span><span class="p">(</span><span class="n">myruns</span><span class="o">&gt;</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">myruns</span><span class="m">-1</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">)</span><span class="w">
+</span><span class="n">starts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">runs.lengths.cumsum</span><span class="p">[</span><span class="n">newindex</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">1</span><span class="w">
+</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="m">0</span><span class="w"> </span><span class="o">%in%</span><span class="w"> </span><span class="n">newindex</span><span class="p">)</span><span class="w"> </span><span class="n">starts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="n">starts</span><span class="p">)</span></code></pre></figure>
+
+<p>Lastly, we print out the start and end positions of these runs and use them to extract the runs themselves.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">print</span><span class="p">(</span><span class="n">starts</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] 10 68 75</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">print</span><span class="p">(</span><span class="n">ends</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] 14 73 79</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">print</span><span class="p">(</span><span class="n">rnums</span><span class="p">[</span><span class="n">starts</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="o">:</span><span class="n">ends</span><span class="p">[</span><span class="m">1</span><span class="p">]])</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] 0.1890041 0.6932962 0.2238094 0.3984569 1.0134744</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">print</span><span class="p">(</span><span class="n">rnums</span><span class="p">[</span><span class="n">starts</span><span class="p">[</span><span class="m">2</span><span class="p">]</span><span class="o">:</span><span class="n">ends</span><span class="p">[</span><span class="m">2</span><span class="p">]])</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] 0.5311486 0.1588756 1.1229208 0.7904306 2.0994378 0.8786987</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">print</span><span class="p">(</span><span class="n">rnums</span><span class="p">[</span><span class="n">starts</span><span class="p">[</span><span class="m">3</span><span class="p">]</span><span class="o">:</span><span class="n">ends</span><span class="p">[</span><span class="m">3</span><span class="p">]])</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] 0.5789541 0.6795760 1.1309282 1.0107847 1.9778476</code></pre></figure>
+
+:ET

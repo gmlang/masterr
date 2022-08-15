@@ -1,139 +1,117 @@
-<!doctype html>
-<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
-<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
-<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
-<head>
-<meta charset="utf-8">
-<title> &#8211; Become Great at R</title>
+<!DOCTYPE html>
+<!--
+    So Simple Jekyll Theme 3.2.0
+    Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+    Free for personal and commercial use under the MIT license
+    https://github.com/mmistakes/so-simple-theme/blob/master/LICENSE
+-->
+<html lang="en-US" class="no-js">
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+
+  
+    
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Become Great at R | Mastering the R programming language</title>
+<meta name="generator" content="Jekyll v4.2.2" />
+<meta property="og:title" content="Become Great at R" />
+<meta name="author" content="Guangming Lang" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Mastering the R programming language" />
+<meta property="og:description" content="Mastering the R programming language" />
+<link rel="canonical" href="http://localhost:4000/apps/" />
+<meta property="og:url" content="http://localhost:4000/apps/" />
+<meta property="og:site_name" content="Become Great at R" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Become Great at R" />
+<meta name="twitter:site" content="@" />
+<meta name="twitter:creator" content="@Guangming Lang" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Guangming Lang"},"description":"Mastering the R programming language","headline":"Become Great at R","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/images/site-logo.png"},"name":"Guangming Lang"},"url":"http://localhost:4000/apps/"}</script>
+<!-- End Jekyll SEO tag -->
 
 
+  
 
+  <script>
+    /* Cut the mustard */
+    if ( 'querySelector' in document && 'addEventListener' in window ) {
+      document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + 'js';
+    }
+  </script>
 
-<!-- Twitter Cards -->
-<meta name="twitter:title" content="">
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="stylesheet" href="/assets/css/skins/default.css">
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,700,700i|Lora:400,400i,700,700i">
+  <link rel="alternate" type="application/atom+xml" title="Become Great at R" href="/atom.xml">
+<!-- start custom head snippets -->
 
+<!-- insert favicons. use http://realfavicongenerator.net/ -->
 
-
-
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://localhost:4000/images/site-logo.png">
-
-<!-- Open Graph -->
-<meta property="og:locale" content="en_US">
-<meta property="og:type" content="article">
-<meta property="og:title" content="">
-
-<meta property="og:url" content="http://localhost:4000/apps/">
-<meta property="og:site_name" content="Become Great at R">
-
-
-<meta name="msvalidate.01" content="F608C5B05384F7B0200AC62F5BB60411">
-
-
-<link rel="canonical" href="http://localhost:4000/apps/">
-<link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="Become Great at R Feed">
-
-
-<!-- http://t.co/dKP3o1e -->
-<meta name="HandheldFriendly" content="True">
-<meta name="MobileOptimized" content="320">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<!-- For all browsers -->
-<link rel="stylesheet" href="http://localhost:4000/assets/css/main.css">
-<!-- Webfonts -->
-<script src="//use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
-
-<meta http-equiv="cleartype" content="on">
-
-<!-- HTML5 Shiv and Media Query Support -->
-<!--[if lt IE 9]>
-  <script src="http://localhost:4000/assets/js/vendor/html5shiv.min.js"></script>
-  <script src="http://localhost:4000/assets/js/vendor/respond.min.js"></script>
-<![endif]-->
-
-<!-- Modernizr -->
-<script src="http://localhost:4000/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
-
-<!-- Icons -->
-<!-- 16x16 -->
-<link rel="shortcut icon" href="http://localhost:4000/favicon.ico">
-<!-- 32x32 -->
-<link rel="shortcut icon" href="http://localhost:4000/favicon.png">
-<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
-<link rel="apple-touch-icon-precomposed" href="http://localhost:4000/images/apple-touch-icon-precomposed.png">
-<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
-<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://localhost:4000/images/apple-touch-icon-72x72-precomposed.png">
-<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
-<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://localhost:4000/images/apple-touch-icon-114x114-precomposed.png">
-<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
-<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://localhost:4000/images/apple-touch-icon-144x144-precomposed.png">
+<!-- end custom head snippets -->
 
 </head>
 
-<body id="page">
 
-<div class="navigation-wrapper">
-	<nav role="navigation" id="site-nav" class="animated drop">
-	    <ul>
-      
-		    
-		    <li><a href="http://localhost:4000/about/" >About</a></li>
-		  
-		    
-		    <li><a href="http://localhost:4000/rfp/" >RFP Series</a></li>
-		  
-		    
-		    <li><a href="http://localhost:4000/da/" >Data Analysis</a></li>
-		  
-		    
-		    <li><a href="http://localhost:4000/r/" >R</a></li>
-		  
-		    
-		    <li><a href="http://localhost:4000/books/" >Books</a></li>
-		  
-		    
-		    <li><a href="http://localhost:4000/apps/" >Apps</a></li>
-		  
-		    
-		    <li><a href="http://localhost:4000/cartoon/" >Cartoon</a></li>
-		  
-        <li class="dosearch"><span><i class="fa fa-search"></i> Search</span></li>
-	    </ul>
-	</nav>
-</div><!-- /.navigation-wrapper -->
+  <body class="layout--page  ">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#primary-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
 
-<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+    
+  <div class="navigation-wrapper">
+    <a href="#menu-toggle" id="menu-toggle">Menu</a>
+    <nav id="primary-nav" class="site-nav animated drop">
+      <ul><li><a href="/about/">About</a></li><li><a href="/r/">R</a></li><li><a href="/da/">Data Analysis</a></li><li><a href="/books/">Books</a></li><li><a href="/apps/">Apps</a></li><li><a href="/cartoon/">Cartoon</a></li></ul>
+    </nav>
+  </div><!-- /.navigation-wrapper -->
 
-<div class="search-wrapper">
-  <div class="search-form">
-    <input type="text" class="search-field" placeholder="Search...">
-    <button class="close-btn"><i class="fa fa-times-circle fa-2x"></i></button>
-    <ul class="search-results post-list"></ul><!-- /.search-results -->
-  </div><!-- /.search-form -->
-</div><!-- ./search-wrapper -->
 
-<header class="masthead">
-	<div class="wrap">
-        
-    		<a href="http://localhost:4000" class="site-logo" rel="home" title="Become Great at R"><img src="http://localhost:4000/images/site-logo.png" width="200" height="200" alt="Become Great at R logo" class="animated fadeInUp"></a>
-        
-        <h1 class="site-title animated fadeIn"><a href="http://localhost:4000">Become Great at R</a></h1>
-		<h2 class="site-description animated fadeIn" itemprop="description"></h2>
-	</div>
+    <header class="masthead">
+  <div class="wrap">
+    
+      <a href="/" class="site-logo" rel="home" title="Become Great at R">
+        <img src="/images/site-logo.png" class="site-logo-img animated fadeInDown" alt="Become Great at R">
+      </a>
+    
+    
+    
+  </div>
 </header><!-- /.masthead -->
 
-<div class="js-menu-screen menu-screen"></div>
 
-<div id="main" role="main">
-  <article class="entry">
+    <main id="main" class="main-content" aria-label="Content">
+  <article>
     
-    <div class="entry-wrapper">
-      <header class="entry-header">
-        <h1 class="entry-title"></h1>
+  
+  
+  
+
+  <div class="page-image">
+    <img src="/%7B%22feature%22=%3Enil%7D" class="entry-feature-image u-photo" alt="" >
+    
+  </div>
+
+
+    <div class="page-wrapper">
+      <header class="page-header">
+        
+        
+          <h1 id="page-title" class="page-title"></h1>
+        
       </header>
-      <div class="entry-content">
+      <div class="page-content">
         <h2 id="tsplotr"><a href="https://cabaceo.shinyapps.io/tsplotr/">tsplotr</a></h2>
 <p>Use <a href="https://cabaceo.shinyapps.io/tsplotr/">this app</a> to visualize your own time series data. It comes with a real estate dataset from one of Hadley’s talks to demo the importance of removing seasonality for trend reveal.|</p>
 
@@ -143,114 +121,60 @@
 <h2 id="linreg"><a href="https://cabaceo.shinyapps.io/linreg/">linreg</a></h2>
 <p>Use <a href="https://cabaceo.shinyapps.io/linreg/">this app</a> to train a multiple linear regression model on your own data for both prediction and interpretation purposes. It comes with a solubility dataset from the book <em>Applied Predictive Modeling</em> by Max Kuhn. Run the demo and see how it works by yourself.</p>
 
-      </div><!-- /.entry-content -->
-    </div><!-- /.entry-wrapper -->
+
+        
+      </div>
+    </div>
   </article>
-</div><!-- /#main -->
+</main>
 
-<div class="footer-wrapper">
-  <footer role="contentinfo" class="entry-wrapper">
+
     
-<span>&copy; 2019 Guangming Lang. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="https://mademistakes.com/so-simple/" rel="nofollow">So Simple Theme</a>.</span>
-<div class="social-icons">
-	
-	
-	
-	
-	
-	
-	
-	
-	
-<!-- no feed button <a href="http://localhost:4000/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss-square fa-2x"></i></a> -->
-</div><!-- /.social-icons -->
+<footer id="footer" class="site-footer">
+  <!-- start custom footer snippets -->
 
-  </footer>
-</div><!-- /.footer-wrapper -->
-
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="http://localhost:4000/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
-<script src="http://localhost:4000/assets/js/scripts.min.js"></script>
-
-<!-- Jekyll Simple Search option -->
-<script>
-  $(document).ready(function() {
-      $('.search-field').jekyllSearch({
-          jsonFile: 'http://localhost:4000/search.json',
-          searchResults: '.search-results',
-          template: '<li><article><a href="{url}">{title} <span class="entry-date"><time datetime="{date}">{shortdate}</time></span></a></article></li>',
-          fuzzy: true,
-          noResults: '<p>Nothing found.</p>'
-        });
-  });
-
-  (function( $, window, undefined ) {
+<!-- end custom footer snippets -->
+<div class="social-icons"><a class="social-icon" href="/atom.xml"><i class="fas fa-rss-square fa-2x" title="Feed"></i></a></div><div class="copyright">
     
-     var bs = {
-          close: $(".close-btn"),
-          searchform: $(".search-form"),
-          canvas: $(".js-menu-screen"),
-          dothis: $('.dosearch')
-      };
+      <p>&copy; 2022 Become Great at R. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://github.com/mmistakes/so-simple-theme" rel="nofollow">So Simple</a>.</p>
     
-    bs.dothis.on('click', function() {
-      $('.search-wrapper').css({ display: "block" });
-      $('body').toggleClass('no-scroll');
-      bs.searchform.toggleClass('active');
-      bs.searchform.find('input').focus();
-      bs.canvas.toggleClass('is-visible');
-    });
-    
-      bs.close.on('click', function() {
-        $('.search-wrapper').removeAttr( 'style' );
-        $('body').toggleClass('no-scroll');
-        bs.searchform.toggleClass('active');
-        bs.canvas.removeClass('is-visible');
-    });
-  })( jQuery, window );
-</script>
+  </div>
+</footer>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://use.fontawesome.com/releases/v5.0.12/js/all.js"></script>
 
 
-<!-- doesn't work optimally 
-author's Asynchronous Google Analytics snippet
+<!-- MathJax -->
 
 <script>
-  var _gaq = _gaq || [];
-  var pluginUrl = 
- '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
-  _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
-  _gaq.push(['_setAccount', 'UA-57697212-1']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
+// http://docs.mathjax.org/en/latest/upgrading/v2.html
+MathJax = {
+  tex: {
+      tags: "ams"    // eq numbering options: none, ams, all
+  },
+  options: {
+    renderActions: {
+      // for mathjax 3, handle <script "math/tex"> blocks inserted by kramdown
+      find: [10, function (doc) {
+        for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+          const display = !!node.type.match(/; *mode=display/);
+          const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+          const text = document.createTextNode('');
+          node.parentNode.replaceChild(text, node);
+          math.start = {node: text, delim: '', n: 0};
+          math.end = {node: text, delim: '', n: 0};
+          doc.math.push(math);
+        }
+      }, '']
+    }
+  }
+}
 </script>
 
--->
+<script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 
-<!-- google analytics -->
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  </body>
 
-  ga('create', 'UA-57697212-1', 'auto');
-  ga('send', 'pageview');
-
-</script>
-
-
-
-<!-- Mathjax -->
-<script type="text/javascript"
-    src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
-          
-
-</body>
 </html>
-

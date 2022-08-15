@@ -1,0 +1,173 @@
+I"<g<p>The simplest data structure in R is the vector. A vector is one dimensional and can be imagined as a sequence of blocks containing values:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    | v1 | v2 | ... |
+</code></pre></div></div>
+
+<p>A R vector can have any length. Its elements must have the same data type. (We’ll see later that each element is itself a length-1 vector.) There are four common types: logical, integer, double (also called numeric), and character. A vector is numeric if and only if its elements are doubles. Similarly, a logical vector has <code class="language-plaintext highlighter-rouge">TRUE</code> or <code class="language-plaintext highlighter-rouge">FALSE</code> as its elements. An integer vector contains only integers, and a character vector has only strings. Given a vector <code class="language-plaintext highlighter-rouge">x</code>, we can call <code class="language-plaintext highlighter-rouge">typeof(x)</code> to find its type.</p>
+
+<h2 id="empty-vectors">Empty vectors</h2>
+
+<p>There’s an empty vector for each type, with the following syntax:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">logical()</code></li>
+  <li><code class="language-plaintext highlighter-rouge">integer()</code></li>
+  <li><code class="language-plaintext highlighter-rouge">numeric()</code></li>
+  <li><code class="language-plaintext highlighter-rouge">character()</code></li>
+</ul>
+
+<p>An empty vector has 0 elements and 0 length.</p>
+
+<h2 id="length-1-vectors">Length-1 vectors</h2>
+
+<p>Unlike most other programming languages, R doesn’t have scalar types or values (or as I like to call them, singletons). What appear as singletons are really just vectors of length one. For example, literals like <code class="language-plaintext highlighter-rouge">TRUE</code>, <code class="language-plaintext highlighter-rouge">1L</code>, <code class="language-plaintext highlighter-rouge">3.124</code>, <code class="language-plaintext highlighter-rouge">"R is awesome"</code> are vectors of length 1, and each has a different type. Constants like <code class="language-plaintext highlighter-rouge">NA</code>, <code class="language-plaintext highlighter-rouge">NA_integer_</code>, <code class="language-plaintext highlighter-rouge">NA_real_</code> and <code class="language-plaintext highlighter-rouge">NA_character_</code> are also vectors of length 1, where <code class="language-plaintext highlighter-rouge">NA</code> has type logical even though it’s not written explicitly like the others.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">print_atom_info</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="c1"># Prints the type and length of an atomic/single value. </span><span class="w">
+        </span><span class="c1"># Shows atomic/singleton values are really just vectors of length 1.</span><span class="w">
+        </span><span class="c1">#</span><span class="w">
+        </span><span class="c1"># x: an atomic/singleton value such as 1L, "R is awesome", NA and etc.</span><span class="w">
+        </span><span class="n">data_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">typeof</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w">
+        
+        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nf">is.finite</span><span class="p">(</span><span class="n">x</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">data_type</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">"integer"</span><span class="p">)</span><span class="w"> </span><span class="n">x_str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">paste0</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="s2">"L"</span><span class="p">)</span><span class="w">
+                </span><span class="k">else</span><span class="w"> </span><span class="n">x_str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="w">
+        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nf">is.nan</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nf">is.infinite</span><span class="p">(</span><span class="n">x</span><span class="p">))</span><span class="w"> </span><span class="n">x_str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="w">
+                </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nf">is.na</span><span class="p">(</span><span class="n">x</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"> 
+                        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">data_type</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">"logical"</span><span class="p">)</span><span class="w"> </span><span class="n">x_str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="w">
+                        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">data_type</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">"integer"</span><span class="p">)</span><span class="w"> </span><span class="n">x_str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"NA_integer_"</span><span class="w">
+                        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">data_type</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">"double"</span><span class="p">)</span><span class="w"> </span><span class="n">x_str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"NA_real_"</span><span class="w">
+                        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">data_type</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">"character"</span><span class="p">)</span><span class="w"> </span><span class="n">x_str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"NA_character_"</span><span class="w">
+                </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1"># x must be a string</span><span class="w">
+                        </span><span class="n">x_str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">paste0</span><span class="p">(</span><span class="s2">"'"</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="s2">"'"</span><span class="p">)</span><span class="w">   
+                </span><span class="p">}</span><span class="w">        
+        </span><span class="p">}</span><span class="w">
+                
+        </span><span class="n">print</span><span class="p">(</span><span class="n">paste</span><span class="p">(</span><span class="n">x_str</span><span class="p">,</span><span class="w"> </span><span class="s2">"is a vector of type"</span><span class="p">,</span><span class="w"> </span><span class="n">typeof</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="w"> 
+                    </span><span class="s2">"and length"</span><span class="p">,</span><span class="w"> </span><span class="nf">length</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="c1"># literals are vectors of length 1</span><span class="w">
+</span><span class="p">{</span><span class="w">
+        </span><span class="n">print_atom_info</span><span class="p">(</span><span class="kc">TRUE</span><span class="p">)</span><span class="w">        
+        </span><span class="n">print_atom_info</span><span class="p">(</span><span class="m">1L</span><span class="p">)</span><span class="w"> 
+        </span><span class="n">print_atom_info</span><span class="p">(</span><span class="m">3.124</span><span class="p">)</span><span class="w">        
+        </span><span class="n">print_atom_info</span><span class="p">(</span><span class="s2">"R is awesome"</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "TRUE is a vector of type logical and length 1"
+## [1] "1L is a vector of type integer and length 1"
+## [1] "3.124 is a vector of type double and length 1"
+## [1] "'R is awesome' is a vector of type character and length 1"</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># constants are also vectors of length 1</span><span class="w">
+</span><span class="p">{</span><span class="w">
+        </span><span class="n">print_atom_info</span><span class="p">(</span><span class="kc">NA</span><span class="p">)</span><span class="w">
+        </span><span class="n">print_atom_info</span><span class="p">(</span><span class="kc">NA_integer_</span><span class="p">)</span><span class="w">
+        </span><span class="n">print_atom_info</span><span class="p">(</span><span class="kc">NA_real_</span><span class="p">)</span><span class="w">
+        </span><span class="n">print_atom_info</span><span class="p">(</span><span class="kc">NA_character_</span><span class="p">)</span><span class="w">
+        </span><span class="n">print_atom_info</span><span class="p">(</span><span class="kc">NaN</span><span class="p">)</span><span class="w">
+        </span><span class="n">print_atom_info</span><span class="p">(</span><span class="kc">Inf</span><span class="p">)</span><span class="w">
+        </span><span class="n">print_atom_info</span><span class="p">(</span><span class="o">-</span><span class="kc">Inf</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "NA is a vector of type logical and length 1"
+## [1] "NA_integer_ is a vector of type integer and length 1"
+## [1] "NA_real_ is a vector of type double and length 1"
+## [1] "NA_character_ is a vector of type character and length 1"
+## [1] "NaN is a vector of type double and length 1"
+## [1] "Inf is a vector of type double and length 1"
+## [1] "-Inf is a vector of type double and length 1"</code></pre></figure>
+
+<h2 id="length-n-vectors-n--1">Length-n vectors, n &gt; 1</h2>
+
+<p>The syntax for a vector with at least 2 values is <code class="language-plaintext highlighter-rouge">c(v1, v2, ..., vn)</code>. (Now we know each value <code class="language-plaintext highlighter-rouge">v</code> is itself a length-1 vector, we’ll stop repeating this and simply treat them as if they are single atomic values.) We can make a vector with <code class="language-plaintext highlighter-rouge">c(e1, ..., en)</code> where each expression<sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">1</a></sup> <code class="language-plaintext highlighter-rouge">e</code> is evaluated to a value. In practice, it’s more common to make a vector with <code class="language-plaintext highlighter-rouge">c(e1, e2)</code>, called “<code class="language-plaintext highlighter-rouge">e1</code> combined with <code class="language-plaintext highlighter-rouge">e2</code>,” where <code class="language-plaintext highlighter-rouge">e1</code> evaluates to a “vector of type <code class="language-plaintext highlighter-rouge">t</code>” and <code class="language-plaintext highlighter-rouge">e2</code> evaluates to another “vector of type <code class="language-plaintext highlighter-rouge">t</code>.” The result is a new vector that starts with the elements in <code class="language-plaintext highlighter-rouge">e1</code> followed by the elements in <code class="language-plaintext highlighter-rouge">e2</code>. When <code class="language-plaintext highlighter-rouge">e1</code> evaluates to a single value, borrowing the word “cons” from FP (Functional Programming), <code class="language-plaintext highlighter-rouge">c(e1, e2)</code> can also be called “<code class="language-plaintext highlighter-rouge">e1</code> consed onto <code class="language-plaintext highlighter-rouge">e2</code>.” The result is then a new vector that starts with the value of <code class="language-plaintext highlighter-rouge">e1</code> followed by the elements in <code class="language-plaintext highlighter-rouge">e2</code>.</p>
+
+<h2 id="how-to-use-vectors">How to use vectors</h2>
+
+<p>One goal of this RFP (R Functional Programming) series is to learn the fundamental ideas of functional programming using R<sup id="fnref:2" role="doc-noteref"><a href="#fn:2" class="footnote" rel="footnote">2</a></sup>. These ideas are very powerful, and the first one we’ll look at is the emphasis on recursion. As we’ll see, because of recursion, all we need, when working with vectors, are three basic operations:</p>
+
+<ol>
+  <li>Check if a vector is empty.</li>
+  <li>Get the first element of a vector, raising an exception if the vector is empty.</li>
+  <li>Get the tail of a vector without its first element, raising an exception if the vector is empty.</li>
+</ol>
+
+<p>And we can solve almost all problems that involve one or more vectors. But R doesn’t provide these basic operations perfectly out of the box. Instead, we have to write our own functions for them.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># Check if a vector is empty. Returns TRUE if it is, FALSE otherwise.</span><span class="w">
+</span><span class="n">is_empty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1"># xs: a vector of any type</span><span class="w">
+        </span><span class="nf">length</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">0</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="c1"># Get the first element of a vector, raising an exception if the vector is empty.</span><span class="w">
+</span><span class="n">hd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1"># xs: a vector of any type</span><span class="w">
+        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">is_empty</span><span class="p">(</span><span class="n">xs</span><span class="p">))</span><span class="w"> </span><span class="n">stop</span><span class="p">(</span><span class="s2">"Vector is empty."</span><span class="p">)</span><span class="w">
+        </span><span class="k">else</span><span class="w"> </span><span class="n">xs</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="c1"># Get the tail of a vector without its first element, raising an exception if the vector is empty.</span><span class="w">
+</span><span class="n">tl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1"># xs: a vector of any type</span><span class="w">
+        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">is_empty</span><span class="p">(</span><span class="n">xs</span><span class="p">))</span><span class="w"> </span><span class="n">stop</span><span class="p">(</span><span class="s2">"Vector is empty."</span><span class="p">)</span><span class="w">
+        </span><span class="k">else</span><span class="w"> </span><span class="n">xs</span><span class="p">[</span><span class="m">-1</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span></code></pre></figure>
+
+<p>Having defined <code class="language-plaintext highlighter-rouge">is_empty()</code>, <code class="language-plaintext highlighter-rouge">hd()</code> and <code class="language-plaintext highlighter-rouge">tl()</code>, we can use them inside of recursive functions to perform complex operations on vectors. For example, we can sum up all values in an integer or numeric vector.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">sum_vec</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="c1"># xs: an interger or numeric vector</span><span class="w">
+        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">is_empty</span><span class="p">(</span><span class="n">xs</span><span class="p">))</span><span class="w"> </span><span class="m">0</span><span class="w">
+        </span><span class="k">else</span><span class="w"> </span><span class="n">hd</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">sum_vec</span><span class="p">(</span><span class="n">tl</span><span class="p">(</span><span class="n">xs</span><span class="p">))</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="p">{</span><span class="w">
+        </span><span class="n">print</span><span class="p">(</span><span class="n">sum_vec</span><span class="p">(</span><span class="n">integer</span><span class="p">()))</span><span class="w">
+        </span><span class="n">print</span><span class="p">(</span><span class="n">sum_vec</span><span class="p">(</span><span class="m">1</span><span class="p">))</span><span class="w">
+        </span><span class="n">print</span><span class="p">(</span><span class="n">sum_vec</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">))</span><span class="w">
+</span><span class="p">}</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] 0
+## [1] 1
+## [1] 55</code></pre></figure>
+
+<p>We can also count from n down to 0 and return a vector with integer elements of n, n-1, …, 0.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">countdown</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="c1"># n: a positive integer</span><span class="w">
+        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">0</span><span class="p">)</span><span class="w"> </span><span class="n">integer</span><span class="p">()</span><span class="w">
+        </span><span class="k">else</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">countdown</span><span class="p">(</span><span class="n">n</span><span class="m">-1</span><span class="p">))</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="n">countdown</span><span class="p">(</span><span class="m">10</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">##  [1] 10  9  8  7  6  5  4  3  2  1</code></pre></figure>
+
+<p>Both <code class="language-plaintext highlighter-rouge">sum_vec()</code> and <code class="language-plaintext highlighter-rouge">countdown()</code> are recursive functions. A recursive function (or recursion) has a base case and a recursive case. For example, in <code class="language-plaintext highlighter-rouge">sum_vec()</code>, the base case is when the input vector is empty, and the result is just 0. When the vector is not empty, we enter the recursive case and get the result by adding its first element and the result of calling <code class="language-plaintext highlighter-rouge">sum_vec()</code> on its tail, which is also a vector. In <code class="language-plaintext highlighter-rouge">countdown()</code>, the base case is when n is 0, and the result is an empty integer vector. We enter the recursive case as long as n &gt; 0, and get the result by consing n onto the result of calling <code class="language-plaintext highlighter-rouge">countdown()</code> on n-1. In general, when thinking about recursion, we want to reason as follows:</p>
+
+<ol>
+  <li>What’s the base case? What should the result be under the base case?</li>
+  <li>What’s the recursive case? How can the result be expressed in terms of the result for the sub-problem (for example, the rest of the vector or n-1).</li>
+</ol>
+
+<p>It is not a coincidence that we’ve written both <code class="language-plaintext highlighter-rouge">sum_vec()</code> and <code class="language-plaintext highlighter-rouge">countdown()</code> recursively. From the FP perspective, recursion is almost always THE approach when processing or building vectors because a vector can grow or shrink and its length isn’t needed for recursion to work. The alternative approach of using loops and assignment statements is inferior and discouraged. To learn why, google “loops discouraged in functional programming.” There are many good and thorough discussions about this topic on the internet. Here I’ll just give a superficial but important reason: it takes more lines to write the same <code class="language-plaintext highlighter-rouge">sum_vec()</code> using a while-loop. We’ll also need extra things that recursion doesn’t, namely, local variables and assignment statements.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">sum_vec_while_loop</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="n">tot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="c1"># need a local variable to hold the result</span><span class="w">
+        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">is_empty</span><span class="p">(</span><span class="n">xs</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w">    </span><span class="c1"># as long as the loop doesn't end,</span><span class="w">
+                </span><span class="n">tot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tot</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">hd</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span><span class="w"> </span><span class="c1">#   need to keep copy-n-modify tot, and </span><span class="w">
+                </span><span class="n">xs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tl</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span><span class="w">        </span><span class="c1">#   need to keep copy-n-modify xs.</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+        </span><span class="n">tot</span><span class="w">
+</span><span class="p">}</span></code></pre></figure>
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1" role="doc-endnote">
+      <p>The word ‘expression’ here is being used in the sense of expressions in any programming language or mathematical expressions. Do NOT confuse it with the R expression object. <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:2" role="doc-endnote">
+      <p>R is a functional programming language in its core. <a href="#fnref:2" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+:ET

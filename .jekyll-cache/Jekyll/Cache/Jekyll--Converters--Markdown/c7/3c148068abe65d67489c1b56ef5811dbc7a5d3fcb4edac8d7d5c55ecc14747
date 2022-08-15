@@ -1,0 +1,39 @@
+I"n<p>When analyzing a continuous variable, you often want to look at its distribution using a histogram or density plot and compare it against a benchmark distribution (a common choice is the normal distribution). In addition, you also want to quantify its shape characteristics:</p>
+
+<ol>
+  <li>where is the distribution centered at?</li>
+  <li>what is the spread about the center?</li>
+  <li>how symmetric/sknewed is the distribution?</li>
+  <li>how likely an extreme value can happen under the distribution?</li>
+</ol>
+
+<p>People often use <strong>mean</strong> and <strong>standard deviation</strong> to answer the first two questions. To answer the last two questions, you need something called <strong>skewness</strong> and <strong>kurtosis</strong>.</p>
+
+<h2 id="given-a-continuous-variable-of-size-n-how-can-we-calculate-its-skewness-and-kurtosis">Given a continuous variable of size \(n\), how can we calculate its skewness and kurtosis?</h2>
+
+<ol>
+  <li>center and scale the variable by first subtracting its mean from every value and then dividing by its standard deviation. Call the resulting variable \(y\).</li>
+  <li>skewness is defined as the mean <sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">1</a></sup> of \(y^3\).</li>
+  <li>kurtosis is defined as the mean <sup id="fnref:1:1" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">1</a></sup> of \(y^4\).</li>
+</ol>
+
+<h2 id="intuition-behind-skewness">Intuition behind Skewness</h2>
+<p>If the variable has more values that are much larger than the mean than smaller than the mean, its centered-and-scaled version will have more positive values than negative ones, cube them and take their mean will produce a number bigger than 0. In this case, we say the distribution is right skewed, and its density plot will show a long right tail.</p>
+
+<p>On the other hand, if the variable has more values that are much smaller than the mean than larger than the mean, its centered-and-scaled version will have more negative values than positive ones, cube them and take their mean will produce a number smaller than 0. In this case, we say the distribution is left skewed, and its density plot will show a long left tail.</p>
+
+<p>Finally, when a distribution is neither right or left skewed, we say it’s symmetric, and its skewness would be 0. For example, the normal distribution has a skewness of 0.</p>
+
+<h2 id="intuition-behind-kurtosis">Intuition behind Kurtosis</h2>
+<p>If the variable has some extremely large or small values, its centered-and-scaled version will have some extremely big positive or negative values, raise them to the 4th power will amplify the magnitude, and all these amplified bigness contribute to the final average, which will result in some very large number. Conversely, a big kurtosis implies higher chance of getting extreme values. However, how big is big? Once again, we compare to the normal distribution, which has a kurtosis of 3. If your interested variable has a kurtosis &gt; 3, then your variable follows a distribution under which extremely values are more likely to happen than under the normal distribution. And its density curve will have fatter tails than the normal curve.</p>
+
+<p>Click <a href="https://masterr.org/da/skewness-and-kurtosis/">here</a> for some example calculations using stock market data.</p>
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1" role="doc-endnote">
+      <p>divide by (n-1) instead of n <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a> <a href="#fnref:1:1" class="reversefootnote" role="doc-backlink">&#8617;<sup>2</sup></a></p>
+    </li>
+  </ol>
+</div>
+:ET

@@ -1,0 +1,62 @@
+I"�<p>Replacement functions have names in the form of <code class="language-plaintext highlighter-rouge">xxx&lt;-</code> and they modify their arguments in place. Here’s an example.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">`replace_1st&lt;-`</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">x</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">value</span><span class="w">
+  </span><span class="n">x</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">rep</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="m">5</span><span class="p">)</span><span class="w">
+</span><span class="n">replace_1st</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0L</span><span class="w">
+</span><span class="n">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] 0 2 2 2 2</code></pre></figure>
+
+<p>The following code finds all replacement functions that are also primitive functions in the R base package.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># get a list of functions in the base package</span><span class="w">
+</span><span class="n">objs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mget</span><span class="p">(</span><span class="n">ls</span><span class="p">(</span><span class="s2">"package:base"</span><span class="p">),</span><span class="w"> </span><span class="n">inherits</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span><span class="w">
+</span><span class="n">funs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Filter</span><span class="p">(</span><span class="n">is.function</span><span class="p">,</span><span class="w"> </span><span class="n">objs</span><span class="p">)</span><span class="w">
+
+</span><span class="c1"># get a list of replacement functions in the base package</span><span class="w">
+</span><span class="n">replacement.funs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">funs</span><span class="p">[</span><span class="n">grep</span><span class="p">(</span><span class="s2">"[a-zA-Z]+&lt;-$"</span><span class="p">,</span><span class="w"> </span><span class="nf">names</span><span class="p">(</span><span class="n">funs</span><span class="p">))]</span><span class="w">
+</span><span class="n">str</span><span class="p">(</span><span class="n">replacement.funs</span><span class="p">)</span><span class="w">     </span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## List of 28
+##  $ attr&lt;-          :function (x, which, value)  
+##  $ attributes&lt;-    :function (obj, value)  
+##  $ body&lt;-          :function (fun, envir = environment(fun), value)  
+##  $ class&lt;-         :function (x, value)  
+##  $ colnames&lt;-      :function (x, value)  
+##  $ comment&lt;-       :function (x, value)  
+##  $ diag&lt;-          :function (x, value)  
+##  $ dim&lt;-           :function (x, value)  
+##  $ dimnames&lt;-      :function (x, value)  
+##  $ Encoding&lt;-      :function (x, value)  
+##  $ environment&lt;-   :function (fun, value)  
+##  $ formals&lt;-       :function (fun, envir = environment(fun), value)  
+##  $ is.na&lt;-         :function (x, value)  
+##  $ length&lt;-        :function (x, value)  
+##  $ levels&lt;-        :function (x, value)  
+##  $ mode&lt;-          :function (x, value)  
+##  $ mostattributes&lt;-:function (obj, value)  
+##  $ names&lt;-         :function (x, value)  
+##  $ oldClass&lt;-      :function (x, value)  
+##  $ parent.env&lt;-    :function (env, value)  
+##  $ regmatches&lt;-    :function (x, m, invert = FALSE, value)  
+##  $ row.names&lt;-     :function (x, value)  
+##  $ rownames&lt;-      :function (x, value)  
+##  $ split&lt;-         :function (x, f, drop = FALSE, ..., value)  
+##  $ storage.mode&lt;-  :function (x, value)  
+##  $ substr&lt;-        :function (x, start, stop, value)  
+##  $ substring&lt;-     :function (text, first, last = 1000000L, value)  
+##  $ units&lt;-         :function (x, value)</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># which ones are primitive functions</span><span class="w">
+</span><span class="nf">names</span><span class="p">(</span><span class="n">replacement.funs</span><span class="p">)[</span><span class="n">sapply</span><span class="p">(</span><span class="n">replacement.funs</span><span class="p">,</span><span class="w"> </span><span class="n">is.primitive</span><span class="p">)]</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">##  [1] "attr&lt;-"         "attributes&lt;-"   "class&lt;-"        "dim&lt;-"         
+##  [5] "dimnames&lt;-"     "environment&lt;-"  "length&lt;-"       "levels&lt;-"      
+##  [9] "names&lt;-"        "oldClass&lt;-"     "storage.mode&lt;-"</code></pre></figure>
+
+<p>To learn more, read <a href="http://adv-r.had.co.nz/Functions.html">the chapter on functions</a> from Hadley’s book, Advanced R.</p>
+:ET

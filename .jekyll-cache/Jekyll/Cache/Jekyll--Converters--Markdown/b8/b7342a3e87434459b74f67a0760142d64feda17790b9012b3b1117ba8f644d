@@ -1,0 +1,55 @@
+I"�<p><a href="https://xgboost.readthedocs.io/en/latest/">XGBoost</a> is probably the most cutting-edge and optimized implementation of the gradient boosting algorithms. If you’re a R user, you probably used GBM in the past. XGBoost is generally over 10 times faster than GBM. Unfortunately, its official installation document for R users on a Mac OS isn’t clear. In this post, I’m going to walk you through how to install the multi-thread version of the XGBoost R package on a Mac OS X El Capitan. You want the multi-thread version because you want to have the option of using more than 1 core of your machine simultaneously to run the algorithms in parallel.</p>
+
+<p>Step 1. Open up your terminal and run the following cmd.</p>
+
+<ol>
+  <li>install gcc-6.x.x with openmp. This can take a while (~ 30 minutes).</li>
+</ol>
+
+<p><code class="language-plaintext highlighter-rouge">brew install gcc --without-multilib</code></p>
+
+<ol>
+  <li>clone the repository.</li>
+</ol>
+
+<p><code class="language-plaintext highlighter-rouge">git clone --recursive https://github.com/dmlc/xgboost</code></p>
+
+<ol>
+  <li>build xgboost.</li>
+</ol>
+
+<p><code class="language-plaintext highlighter-rouge">cd xgboost; cp make/config.mk ./config.mk; make -j4</code></p>
+
+<ol>
+  <li>make an empty Makevars file and open it.</li>
+</ol>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mkdir ~/.R
+touch ~/.R/Makevars
+open -a TextEdit ~/.R/Makevars
+</code></pre></div></div>
+
+<ol>
+  <li>paste the following into the Makevars file</li>
+</ol>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CC = gcc-6
+CXX = g++-6
+CXX1X = g++-6
+
+SHLIB_OPENMP_CFLAGS = -fopenmp
+SHLIB_OPENMP_CXXFLAGS = -fopenmp
+SHLIB_OPENMP_FCFLAGS = -fopenmp
+SHLIB_OPENMP_FFLAGS = -fopenmp
+</code></pre></div></div>
+
+<ol>
+  <li>save and close the file.</li>
+</ol>
+
+<p>Step 2. Open Rstudio and install the xgboost package.</p>
+
+<p><code class="language-plaintext highlighter-rouge">install.packages("xgboost")</code></p>
+
+<p>Done! Now you can start with some <a href="https://xgboost.readthedocs.io/en/latest/tutorials/index.html">tutorials</a>.</p>
+:ET

@@ -1,0 +1,51 @@
+I"�"<p>Have you written functions in R before? If you have, I want you to go back to one of the functions you wrote and take a look at its input and output. Does it take in a piece of data and return another piece of data, be it a number, string, vector, data frame, matrix, or list? Now, if all or most of your functions are like that, you’re missing out on the true power of functions. Do you know that you can write functions to return a function instead of a data structure? (<a href="https://masterr.org/r/functions-that-return-functions/">part1</a>, <a href="https://masterr.org/r/functions-that-return-functions-part-2/">part2</a>) Do you also know that you can write functions to return a list of functions instead of one function?</p>
+
+<p>To demonstrate, let’s first generate some data.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">set.seed</span><span class="p">(</span><span class="m">10147238</span><span class="p">)</span><span class="w">
+</span><span class="n">df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data.frame</span><span class="p">(</span><span class="n">replicate</span><span class="p">(</span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="n">sample</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">50</span><span class="p">,</span><span class="w"> </span><span class="m">6</span><span class="p">)))</span><span class="w">
+</span><span class="n">df</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">##   X1 X2 X3
+## 1 24 35 43
+## 2 29 27  2
+## 3 39 38  4
+## 4 17 17  1
+## 5  1 49 13
+## 6 25 26 21</code></pre></figure>
+
+<p>Suppose we want to calculate the min, max, mean, median, standard deviation, median absolute deviation, and interquartile range for each column, how can we do it? By the way, the base R has functions that allow us to calculate each of these summary statistics. For example, to compute the median absolute deviation, we can use <code class="language-plaintext highlighter-rouge">mad()</code>; to compute the interquartile range, we can use <code class="language-plaintext highlighter-rouge">IQR()</code>. So we can apply each of these summary statistics functions to each of the columns. This is a solution, however, it’s not elegant. What if the data has 100 or 1000 columns, and what if we have to calculate 70 summary statistics instead of 7 of them? I certainly don’t want to do that much typing, especially when most of the typing would be repetitive. We need a better solution, a more elegant solution that can scale. Here enters the idea of functions that return a list of functions. What do I mean? Take a look at the following function, <code class="language-plaintext highlighter-rouge">summ_stats()</code>. Notice how I used <code class="language-plaintext highlighter-rouge">lapply()</code> to loop through each summary statistics function and apply it to the data <code class="language-plaintext highlighter-rouge">x</code>.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">summ_stats</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="c1"># Calculate summary statistics of a numeric vector.</span><span class="w">
+        </span><span class="c1">#</span><span class="w">
+        </span><span class="c1"># Args:</span><span class="w">
+        </span><span class="c1">#       x: a numeric vector</span><span class="w">
+        </span><span class="c1"># Returns:</span><span class="w">
+        </span><span class="c1">#       a list of summary statistics functions with x as input</span><span class="w">
+        
+        </span><span class="c1"># collect a bunch of functions for calculating summary stats into a vector</span><span class="w">
+        </span><span class="n">funs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="n">min</span><span class="p">,</span><span class="w"> </span><span class="n">max</span><span class="p">,</span><span class="w"> </span><span class="n">mean</span><span class="p">,</span><span class="w"> </span><span class="n">median</span><span class="p">,</span><span class="w"> </span><span class="n">sd</span><span class="p">,</span><span class="w"> </span><span class="n">mad</span><span class="p">,</span><span class="w"> </span><span class="n">IQR</span><span class="p">)</span><span class="w">
+        
+        </span><span class="c1"># feed x to each function and collect the resulting functions into a list</span><span class="w">
+        </span><span class="n">lapply</span><span class="p">(</span><span class="n">funs</span><span class="p">,</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">f</span><span class="p">)</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">na.rm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">))</span><span class="w">
+</span><span class="p">}</span></code></pre></figure>
+
+<p>Now, we just need to sapply <code class="language-plaintext highlighter-rouge">summ_stats()</code> to each column of the data frame. I’d like to point out a couple of things. First, <code class="language-plaintext highlighter-rouge">sapply()</code> is simplified <code class="language-plaintext highlighter-rouge">lapply()</code>, and it’s just <code class="language-plaintext highlighter-rouge">lapply()</code> with output beautified. In our case, because our input is a data frame, it automatically beautifies the output in a matrix format. Second, a data frame is really just a list with its columns as the list elements, therefore, we can <code class="language-plaintext highlighter-rouge">sapply()</code> the data frame <code class="language-plaintext highlighter-rouge">df</code>, and when we do this, the function <code class="language-plaintext highlighter-rouge">summ_stats()</code> is applied to each of the columns of <code class="language-plaintext highlighter-rouge">df</code>.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">out_lst</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sapply</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="n">summ_stats</span><span class="p">)</span><span class="w">
+</span><span class="n">out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data.frame</span><span class="p">(</span><span class="n">out_lst</span><span class="p">)</span><span class="w">
+</span><span class="n">row.names</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"min"</span><span class="p">,</span><span class="w"> </span><span class="s2">"max"</span><span class="p">,</span><span class="w"> </span><span class="s2">"mean"</span><span class="p">,</span><span class="w"> </span><span class="s2">"median"</span><span class="p">,</span><span class="w"> </span><span class="s2">"sd"</span><span class="p">,</span><span class="w"> </span><span class="s2">"mad"</span><span class="p">,</span><span class="w"> </span><span class="s2">"IQR"</span><span class="p">)</span><span class="w">
+</span><span class="n">out</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">##              X1       X2      X3
+## min           1       17       1
+## max          39       49      43
+## mean       22.5       32      14
+## median     24.5       31     8.5
+## sd     12.77106 11.13553 16.1493
+## mad      8.8956   8.8956 10.3782
+## IQR        9.25       11    16.5</code></pre></figure>
+
+<p>This article is inspired by Hadley’s book “Advanced R”, which can be <a rel="nofollow" href="https://www.amazon.com/gp/product/1466586966/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=1466586966&amp;linkCode=as2&amp;tag=cabaceo-20&amp;linkId=2GDWMZSF4NX32QIO">obtained from Amazon</a><img src="https://ir-na.amazon-adsystem.com/e/ir?t=cabaceo-20&amp;l=as2&amp;o=1&amp;a=1466586966" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />.</p>
+:ET

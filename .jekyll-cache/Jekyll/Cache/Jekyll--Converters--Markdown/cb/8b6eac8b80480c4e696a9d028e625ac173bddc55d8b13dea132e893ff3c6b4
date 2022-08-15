@@ -1,0 +1,2 @@
+I"@<p>Previously, we discussed R vectors. We now turn to R lists. Like a vector, a R list can also grow or shrink. But unlike a vector, a R list can contain any R objects. For example, vectors, lists, functions, or environments can all be the elements of a list, and it’s perfectly okay to mix them in the same list.</p>
+:ET

@@ -1,53 +1,110 @@
-# Site wide configuration
+# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely edit after that. If you find
+# yourself editing this file very often, consider using Jekyll's data files
+# feature for the data you need to update frequently.
+#
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
 
-title: Become Great at R
-locale: en_US
-description: 
-logo: site-logo.png
-search: true
-url: https://masterr.org
+# Site settings
+# These are used to personalize your new site. If you look in the HTML files,
+# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
+# You can create any custom variable you would like, and they will be accessible
+# in the templates via {{ site.myvariable }}.
+theme: jekyll-theme-so-simple
+# remote_theme: mmistakes/so-simple-theme
+skin: "/assets/css/skins/default.css"
+locale: en-US
+title: "Become Great at R"
+description: "Mastering the R programming language"
+baseurl: # the subpath of your site, e.g. "/blog"
+url: https://masterr.org # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
+logo: /images/site-logo.png # path of site logo, e.g. "/images/logo.png"
+date_format: "%B %-d, %Y"
+read_time: true # reading time estimates, e.g. true
+words_per_minute: # 200
+mathjax:
+  enable: true # MathJax equations, e.g. true, false (default)
+  combo:  # "tex-svg" (default), "tex-mml-chtml", etc.: docs.mathjax.org/en/latest/web/components/combined.html
+  tags:  # "none", "ams" (default), "all"
+google_fonts:
+  - name: "Source Sans Pro"
+    weights: "400,400i,700,700i"
+  - name: "Lora"
+    weights: "400,400i,700,700i"
+google_analytics: UA-57697212-1 # Google Analytics id, e.g. "UA-NNNNNNNN-N"
+google:
+  ad-client: ca-pub-8728996999064894
+  ad-slot: 7055819766
+disqus:
+  shortname: # Disqus shortname, e.g. "my_disqus_shortname"
+twitter:
+  username: # site's Twitter username, e.g. "mmistakes"
 
+# Liquid
+liquid:
+  error_mode: strict
 
-# Jekyll configuration
+# Build settings
+permalink: /:categories/:title/
+markdown: kramdown
+feed:
+  path: atom.xml
 
-permalink:   /:categories/:title/
-markdown:    kramdown
-highlighter: rouge # pygments
-sass:
-  sass_dir: _sass
-  style: compressed
+# Pagination - https://jekyllrb.com/docs/pagination/
+# paginate: 10
+# paginate_path: /page:num/
+
+# Search
+search_full_content: false # can have performance implications for large sites
+
+# Taxonomy pages
+# category_archive_path: "/categories/#"
+# tag_archive_path: "/tags/#"
+
+# Exclude from processing.
+# The following items will not be processed, by default. Create a custom list
+# to override the default setting.
+# exclude:
+#   - Gemfile
+#   - Gemfile.lock
+#   - node_modules
+#   - vendor/bundle/
+#   - vendor/cache/
+#   - vendor/gems/
+#   - vendor/ruby/
+
 plugins:
+  - jekyll-seo-tag
   - jekyll-sitemap
+  - jekyll-feed
+  - jekyll-paginate
 
-kramdown:
-  auto_ids: true
-  footnote_nr: 1
-  entity_output: as_char
-  toc_levels: 1..2
-  enable_coderay: false
+# Front Matter Defaults
+defaults:
+  # Posts defaults
+  - scope:
+      path: "_posts"
+      type: posts
+    values:
+      layout: post
+      share: true
 
-include: [".htaccess"]
-exclude: ["lib", "config.rb", "Capfile", "config", "log", "Rakefile", "Rakefile.rb", "tmp", "less", "*.sublime-project", "*.sublime-workspace", "test", "spec", "Gruntfile.js", "package.json", "node_modules", "Gemfile", "Gemfile.lock", "LICENSE", "README.md", "vendor"]
-
-
-# Site owner
-owner:
+# Site Author
+author:
   name: Guangming Lang
-  avatar: gmlang1.jpg
+  picture: gmlang1.jpg
   email: gmlang@cabaceo.com
-  disqus-shortname: masterrorg
-  twitter: #username
-  facebook: #username
-  github: #username
-  stackexchange: #https://stackoverflow.com/users/123456/username
-  linkedin: #username
-  instagram: #username
-  flickr: #username
-  tumblr: #username
-  google:
-    plus: #username
-    analytics: UA-57697212-1
-    verify:
-    ad-client: ca-pub-8728996999064894
-    ad-slot: 7055819766
-  bing-verify: "F608C5B05384F7B0200AC62F5BB60411"
+  twitter:
+  links:
+    - title: Data Scientist
+      url: https://cabaceo.com/
+      icon:
+
+# Footer Links
+footer_links:
+  - title: Feed
+    url: atom.xml
+    icon: fas fa-rss-square

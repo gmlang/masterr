@@ -1,0 +1,22 @@
+I"í<p>The most basic setup of a dataset consists of one response variable (also called outcome, target, or dependent variable) and a bunch of predictors (also called attributes, features, or independent variables).</p>
+
+<p>When looking at the response, remember to ask yourself:</p>
+
+<ul>
+  <li>Is it categorical or continuous?</li>
+  <li>Is it balanced/symmetric or unbalanced/skewed?</li>
+  <li>Are its values independent? For example, if you have repeated measures for each subject, then the measured values for the same subject are not independent, and they are correlated.</li>
+</ul>
+
+<p>When looking at the predictors, remember to ask yourself:</p>
+
+<ul>
+  <li>Are they categorical or continuous?</li>
+  <li>Is this predictor count data?</li>
+  <li>Does this predictor have any missing values?</li>
+  <li>Is this predictor sparse?</li>
+  <li>Are there any correlations among the predictors?</li>
+  <li>Whatâ€™s the unit of this predictor?</li>
+  <li>Do the predictors have different scales?</li>
+</ul>
+:ET

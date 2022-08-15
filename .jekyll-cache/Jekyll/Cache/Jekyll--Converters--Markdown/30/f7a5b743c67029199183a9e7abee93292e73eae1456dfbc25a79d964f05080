@@ -1,0 +1,2 @@
+I"�<p>When analyzing a variable, one of the first things you want to do is to count how many non-missing (or non-NA) values the variable has. Unfortunately, there’s no default functions in R that perform this simply task. The <code class="language-plaintext highlighter-rouge">length()</code> function counts every element including the NAs. But it’s not hard to use it together with a <code class="language-plaintext highlighter-rouge">if</code> clause to handle NAs.</p>
+:ET

@@ -1,0 +1,23 @@
+I"<p>This post is updated based on Luca’s comments.</p>
+
+<p>Sometimes, we receive data where the timestamps are milliseconds and we want to convert them to dates. This is quite easy in R. We just need to use the <code class="language-plaintext highlighter-rouge">as.POSIXct()</code> function. Here’s a function wrapper I wrote to make it even easier.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">ms_to_date</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">ms</span><span class="p">,</span><span class="w"> </span><span class="n">t0</span><span class="o">=</span><span class="s2">"1970-01-01"</span><span class="p">,</span><span class="w"> </span><span class="n">timezone</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="c1">## @ms: a numeric vector of milliseconds (big integers of 13 digits)</span><span class="w">
+        </span><span class="c1">## @t0: a string of the format "yyyy-mm-dd", specifying the date that</span><span class="w">
+        </span><span class="c1">##      corresponds to 0 millisecond</span><span class="w">
+        </span><span class="c1">## @timezone: a string specifying a timezone that can be recognized by R</span><span class="w">
+        </span><span class="c1">## return: a POSIXct vector representing calendar dates and times        </span><span class="w">
+        </span><span class="n">sec</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ms</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="m">1000</span><span class="w">
+        </span><span class="n">as.POSIXct</span><span class="p">(</span><span class="n">sec</span><span class="p">,</span><span class="w"> </span><span class="n">origin</span><span class="o">=</span><span class="n">t0</span><span class="p">,</span><span class="w"> </span><span class="n">tz</span><span class="o">=</span><span class="n">timezone</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span></code></pre></figure>
+
+<p>Here’s an example of how to use it:</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">date_in_sec</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">1348034028</span><span class="p">,</span><span class="w"> </span><span class="m">1348034031</span><span class="p">)</span><span class="w">
+</span><span class="n">date_in_ms</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">date_in_sec</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">1000</span><span class="w">
+</span><span class="n">ms_to_date</span><span class="p">(</span><span class="n">date_in_ms</span><span class="p">,</span><span class="w"> </span><span class="n">timezone</span><span class="o">=</span><span class="s2">"America/Los_Angeles"</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "2012-09-18 22:53:48 PDT" "2012-09-18 22:53:51 PDT"</code></pre></figure>
+
+:ET

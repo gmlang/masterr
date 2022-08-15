@@ -1,16 +1,13 @@
-# Site navigation links
+# Sample site navigation bar links
 
 - title: About
   url: /about/
-  
-- title: RFP Series
-  url: /rfp/
-
-- title: Data Analysis
-  url: /da/
 
 - title: R
   url: /r/
+
+- title: Data Analysis
+  url: /da/
 
 - title: Books
   url: /books/
@@ -20,12 +17,16 @@
   
 - title: Cartoon
   url: /cartoon/
-    
-#- title: Articles
-#  url: /articles/
 
-#- title: Blog
-#  url: /blog/
-
-#- title: Made Mistakes
-#  url: http://mademistakes.com
+# - title: Posts
+#   url: /posts/
+# - title: Categories
+#   url: /categories/
+# - title: Tags
+#   url: /tags/
+# - title: Recipes
+#   url: /recipes/
+# - title: Search
+#   url: /search/
+# - title: External Page
+#   url: https://the-page.com/you-want-to-link-to.html

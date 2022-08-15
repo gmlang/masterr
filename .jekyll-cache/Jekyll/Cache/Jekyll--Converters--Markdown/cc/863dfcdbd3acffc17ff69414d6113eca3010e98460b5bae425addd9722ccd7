@@ -1,0 +1,12 @@
+I"�<p>This is the first article of a series on how environments work in R. If this
+sounds foreign to you, you’re probably wondering, “what is a R environment?” 
+Don’t. Instead, ask “what does a R environment do?” This is because 99% of the 
+utility lies in understanding how it behaves. And yes, you can understand how it 
+behaves without knowing what it is, which is confusing given that different 
+things are carelessly named the same in the official R manual. For now, just
+think of <code class="language-plaintext highlighter-rouge">environment</code> as a container. Or if you want, you can even take its 
+english meaning (after all, programmers try to name things vividly). Every time
+you open Rstudio, you’re inside an environment called the global environment.
+How do I know that? You can check it yourself by running the following command
+inside Rstudio. It tells you the current envionment you’re in.</p>
+:ET

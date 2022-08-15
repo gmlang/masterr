@@ -1,0 +1,2 @@
+I"6<p>Previously, I wrote an <a href="https://masterr.org/r/how-to-work-with-files-in-r-and-improve-reproducibility/">article</a> on how not to use <code class="language-plaintext highlighter-rouge">setwd()</code>. Today I discovered a side effect of <code class="language-plaintext highlighter-rouge">setwd()</code> that is really cool and useful. It turns out that when you run <code class="language-plaintext highlighter-rouge">setwd(path)</code>, not only will it reset the working directory to path, it will also return the working directory before the reset.</p>
+:ET

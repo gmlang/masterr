@@ -1,0 +1,69 @@
+I"9 <p>A predicate is a function that returns a single TRUE or FALSE, for example, <code class="language-plaintext highlighter-rouge">is.factor()</code>, <code class="language-plaintext highlighter-rouge">all()</code>, or <code class="language-plaintext highlighter-rouge">is.NULL()</code>. A predicate functional is a function that applies a predicate to each element of a list or data frame. For example, we can define a predicate functional <code class="language-plaintext highlighter-rouge">where()</code> that checks the type of each column in a data frame.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">where</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="c1"># Applies a predicate function to every element of a list or data frame.</span><span class="w">
+        </span><span class="c1"># f: a predicate function</span><span class="w">
+        </span><span class="c1"># x: a list or data frame</span><span class="w">
+        </span><span class="c1">#</span><span class="w">
+        </span><span class="c1"># Returns a logical vector.</span><span class="w">
+        </span><span class="n">vapply</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="n">logical</span><span class="p">(</span><span class="m">1</span><span class="p">))</span><span class="w">
+</span><span class="p">}</span></code></pre></figure>
+
+<p>Here’s how you’d use it.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># make a example data frame</span><span class="w">
+</span><span class="n">df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data.frame</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"a"</span><span class="p">,</span><span class="w"> </span><span class="s2">"b"</span><span class="p">,</span><span class="w"> </span><span class="s2">"c"</span><span class="p">),</span><span class="w"> </span><span class="n">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"Alex"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Bob"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Chris"</span><span class="p">))</span><span class="w">
+
+</span><span class="c1"># check if each column of the data frame is a factor</span><span class="w">
+</span><span class="n">where</span><span class="p">(</span><span class="n">is.factor</span><span class="p">,</span><span class="w"> </span><span class="n">df</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">##     x     y     z 
+## FALSE  TRUE  TRUE</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># check if each column of the data frame is an integer</span><span class="w">
+</span><span class="n">where</span><span class="p">(</span><span class="n">is.integer</span><span class="p">,</span><span class="w"> </span><span class="n">df</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">##     x     y     z 
+##  TRUE FALSE FALSE</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># check if each column of the data frame is a character</span><span class="w">
+</span><span class="n">where</span><span class="p">(</span><span class="n">is.character</span><span class="p">,</span><span class="w"> </span><span class="n">df</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">##     x     y     z 
+## FALSE FALSE FALSE</code></pre></figure>
+
+<p>There’re 3 common predicate functionals already defined in base R, namely, <code class="language-plaintext highlighter-rouge">Filter(), Find(), Position()</code>. Here’s how you can use them.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># filter the factors in a data frame</span><span class="w">
+</span><span class="n">subdf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Filter</span><span class="p">(</span><span class="n">is.factor</span><span class="p">,</span><span class="w"> </span><span class="n">df</span><span class="p">)</span><span class="w">
+</span><span class="n">subdf</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">##   y     z
+## 1 a  Alex
+## 2 b   Bob
+## 3 c Chris</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">str</span><span class="p">(</span><span class="n">subdf</span><span class="p">)</span><span class="w"> </span><span class="c1"># note: Filter() returns a data frame</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## 'data.frame':	3 obs. of  2 variables:
+##  $ y: Factor w/ 3 levels "a","b","c": 1 2 3
+##  $ z: Factor w/ 3 levels "Alex","Bob","Chris": 1 2 3</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># find the 1st factor starting from the Left in a data frame</span><span class="w">
+</span><span class="n">x_factor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Find</span><span class="p">(</span><span class="n">is.factor</span><span class="p">,</span><span class="w"> </span><span class="n">df</span><span class="p">)</span><span class="w">
+</span><span class="n">x_factor</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] a b c
+## Levels: a b c</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">str</span><span class="p">(</span><span class="n">x_factor</span><span class="p">)</span><span class="w"> </span><span class="c1"># note: Find() returns the first factor it finds from the left</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">##  Factor w/ 3 levels "a","b","c": 1 2 3</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># gives the position of the 1st factor starting from the Right in a data frame</span><span class="w">
+</span><span class="n">Position</span><span class="p">(</span><span class="n">is.factor</span><span class="p">,</span><span class="w"> </span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="n">right</span><span class="o">=</span><span class="nb">T</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] 3</code></pre></figure>
+
+<p>This article is inspired by Hadley’s book “Advanced R”, which can be <a rel="nofollow" href="https://www.amazon.com/gp/product/1466586966/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=1466586966&amp;linkCode=as2&amp;tag=cabaceo-20&amp;linkId=2GDWMZSF4NX32QIO">obtained from Amazon</a><img src="https://ir-na.amazon-adsystem.com/e/ir?t=cabaceo-20&amp;l=as2&amp;o=1&amp;a=1466586966" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />.</p>
+:ET

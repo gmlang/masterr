@@ -1,0 +1,9 @@
+I"l<p>The regular assignment arrow <code class="language-plaintext highlighter-rouge">&lt;-</code> always creates a variable in the current 
+environment. The deep assignment arrow <code class="language-plaintext highlighter-rouge">&lt;&lt;-</code> never creates a variable in the 
+current environment, but instead modifies an existing variable in the 
+parent environments. You can also do deep binding with <code class="language-plaintext highlighter-rouge">assign()</code>: 
+<code class="language-plaintext highlighter-rouge">name &lt;&lt;- value is equivalent to assign("name", value, inherits = TRUE)</code>.
+If <code class="language-plaintext highlighter-rouge">&lt;&lt;-</code> doesn’t find an existing variable, it will create one in the global 
+environment. This is usually undesirable because global variables introduce 
+non-obvious dependencies between functions.</p>
+:ET

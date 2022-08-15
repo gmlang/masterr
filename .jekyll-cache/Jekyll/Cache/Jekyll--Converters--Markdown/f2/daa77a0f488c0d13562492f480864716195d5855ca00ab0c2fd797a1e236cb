@@ -1,0 +1,4 @@
+I"Õ<p>The <a href="https://github.com/hadley/rvest">rvest</a> package is yet another 
+powerful tool developed by Hadley. It makes web scraping super easy. For example, say I want to scrape <a href="https://www3.boj.or.jp/market/jp/stat/of141205.htm">this page</a> from the Bank of Japan. I can just use the <code class="language-plaintext highlighter-rouge">read_html()</code> function without specifying
+the encoding. I think under the hood, it guesses the encoding.</p>
+:ET

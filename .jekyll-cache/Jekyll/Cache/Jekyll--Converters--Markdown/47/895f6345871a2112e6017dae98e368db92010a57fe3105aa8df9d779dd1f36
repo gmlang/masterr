@@ -1,0 +1,33 @@
+I"�<p>A generic (short for generic function) is a special type of function in R. R’s S3 system uses generics to decide which method to call. In other words, when it comes to the S3 system, “object oriented programming” specifically means “generic oriented programming” because S3 methods belong to generic functions instead of classes or objects.</p>
+
+<p>Can you guess which generic in the base package has the most number of methods? It turns out the winner is <code class="language-plaintext highlighter-rouge">|</code> with 2596 methods. Didn’t expect it, right? I certainly did not. Well, here’s the R script I wrote to get the answer, run it youself and let me know what you find.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">library</span><span class="p">(</span><span class="n">methods</span><span class="p">)</span><span class="w">
+</span><span class="n">library</span><span class="p">(</span><span class="n">pryr</span><span class="p">)</span><span class="w">
+
+</span><span class="c1"># get a list of functions in the base package</span><span class="w">
+</span><span class="n">objs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mget</span><span class="p">(</span><span class="n">ls</span><span class="p">(</span><span class="s2">"package:base"</span><span class="p">),</span><span class="w"> </span><span class="n">inherits</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span><span class="w">
+</span><span class="n">funs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Filter</span><span class="p">(</span><span class="n">is.function</span><span class="p">,</span><span class="w"> </span><span class="n">objs</span><span class="p">)</span><span class="w">
+</span><span class="n">fun_types</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lapply</span><span class="p">(</span><span class="n">funs</span><span class="p">,</span><span class="w"> </span><span class="n">ftype</span><span class="p">)</span><span class="w"> </span><span class="c1"># ftype lives in the package pryr</span><span class="w">
+
+</span><span class="c1"># extract the generic functions</span><span class="w">
+</span><span class="n">is_S3_generic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="nf">length</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">x</span><span class="p">[</span><span class="m">2</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">"generic"</span><span class="w">
+</span><span class="n">generics</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Filter</span><span class="p">(</span><span class="n">is_S3_generic</span><span class="p">,</span><span class="w"> </span><span class="n">fun_types</span><span class="p">)</span><span class="w">
+
+</span><span class="c1"># get a list of the methods for each generic</span><span class="w">
+</span><span class="n">gen_methods</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lapply</span><span class="p">(</span><span class="nf">names</span><span class="p">(</span><span class="n">generics</span><span class="p">),</span><span class="w"> </span><span class="n">methods</span><span class="p">)</span><span class="w">
+
+</span><span class="c1"># count the number of methods for each generic</span><span class="w">
+</span><span class="n">gen_methods_cnt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sapply</span><span class="p">(</span><span class="n">gen_methods</span><span class="p">,</span><span class="w"> </span><span class="n">length</span><span class="p">)</span><span class="w">
+
+</span><span class="c1"># find the generic with the most methods</span><span class="w">
+</span><span class="n">generics</span><span class="p">[</span><span class="n">which.max</span><span class="p">(</span><span class="n">gen_methods_cnt</span><span class="p">)]</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## $`|`
+## [1] "primitive" "generic"</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="nf">max</span><span class="p">(</span><span class="n">gen_methods_cnt</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] 2671</code></pre></figure>
+
+:ET

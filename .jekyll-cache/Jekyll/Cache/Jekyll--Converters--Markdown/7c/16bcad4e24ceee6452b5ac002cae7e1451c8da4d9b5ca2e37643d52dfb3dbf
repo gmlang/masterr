@@ -1,0 +1,33 @@
+I"�<p>There’s an interesting little function in R called <code class="language-plaintext highlighter-rouge">on.exit()</code>. It can be used 
+in your own function to perform some side effect. For example, in addition to 
+returning a value, the following function uses <code class="language-plaintext highlighter-rouge">on.exit()</code> to also print two messages.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">myfun</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">x</span><span class="p">){</span><span class="w">
+        </span><span class="nf">on.exit</span><span class="p">(</span><span class="n">print</span><span class="p">(</span><span class="s2">"first"</span><span class="p">))</span><span class="w">
+        </span><span class="nf">on.exit</span><span class="p">(</span><span class="n">print</span><span class="p">(</span><span class="s2">"second"</span><span class="p">),</span><span class="w"> </span><span class="n">add</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span><span class="w">
+        </span><span class="nf">return</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="n">myfun</span><span class="p">(</span><span class="m">2</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "first"
+## [1] "second"</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] 2</code></pre></figure>
+
+<p>Note what happens if we remove <code class="language-plaintext highlighter-rouge">add=TRUE</code> from the second <code class="language-plaintext highlighter-rouge">on.exit()</code> usage.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">fun</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">x</span><span class="p">){</span><span class="w">
+        </span><span class="nf">on.exit</span><span class="p">(</span><span class="n">print</span><span class="p">(</span><span class="s2">"first"</span><span class="p">))</span><span class="w">
+        </span><span class="nf">on.exit</span><span class="p">(</span><span class="n">print</span><span class="p">(</span><span class="s2">"second"</span><span class="p">))</span><span class="w">
+        </span><span class="nf">return</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="n">fun</span><span class="p">(</span><span class="m">2</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "second"</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] 2</code></pre></figure>
+
+<p>We see “first” isn’t printed anymore.</p>
+
+<p>To learn more about <code class="language-plaintext highlighter-rouge">on.exit()</code>, refer to Hadley’s book “Advanced R,” which can be <a rel="nofollow" href="https://www.amazon.com/gp/product/1466586966/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=1466586966&amp;linkCode=as2&amp;tag=cabaceo-20&amp;linkId=2GDWMZSF4NX32QIO">obtained from Amazon</a><img src="https://ir-na.amazon-adsystem.com/e/ir?t=cabaceo-20&amp;l=as2&amp;o=1&amp;a=1466586966" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />.</p>
+:ET

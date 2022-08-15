@@ -1,0 +1,30 @@
+I"H<h3 id="updated-october-4-2018">Updated October 4, 2018</h3>
+
+<p>Today I’m going to show you how to make line plots using ezplot. We’ll use
+the <code class="language-plaintext highlighter-rouge">mk_lineplot()</code> function. Make sure you first install ezplot by running the 
+command <code class="language-plaintext highlighter-rouge">devtools::install_github("gmlang/ezplot")</code>.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">library</span><span class="p">(</span><span class="n">ezplot</span><span class="p">)</span><span class="w">
+</span><span class="n">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span></code></pre></figure>
+
+<p>The ezplot package comes with a films dataset containing annual boxoffice/budget 
+ratios between 1913 and 2014. Let’s plot these ratios over the years.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">plt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mk_lineplot</span><span class="p">(</span><span class="n">bo_bt_ratio_by_year</span><span class="p">)</span><span class="w">
+</span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">plt</span><span class="p">(</span><span class="s2">"year"</span><span class="p">,</span><span class="w"> </span><span class="s2">"bo_bt_ratio"</span><span class="p">)</span><span class="w">
+</span><span class="n">add_labs</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="n">ylab</span><span class="o">=</span><span class="s2">"boxoffice/budget ratio"</span><span class="p">,</span><span class="w"> </span><span class="n">xlab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">NULL</span><span class="p">)</span></code></pre></figure>
+
+<p><img src="/../figs/2015-06-26-how-to-easily-make-ggplot2-line-plot-ezplot-part6/unnamed-chunk-2-1.png" alt="center" /></p>
+
+<p>For another example, let’s plot annual budget and boxoffice over the years.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">plt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mk_lineplot</span><span class="p">(</span><span class="n">btbo_by_year</span><span class="p">)</span><span class="w">
+</span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">plt</span><span class="p">(</span><span class="s2">"year"</span><span class="p">,</span><span class="w"> </span><span class="s2">"tot"</span><span class="p">,</span><span class="w"> </span><span class="s2">"type"</span><span class="p">)</span><span class="w">
+</span><span class="n">add_labs</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="n">ylab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"USD (billion)"</span><span class="p">,</span><span class="w"> </span><span class="n">xlab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">NULL</span><span class="p">,</span><span class="w">
+         </span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Annual Budget and Boxoffice from 1913 to 2014"</span><span class="p">)</span></code></pre></figure>
+
+<p><img src="/../figs/2015-06-26-how-to-easily-make-ggplot2-line-plot-ezplot-part6/unnamed-chunk-3-1.png" alt="center" /></p>
+
+<p>If you liked these how-to blog posts, you may want to check out my <a href="https://leanpub.com/ezplot">ezplot</a> book. If ezplot has improved your 
+productivity, please tell your friends about it.</p>
+:ET

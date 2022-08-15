@@ -1,0 +1,73 @@
+I"”/<p>A common thing to do in functional programming is to create, within a (outer) function, a local (inner) function that uses other variables in scope. Let me give you an example. The function <code class="language-plaintext highlighter-rouge">countup_from1()</code> uses a local helper function <code class="language-plaintext highlighter-rouge">count()</code> to accumulate results recursively. Its argument <code class="language-plaintext highlighter-rouge">x</code> is used directly inside <code class="language-plaintext highlighter-rouge">count()</code>.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">countup_from1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1"># x: integer</span><span class="w">
+        </span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">from</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1"># from: integer</span><span class="w">
+                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">from</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="c1"># can use x because count() is local</span><span class="w">
+                </span><span class="k">else</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="n">from</span><span class="p">,</span><span class="w"> </span><span class="n">count</span><span class="p">(</span><span class="n">from</span><span class="m">+1</span><span class="p">))</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+        </span><span class="n">count</span><span class="p">(</span><span class="m">1</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="n">countup_from1</span><span class="p">(</span><span class="m">10</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">##  [1]  1  2  3  4  5  6  7  8  9 10</code></pre></figure>
+
+<p>Another common thing to do is to make local variables to store the results of expensive computations. Before I give you an example, letâ€™s first define some helper functions.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># Check if a vector is empty. Returns TRUE if it is, FALSE otherwise.</span><span class="w">
+</span><span class="n">is_empty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1"># xs: a vector of any type</span><span class="w">
+        </span><span class="nf">length</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">0</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="c1"># Get the first element of a vector, raising an exception if the vector is empty.</span><span class="w">
+</span><span class="n">hd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1"># xs: a vector of any type</span><span class="w">
+        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">is_empty</span><span class="p">(</span><span class="n">xs</span><span class="p">))</span><span class="w"> </span><span class="n">stop</span><span class="p">(</span><span class="s2">"Vector is empty."</span><span class="p">)</span><span class="w">
+        </span><span class="k">else</span><span class="w"> </span><span class="n">xs</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="c1"># Get the tail of a vector without its first element, raising an exception if the vector is empty.</span><span class="w">
+</span><span class="n">tl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1"># xs: a vector of any type</span><span class="w">
+        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">is_empty</span><span class="p">(</span><span class="n">xs</span><span class="p">))</span><span class="w"> </span><span class="n">stop</span><span class="p">(</span><span class="s2">"Vector is empty."</span><span class="p">)</span><span class="w">
+        </span><span class="k">else</span><span class="w"> </span><span class="n">xs</span><span class="p">[</span><span class="m">-1</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span></code></pre></figure>
+
+<p>Using these helpers, we can write a function that returns the max value of an integer vector. Without using local variables to store intermediate results, <code class="language-plaintext highlighter-rouge">bad_max()</code> gets very expensive even for small-lengthed input vectors.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">bad_max</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1"># xs: integer vector</span><span class="w">
+        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">is_empty</span><span class="p">(</span><span class="n">xs</span><span class="p">))</span><span class="w"> </span><span class="m">0</span><span class="w">
+        </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">is_empty</span><span class="p">(</span><span class="n">tl</span><span class="p">(</span><span class="n">xs</span><span class="p">)))</span><span class="w"> </span><span class="n">hd</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span><span class="w">
+        </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">hd</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">bad_max</span><span class="p">(</span><span class="n">tl</span><span class="p">(</span><span class="n">xs</span><span class="p">)))</span><span class="w"> </span><span class="n">hd</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span><span class="w"> </span><span class="c1"># recursive call to bad_max()</span><span class="w">
+        </span><span class="k">else</span><span class="w"> </span><span class="n">bad_max</span><span class="p">(</span><span class="n">tl</span><span class="p">(</span><span class="n">xs</span><span class="p">))</span><span class="w"> </span><span class="c1"># recursive call to bad_max(), these two recursive</span><span class="w">
+                             </span><span class="c1"># calls hugely slow down the computation.</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="n">bad_max</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] 10</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">bad_max</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">20</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] 20</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># bad_max(1:30) # this will take "forever"!</span></code></pre></figure>
+
+<p>We can re-write the function by using a local variable to store the
+intermediate result of the expensive recursive step.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">good_max</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">is_empty</span><span class="p">(</span><span class="n">xs</span><span class="p">))</span><span class="w"> </span><span class="m">0</span><span class="w">
+        </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">is_empty</span><span class="p">(</span><span class="n">tl</span><span class="p">(</span><span class="n">xs</span><span class="p">)))</span><span class="w"> </span><span class="n">hd</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span><span class="w">
+        </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="n">tl_ans</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">good_max</span><span class="p">(</span><span class="n">tl</span><span class="p">(</span><span class="n">xs</span><span class="p">))</span><span class="w"> </span><span class="c1"># use local variable to store expensive computation</span><span class="w">
+                </span><span class="n">hd_xs</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">hd</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span><span class="w"> 
+                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">hd_xs</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">tl_ans</span><span class="p">)</span><span class="w"> </span><span class="n">hd_xs</span><span class="w">
+                </span><span class="k">else</span><span class="w"> </span><span class="n">tl_ans</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="n">good_max</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">30</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] 30</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">good_max</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">100</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] 100</code></pre></figure>
+
+:ET

@@ -1,0 +1,4 @@
+I"ù<p>When doing data analysis, it‚Äôs important to work with a <a href="https://masterr.org/da/sampling/">random sample</a>. We can get a random sample by drawing members from the population according to fixed probabilities known to us prior to our draw. Furthermore, If each member is drawn with an equal probability, the resulting sample is called a simple random sample. The concept is clear, but how do we actually do it? In other words, given a population of size \(N\), how can we generate a simple random sample of size \(n\) (\(n &lt; N\)) without replacement (meaning the same member cannot appear more than once in the sample)?</p>
+
+<p>There are two cases:</p>
+:ET

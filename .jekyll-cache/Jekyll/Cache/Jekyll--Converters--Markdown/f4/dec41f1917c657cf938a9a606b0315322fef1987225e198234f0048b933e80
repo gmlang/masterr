@@ -1,0 +1,10 @@
+I"�<p>When I first started learning R, I was taught to manually set or change the working directory<sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">1</a></sup>. I don’t like pointing and clicking, so I quickly learned to use <code class="language-plaintext highlighter-rouge">setwd()</code> to do the same thing. My work flow was: create a project folder → get its full path manually → pass it to <code class="language-plaintext highlighter-rouge">setwd()</code>. This was better but still didn’t completely eliminate clicking, copying and pasting. Later, someone showed me how to use <code class="language-plaintext highlighter-rouge">file.path()</code>, and I liked it immediately. It works like <code class="language-plaintext highlighter-rouge">paste()</code> but faster. Combined with <code class="language-plaintext highlighter-rouge">Sys.getenv()</code>, <code class="language-plaintext highlighter-rouge">list.files()</code> and <code class="language-plaintext highlighter-rouge">dir.create()</code>, it allows me to eliminate manual operations completely. Here’s what I mean, assuming under the home directory, you have a folder called “Projects” where you store all your R projects, open R studio and follow these steps to create a new project folder called “test.”</p>
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1" role="doc-endnote">
+      <p>A working directory is a folder where your current R session has access to. If you put a data file in your working directory, you only need to tell R its name to read it into R. You don’t have to tell R its full path. Similarly, if you output a file with just a filename and without specifying a full path, R will save it in your working directory. To see your default working directory, open a new R session and run the command <code class="language-plaintext highlighter-rouge">getwd()</code>. <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+:ET

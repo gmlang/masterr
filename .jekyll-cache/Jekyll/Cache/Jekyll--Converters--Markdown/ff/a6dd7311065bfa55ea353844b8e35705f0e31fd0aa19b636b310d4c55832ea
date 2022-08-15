@@ -1,0 +1,42 @@
+I"�<h2 id="intro">Intro</h2>
+<p>I’ve been thinking about recursion lately. It’s very powerful but it can be hard to reason about sometimes. Through this article and the following ones, hopefully I can make it easier for you to understand it and to write more recursive functions.</p>
+
+<h2 id="find-the-first-3-prime-numbers">Find the first 3 prime numbers</h2>
+<p>Let’s start with a very simple task: find the first 3 prime numbers. How’d you do it? The intuitive way is to start with 1, and ask if 1 is a prime. The answer is no. So we move to 2 and ask if 2 is a prime, and the answer is yes. We now have our first prime number. We then move onto 3 and ask if 3 is a prime and we repeat the procedure until we find the 3rd prime number. The answer, of course, is the sequence <code class="language-plaintext highlighter-rouge">(2, 3, 5)</code>. This way of thinking is recursion. Keep reading to find out why.</p>
+
+<h2 id="find-the-first-n-primes-that-are-greater-than-m">Find the first N primes that are greater than M</h2>
+<p>The task is to find the first 3 prime numbers. What’s unsaid but self-evident is that the numbers must be greater than 0 because all prime numbers are greater than 0. So we can rewrite the task: find the first 3 primes that are greater than 0. Further more, let’s be ambitious and consider its general version: find the first N primes that are greater than M.</p>
+
+<p>The basic structure of any recursion involves the base case and the non-base case. In the general task, the base case is when N = 0 and the result will be the empty sequence <code class="language-plaintext highlighter-rouge">()</code>. The non-base case is When N &gt; 0, and when N &gt; 0, if M+1 is a prime, the result will be <code class="language-plaintext highlighter-rouge">(M+1, the first N-1 primes that are greater than M+1)</code>, otherwise, <code class="language-plaintext highlighter-rouge">(the first N primes that are greater than M+1)</code></p>
+
+<p>You probably realized it by now we can view the task as a math function
+<code class="language-plaintext highlighter-rouge">f(N, M) = (the first N primes &gt; M)</code> with input parameters N and M and outputs a sequence of first N primes &gt; M. We can then translate the above recursive description into R code.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">f</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="w"> </span><span class="n">M</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">N</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1"># base case</span><span class="w">
+                </span><span class="nf">return</span><span class="p">(</span><span class="nf">c</span><span class="p">())</span><span class="w">
+        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1"># non-base case</span><span class="w">
+                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">is_prime</span><span class="p">(</span><span class="n">M</span><span class="m">+1</span><span class="p">))</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="n">M</span><span class="m">+1</span><span class="p">,</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">N</span><span class="m">-1</span><span class="p">,</span><span class="w"> </span><span class="n">M</span><span class="m">+1</span><span class="p">))</span><span class="w"> 
+                </span><span class="k">else</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="w"> </span><span class="n">M</span><span class="m">+1</span><span class="p">)</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="n">is_prime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">1L</span><span class="p">)</span><span class="w"> </span><span class="kc">FALSE</span><span class="w">
+        </span><span class="k">else</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">2L</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nf">all</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">%%</span><span class="w"> </span><span class="m">2L</span><span class="o">:</span><span class="nf">max</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="nf">floor</span><span class="p">(</span><span class="nf">sqrt</span><span class="p">(</span><span class="n">n</span><span class="p">)))</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="m">0</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span></code></pre></figure>
+
+<p>The function <code class="language-plaintext highlighter-rouge">is_prime()</code> is taken from <a href="https://stackoverflow.com/questions/19767408/prime-number-function-in-r">this stackoverflow answer</a>, you can read the logics behind there. Alternatively, you can implement it using recursion. Consider it as today’s homework. :)</p>
+
+<p>Let’s use <code class="language-plaintext highlighter-rouge">f</code> to find the first 3 prime numbers and first 5 primes greater than 100.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">f</span><span class="p">(</span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] 2 3 5</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">f</span><span class="p">(</span><span class="m">5</span><span class="p">,</span><span class="w"> </span><span class="m">100</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] 101 103 107 109 113</code></pre></figure>
+
+<p>This article is inspired by an example described in this little <a href="https://panicz.github.io/pamphlet/">pamphlet</a> by Panicz.</p>
+:ET

@@ -1,0 +1,4 @@
+I"o<p>There’s an interesting little function in R called <code class="language-plaintext highlighter-rouge">on.exit()</code>. It can be used 
+in your own function to perform some side effect. For example, in addition to 
+returning a value, the following function uses <code class="language-plaintext highlighter-rouge">on.exit()</code> to also print two messages.</p>
+:ET

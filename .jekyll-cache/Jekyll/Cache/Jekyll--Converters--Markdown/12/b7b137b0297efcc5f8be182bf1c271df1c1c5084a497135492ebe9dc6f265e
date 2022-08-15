@@ -1,0 +1,151 @@
+I"�G<p>Crude oil has been hammered. Yesterday, it hit the lowest price in 2 years. Being a contrarian, I smell the opportunity to buy. My interest is a vanguard energy fund (<a href="https://personal.vanguard.com/us/funds/snapshot?FundId=0051&amp;FundIntExt=INT">VGENX</a>), which has 95% of its assets invested in oil or oil related sectors. Let’s first take a look at its prices and returns histories since Sept 2005.</p>
+
+<p>Step 1. Load libraries and helper functions</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">library</span><span class="p">(</span><span class="n">PerformanceAnalytics</span><span class="p">)</span><span class="w">
+</span><span class="n">library</span><span class="p">(</span><span class="n">zoo</span><span class="p">)</span><span class="w">
+</span><span class="n">library</span><span class="p">(</span><span class="n">tseries</span><span class="p">)</span><span class="w">
+
+</span><span class="n">plt_dist</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span><span class="w"> </span><span class="n">varname</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="c1"># Creates a figure of 4 plots: histogram, boxplot, </span><span class="w">
+        </span><span class="c1">#                              density curve, qqplot</span><span class="w">
+        </span><span class="c1">#</span><span class="w">
+        </span><span class="c1"># Args:</span><span class="w">
+        </span><span class="c1">#       dat     : a data frame or matrix with colnames</span><span class="w">
+        </span><span class="c1">#       varname : a string specifying the numerical variable </span><span class="w">
+        </span><span class="c1">#                 in dat to be drawn</span><span class="w">
+        </span><span class="c1">#</span><span class="w">
+        </span><span class="c1"># Returns:</span><span class="w">
+        </span><span class="c1">#       draws 4 plots (histogram, boxplot, density curve, </span><span class="w">
+        </span><span class="c1">#       qqplot) on one canvas</span><span class="w">
+        </span><span class="n">par</span><span class="p">(</span><span class="n">mfrow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="m">2</span><span class="p">))</span><span class="w">
+        </span><span class="n">hist</span><span class="p">(</span><span class="n">dat</span><span class="p">[,</span><span class="w"> </span><span class="n">varname</span><span class="p">],</span><span class="w"> </span><span class="n">main</span><span class="o">=</span><span class="s2">"histogram"</span><span class="p">,</span><span class="w"> </span><span class="n">xlab</span><span class="o">=</span><span class="n">varname</span><span class="p">,</span><span class="w"> 
+             </span><span class="n">probability</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="o">=</span><span class="n">hcl</span><span class="p">(</span><span class="n">h</span><span class="o">=</span><span class="m">195</span><span class="p">,</span><span class="n">l</span><span class="o">=</span><span class="m">65</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="m">100</span><span class="p">))</span><span class="w">
+        </span><span class="n">boxplot</span><span class="p">(</span><span class="n">dat</span><span class="p">[,</span><span class="n">varname</span><span class="p">],</span><span class="w"> </span><span class="n">outchar</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">main</span><span class="o">=</span><span class="s2">"boxplot"</span><span class="p">,</span><span class="w"> </span><span class="n">cex</span><span class="o">=</span><span class="m">0.7</span><span class="p">,</span><span class="w"> 
+                </span><span class="n">xlab</span><span class="o">=</span><span class="n">varname</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="o">=</span><span class="n">hcl</span><span class="p">(</span><span class="n">h</span><span class="o">=</span><span class="m">195</span><span class="p">,</span><span class="n">l</span><span class="o">=</span><span class="m">65</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="m">100</span><span class="p">))</span><span class="w">
+        </span><span class="n">plot</span><span class="p">(</span><span class="n">density</span><span class="p">(</span><span class="n">dat</span><span class="p">[,</span><span class="n">varname</span><span class="p">]),</span><span class="w"> </span><span class="n">type</span><span class="o">=</span><span class="s2">"l"</span><span class="p">,</span><span class="w"> 
+             </span><span class="n">main</span><span class="o">=</span><span class="s2">"Smoothed density"</span><span class="p">,</span><span class="w"> </span><span class="n">lwd</span><span class="o">=</span><span class="m">2</span><span class="p">,</span><span class="w">
+             </span><span class="n">xlab</span><span class="o">=</span><span class="n">varname</span><span class="p">,</span><span class="w"> </span><span class="n">ylab</span><span class="o">=</span><span class="s2">"density estimate"</span><span class="p">,</span><span class="w"> 
+             </span><span class="n">col</span><span class="o">=</span><span class="n">hcl</span><span class="p">(</span><span class="n">h</span><span class="o">=</span><span class="m">195</span><span class="p">,</span><span class="n">l</span><span class="o">=</span><span class="m">65</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="m">100</span><span class="p">))</span><span class="w">
+        </span><span class="n">qqnorm</span><span class="p">(</span><span class="n">dat</span><span class="p">[,</span><span class="n">varname</span><span class="p">],</span><span class="w"> </span><span class="n">col</span><span class="o">=</span><span class="n">hcl</span><span class="p">(</span><span class="n">h</span><span class="o">=</span><span class="m">195</span><span class="p">,</span><span class="n">l</span><span class="o">=</span><span class="m">65</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="m">100</span><span class="p">),</span><span class="w"> </span><span class="n">cex</span><span class="o">=</span><span class="m">0.7</span><span class="p">)</span><span class="w">
+        </span><span class="n">qqline</span><span class="p">(</span><span class="n">dat</span><span class="p">[,</span><span class="n">varname</span><span class="p">])</span><span class="w">
+        </span><span class="n">par</span><span class="p">(</span><span class="n">mfrow</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">))</span><span class="w">
+</span><span class="p">}</span></code></pre></figure>
+
+<p>Step 2. Download the monthly adjusted closing price data on VGENX since Sept 2005 from Yahoo!.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">VGENX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">get.hist.quote</span><span class="p">(</span><span class="n">instrument</span><span class="o">=</span><span class="s2">"VGENX"</span><span class="p">,</span><span class="w"> </span><span class="n">start</span><span class="o">=</span><span class="s2">"2005-09-30"</span><span class="p">,</span><span class="w"> 
+                       </span><span class="n">end</span><span class="o">=</span><span class="s2">"2014-09-30"</span><span class="p">,</span><span class="w"> </span><span class="n">origin</span><span class="o">=</span><span class="s2">"1970-01-01"</span><span class="p">,</span><span class="w">
+                       </span><span class="n">quote</span><span class="o">=</span><span class="s2">"AdjClose"</span><span class="p">,</span><span class="w"> </span><span class="n">provider</span><span class="o">=</span><span class="s2">"yahoo"</span><span class="p">,</span><span class="w"> 
+                       </span><span class="n">compression</span><span class="o">=</span><span class="s2">"m"</span><span class="p">,</span><span class="w"> </span><span class="n">retclass</span><span class="o">=</span><span class="s2">"zoo"</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## time series ends   2014-09-02</code></pre></figure>
+
+<p>Step 3. Change the class of the time index to yearmon.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">index</span><span class="p">(</span><span class="n">VGENX</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">as.yearmon</span><span class="p">(</span><span class="n">index</span><span class="p">(</span><span class="n">VGENX</span><span class="p">))</span><span class="w">
+</span><span class="n">colnames</span><span class="p">(</span><span class="n">VGENX</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"VGENX"</span><span class="p">)</span></code></pre></figure>
+
+<p>Step 4. Calculate continuously compounded returns.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">ret.cc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">diff</span><span class="p">(</span><span class="nf">log</span><span class="p">(</span><span class="n">VGENX</span><span class="p">))</span><span class="w">
+</span><span class="n">head</span><span class="p">(</span><span class="n">ret.cc</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">##                VGENX
+## Oct 2005 -0.08818443
+## Nov 2005  0.02153350
+## Dec 2005  0.03146979</code></pre></figure>
+
+<p>Step 5. Plot prices.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">chart.TimeSeries</span><span class="p">(</span><span class="n">VGENX</span><span class="p">,</span><span class="w"> </span><span class="n">legend.loc</span><span class="o">=</span><span class="s2">"bottomright"</span><span class="p">,</span><span class="w"> </span><span class="n">main</span><span class="o">=</span><span class="s2">""</span><span class="p">,</span><span class="w"> 
+                 </span><span class="n">ylab</span><span class="o">=</span><span class="s2">"monthly adj. closing prices"</span><span class="p">)</span><span class="w"> </span></code></pre></figure>
+
+<p><img src="/../figs/2014-10-17-analyze-stock-price-data-using-r-part1/unnamed-chunk-5-1.png" alt="center" /></p>
+
+<p>Step 6. Plot cumulative returns.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">ret.simple</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">diff</span><span class="p">(</span><span class="n">VGENX</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">lag</span><span class="p">(</span><span class="n">VGENX</span><span class="p">,</span><span class="w"> </span><span class="n">k</span><span class="o">=</span><span class="m">-1</span><span class="p">)</span><span class="w">
+</span><span class="n">chart.CumReturns</span><span class="p">(</span><span class="n">ret.simple</span><span class="p">,</span><span class="w"> </span><span class="n">legend.loc</span><span class="o">=</span><span class="s2">"topleft"</span><span class="p">,</span><span class="w"> </span><span class="n">wealth.index</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> 
+                 </span><span class="n">ylab</span><span class="o">=</span><span class="s2">"$"</span><span class="p">,</span><span class="w"> </span><span class="n">main</span><span class="o">=</span><span class="s2">"Future Value of $1 invested"</span><span class="p">)</span></code></pre></figure>
+
+<p><img src="/../figs/2014-10-17-analyze-stock-price-data-using-r-part1/unnamed-chunk-6-1.png" alt="center" /></p>
+
+<p>Step 7. Plot the distribution of cc returns.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># Create matrix with returns</span><span class="w">
+</span><span class="n">return_matrix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">coredata</span><span class="p">(</span><span class="n">ret.cc</span><span class="p">)</span><span class="w">
+
+</span><span class="c1"># Plot the distribution of cc returns</span><span class="w">
+</span><span class="n">plt_dist</span><span class="p">(</span><span class="n">return_matrix</span><span class="p">,</span><span class="w"> </span><span class="s2">"VGENX"</span><span class="p">)</span></code></pre></figure>
+
+<p><img src="/../figs/2014-10-17-analyze-stock-price-data-using-r-part1/unnamed-chunk-7-1.png" alt="center" /></p>
+
+<p>The histogram, boxplot and the smoothed density curve show the cc returns are slightly left skewed. The qqplot shows their distribution has fatter tails.</p>
+
+<p>Step 8. Compute all of the relevant descriptive statistics</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">table.Stats</span><span class="p">(</span><span class="n">ret.cc</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">##                    VGENX
+## Observations    108.0000
+## NAs               0.0000
+## Minimum          -0.2471
+## Quartile 1       -0.0334
+## Median            0.0155
+## Arithmetic Mean   0.0051
+## Geometric Mean    0.0027
+## Quartile 3        0.0513
+## Maximum           0.1710
+## SE Mean           0.0066
+## LCL Mean (0.95)  -0.0080
+## UCL Mean (0.95)   0.0182
+## Variance          0.0047
+## Stdev             0.0685
+## Skewness         -0.7318
+## Kurtosis          1.5469</code></pre></figure>
+
+<p>Indeed, we see the cc returns have a negative skewness and an excess kurtosis of 1.55 compared to the normal distribution.</p>
+
+<p>Step 9. Run the Jarque Bera test to see if the cc returns are normal</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">jarque.bera.test</span><span class="p">(</span><span class="n">ret.cc</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## 
+## 	Jarque Bera Test
+## 
+## data:  ret.cc
+## X-squared = 20.407, df = 2, p-value = 3.704e-05</code></pre></figure>
+
+<p>Because the p-value is extremely small, we have strong evidence to reject the null hypothesis that the continously compounded monthly returns for VGENX are normally distributed.</p>
+
+<p>Step 10. Plot autocorrelations over time lags</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">acf</span><span class="p">(</span><span class="n">ret.cc</span><span class="o">$</span><span class="n">VGENX</span><span class="p">)</span></code></pre></figure>
+
+<p><img src="/../figs/2014-10-17-analyze-stock-price-data-using-r-part1/unnamed-chunk-10-1.png" alt="center" /></p>
+
+<p>The monthly cc returns doesn’t appear to be correlated over time.</p>
+
+<p>Step 11. Compute the annualized continuously compounded mean return and volatility</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">ret.cc.annual</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">apply</span><span class="p">(</span><span class="n">return_matrix</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">mean</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">12</span><span class="w"> 
+</span><span class="n">print</span><span class="p">(</span><span class="n">ret.cc.annual</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">##      VGENX 
+## 0.06134274</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">vol.cc.annual</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">apply</span><span class="p">(</span><span class="n">return_matrix</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">sd</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nf">sqrt</span><span class="p">(</span><span class="m">12</span><span class="p">)</span><span class="w">
+</span><span class="n">print</span><span class="p">(</span><span class="n">vol.cc.annual</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">##     VGENX 
+## 0.2372199</code></pre></figure>
+
+<p>Step 12. Compute the annualized simple mean return</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="nf">exp</span><span class="p">(</span><span class="n">ret.cc.annual</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">1</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">##      VGENX 
+## 0.06326327</code></pre></figure>
+
+:ET

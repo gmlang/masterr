@@ -1,0 +1,83 @@
+I"03<p>Downloading and charting stock prices data become easy when using the <code class="language-plaintext highlighter-rouge">tseries</code> and <code class="language-plaintext highlighter-rouge">PerformanceAnalytics</code> R packages.</p>
+
+<p>Step 1. Load these libraries.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">library</span><span class="p">(</span><span class="n">PerformanceAnalytics</span><span class="p">)</span><span class="w">
+</span><span class="n">library</span><span class="p">(</span><span class="n">zoo</span><span class="p">)</span><span class="w">
+</span><span class="n">library</span><span class="p">(</span><span class="n">tseries</span><span class="p">)</span></code></pre></figure>
+
+<p>Step 2. Download the monthly adjusted closing price data on S&amp;P500 (^GSPC) and NovaGold (NG) between Jan 2004 and Sept 2014 from Yahoo using the function <code class="language-plaintext highlighter-rouge">get.hist.quote()</code> from the <code class="language-plaintext highlighter-rouge">tseries</code> package.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">sp500</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">get.hist.quote</span><span class="p">(</span><span class="n">instrument</span><span class="o">=</span><span class="s2">"^GSPC"</span><span class="p">,</span><span class="w"> </span><span class="n">start</span><span class="o">=</span><span class="s2">"2004-01-01"</span><span class="p">,</span><span class="w"> 
+                       </span><span class="n">end</span><span class="o">=</span><span class="s2">"2014-09-30"</span><span class="p">,</span><span class="w"> </span><span class="n">origin</span><span class="o">=</span><span class="s2">"1970-01-01"</span><span class="p">,</span><span class="w">
+                       </span><span class="n">quote</span><span class="o">=</span><span class="s2">"AdjClose"</span><span class="p">,</span><span class="w"> </span><span class="n">provider</span><span class="o">=</span><span class="s2">"yahoo"</span><span class="p">,</span><span class="w"> 
+                       </span><span class="n">compression</span><span class="o">=</span><span class="s2">"m"</span><span class="p">,</span><span class="w"> </span><span class="n">retclass</span><span class="o">=</span><span class="s2">"zoo"</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## time series starts 2004-01-02
+## time series ends   2014-09-02</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">ng</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">get.hist.quote</span><span class="p">(</span><span class="n">instrument</span><span class="o">=</span><span class="s2">"NG"</span><span class="p">,</span><span class="w"> </span><span class="n">start</span><span class="o">=</span><span class="s2">"2004-01-01"</span><span class="p">,</span><span class="w"> 
+                    </span><span class="n">end</span><span class="o">=</span><span class="s2">"2014-09-30"</span><span class="p">,</span><span class="w"> </span><span class="n">origin</span><span class="o">=</span><span class="s2">"1970-01-01"</span><span class="p">,</span><span class="w">
+                    </span><span class="n">quote</span><span class="o">=</span><span class="s2">"AdjClose"</span><span class="p">,</span><span class="w"> </span><span class="n">provider</span><span class="o">=</span><span class="s2">"yahoo"</span><span class="p">,</span><span class="w"> 
+                    </span><span class="n">compression</span><span class="o">=</span><span class="s2">"m"</span><span class="p">,</span><span class="w"> </span><span class="n">retclass</span><span class="o">=</span><span class="s2">"zoo"</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## time series starts 2004-01-02
+## time series ends   2014-09-02</code></pre></figure>
+
+<p>Step 3. Change the class of the time index to yearmon which is appropriate for monthly data using <code class="language-plaintext highlighter-rouge">as.yearmon()</code> in the <code class="language-plaintext highlighter-rouge">zoo</code> package.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">index</span><span class="p">(</span><span class="n">sp500</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">as.yearmon</span><span class="p">(</span><span class="n">index</span><span class="p">(</span><span class="n">sp500</span><span class="p">))</span><span class="w">
+</span><span class="n">index</span><span class="p">(</span><span class="n">ng</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">as.yearmon</span><span class="p">(</span><span class="n">index</span><span class="p">(</span><span class="n">ng</span><span class="p">))</span><span class="w">
+
+</span><span class="c1"># inspect the price data</span><span class="w">
+</span><span class="n">cat</span><span class="p">(</span><span class="s2">"Start: "</span><span class="p">,</span><span class="w"> </span><span class="nf">as.character</span><span class="p">(</span><span class="n">start</span><span class="p">(</span><span class="n">sp500</span><span class="p">)),</span><span class="w"> </span><span class="s2">"  End: "</span><span class="p">,</span><span class="w"> </span><span class="nf">as.character</span><span class="p">(</span><span class="n">end</span><span class="p">(</span><span class="n">sp500</span><span class="p">)))</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Start:  Jan 2004   End:  Sep 2014</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">cat</span><span class="p">(</span><span class="s2">"Start: "</span><span class="p">,</span><span class="w"> </span><span class="nf">as.character</span><span class="p">(</span><span class="n">start</span><span class="p">(</span><span class="n">ng</span><span class="p">)),</span><span class="w"> </span><span class="s2">"  End: "</span><span class="p">,</span><span class="w"> </span><span class="nf">as.character</span><span class="p">(</span><span class="n">end</span><span class="p">(</span><span class="n">ng</span><span class="p">)))</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Start:  Jan 2004   End:  Sep 2014</code></pre></figure>
+
+<p>Step 4. Put both SP500 and NG price data in one data frame to make it easier for analysis.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">prices</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">merge</span><span class="p">(</span><span class="n">sp500</span><span class="p">,</span><span class="w"> </span><span class="n">ng</span><span class="p">)</span><span class="w">
+</span><span class="n">colnames</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"SP500"</span><span class="p">,</span><span class="w"> </span><span class="s2">"NG"</span><span class="p">)</span></code></pre></figure>
+
+<p>Step 5. Calculate continuously compounded returns as difference in log prices.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">ret.cc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">diff</span><span class="p">(</span><span class="nf">log</span><span class="p">(</span><span class="n">prices</span><span class="p">))</span><span class="w">
+
+</span><span class="c1"># inspect the return data</span><span class="w">
+</span><span class="n">cat</span><span class="p">(</span><span class="s2">"Start: "</span><span class="p">,</span><span class="w"> </span><span class="nf">as.character</span><span class="p">(</span><span class="n">start</span><span class="p">(</span><span class="n">ret.cc</span><span class="p">)),</span><span class="w"> </span><span class="s2">"  End: "</span><span class="p">,</span><span class="w"> </span><span class="nf">as.character</span><span class="p">(</span><span class="n">end</span><span class="p">(</span><span class="n">ret.cc</span><span class="p">)))</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Start:  Feb 2004   End:  Sep 2014</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">head</span><span class="p">(</span><span class="n">ret.cc</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">##                SP500          NG
+## Feb 2004  0.01213504 -0.03889948
+## Mar 2004 -0.01649420  0.04689952
+## Apr 2004 -0.01693331 -0.27842887</code></pre></figure>
+
+<p>Step 6. Plot returns using <code class="language-plaintext highlighter-rouge">chart.TimeSeries()</code> and <code class="language-plaintext highlighter-rouge">chart.Bar()</code> in the <code class="language-plaintext highlighter-rouge">PerformanceAnalytics</code> package.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">chart.TimeSeries</span><span class="p">(</span><span class="n">ret.cc</span><span class="p">,</span><span class="w"> </span><span class="n">legend.loc</span><span class="o">=</span><span class="s2">"bottomright"</span><span class="p">,</span><span class="w"> </span><span class="n">main</span><span class="o">=</span><span class="s2">""</span><span class="p">,</span><span class="w"> 
+                 </span><span class="n">ylab</span><span class="o">=</span><span class="s2">"monthly cc return"</span><span class="p">)</span><span class="w"> </span></code></pre></figure>
+
+<p><img src="/../figs/2014-10-16-download-stock-price-data-using-r/unnamed-chunk-6-1.png" alt="center" /></p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">chart.Bar</span><span class="p">(</span><span class="n">ret.cc</span><span class="p">,</span><span class="w"> </span><span class="n">legend.loc</span><span class="o">=</span><span class="s2">"bottomright"</span><span class="p">,</span><span class="w"> </span><span class="n">main</span><span class="o">=</span><span class="s2">""</span><span class="p">,</span><span class="w"> 
+          </span><span class="n">ylab</span><span class="o">=</span><span class="s2">"monthly cc return"</span><span class="p">)</span></code></pre></figure>
+
+<p><img src="/../figs/2014-10-16-download-stock-price-data-using-r/unnamed-chunk-6-2.png" alt="center" /></p>
+
+<p>Step 7. Plot cumulative returns using <code class="language-plaintext highlighter-rouge">chart.CumReturns()</code> in the <code class="language-plaintext highlighter-rouge">PerformanceAnalytics</code> package. 
+Note we need to use simple returns instead of continuously compounded returns for this, so we first calcualte the simple returns using <code class="language-plaintext highlighter-rouge">diff()</code> and <code class="language-plaintext highlighter-rouge">lag()</code> on the price data.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">ret.simple</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">diff</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">lag</span><span class="p">(</span><span class="n">prices</span><span class="p">,</span><span class="w"> </span><span class="n">k</span><span class="o">=</span><span class="m">-1</span><span class="p">)</span><span class="w">
+</span><span class="n">chart.CumReturns</span><span class="p">(</span><span class="n">ret.simple</span><span class="p">,</span><span class="w"> </span><span class="n">legend.loc</span><span class="o">=</span><span class="s2">"topleft"</span><span class="p">,</span><span class="w"> </span><span class="n">wealth.index</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> 
+                 </span><span class="n">ylab</span><span class="o">=</span><span class="s2">"$"</span><span class="p">,</span><span class="w"> </span><span class="n">main</span><span class="o">=</span><span class="s2">"Future Value of $1 invested"</span><span class="p">)</span></code></pre></figure>
+
+<p><img src="/../figs/2014-10-16-download-stock-price-data-using-r/unnamed-chunk-7-1.png" alt="center" /></p>
+
+:ET

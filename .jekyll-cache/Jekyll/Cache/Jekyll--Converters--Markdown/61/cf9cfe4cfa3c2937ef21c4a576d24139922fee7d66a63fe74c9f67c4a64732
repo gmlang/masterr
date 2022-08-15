@@ -1,0 +1,18 @@
+I"2<p>I love the idea of writing a function that returns another function. For example, say we want to compute \(x^n\) for any given \(x\) and \(n\). We can write a function that takes \(n\) as input and returns a function, which can further take \(x\) as input and returns the result. Here’s the R code:</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">make.power</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="k">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="n">x</span><span class="o">^</span><span class="n">n</span><span class="w">
+</span><span class="p">}</span></code></pre></figure>
+
+<p>Say we want to find \(x^2\), we can first run make.power(2) to construct a function that will square any \(x\) passed to it. Let’s call it power2. We can then use power2(x) to calculate \(x^2\) for any \(x\) value. For example, power2(3) gives the value of \(3^2\), and power2(5) gives the value of \(5^2\), and etc.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">power2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">make.power</span><span class="p">(</span><span class="m">2</span><span class="p">)</span><span class="w">
+</span><span class="n">power2</span><span class="p">(</span><span class="m">3</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] 9</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">power2</span><span class="p">(</span><span class="m">5</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] 25</code></pre></figure>
+
+:ET

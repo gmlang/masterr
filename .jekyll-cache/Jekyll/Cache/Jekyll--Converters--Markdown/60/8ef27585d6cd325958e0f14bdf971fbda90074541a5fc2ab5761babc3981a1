@@ -1,0 +1,20 @@
+I"�<p>When doing data analysis in R, we often want to sort a vector or <a href="https://masterr.org/r/how-to-easily-sort-a-data-frame/">data frame</a>. Sometimes, we want to undo the sorting. This usually happens inside of a function where you want to first sort the input object, do some operations and undo the sorting before you return the output object.</p>
+
+<p>It’s fairly simple to unsort a vector in R. Here’s an example:</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"b"</span><span class="p">,</span><span class="w"> </span><span class="s2">"c"</span><span class="p">,</span><span class="w"> </span><span class="s2">"a"</span><span class="p">)</span><span class="w">
+</span><span class="n">ascend.order</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">order</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w">
+
+</span><span class="c1"># sort x in ascending order</span><span class="w">
+</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="p">[</span><span class="n">ascend.order</span><span class="p">]</span><span class="w">
+</span><span class="n">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "a" "b" "c"</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># reverse the operation, unsort and get back x in original order </span><span class="w">
+</span><span class="n">x</span><span class="p">[</span><span class="n">ascend.order</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="w">
+</span><span class="n">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "b" "c" "a"</code></pre></figure>
+
+:ET

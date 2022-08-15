@@ -1,0 +1,2 @@
+I"3<p>A predicate is a function that returns a single TRUE or FALSE, for example, <code class="language-plaintext highlighter-rouge">is.factor()</code>, <code class="language-plaintext highlighter-rouge">all()</code>, or <code class="language-plaintext highlighter-rouge">is.NULL()</code>. A predicate functional is a function that applies a predicate to each element of a list or data frame. For example, we can define a predicate functional <code class="language-plaintext highlighter-rouge">where()</code> that checks the type of each column in a data frame.</p>
+:ET

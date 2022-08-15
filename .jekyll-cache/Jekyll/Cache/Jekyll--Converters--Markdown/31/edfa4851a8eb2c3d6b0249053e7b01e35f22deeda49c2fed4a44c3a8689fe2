@@ -1,0 +1,38 @@
+I"�<p>How do you sort a data frame by one or more of its variables? This is one of the activities I do a lot when analyzing a dataset, so I wrote a function to take care of the details. It uses two other functions, <code class="language-plaintext highlighter-rouge">do.call()</code> and <code class="language-plaintext highlighter-rouge">order()</code>. <code class="language-plaintext highlighter-rouge">do.call()</code> takes in two arguments: a function and a list of arguments that can be passed to it. <code class="language-plaintext highlighter-rouge">order()</code> does the sorting, and you can look up how it works by running <code class="language-plaintext highlighter-rouge">?order</code>. Here’s the function I wrote that can make sorting data frames much easier.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># sortframe is a function that sorts a data frame by any of its variables in</span><span class="w">
+</span><span class="c1"># ascending order by default.</span><span class="w">
+</span><span class="c1"># when used inside a function allowing multiple unnamed arguments,</span><span class="w">
+</span><span class="c1"># list(...) creates a list containing all the unnamed arguments.</span><span class="w">
+</span><span class="n">sortframe</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="w"> </span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">...</span><span class="p">)</span><span class="w"> </span><span class="n">df</span><span class="p">[</span><span class="n">do.call</span><span class="p">(</span><span class="n">order</span><span class="p">,</span><span class="nf">list</span><span class="p">(</span><span class="n">...</span><span class="p">)),]</span></code></pre></figure>
+
+<p>Here’s how you use it:</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># sort iris by Sepal.Length in ascending order</span><span class="w">
+</span><span class="n">temp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">with</span><span class="p">(</span><span class="n">iris</span><span class="p">,</span><span class="w"> </span><span class="n">sortframe</span><span class="p">(</span><span class="n">iris</span><span class="p">,</span><span class="w"> </span><span class="n">Sepal.Length</span><span class="p">))</span><span class="w">
+</span><span class="n">head</span><span class="p">(</span><span class="n">temp</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+## 14          4.3         3.0          1.1         0.1  setosa
+## 9           4.4         2.9          1.4         0.2  setosa
+## 39          4.4         3.0          1.3         0.2  setosa</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># sort iris by Sepal.Length in descending order</span><span class="w">
+</span><span class="n">temp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">with</span><span class="p">(</span><span class="n">iris</span><span class="p">,</span><span class="w"> </span><span class="n">sortframe</span><span class="p">(</span><span class="n">iris</span><span class="p">,</span><span class="w"> </span><span class="n">Sepal.Length</span><span class="p">,</span><span class="w"> </span><span class="n">decreasing</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">))</span><span class="w">
+</span><span class="n">head</span><span class="p">(</span><span class="n">temp</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">##     Sepal.Length Sepal.Width Petal.Length Petal.Width   Species
+## 132          7.9         3.8          6.4         2.0 virginica
+## 118          7.7         3.8          6.7         2.2 virginica
+## 119          7.7         2.6          6.9         2.3 virginica</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># sort iris first by Sepal.Length and then by Sepal.Width in ascending order</span><span class="w">
+</span><span class="n">temp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">with</span><span class="p">(</span><span class="n">iris</span><span class="p">,</span><span class="w"> </span><span class="n">sortframe</span><span class="p">(</span><span class="n">iris</span><span class="p">,</span><span class="w"> </span><span class="n">Sepal.Length</span><span class="p">,</span><span class="w"> </span><span class="n">Sepal.Width</span><span class="p">))</span><span class="w">
+</span><span class="n">head</span><span class="p">(</span><span class="n">temp</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+## 14          4.3         3.0          1.1         0.1  setosa
+## 9           4.4         2.9          1.4         0.2  setosa
+## 39          4.4         3.0          1.3         0.2  setosa</code></pre></figure>
+
+:ET

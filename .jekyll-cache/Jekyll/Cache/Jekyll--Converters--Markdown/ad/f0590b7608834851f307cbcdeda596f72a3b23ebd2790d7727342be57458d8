@@ -1,0 +1,128 @@
+I"ŽE<p>Base R has a function <code class="language-plaintext highlighter-rouge">get()</code> that searches for a given name over the environment stack and returns its value after finding it. For example, we can use it like this.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">9</span><span class="w">
+</span><span class="n">get</span><span class="p">(</span><span class="s2">"x"</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] 9</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">get</span><span class="p">(</span><span class="s2">"mean"</span><span class="p">)</span><span class="w"> </span><span class="c1"># inherits is set to TRUE by default</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## function (x, ...) 
+## UseMethod("mean")
+## &lt;bytecode: 0x7fa52b0c08a0&gt;
+## &lt;environment: namespace:base&gt;</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">get</span><span class="p">(</span><span class="s2">"mean"</span><span class="p">,</span><span class="w"> </span><span class="n">inherits</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Error in get("mean", inherits = FALSE): object 'mean' not found</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">mean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">()</span><span class="w"> </span><span class="s2">"fake mean"</span><span class="w">
+</span><span class="n">get</span><span class="p">(</span><span class="s2">"mean"</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## function() "fake mean"</code></pre></figure>
+
+<p>If you donâ€™t understand why they returned the values they did, you can learn how 
+environment works by reading this <a href="https://masterr.org/r/understand-r-environments-part1/">post</a>.</p>
+
+<p>We can write our own version of get() using recursion. First we write a helper function that works the same as <code class="language-plaintext highlighter-rouge">get(name, inherits = T)</code>.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">get_helper</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">env</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">parent.frame</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="c1"># Returns the value that name binds to. Looks for name in the given </span><span class="w">
+        </span><span class="c1">#       environment and all its parents.</span><span class="w">
+        </span><span class="c1"># name: string, name of an object</span><span class="w">
+        </span><span class="c1"># env : environment object where the search begins. Default value is </span><span class="w">
+        </span><span class="c1">#       the global environment</span><span class="w">
+        
+        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">identical</span><span class="p">(</span><span class="n">env</span><span class="p">,</span><span class="w"> </span><span class="nf">emptyenv</span><span class="p">()))</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1"># base case</span><span class="w">
+                </span><span class="n">stop</span><span class="p">(</span><span class="s2">"object '"</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="s2">"'"</span><span class="p">,</span><span class="w"> </span><span class="s2">" not found"</span><span class="p">,</span><span class="w"> </span><span class="n">call.</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">F</span><span class="p">)</span><span class="w">
+        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">exists</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">envir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">env</span><span class="p">,</span><span class="w"> </span><span class="n">inherits</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">F</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1"># success case</span><span class="w">
+                </span><span class="n">env</span><span class="p">[[</span><span class="n">name</span><span class="p">]]</span><span class="w">
+        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1"># recursive case</span><span class="w">
+                </span><span class="n">get_helper</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">parent.env</span><span class="p">(</span><span class="n">env</span><span class="p">))</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="n">get_helper</span><span class="p">(</span><span class="s2">"x"</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] 9</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">get</span><span class="p">(</span><span class="s2">"mean"</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## function() "fake mean"</code></pre></figure>
+
+<p>Next we can easily extend it to a more general version that takes an additional parameter <code class="language-plaintext highlighter-rouge">inherits</code>.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">get_gmlang</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">env</span><span class="o">=</span><span class="n">parent.frame</span><span class="p">(),</span><span class="w"> </span><span class="n">inherits</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">T</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="c1"># Returns the value that name binds to. If inherits = T, looks for name</span><span class="w">
+        </span><span class="c1">#       in the given environment and all its parents. Otherwise, looks</span><span class="w">
+        </span><span class="c1">#       for name only in the given environment.</span><span class="w">
+        </span><span class="c1">#</span><span class="w">
+        </span><span class="c1"># name: string, name of an object</span><span class="w">
+        </span><span class="c1"># env : environment object where the search begins. Default value is </span><span class="w">
+        </span><span class="c1">#       the global environment</span><span class="w">
+        </span><span class="c1"># inherits: logical</span><span class="w">
+        
+        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">inherits</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> 
+                </span><span class="n">get_helper</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">env</span><span class="p">)</span><span class="w">
+        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">exists</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">envir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">env</span><span class="p">,</span><span class="w"> </span><span class="n">inherits</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">F</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="n">env</span><span class="p">[[</span><span class="n">name</span><span class="p">]]</span><span class="w">
+        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="n">stop</span><span class="p">(</span><span class="s2">"object '"</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="s2">"'"</span><span class="p">,</span><span class="w"> </span><span class="s2">" not found"</span><span class="p">,</span><span class="w"> </span><span class="n">call.</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">F</span><span class="p">)</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="n">e</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">new.env</span><span class="p">()</span><span class="w">
+</span><span class="n">e</span><span class="o">$</span><span class="n">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">100</span><span class="w">
+</span><span class="n">get_gmlang</span><span class="p">(</span><span class="s2">"x"</span><span class="p">,</span><span class="w"> </span><span class="n">env</span><span class="o">=</span><span class="n">e</span><span class="p">,</span><span class="w"> </span><span class="n">inherits</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">T</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] 9</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">get_gmlang</span><span class="p">(</span><span class="s2">"x"</span><span class="p">,</span><span class="w"> </span><span class="n">env</span><span class="o">=</span><span class="n">e</span><span class="p">,</span><span class="w"> </span><span class="n">inherits</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">F</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Error: object 'x' not found</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">get_gmlang</span><span class="p">(</span><span class="s2">"z"</span><span class="p">,</span><span class="w"> </span><span class="n">env</span><span class="o">=</span><span class="n">e</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] 100</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">get_gmlang</span><span class="p">(</span><span class="s2">"z"</span><span class="p">)</span><span class="w"> </span><span class="c1"># note: global environment is the parent of e</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Error: object 'z' not found</code></pre></figure>
+
+<p>Moreover, we can easily extend <code class="language-plaintext highlighter-rouge">get_helper()</code> to a function <code class="language-plaintext highlighter-rouge">fget_helper()</code> that finds only function objects.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">fget_helper</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">env</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">parent.frame</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="c1"># Returns the value that name binds to when name binds to a function. </span><span class="w">
+        </span><span class="c1">#       Looks for name in the given environment and all its parents.</span><span class="w">
+        </span><span class="c1">#</span><span class="w">
+        </span><span class="c1"># name: string, name of an object</span><span class="w">
+        </span><span class="c1"># env : environment object where the search begins. Default value is </span><span class="w">
+        </span><span class="c1">#       the global environment</span><span class="w">
+
+        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">identical</span><span class="p">(</span><span class="n">env</span><span class="p">,</span><span class="w"> </span><span class="nf">emptyenv</span><span class="p">()))</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1"># base case</span><span class="w">
+                </span><span class="n">stop</span><span class="p">(</span><span class="s2">"Can't find "</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="s2">" as a function object"</span><span class="p">,</span><span class="w"> </span><span class="n">call.</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">F</span><span class="p">)</span><span class="w">
+        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nf">class</span><span class="p">(</span><span class="n">env</span><span class="p">[[</span><span class="n">name</span><span class="p">]])</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">"function"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1"># success case</span><span class="w">
+                </span><span class="c1"># if name not in env, env[[name]] returns NULL with class "NULL"</span><span class="w">
+                </span><span class="n">env</span><span class="p">[[</span><span class="n">name</span><span class="p">]]</span><span class="w">
+        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1"># fail case</span><span class="w">
+                </span><span class="n">fget_helper</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">parent.env</span><span class="p">(</span><span class="n">env</span><span class="p">))</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="n">fget_helper</span><span class="p">(</span><span class="s2">"x"</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Error: Can't find x as a function object</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">fget_helper</span><span class="p">(</span><span class="s2">"mean"</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## function() "fake mean"</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">rm</span><span class="p">(</span><span class="s2">"mean"</span><span class="p">)</span><span class="w">
+</span><span class="n">fget_helper</span><span class="p">(</span><span class="s2">"mean"</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## function (x, ...) 
+## UseMethod("mean")
+## &lt;bytecode: 0x7fa52b0c08a0&gt;
+## &lt;environment: namespace:base&gt;</code></pre></figure>
+
+:ET

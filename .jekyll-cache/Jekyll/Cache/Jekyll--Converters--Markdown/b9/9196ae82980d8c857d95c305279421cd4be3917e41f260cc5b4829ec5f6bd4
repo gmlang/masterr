@@ -1,0 +1,2 @@
+I"È<p>If youâ€™ve created a file or copied a folder of files using the command line, do you know that you can do the same thing within R? If you never touched the terminal in your life, well, R allows you to move around folders and create files without using your mouse to click. This becomes very important when you write pipelines chained by R scripts as you probably want to automatically save and read files. Below is a collection of such R commands.</p>
+:ET

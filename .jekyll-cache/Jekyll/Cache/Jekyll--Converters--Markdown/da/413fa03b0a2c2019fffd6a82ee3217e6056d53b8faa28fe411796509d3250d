@@ -1,0 +1,2 @@
+I"ü<p>Every operation in R is a function call. For example, when you subset a vector using <code class="language-plaintext highlighter-rouge">[]</code>, youâ€™re really calling the function <code class="language-plaintext highlighter-rouge">[</code>.</p>
+:ET

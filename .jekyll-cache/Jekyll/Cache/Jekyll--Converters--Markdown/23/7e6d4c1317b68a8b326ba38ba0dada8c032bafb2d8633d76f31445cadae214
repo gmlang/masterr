@@ -1,0 +1,69 @@
+I"�+<p>This is the second article of the series on how environments work in R. Recall that in the <a href="https://masterr.org/r/understand-r-environments-part1/">first article</a>, we demonstrated how environment and evaluation work in R and we learned the following:</p>
+
+<ul>
+  <li>the default current environment (or workspace) is called the global env.</li>
+  <li>when you define a function in the current environment (i.e., this is another way of saying opening Rstudio, making a funtion and sending it to Console), you effectively put that function inside the global env.</li>
+  <li>when you call that function in the global env, a new environment is created, binding the function arguments to the values supplied. This new environment is called the environment associated with the function, and is inserted before the global env on the search path. In other words, its parent (environment) is the global env.</li>
+  <li>when the body of that function is evaluated, a search is made, first in that newly created environment associated with the function, and next in the global env.</li>
+  <li>in general, when you define a function <code class="language-plaintext highlighter-rouge">f</code> inside another function <code class="language-plaintext highlighter-rouge">h</code>, you effectively put <code class="language-plaintext highlighter-rouge">f</code> inside the environment associated with <code class="language-plaintext highlighter-rouge">h</code>, which is NOT the calling environment of <code class="language-plaintext highlighter-rouge">h</code>, but the newly created environment that binds the arguments of <code class="language-plaintext highlighter-rouge">h</code> to values supplied. When the body of <code class="language-plaintext highlighter-rouge">f</code> is evaluated, R searches
+for values first in the environment associated with <code class="language-plaintext highlighter-rouge">f</code>, and then in the environment associated with <code class="language-plaintext highlighter-rouge">h</code>, and then in the global env (assuming <code class="language-plaintext highlighter-rouge">h</code> is defined in the global env).</li>
+</ul>
+
+<h2 id="the-assignment-operators-in-r">The assignment operators in R</h2>
+
+<p>There’re two assignment operators in R: <code class="language-plaintext highlighter-rouge">&lt;-</code> and <code class="language-plaintext highlighter-rouge">&lt;&lt;-</code>. While <code class="language-plaintext highlighter-rouge">&lt;-</code> changes the values of objects in the immediate environment searched, <code class="language-plaintext highlighter-rouge">&lt;&lt;-</code> changes the values of objects first encountered, starting with the parent environment of the immediate environment and traversing upwards through the parent environments until the global environment is reached. Consider the following example. The function <code class="language-plaintext highlighter-rouge">h</code> uses <code class="language-plaintext highlighter-rouge">&lt;-</code> to only set its local y to 0. The function <code class="language-plaintext highlighter-rouge">to_zero</code> uses <code class="language-plaintext highlighter-rouge">&lt;&lt;-</code> to
+set the <code class="language-plaintext highlighter-rouge">y</code> declared in the global env to 0. If no <code class="language-plaintext highlighter-rouge">y</code> found in the global env, it will create it in the global env and bind its value to 0.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># define functions</span><span class="w">
+</span><span class="n">h</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">0</span><span class="w">
+</span><span class="n">to_zero</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">&lt;&lt;-</span><span class="w"> </span><span class="m">0</span><span class="w">
+
+</span><span class="c1"># initialize y in global env</span><span class="w">
+</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10</span><span class="w">
+
+</span><span class="c1"># h doesn't change the global y </span><span class="w">
+</span><span class="n">h</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="w">
+</span><span class="n">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] 10</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># to_zero sets the global y to 0</span><span class="w">
+</span><span class="n">to_zero</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="w">
+</span><span class="n">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] 0</code></pre></figure>
+
+<h2 id="state-maintanence">State maintanence</h2>
+
+<p>The combination of <code class="language-plaintext highlighter-rouge">&lt;&lt;-</code> and R evaluation model allows functions to remember variable values between funtion calls. For example, consider the following function <code class="language-plaintext highlighter-rouge">student</code>, which appends a 3-digit number to a given student name. It takes a string <code class="language-plaintext highlighter-rouge">name</code> and returns a list of two functions. Because both functions are defined inside the <code class="language-plaintext highlighter-rouge">student</code> function, more precisely, they are defined inside the environment associated with <code class="language-plaintext highlighter-rouge">student</code>, and because <code class="language-plaintext highlighter-rouge">name</code> will also be created in the same environment when <code class="language-plaintext highlighter-rouge">student</code> is called, both functions of the returned list will have access to the value of <code class="language-plaintext highlighter-rouge">name</code>. Notice how I use <code class="language-plaintext highlighter-rouge">&lt;&lt;-</code> to update
+<code class="language-plaintext highlighter-rouge">name</code>.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">student</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">name</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nf">list</span><span class="p">(</span><span class="n">print_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">()</span><span class="w"> </span><span class="n">print</span><span class="p">(</span><span class="n">name</span><span class="p">),</span><span class="w">
+             </span><span class="n">add_num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+                     </span><span class="n">num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">ceiling</span><span class="p">(</span><span class="n">runif</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">min</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">100</span><span class="p">,</span><span class="w"> </span><span class="n">max</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">999</span><span class="p">))</span><span class="w">
+                     </span><span class="n">name</span><span class="w"> </span><span class="o">&lt;&lt;-</span><span class="w"> </span><span class="n">paste0</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">num</span><span class="p">)</span><span class="w">
+                     </span><span class="p">}</span><span class="w">
+             </span><span class="p">)</span><span class="w">
+</span><span class="p">}</span></code></pre></figure>
+
+<p>We can now create name cards for different students by calling <code class="language-plaintext highlighter-rouge">student</code>. Notice Joe’s name card is maintained separately from Jean’s. This is what we wanted.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">set.seed</span><span class="p">(</span><span class="m">2</span><span class="p">)</span><span class="w">
+
+</span><span class="c1"># create badge for joe</span><span class="w">
+</span><span class="n">joe</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">student</span><span class="p">(</span><span class="s2">"Joe"</span><span class="p">)</span><span class="w">
+</span><span class="n">joe</span><span class="o">$</span><span class="n">add_num</span><span class="p">()</span><span class="w">
+</span><span class="n">joe</span><span class="o">$</span><span class="n">print_name</span><span class="p">()</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "Joe267"</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># create badge for jean</span><span class="w">
+</span><span class="n">jean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">student</span><span class="p">(</span><span class="s2">"Jean"</span><span class="p">)</span><span class="w">
+</span><span class="n">jean</span><span class="o">$</span><span class="n">add_num</span><span class="p">()</span><span class="w">
+</span><span class="n">jean</span><span class="o">$</span><span class="n">print_name</span><span class="p">()</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "Jean732"</code></pre></figure>
+
+<p>If you want to see a bigger example of <code class="language-plaintext highlighter-rouge">&lt;&lt;-</code>, click <a href="https://masterr.org/r/understand-r-environments-part3/">here</a> for the final article, where I used <code class="language-plaintext highlighter-rouge">&lt;&lt;-</code> to code up the <a href="https://masterr.org/r/calculate-mortgage-payment-schedule/">mortgage payment calculator</a> in a different fashion.</p>
+:ET

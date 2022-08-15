@@ -1,0 +1,149 @@
+I"�1<p>This is the final article of the series on how environments work in R. If you haven’t read the previous articles, I recommend you to do that first. Follow these links:</p>
+
+<ol>
+  <li>
+    <p><a href="https://masterr.org/r/understand-r-environments-part1/">Understand R Environments - Part1</a></p>
+  </li>
+  <li>
+    <p><a href="https://masterr.org/r/understand-r-environments-part2/">Understand R Environments - Part2</a></p>
+  </li>
+  <li>
+    <p><a href="https://masterr.org/r/calculate-mortgage-payment-schedule/">How to Calculate Mortgage Payment Schedule in R</a></p>
+  </li>
+</ol>
+
+<p>Now that we understand the R evaluation model and the <code class="language-plaintext highlighter-rouge">&lt;&lt;-</code> operator, we can code up the Mortgage Payment Calculator in a different fashion.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">amortize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">loan_amt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">200000</span><span class="p">,</span><span class="w"> </span><span class="n">term</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">360</span><span class="p">,</span><span class="w"> </span><span class="n">APR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">4.87</span><span class="o">/</span><span class="m">100</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="c1"># calculate simple monthly rate </span><span class="w">
+        </span><span class="n">monthly_rate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">APR</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="m">12</span><span class="w">
+        
+        </span><span class="c1"># calculate (constant) contractual monthly payment amount</span><span class="w">
+        </span><span class="c1">#       derived from the present value formula for annuities</span><span class="w">
+        </span><span class="c1">#       https://en.wikipedia.org/wiki/Annuity</span><span class="w">
+        </span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="m">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">monthly_rate</span><span class="p">)</span><span class="w"> </span><span class="o">^</span><span class="w"> </span><span class="n">term</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">1</span><span class="w">
+        </span><span class="n">payment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">loan_amt</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">monthly_rate</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">r</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">r</span><span class="w">
+        
+        </span><span class="c1"># initialize outstanding principal </span><span class="w">
+        </span><span class="n">balance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">loan_amt</span><span class="w">
+        
+        </span><span class="c1"># main</span><span class="w">
+        </span><span class="nf">list</span><span class="p">(</span><span class="n">make_payment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+                     </span><span class="n">interest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">balance</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">monthly_rate</span><span class="w">
+                     </span><span class="n">principal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">payment</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">interest</span><span class="w">
+                     </span><span class="n">balance</span><span class="w"> </span><span class="o">&lt;&lt;-</span><span class="w"> </span><span class="n">balance</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">principal</span><span class="w"> </span><span class="c1"># update balance</span><span class="w">
+                     </span><span class="n">setNames</span><span class="p">(</span><span class="n">data.frame</span><span class="p">(</span><span class="n">interest</span><span class="p">,</span><span class="w"> </span><span class="n">principal</span><span class="p">,</span><span class="w"> </span><span class="n">balance</span><span class="p">),</span><span class="w"> 
+                              </span><span class="nf">c</span><span class="p">(</span><span class="s2">"interest"</span><span class="p">,</span><span class="w"> </span><span class="s2">"principal"</span><span class="p">,</span><span class="w"> </span><span class="s2">"balance"</span><span class="p">))</span><span class="w">
+                     </span><span class="p">}</span><span class="w">
+             </span><span class="p">)</span><span class="w">
+</span><span class="p">}</span></code></pre></figure>
+
+<p>Say you want to buy a $350,000 house, and you plan to get a 30-year fixed mortage (interest rate 4.87%) with a 20% down payment. We can use function <code class="language-plaintext highlighter-rouge">amortize</code> to 
+calculate the monthly mortgage payment, broken down by the interest portion and the principal portion. For example, let’s calculate the payment schedule for the first 12 months.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span><span class="w">
+</span><span class="n">options</span><span class="p">(</span><span class="n">scipen</span><span class="o">=</span><span class="m">999</span><span class="p">)</span><span class="w"> </span><span class="c1"># turn off scientific notation</span><span class="w">
+
+</span><span class="c1"># make an amortizer for amortizing your mortgage</span><span class="w">
+</span><span class="n">house_price</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">350000</span><span class="w">
+</span><span class="n">downpmt_pct</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.2</span><span class="w">
+</span><span class="n">term</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">360</span><span class="w">
+</span><span class="n">amortizer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">amortize</span><span class="p">(</span><span class="n">loan_amt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">house_price</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="m">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">downpmt_pct</span><span class="p">),</span><span class="w">
+                     </span><span class="n">term</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">term</span><span class="p">,</span><span class="w"> </span><span class="n">APR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">4.87</span><span class="o">/</span><span class="m">100</span><span class="p">)</span><span class="w">
+
+</span><span class="c1"># amortize first 12 months</span><span class="w">
+</span><span class="n">pmt_schedule</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lapply</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">12</span><span class="p">,</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">month</span><span class="p">)</span><span class="w"> 
+        </span><span class="n">cbind</span><span class="p">(</span><span class="n">month</span><span class="p">,</span><span class="w"> </span><span class="n">amortizer</span><span class="o">$</span><span class="n">make_payment</span><span class="p">()))</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+        </span><span class="n">bind_rows</span><span class="p">()</span><span class="w">
+
+</span><span class="c1"># print</span><span class="w">
+</span><span class="n">knitr</span><span class="o">::</span><span class="n">kable</span><span class="p">(</span><span class="n">pmt_schedule</span><span class="p">,</span><span class="w"> </span><span class="n">digits</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w">
+             </span><span class="n">caption</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Payment schedule for first 12 months"</span><span class="p">)</span></code></pre></figure>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: right">month</th>
+      <th style="text-align: right">interest</th>
+      <th style="text-align: right">principal</th>
+      <th style="text-align: right">balance</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">1136.33</td>
+      <td style="text-align: right">344.60</td>
+      <td style="text-align: right">279655.4</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">2</td>
+      <td style="text-align: right">1134.93</td>
+      <td style="text-align: right">346.00</td>
+      <td style="text-align: right">279309.4</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">3</td>
+      <td style="text-align: right">1133.53</td>
+      <td style="text-align: right">347.40</td>
+      <td style="text-align: right">278962.0</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">4</td>
+      <td style="text-align: right">1132.12</td>
+      <td style="text-align: right">348.81</td>
+      <td style="text-align: right">278613.2</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">5</td>
+      <td style="text-align: right">1130.71</td>
+      <td style="text-align: right">350.23</td>
+      <td style="text-align: right">278263.0</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">6</td>
+      <td style="text-align: right">1129.28</td>
+      <td style="text-align: right">351.65</td>
+      <td style="text-align: right">277911.3</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">7</td>
+      <td style="text-align: right">1127.86</td>
+      <td style="text-align: right">353.08</td>
+      <td style="text-align: right">277558.2</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">8</td>
+      <td style="text-align: right">1126.42</td>
+      <td style="text-align: right">354.51</td>
+      <td style="text-align: right">277203.7</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">9</td>
+      <td style="text-align: right">1124.99</td>
+      <td style="text-align: right">355.95</td>
+      <td style="text-align: right">276847.8</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">10</td>
+      <td style="text-align: right">1123.54</td>
+      <td style="text-align: right">357.39</td>
+      <td style="text-align: right">276490.4</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">11</td>
+      <td style="text-align: right">1122.09</td>
+      <td style="text-align: right">358.84</td>
+      <td style="text-align: right">276131.5</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">12</td>
+      <td style="text-align: right">1120.63</td>
+      <td style="text-align: right">360.30</td>
+      <td style="text-align: right">275771.2</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>This concludes the series on how environment works in R. Drop your questions and comments below.</p>
+:ET

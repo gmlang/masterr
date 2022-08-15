@@ -1,0 +1,207 @@
+I"�h<p>Previously, we discussed two data structures in R: <a href="https://masterr.org/r/RFP-part1-vectors/">vectors</a> and <a href="https://masterr.org/r/RFP-part2-lists/">lists</a>. If you programmed in another language before, you probably already got a sense that R vectors and lists are a tiny bit different than what you’re used to. This is to be expected. In general, there is a nuanced difference between R data structures and that of many other languages.</p>
+
+<p>The phrase “data structure” is often used to mean value containers (e.g., tupple, list, array, vector, matrix etc.). But it can also be used in a broad sense to refer to any data-like objects that can be manipulated. In many other programming languages or informal English, data structures contain values, and values have types (e.g. int or float), but data structures don’t have types. In R, we take the broader meaning, and for this reason, R data structures are called objects<sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">1</a></sup>. R objects have types, but their types are different from data types (e.g. int or float) of most other languages. This can be best seen by example.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">In most other languages</th>
+      <th style="text-align: left">In R</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">89 is an integer.</td>
+      <td style="text-align: left">89 is an object of type integer vector with length 1.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">“hello” is a string.</td>
+      <td style="text-align: left">“hello” is an object of type character vector with length 1.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">1:10 is a container of integer values.</td>
+      <td style="text-align: left">1:10 is an object of type integer vector.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">list(TRUE, 2.2) is a container of a logical and a float.</td>
+      <td style="text-align: left">list(TRUE, 2.2) is an object of type list. Its first element is an object of type logical vector with length 1. Its second element is an object of type numeric vector with length 1.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>So vectors and lists are objects in R. In fact, not only vectors or lists, to quote John Chambers, “everything that exists (in R) is an object.”</p>
+
+<h2 id="variables-or-variable-names-are-objects">Variables or (variable) names are objects.</h2>
+
+<p>Variables in R are objects and have the type “symbol.” For example, we can <code class="language-plaintext highlighter-rouge">quote</code> a variable <code class="language-plaintext highlighter-rouge">x</code> or wrap <code class="language-plaintext highlighter-rouge">as.name</code> around a string <code class="language-plaintext highlighter-rouge">"my_var"</code> and then call <code class="language-plaintext highlighter-rouge">typeof</code> on them. In both cases, we’d get “symbol.”</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">typeof</span><span class="p">(</span><span class="nf">quote</span><span class="p">(</span><span class="n">x</span><span class="p">))</span><span class="w"> </span><span class="c1"># use the function quote() to create a symbol</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "symbol"</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">typeof</span><span class="p">(</span><span class="n">as.name</span><span class="p">(</span><span class="s2">"my_var"</span><span class="p">))</span><span class="w"> </span><span class="c1"># as.name() also creates a symbol. Note it takes in a string.</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "symbol"</code></pre></figure>
+
+<p>Compare this with variables in other languages. In a statically typed language like SML or Rust, variables have data types like <code class="language-plaintext highlighter-rouge">int</code>, <code class="language-plaintext highlighter-rouge">string</code>, <code class="language-plaintext highlighter-rouge">u32</code>, <code class="language-plaintext highlighter-rouge">f64</code> and etc. In a dynamically typed language like Python, variables have no types. R is also dynamically typed, even though its variables have a type<sup id="fnref:2" role="doc-noteref"><a href="#fn:2" class="footnote" rel="footnote">2</a></sup>.</p>
+
+<p>Because R variables are objects, they can be manipulated in the same way as vectors or lists. For example, we can capture the operation of adding two variables and evaluate it later.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">expr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">quote</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="c1"># capture (x + y) without evaluation.</span><span class="w">
+</span><span class="n">typeof</span><span class="p">(</span><span class="n">expr</span><span class="p">)</span><span class="w"> </span><span class="c1"># the captured expression is itself an object, and has type "language".</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "language"</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="c1"># give a value to x.</span><span class="w">
+</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">-1</span><span class="w"> </span><span class="c1"># give a value to y.</span><span class="w">
+</span><span class="n">eval</span><span class="p">(</span><span class="n">expr</span><span class="p">)</span><span class="w"> </span><span class="c1"># now x and y take on particular values, we can evaluate the captured expression (x + y) and get a result.</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] 9</code></pre></figure>
+
+<p>“Computing on the language” is a very powerful feature that many other languages don’t offer. Without it, the almighty <a href="https://www.tidyverse.org">tidyverse</a> would crumble. We’ll spend a lot more time talking about it in later parts of this series. For now, let’s focus on the common role of variables.</p>
+
+<h2 id="variables-refer-to-objects">Variables refer to objects.</h2>
+
+<p>Variables in R play the role of symbolic names<sup id="fnref:3" role="doc-noteref"><a href="#fn:3" class="footnote" rel="footnote">3</a></sup>, and can be bound to any objects. Once a variable is bound to an object, it refers to that object.</p>
+
+<p>For example, if we simply type 6 in the console, we’ll lose it the moment the cursor returns. This is annoying because we may want to do more things to it. The solution is to give it a name by putting a symbol on the left of the assignment operator <code class="language-plaintext highlighter-rouge">&lt;-</code> or <code class="language-plaintext highlighter-rouge">=</code><sup id="fnref:4" role="doc-noteref"><a href="#fn:4" class="footnote" rel="footnote">4</a></sup> and the value 6 on the right.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">6</span></code></pre></figure>
+
+<p>Now the symbol “x” refers to the value 6. Whenever we want to do more things to that 6, we can just use x.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">print</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">2</span><span class="p">)</span><span class="w"> </span><span class="c1"># prints 8</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] 8</code></pre></figure>
+
+<p>In other words, R variables are like math variables. If you’re coming from a math or science background, you may take this for granted and think this is how variables are in all programming languages. But that’s not the case. Many major programming languages make a distinction between “name” and “variable,” and between “name binding” and “variable assignment”. In those languages (for example, C, Java or Rust), a variable is more than a name, and consists of three parts: name, content box and memory location (of the content box). We can think of a variable in those languages as a carefully-stored bottle of wine, with the bottle (content box), the label (name), and the wine opener (memory address) all being part of the game. Using the wine opener, we can uncork the bottle, pour the wine out (if there’re any), and put in different wine. In contrast, a R variable is like a bottle label, while the refered object is like a bottle of wine. Given a bottle of wine, we can place one or more labels on the bottle. If it’s already labeled, we can replace the label with a different one, or we can take off the label and put it on another bottle. But we cannot open a bottle and change the wine because its wine opener isn’t provided<sup id="fnref:5" role="doc-noteref"><a href="#fn:5" class="footnote" rel="footnote">5</a></sup>.</p>
+
+<p>To summarize, SML, C or Java programmers call the “bottle labeling” operation “name binding” and the “changing the wine” operation “variable assignment.” But math people make no such distinction because there’s no “changing the wine” operation in math. In math, “variable assignment” is “name binding” and vice versa, with “variable assignment” being the prefered term. Because R was originally designed for Statisticians and mathematicians, the phrase “variable assignment” is more frequently used in the R world.</p>
+
+<p>The following table shows the different meaning of the same phrase “Variable Assignment” in R vs. many other major languages.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Operation</th>
+      <th style="text-align: left">In many major languages</th>
+      <th style="text-align: left">In R</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">bottle labeling</td>
+      <td style="text-align: left">Name Binding</td>
+      <td style="text-align: left">Variable Assignment</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">opening the bottle and changing the wine</td>
+      <td style="text-align: left">Variable Assignment</td>
+      <td style="text-align: left">Doesn’t support this in base R</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="many-to-one-many-variables-can-refer-to-the-same-object">Many-to-one: Many variables can refer to the same object.</h2>
+
+<p>An object can be assigned to one or many variables. (In other words, one or many names can be bound to the same object, or simply, an object can have many names, or more than one variables can refer to the same object.)</p>
+
+<p>Given a variable <code class="language-plaintext highlighter-rouge">x</code>, we can use <code class="language-plaintext highlighter-rouge">pryr::address(x)</code> to find the memory location of the object that <code class="language-plaintext highlighter-rouge">x</code> points to. (If we’re lazy, we can simply say “the memory location of <code class="language-plaintext highlighter-rouge">x</code>.”) If two variables have the same memory addresses, we say they refer to the same object.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="c1"># bind the symbol x to a value 1</span><span class="w">
+</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="c1"># bind the symbol y to the same value 1</span><span class="w">
+</span><span class="n">x</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="c1"># x and y are equal</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] TRUE</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">identical</span><span class="p">(</span><span class="n">pryr</span><span class="o">::</span><span class="n">address</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="w"> </span><span class="n">pryr</span><span class="o">::</span><span class="n">address</span><span class="p">(</span><span class="n">y</span><span class="p">))</span><span class="w"> </span><span class="c1"># the memory location of the value that x points to is the same as the one that y points to, indicating both x and y point to the same value.</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] TRUE</code></pre></figure>
+
+<p>On the other hand, different variables can refer to different objects, but have the same value. For example in the code below, <code class="language-plaintext highlighter-rouge">x</code> and <code class="language-plaintext highlighter-rouge">y</code> point to two different 1’s.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="c1"># bind x to 1</span><span class="w">
+</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="c1"># bind y to another 1</span><span class="w">
+</span><span class="n">x</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="c1"># x and y are equal in value</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] TRUE</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">identical</span><span class="p">(</span><span class="n">pryr</span><span class="o">::</span><span class="n">address</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="w"> </span><span class="n">pryr</span><span class="o">::</span><span class="n">address</span><span class="p">(</span><span class="n">y</span><span class="p">))</span><span class="w"> </span><span class="c1"># the memory location of x is different from that of y, indicating x and y point to different objects.</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] FALSE</code></pre></figure>
+
+<h2 id="variables-can-be-reassigned">Variables can be reassigned.</h2>
+
+<p>Variables can be reassigned an unlimited number of times. This allows us to use variables just like how we use them in math:</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">6</span><span class="w">
+</span><span class="n">print</span><span class="p">(</span><span class="n">paste</span><span class="p">(</span><span class="s2">"x points to"</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="s2">"located at:"</span><span class="p">,</span><span class="w"> </span><span class="n">pryr</span><span class="o">::</span><span class="n">address</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "x points to 6 located at: 0x7fc5d7e07a38"</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="c1"># use x to compute a new value and reassign it to x</span><span class="w">
+</span><span class="n">print</span><span class="p">(</span><span class="n">paste</span><span class="p">(</span><span class="s2">"x stops pointing to the old value. It now points to"</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="s2">"at:"</span><span class="p">,</span><span class="w"> </span><span class="n">pryr</span><span class="o">::</span><span class="n">address</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "x stops pointing to the old value. It now points to 7 at: 0x7fc5d8823070"</code></pre></figure>
+
+<p>R is dynamically typed, so any variable can refer to any object at any time. For example, a variable can be assigned an integer, and then a string, and then a list, and then a function.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="w">
+</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Norwegian Wood"</span><span class="w">
+</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">,</span><span class="w"> </span><span class="k">function</span><span class="p">()</span><span class="w"> </span><span class="n">print</span><span class="p">(</span><span class="s2">"well..."</span><span class="p">)))</span><span class="w">
+</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="n">n</span><span class="o">^</span><span class="m">2</span></code></pre></figure>
+
+<h2 id="variables-are-reassigned-independently-of-other-variables">Variables are reassigned independently of other variables.</h2>
+
+<p>Variables are not magically linked when they refer to the same object. They are still separate and independent variables. As a result, reassigning one of them won’t reassign the other:</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">6</span><span class="w">
+</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="c1"># both y and x refer to the same 6</span><span class="w">
+</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">identical</span><span class="p">(</span><span class="n">pryr</span><span class="o">::</span><span class="n">address</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="w"> </span><span class="n">pryr</span><span class="o">::</span><span class="n">address</span><span class="p">(</span><span class="n">y</span><span class="p">)))</span><span class="w">
+        </span><span class="n">print</span><span class="p">(</span><span class="n">paste</span><span class="p">(</span><span class="s2">"both x and y point to"</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="s2">"located at:"</span><span class="p">,</span><span class="w"> </span><span class="n">pryr</span><span class="o">::</span><span class="n">address</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "both x and y point to 6 located at: 0x7fc5da625e80"</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="c1"># reassign x a value 9</span><span class="w">
+</span><span class="n">print</span><span class="p">(</span><span class="n">paste</span><span class="p">(</span><span class="s2">"reassigned x, and x now points to"</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="s2">"at:"</span><span class="p">,</span><span class="w"> </span><span class="n">pryr</span><span class="o">::</span><span class="n">address</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "reassigned x, and x now points to 9 at: 0x7fc5da625cf8"</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">print</span><span class="p">(</span><span class="n">paste</span><span class="p">(</span><span class="s2">"y still points to the old"</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="s2">"at:"</span><span class="p">,</span><span class="w"> </span><span class="n">pryr</span><span class="o">::</span><span class="n">address</span><span class="p">(</span><span class="n">y</span><span class="p">)))</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "y still points to the old 6 at: 0x7fc5da625e80"</code></pre></figure>
+
+<h2 id="objects-cant-live-long-without-variables">Objects can’t live long without variables.</h2>
+
+<p>An object has a fleeting life unless it’s assigned to at least one variable. This is because R implements “garbage collection”<sup id="fnref:6" role="doc-noteref"><a href="#fn:6" class="footnote" rel="footnote">6</a></sup>. Internally, R keeps track of the number of variables each object is bound to<sup id="fnref:7" role="doc-noteref"><a href="#fn:7" class="footnote" rel="footnote">7</a></sup>, and automatically cleans up objects that are not referenced at all. For example, when we reassign a variable, the old object it refered to will be garbage collected if it has no other references.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">rm</span><span class="p">(</span><span class="n">list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ls</span><span class="p">())</span><span class="w"> </span><span class="c1"># remove all objects in the global environment</span><span class="w">
+</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"hello"</span><span class="w"> </span><span class="c1"># look at the Environment panel inside Rstudio: x is bound to "hello".</span><span class="w">
+</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"world"</span><span class="w"> </span><span class="c1"># look at the Environment panel, notice x is bound to "world" now. The value "hello" is gone.</span></code></pre></figure>
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1" role="doc-endnote">
+      <p>To avoid confusion, we’ll stop using the phrase “R data structures” and use “objects” or “R objects” instead. We’ll keep using the phrase “data structures” as how it’s commonly understood. <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:2" role="doc-endnote">
+      <p>For this reason, R is sometimes called weakly typed. But this detail is not important. <a href="#fnref:2" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:3" role="doc-endnote">
+      <p>It’s not a coincidence that R variables are designed to have type “symbol.” <a href="#fnref:3" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:4" role="doc-endnote">
+      <p><code class="language-plaintext highlighter-rouge">=</code> and <code class="language-plaintext highlighter-rouge">&lt;-</code> are the same for all practical purpose according to <a href="https://developer.r-project.org/equalAssign.html">RCore</a>. <a href="#fnref:4" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:5" role="doc-endnote">
+      <p>Base R doesn’t provide ways for programmers to directly access the computer’s memory. <a href="#fnref:5" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:6" role="doc-endnote">
+      <p>Not all programming languages implement garbage collection. The Rust programming language is an example. It doesn’t have garbage collection. Instead, it uses ownership to ensure memory safety. <a href="#fnref:6" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:7" role="doc-endnote">
+      <p>The function <code class="language-plaintext highlighter-rouge">pryr::refs()</code> can be used for finding the number of references an object has, but I find its result don’t make much sense. <a href="#fnref:7" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+:ET

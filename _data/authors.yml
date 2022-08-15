@@ -1,20 +1,16 @@
-# Authors
+# Sample Authors
+# Remove file or replace with your own
 
-gmlang:
-  name: Guangming Lang
-  web: https://cabaceo.com/
-  email: gmlang@cabaceo.com
-  bio: ""
-  avatar: gmlang1.jpg
-  twitter: 
-  google:
-    plus: GuangmingLang
+# Billy Rick:
+#   name: Billy Rick
+#   picture: /images/bio-photo-2.jpg
+#   twitter: "@billyrick"
+#   links:
+#     - title: Twitter
+#       url: https://twitter.com/billyrick
+#       icon: fab fa-twitter-square
 
-cornelius_fiddlebone:
-  name: Cornelius Fiddlebone
-  email: cornelius@thewhip.com
-  bio: "I ordered what?"
-  avatar: bio-photo.jpg
-  twitter: rhymeswithsackit
-  google:
-    plus: CorneliusFiddlebone
+# Cornelius Fiddlebone:
+#   name: Cornelius Fiddlebone
+#   picture: /images/bio-photo.jpg
+#   twitter: corneliusfiddlebone

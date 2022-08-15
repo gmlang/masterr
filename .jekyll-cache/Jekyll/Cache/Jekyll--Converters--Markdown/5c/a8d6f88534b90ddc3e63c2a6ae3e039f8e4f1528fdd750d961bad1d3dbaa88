@@ -1,0 +1,116 @@
+I"N;<p>If you want to deal with categorical variables in R, you need to use a data structure called factor. A factor is just a numeric vector with a special attribute called levels. You can think of the levels as labels for the values. Given a character vector, you can turn it into a factor using the factor() function, for example,</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">factor</span><span class="p">(</span><span class="nb">letters</span><span class="p">))</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">##  [1] a b c d e f g h i j k l m n o p q r s t u v w x y z
+## Levels: a b c d e f g h i j k l m n o p q r s t u v w x y z</code></pre></figure>
+
+<p>We can subset a factor, and depending on how you want it, you can get a sub-factor that either preserves the original levels or has simplified levels that only appear in the sub-factor. Continue with the example, say we want to subset the first 4 letters.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># subset while preserving the levels</span><span class="w">
+</span><span class="n">x</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">4</span><span class="p">]</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] a b c d
+## Levels: a b c d e f g h i j k l m n o p q r s t u v w x y z</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># subset and dropping levels that don't appear in the subset</span><span class="w">
+</span><span class="p">(</span><span class="n">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">4</span><span class="p">,</span><span class="w"> </span><span class="n">drop</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">])</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] a b c d
+## Levels: a b c d</code></pre></figure>
+
+<p>We can re-order the values of a factor. For example, we can reverse the order of the values in z.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">str</span><span class="p">(</span><span class="n">rev</span><span class="p">(</span><span class="n">z</span><span class="p">))</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">##  Factor w/ 4 levels "a","b","c","d": 4 3 2 1</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">str</span><span class="p">(</span><span class="n">z</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">##  Factor w/ 4 levels "a","b","c","d": 1 2 3 4</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">rev</span><span class="p">(</span><span class="n">z</span><span class="p">)[</span><span class="m">1</span><span class="p">]</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] d
+## Levels: a b c d</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">z</span><span class="p">[</span><span class="m">1</span><span class="p">]</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] a
+## Levels: a b c d</code></pre></figure>
+
+<p>Note the values are reversed to “4 3 2 1” from the original “1 2 3 4”, while the labels remain the same order.</p>
+
+<p>We can also re-order the levels of a factor. For example, we can reverse the order of the levels in z.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># before</span><span class="w">
+</span><span class="n">str</span><span class="p">(</span><span class="n">z</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">##  Factor w/ 4 levels "a","b","c","d": 1 2 3 4</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">z</span><span class="p">[</span><span class="m">1</span><span class="p">]</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] a
+## Levels: a b c d</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># reverse the levels</span><span class="w">
+</span><span class="n">levels</span><span class="p">(</span><span class="n">z</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rev</span><span class="p">(</span><span class="n">levels</span><span class="p">(</span><span class="n">z</span><span class="p">))</span><span class="w">
+
+</span><span class="c1"># after</span><span class="w">
+</span><span class="n">str</span><span class="p">(</span><span class="n">z</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">##  Factor w/ 4 levels "d","c","b","a": 1 2 3 4</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">z</span><span class="p">[</span><span class="m">1</span><span class="p">]</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] d
+## Levels: d c b a</code></pre></figure>
+
+<p>Note the labels are reversed to “d, c, b, a” from the original “a, b, c, d”, while the values remain the same order.</p>
+
+<p>Now let’s make some fake numeric data for the levels of z and make a ggplot2 bar chart.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">suppressMessages</span><span class="p">({</span><span class="w"> </span><span class="n">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span><span class="w"> </span><span class="p">})</span><span class="w">
+
+</span><span class="c1"># make fake data</span><span class="w">
+</span><span class="n">df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data.frame</span><span class="p">(</span><span class="n">cat</span><span class="o">=</span><span class="n">z</span><span class="p">,</span><span class="w"> </span><span class="n">val</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">50</span><span class="p">,</span><span class="m">45</span><span class="p">,</span><span class="m">70</span><span class="p">,</span><span class="m">30</span><span class="p">))</span><span class="w">
+
+</span><span class="c1"># make barplot</span><span class="w">
+</span><span class="n">ggplot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">cat</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="o">=</span><span class="n">val</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w">
+        </span><span class="n">geom_bar</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="n">cat</span><span class="p">),</span><span class="w"> </span><span class="n">stat</span><span class="o">=</span><span class="s2">"identity"</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+        </span><span class="n">geom_text</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="n">val</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="o">=</span><span class="n">val</span><span class="m">+1</span><span class="p">),</span><span class="w"> </span><span class="n">size</span><span class="o">=</span><span class="m">3</span><span class="p">)</span></code></pre></figure>
+
+<p><img src="/../figs/2014-09-03-how-to-work-with-factors-in-r/unnamed-chunk-5-1.png" alt="center" /></p>
+
+<p>It’d be nice if we order the bars from tallest to shortest. To do that, we can make a factor specifying its levels to be the categories corresponding to the descending order of val.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># sort by val in descending order</span><span class="w">
+</span><span class="n">df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">df</span><span class="p">[</span><span class="n">order</span><span class="p">(</span><span class="o">-</span><span class="n">df</span><span class="o">$</span><span class="n">val</span><span class="p">),]</span><span class="w">
+
+</span><span class="c1"># notice that we need to pass the cat sorted by val into the factor function</span><span class="w">
+</span><span class="n">df</span><span class="o">$</span><span class="n">cat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">factor</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">cat</span><span class="p">,</span><span class="w"> </span><span class="n">levels</span><span class="o">=</span><span class="n">df</span><span class="o">$</span><span class="n">cat</span><span class="p">)</span><span class="w">
+
+</span><span class="c1"># make bar chart</span><span class="w">
+</span><span class="n">ggplot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">cat</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="o">=</span><span class="n">val</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w">
+        </span><span class="n">geom_bar</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="n">cat</span><span class="p">),</span><span class="w"> </span><span class="n">stat</span><span class="o">=</span><span class="s2">"identity"</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+        </span><span class="n">geom_text</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="n">val</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="o">=</span><span class="n">val</span><span class="m">+1</span><span class="p">),</span><span class="w"> </span><span class="n">size</span><span class="o">=</span><span class="m">3</span><span class="p">)</span></code></pre></figure>
+
+<p><img src="/../figs/2014-09-03-how-to-work-with-factors-in-r/unnamed-chunk-6-1.png" alt="center" /></p>
+
+<p>Alternatively, we can use <code class="language-plaintext highlighter-rouge">reorder()</code> and <code class="language-plaintext highlighter-rouge">rank()</code> to merely reorder the levels of cat by the descending order of val.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># make fake data</span><span class="w">
+</span><span class="n">df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data.frame</span><span class="p">(</span><span class="n">cat</span><span class="o">=</span><span class="n">z</span><span class="p">,</span><span class="w"> </span><span class="n">val</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">50</span><span class="p">,</span><span class="m">45</span><span class="p">,</span><span class="m">70</span><span class="p">,</span><span class="m">30</span><span class="p">))</span><span class="w">
+
+</span><span class="c1"># reorder the levels of cat by decreasing order of val</span><span class="w">
+</span><span class="n">df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">transform</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="n">cat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">reorder</span><span class="p">(</span><span class="n">cat</span><span class="p">,</span><span class="w"> </span><span class="n">rank</span><span class="p">(</span><span class="o">-</span><span class="n">val</span><span class="p">)))</span><span class="w">
+
+</span><span class="c1"># make barplot</span><span class="w">
+</span><span class="n">ggplot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">cat</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="o">=</span><span class="n">val</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w">
+        </span><span class="n">geom_bar</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="n">cat</span><span class="p">),</span><span class="w"> </span><span class="n">stat</span><span class="o">=</span><span class="s2">"identity"</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+        </span><span class="n">geom_text</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="n">val</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="o">=</span><span class="n">val</span><span class="m">+1</span><span class="p">),</span><span class="w"> </span><span class="n">size</span><span class="o">=</span><span class="m">3</span><span class="p">)</span></code></pre></figure>
+
+<p><img src="/../figs/2014-09-03-how-to-work-with-factors-in-r/unnamed-chunk-7-1.png" alt="center" /></p>
+
+<p>Notice that <code class="language-plaintext highlighter-rouge">rank()</code> returns the ranking order of each value in its input vector, whereas <code class="language-plaintext highlighter-rouge">order()</code> returns the indices that would put its input vector in order.</p>
+:ET

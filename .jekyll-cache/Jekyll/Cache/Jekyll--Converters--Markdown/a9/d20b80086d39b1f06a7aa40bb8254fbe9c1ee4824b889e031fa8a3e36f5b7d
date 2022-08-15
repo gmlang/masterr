@@ -1,0 +1,156 @@
+I"u@<p>We talked about functions that return functions and functions that eat functions. If you are new and curious, you can search my old blog posts. Today, I’m going to show you a real world example of how to use functions that return functions to clean data. By the end of the post, I’m sure you’ll be amazed by their beauty and power. Let’s get started. First, we define 3 functions that return functions.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">split_by</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">char</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="c1"># Returns a function that can be used to split a character vector by char</span><span class="w">
+        </span><span class="c1">#</span><span class="w">
+        </span><span class="c1"># char: a string indicating where to split, for example, "," or ", "</span><span class="w">
+        </span><span class="k">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="c1"># x: a character vector</span><span class="w">
+                </span><span class="n">out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lapply</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">elt</span><span class="p">)</span><span class="w"> </span><span class="n">strsplit</span><span class="p">(</span><span class="n">elt</span><span class="p">,</span><span class="w"> </span><span class="n">char</span><span class="p">)[[</span><span class="m">1</span><span class="p">]])</span><span class="w">
+                </span><span class="n">data.frame</span><span class="p">(</span><span class="n">do.call</span><span class="p">(</span><span class="s2">"rbind"</span><span class="p">,</span><span class="w"> </span><span class="n">out</span><span class="p">),</span><span class="w"> </span><span class="n">stringsAsFactors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">F</span><span class="p">)</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="n">rm_char</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">char</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="c1"># Returns a function that can be used to remove the character(s) </span><span class="w">
+        </span><span class="c1"># represented by char from all the elements of a character vector</span><span class="w">
+        </span><span class="c1">#</span><span class="w">
+        </span><span class="c1"># char: a string or regular expression</span><span class="w">
+        </span><span class="k">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="c1"># x: a character vector</span><span class="w">
+                </span><span class="n">gsub</span><span class="p">(</span><span class="n">char</span><span class="p">,</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="n">fix_missing</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">na_val</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="c1"># Returns a function that can be used to replace the values represented</span><span class="w">
+        </span><span class="c1"># by na_val with NA in a vector.</span><span class="w">
+        </span><span class="k">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="c1"># x: a numeric or character vector</span><span class="w">
+                </span><span class="n">x</span><span class="p">[</span><span class="n">x</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">na_val</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">NA</span><span class="w">
+                </span><span class="n">x</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span></code></pre></figure>
+
+<p>Make sure you read these function definitions line by line three times before you move forward.</p>
+
+<p>Next, we make some messy data.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">dat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">read.table</span><span class="p">(</span><span class="n">header</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">text</span><span class="o">=</span><span class="s1">'
+                city_state zipcode
+                "BEDMINISTER, NJ" "07921 -7028"
+                "ALTURAS, CA" "96101-3113"
+                "ALTURAS, CA" "96101- 3113"
+                "STOCKTON, CA" "95207 - "
+                "MADRAS, OR" "97741 - "'</span><span class="p">,</span><span class="w"> </span><span class="n">stringsAsFactors</span><span class="o">=</span><span class="nb">F</span><span class="p">)</span><span class="w">
+</span><span class="n">dat</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">##        city_state     zipcode
+## 1 BEDMINISTER, NJ 07921 -7028
+## 2     ALTURAS, CA  96101-3113
+## 3     ALTURAS, CA 96101- 3113
+## 4    STOCKTON, CA    95207 - 
+## 5      MADRAS, OR    97741 -</code></pre></figure>
+
+<p>I’ve cleaned much worse data, but this is good and representative enough for our purpose. Here’re the places we need to clean up:</p>
+<ol>
+  <li>the city and state are in one column, and we need to separate it into two columns.</li>
+  <li>the first 5 and last 4 digits of the zip code are in one column, and we also want to separate them into two columns.</li>
+  <li>we need to make sure the separated columns do not contain spaces.</li>
+  <li>if a value is missing in the newly created columns, we need to make sure it’s NA instead of “”.</li>
+</ol>
+
+<p>First, let’s separate city and state.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># make a function to split by comma</span><span class="w">
+</span><span class="n">split_by_comma</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">split_by</span><span class="p">(</span><span class="s2">","</span><span class="p">)</span><span class="w">
+</span><span class="c1"># split city_state by comma using the function just made</span><span class="w">
+</span><span class="n">dat_part1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">split_by_comma</span><span class="p">(</span><span class="n">dat</span><span class="o">$</span><span class="n">city_state</span><span class="p">)</span><span class="w">
+</span><span class="c1"># update the column names</span><span class="w">
+</span><span class="nf">names</span><span class="p">(</span><span class="n">dat_part1</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"city"</span><span class="p">,</span><span class="w"> </span><span class="s2">"state"</span><span class="p">)</span><span class="w">
+</span><span class="c1"># print the result</span><span class="w">
+</span><span class="n">dat_part1</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">##          city state
+## 1 BEDMINISTER    NJ
+## 2     ALTURAS    CA
+## 3     ALTURAS    CA
+## 4    STOCKTON    CA
+## 5      MADRAS    OR</code></pre></figure>
+
+<p>Next, let’s divide zipcode into first 5 and last 4 digits.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># make a function to split by dash</span><span class="w">
+</span><span class="n">split_by_dash</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">split_by</span><span class="p">(</span><span class="s2">"-"</span><span class="p">)</span><span class="w">
+</span><span class="c1"># split zipcode by dash using the function just made</span><span class="w">
+</span><span class="n">dat_part2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">split_by_dash</span><span class="p">(</span><span class="n">dat</span><span class="o">$</span><span class="n">zipcode</span><span class="p">)</span><span class="w">
+</span><span class="c1"># update the column names</span><span class="w">
+</span><span class="nf">names</span><span class="p">(</span><span class="n">dat_part2</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"zip_first5"</span><span class="p">,</span><span class="w"> </span><span class="s2">"zip_last4"</span><span class="p">)</span><span class="w">
+</span><span class="c1"># print result</span><span class="w">
+</span><span class="n">dat_part2</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">##   zip_first5 zip_last4
+## 1     07921       7028
+## 2      96101      3113
+## 3      96101      3113
+## 4     95207           
+## 5     97741</code></pre></figure>
+
+<p>Notice how similar these two chunks of code! If you cannot appreciate their neatness, go back and read the definition of <code class="language-plaintext highlighter-rouge">split_by()</code> again. Understand what it does.</p>
+
+<p>Next, we combine <code class="language-plaintext highlighter-rouge">dat_part1</code> and <code class="language-plaintext highlighter-rouge">dat_part2</code> into one data frame, and check the variables.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">dat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cbind</span><span class="p">(</span><span class="n">dat_part1</span><span class="p">,</span><span class="w"> </span><span class="n">dat_part2</span><span class="p">)</span><span class="w">
+</span><span class="n">str</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## 'data.frame':	5 obs. of  4 variables:
+##  $ city      : chr  "BEDMINISTER" "ALTURAS" "ALTURAS" "STOCKTON" ...
+##  $ state     : chr  " NJ" " CA" " CA" " CA" ...
+##  $ zip_first5: chr  "07921 " "96101" "96101" "95207 " ...
+##  $ zip_last4 : chr  "7028" "3113" " 3113" " " ...</code></pre></figure>
+
+<p>We observe that <code class="language-plaintext highlighter-rouge">state</code> has a space in front of all its elements, <code class="language-plaintext highlighter-rouge">zip_first5</code> has spaces trailing some of its elements, and <code class="language-plaintext highlighter-rouge">zip_last4</code> also has spaces in some of its elements. We need to remove the spaces, and that’s what we’re doing next.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># make a function to remove a single space</span><span class="w">
+</span><span class="n">rm_space</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rm_char</span><span class="p">(</span><span class="s2">" "</span><span class="p">)</span><span class="w">
+</span><span class="c1"># lapply the function just made to every column of dat</span><span class="w">
+</span><span class="c1"># pay attention to the left side of the equal sign</span><span class="w">
+</span><span class="n">dat</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lapply</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span><span class="w"> </span><span class="n">rm_space</span><span class="p">)</span><span class="w">
+</span><span class="n">str</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## 'data.frame':	5 obs. of  4 variables:
+##  $ city      : chr  "BEDMINISTER" "ALTURAS" "ALTURAS" "STOCKTON" ...
+##  $ state     : chr  "NJ" "CA" "CA" "CA" ...
+##  $ zip_first5: chr  "07921" "96101" "96101" "95207" ...
+##  $ zip_last4 : chr  "7028" "3113" "3113" "" ...</code></pre></figure>
+
+<p>Pause for a moment, and go back to read the definition of <code class="language-plaintext highlighter-rouge">rm_char()</code> again. Make sure you understand what it does.</p>
+
+<p>Finally, the action of removing spaces caused empty strings for some values, and we need to replace them with NA’s.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># make a function to replace "" with NA</span><span class="w">
+</span><span class="n">fix_missing_empty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fix_missing</span><span class="p">(</span><span class="s2">""</span><span class="p">)</span><span class="w">
+</span><span class="c1"># lapply the function just made to every column of dat</span><span class="w">
+</span><span class="c1"># pay attention again to the left side of the equal sign</span><span class="w">
+</span><span class="n">dat</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lapply</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span><span class="w"> </span><span class="n">fix_missing_empty</span><span class="p">)</span><span class="w">
+</span><span class="n">str</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## 'data.frame':	5 obs. of  4 variables:
+##  $ city      : chr  "BEDMINISTER" "ALTURAS" "ALTURAS" "STOCKTON" ...
+##  $ state     : chr  "NJ" "CA" "CA" "CA" ...
+##  $ zip_first5: chr  "07921" "96101" "96101" "95207" ...
+##  $ zip_last4 : chr  "7028" "3113" "3113" NA ...</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">dat</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">##          city state zip_first5 zip_last4
+## 1 BEDMINISTER    NJ      07921      7028
+## 2     ALTURAS    CA      96101      3113
+## 3     ALTURAS    CA      96101      3113
+## 4    STOCKTON    CA      95207      &lt;NA&gt;
+## 5      MADRAS    OR      97741      &lt;NA&gt;</code></pre></figure>
+
+<p>Do you understand what <code class="language-plaintext highlighter-rouge">fix_missing()</code> does? If not, go back and read its definition again…</p>
+
+<p>This article is inspired by Hadley’s book “Advanced R”, which can be <a rel="nofollow" href="https://www.amazon.com/gp/product/1466586966/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=1466586966&amp;linkCode=as2&amp;tag=cabaceo-20&amp;linkId=2GDWMZSF4NX32QIO">obtained from Amazon</a><img src="https://ir-na.amazon-adsystem.com/e/ir?t=cabaceo-20&amp;l=as2&amp;o=1&amp;a=1466586966" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />.</p>
+:ET

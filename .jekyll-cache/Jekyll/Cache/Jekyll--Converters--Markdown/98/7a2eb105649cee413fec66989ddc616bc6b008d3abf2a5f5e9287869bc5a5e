@@ -1,0 +1,107 @@
+I"ˆM<p>Previously, I wrote about the <a href="https://masterr.org/da/skewness-and-kurtosis/">intuitions behind skewness and kurtosis</a>. Today Iâ€™m going to do some calculations using the daily adjusted close prices of the S&amp;P500 and NovaGold between January 4, 2007 and October 10, 2014. You can download the data from yahoo and follow along. First of all, I defined some helper functions, which can also be used in other contexts to improve code organization and efficiency.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1">## helper functions</span><span class="w">
+</span><span class="n">as_date</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">...</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> 
+        </span><span class="c1"># Converts numeric or character vectors to dates</span><span class="w">
+        </span><span class="c1"># </span><span class="w">
+        </span><span class="c1"># Args:</span><span class="w">
+        </span><span class="c1">#       x   : a numeric or character vector</span><span class="w">
+        </span><span class="c1">#       ... : other arguments like format = "%Y%m%d"</span><span class="w">
+        </span><span class="c1"># Returns:</span><span class="w">
+        </span><span class="c1">#       a vector of dates</span><span class="w">
+        </span><span class="n">dts.char</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">unique</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w">
+        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nf">is.numeric</span><span class="p">(</span><span class="n">dts.char</span><span class="p">))</span><span class="w"> </span><span class="n">dts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">as.Date</span><span class="p">(</span><span class="nf">as.character</span><span class="p">(</span><span class="n">dts.char</span><span class="p">),</span><span class="w"> </span><span class="n">...</span><span class="p">)</span><span class="w">
+        </span><span class="k">else</span><span class="w"> </span><span class="n">dts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">as.Date</span><span class="p">(</span><span class="n">dts.char</span><span class="p">,</span><span class="w"> </span><span class="n">...</span><span class="p">)</span><span class="w">
+        
+        </span><span class="c1"># match returns a vector of positions of first matches of elts of x in </span><span class="w">
+        </span><span class="c1"># dts.char, and because dts.char is unique, match here really finds, </span><span class="w">
+        </span><span class="c1"># for any element in x, the index of the element in dts.char that </span><span class="w">
+        </span><span class="c1"># matches it.</span><span class="w">
+        </span><span class="n">dts</span><span class="p">[</span><span class="n">match</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">dts.char</span><span class="p">)]</span><span class="w"> 
+</span><span class="p">}</span><span class="w">
+
+</span><span class="n">calc_cc_ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="n">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span><span class="w">
+        </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mutate</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="n">Date</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">as_date</span><span class="p">(</span><span class="n">Date</span><span class="p">,</span><span class="w"> </span><span class="n">format</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"%m/%d/%y"</span><span class="p">))</span><span class="w"> 
+        </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">arrange</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">Date</span><span class="p">)</span><span class="w">
+        </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mutate</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">Pt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Adj.Close</span><span class="p">,</span><span class="w"> </span><span class="n">Pt.minus1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lag</span><span class="p">(</span><span class="n">Adj.Close</span><span class="p">))</span><span class="w">
+        </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="m">-1</span><span class="p">,</span><span class="w"> </span><span class="p">]</span><span class="w">
+        </span><span class="n">mutate</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">rt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">100</span><span class="o">*</span><span class="nf">log</span><span class="p">(</span><span class="n">Pt</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">Pt.minus1</span><span class="p">))</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="n">calc_shape_char</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="n">library</span><span class="p">(</span><span class="n">PerformanceAnalytics</span><span class="p">)</span><span class="w">
+        </span><span class="nf">c</span><span class="p">(</span><span class="n">mean</span><span class="o">=</span><span class="n">mean</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="w"> </span><span class="n">sd</span><span class="o">=</span><span class="n">sd</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="w"> </span><span class="n">skewness</span><span class="o">=</span><span class="n">skewness</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="w"> 
+          </span><span class="n">excess.kurtosis</span><span class="o">=</span><span class="n">kurtosis</span><span class="p">(</span><span class="n">x</span><span class="p">))</span><span class="w">        
+</span><span class="p">}</span><span class="w">
+
+</span><span class="n">plt_density</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="n">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span><span class="w">
+        </span><span class="n">ggplot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">ret</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="o">=</span><span class="n">label</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">geom_density</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">theme_bw</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> 
+                </span><span class="n">labs</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"daily continuously compounded return (%)"</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span></code></pre></figure>
+
+<p>Next, I loaded the data into R and calculated the daily continuously compounded returns for each stock.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">proj_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"~/Communities/masterr/_knitr/data"</span><span class="w">
+</span><span class="n">ng_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">file.path</span><span class="p">(</span><span class="n">proj_path</span><span class="p">,</span><span class="w"> </span><span class="s2">"ng.csv"</span><span class="p">)</span><span class="w">
+</span><span class="n">sp500_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">file.path</span><span class="p">(</span><span class="n">proj_path</span><span class="p">,</span><span class="w"> </span><span class="s2">"sp500.csv"</span><span class="p">)</span><span class="w">
+</span><span class="n">ng</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">read.csv</span><span class="p">(</span><span class="n">ng_path</span><span class="p">,</span><span class="w"> </span><span class="n">header</span><span class="o">=</span><span class="nb">T</span><span class="p">,</span><span class="w"> </span><span class="n">stringsAsFactors</span><span class="o">=</span><span class="nb">F</span><span class="p">)</span><span class="w">
+</span><span class="n">sp500</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">read.csv</span><span class="p">(</span><span class="n">sp500_path</span><span class="p">,</span><span class="w"> </span><span class="n">header</span><span class="o">=</span><span class="nb">T</span><span class="p">,</span><span class="w"> </span><span class="n">stringsAsFactors</span><span class="o">=</span><span class="nb">F</span><span class="p">)</span><span class="w">
+
+</span><span class="c1"># calculate continuously compounded returns</span><span class="w">
+</span><span class="n">ng</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">calc_cc_ret</span><span class="p">(</span><span class="n">ng</span><span class="p">)</span><span class="w">
+</span><span class="n">sp500</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">calc_cc_ret</span><span class="p">(</span><span class="n">sp500</span><span class="p">)</span></code></pre></figure>
+
+<p>Next, I calculated the 4 shape characteristics of these daily returns for each stock.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># calcuate shape characteristics</span><span class="w">
+</span><span class="p">(</span><span class="n">ng.shape</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">calc_shape_char</span><span class="p">(</span><span class="n">ng</span><span class="o">$</span><span class="n">rt</span><span class="p">))</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Error in library(PerformanceAnalytics): there is no package called 'PerformanceAnalytics'</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="p">(</span><span class="n">sp500.shape</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">calc_shape_char</span><span class="p">(</span><span class="n">sp500</span><span class="o">$</span><span class="n">rt</span><span class="p">))</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Error in library(PerformanceAnalytics): there is no package called 'PerformanceAnalytics'</code></pre></figure>
+
+<p>Note the S&amp;P500 had a mild negative skewness while NovaGold had a big negative skewness. Remember the normal distribution has a skewness of 0. In addition, both stocks had excess kurtosis comparing to the normal distribution. In particular, NovaGold had an excess kurtosis of 85.8, which made it much more likely to experience wild price swings than both the S&amp;P500 and a normal distribution would.</p>
+
+<p>Next, I simulated normal data using the corresponding mean and sd of the daily returns of each stock respectively. I then plot the densities of each stock along side with their normal counterparts.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">set.seed</span><span class="p">(</span><span class="m">1020</span><span class="p">)</span><span class="w">
+</span><span class="n">norm.ng</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rnorm</span><span class="p">(</span><span class="n">nrow</span><span class="p">(</span><span class="n">ng</span><span class="p">),</span><span class="w"> </span><span class="n">mean</span><span class="o">=</span><span class="n">ng.shape</span><span class="p">[</span><span class="s2">"mean"</span><span class="p">],</span><span class="w"> </span><span class="n">sd</span><span class="o">=</span><span class="n">ng.shape</span><span class="p">[</span><span class="s2">"sd"</span><span class="p">])</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Error in rnorm(nrow(ng), mean = ng.shape["mean"], sd = ng.shape["sd"]): object 'ng.shape' not found</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">norm.sp500</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rnorm</span><span class="p">(</span><span class="n">nrow</span><span class="p">(</span><span class="n">sp500</span><span class="p">),</span><span class="w"> </span><span class="n">mean</span><span class="o">=</span><span class="n">sp500.shape</span><span class="p">[</span><span class="s2">"mean"</span><span class="p">],</span><span class="w"> </span><span class="n">sd</span><span class="o">=</span><span class="n">sp500.shape</span><span class="p">[</span><span class="s2">"sd"</span><span class="p">])</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Error in rnorm(nrow(sp500), mean = sp500.shape["mean"], sd = sp500.shape["sd"]): object 'sp500.shape' not found</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">library</span><span class="p">(</span><span class="n">tidyr</span><span class="p">)</span><span class="w">
+</span><span class="n">ret.ng</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data.frame</span><span class="p">(</span><span class="n">ng</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ng</span><span class="o">$</span><span class="n">rt</span><span class="p">,</span><span class="w"> </span><span class="n">normal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">norm.ng</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Error in data.frame(ng = ng$rt, normal = norm.ng): object 'norm.ng' not found</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">ret.ng</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ret.ng</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="n">gather</span><span class="p">(</span><span class="n">label</span><span class="p">,</span><span class="w"> </span><span class="n">ret</span><span class="p">,</span><span class="w"> </span><span class="n">ng</span><span class="o">:</span><span class="n">normal</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Error in eval(lhs, parent, parent): object 'ret.ng' not found</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">ret.sp500</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data.frame</span><span class="p">(</span><span class="n">sp500</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sp500</span><span class="o">$</span><span class="n">rt</span><span class="p">,</span><span class="w"> </span><span class="n">normal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">norm.sp500</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Error in data.frame(sp500 = sp500$rt, normal = norm.sp500): object 'norm.sp500' not found</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">ret.sp500</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ret.sp500</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="n">gather</span><span class="p">(</span><span class="n">label</span><span class="p">,</span><span class="w"> </span><span class="n">ret</span><span class="p">,</span><span class="w"> </span><span class="n">sp500</span><span class="o">:</span><span class="n">normal</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Error in eval(lhs, parent, parent): object 'ret.sp500' not found</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># plot</span><span class="w">
+</span><span class="n">plt_density</span><span class="p">(</span><span class="n">ret.ng</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Error in ggplot(df, aes(x = ret, color = label)): object 'ret.ng' not found</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">plt_density</span><span class="p">(</span><span class="n">ret.sp500</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Error in ggplot(df, aes(x = ret, color = label)): object 'ret.sp500' not found</code></pre></figure>
+
+<p>Note, both NovaGold and the S&amp;P500 have longer and fatter tails than the normal curve.</p>
+:ET

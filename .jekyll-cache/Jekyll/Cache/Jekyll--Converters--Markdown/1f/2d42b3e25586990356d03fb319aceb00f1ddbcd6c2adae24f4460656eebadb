@@ -1,0 +1,93 @@
+I":<p>R is my favorite tool for data analysis except when it comes to dealing with large datasets. If the data file is larger than the size of your RAM, R will fail at reading it in. So when you have a large dataset, you should first check if you have enough memory. I showed <a href="https://masterr.org/r/how-to-handle-large-datasets-in-r-part-1/">a method of doing that</a> when all you know is the number of rows and columns in the data file.</p>
+
+<p>Let’s say you find out the data file is too large for R to handle, what would you do? You can take a random sample from the data file, read and analyze the sample using R. The following <code class="language-plaintext highlighter-rouge">readbig()</code> function does that. It reads the input data file in chunks, takes a sample of user specified size, and returns the read-in data as a data frame.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">readbig</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="w"> </span><span class="p">(</span><span class="n">file</span><span class="p">,</span><span class="w"> </span><span class="n">samplesz</span><span class="p">,</span><span class="w"> </span><span class="n">chunksz</span><span class="p">,</span><span class="w"> </span><span class="n">sep</span><span class="o">=</span><span class="s1">','</span><span class="p">,</span><span class="w"> </span><span class="n">header</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">nrec</span><span class="o">=</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="n">...</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="c1">## this function reads in a random sample of a big input data file</span><span class="w">
+        
+        </span><span class="c1">## @file: input file path</span><span class="w">
+        </span><span class="c1">## @samplesz: sample size</span><span class="w">
+        </span><span class="c1">## @chunksz: size of chunks to read in at each iteration</span><span class="w">
+        </span><span class="c1">## @header: logical value indicating if the input file has a header</span><span class="w">
+        </span><span class="c1">## @nrec: number of rows in input file. If @nrec is &lt;= 0, this function</span><span class="w">
+        </span><span class="c1">##        will use operating system command to find out its value.</span><span class="w">
+        </span><span class="c1">##        Default value is 0. </span><span class="w">
+        
+        </span><span class="c1"># a pretty efficient way to find the number of lines in file</span><span class="w">
+        </span><span class="c1"># comment out the following appropriate codeblocks (line16-28) </span><span class="w">
+        </span><span class="c1"># depending on your operating system.</span><span class="w">
+        
+</span><span class="c1">#         # Windows: </span><span class="w">
+</span><span class="c1">#         # shell('type "comma.txt" | find /c ","', intern=TRUE)</span><span class="w">
+</span><span class="c1">#         if(nrec &lt;= 0) </span><span class="w">
+</span><span class="c1">#                 nrec = as.numeric(</span><span class="w">
+</span><span class="c1">#                         shell( paste0('type ',file,' | find /c ','"',sep,'"'), </span><span class="w">
+</span><span class="c1">#                                intern=TRUE ) )</span><span class="w">
+        
+        </span><span class="c1"># Mac or Linux:</span><span class="w">
+        </span><span class="c1"># system('cat comma.txt | wc -l', intern=TRUE)</span><span class="w">
+        </span><span class="k">if</span><span class="p">(</span><span class="n">nrec</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="m">0</span><span class="p">)</span><span class="w"> 
+                </span><span class="n">nrec</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">as.numeric</span><span class="p">(</span><span class="w">
+                        </span><span class="n">system</span><span class="p">(</span><span class="w"> </span><span class="n">paste0</span><span class="p">(</span><span class="s1">'cat '</span><span class="p">,</span><span class="n">file</span><span class="p">,</span><span class="s1">' | wc -l'</span><span class="p">),</span><span class="w"> 
+                                </span><span class="n">intern</span><span class="o">=</span><span class="kc">TRUE</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">)</span><span class="w">
+        
+        </span><span class="c1"># create a file connection</span><span class="w">
+        </span><span class="n">f</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">file</span><span class="p">(</span><span class="n">file</span><span class="p">,</span><span class="w"> </span><span class="s1">'r'</span><span class="p">)</span><span class="w">
+        </span><span class="nf">on.exit</span><span class="p">(</span><span class="n">close</span><span class="p">(</span><span class="n">f</span><span class="p">))</span><span class="w">
+        
+        </span><span class="c1"># take a sample (of size samplesz) of the row indices and sort them</span><span class="w">
+        </span><span class="n">use</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sort</span><span class="p">(</span><span class="n">sample</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="n">nrec</span><span class="p">,</span><span class="w"> </span><span class="n">samplesz</span><span class="p">))</span><span class="w">
+        
+        </span><span class="c1"># read the 1st line</span><span class="w">
+        </span><span class="n">line1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">readLines</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="m">1</span><span class="p">)</span><span class="w"> 
+        
+        </span><span class="c1"># calculate the number of cols of the file</span><span class="w">
+        </span><span class="n">line1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">unlist</span><span class="p">(</span><span class="n">strsplit</span><span class="p">(</span><span class="n">line1</span><span class="p">,</span><span class="n">sep</span><span class="p">)[[</span><span class="m">1</span><span class="p">]])</span><span class="w">
+        </span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">length</span><span class="p">(</span><span class="n">line1</span><span class="p">)</span><span class="w">
+        
+        </span><span class="c1"># re-position the file to its origin</span><span class="w">
+        </span><span class="n">seek</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="m">0</span><span class="p">)</span><span class="w"> 
+        
+        </span><span class="c1"># make a zero-matrix with samplesz rows and k cols</span><span class="w">
+        </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data.frame</span><span class="p">(</span><span class="n">matrix</span><span class="p">(</span><span class="kc">NA</span><span class="p">,</span><span class="w"> </span><span class="n">samplesz</span><span class="p">,</span><span class="w"> </span><span class="n">k</span><span class="p">))</span><span class="w">
+        
+        </span><span class="c1"># initialize some values</span><span class="w">
+        </span><span class="n">read</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="w">
+        </span><span class="n">got</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="w">
+        </span><span class="n">left</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nrec</span><span class="w">
+        </span><span class="n">skip_row</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="w">
+        
+        </span><span class="c1"># skip the header if there's one</span><span class="w">
+        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">header</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="n">left</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nrec</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">1</span><span class="w"> 
+                </span><span class="n">skip_row</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="w">
+                </span><span class="nf">names</span><span class="p">(</span><span class="n">result</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">line1</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+        
+        </span><span class="k">while</span><span class="p">(</span><span class="n">left</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">0</span><span class="p">){</span><span class="w">
+                </span><span class="c1"># read the next chunk (each chuck has size chunksz) from f</span><span class="w">
+                </span><span class="n">now</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">read.table</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="n">nrows</span><span class="o">=</span><span class="n">chunksz</span><span class="p">,</span><span class="w"> </span><span class="n">skip</span><span class="o">=</span><span class="n">skip_row</span><span class="p">,</span><span class="w"> </span><span class="n">sep</span><span class="o">=</span><span class="n">sep</span><span class="p">,</span><span class="w"> </span><span class="n">...</span><span class="p">)</span><span class="w"> 
+                
+                </span><span class="c1"># don't skip the 1st row when reading in the 2nd, 3rd, ... block</span><span class="w">
+                </span><span class="n">skip_row</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="w">   
+                </span><span class="n">begin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">read</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">1</span><span class="w">
+                </span><span class="n">end</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">read</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">chunksz</span><span class="w">
+                
+                </span><span class="c1"># extract row indices in both the chunk and the sample </span><span class="w">
+                </span><span class="n">want</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">begin</span><span class="o">:</span><span class="n">end</span><span class="p">)[</span><span class="n">begin</span><span class="o">:</span><span class="n">end</span><span class="w"> </span><span class="o">%in%</span><span class="w"> </span><span class="n">use</span><span class="p">]</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">read</span><span class="w"> 
+                
+                </span><span class="c1"># get sampled data</span><span class="w">
+                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nf">length</span><span class="p">(</span><span class="n">want</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="n">nowdat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">now</span><span class="p">[</span><span class="n">want</span><span class="p">,]</span><span class="w">
+                        </span><span class="n">newgot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">got</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nf">length</span><span class="p">(</span><span class="n">want</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">1</span><span class="w">
+                        </span><span class="n">result</span><span class="p">[</span><span class="n">got</span><span class="o">:</span><span class="n">newgot</span><span class="p">,]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nowdat</span><span class="w">
+                        </span><span class="n">got</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">newgot</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">1</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+                </span><span class="n">read</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">read</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">chunksz</span><span class="w">
+                </span><span class="n">left</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">left</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">chunksz</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+        
+        </span><span class="nf">return</span><span class="p">(</span><span class="n">result</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span></code></pre></figure>
+
+:ET

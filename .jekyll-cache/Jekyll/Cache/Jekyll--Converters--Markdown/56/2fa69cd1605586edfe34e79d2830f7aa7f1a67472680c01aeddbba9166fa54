@@ -1,0 +1,69 @@
+I"]<p>The best way to learn how to use a function written by other people is to read its source code. If you use Rstudio, you just need to type the function name at the command line. However, a lot of times, you will get something like this.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">mean</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## function (x, ...) 
+## UseMethod("mean")
+## &lt;bytecode: 0x7f8cbc8a9ff0&gt;
+## &lt;environment: namespace:base&gt;</code></pre></figure>
+
+<p>You may wonder, “where is the function body?” You don’t see the function body because <code class="language-plaintext highlighter-rouge">mean()</code> is a <strong>generic function</strong>. Generic functions are used to implement the S3 object oriented system in R. Each generic function has one or many methods. For example, <code class="language-plaintext highlighter-rouge">mean()</code> has the following methods:</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">methods</span><span class="p">(</span><span class="n">mean</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] mean.Date     mean.default  mean.difftime mean.POSIXct  mean.POSIXlt 
+## see '?methods' for accessing help and source code</code></pre></figure>
+
+<p>We cannot view the source code of a generic function, instead, we can view the source code of each generic.method function. For example, run the following commands to view the source of <code class="language-plaintext highlighter-rouge">mean.default()</code> and <code class="language-plaintext highlighter-rouge">mean.Date()</code> respectively.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">getAnywhere</span><span class="p">(</span><span class="n">mean.default</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## A single object matching 'mean.default' was found
+## It was found in the following places
+##   package:base
+##   registered S3 method for mean from namespace base
+##   namespace:base
+## with value
+## 
+## function (x, trim = 0, na.rm = FALSE, ...) 
+## {
+##     if (!is.numeric(x) &amp;&amp; !is.complex(x) &amp;&amp; !is.logical(x)) {
+##         warning("argument is not numeric or logical: returning NA")
+##         return(NA_real_)
+##     }
+##     if (na.rm) 
+##         x &lt;- x[!is.na(x)]
+##     if (!is.numeric(trim) || length(trim) != 1L) 
+##         stop("'trim' must be numeric of length one")
+##     n &lt;- length(x)
+##     if (trim &gt; 0 &amp;&amp; n) {
+##         if (is.complex(x)) 
+##             stop("trimmed means are not defined for complex data")
+##         if (anyNA(x)) 
+##             return(NA_real_)
+##         if (trim &gt;= 0.5) 
+##             return(stats::median(x, na.rm = FALSE))
+##         lo &lt;- floor(n * trim) + 1
+##         hi &lt;- n + 1 - lo
+##         x &lt;- sort.int(x, partial = unique(c(lo, hi)))[lo:hi]
+##     }
+##     .Internal(mean(x))
+## }
+## &lt;bytecode: 0x7f8cbc87d2b0&gt;
+## &lt;environment: namespace:base&gt;</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">getAnywhere</span><span class="p">(</span><span class="n">mean.Date</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## A single object matching 'mean.Date' was found
+## It was found in the following places
+##   package:base
+##   registered S3 method for mean from namespace base
+##   namespace:base
+## with value
+## 
+## function (x, ...) 
+## structure(mean(unclass(x), ...), class = "Date")
+## &lt;bytecode: 0x7f8cbc87ced8&gt;
+## &lt;environment: namespace:base&gt;</code></pre></figure>
+
+:ET

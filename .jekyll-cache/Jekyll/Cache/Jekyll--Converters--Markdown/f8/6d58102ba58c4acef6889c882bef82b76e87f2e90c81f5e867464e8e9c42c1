@@ -1,0 +1,10 @@
+I"�<p>When we use the word <em>correlation</em> in conversations, we usually mean “relationship.” For example, when we say “sales of ice cream are correlated with the weather,” we mean “ice cream sales and the weather are related, and we tend to sell more ice creams in the summer than winter.” However, when used in data analysis, the word <em>correlation</em><sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">1</a></sup> is a mathematical construct, and therefore, has a precise meaning, namely, it measures the “linear relationship” between two continuous variables. We need to remember this distinction so that we can understand and interpret it correctly. For example, zero correlation in the context of data analysis doesn’t mean there’s no relationship. It simply means there’s no linear relationship, and it’s perfectly possible that there’s a strong non-linear relationship. <a href="https://en.wikipedia.org/wiki/Correlation_and_dependence#mediaviewer/File:Correlation_examples2.svg">This wikipedia plot</a> summarizes a list of possible relationships when the correlation is zero.</p>
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1" role="doc-endnote">
+      <p>I’m talking about the Pearson (product-moment) correlation here since it’s the most common one. <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+:ET

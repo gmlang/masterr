@@ -1,438 +1,503 @@
-<!doctype html>
-<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
-<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
-<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
-<head>
-<meta charset="utf-8">
-<title>Latest Posts &#8211; Become Great at R</title>
-<meta name="description" content="my lastest posts.">
+<!DOCTYPE html>
+<!--
+    So Simple Jekyll Theme 3.2.0
+    Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+    Free for personal and commercial use under the MIT license
+    https://github.com/mmistakes/so-simple-theme/blob/master/LICENSE
+-->
+<html lang="en-US" class="no-js">
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+
+  
+    
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Become Great at R | Mastering the R programming language</title>
+<meta name="generator" content="Jekyll v4.2.2" />
+<meta property="og:title" content="Become Great at R" />
+<meta name="author" content="Guangming Lang" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Mastering the R programming language" />
+<meta property="og:description" content="Mastering the R programming language" />
+<link rel="canonical" href="http://localhost:4000/" />
+<meta property="og:url" content="http://localhost:4000/" />
+<meta property="og:site_name" content="Become Great at R" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Become Great at R" />
+<meta name="twitter:site" content="@" />
+<meta name="twitter:creator" content="@Guangming Lang" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","author":{"@type":"Person","name":"Guangming Lang"},"description":"Mastering the R programming language","headline":"Become Great at R","name":"Become Great at R","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/images/site-logo.png"},"name":"Guangming Lang"},"url":"http://localhost:4000/"}</script>
+<!-- End Jekyll SEO tag -->
 
 
+  
 
-<!-- Twitter Cards -->
-<meta name="twitter:title" content="Latest Posts">
-<meta name="twitter:description" content="my lastest posts.">
+  <script>
+    /* Cut the mustard */
+    if ( 'querySelector' in document && 'addEventListener' in window ) {
+      document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + 'js';
+    }
+  </script>
 
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="stylesheet" href="/assets/css/skins/default.css">
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,700,700i|Lora:400,400i,700,700i">
+  <link rel="alternate" type="application/atom+xml" title="Become Great at R" href="/atom.xml">
+<!-- start custom head snippets -->
 
+<!-- insert favicons. use http://realfavicongenerator.net/ -->
 
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://localhost:4000/images/site-logo.png">
-
-<!-- Open Graph -->
-<meta property="og:locale" content="en_US">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Latest Posts">
-<meta property="og:description" content="my lastest posts.">
-<meta property="og:url" content="http://localhost:4000/">
-<meta property="og:site_name" content="Become Great at R">
-
-
-<meta name="msvalidate.01" content="F608C5B05384F7B0200AC62F5BB60411">
-
-
-<link rel="canonical" href="http://localhost:4000/">
-<link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="Become Great at R Feed">
-
-
-<!-- http://t.co/dKP3o1e -->
-<meta name="HandheldFriendly" content="True">
-<meta name="MobileOptimized" content="320">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<!-- For all browsers -->
-<link rel="stylesheet" href="http://localhost:4000/assets/css/main.css">
-<!-- Webfonts -->
-<script src="//use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
-
-<meta http-equiv="cleartype" content="on">
-
-<!-- HTML5 Shiv and Media Query Support -->
-<!--[if lt IE 9]>
-  <script src="http://localhost:4000/assets/js/vendor/html5shiv.min.js"></script>
-  <script src="http://localhost:4000/assets/js/vendor/respond.min.js"></script>
-<![endif]-->
-
-<!-- Modernizr -->
-<script src="http://localhost:4000/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
-
-<!-- Icons -->
-<!-- 16x16 -->
-<link rel="shortcut icon" href="http://localhost:4000/favicon.ico">
-<!-- 32x32 -->
-<link rel="shortcut icon" href="http://localhost:4000/favicon.png">
-<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
-<link rel="apple-touch-icon-precomposed" href="http://localhost:4000/images/apple-touch-icon-precomposed.png">
-<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
-<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://localhost:4000/images/apple-touch-icon-72x72-precomposed.png">
-<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
-<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://localhost:4000/images/apple-touch-icon-114x114-precomposed.png">
-<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
-<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://localhost:4000/images/apple-touch-icon-144x144-precomposed.png">
+<!-- end custom head snippets -->
 
 </head>
 
-<body id="page">
 
-<div class="navigation-wrapper">
-	<nav role="navigation" id="site-nav" class="animated drop">
-	    <ul>
+  <body class="layout--home  ">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#primary-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+  <div class="navigation-wrapper">
+    <a href="#menu-toggle" id="menu-toggle">Menu</a>
+    <nav id="primary-nav" class="site-nav animated drop">
+      <ul><li><a href="/about/">About</a></li><li><a href="/r/">R</a></li><li><a href="/da/">Data Analysis</a></li><li><a href="/books/">Books</a></li><li><a href="/apps/">Apps</a></li><li><a href="/cartoon/">Cartoon</a></li></ul>
+    </nav>
+  </div><!-- /.navigation-wrapper -->
+
+
+    <header class="masthead">
+  <div class="wrap">
+    
+      <a href="/" class="site-logo" rel="home" title="Become Great at R">
+        <img src="/images/site-logo.png" class="site-logo-img animated fadeInDown" alt="Become Great at R">
+      </a>
+    
+    
+    
       
-		    
-		    <li><a href="http://localhost:4000/about/" >About</a></li>
-		  
-		    
-		    <li><a href="http://localhost:4000/rfp/" >RFP Series</a></li>
-		  
-		    
-		    <li><a href="http://localhost:4000/da/" >Data Analysis</a></li>
-		  
-		    
-		    <li><a href="http://localhost:4000/r/" >R</a></li>
-		  
-		    
-		    <li><a href="http://localhost:4000/books/" >Books</a></li>
-		  
-		    
-		    <li><a href="http://localhost:4000/apps/" >Apps</a></li>
-		  
-		    
-		    <li><a href="http://localhost:4000/cartoon/" >Cartoon</a></li>
-		  
-        <li class="dosearch"><span><i class="fa fa-search"></i> Search</span></li>
-	    </ul>
-	</nav>
-</div><!-- /.navigation-wrapper -->
-
-<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
-
-<div class="search-wrapper">
-  <div class="search-form">
-    <input type="text" class="search-field" placeholder="Search...">
-    <button class="close-btn"><i class="fa fa-times-circle fa-2x"></i></button>
-    <ul class="search-results post-list"></ul><!-- /.search-results -->
-  </div><!-- /.search-form -->
-</div><!-- ./search-wrapper -->
-
-<header class="masthead">
-	<div class="wrap">
-        
-    		<a href="http://localhost:4000" class="site-logo" rel="home" title="Become Great at R"><img src="http://localhost:4000/images/site-logo.png" width="200" height="200" alt="Become Great at R logo" class="animated fadeInUp"></a>
-        
-        <h1 class="site-title animated fadeIn"><a href="http://localhost:4000">Become Great at R</a></h1>
-		<h2 class="site-description animated fadeIn" itemprop="description"></h2>
-	</div>
+        <h1 class="site-title animated fadeIn"><a href="/">Become Great at R</a></h1>
+      
+      <p class="site-description animated fadeIn" itemprop="description">Mastering the R programming language</p>
+    
+  </div>
 </header><!-- /.masthead -->
 
-<div class="js-menu-screen menu-screen"></div>
 
-<div id="main" role="main">
-  <article class="entry">
+    <main id="main" class="main-content" aria-label="Content">
+  <article>
     
-    <div class="entry-wrapper">
-	 <html>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script type="text/javascript" src="http://localhost:4000/assets/js/jquery.leanModal.min.js"></script>
-<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" />
-<style>
-#optin {
-	background: #efefef;
-	border: 1px solid #ccc;
-	padding: 20px 15px;
-	text-align: center
-}
-#optin input {
-	background: #fff;
-	border: 1px solid #ccc;
-	font-size: 15px;
-	margin-bottom: 10px;
-	padding: 8px 10px;
-	border-radius: 3px;
-	-moz-border-radius: 3px;
-	-webkit-border-radius: 3px;
-	box-shadow: 0 2px 2px #ddd;
-	-moz-box-shadow: 0 2px 2px #ddd;
-	-webkit-box-shadow: 0 2px 2px #ddd
-}
-#optin input.name {
-background: url(../images/name.png) no-repeat 10px center;
-padding-left: 35px;
-}
-#optin input.email {
-background: url(../images/email.png) no-repeat 10px center;
-padding-left: 35px;
-}
-#optin input[type="submit"] {
- background: #217b30 url(../images/green.png) repeat-x top;
- border: 1px solid #137725;
- color: #fff;
- cursor: pointer;
- font-size: 18px;
- font-weight: bold;
- padding: 8px 0;
- text-shadow: -1px -1px #1c5d28;
- width: 100%
-}
-#optin input[type="submit"]:hover {
-	color: #c6ffd1
-}
-@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,700italic,400italic);
-#lean_overlay {
-	position: fixed;
-	z-index: 100;
-	top: 0px;
-	left: 0px;
-	height: 100%;
-	width: 100%;
-	background: #000;
-	display: none;
-}
-.popupContainer {
-	position: absolute;
-	width: 388px;
-	height: auto;
-	left: 45%;
-	top: 80px;
-	background: #FFF;
-}
-#modal_trigger img {
-	height: 135px;
-}
-.popupHeader {
-	font-size: 16px;
-	text-transform: uppercase;
-}
-.popupHeader {
-	background: #F4F4F2;
-	position: relative;
-	padding: 10px 20px;
-	border-bottom: 1px solid #DDD;
-	font-weight: bold;
-}
-.popupHeader .modal_close {
-	position: absolute;
-	right: 0;
-	top: 0;
-	padding: 10px 15px;
-	background: #E4E4E2;
-	cursor: pointer;
-	color: #aaa;
-	font-size: 16px;
-}
-.popupBody {
-	padding: 20px;
-}
-#modal_trigger {
-	max-width:300px;
-	margin:0 auto;
-	display:block;
-	background:#00BE00;
-	color:#fff;
-	text-align:center;
-	font-weight:bold;
-	font-size:43px;
-	border-bottom: 6px solid #008600;
-}
-#modal_trigger img{
-	width:100%;
-	height: auto !important;
-}
-@media all and (max-width:480px){
-.popupContainer{
-	width:95% !important;
-	left:0 !important;
-	right:0 !important;
-	margin:0 auto !important;
-	top:10px !important;
-}
-#modal_trigger{
-	font-size:30px;
-}
-}
-</style>
-<body>
-<div id="feature_box">
-	<div class="format_text">
-		<h3>Do You Want to Become Awesome in R?</h3>
-		<p>If yes, now's the time to learn how to:</p>
-		<ul>
-			<li>Get started with R</li>
-			<li>Become a better R programmer</li>
-			<li>Build data products using R</li>
-		</ul>
-		<p>Just enter your name and email below and click "Sign Me Up!" It's completely FREE and I'll never spam you.</p>
-	</div>
-	<a id="modal_trigger" href="#modal">Sign Me Up!</a> 
-</div>
-<div id="modal" class="popupContainer" style="display:none;">
-  <header class="popupHeader"> <span class="header_title">Email Updates</span> <span class="modal_close"><i class="fa fa-times"></i></span> </header>
-  <section class="popupBody"> 
-    <!-- Begin MailChimp Signup Form -->
-    <div id="optin">
-      <h3 style="color:black;">Get Free Email Updates</h3>
-      <form action="https://gmlang.us9.list-manage.com/subscribe/post?u=66768baba1811dbdb4e186167&amp;id=0288c18c07" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
-        <input type="email" size="30" value="Enter your email" name="EMAIL" class="required email" id="mce-EMAIL" onFocus="if(this.value==this.defaultValue)this.value='';" onBlur="if(this.value=='')this.value=this.defaultValue;">
-        <input type="text" size="30" value="Enter your name" name="FIRST_NAME" class="required name" id="mce-FIRST_NAME" onFocus="if(this.value==this.defaultValue)this.value='';" onBlur="if(this.value=='')this.value=this.defaultValue;">
-        <input type="reset" id="chimp-reset-side" style="display:none"/>
-        <div id="mce-responses" class="clear">
-          <div class="response" id="mce-error-response" style="display:none"></div>
-          <div class="response" id="mce-success-response" style="display:none"></div>
-        </div>
-        <div class="clear">
-          <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button side-clear">
-        </div>
-      </form>
-    </div>
-    <!--End mc_embed_signup--> 
-  </section>
-</div>
-<script type="text/javascript">
-	$("#modal_trigger").leanModal({top : 200, overlay : 0.6, closeButton: ".modal_close" });
 
-	$(function(){
-		// Calling Login Form
-		$("#login_form").click(function(){
-			$(".user_login").show();
-			return false;
-		});
-
-	});
-	$(".side-clear").click(function() {
-    		 setTimeout(function(){
-				$('#chimp-reset-side').click();
-				$('.modal_close').click();
-				
-    		 },1000); 
-	});
-</script>
-</body>
-</html>
-
-      <header class="entry-header">
-        <h1 class="entry-title">Latest Posts</h1>
+    <div class="page-wrapper">
+      <header class="page-header">
+        
+        
+          <h1 id="page-title" class="page-title"></h1>
+        
       </header>
-      <div class="entry-content">
-        <ul class="post-list">
- 
-  <li><article><a href="http://localhost:4000/r/RFP-part9-functions02/">RFP - Part 9: Local Functions and Local Variables <span class="entry-date"><time datetime="2019-04-15T00:00:00+09:00">April 15, 2019</time></span></a></article></li>
- 
-  <li><article><a href="http://localhost:4000/r/RFP-part8-functions01/">RFP - Part 8: R Functions <span class="entry-date"><time datetime="2019-04-03T00:00:00+09:00">April 03, 2019</time></span></a></article></li>
- 
-  <li><article><a href="http://localhost:4000/r/RFP-part7-functions00/">RFP - Part 7: Well-behaved R Functions <span class="entry-date"><time datetime="2019-03-25T00:00:00+09:00">March 25, 2019</time></span></a></article></li>
- 
-  <li><article><a href="http://localhost:4000/r/RFP-part6/">RFP - Part 6: R <<- Assignment Operator <span class="entry-date"><time datetime="2019-03-10T00:00:00+09:00">March 10, 2019</time></span></a></article></li>
- 
-  <li><article><a href="http://localhost:4000/r/RFP-part5-immutability/">RFP - Part5: Immutability in R <span class="entry-date"><time datetime="2019-02-15T00:00:00+09:00">February 15, 2019</time></span></a></article></li>
+      <div class="page-content">
+        
 
-</ul>
-      </div><!-- /.entry-content -->
-    </div><!-- /.entry-wrapper -->
+
+<div class="entries-list">
+
+<article class="entry h-entry">
+  <header class="entry-header">
+    <h3 class="entry-title p-name">
+      
+        <a href="/r/RFP-part9-functions02/" rel="bookmark">RFP - Part 9: Local Functions and Local Variables
+</a>
+      
+    </h3>
+    
+  </header>
+  
+    <div class="entry-excerpt p-summary">
+      
+        <p>A common thing to do in functional programming is to create, within a (outer) function, a local (inner) function that uses other variables in scope. Let me give you an example. The function <code class="language-plaintext highlighter-rouge">countup_from1()</code> uses a local helper function <code class="language-plaintext highlighter-rouge">count()</code> to accumulate results recursively. Its argument <code class="language-plaintext highlighter-rouge">x</code> is used directly inside <code class="language-plaintext highlighter-rouge">count()</code>.</p>
+
+      
+    </div>
+  
+  
+    <footer class="entry-meta">
+      
+
+<span class="read-time">1 min read</span>
+
+      <time class="entry-date dt-published" datetime="2019-04-15T00:00:00+09:00">April 15, 2019
+  </time>
+    </footer>
+  
+</article>
+
+
+<article class="entry h-entry">
+  <header class="entry-header">
+    <h3 class="entry-title p-name">
+      
+        <a href="/r/RFP-part8-functions01/" rel="bookmark">RFP - Part 8: R Functions
+</a>
+      
+    </h3>
+    
+  </header>
+  
+    <div class="entry-excerpt p-summary">
+      
+        <p>Functions play a quintessential role in R. 
+John Chambers said that “in R: everything that happens is a function call.”
+Before diving into R functions, I want to explain the mathematical concept of 
+“function” because it will help us understand R functions.</p>
+
+      
+    </div>
+  
+  
+    <footer class="entry-meta">
+      
+
+<span class="read-time">2 min read</span>
+
+      <time class="entry-date dt-published" datetime="2019-04-03T00:00:00+09:00">April 3, 2019
+  </time>
+    </footer>
+  
+</article>
+
+
+<article class="entry h-entry">
+  <header class="entry-header">
+    <h3 class="entry-title p-name">
+      
+        <a href="/r/RFP-part7-functions00/" rel="bookmark">RFP - Part 7: Well-behaved R Functions
+</a>
+      
+    </h3>
+    
+  </header>
+  
+    <div class="entry-excerpt p-summary">
+      
+        <p>Function is a big topic in R programming. I’ll spend several blog posts talking 
+about it. But before I dive into R functions with full force, I want to show you 
+how nice it is to work with them. Consider the following code:</p>
+
+      
+    </div>
+  
+  
+    <footer class="entry-meta">
+      
+
+<span class="read-time">2 min read</span>
+
+      <time class="entry-date dt-published" datetime="2019-03-25T00:00:00+09:00">March 25, 2019
+  </time>
+    </footer>
+  
+</article>
+
+
+<article class="entry h-entry">
+  <header class="entry-header">
+    <h3 class="entry-title p-name">
+      
+        <a href="/r/RFP-part6/" rel="bookmark">RFP - Part 6: R «- Assignment Operator
+</a>
+      
+    </h3>
+    
+  </header>
+  
+    <div class="entry-excerpt p-summary">
+      
+        <p>If you have been following this R Functional Programming (RFP) series<sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">1</a></sup>, you know by now we have discussed:</p>
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1" role="doc-endnote">
+      <p>If you haven’t, I recommend you to read the linked posts first. <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+
+      
+    </div>
+  
+  
+    <footer class="entry-meta">
+      
+
+<span class="read-time">4 min read</span>
+
+      <time class="entry-date dt-published" datetime="2019-03-10T00:00:00+09:00">March 10, 2019
+  </time>
+    </footer>
+  
+</article>
+
+
+<article class="entry h-entry">
+  <header class="entry-header">
+    <h3 class="entry-title p-name">
+      
+        <a href="/r/RFP-part5-immutability/" rel="bookmark">RFP - Part5: Immutability in R
+</a>
+      
+    </h3>
+    
+  </header>
+  
+    <div class="entry-excerpt p-summary">
+      
+        <p>Do not confuse variable reassignment (or rebinding) with mutation. Reassignment in R changes the binding. (See the <a href="https://masterr.org/r/RFP-part4-shadowing/">second diagram</a> for an example.) Mutation changes the referenced object itself. R supports limited mutation by default and base R objects are mostly immutable. As a result, R code often behaves like what we’d expect it to behave mathematically. This allows the programmer to focus on the mathematical or statistical problem at hand without being distracted by the “computer side of things.” Indeed, if you’re trained as a mathematician or statistician without any programming experience, you’ll find it’s easier to write R code than most typical programming languages like Python, Ruby, Java, C++, or Rust etc.</p>
+
+      
+    </div>
+  
+  
+    <footer class="entry-meta">
+      
+
+<span class="read-time">4 min read</span>
+
+      <time class="entry-date dt-published" datetime="2019-02-15T00:00:00+09:00">February 15, 2019
+  </time>
+    </footer>
+  
+</article>
+
+
+<article class="entry h-entry">
+  <header class="entry-header">
+    <h3 class="entry-title p-name">
+      
+        <a href="/r/RFP-part4-shadowing/" rel="bookmark">RFP - Part4: R Variable Shadowing
+</a>
+      
+    </h3>
+    
+  </header>
+  
+    <div class="entry-excerpt p-summary">
+      
+        <p>Now we know that R variables are objects, and that they can be manipulated, assigned any R objects and reassigned.<sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">1</a></sup> (detailed discussion <a href="https://masterr.org/r/RFP-part3-variables/">here</a>.) We’ll discuss variable shadowing and its difference from variable reassignment.</p>
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1" role="doc-endnote">
+      <p>The terms “variable (re)assignment” and “variable (re)binding” are used interchangeably throughout this series because we use them for their mathematical meaning: (re)associate a symbol with a value. <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+
+      
+    </div>
+  
+  
+    <footer class="entry-meta">
+      
+
+<span class="read-time">2 min read</span>
+
+      <time class="entry-date dt-published" datetime="2019-02-14T00:00:00+09:00">February 14, 2019
+  </time>
+    </footer>
+  
+</article>
+
+
+<article class="entry h-entry">
+  <header class="entry-header">
+    <h3 class="entry-title p-name">
+      
+        <a href="/r/RFP-part3-variables/" rel="bookmark">RFP - Part3: R Variables
+</a>
+      
+    </h3>
+    
+  </header>
+  
+    <div class="entry-excerpt p-summary">
+      
+        <p>Previously, we discussed two data structures in R: <a href="https://masterr.org/r/RFP-part1-vectors/">vectors</a> and <a href="https://masterr.org/r/RFP-part2-lists/">lists</a>. If you programmed in another language before, you probably already got a sense that R vectors and lists are a tiny bit different than what you’re used to. This is to be expected. In general, there is a nuanced difference between R data structures and that of many other languages.</p>
+
+      
+    </div>
+  
+  
+    <footer class="entry-meta">
+      
+
+<span class="read-time">9 min read</span>
+
+      <time class="entry-date dt-published" datetime="2019-02-13T00:00:00+09:00">February 13, 2019
+  </time>
+    </footer>
+  
+</article>
+
+
+<article class="entry h-entry">
+  <header class="entry-header">
+    <h3 class="entry-title p-name">
+      
+        <a href="/r/RFP-part2-lists/" rel="bookmark">RFP - Part2: R Lists
+</a>
+      
+    </h3>
+    
+  </header>
+  
+    <div class="entry-excerpt p-summary">
+      
+        <p>Previously, we discussed R vectors. We now turn to R lists. Like a vector, a R list can also grow or shrink. But unlike a vector, a R list can contain any R objects. For example, vectors, lists, functions, or environments can all be the elements of a list, and it’s perfectly okay to mix them in the same list.</p>
+
+      
+    </div>
+  
+  
+    <footer class="entry-meta">
+      
+
+<span class="read-time">4 min read</span>
+
+      <time class="entry-date dt-published" datetime="2019-02-12T00:00:00+09:00">February 12, 2019
+  </time>
+    </footer>
+  
+</article>
+
+
+<article class="entry h-entry">
+  <header class="entry-header">
+    <h3 class="entry-title p-name">
+      
+        <a href="/r/RFP-part1-vectors/" rel="bookmark">RFP - Part1: R Vectors
+</a>
+      
+    </h3>
+    
+  </header>
+  
+    <div class="entry-excerpt p-summary">
+      
+        <p>The simplest data structure in R is the vector. A vector is one dimensional and can be imagined as a sequence of blocks containing values:</p>
+
+      
+    </div>
+  
+  
+    <footer class="entry-meta">
+      
+
+<span class="read-time">7 min read</span>
+
+      <time class="entry-date dt-published" datetime="2019-02-11T00:00:00+09:00">February 11, 2019
+  </time>
+    </footer>
+  
+</article>
+
+
+<article class="entry h-entry">
+  <header class="entry-header">
+    <h3 class="entry-title p-name">
+      
+        <a href="/r/accurate-calculation-of-years-between-dates/" rel="bookmark">Accurate Calculation of Years between Dates in R
+</a>
+      
+    </h3>
+    
+  </header>
+  
+    <div class="entry-excerpt p-summary">
+      
+        <p>When doing feature engineering, it’s common to turn dates into numbers by calculating the time differences. For example, given date of birth, you may want to calculate age. Given sign up date and churn date, you may want to calculate the days to churn. Depending on the situation, sometimes you want the time difference in years, and sometimes you want it in months, weeks or days; sometimes you want the years/months/weeks rounded to whole numbers, and other times you may want to keep the decimal points for more accuracy. For example, suppose we want to calculate the number of years (without rounding) between two dates, there’re 3 ways we can go about it:</p>
+
+      
+    </div>
+  
+  
+    <footer class="entry-meta">
+      
+
+<span class="read-time">1 min read</span>
+
+      <time class="entry-date dt-published" datetime="2018-12-04T00:00:00+09:00">December 4, 2018
+  </time>
+    </footer>
+  
+</article>
+</div>
+
+
+        
+      </div>
+    </div>
   </article>
-</div><!-- /#main -->
+</main>
 
-<div class="footer-wrapper">
-  <footer role="contentinfo" class="entry-wrapper">
+
     
-<span>&copy; 2019 Guangming Lang. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="https://mademistakes.com/so-simple/" rel="nofollow">So Simple Theme</a>.</span>
-<div class="social-icons">
-	
-	
-	
-	
-	
-	
-	
-	
-	
-<!-- no feed button <a href="http://localhost:4000/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss-square fa-2x"></i></a> -->
-</div><!-- /.social-icons -->
+<footer id="footer" class="site-footer">
+  <!-- start custom footer snippets -->
 
-  </footer>
-</div><!-- /.footer-wrapper -->
-
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="http://localhost:4000/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
-<script src="http://localhost:4000/assets/js/scripts.min.js"></script>
-
-<!-- Jekyll Simple Search option -->
-<script>
-  $(document).ready(function() {
-      $('.search-field').jekyllSearch({
-          jsonFile: 'http://localhost:4000/search.json',
-          searchResults: '.search-results',
-          template: '<li><article><a href="{url}">{title} <span class="entry-date"><time datetime="{date}">{shortdate}</time></span></a></article></li>',
-          fuzzy: true,
-          noResults: '<p>Nothing found.</p>'
-        });
-  });
-
-  (function( $, window, undefined ) {
+<!-- end custom footer snippets -->
+<div class="social-icons"><a class="social-icon" href="/atom.xml"><i class="fas fa-rss-square fa-2x" title="Feed"></i></a></div><div class="copyright">
     
-     var bs = {
-          close: $(".close-btn"),
-          searchform: $(".search-form"),
-          canvas: $(".js-menu-screen"),
-          dothis: $('.dosearch')
-      };
+      <p>&copy; 2022 Become Great at R. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://github.com/mmistakes/so-simple-theme" rel="nofollow">So Simple</a>.</p>
     
-    bs.dothis.on('click', function() {
-      $('.search-wrapper').css({ display: "block" });
-      $('body').toggleClass('no-scroll');
-      bs.searchform.toggleClass('active');
-      bs.searchform.find('input').focus();
-      bs.canvas.toggleClass('is-visible');
-    });
-    
-      bs.close.on('click', function() {
-        $('.search-wrapper').removeAttr( 'style' );
-        $('body').toggleClass('no-scroll');
-        bs.searchform.toggleClass('active');
-        bs.canvas.removeClass('is-visible');
-    });
-  })( jQuery, window );
-</script>
+  </div>
+</footer>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://use.fontawesome.com/releases/v5.0.12/js/all.js"></script>
 
 
-<!-- doesn't work optimally 
-author's Asynchronous Google Analytics snippet
+<!-- MathJax -->
 
 <script>
-  var _gaq = _gaq || [];
-  var pluginUrl = 
- '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
-  _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
-  _gaq.push(['_setAccount', 'UA-57697212-1']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
+// http://docs.mathjax.org/en/latest/upgrading/v2.html
+MathJax = {
+  tex: {
+      tags: "ams"    // eq numbering options: none, ams, all
+  },
+  options: {
+    renderActions: {
+      // for mathjax 3, handle <script "math/tex"> blocks inserted by kramdown
+      find: [10, function (doc) {
+        for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+          const display = !!node.type.match(/; *mode=display/);
+          const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+          const text = document.createTextNode('');
+          node.parentNode.replaceChild(text, node);
+          math.start = {node: text, delim: '', n: 0};
+          math.end = {node: text, delim: '', n: 0};
+          doc.math.push(math);
+        }
+      }, '']
+    }
+  }
+}
 </script>
 
--->
+<script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 
-<!-- google analytics -->
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  </body>
 
-  ga('create', 'UA-57697212-1', 'auto');
-  ga('send', 'pageview');
-
-</script>
-
-
-
-<!-- Mathjax -->
-<script type="text/javascript"
-    src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
-          
-
-</body>
 </html>
-

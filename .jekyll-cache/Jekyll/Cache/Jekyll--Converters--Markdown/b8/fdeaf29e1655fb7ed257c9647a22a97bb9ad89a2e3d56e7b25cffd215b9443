@@ -1,0 +1,2 @@
+I"H<p>When calculating the <a href="https://masterr.org/da/bias-and-precision/">bias and precision</a> of a sample estimate to the popluation parameter, because we often don’t know the true value of the population parameter and we often only have one sample, we use a procedure called <em>bootstrap</em>. The idea is simple:</p>
+:ET

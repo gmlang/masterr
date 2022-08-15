@@ -1,0 +1,110 @@
+I"�@<p>In the Environments chapter of the book 
+<a rel="nofollow" href="https://www.amazon.com/gp/product/1466586966/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=1466586966&amp;linkCode=as2&amp;tag=cabaceo-20&amp;linkId=2GDWMZSF4NX32QIO">Advanced R</a><img src="https://ir-na.amazon-adsystem.com/e/ir?t=cabaceo-20&amp;l=as2&amp;o=1&amp;a=1466586966" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />, Hadley gives a function 
+<code class="language-plaintext highlighter-rouge">where(name, env = parent.frame())</code> that finds the first environment where a given name is defined. The parameter <code class="language-plaintext highlighter-rouge">env</code> is the environment where the search begins. Its default value is the global environment (the environment where we normally work). The function was written recursively. I encourage you to study it first before reading on because I’m giving a solution here to one of the exercises, which asks to write a recursive function to find all environments that contain a binding for <code class="language-plaintext highlighter-rouge">name</code>.</p>
+
+<p>Here’s my solution.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">where_all</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">env</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">parent.frame</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="c1"># Finds all environments that contain a binding for name.</span><span class="w">
+        </span><span class="c1"># </span><span class="w">
+        </span><span class="c1"># name: string, name of an object</span><span class="w">
+        </span><span class="c1"># env : environment object where the search begins</span><span class="w">
+        
+        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">identical</span><span class="p">(</span><span class="n">env</span><span class="p">,</span><span class="w"> </span><span class="nf">emptyenv</span><span class="p">()))</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1"># base case</span><span class="w">
+                </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">NULL</span><span class="w">
+        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1"># non-base case</span><span class="w">
+                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">exists</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">envir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">env</span><span class="p">,</span><span class="w"> </span><span class="n">inherits</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">F</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1"># success case</span><span class="w">
+                        </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">env</span><span class="w">
+                </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1"># fail case</span><span class="w">
+                        </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">NULL</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+                        
+                </span><span class="c1"># recursive step</span><span class="w">
+                </span><span class="nf">c</span><span class="p">(</span><span class="n">res</span><span class="p">,</span><span class="w"> </span><span class="n">where_all</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">parent.env</span><span class="p">(</span><span class="n">env</span><span class="p">)))</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span></code></pre></figure>
+
+<p>Let’s test it.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># test</span><span class="w">
+</span><span class="n">mean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="s2">"guck"</span><span class="w">
+</span><span class="n">where_all</span><span class="p">(</span><span class="s2">"mean"</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [[1]]
+## &lt;environment: R_GlobalEnv&gt;
+## 
+## [[2]]
+## &lt;environment: base&gt;</code></pre></figure>
+
+<p>Now inside of <code class="language-plaintext highlighter-rouge">where_all()</code> I used a base R function <code class="language-plaintext highlighter-rouge">exists()</code> to check if <code class="language-plaintext highlighter-rouge">name</code> is in the current environment. But we don’t have to use it, instead, we can implement our own version using recursion. Below is how to do it.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">exists2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">env</span><span class="o">=</span><span class="n">parent.frame</span><span class="p">(),</span><span class="w"> </span><span class="n">inherits</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">T</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="c1"># Checks if name is in the given environment or its parent environments.</span><span class="w">
+        </span><span class="c1"># </span><span class="w">
+        </span><span class="c1"># name: string, name of an object</span><span class="w">
+        </span><span class="c1"># env : environment object where the search begins</span><span class="w">
+        </span><span class="c1"># inherits: logical</span><span class="w">
+
+        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">inherits</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">identical</span><span class="p">(</span><span class="n">env</span><span class="p">,</span><span class="w"> </span><span class="nf">emptyenv</span><span class="p">()))</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1"># base case</span><span class="w">
+                        </span><span class="kc">FALSE</span><span class="w">
+                </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1"># non-base case</span><span class="w">
+                        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">name</span><span class="w"> </span><span class="o">%in%</span><span class="w"> </span><span class="n">ls</span><span class="p">(</span><span class="n">env</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1"># success case</span><span class="w">
+                                </span><span class="kc">TRUE</span><span class="w">
+                        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1"># fail case</span><span class="w">
+                                </span><span class="c1"># recursive step</span><span class="w">
+                                </span><span class="n">exists2</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">parent.env</span><span class="p">(</span><span class="n">env</span><span class="p">))</span><span class="w"> 
+                        </span><span class="p">}</span><span class="w">
+                </span><span class="p">}</span><span class="w">        
+        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="n">name</span><span class="w"> </span><span class="o">%in%</span><span class="w"> </span><span class="n">ls</span><span class="p">(</span><span class="n">env</span><span class="p">)</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span></code></pre></figure>
+
+<p>We can simplify the code a bit by collapsing the <code class="language-plaintext highlighter-rouge">if...else...</code> inside the non-base case with the outside <code class="language-plaintext highlighter-rouge">else</code> clause. This makes the code a bit easier to read.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">exists2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">env</span><span class="o">=</span><span class="n">parent.frame</span><span class="p">(),</span><span class="w"> </span><span class="n">inherits</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">T</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="c1"># Checks if name is in the given environment or its parent environments.</span><span class="w">
+        </span><span class="c1"># </span><span class="w">
+        </span><span class="c1"># name: string, name of an object</span><span class="w">
+        </span><span class="c1"># env : environment object where the search begins</span><span class="w">
+        </span><span class="c1"># inherits: logical</span><span class="w">
+        
+        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">inherits</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">identical</span><span class="p">(</span><span class="n">env</span><span class="p">,</span><span class="w"> </span><span class="nf">emptyenv</span><span class="p">()))</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1"># base case</span><span class="w">
+                        </span><span class="kc">FALSE</span><span class="w">
+                </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">name</span><span class="w"> </span><span class="o">%in%</span><span class="w"> </span><span class="n">ls</span><span class="p">(</span><span class="n">env</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1"># success case</span><span class="w">
+                        </span><span class="kc">TRUE</span><span class="w">
+                </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1"># fail case</span><span class="w">
+                        </span><span class="n">exists2</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">parent.env</span><span class="p">(</span><span class="n">env</span><span class="p">))</span><span class="w"> </span><span class="c1"># recursive step</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="n">name</span><span class="w"> </span><span class="o">%in%</span><span class="w"> </span><span class="n">ls</span><span class="p">(</span><span class="n">env</span><span class="p">)</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span></code></pre></figure>
+
+<p>Let’s test it out.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">e</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">new.env</span><span class="p">()</span><span class="w">
+</span><span class="n">e</span><span class="o">$</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">109</span><span class="w">
+</span><span class="n">e</span><span class="o">$</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">83</span><span class="w">
+</span><span class="n">rm</span><span class="p">(</span><span class="s2">"x"</span><span class="p">,</span><span class="w"> </span><span class="n">envir</span><span class="o">=</span><span class="n">e</span><span class="p">)</span><span class="w">
+</span><span class="n">exists2</span><span class="p">(</span><span class="s2">"y"</span><span class="p">,</span><span class="w"> </span><span class="n">env</span><span class="o">=</span><span class="n">e</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] TRUE</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">exists2</span><span class="p">(</span><span class="s2">"y"</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] FALSE</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">exists2</span><span class="p">(</span><span class="s2">"x"</span><span class="p">,</span><span class="w"> </span><span class="n">env</span><span class="o">=</span><span class="n">e</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] FALSE</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">ls</span><span class="p">(</span><span class="n">e</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "y"</code></pre></figure>
+
+<p>Take a moment to compare <code class="language-plaintext highlighter-rouge">exists2()</code> and <code class="language-plaintext highlighter-rouge">where_all()</code>. Where does the recursive step happen? In <code class="language-plaintext highlighter-rouge">exists2()</code>, it happens when the fail case is triggered. But in <code class="language-plaintext highlighter-rouge">where_all()</code>, it happens after both the success and fail cases. So the take away is that although all recursions are the same in concept but they can differ in implementation. The key difference lies in where the recursive step happens.</p>
+
+:ET

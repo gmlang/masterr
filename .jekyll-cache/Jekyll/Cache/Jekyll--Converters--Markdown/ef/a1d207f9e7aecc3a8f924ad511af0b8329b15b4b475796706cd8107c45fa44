@@ -1,0 +1,5 @@
+I"-<p>I recently encountered zombie processes when running some R code in parallel. 
+I was running the code in linux and was using doMC to register the parallel backend.
+If you’re not familiar with doMC, read this stack overflow answer on the <a href="https://stackoverflow.com/questions/28989855/the-difference-between-domc-and-doparallel-in-r">difference between doMC and doParallel</a>. In a nutshell, doMC sometimes is more 
+efficient than doParallel, and it only works with linux or Mac, not with windows, while doParallel works with all platforms.</p>
+:ET

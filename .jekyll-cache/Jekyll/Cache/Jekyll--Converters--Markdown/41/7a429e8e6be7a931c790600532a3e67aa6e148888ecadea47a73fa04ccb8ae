@@ -1,0 +1,62 @@
+I"’<p>When doing data cleaning, we often have to clean up strings of text. Doing this in R used to be a pain until the birth of the <a href="https://cran.r-project.org/web/packages/stringr/index.html">stringr</a> package. For example, it contains a function called <code class="language-plaintext highlighter-rouge">str_trim()</code> that allows you to easily remove any leading and trailing whitespace of a string. It also contains a function called <code class="language-plaintext highlighter-rouge">str_sub()</code> that allows you to easily extract substrings from any string. Run the following code to see these two functions work.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">library</span><span class="p">(</span><span class="n">stringr</span><span class="p">)</span><span class="w">
+</span><span class="n">gmlang</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"\t Guangming Lang \n"</span><span class="w">
+
+</span><span class="c1"># trim whitespace on both sides</span><span class="w">
+</span><span class="n">str_trim</span><span class="p">(</span><span class="n">gmlang</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "Guangming Lang"</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># trim whitespace on the left side</span><span class="w">
+</span><span class="n">str_trim</span><span class="p">(</span><span class="n">gmlang</span><span class="p">,</span><span class="w"> </span><span class="n">side</span><span class="o">=</span><span class="s2">"left"</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "Guangming Lang \n"</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># trim whitespace on the right side</span><span class="w">
+</span><span class="n">str_trim</span><span class="p">(</span><span class="n">gmlang</span><span class="p">,</span><span class="w"> </span><span class="n">side</span><span class="o">=</span><span class="s2">"right"</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "\t Guangming Lang"</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># re-assign trimmed value to gmlang</span><span class="w">
+</span><span class="n">gmlang</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">str_trim</span><span class="p">(</span><span class="n">gmlang</span><span class="p">)</span><span class="w">
+
+</span><span class="c1"># extract first name</span><span class="w">
+</span><span class="n">str_sub</span><span class="p">(</span><span class="n">gmlang</span><span class="p">,</span><span class="w"> </span><span class="n">start</span><span class="o">=</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">end</span><span class="o">=</span><span class="m">9</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "Guangming"</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">str_sub</span><span class="p">(</span><span class="n">gmlang</span><span class="p">,</span><span class="w"> </span><span class="n">end</span><span class="o">=</span><span class="m">9</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "Guangming"</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># extract last name</span><span class="w">
+</span><span class="n">str_sub</span><span class="p">(</span><span class="n">gmlang</span><span class="p">,</span><span class="w"> </span><span class="n">start</span><span class="o">=</span><span class="m">11</span><span class="p">,</span><span class="w"> </span><span class="n">end</span><span class="o">=</span><span class="m">14</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "Lang"</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">str_sub</span><span class="p">(</span><span class="n">gmlang</span><span class="p">,</span><span class="w"> </span><span class="n">start</span><span class="o">=</span><span class="m">11</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "Lang"</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># extact first and last name at the same time</span><span class="w">
+</span><span class="n">str_sub</span><span class="p">(</span><span class="n">gmlang</span><span class="p">,</span><span class="w"> </span><span class="n">start</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">11</span><span class="p">),</span><span class="w"> </span><span class="n">end</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">9</span><span class="p">,</span><span class="w"> </span><span class="m">14</span><span class="p">))</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "Guangming" "Lang"</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># something fun :)</span><span class="w">
+</span><span class="n">str_sub</span><span class="p">(</span><span class="n">gmlang</span><span class="p">,</span><span class="w"> </span><span class="n">start</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">seq_len</span><span class="p">(</span><span class="n">str_length</span><span class="p">(</span><span class="n">gmlang</span><span class="p">)))</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">##  [1] "Guangming Lang" "uangming Lang"  "angming Lang"   "ngming Lang"   
+##  [5] "gming Lang"     "ming Lang"      "ing Lang"       "ng Lang"       
+##  [9] "g Lang"         " Lang"          "Lang"           "ang"           
+## [13] "ng"             "g"</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">str_sub</span><span class="p">(</span><span class="n">gmlang</span><span class="p">,</span><span class="w"> </span><span class="n">end</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">seq_len</span><span class="p">(</span><span class="n">str_length</span><span class="p">(</span><span class="n">gmlang</span><span class="p">)))</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">##  [1] "G"              "Gu"             "Gua"            "Guan"          
+##  [5] "Guang"          "Guangm"         "Guangmi"        "Guangmin"      
+##  [9] "Guangming"      "Guangming "     "Guangming L"    "Guangming La"  
+## [13] "Guangming Lan"  "Guangming Lang"</code></pre></figure>
+
+:ET

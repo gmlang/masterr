@@ -1,0 +1,39 @@
+I"<p>When doing feature engineering, it’s common to turn dates into numbers by calculating the time differences. For example, given date of birth, you may want to calculate age. Given sign up date and churn date, you may want to calculate the days to churn. Depending on the situation, sometimes you want the time difference in years, and sometimes you want it in months, weeks or days; sometimes you want the years/months/weeks rounded to whole numbers, and other times you may want to keep the decimal points for more accuracy. For example, suppose we want to calculate the number of years (without rounding) between two dates, there’re 3 ways we can go about it:</p>
+
+<ol>
+  <li>Calculate the number of days in between using <code class="language-plaintext highlighter-rouge">difftime(end_date, start_date)</code>, and divide it by 365. But this will be not accurate as some years have 366 days.</li>
+  <li>Calcualte the number of weeks in between using <code class="language-plaintext highlighter-rouge">difftime(end_date, start_date, unit = "weeks")</code> and divide it by 52.25. Some people believe by using 52.25 instead of 52, it will solve the 365 or 366 days issue. But this is not true and the results obtained are still not accurate as we’ll show below.</li>
+  <li>Calculate the number of days in between using <code class="language-plaintext highlighter-rouge">difftime(end_date, start_date)</code>, and feed it into the <code class="language-plaintext highlighter-rouge">lubridate::time_length()</code> function while specifying the 2nd argument as “years”. This turns out to give accurate results.</li>
+</ol>
+
+<p>As an example, say we want to calculate the number of years between “2012-03-01” and “2017-03-01”. Obviously, it has to be at least 5 years. But method 2 gives 4.992, while method 3 gives 5.002.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">start</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">as.Date</span><span class="p">(</span><span class="s2">"2012-03-01"</span><span class="p">)</span><span class="w">
+</span><span class="n">end</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">as.Date</span><span class="p">(</span><span class="s2">"2017-03-01"</span><span class="p">)</span><span class="w">
+
+</span><span class="c1"># method 2</span><span class="w">
+</span><span class="nf">as.numeric</span><span class="p">(</span><span class="n">difftime</span><span class="p">(</span><span class="n">end</span><span class="p">,</span><span class="w"> </span><span class="n">start</span><span class="p">,</span><span class="w"> </span><span class="n">unit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"weeks"</span><span class="p">))</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="m">52.25</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] 4.992481</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># method 3</span><span class="w">
+</span><span class="n">lubridate</span><span class="o">::</span><span class="n">time_length</span><span class="p">(</span><span class="n">difftime</span><span class="p">(</span><span class="n">end</span><span class="p">,</span><span class="w"> </span><span class="n">start</span><span class="p">),</span><span class="w"> </span><span class="s2">"years"</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] 5.00274</code></pre></figure>
+
+<p>As another example, say we want to calculate the number of years between “1948-12-07” and “2018-12-07”. Obviously, it has to be at least 70 years. But method 2 gives 69.902, while method 3 gives 70.047.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">start</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">as.Date</span><span class="p">(</span><span class="s2">"1948-12-07"</span><span class="p">)</span><span class="w">
+</span><span class="n">end</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">as.Date</span><span class="p">(</span><span class="s2">"2018-12-07"</span><span class="p">)</span><span class="w">
+
+</span><span class="nf">as.numeric</span><span class="p">(</span><span class="n">difftime</span><span class="p">(</span><span class="n">end</span><span class="p">,</span><span class="w"> </span><span class="n">start</span><span class="p">,</span><span class="w"> </span><span class="n">unit</span><span class="o">=</span><span class="s2">"weeks"</span><span class="p">))</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="m">52.25</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] 69.90294</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">lubridate</span><span class="o">::</span><span class="n">time_length</span><span class="p">(</span><span class="n">difftime</span><span class="p">(</span><span class="n">end</span><span class="p">,</span><span class="w"> </span><span class="n">start</span><span class="p">),</span><span class="w"> </span><span class="s2">"years"</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] 70.04658</code></pre></figure>
+
+<p>For more detailed discussion, refer to <a href="https://stackoverflow.com/questions/15569333/get-date-difference-in-years-floating-point">this discussion on stackoverflow</a>.</p>
+
+:ET

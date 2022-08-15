@@ -1,0 +1,9 @@
+I"�<p>There’s signal and there’s noise. When building a predictive model, we like signal and we hate noise. Here’re the common sources of noise in most data sets.</p>
+
+<ul>
+  <li>Noise in the predictors or the response (e.g., labeling errors) that are caused by underlying measurement systems.</li>
+  <li>Inclusion of non-informative predictors.</li>
+</ul>
+
+<p>It’s really hard to combat the first kind of noise, especially when they occur systemically. We can try to eliminate the second type of noise by filtering out predictors that have no relationship with the response before model building or choose models that can automatically filter out the irrelevant predictors.</p>
+:ET

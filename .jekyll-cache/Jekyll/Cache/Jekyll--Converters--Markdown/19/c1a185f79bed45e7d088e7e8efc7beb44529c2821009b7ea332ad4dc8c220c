@@ -1,0 +1,44 @@
+I"�<p>When analyzing a variable, one of the first things you want to do is to count how many non-missing (or non-NA) values the variable has. Unfortunately, there’s no default functions in R that perform this simply task. The <code class="language-plaintext highlighter-rouge">length()</code> function counts every element including the NAs. But it’s not hard to use it together with a <code class="language-plaintext highlighter-rouge">if</code> clause to handle NAs.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">length2</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="k">function</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">na.rm</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="c1"># A version of length that can handle NA: if na.rm==T, don't count them</span><span class="w">
+        </span><span class="c1"># </span><span class="w">
+        </span><span class="c1"># Args:</span><span class="w">
+        </span><span class="c1">#       x    : a vector</span><span class="w">
+        </span><span class="c1">#       na.rm: TRUE or FALSE</span><span class="w">
+        </span><span class="c1"># Returns:</span><span class="w">
+        </span><span class="c1">#       the length of x</span><span class="w">
+        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">na.rm</span><span class="p">)</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="o">!</span><span class="nf">is.na</span><span class="p">(</span><span class="n">x</span><span class="p">))</span><span class="w">
+        </span><span class="k">else</span><span class="w">       </span><span class="nf">length</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span></code></pre></figure>
+
+<p>The default <code class="language-plaintext highlighter-rouge">summary()</code> function only returns the min, 1st quantile, median, mean, 3rd quantile and max of the input vector. However, you often also want to know its non-NA value counts, standard deviation, skewness and excess kurtosis. It’d be nice if there’s one function that returns all these summary statistics. So I wrote <code class="language-plaintext highlighter-rouge">summary2()</code>, which does exactly that. It leverages <code class="language-plaintext highlighter-rouge">length2()</code>, <code class="language-plaintext highlighter-rouge">no_na_summary()</code>, and the <code class="language-plaintext highlighter-rouge">skewness()</code> and <code class="language-plaintext highlighter-rouge">kurtosis()</code> functions in the <code class="language-plaintext highlighter-rouge">e1071</code> package.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">no_na_summary</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">na.rm</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="c1"># Removes NA in a vector and apply summary to it</span><span class="w">
+        </span><span class="c1"># </span><span class="w">
+        </span><span class="c1"># Args:</span><span class="w">
+        </span><span class="c1">#       x    : a numeric vector</span><span class="w">
+        </span><span class="c1">#       na.rm: TRUE or FALSE</span><span class="w">
+        </span><span class="c1"># Returns:</span><span class="w">
+        </span><span class="c1">#       the summary statistics of x</span><span class="w">
+        </span><span class="n">summary</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="o">!</span><span class="nf">is.na</span><span class="p">(</span><span class="n">x</span><span class="p">)])</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="n">summary2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="c1"># Removes NA in a numeric vecotr and Computes some summary statistics </span><span class="w">
+        </span><span class="c1">#</span><span class="w">
+        </span><span class="c1"># Args:</span><span class="w">
+        </span><span class="c1">#       x: a numeric vector</span><span class="w">
+        </span><span class="c1"># Returns:</span><span class="w">
+        </span><span class="c1">#       min, 1st quantile, median, mean, 3rd quantile, max, sd,</span><span class="w">
+        </span><span class="c1">#       non-NA count of x, skewness, and excess kurtosis</span><span class="w">
+        </span><span class="n">funs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="n">no_na_summary</span><span class="p">,</span><span class="w"> </span><span class="n">sd</span><span class="p">,</span><span class="w"> </span><span class="n">length2</span><span class="p">,</span><span class="w"> </span><span class="n">e1071</span><span class="o">::</span><span class="n">skewness</span><span class="p">,</span><span class="w"> </span><span class="n">e1071</span><span class="o">::</span><span class="n">kurtosis</span><span class="p">)</span><span class="w">
+        </span><span class="n">summ.stats</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">unlist</span><span class="p">(</span><span class="n">lapply</span><span class="p">(</span><span class="n">funs</span><span class="p">,</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">f</span><span class="p">)</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">na.rm</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)))</span><span class="w">
+        </span><span class="nf">names</span><span class="p">(</span><span class="n">summ.stats</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"min"</span><span class="p">,</span><span class="w"> </span><span class="s2">"q1"</span><span class="p">,</span><span class="w"> </span><span class="s2">"median"</span><span class="p">,</span><span class="w"> </span><span class="s2">"mean"</span><span class="p">,</span><span class="w"> </span><span class="s2">"q3"</span><span class="p">,</span><span class="w"> </span><span class="s2">"max"</span><span class="p">,</span><span class="w"> 
+                              </span><span class="s2">"sd"</span><span class="p">,</span><span class="w"> </span><span class="s2">"n"</span><span class="p">,</span><span class="w"> </span><span class="s2">"skewness"</span><span class="p">,</span><span class="w"> </span><span class="s2">"excess.kurtosis"</span><span class="p">)</span><span class="w">
+        </span><span class="n">summ.stats</span><span class="w">
+</span><span class="p">}</span></code></pre></figure>
+
+<p>Use these functions and tell others how they’ve made your daily data analysis job easier.</p>
+:ET

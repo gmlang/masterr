@@ -1,0 +1,60 @@
+I"g<h3 id="updated-october-4-2018">Updated October 4, 2018</h3>
+
+<p>Previously, I gave examples of ezplot <a href="https://masterr.org/r/an-easy-way-to-make-ggplot2-plots-ezplot-part1/">barcharts</a> and <a href="https://masterr.org/r/an-easy-way-to-make-ggplot2-boxplots-ezplot-part2/">boxplots</a>. In today’s post, I’ll discuss two common charts for displaying distributions of numeric variables, namely, the histogram and the density plot. By the end of this article, you’ll know how to make sophisticated histograms and density plots using ezplot. And once again, you’ll be amazed how simple it is. Let’s get started.</p>
+
+<h4 id="load-ezplot">Load ezplot</h4>
+
+<p>Make sure you first install ezplot by running the command <code class="language-plaintext highlighter-rouge">devtools::install_github("gmlang/ezplot")</code>.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">library</span><span class="p">(</span><span class="n">ezplot</span><span class="p">)</span><span class="w">
+</span><span class="n">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span></code></pre></figure>
+
+<h4 id="histogram">Histogram</h4>
+
+<p>First, we pass the <code class="language-plaintext highlighter-rouge">iris</code> data frame into the function <code class="language-plaintext highlighter-rouge">mk_histogram()</code> to get a plotting function that for drawing histograms of any numeric variables in <code class="language-plaintext highlighter-rouge">iris</code>.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">plt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mk_histogram</span><span class="p">(</span><span class="n">iris</span><span class="p">)</span></code></pre></figure>
+
+<p>If you haven’t noticed, all the <code class="language-plaintext highlighter-rouge">mk_xxx()</code> functions in ezplot takes one and only one argument, namely, a data frame. They all return plotting functions that take names of variables from the data frame as input. This design came from the simple idea that <a href="https://masterr.org/r/functions-that-return-functions-part-2/">functions can return functions</a>.</p>
+
+<p>Let’s draw a histogram for <code class="language-plaintext highlighter-rouge">Sepal.Length</code>.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">plt</span><span class="p">(</span><span class="s2">"Sepal.Length"</span><span class="p">)</span></code></pre></figure>
+
+<p><img src="/../figs/2015-05-07-an-easy-way-to-make-ggplot2-histograms-ezplot-part3/unnamed-chunk-3-1.png" alt="center" /></p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># adjust bin width</span><span class="w">
+</span><span class="n">plt</span><span class="p">(</span><span class="s2">"Sepal.Length"</span><span class="p">,</span><span class="w"> </span><span class="n">binw</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.2</span><span class="p">)</span></code></pre></figure>
+
+<p><img src="/../figs/2015-05-07-an-easy-way-to-make-ggplot2-histograms-ezplot-part3/unnamed-chunk-3-2.png" alt="center" /></p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># remove the vertical line at the mean</span><span class="w">
+</span><span class="n">plt</span><span class="p">(</span><span class="s2">"Sepal.Length"</span><span class="p">,</span><span class="w"> </span><span class="n">add_vline_mean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">F</span><span class="p">)</span></code></pre></figure>
+
+<p><img src="/../figs/2015-05-07-an-easy-way-to-make-ggplot2-histograms-ezplot-part3/unnamed-chunk-3-3.png" alt="center" /></p>
+
+<h4 id="density-plots">Density plots</h4>
+
+<p>Density plots and histograms are twins. They show the same information. In ezplot, we use
+the <code class="language-plaintext highlighter-rouge">mk_densityplot()</code> function to make density plots. For example, let’s make a density plot for <code class="language-plaintext highlighter-rouge">Sepal.Length</code>.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">plt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mk_densityplot</span><span class="p">(</span><span class="n">iris</span><span class="p">)</span><span class="w">
+</span><span class="n">plt</span><span class="p">(</span><span class="s2">"Sepal.Length"</span><span class="p">)</span></code></pre></figure>
+
+<p><img src="/../figs/2015-05-07-an-easy-way-to-make-ggplot2-histograms-ezplot-part3/unnamed-chunk-4-1.png" alt="center" /></p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># don't remove tails</span><span class="w">
+</span><span class="n">plt</span><span class="p">(</span><span class="s2">"Sepal.Length"</span><span class="p">,</span><span class="w"> </span><span class="n">cut_tail</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">)</span></code></pre></figure>
+
+<p><img src="/../figs/2015-05-07-an-easy-way-to-make-ggplot2-histograms-ezplot-part3/unnamed-chunk-4-2.png" alt="center" /></p>
+
+<p>The iris data has a variable called “Species”. Wouldn’t it be nice if we can see how Sepal Length is distributed across different Species? This is super easy to do with ezplot.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">plt</span><span class="p">(</span><span class="s2">"Sepal.Length"</span><span class="p">,</span><span class="w"> </span><span class="n">yvar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Species"</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Picking joint bandwidth of 0.181</code></pre></figure>
+
+<p><img src="/../figs/2015-05-07-an-easy-way-to-make-ggplot2-histograms-ezplot-part3/unnamed-chunk-5-1.png" alt="center" /></p>
+
+<p>I made <a href="https://leanpub.com/ezplot">ezplot</a> out of the frustration that there are too many details to remember when customizing a ggplot. It has greatly improved my productivity. Please drop a comment below if you have questions.</p>
+:ET

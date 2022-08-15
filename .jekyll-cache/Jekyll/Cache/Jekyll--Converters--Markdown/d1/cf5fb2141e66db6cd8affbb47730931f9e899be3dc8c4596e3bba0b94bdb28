@@ -1,0 +1,33 @@
+I"�<p>Consider these two numbers: 5 out of 100 and 5%. They are the same, just expressed differently. The first number is expressed as a relative frequency and the second number is expressed as a probability in percentage format. It turns out people perceive them differently when putting them into a context. Consider the following two statements about the chance that a mental patient commits an act of violence within 6 months after discharge<sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">1</a></sup>:</p>
+
+<ol>
+  <li>20 criminals out of 100 similar to the patient are estimated to be violent to others.</li>
+  <li>it is estimated that similar patients has a 20% chance of being violent to others.</li>
+</ol>
+
+<p>Studies show experienced psychiatrists judge the patient as more dangerous when presented with statement 1 than when presented with statement 2.</p>
+
+<p>Consider another set of statements about the riskiness of a disease<sup id="fnref:2" role="doc-noteref"><a href="#fn:2" class="footnote" rel="footnote">2</a></sup>:</p>
+
+<ol>
+  <li>a disease that kills 1,286 of 10,000 people</li>
+  <li>a disease that kills 24.14 of 100 people</li>
+</ol>
+
+<p>One study showed that disease 1 was rated as riskier than disease 2, but if we convert the relative frequencies to probabilities, we can clearly see disease 2 is riskier since it kills 24.14% while disease 1 only kills 12.86%.</p>
+
+<p>In fact, not only we are more perceptive to relative frequencies, we also react differently to the same probability when presented differently. For example, do you prefer a yogurt that’s “95% fat free” or “5% fat”? Suppose you’re about to undergo a surgery and the doctor asks you to choose between two procedures: procedure A has a 40% chance of success and procedure B has a 60% chance of failure. Which procedure will you choose?</p>
+
+<p>As a data scientist, I pay a lot of attention at creating non-misleading report and visualizations. A good rule of thumb is to avoid using both frequencies and probabilities. I prefer to use probabilities because our brains are not good at handling them and hence will have to really think about them instead of making snap judgements, and this, by and large, leads to less errors.</p>
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1" role="doc-endnote">
+      <p>this example is taken from the book <a href="https://www.amazon.com/gp/product/1578644283/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=1578644283&amp;linkCode=as2&amp;tag=cabaceo-20&amp;linkId=ULXBDUV6HFDELDOZ">Seeking Wisdom: From Darwin to Munger</a><img src="https://ir-na.amazon-adsystem.com/e/ir?t=cabaceo-20&amp;l=as2&amp;o=1&amp;a=1578644283" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /> <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:2" role="doc-endnote">
+      <p>this example is taken from the book <a href="https://www.amazon.com/gp/product/1578644283/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=1578644283&amp;linkCode=as2&amp;tag=cabaceo-20&amp;linkId=ULXBDUV6HFDELDOZ">Seeking Wisdom: From Darwin to Munger</a><img src="https://ir-na.amazon-adsystem.com/e/ir?t=cabaceo-20&amp;l=as2&amp;o=1&amp;a=1578644283" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /> <a href="#fnref:2" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+:ET

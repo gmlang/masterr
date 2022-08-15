@@ -1,0 +1,25 @@
+I"�<p>I didn’t pay much attention to code style until recently when I had to collaborate with a couple of guys on a project. That experience taught me having a consistent style across all team members can greatly reduce communication time and help people understand each other’s code. If you’re not already using a style, you should decide on a style today. Even if you program solo, you will also benefit from sticking to a style. It will allow you to write code faster, for example, once you choose a style, you don’t have to spend time deciding whether you should use all lowercase letters chained by dots or undersores or use camelCase everytime you write a variable name. It will also make your code easier to read.</p>
+
+<p>The best way of choosing a style is to adopt from the existing ones. We adopted <a href="https://google.github.io/styleguide/Rguide.xml">Goolge’s</a> R style with some modifications. Notably, we use <code class="language-plaintext highlighter-rouge">=</code> instead of <code class="language-plaintext highlighter-rouge">&lt;-</code> for assignment since we don’t see any practical harm of using <code class="language-plaintext highlighter-rouge">=</code> over <code class="language-plaintext highlighter-rouge">&lt;-</code><sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">1</a></sup><sup id="fnref:2" role="doc-noteref"><a href="#fn:2" class="footnote" rel="footnote">2</a></sup> and it’s a bit harder to type <code class="language-plaintext highlighter-rouge">&lt;-</code>. At the moment, I’m only aware of one occasion where <code class="language-plaintext highlighter-rouge">&lt;-</code> and <code class="language-plaintext highlighter-rouge">=</code> are not interchangeable, and it’s when used in the <code class="language-plaintext highlighter-rouge">substitute()</code> function.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># &lt;- works</span><span class="w">
+</span><span class="nf">substitute</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">))</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## 1 &lt;- 1 + 1</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># but = runs into error</span><span class="w">
+</span><span class="nf">substitute</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">))</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Error in substitute(x = x + 1, list(x = 1)): unused argument (x = x + 1)</code></pre></figure>
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1" role="doc-endnote">
+      <p><a href="https://stackoverflow.com/questions/1741820/assignment-operators-in-r-and">see this stackoverflow thread</a> <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:2" role="doc-endnote">
+      <p><a href="https://developer.r-project.org/equalAssign.html">R Core allows it</a> <a href="#fnref:2" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+:ET

@@ -1,0 +1,2 @@
+I"å<p>Base R has a function <code class="language-plaintext highlighter-rouge">get()</code> that searches for a given name over the environment stack and returns its value after finding it. For example, we can use it like this.</p>
+:ET

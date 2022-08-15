@@ -1,0 +1,31 @@
+I"�<h3 id="updated-october-4-2018">Updated October 4, 2018</h3>
+
+<p>In an earlier post, I showed you how easy it is to make high quality <a href="https://masterr.org/r/an-easy-way-to-make-ggplot2-histograms-ezplot-part3/">histograms</a> and <a href="https://masterr.org/r/an-easy-way-to-make-ggplot2-boxplots-ezplot-part2/">boxplots</a> using ezplot. When we’re analyzing a continuous variable, we often want to check if it’s normally distributed. Q-Q plot is a good tool to do that.</p>
+
+<p>Make sure you first install ezplot by running the command <code class="language-plaintext highlighter-rouge">devtools::install_github("gmlang/ezplot")</code>.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">library</span><span class="p">(</span><span class="n">ezplot</span><span class="p">)</span><span class="w">
+</span><span class="n">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span></code></pre></figure>
+
+<p>We’ll use the cars dataset, which comes with the base R distribution. It has 
+two variables, <code class="language-plaintext highlighter-rouge">speed</code> and <code class="language-plaintext highlighter-rouge">dist</code>. Both are continuous. Let’s first create a 
+normal Q-Q plot for <code class="language-plaintext highlighter-rouge">dist</code>.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">plt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mk_qqplot</span><span class="p">(</span><span class="n">cars</span><span class="p">)</span><span class="w">
+</span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">plt</span><span class="p">(</span><span class="s2">"dist"</span><span class="p">,</span><span class="w"> </span><span class="n">detrend</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">F</span><span class="p">)</span><span class="w">
+</span><span class="n">square_fig</span><span class="p">(</span><span class="n">p</span><span class="p">)</span></code></pre></figure>
+
+<p><img src="/../figs/2015-06-07-how-to-check-normality-of-a-continuous-variable-ezplot-part5/unnamed-chunk-2-1.png" alt="center" /></p>
+
+<p>We see <code class="language-plaintext highlighter-rouge">dist</code> is approximately normal because most of the data points are aligned 
+linearly along the 45 degree diagonal line and within the confidence band. Next, 
+we make a detrended normal Q-Q plot for <code class="language-plaintext highlighter-rouge">speed</code> and observe it’s also 
+normally distributed because all data points are randomly scattered around 
+$y = 0$ and within the confidence band.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">plt</span><span class="p">(</span><span class="s2">"speed"</span><span class="p">)</span></code></pre></figure>
+
+<p><img src="/../figs/2015-06-07-how-to-check-normality-of-a-continuous-variable-ezplot-part5/unnamed-chunk-3-1.png" alt="center" /></p>
+
+<p>If you liked these how-to blog posts, you may want to check out my <a href="https://leanpub.com/ezplot">ezplot</a> book.</p>
+:ET

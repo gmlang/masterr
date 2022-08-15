@@ -1,0 +1,24 @@
+I"�<p>This article summarizes data preprocessing steps when using linear regression for prediction purpose.</p>
+
+<ol>
+  <li>Separate y and X, where y is continuous and X has both continuous and categorical variables, and the categorical variables are NOT encoded as dummy binary variables.</li>
+  <li>Preprocess y: check if it’s symmetric or normally distributed. If not, apply Box-Cox (if y has all positive values) or Yeo-Johnson or Manly’s exponential (if y has both positive and negative values) transformation.</li>
+  <li>Preproces X in this order (apply these operations only to continuous features if not explicitly mentioned otherwise):
+    <ul>
+      <li>remove linear dependency</li>
+      <li>remove constant features (both continuous and categorical one)</li>
+      <li>remove near zero variance features (situational)</li>
+      <li>remove highly correlated features (situational)</li>
+      <li>apply Box-Cox, Yeo-Johnson or Manly’s exponential transformation (situational)</li>
+      <li>center and scale (situational)</li>
+      <li>range (NOT used often, and cannot be done together with centering and scaling)</li>
+      <li>imputation (median, knn or bagged tree methods)</li>
+      <li>PCA (situational)</li>
+      <li>ICA (situational, avoid using PCA and ICA together and click <a href="https://www.quora.com/What-is-the-difference-between-PCA-and-ICA">here</a> for their differences)</li>
+      <li>Spatial Sign Transformation (situational, use it to deal with outliers)</li>
+    </ul>
+  </li>
+</ol>
+
+<p>If you use caret to train the model, you will need to turn the categorical features into dummy variables. You don’t need to do this if you use the lm function.</p>
+:ET

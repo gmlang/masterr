@@ -1,0 +1,2 @@
+I"\<p>Feature engineering is almost situational because generating useful features for prediction purpose often require deep domain knowledge and familiarity with the data at hand. But Having dates (of the format mm-dd-yyyy for example) occuring in a data set is typical, and there’re at least three ways of feature engineering a date variable:</p>
+:ET

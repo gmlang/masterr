@@ -1,0 +1,100 @@
+I"9<p>Suppose we are asked to write a test bank of 10,000 simple addition questions for first graders. What shall we do?</p>
+
+<p>Base R has a function <code class="language-plaintext highlighter-rouge">quote()</code> that allows us to capture the R code we type instead of evaluating them. For example,</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="nf">quote</span><span class="p">(</span><span class="m">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">3</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## 1 + 3</code></pre></figure>
+
+<p>See? We’ve just written one test question, and there’re 9,999 more to go. We certainly don’t want to type <code class="language-plaintext highlighter-rouge">quote</code> 9,999 times. How shall we generalize it? Instead of using particular numbers like 1 and 3, we can use variables x and y.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="nf">quote</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">y</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## x + y</code></pre></figure>
+
+<p>This way, each time we plug in a number for x and y, we’d have a new question.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="w">
+</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">4</span><span class="w">
+</span><span class="nf">quote</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">y</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## x + y</code></pre></figure>
+
+<p>Wait, <code class="language-plaintext highlighter-rouge">quote()</code> still returns <code class="language-plaintext highlighter-rouge">x + y</code>! It doesn’t give what we expected. We want <code class="language-plaintext highlighter-rouge">2 + 4</code>. This is because <code class="language-plaintext highlighter-rouge">quote()</code> only echos. We need another function to turn off
+the quotation that <code class="language-plaintext highlighter-rouge">quote()</code> turns on, i.e., to “unquote.” The <code class="language-plaintext highlighter-rouge">bquote()</code> function in base R can do this. For example,</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="w">
+</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">4</span><span class="w">
+</span><span class="n">bquote</span><span class="p">(</span><span class="n">.</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">.</span><span class="p">(</span><span class="n">y</span><span class="p">))</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## 2 + 4</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># can both quote and unquote at the same time, or quasiquote</span><span class="w">
+</span><span class="n">bquote</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">.</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">.</span><span class="p">(</span><span class="n">y</span><span class="p">))</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## x + y == 2 + 4</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">bquote</span><span class="p">(</span><span class="n">q1</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">.</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">.</span><span class="p">(</span><span class="n">y</span><span class="p">))</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## q1 &lt;- 2 + 4</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># we also want to produce answers for the test questions</span><span class="w">
+</span><span class="n">bquote</span><span class="p">(</span><span class="n">a1</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">.</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">y</span><span class="p">))</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## a1 &lt;- 6</code></pre></figure>
+
+<p>Alternatively, the funtion <code class="language-plaintext highlighter-rouge">rlang::expr()</code> in the <code class="language-plaintext highlighter-rouge">rlang</code> package can also achieve this.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="w">
+</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">4</span><span class="w">
+
+</span><span class="c1"># demo of quasiquotation, which allows to plug values inside of parameters </span><span class="w">
+</span><span class="c1">#       of a quotation.</span><span class="w">
+</span><span class="n">rlang</span><span class="o">::</span><span class="n">expr</span><span class="p">(</span><span class="n">q1</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">UQ</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">UQ</span><span class="p">(</span><span class="n">y</span><span class="p">))</span><span class="w"> </span><span class="c1"># make a test question</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## q1 &lt;- 2 + 4</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">rlang</span><span class="o">::</span><span class="n">expr</span><span class="p">(</span><span class="n">a1</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">UQ</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="p">))</span><span class="w"> </span><span class="c1"># answer the test question</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## a1 &lt;- 6</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">rlang</span><span class="o">::</span><span class="n">expr</span><span class="p">(</span><span class="n">a1</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="o">!!</span><span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="p">)</span><span class="w">   </span><span class="c1"># answer the test question</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## a1 &lt;- 6</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">rlang</span><span class="o">::</span><span class="n">expr</span><span class="p">(</span><span class="n">a1</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="o">!!</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="p">))</span><span class="w"> </span><span class="c1"># answer the test question</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## a1 &lt;- 6</code></pre></figure>
+
+<p>Remark: <code class="language-plaintext highlighter-rouge">rlang::expr()</code> and <code class="language-plaintext highlighter-rouge">base::bquote()</code> are almost equivalent except the latter has a second argument that allows you to pass in an environment where to look up the values of the symbols used in the expression (1st argument). I think this is a general design pattern of rlang and tidyeval, that it separates environments from what a function does as much as possible to make it more consistent and neater.</p>
+
+<p>Finally, we can use a loop to generate 10,000 questions and answers, while randomly choosing x and y values.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">set.seed</span><span class="p">(</span><span class="m">102023</span><span class="p">)</span><span class="w">
+</span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10000</span><span class="w">
+</span><span class="n">questions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">vector</span><span class="p">(</span><span class="s2">"list"</span><span class="p">,</span><span class="w"> </span><span class="n">length</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w">
+</span><span class="n">answers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">vector</span><span class="p">(</span><span class="s2">"numeric"</span><span class="p">,</span><span class="w"> </span><span class="n">length</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> 
+</span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nf">seq_len</span><span class="p">(</span><span class="n">n</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">round</span><span class="p">(</span><span class="n">runif</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">min</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">-999</span><span class="p">,</span><span class="w"> </span><span class="n">max</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">999</span><span class="p">),</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="w">
+        </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">round</span><span class="p">(</span><span class="n">runif</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">min</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">-99</span><span class="p">,</span><span class="w"> </span><span class="n">max</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1999</span><span class="p">),</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="w">
+        
+        </span><span class="c1"># make a test question and answer it</span><span class="w">
+        </span><span class="n">questions</span><span class="p">[[</span><span class="n">i</span><span class="p">]]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rlang</span><span class="o">::</span><span class="n">expr</span><span class="p">(</span><span class="n">UQ</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">UQ</span><span class="p">(</span><span class="n">y</span><span class="p">))</span><span class="w"> 
+        </span><span class="n">answers</span><span class="p">[[</span><span class="n">i</span><span class="p">]]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rlang</span><span class="o">::</span><span class="n">expr</span><span class="p">(</span><span class="o">!!</span><span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="p">)</span><span class="w"> 
+</span><span class="p">}</span><span class="w">
+</span><span class="n">head</span><span class="p">(</span><span class="n">questions</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">)</span><span class="w">        </span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [[1]]
+## -716.7 + 750.4
+## 
+## [[2]]
+## -292.9 + 1232.7
+## 
+## [[3]]
+## -951.2 + 936.1</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">head</span><span class="p">(</span><span class="n">answers</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1]  33.7 939.8 -15.1</code></pre></figure>
+
+:ET

@@ -1,0 +1,160 @@
+I"�I<p>Previously, we discussed R vectors. We now turn to R lists. Like a vector, a R list can also grow or shrink. But unlike a vector, a R list can contain any R objects. For example, vectors, lists, functions, or environments can all be the elements of a list, and it’s perfectly okay to mix them in the same list.</p>
+
+<h2 id="the-empty-list">The empty list</h2>
+
+<p>The empty list, with syntax <code class="language-plaintext highlighter-rouge">list()</code>, has 0 elements. Indeed, if we call <code class="language-plaintext highlighter-rouge">length(list())</code>, we get 0.</p>
+
+<h2 id="non-empty-lists">Non-empty lists</h2>
+
+<p>We can make a list with <code class="language-plaintext highlighter-rouge">list(e1, ..., en)</code> where each expression<sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">1</a></sup> <code class="language-plaintext highlighter-rouge">e</code> is evaluated to a R object. It’s more common to make a list with <code class="language-plaintext highlighter-rouge">c(e1, e2)</code>, called called “<code class="language-plaintext highlighter-rouge">e1</code> combined with <code class="language-plaintext highlighter-rouge">e2</code>,” where <code class="language-plaintext highlighter-rouge">e1</code> evaluates to a “list” and <code class="language-plaintext highlighter-rouge">e2</code> evaluates to another “list.” The result is a new list that starts with the elements in <code class="language-plaintext highlighter-rouge">e1</code> followed by the elements in <code class="language-plaintext highlighter-rouge">e2</code>. In the simpler case when <code class="language-plaintext highlighter-rouge">e1</code> evaluates to a single value like 5, 1.2, “hello”, TRUE or NA, <code class="language-plaintext highlighter-rouge">c(e1, e2)</code> can also be called “<code class="language-plaintext highlighter-rouge">e1</code> consed onto <code class="language-plaintext highlighter-rouge">e2</code>.” The result is then a new list that starts with the value of <code class="language-plaintext highlighter-rouge">e1</code> followed by the elements in <code class="language-plaintext highlighter-rouge">e2</code>. Here’re some examples of lists:</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="nf">list</span><span class="p">(</span><span class="m">1L</span><span class="p">,</span><span class="w"> </span><span class="m">2L</span><span class="p">,</span><span class="w"> </span><span class="m">3L</span><span class="p">)</span><span class="w"> </span><span class="c1"># each element is an integer</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [[1]]
+## [1] 1
+## 
+## [[2]]
+## [1] 2
+## 
+## [[3]]
+## [1] 3</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="nf">list</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">),</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"gm"</span><span class="p">,</span><span class="w"> </span><span class="s2">"lang"</span><span class="p">))</span><span class="w"> </span><span class="c1"># each element is a length-2 vector of diff. type</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [[1]]
+## [1] 1 2
+## 
+## [[2]]
+## [1] "gm"   "lang"</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="nf">list</span><span class="p">(</span><span class="nf">list</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">),</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="n">x</span><span class="m">+1</span><span class="p">,</span><span class="w"> </span><span class="n">environment</span><span class="p">())</span><span class="w"> </span><span class="c1"># 1st element is a list, 3rd element is a function, 4th element is an env object</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [[1]]
+## [[1]][[1]]
+## [1] 1
+## 
+## [[1]][[2]]
+## [1] 2
+## 
+## 
+## [[2]]
+## [1] TRUE
+## 
+## [[3]]
+## function (x) 
+## x + 1
+## 
+## [[4]]
+## &lt;environment: R_GlobalEnv&gt;</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># cons 9 onto the list(3, 6)</span><span class="w">
+</span><span class="nf">c</span><span class="p">(</span><span class="m">9</span><span class="p">,</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="m">6</span><span class="p">))</span><span class="w"> </span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [[1]]
+## [1] 9
+## 
+## [[2]]
+## [1] 3
+## 
+## [[3]]
+## [1] 6</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># list(1, list(2, 3)) is different from list(1, 2, 3)</span><span class="w">
+</span><span class="o">!</span><span class="n">identical</span><span class="p">(</span><span class="nf">list</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">)),</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">))</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] TRUE</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># list(1, list(2, 3)) is different from list(list(1, 2), 3))</span><span class="w">
+</span><span class="o">!</span><span class="n">identical</span><span class="p">(</span><span class="nf">list</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">)),</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="nf">list</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">),</span><span class="w"> </span><span class="m">3</span><span class="p">))</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] TRUE</code></pre></figure>
+
+<h2 id="how-to-use-lists">How to use lists</h2>
+
+<p>Once again, powered by recursion, we only need three simple operations when working with lists:</p>
+
+<ol>
+  <li>Check if a list is empty.</li>
+  <li>Get the first element of a list, raising an exception if the list is empty.</li>
+  <li>Get the tail of a list without its first element, raising an exception if the list is empty.</li>
+</ol>
+
+<p>Like in the case of vectors, R doesn’t provide these operations perfectly out of the box. So we need to write them ourselves:</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># Returns TRUE if a list is empty, FALSE otherwise.</span><span class="w">
+</span><span class="n">is_empty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1"># xs: a list </span><span class="w">
+        </span><span class="nf">length</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">0</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="c1"># Get the first element of a list, raising an exception if the list is empty.</span><span class="w">
+</span><span class="n">hd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1"># xs: a list </span><span class="w">
+        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">is_empty</span><span class="p">(</span><span class="n">xs</span><span class="p">))</span><span class="w"> </span><span class="n">stop</span><span class="p">(</span><span class="s2">"List is empty."</span><span class="p">)</span><span class="w">
+        </span><span class="k">else</span><span class="w"> </span><span class="n">xs</span><span class="p">[[</span><span class="m">1</span><span class="p">]]</span><span class="w"> 
+</span><span class="p">}</span><span class="w">
+
+</span><span class="c1"># Get the tail of a list without its first element, raising an exception if the list is empty.</span><span class="w">
+</span><span class="n">tl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1"># xs: a list </span><span class="w">
+        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">is_empty</span><span class="p">(</span><span class="n">xs</span><span class="p">))</span><span class="w"> </span><span class="n">stop</span><span class="p">(</span><span class="s2">"List is empty."</span><span class="p">)</span><span class="w">
+        </span><span class="k">else</span><span class="w"> </span><span class="n">xs</span><span class="p">[</span><span class="m">-1</span><span class="p">]</span><span class="w"> 
+</span><span class="p">}</span></code></pre></figure>
+
+<p>Having defined <code class="language-plaintext highlighter-rouge">is_empty()</code>, <code class="language-plaintext highlighter-rouge">hd()</code> and <code class="language-plaintext highlighter-rouge">tl()</code>, we can use them inside of recursive functions to perform complex operations on lists. For example, given a list of integer pairs, we can write a function to sum them up.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">sum_pair_list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="c1"># xs: a list of interger pairs represented by length-2 vectors c(i1, i2)</span><span class="w">
+        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">is_empty</span><span class="p">(</span><span class="n">xs</span><span class="p">))</span><span class="w"> </span><span class="m">0</span><span class="w">
+        </span><span class="k">else</span><span class="w"> </span><span class="n">hd</span><span class="p">(</span><span class="n">xs</span><span class="p">)[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">hd</span><span class="p">(</span><span class="n">xs</span><span class="p">)[</span><span class="m">2</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">sum_pair_list</span><span class="p">(</span><span class="n">tl</span><span class="p">(</span><span class="n">xs</span><span class="p">))</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="n">sum_pair_list</span><span class="p">(</span><span class="nf">list</span><span class="p">())</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] 0</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">sum_pair_list</span><span class="p">(</span><span class="nf">list</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">),</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="m">4</span><span class="p">)))</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] 10</code></pre></figure>
+
+<p>Or we can write functions to put the first or second element of each pair into separate lists.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">firsts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="c1"># xs: a list of interger pairs represented by length-2 vectors c(i1, i2)</span><span class="w">
+        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">is_empty</span><span class="p">(</span><span class="n">xs</span><span class="p">))</span><span class="w"> </span><span class="nf">list</span><span class="p">()</span><span class="w">
+        </span><span class="k">else</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="n">hd</span><span class="p">(</span><span class="n">xs</span><span class="p">)[</span><span class="m">1</span><span class="p">],</span><span class="w"> </span><span class="n">firsts</span><span class="p">(</span><span class="n">tl</span><span class="p">(</span><span class="n">xs</span><span class="p">)))</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="n">seconds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="c1"># xs: a list of interger pairs represented by length-2 vectors c(i1, i2)</span><span class="w">
+        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">is_empty</span><span class="p">(</span><span class="n">xs</span><span class="p">))</span><span class="w"> </span><span class="nf">list</span><span class="p">()</span><span class="w">
+        </span><span class="k">else</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="n">hd</span><span class="p">(</span><span class="n">xs</span><span class="p">)[</span><span class="m">2</span><span class="p">],</span><span class="w"> </span><span class="n">seconds</span><span class="p">(</span><span class="n">tl</span><span class="p">(</span><span class="n">xs</span><span class="p">)))</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="n">xs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">),</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="m">4</span><span class="p">))</span><span class="w">
+</span><span class="n">firsts</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [[1]]
+## [1] 1
+## 
+## [[2]]
+## [1] 3</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">seconds</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [[1]]
+## [1] 2
+## 
+## [[2]]
+## [1] 4</code></pre></figure>
+
+<p>It should make us cringe that <code class="language-plaintext highlighter-rouge">firsts()</code> and <code class="language-plaintext highlighter-rouge">seconds()</code> look almost identical yet we wrote them as two different functions. We’ll learn how to fix it later. Notice that <code class="language-plaintext highlighter-rouge">is_empty()</code>, <code class="language-plaintext highlighter-rouge">hd()</code> and <code class="language-plaintext highlighter-rouge">tl()</code> defined above are very similarly to the ones defined in <a href="https://masterr.org/r/RFP-part1-vectors/">part1 of this series when we discussed R vectors</a>. This is because lists are just a special kind of vectors in R. To see this, realize that another way of declaring an empty list is <code class="language-plaintext highlighter-rouge">vector("list")</code>.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">identical</span><span class="p">(</span><span class="n">vector</span><span class="p">(</span><span class="s2">"list"</span><span class="p">),</span><span class="w"> </span><span class="nf">list</span><span class="p">())</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] TRUE</code></pre></figure>
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1" role="doc-endnote">
+      <p>The word ‘expression’ here is being used in the sense of expressions in any programming language or mathematical expressions. Do NOT confuse it with the R expression object. <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+:ET

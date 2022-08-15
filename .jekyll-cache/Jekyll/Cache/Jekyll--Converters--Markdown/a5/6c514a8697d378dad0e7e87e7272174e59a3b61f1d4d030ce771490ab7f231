@@ -1,0 +1,2 @@
+I"<p>We all know we need to pre-process data before we build models. However, if you’re building a XGboost model, you can avoid many of the pre-processing steps. I’ve done some google search and book reading, and the following list summarizes my findings.</p>
+:ET

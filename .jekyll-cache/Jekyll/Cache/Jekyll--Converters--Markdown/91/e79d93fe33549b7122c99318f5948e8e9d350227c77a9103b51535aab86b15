@@ -1,0 +1,20 @@
+I"�	<p>Machine Learning or Statistical Learning methods fall into a spectrum according to their flexibility. At the left end of the spectrum, for example, when dealing with a regression problem where the response variable is quantitative, you have lasso and linear regression, which are very restrictive and hence inflexible since they impose a linear structure onto what the true model looks like. Moving to the right, you have splines models which allow non-linearity, and hence are more flexible. Similarly, when facing a classification problem where the response variable is qualitative, you can use \(k\)-nearest neighbors (KNN) algorithm, where a bigger \(k\) corresponds to a less flexible model. When \(k=1\), the model is the most flexible.</p>
+
+<p>In general, the more flexible your model is, the less bias (in absolute value) and the more variance you’ll get when predicting on a test dataset. Because your goal is to minimize the sum of the squared bias and the variance, you’re really facing a tradeoff problem between the bias and the variance. In some situations, a more flexible model will perform better than a less flexible one. In other situations, an inflexible model will produce a smaller overal test error than a more flexible one. Here’s a list of four common situations. For each situation, can you generally expect whether a flexible model will perform better or worse than an inflexible model?</p>
+
+<ol>
+  <li>The sample size is large and the number of predictors is small.</li>
+  <li>The number of predictors is large and the sample size is small.</li>
+  <li>The relationship between the predictors and response is highly non-linear.</li>
+  <li>The variance of the errors is large.</li>
+</ol>
+
+<p>Here’re my answers:</p>
+
+<ol>
+  <li>A flexible model will perform better in general. Because of the large sample size, we’re less likely to overfit even when using a more flexible model. Meanwhile, a more flexible model tends to reduce bias.</li>
+  <li>An inflexible model will perform better in general. A flexible model will cause overfitting because of the small sample size. This usually means a bigger inflation in variance and a small reduction in bias.</li>
+  <li>A flexible model will perform better in general because it’ll be necessary to use a flexible model to find the non-linear effect.</li>
+  <li>An inflexible model will perform better in general. Because a flexible model will capture too much of the noise in the data due to the large variance of the errors.</li>
+</ol>
+:ET

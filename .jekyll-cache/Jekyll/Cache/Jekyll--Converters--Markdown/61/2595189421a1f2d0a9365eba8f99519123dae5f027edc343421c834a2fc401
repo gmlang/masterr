@@ -1,0 +1,26 @@
+I"}<p>Every operation in R is a function call. For example, when you subset a vector using <code class="language-plaintext highlighter-rouge">[]</code>, you’re really calling the function <code class="language-plaintext highlighter-rouge">[</code>.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">6</span><span class="w">
+</span><span class="n">y</span><span class="p">[</span><span class="m">2</span><span class="p">]</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] 2</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">`[`</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] 2</code></pre></figure>
+
+<p>This allows us to easily subset the elements of a list when the elements are vectors. For example, given a list of 3 elements: a character vector, an integer vector, and a logical vector, we can use <code class="language-plaintext highlighter-rouge">lapply</code> and <code class="language-plaintext highlighter-rouge">[</code> to easily extract the 2nd value from each vector.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="nb">letters</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">4</span><span class="p">],</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">5</span><span class="p">,</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="nb">T</span><span class="p">,</span><span class="w"> </span><span class="nb">F</span><span class="p">,</span><span class="w"> </span><span class="nb">T</span><span class="p">,</span><span class="w"> </span><span class="nb">F</span><span class="p">,</span><span class="w"> </span><span class="nb">F</span><span class="p">,</span><span class="w"> </span><span class="nb">T</span><span class="p">))</span><span class="w">
+</span><span class="n">lapply</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">`[`</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [[1]]
+## [1] "b"
+## 
+## [[2]]
+## [1] 2
+## 
+## [[3]]
+## [1] FALSE</code></pre></figure>
+
+:ET

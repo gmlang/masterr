@@ -1,0 +1,2 @@
+I"<p>You can use the <code class="language-plaintext highlighter-rouge">XLConnect</code> package to read .xls or .xlsx files into R. Suppose you have a file named example.xls in your working directory. You can read the data on sheet1 into R using the following commands.</p>
+:ET

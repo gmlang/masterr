@@ -1,0 +1,2 @@
+I"<p>Today I want to show you the power of two little R functions: <code class="language-plaintext highlighter-rouge">paste()</code> and <code class="language-plaintext highlighter-rouge">outer()</code>. Why should you care? Because you may encounter scenarios like the following.</p>
+:ET

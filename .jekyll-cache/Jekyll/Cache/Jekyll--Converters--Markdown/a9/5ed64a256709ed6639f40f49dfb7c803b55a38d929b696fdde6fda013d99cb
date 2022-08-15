@@ -1,0 +1,2 @@
+I"5<p>A common thing to do in functional programming is to create, within a (outer) function, a local (inner) function that uses other variables in scope. Let me give you an example. The function <code class="language-plaintext highlighter-rouge">countup_from1()</code> uses a local helper function <code class="language-plaintext highlighter-rouge">count()</code> to accumulate results recursively. Its argument <code class="language-plaintext highlighter-rouge">x</code> is used directly inside <code class="language-plaintext highlighter-rouge">count()</code>.</p>
+:ET

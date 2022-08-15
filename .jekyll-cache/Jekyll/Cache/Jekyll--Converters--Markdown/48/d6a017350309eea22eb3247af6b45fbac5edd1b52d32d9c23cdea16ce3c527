@@ -1,0 +1,86 @@
+I"�><p>When analyzing stock returns, we like to know if the average returns or volatilities are constant over time, or if the correlations between any two assets in our portfolio stay constant over time. Therefore, we need to pick a time windows and calculate the rolling means, volatilities or correlations. A common choice for a time window is 2 years. However, in practice, I often pick several time windows of different length (like 6 months, 1 year, 2 years, 5 years) and compare the results obtained under each time window. The function <code class="language-plaintext highlighter-rouge">rollapply()</code> in the <code class="language-plaintext highlighter-rouge">zoo</code> library allows us to calculate the rolling statistics easily.</p>
+
+<p>Step 1. Load libraries</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">library</span><span class="p">(</span><span class="n">PerformanceAnalytics</span><span class="p">)</span><span class="w">
+</span><span class="n">library</span><span class="p">(</span><span class="n">zoo</span><span class="p">)</span><span class="w">
+</span><span class="n">library</span><span class="p">(</span><span class="n">tseries</span><span class="p">)</span></code></pre></figure>
+
+<p>Step 2. Download the monthly adjusted closing price data on VGENX and VTSMX since Sept 2005 from Yahoo.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">VGENX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">get.hist.quote</span><span class="p">(</span><span class="n">instrument</span><span class="o">=</span><span class="s2">"VGENX"</span><span class="p">,</span><span class="w"> </span><span class="n">start</span><span class="o">=</span><span class="s2">"2005-09-30"</span><span class="p">,</span><span class="w"> 
+                       </span><span class="n">end</span><span class="o">=</span><span class="s2">"2014-09-30"</span><span class="p">,</span><span class="w"> </span><span class="n">origin</span><span class="o">=</span><span class="s2">"1970-01-01"</span><span class="p">,</span><span class="w">
+                       </span><span class="n">quote</span><span class="o">=</span><span class="s2">"AdjClose"</span><span class="p">,</span><span class="w"> </span><span class="n">provider</span><span class="o">=</span><span class="s2">"yahoo"</span><span class="p">,</span><span class="w"> 
+                       </span><span class="n">compression</span><span class="o">=</span><span class="s2">"m"</span><span class="p">,</span><span class="w"> </span><span class="n">retclass</span><span class="o">=</span><span class="s2">"zoo"</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## time series ends   2014-09-02</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">VTSMX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">get.hist.quote</span><span class="p">(</span><span class="n">instrument</span><span class="o">=</span><span class="s2">"VTSMX"</span><span class="p">,</span><span class="w"> </span><span class="n">start</span><span class="o">=</span><span class="s2">"2005-09-30"</span><span class="p">,</span><span class="w"> 
+                       </span><span class="n">end</span><span class="o">=</span><span class="s2">"2014-09-30"</span><span class="p">,</span><span class="w"> </span><span class="n">origin</span><span class="o">=</span><span class="s2">"1970-01-01"</span><span class="p">,</span><span class="w">
+                       </span><span class="n">quote</span><span class="o">=</span><span class="s2">"AdjClose"</span><span class="p">,</span><span class="w"> </span><span class="n">provider</span><span class="o">=</span><span class="s2">"yahoo"</span><span class="p">,</span><span class="w">
+                       </span><span class="n">compression</span><span class="o">=</span><span class="s2">"m"</span><span class="p">,</span><span class="w"> </span><span class="n">retclass</span><span class="o">=</span><span class="s2">"zoo"</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## time series ends   2014-09-02</code></pre></figure>
+
+<p>Step 3. Change the class of the time index to yearmon.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">index</span><span class="p">(</span><span class="n">VGENX</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">as.yearmon</span><span class="p">(</span><span class="n">index</span><span class="p">(</span><span class="n">VGENX</span><span class="p">))</span><span class="w">
+</span><span class="n">index</span><span class="p">(</span><span class="n">VTSMX</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">as.yearmon</span><span class="p">(</span><span class="n">index</span><span class="p">(</span><span class="n">VTSMX</span><span class="p">))</span></code></pre></figure>
+
+<p>Step 4. Merge both price series into one data frame and Calculate continuously compounded returns.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">prices</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">merge</span><span class="p">(</span><span class="n">VGENX</span><span class="p">,</span><span class="w"> </span><span class="n">VTSMX</span><span class="p">)</span><span class="w">
+</span><span class="n">colnames</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"VGENX"</span><span class="p">,</span><span class="w"> </span><span class="s2">"VTSMX"</span><span class="p">)</span><span class="w">
+</span><span class="n">ret.cc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">diff</span><span class="p">(</span><span class="nf">log</span><span class="p">(</span><span class="n">prices</span><span class="p">))</span><span class="w">
+</span><span class="n">head</span><span class="p">(</span><span class="n">ret.cc</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">##                VGENX        VTSMX
+## Oct 2005 -0.08818443 -0.018813600
+## Nov 2005  0.02153350  0.038941761
+## Dec 2005  0.03146979  0.001354186</code></pre></figure>
+
+<p>Step 5. Calculate and Chart the rolling mean of the cc returns.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">time.window</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">6</span><span class="p">,</span><span class="w"> </span><span class="m">12</span><span class="p">,</span><span class="w"> </span><span class="m">24</span><span class="p">,</span><span class="w"> </span><span class="m">60</span><span class="p">)</span><span class="w">
+
+</span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">m</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">time.window</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="n">roll.muhat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rollapply</span><span class="p">(</span><span class="n">ret.cc</span><span class="p">,</span><span class="w"> </span><span class="n">width</span><span class="o">=</span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="n">FUN</span><span class="o">=</span><span class="n">mean</span><span class="p">,</span><span class="w"> </span><span class="n">align</span><span class="o">=</span><span class="s2">"right"</span><span class="p">)</span><span class="w">
+        </span><span class="n">chart.TimeSeries</span><span class="p">(</span><span class="n">roll.muhat</span><span class="p">,</span><span class="w"> </span><span class="n">legend.loc</span><span class="o">=</span><span class="s2">"bottomright"</span><span class="p">,</span><span class="w"> 
+                         </span><span class="n">main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">paste</span><span class="p">(</span><span class="s2">"rolling period:"</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="s2">"months"</span><span class="p">),</span><span class="w"> 
+                         </span><span class="n">ylab</span><span class="o">=</span><span class="s2">"rolling mean of the cc returns"</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span></code></pre></figure>
+
+<p><img src="/../figs/2014-10-30-analyze-stock-price-data-using-r-part3/unnamed-chunk-5-1.png" alt="center" /><img src="/../figs/2014-10-30-analyze-stock-price-data-using-r-part3/unnamed-chunk-5-2.png" alt="center" /><img src="/../figs/2014-10-30-analyze-stock-price-data-using-r-part3/unnamed-chunk-5-3.png" alt="center" /><img src="/../figs/2014-10-30-analyze-stock-price-data-using-r-part3/unnamed-chunk-5-4.png" alt="center" /></p>
+
+<p>Note that neither security has a constant monthly cc return.</p>
+
+<p>Step 6. Calculate and Chart the rolling mean of the volatilities.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">m</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">time.window</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="n">roll.sigmahat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rollapply</span><span class="p">(</span><span class="n">ret.cc</span><span class="p">,</span><span class="w"> </span><span class="n">width</span><span class="o">=</span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="n">FUN</span><span class="o">=</span><span class="n">sd</span><span class="p">,</span><span class="w"> </span><span class="n">align</span><span class="o">=</span><span class="s2">"right"</span><span class="p">)</span><span class="w">
+        </span><span class="n">chart.TimeSeries</span><span class="p">(</span><span class="n">roll.sigmahat</span><span class="p">,</span><span class="w"> </span><span class="n">legend.loc</span><span class="o">=</span><span class="s2">"bottomright"</span><span class="p">,</span><span class="w"> 
+                         </span><span class="n">main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">paste</span><span class="p">(</span><span class="s2">"rolling period:"</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="s2">"months"</span><span class="p">),</span><span class="w"> 
+                         </span><span class="n">ylab</span><span class="o">=</span><span class="s2">"rolling volatility of the cc returns"</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span></code></pre></figure>
+
+<p><img src="/../figs/2014-10-30-analyze-stock-price-data-using-r-part3/unnamed-chunk-6-1.png" alt="center" /><img src="/../figs/2014-10-30-analyze-stock-price-data-using-r-part3/unnamed-chunk-6-2.png" alt="center" /><img src="/../figs/2014-10-30-analyze-stock-price-data-using-r-part3/unnamed-chunk-6-3.png" alt="center" /><img src="/../figs/2014-10-30-analyze-stock-price-data-using-r-part3/unnamed-chunk-6-4.png" alt="center" /></p>
+
+<p>We see the volatilities of both securities are changing over time too.</p>
+
+<p>Step 7. Calculate and Chart the rolling correlation between the two return series.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">rhohat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="n">cor</span><span class="p">(</span><span class="n">x</span><span class="p">)[</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">]</span><span class="w">
+
+</span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">m</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">time.window</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="c1"># set by.column=FALSE to apply FUN to both cols at once</span><span class="w">
+        </span><span class="n">roll.rhohat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rollapply</span><span class="p">(</span><span class="n">ret.cc</span><span class="p">,</span><span class="w"> </span><span class="n">width</span><span class="o">=</span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="n">FUN</span><span class="o">=</span><span class="n">rhohat</span><span class="p">,</span><span class="w"> </span><span class="n">by.column</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">,</span><span class="w"> 
+                                </span><span class="n">align</span><span class="o">=</span><span class="s2">"right"</span><span class="p">)</span><span class="w"> 
+        </span><span class="n">chart.TimeSeries</span><span class="p">(</span><span class="n">roll.rhohat</span><span class="p">,</span><span class="w">
+                         </span><span class="n">main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">paste</span><span class="p">(</span><span class="s2">"rolling period:"</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="s2">"months"</span><span class="p">),</span><span class="w"> 
+                         </span><span class="n">ylab</span><span class="o">=</span><span class="s2">"rolling correlation of the two cc return series"</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span></code></pre></figure>
+
+<p><img src="/../figs/2014-10-30-analyze-stock-price-data-using-r-part3/unnamed-chunk-7-1.png" alt="center" /><img src="/../figs/2014-10-30-analyze-stock-price-data-using-r-part3/unnamed-chunk-7-2.png" alt="center" /><img src="/../figs/2014-10-30-analyze-stock-price-data-using-r-part3/unnamed-chunk-7-3.png" alt="center" /><img src="/../figs/2014-10-30-analyze-stock-price-data-using-r-part3/unnamed-chunk-7-4.png" alt="center" /></p>
+
+<p>We see the correlations between the returns of VTSMX (all stocks) and VGENX (energy stocks) are NOT constant overtime. Between 2006 and 2007, their correlation is small, and sometimes is even close to zero, but during the financial crisis of 2007 - 2011, they are highly correlated. You’ll see this a lot in other pairs of securities. In general, assets are not correlated during normal time will become highly correlated during crisis. As my old finance professor liked to say, “Diversification helps except when the world is on fire. And some day, the world will be on fire.”</p>
+:ET

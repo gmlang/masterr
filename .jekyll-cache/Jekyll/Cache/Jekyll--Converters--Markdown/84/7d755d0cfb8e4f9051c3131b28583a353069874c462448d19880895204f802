@@ -1,0 +1,2 @@
+I"ã<p>Previously, I wrote about the <a href="https://masterr.org/da/skewness-and-kurtosis/">intuitions behind skewness and kurtosis</a>. Today Iâ€™m going to do some calculations using the daily adjusted close prices of the S&amp;P500 and NovaGold between January 4, 2007 and October 10, 2014. You can download the data from yahoo and follow along. First of all, I defined some helper functions, which can also be used in other contexts to improve code organization and efficiency.</p>
+:ET

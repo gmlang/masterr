@@ -1,0 +1,8 @@
+I"-<p>When it comes to building models, it’s crucial to understand the characteristics of the variable you want to predict. This variable is often called the response or target variable. First, it may be continuous (for example, housing prices, stock prices, drug compound’s permeability, precipitation, and etc) or categorical (for example, fraud or not, default or not, good or bad, churned or not, 5 stages of sepsis and etc).</p>
+
+<p>Continuous responses may be symmetrically distributed (think of the Taj Mahal or the bell curve) or skewed (for example, income distribution often has a thin and long right tail). When it’s skewed, certain models such as linear regression require us to transform it to be symmetric. BoxCox transformation is often used.</p>
+
+<p>Categorical responses may have two levels or more than two levels. The levels maybe balanced or unbalanced. In the extreme case, the unbalanced situation is so severe that we call the minority class the rare event. For example, the number of clicks an online ad receives can be 1 out of every 1000 impressions. We often want to remedy the unbalanced distribution amongst the different classes before modeling. One method is to down-sample the majority class, and the other method is to up-sample the minority class.</p>
+
+<p>Understanding the distribution of the response variable is critical for finding the most suitable way to partition the data. Not understanding the response characteristics can lead to computational difficulties for some models and sub-optimal and less robust predictive performances.</p>
+:ET

@@ -1,0 +1,17 @@
+I"<p>In the age of big data, it’s not uncommon to encounter a large zipped file of multiple text files. Unzipping will take time. It turns out we can read them into R without unzipping first.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># get the name of the zipped file</span><span class="w">
+</span><span class="n">fname_zipped</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"xxxxx.zip"</span><span class="w">
+
+</span><span class="c1"># list all files names inside of a .zip file</span><span class="w">
+</span><span class="n">fnames</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">as.character</span><span class="p">(</span><span class="n">unzip</span><span class="p">(</span><span class="n">fname_zipped</span><span class="p">,</span><span class="w"> </span><span class="n">list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span><span class="o">$</span><span class="n">Name</span><span class="p">)</span><span class="w">
+
+</span><span class="c1"># read every file into R, assuming they are .csv files</span><span class="w">
+</span><span class="n">lst</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">vector</span><span class="p">(</span><span class="s2">"list"</span><span class="p">,</span><span class="w"> </span><span class="nf">length</span><span class="p">(</span><span class="n">fnames</span><span class="p">))</span><span class="w">
+</span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nf">seq_along</span><span class="p">(</span><span class="n">fnames</span><span class="p">))</span><span class="w">
+        </span><span class="n">lst</span><span class="p">[[</span><span class="n">i</span><span class="p">]]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">read.csv</span><span class="p">(</span><span class="n">unz</span><span class="p">(</span><span class="n">fname_zipped</span><span class="p">,</span><span class="w"> </span><span class="n">fnames</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span><span class="w"> </span><span class="n">stringsAsFactors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">F</span><span class="p">)</span><span class="w">
+
+</span><span class="c1"># check</span><span class="w">
+</span><span class="n">str</span><span class="p">(</span><span class="n">lst</span><span class="p">[[</span><span class="m">1</span><span class="p">]])</span></code></pre></figure>
+
+:ET

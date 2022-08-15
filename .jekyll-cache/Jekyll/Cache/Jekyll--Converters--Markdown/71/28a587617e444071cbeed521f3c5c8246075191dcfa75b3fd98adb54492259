@@ -1,0 +1,97 @@
+I"�1<p>Do not confuse variable reassignment (or rebinding) with mutation. Reassignment in R changes the binding. (See the <a href="https://masterr.org/r/RFP-part4-shadowing/">second diagram</a> for an example.) Mutation changes the referenced object itself. R supports limited mutation by default and base R objects are mostly immutable. As a result, R code often behaves like what we’d expect it to behave mathematically. This allows the programmer to focus on the mathematical or statistical problem at hand without being distracted by the “computer side of things.” Indeed, if you’re trained as a mathematician or statistician without any programming experience, you’ll find it’s easier to write R code than most typical programming languages like Python, Ruby, Java, C++, or Rust etc.</p>
+
+<h2 id="r-objects-are-mostly-immutable">R objects are (mostly) immutable.</h2>
+
+<p>Consider the following R code, where x and y refer to the same list initially. If we change any element of x, the value of y will not be automatically changed. This is exactly what we would expect mathematically.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="w">
+</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="w"> 
+</span><span class="n">identical</span><span class="p">(</span><span class="n">pryr</span><span class="o">::</span><span class="n">address</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="w"> </span><span class="n">pryr</span><span class="o">::</span><span class="n">address</span><span class="p">(</span><span class="n">y</span><span class="p">))</span><span class="w"> </span><span class="c1"># x and y point to the same object</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] TRUE</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">x</span><span class="p">[[</span><span class="m">2</span><span class="p">]]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="c1"># change the second element of x</span><span class="w">
+</span><span class="n">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w">   </span><span class="c1"># x is changed</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [[1]]
+## [1] 1
+## 
+## [[2]]
+## [1] 1
+## 
+## [[3]]
+## [1] 1</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="w">   </span><span class="c1"># y is not changed     </span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [[1]]
+## [1] 1
+## 
+## [[2]]
+## [1] 0
+## 
+## [[3]]
+## [1] 1</code></pre></figure>
+
+<p>The R code <code class="language-plaintext highlighter-rouge">x[[2]] = 1</code> gives the illusion of modifying the list referenced by x. Internally, it actually does two things: first create a modified copy of that list, then rebind x to the modified copy, leaving the original list unchanged. Because y is still bound to the original list, running <code class="language-plaintext highlighter-rouge">print(y)</code> will display the original list on screen. We summarize what’s going on in the following diagram:</p>
+
+<p><img src="../../figs/2019-02-15-RFP-part5-immutability/immutable.png" alt="" /></p>
+
+<p>If we do the same thing in Python, as shown in the code block below, we’ll discover that element change in x is also visible through y. This is often surprising to people without a formal training in programming. How could the value of y be changed when no operation was performed on y explicitly? The reason is because unlike lists in R, Python lists are mutable.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">x</span>
+<span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># change the second element of x, python list starts at index 0
+</span><span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="c1"># x is changed</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1, 1, 1]</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="c1"># y is also changed</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1, 1, 1]</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">print</span><span class="p">(</span><span class="n">x</span> <span class="ow">is</span> <span class="n">y</span><span class="p">)</span> <span class="c1"># x and y still refer to the same list, with its 2nd element changed to 1</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## True</code></pre></figure>
+
+<p>The python code <code class="language-plaintext highlighter-rouge">x[1] = 1</code> directly modifies the list referenced by x, updating its second element to a value of 1. There’s no new list being created. Both x and y are still bound to the original list, which has the value of its second element changed from 0 to 1. This can be seen pictorially as follows:</p>
+
+<p><img src="../../figs/2019-02-15-RFP-part5-immutability/mutable.png" alt="" /></p>
+
+<h2 id="copy-on-modify-if-necessary">Copy on modify (if necessary)</h2>
+
+<p>Detailed oriented readers probably have noticed the title of the previous section has the word “mostly” in parenthesis: “R objects are (mostly) immutable.” The implication is that some R objects (for example, lists and vectors) can also be mutable sometimes. Consider the following example, where there’s only one variable x pointing to the list [-1, 0, 1]. Because there are no other variables that refer to the same list, updating any element of x will directly modify the list instead of making a modified copy.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="p">{</span><span class="w"> </span><span class="c1"># must use curly brackets to group code if running in Rstudio. No need of them if running inside of R directly.</span><span class="w">
+        </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="m">-1</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="w">
+        </span><span class="n">print</span><span class="p">(</span><span class="n">pryr</span><span class="o">::</span><span class="n">address</span><span class="p">(</span><span class="n">x</span><span class="p">))</span><span class="w">
+        </span><span class="n">x</span><span class="p">[[</span><span class="m">2</span><span class="p">]]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="w">
+        </span><span class="n">print</span><span class="p">(</span><span class="n">pryr</span><span class="o">::</span><span class="n">address</span><span class="p">(</span><span class="n">x</span><span class="p">))</span><span class="w">
+        </span><span class="n">x</span><span class="p">[[</span><span class="m">3</span><span class="p">]]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">-9</span><span class="w">
+        </span><span class="n">print</span><span class="p">(</span><span class="n">pryr</span><span class="o">::</span><span class="n">address</span><span class="p">(</span><span class="n">x</span><span class="p">))</span><span class="w">
+</span><span class="p">}</span><span class="w"> </span><span class="c1"># identical memory addresses show there was no rebinding and x always point to the same list. So it's the list itself that gets modified.</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "0x7f8207893e48"
+## [1] "0x7f8207893e48"
+## [1] "0x7f8207893e48"</code></pre></figure>
+
+<p>Consider another example where we first assign the vector <code class="language-plaintext highlighter-rouge">1:13</code> to a variable v then change v’s elements:</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="p">{</span><span class="w"> </span><span class="c1"># must use curly brackets to group code if running in Rstudio. No need of them if running inside of R directly.</span><span class="w">
+        </span><span class="n">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">13</span><span class="w">
+        </span><span class="n">print</span><span class="p">(</span><span class="n">pryr</span><span class="o">::</span><span class="n">address</span><span class="p">(</span><span class="n">v</span><span class="p">))</span><span class="w">
+        </span><span class="n">v</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">100</span><span class="w">  </span><span class="c1"># makes a modified copy</span><span class="w">
+        </span><span class="n">print</span><span class="p">(</span><span class="n">pryr</span><span class="o">::</span><span class="n">address</span><span class="p">(</span><span class="n">v</span><span class="p">))</span><span class="w"> </span><span class="c1"># different memory address, indicating modified copy</span><span class="w">
+        </span><span class="n">v</span><span class="p">[</span><span class="m">2</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">-100</span><span class="w"> </span><span class="c1"># modify the copy directly</span><span class="w">
+        </span><span class="n">print</span><span class="p">(</span><span class="n">pryr</span><span class="o">::</span><span class="n">address</span><span class="p">(</span><span class="n">v</span><span class="p">))</span><span class="w"> </span><span class="c1"># same memory address, indicating direct modification</span><span class="w">
+</span><span class="p">}</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "0x7f81fff33fc8"
+## [1] "0x7f82057bfa98"
+## [1] "0x7f82057bfa98"</code></pre></figure>
+
+<p>Although there’s no other variables pointing to the same vector, the first time we tried to change v’s elements (<code class="language-plaintext highlighter-rouge">v[1] = 100</code>), R made a modified copy. When we tried to change v’s elements for the second time (<code class="language-plaintext highlighter-rouge">v[2] = -100</code>), R didn’t make another modified copy, instead, R modified the modified copy directly.</p>
+
+<p>In summary, it seems R is smart to know when to directly modify an object and when to make a modified copy. How does R do it? Well, it turns out that R implements something called “copy on modify (if necessary),” which means that copying is done only when we try to modify an object, and if the modification has no “spillover effects” (for example, making the value of other variables or non-local variables changed), R will just modify without copying.</p>
+
+:ET

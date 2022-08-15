@@ -1,0 +1,31 @@
+I"<p>Infix functions are functions where the function name comes in between its arguments when used. For example, operators like + and - are actually infix functions. Conversely, you can think of infix functions as operators. Here’s an example of an infix function that concatenate two vectors.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">`%&amp;%`</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> 
+        </span><span class="c1"># @x, @y: vectors or sigle values</span><span class="w">
+        </span><span class="c1"># returns: this function concatenates @x and @y without space in between</span><span class="w">
+        </span><span class="n">paste</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">collape</span><span class="o">=</span><span class="s2">""</span><span class="p">,</span><span class="w"> </span><span class="n">sep</span><span class="o">=</span><span class="s2">""</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span></code></pre></figure>
+
+<p>To use it, we simply treat it as any other operators.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="s2">"data"</span><span class="w"> </span><span class="o">%&amp;%</span><span class="w"> </span><span class="s2">"analysis"</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "dataanalysis"</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="s2">"cabaceo"</span><span class="w"> </span><span class="o">%&amp;%</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">5</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "cabaceo1" "cabaceo2" "cabaceo3" "cabaceo4" "cabaceo5"</code></pre></figure>
+
+<p>Here’s another example of an infix function that allows you to return a default value when encountering NULL. This is very helpful when used inside of another function to avoid returning a NULL value.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">`%||%`</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nf">is.null</span><span class="p">(</span><span class="n">a</span><span class="p">))</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="n">b</span><span class="w">
+
+</span><span class="m">100</span><span class="w"> </span><span class="o">%||%</span><span class="w"> </span><span class="kc">NA</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] 100</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="kc">NULL</span><span class="w"> </span><span class="o">%||%</span><span class="w"> </span><span class="kc">NA</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] NA</code></pre></figure>
+
+:ET
