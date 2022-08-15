@@ -29,13 +29,12 @@ layout: default
 
         {% if page.share %}
           {% include social-share.html %}
+          {% include ad-footer.html %} <!-- /.google-ads -->
         {% endif %}
 
         {% if site.disqus.shortname %}
           {% include disqus-comments.html %}
         {% endif %}
-
-        {% include ad-footer.html %} <!-- /.google-ads -->
         
         {% include page-pagination.html %}
       </div>
