@@ -17,7 +17,7 @@
     
     <!-- Begin Jekyll SEO tag v2.8.0 -->
 <title>Become Great at R | Mastering the R programming language</title>
-<meta name="generator" content="Jekyll v4.2.2" />
+<meta name="generator" content="Jekyll v3.9.2" />
 <meta property="og:title" content="Become Great at R" />
 <meta name="author" content="Guangming Lang" />
 <meta property="og:locale" content="en_US" />
@@ -128,6 +128,7 @@
       
         <p>A common thing to do in functional programming is to create, within a (outer) function, a local (inner) function that uses other variables in scope. Let me give you an example. The function <code class="language-plaintext highlighter-rouge">countup_from1()</code> uses a local helper function <code class="language-plaintext highlighter-rouge">count()</code> to accumulate results recursively. Its argument <code class="language-plaintext highlighter-rouge">x</code> is used directly inside <code class="language-plaintext highlighter-rouge">count()</code>.</p>
 
+
       
     </div>
   
@@ -162,6 +163,7 @@ John Chambers said that “in R: everything that happens is a function call.”
 Before diving into R functions, I want to explain the mathematical concept of 
 “function” because it will help us understand R functions.</p>
 
+
       
     </div>
   
@@ -194,6 +196,7 @@ Before diving into R functions, I want to explain the mathematical concept of
         <p>Function is a big topic in R programming. I’ll spend several blog posts talking 
 about it. But before I dive into R functions with full force, I want to show you 
 how nice it is to work with them. Consider the following code:</p>
+
 
       
     </div>
@@ -265,6 +268,7 @@ how nice it is to work with them. Consider the following code:</p>
       
         <p>Do not confuse variable reassignment (or rebinding) with mutation. Reassignment in R changes the binding. (See the <a href="https://masterr.org/r/RFP-part4-shadowing/">second diagram</a> for an example.) Mutation changes the referenced object itself. R supports limited mutation by default and base R objects are mostly immutable. As a result, R code often behaves like what we’d expect it to behave mathematically. This allows the programmer to focus on the mathematical or statistical problem at hand without being distracted by the “computer side of things.” Indeed, if you’re trained as a mathematician or statistician without any programming experience, you’ll find it’s easier to write R code than most typical programming languages like Python, Ruby, Java, C++, or Rust etc.</p>
 
+
       
     </div>
   
@@ -335,6 +339,7 @@ how nice it is to work with them. Consider the following code:</p>
       
         <p>Previously, we discussed two data structures in R: <a href="https://masterr.org/r/RFP-part1-vectors/">vectors</a> and <a href="https://masterr.org/r/RFP-part2-lists/">lists</a>. If you programmed in another language before, you probably already got a sense that R vectors and lists are a tiny bit different than what you’re used to. This is to be expected. In general, there is a nuanced difference between R data structures and that of many other languages.</p>
 
+
       
     </div>
   
@@ -365,6 +370,7 @@ how nice it is to work with them. Consider the following code:</p>
     <div class="entry-excerpt p-summary">
       
         <p>Previously, we discussed R vectors. We now turn to R lists. Like a vector, a R list can also grow or shrink. But unlike a vector, a R list can contain any R objects. For example, vectors, lists, functions, or environments can all be the elements of a list, and it’s perfectly okay to mix them in the same list.</p>
+
 
       
     </div>
@@ -397,6 +403,7 @@ how nice it is to work with them. Consider the following code:</p>
       
         <p>The simplest data structure in R is the vector. A vector is one dimensional and can be imagined as a sequence of blocks containing values:</p>
 
+
       
     </div>
   
@@ -427,6 +434,7 @@ how nice it is to work with them. Consider the following code:</p>
     <div class="entry-excerpt p-summary">
       
         <p>When doing feature engineering, it’s common to turn dates into numbers by calculating the time differences. For example, given date of birth, you may want to calculate age. Given sign up date and churn date, you may want to calculate the days to churn. Depending on the situation, sometimes you want the time difference in years, and sometimes you want it in months, weeks or days; sometimes you want the years/months/weeks rounded to whole numbers, and other times you may want to keep the decimal points for more accuracy. For example, suppose we want to calculate the number of years (without rounding) between two dates, there’re 3 ways we can go about it:</p>
+
 
       
     </div>
