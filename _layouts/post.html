@@ -19,6 +19,7 @@ layout: default
         {% include page-author.html %}
         {% include page-categories.html %}
         {% include page-tags.html %}
+        {% include ad-sidebar.html %} <!-- /.google-ads -->
       </div>
 
       <div class="page-content">
@@ -34,6 +35,8 @@ layout: default
           {% include disqus-comments.html %}
         {% endif %}
 
+        {% include ad-footer.html %} <!-- /.google-ads -->
+        
         {% include page-pagination.html %}
       </div>
     </div>
